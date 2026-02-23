@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 public class Tile : MonoBehaviour
 {
@@ -24,11 +25,15 @@ public class Tile : MonoBehaviour
     [Header("Tile Info")]
     [SerializeField] private bool isVowel;
     [SerializeField] private int baseTileScore = 10;
+    [HideIf("isVowel"), SerializeField] private string rootConsonant;
     [SerializeField] private string latinText;
 
     // Main Functions ----------------------------------------------------------
 
-    // Put Functions Here!
+    private void Start()
+    {
+        InitializeStart();
+    }
 
     // Helper Functions --------------------------------------------------------
 
@@ -74,5 +79,12 @@ public class Tile : MonoBehaviour
         topKudlit.SetActive(false);
         bottomKudlit.SetActive(false);
         krus.SetActive(false);
+    }
+
+    private void InitializeStart()
+    {
+        currentCharmod = CharacterModification.None;
+        ToggleCharmodObject();
+        latinText = rootConsonant + "a";
     }
 }
