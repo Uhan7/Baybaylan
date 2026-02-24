@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     // Variables ---------------------------------------------------------------
 
     [Header("References")]
     [SerializeField] private Canvas tilesCanvas;
+    [HideInInspector] private CanvasGroup canvasGroup;
 
     [Header("Transform")]
     [HideInInspector] private RectTransform rectTransform;
@@ -23,15 +24,21 @@ public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
         InitializeAwake();
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
         isBeingDragged = true;
+        canvasGroup.blocksRaycasts = false;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
         rectTransform.anchoredPosition += eventData.delta / tilesCanvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         isBeingDragged = false;
+        canvasGroup.blocksRaycasts = true;
     }
 
 
@@ -41,5 +48,6 @@ public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
     private void InitializeAwake()
     {
         rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 }
