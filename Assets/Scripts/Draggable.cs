@@ -5,9 +5,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 {
     // Variables ---------------------------------------------------------------
 
+    [Header("Components")]
+    [HideInInspector] private CanvasGroup canvasGroup;
+
     [Header("References")]
     [SerializeField] private Canvas tilesCanvas;
-    [HideInInspector] private CanvasGroup canvasGroup;
 
     [Header("Transform")]
     [HideInInspector] private RectTransform rectTransform;
@@ -28,6 +30,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         isBeingDragged = true;
         canvasGroup.blocksRaycasts = false;
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)

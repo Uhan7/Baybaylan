@@ -18,10 +18,10 @@ public class Tile : MonoBehaviour
 
     // Variables ---------------------------------------------------------------
 
-    [Header("Other Components")]
-    [SerializeField] private Draggable draggableScript;
+    [Header("Components")]
+    [HideInInspector] private Draggable draggableScript;
 
-    [Header("References to Modifiers")]
+    [Header("Charmods")]
     [SerializeField] private GameObject topKudlit;
     [SerializeField] private GameObject bottomKudlit;
     [SerializeField] private GameObject krus;
@@ -33,7 +33,8 @@ public class Tile : MonoBehaviour
     [SerializeField] private bool isVowel;
     [SerializeField] private int baseTileScore = 10;
     [HideIf("isVowel"), SerializeField] private string rootConsonant;
-    [SerializeField] private string latinText;
+    [ShowIf("isVowel"), SerializeField] private string vowel;
+    [ReadOnly, SerializeField] private string latinText;
 
 
 
@@ -55,7 +56,7 @@ public class Tile : MonoBehaviour
 
     public void ToggleNextModification() // Called by Button
     {
-        if (isVowel) return;
+        if (isVowel) return; // Skip if vowel
         if (draggableScript.isBeingDragged) return;
 
         if (currentCharmod == CharacterModification.Krus) currentCharmod = CharacterModification.None;
@@ -66,27 +67,33 @@ public class Tile : MonoBehaviour
 
     private void ToggleCharmodObject()
     {
+        if (isVowel) Debug.LogWarning("ToggleCharmodObject called on a vowel.");
+
         ClearAllCharmods();
 
         switch (currentCharmod)
         {
             case CharacterModification.None:
+                latinText = rootConsonant + "a";
                 break;
 
             case CharacterModification.Top:
                 topKudlit.SetActive(true);
+                latinText = rootConsonant + "i";
                 break;
 
             case CharacterModification.Bottom:
                 bottomKudlit.SetActive(true);
+                latinText = rootConsonant + "u";
                 break;
 
             case CharacterModification.Krus:
                 krus.SetActive(true);
+                latinText = rootConsonant;
                 break;
 
             default:
-                Debug.LogError("Error: ActivateModification p_currentModification exceeded enum limit.");
+                Debug.LogError("ActivateModification p_currentModification incorrect enum.");
                 break;
         }
     }
@@ -107,6 +114,7 @@ public class Tile : MonoBehaviour
     {
         currentCharmod = CharacterModification.None;
         ToggleCharmodObject();
-        latinText = rootConsonant + "a";
+        if (isVowel) latinText = vowel;
+        else latinText = rootConsonant + "a";
     }
 }

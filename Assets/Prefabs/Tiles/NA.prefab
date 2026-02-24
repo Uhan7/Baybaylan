@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 104ca13bd58b54be481840b764cef2e1, type: 3}
+    - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
+      propertyPath: rootConsonant
+      value: n
+      objectReference: {fileID: 0}
     - target: {fileID: 5957782790118923592, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
