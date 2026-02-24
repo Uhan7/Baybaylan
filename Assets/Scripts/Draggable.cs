@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IDragHandler
+public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     // Variables ---------------------------------------------------------------
 
@@ -12,7 +12,7 @@ public class Draggable : MonoBehaviour, IDragHandler
     [HideInInspector] private RectTransform rectTransform;
 
     [Header("Flags")]
-    [HideInInspector] private bool isHeld;
+    [HideInInspector] public bool isBeingDragged;
 
     // Main Functions ----------------------------------------------------------
 
@@ -23,7 +23,13 @@ public class Draggable : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        isBeingDragged = true;
         rectTransform.anchoredPosition += eventData.delta / tilesCanvas.scaleFactor;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isBeingDragged = false;
     }
 
     // Helper Functions --------------------------------------------------------

@@ -14,6 +14,9 @@ public class Tile : MonoBehaviour
 
     // Variables ---------------------------------------------------------------
 
+    [Header("Other Components")]
+    [SerializeField] private Draggable draggableScript;
+
     [Header("References to Modifiers")]
     [SerializeField] private GameObject topKudlit;
     [SerializeField] private GameObject bottomKudlit;
@@ -30,6 +33,11 @@ public class Tile : MonoBehaviour
 
     // Main Functions ----------------------------------------------------------
 
+    private void Awake()
+    {
+        InitializeAwake();
+    }
+
     private void Start()
     {
         InitializeStart();
@@ -40,6 +48,7 @@ public class Tile : MonoBehaviour
     public void ToggleNextModification() // Called by Button
     {
         if (isVowel) return;
+        if (draggableScript.isBeingDragged) return;
 
         if (currentCharmod == CharacterModification.Krus) currentCharmod = CharacterModification.None;
         else currentCharmod++;
@@ -79,6 +88,11 @@ public class Tile : MonoBehaviour
         topKudlit.SetActive(false);
         bottomKudlit.SetActive(false);
         krus.SetActive(false);
+    }
+
+    private void InitializeAwake()
+    {
+        draggableScript = GetComponent<Draggable>();
     }
 
     private void InitializeStart()
