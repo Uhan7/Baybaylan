@@ -14,6 +14,8 @@ public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
     [Header("Flags")]
     [HideInInspector] public bool isBeingDragged;
 
+
+
     // Main Functions ----------------------------------------------------------
 
     private void Awake()
@@ -31,6 +33,8 @@ public class Draggable : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         isBeingDragged = false;
     }
+
+
 
     // Helper Functions --------------------------------------------------------
 

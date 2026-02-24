@@ -4,6 +4,8 @@ using NaughtyAttributes;
 public class Tile : MonoBehaviour
 {
 
+    // Setups
+
     private enum CharacterModification
     {
         None,
@@ -11,6 +13,8 @@ public class Tile : MonoBehaviour
         Bottom,
         Krus
     }
+
+
 
     // Variables ---------------------------------------------------------------
 
@@ -31,6 +35,8 @@ public class Tile : MonoBehaviour
     [HideIf("isVowel"), SerializeField] private string rootConsonant;
     [SerializeField] private string latinText;
 
+
+
     // Main Functions ----------------------------------------------------------
 
     private void Awake()
@@ -42,6 +48,8 @@ public class Tile : MonoBehaviour
     {
         InitializeStart();
     }
+
+
 
     // Helper Functions --------------------------------------------------------
 
