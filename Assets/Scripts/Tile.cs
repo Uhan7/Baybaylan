@@ -1,11 +1,10 @@
 using UnityEngine;
 using NaughtyAttributes;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IDragNotify
 {
 
-    // Setups
-
+    // Setups ------------------------------------------------------------------
     private enum CharacterModification
     {
         None,
@@ -14,12 +13,12 @@ public class Tile : MonoBehaviour
         Krus
     }
 
-
-
     // Variables ---------------------------------------------------------------
-
     [Header("Components")]
     [HideInInspector] private Draggable draggableScript;
+
+    [Header("References")]
+    [HideInInspector] public TileSlot currentTileSlot; // Used in TileSlot.cs
 
     [Header("Charmods")]
     [SerializeField] private GameObject topKudlit;
@@ -31,15 +30,12 @@ public class Tile : MonoBehaviour
 
     [Header("Tile Info")]
     [SerializeField] private bool isVowel;
-    [SerializeField] private int baseTileScore = 10;
     [HideIf("isVowel"), SerializeField] private string rootConsonant;
     [ShowIf("isVowel"), SerializeField] private string vowel;
-    [ReadOnly, SerializeField] private string latinText;
-
-
+    [SerializeField] private int baseTileScore = 10;
+    [ReadOnly, SerializeField] public string latinText; // Used in TileSlot.cs
 
     // Main Functions ----------------------------------------------------------
-
     private void Awake()
     {
         InitializeAwake();
@@ -50,10 +46,18 @@ public class Tile : MonoBehaviour
         InitializeStart();
     }
 
+    public void OnDragBegin()
+    {
+        if (currentTileSlot != null)
+        {
+            currentTileSlot.ClearTileSlot();
+            currentTileSlot = null;
+        }
+    }
 
+    public void OnDragEnd() { }
 
     // Helper Functions --------------------------------------------------------
-
     public void ToggleNextModification() // Called by Button
     {
         if (isVowel) return; // Skip if vowel
