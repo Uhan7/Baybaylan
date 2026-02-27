@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 // Setup -----------------------------------------------------------------------
@@ -14,9 +15,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     // Variables ---------------------------------------------------------------
     [Header("Components")]
     [HideInInspector] private CanvasGroup canvasGroup;
+    [HideInInspector] private LayoutElement layoutElement;
 
     [Header("References")]
-    [SerializeField] private Canvas canvas;
+    [SerializeField] public Canvas canvas; // To be set by spawners (TileSet.cs)
 
     [Header("Transform")]
     [HideInInspector] private RectTransform rectTransform;
@@ -35,6 +37,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         isBeingDragged = true;
         canvasGroup.blocksRaycasts = false;
+        layoutElement.ignoreLayout = true;
         transform.SetAsLastSibling();
 
         dragNotify?.OnDragBegin();
@@ -49,6 +52,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         isBeingDragged = false;
         canvasGroup.blocksRaycasts = true;
+        layoutElement.ignoreLayout = false;
 
         dragNotify?.OnDragEnd();
     }
@@ -59,5 +63,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         dragNotify = GetComponent<IDragNotify>();
+        layoutElement = GetComponent<LayoutElement>();
     }
 }
