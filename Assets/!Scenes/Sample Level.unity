@@ -375,60 +375,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2406812471065810189, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
   m_PrefabInstance: {fileID: 476391194}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &895675029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6641278011882157252, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-  m_PrefabInstance: {fileID: 4897306672306090420}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &895675031 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4874382314616073031, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
   m_PrefabInstance: {fileID: 4897306672306090420}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895675029}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a9e9a417385a4cfd8f1d733102326de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &895675032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895675029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &895675033
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895675029}
-  m_CullTransparentMesh: 1
 --- !u!1 &976596184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,22 +1133,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-      propertyPath: m_Spacing.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-      propertyPath: m_Spacing.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-      propertyPath: m_CellSize.x
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-      propertyPath: m_CellSize.y
-      value: 110
-      objectReference: {fileID: 0}
     - target: {fileID: 6641278011882157252, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
       propertyPath: m_Name
       value: Salita Slots
@@ -1207,13 +1148,7 @@ PrefabInstance:
     - {fileID: 7488737460784435765, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
     - {fileID: 5675965918116825429, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6641278011882157252, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 895675033}
-    - targetCorrespondingSourceObject: {fileID: 6641278011882157252, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 895675032}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

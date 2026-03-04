@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4874382314616073031}
   - component: {fileID: 6323180489954562308}
   - component: {fileID: 941975015876773557}
+  - component: {fileID: 8755542779025498738}
+  - component: {fileID: 7904179946696784072}
   m_Layer: 5
   m_Name: Salita Slots
   m_TagString: Untagged
@@ -75,8 +77,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 135, y: 135}
-  m_Spacing: {x: 30, y: 30}
+  m_CellSize: {x: 110, y: 110}
+  m_Spacing: {x: 5, y: 5}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!114 &941975015876773557
@@ -91,3 +93,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980078dedfb0549f8824dfcc85f4c580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowInsertion: 1
+--- !u!222 &8755542779025498738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641278011882157252}
+  m_CullTransparentMesh: 1
+--- !u!114 &7904179946696784072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641278011882157252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1

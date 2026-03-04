@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980078dedfb0549f8824dfcc85f4c580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowInsertion: 1
