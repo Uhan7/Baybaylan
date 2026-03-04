@@ -32,7 +32,7 @@ public class Tile : MonoBehaviour, IDragNotify
     [SerializeField] private bool isVowel;
     [HideIf("isVowel"), SerializeField] private string rootConsonant;
     [ShowIf("isVowel"), SerializeField] private string vowel;
-    [SerializeField] private int baseTileScore = 10;
+    [SerializeField] public int score = 10; // Used in SalitaSlots.cs
     [ReadOnly, SerializeField] public string latinText; // Used in TileSlot.cs
 
     // Main Functions ----------------------------------------------------------

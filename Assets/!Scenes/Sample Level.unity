@@ -505,7 +505,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 895675031}
         m_TargetAssemblyTypeName: SalitaSlots, Assembly-CSharp
-        m_MethodName: ChangeSalitaText
+        m_MethodName: EvaluateSalita
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -786,6 +786,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1105771110}
+    - target: {fileID: 1293617493975885467, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 03f20d7a83aec49ae8a23ea34926f876, type: 2}
     - target: {fileID: 1816249566651889346, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_Name
       value: Tile Set

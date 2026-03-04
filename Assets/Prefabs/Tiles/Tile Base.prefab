@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 4221005711094560793}
   - component: {fileID: 482540437315076942}
   m_Layer: 5
-  m_Name: Tile Button
+  m_Name: Tile Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
