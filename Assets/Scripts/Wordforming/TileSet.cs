@@ -22,7 +22,8 @@ public class TileSet : MonoBehaviour
     {
         foreach (GameObject tile in config.predefinedTiles)
         {
-            Instantiate(tile, transform);
+            GameObject spawnedTile = Instantiate(tile, transform);
+            spawnedTile.GetComponent<Draggable>().canvas = canvas;
         }
     }
 
