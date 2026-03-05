@@ -36,4 +36,14 @@ public class TileSet : MonoBehaviour
             tile.GetComponent<Draggable>().canvas = canvas;
         }
     }
+
+    public void SpawnRandomTiles(int tilesAmount) // Called after valid word
+    {
+        for (int i = 0; i < tilesAmount; i++)
+        {
+            int randomIndex = Random.Range(0, config.tilesSelection.Count);
+            GameObject tile = Instantiate(config.tilesSelection[randomIndex], transform);
+            tile.GetComponent<Draggable>().canvas = canvas;
+        }
+    }
 }

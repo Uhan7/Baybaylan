@@ -7,7 +7,11 @@ using NaughtyAttributes;
 public class SalitaSlots : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
+    [Header("Configurations")]
+    [SerializeField] private LevelConfig config;
+
     [Header("Tiles")]
+    [SerializeField] private TileSet tileSet;
     [SerializeField] private List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
@@ -28,19 +32,17 @@ public class SalitaSlots : MonoBehaviour
     {
         UpdateActiveTiles();
         GetSalitaFromTiles();
+        UpdateSalitaText();
 
         if (!IsSalitaValid())
         {
-            // Do things if invalid Salita
-            print("invalid salita");
-            UpdateActiveTiles();
-            UpdateSalitaText();
+            salitaText.color = Color.red; // Eventually make this play animation
         }
         else
         {
-            UpdateActiveTiles();
+            salitaText.color = Color.green; // Eventually make this play animation
             ScoreSalita();
-            UpdateSalitaText();
+            ReplaceActiveTiles();
         }
     }
 
@@ -67,10 +69,7 @@ public class SalitaSlots : MonoBehaviour
         latinSalita = "";
         baybayinSalita = ""; // Eventually get the baybayin as well
 
-        foreach (Tile activeTile in activeTiles)
-        {
-            latinSalita += activeTile.latinText;
-        }
+        foreach (Tile activeTile in activeTiles) latinSalita += activeTile.latinText;
     }
 
     private void ScoreSalita()
@@ -92,5 +91,12 @@ public class SalitaSlots : MonoBehaviour
     {
         salitaText.text = latinSalita;
         // Separate function because it may get complicated with i/e and o/u conversion
+    }
+
+    private void ReplaceActiveTiles()
+    {
+        foreach (Tile activeTile in activeTiles) Destroy(activeTile.gameObject);
+
+        tileSet.SpawnRandomTiles(activeTiles.Count);
     }
 }
