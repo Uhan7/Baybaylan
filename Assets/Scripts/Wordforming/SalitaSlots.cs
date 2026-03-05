@@ -16,6 +16,7 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
+    [SerializeField] private float scoreScaleValue = 0.5f;
 
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
@@ -31,7 +32,9 @@ public class SalitaSlots : MonoBehaviour
         if (!IsSalitaValid())
         {
             // Do things if invalid Salita
-            // Right now, this won't do anything because IsSalitaValid always returns true
+            print("invalid salita");
+            UpdateActiveTiles();
+            UpdateSalitaText();
         }
         else
         {
@@ -44,12 +47,8 @@ public class SalitaSlots : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {
-        // Check if salita exists in the wordlist
-        // If exists, proceed
-        // If doesn't exist
-
-        // For now, assume all salita is valid
-        return true;
+        if (GameManager.Instance.validWords.Contains(latinSalita.ToLower())) return true;
+        else return false;
     }
 
     private void UpdateActiveTiles()
@@ -84,7 +83,9 @@ public class SalitaSlots : MonoBehaviour
             salitaScore += activeTile.score;
         }
 
-        salitaScore *= activeTiles.Count;
+        salitaScore = (int)(salitaScore * activeTiles.Count * scoreScaleValue);
+
+        GameManager.Instance.ChangeMahika(salitaScore);
     }
 
     private void UpdateSalitaText()
