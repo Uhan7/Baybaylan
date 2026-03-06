@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     [Header("Instance")]
     [HideInInspector] public static GameManager Instance;
 
+    [Header("Configurations")]
+    [SerializeField] public LevelConfig config; // References whole game
+
     [Header("Score")]
     [SerializeField] private int currentMahika = 0;
-    [SerializeField] private int targetMahika = 100;
     [SerializeField] private TextMeshProUGUI mahikaText;
     [SerializeField] private Image mahikaBarFill;
 
@@ -31,15 +33,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ChangeMahika(0);
+
     }
 
     // Helper Functions --------------------------------------------------------
     public void ChangeMahika(int score)
     {
         currentMahika += score;
-        mahikaBarFill.fillAmount = (float) currentMahika / targetMahika;
+        mahikaBarFill.fillAmount = (float) currentMahika / config.targetMahika;
 
-        mahikaText.text = currentMahika.ToString() + "/" + targetMahika.ToString();
+        mahikaText.text = currentMahika.ToString() + "/" + config.targetMahika.ToString();
     }
 
     private void LoadWordlist()

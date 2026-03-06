@@ -669,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5166b444772da427cbbd99ac1ede599b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: f8571ae66179b4bc2ad9613938c6ae10, type: 2}
   currentMahika: 0
-  targetMahika: 500
   mahikaText: {fileID: 131900582}
   mahikaBarFill: {fileID: 751682304}
   wordlist: {fileID: 4900000, guid: 5e93a9014948943979a4f2340a6feb37, type: 3}

@@ -14,4 +14,12 @@ public class LevelConfig : ScriptableObject
     [HideIf("usePredefinedTiles"), SerializeField] public int tilesAmount;
     [HideIf("usePredefinedTiles"), SerializeField] public List<GameObject> tilesSelection;
     [ShowIf("usePredefinedTiles"), SerializeField] public List<GameObject> predefinedTiles;
+
+    [Header("Mahika")]
+    [SerializeField] public int targetMahika = 50;
+
+    // [Header("Alahas")]
+
+    [Header("Paghihigpit")]
+    [SerializeField] public bool bawalUmulit = false;
 }

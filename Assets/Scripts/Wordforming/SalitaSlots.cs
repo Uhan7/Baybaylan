@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
@@ -8,7 +9,7 @@ public class SalitaSlots : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
     [Header("Configurations")]
-    [SerializeField] private LevelConfig config;
+    [HideInInspector] private LevelConfig config;
 
     [Header("Tiles")]
     [SerializeField] private TileSet tileSet;
@@ -26,6 +27,10 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private TextMeshProUGUI salitaText;
 
     // Main Functions ----------------------------------------------------------
+    private void Awake()
+    {
+        config = GameManager.Instance.config;
+    }
 
     // Button Functions
     public void EvaluateSalita()
@@ -42,13 +47,16 @@ public class SalitaSlots : MonoBehaviour
         {
             salitaText.color = Color.green; // Eventually make this play animation
             ScoreSalita();
-            ReplaceActiveTiles();
+            StartCoroutine(ReplaceActiveTiles());
         }
     }
 
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {
+        // Note that words may be "spelled" same but still be incorrect if it won't appear in the baybayin wordlist
+        // Because A-KO can be spelled A-K-O which is 3 characters,,,, thas wrong since Baybayin emphasizes "syllables"
+
         if (GameManager.Instance.validWords.Contains(latinSalita.ToLower())) return true;
         else return false;
     }
@@ -93,10 +101,16 @@ public class SalitaSlots : MonoBehaviour
         // Separate function because it may get complicated with i/e and o/u conversion
     }
 
-    private void ReplaceActiveTiles()
+    private IEnumerator ReplaceActiveTiles()
     {
-        foreach (Tile activeTile in activeTiles) Destroy(activeTile.gameObject);
+        yield return new WaitForSeconds(1f);
 
-        tileSet.SpawnRandomTiles(activeTiles.Count);
+        foreach (Tile activeTile in activeTiles)
+        {
+            Destroy(activeTile.gameObject);
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        StartCoroutine(tileSet.SpawnRandomTiles(activeTiles.Count));
     }
 }
