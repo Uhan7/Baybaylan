@@ -6,9 +6,6 @@ using NaughtyAttributes;
 [CreateAssetMenu]
 public class LevelConfig : ScriptableObject
 {
-    // [Header("Tile Slots")]
-    // [SerializeField] private int tileSlotsAmount = 8;
-
     [Header("Tiles")]
     [SerializeField] public bool usePredefinedTiles;
     [HideIf("usePredefinedTiles"), SerializeField] public int tilesAmount;
@@ -17,6 +14,9 @@ public class LevelConfig : ScriptableObject
 
     [Header("Mahika")]
     [SerializeField] public int targetMahika = 100;
+
+    [Header("Aksyon")]
+    [SerializeField] public int maxAksyon = 5;
 
     // [Header("Alahas")]
 

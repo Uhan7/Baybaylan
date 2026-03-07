@@ -48,7 +48,13 @@ public class SalitaSlots : MonoBehaviour
             salitaText.color = Color.green; // Eventually make this play animation
             ScoreSalita();
             GameManager.Instance.wordsUsed.Add(latinSalita);
-            StartCoroutine(ReplaceActiveTiles());
+            GameManager.Instance.ConcludeAksyon();
+            if (GameManager.Instance.currentAksyon <= config.maxAksyon)
+            {
+                // At this point I think also check for win/lose
+                StartCoroutine(ReplaceActiveTiles());
+            }
+            else print("UR DONE BRO");
         }
     }
 
@@ -56,7 +62,9 @@ public class SalitaSlots : MonoBehaviour
     private bool IsSalitaValid()
     {
         // Note that words may be "spelled" same but still be incorrect if it won't appear in the baybayin wordlist
-        // Because A-KO can be spelled A-K-O which is 3 characters,,,, thas wrong since Baybayin emphasizes "syllables"
+        // Because Ako can be spelled A-K-O (instead of A-Ko) which is 3 characters,,,, thas wrong since Baybayin emphasizes "syllables"
+
+        // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
 
         if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) return false;
 

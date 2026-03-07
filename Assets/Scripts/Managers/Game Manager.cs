@@ -12,10 +12,14 @@ public class GameManager : MonoBehaviour
     [Header("Configurations")]
     [SerializeField] public LevelConfig config; // References whole game
 
-    [Header("Score")]
+    [Header("Mahika")]
     [SerializeField] private int currentMahika = 0;
     [SerializeField] private TextMeshProUGUI mahikaText;
     [SerializeField] private Image mahikaBarFill;
+
+    [Header("Aksyon")]
+    [SerializeField] public int currentAksyon = 1;
+    [SerializeField] private TextMeshProUGUI aksyonText;
 
     [Header("Wordlist")]
     [SerializeField] private TextAsset wordlist;
@@ -34,6 +38,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ChangeMahika(0);
+        StartAksyon();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -43,6 +48,18 @@ public class GameManager : MonoBehaviour
         mahikaBarFill.fillAmount = (float) currentMahika / config.targetMahika;
 
         mahikaText.text = currentMahika.ToString() + "/" + config.targetMahika.ToString();
+    }
+
+    public void StartAksyon()
+    {
+        // dialogues start... blablabla
+        aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
+    }
+
+    public void ConcludeAksyon()
+    {
+        currentAksyon++;
+        if (currentAksyon <= config.maxAksyon) aksyonText.text = currentAksyon.ToString() + " / " + config.maxAksyon;
     }
 
     private void LoadWordlist()
