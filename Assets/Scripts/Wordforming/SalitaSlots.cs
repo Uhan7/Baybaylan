@@ -47,6 +47,7 @@ public class SalitaSlots : MonoBehaviour
         {
             salitaText.color = Color.green; // Eventually make this play animation
             ScoreSalita();
+            GameManager.Instance.wordsUsed.Add(latinSalita);
             StartCoroutine(ReplaceActiveTiles());
         }
     }
@@ -57,7 +58,9 @@ public class SalitaSlots : MonoBehaviour
         // Note that words may be "spelled" same but still be incorrect if it won't appear in the baybayin wordlist
         // Because A-KO can be spelled A-K-O which is 3 characters,,,, thas wrong since Baybayin emphasizes "syllables"
 
-        if (GameManager.Instance.validWords.Contains(latinSalita.ToLower())) return true;
+        if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) return false;
+
+        if (GameManager.Instance.validWords.Contains(latinSalita)) return true;
         else return false;
     }
 
@@ -111,6 +114,6 @@ public class SalitaSlots : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        StartCoroutine(tileSet.SpawnRandomTiles(activeTiles.Count));
+        StartCoroutine(tileSet.SpawnTiles(activeTiles.Count));
     }
 }

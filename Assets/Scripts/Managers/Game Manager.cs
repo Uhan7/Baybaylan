@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("Wordlist")]
     [SerializeField] private TextAsset wordlist;
     [HideInInspector] public HashSet<string> validWords = new HashSet<string>();
+    [SerializeField] public List<string> wordsUsed = new List<string>();
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -33,7 +34,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ChangeMahika(0);
-
     }
 
     // Helper Functions --------------------------------------------------------

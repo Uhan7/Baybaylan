@@ -19,37 +19,32 @@ public class TileSet : MonoBehaviour
 
     private void Start()
     {
-        if (config.usePredefinedTiles) SpawnPredefinedTiles();
-        else SpawnRandomTiles();
+        if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
+        else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
     // Helper Functions --------------------------------------------------------
-    private void SpawnPredefinedTiles()
+    private void SpawnTile(GameObject tilePrefab)
     {
-        foreach (GameObject tile in config.predefinedTiles)
-        {
-            GameObject spawnedTile = Instantiate(tile, transform);
-            spawnedTile.GetComponent<Draggable>().canvas = canvas;
-        }
+        GameObject tile = Instantiate(tilePrefab, transform);
+        tile.GetComponent<Draggable>().canvas = canvas;
     }
 
-    private void SpawnRandomTiles()
-    {
-        for (int i = 0; i < config.tilesAmount; i++)
-        {
-            int randomIndex = Random.Range(0, config.tilesSelection.Count);
-            GameObject tile = Instantiate(config.tilesSelection[randomIndex], transform);
-            tile.GetComponent<Draggable>().canvas = canvas;
-        }
-    }
-
-    public IEnumerator SpawnRandomTiles(int tilesAmount) // Called after valid word
+    public IEnumerator SpawnTiles(int tilesAmount) // Can be called by Salita Slots after valid word
     {
         for (int i = 0; i < tilesAmount; i++)
         {
-            int randomIndex = Random.Range(0, config.tilesSelection.Count);
-            GameObject tile = Instantiate(config.tilesSelection[randomIndex], transform);
-            tile.GetComponent<Draggable>().canvas = canvas;
+            GameObject tile;
+
+            if (config.usePredefinedTiles) tile = config.predefinedTiles[i];
+            else
+            {
+                int randomIndex = Random.Range(0, config.tilesSelection.Count);
+                tile = config.predefinedTiles[randomIndex];
+            }
+
+            SpawnTile(tile);
+
             yield return new WaitForSeconds(0.2f);
         }
     }

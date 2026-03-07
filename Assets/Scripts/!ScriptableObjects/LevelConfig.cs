@@ -16,7 +16,7 @@ public class LevelConfig : ScriptableObject
     [ShowIf("usePredefinedTiles"), SerializeField] public List<GameObject> predefinedTiles;
 
     [Header("Mahika")]
-    [SerializeField] public int targetMahika = 50;
+    [SerializeField] public int targetMahika = 100;
 
     // [Header("Alahas")]
 
