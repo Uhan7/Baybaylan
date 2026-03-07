@@ -87,7 +87,7 @@ public class SalitaSlots : MonoBehaviour
         foreach (Tile activeTile in activeTiles)
         {
             // Some cool effects here
-            salitaScore += activeTile.score;
+            salitaScore += activeTile.Score;
         }
 
         salitaScore = (int)(salitaScore * activeTiles.Count * scoreScaleValue);

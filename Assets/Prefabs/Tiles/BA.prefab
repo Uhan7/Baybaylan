@@ -27,6 +27,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
+      propertyPath: baseScore
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: rootConsonant
       value: b
       objectReference: {fileID: 0}

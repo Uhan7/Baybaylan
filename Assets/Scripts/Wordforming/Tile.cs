@@ -5,7 +5,7 @@ public class Tile : MonoBehaviour, IDragNotify
 {
 
     // Setups ------------------------------------------------------------------
-    private enum CharacterModification
+    private enum Diacritic
     {
         None,
         Top,
@@ -20,20 +20,24 @@ public class Tile : MonoBehaviour, IDragNotify
     [Header("References")]
     [HideInInspector] public TileSlot currentTileSlot; // Used in TileSlot.cs
 
-    [Header("Charmods")]
+    [Header("Diacritics")]
     [SerializeField] private GameObject topKudlit;
     [SerializeField] private GameObject bottomKudlit;
     [SerializeField] private GameObject krus;
 
     [Header("Current State")]
-    [SerializeField] private CharacterModification currentCharmod;
+    [SerializeField] private Diacritic currentCharmod = Diacritic.None;
 
     [Header("Tile Info")]
     [SerializeField] private bool isVowel;
     [HideIf("isVowel"), SerializeField] private string rootConsonant;
     [ShowIf("isVowel"), SerializeField] private string vowel;
-    [SerializeField] public int score = 10; // Used in SalitaSlots.cs
     [ReadOnly, SerializeField] public string latinText; // Used in TileSlot.cs
+
+    [Header("Score Info")]
+    [SerializeField] private int baseScore = 10;
+    [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 3;
+    [HideInInspector] public int Score => baseScore + diacriticScore; // Used in SalitaSlots.cs
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -63,7 +67,7 @@ public class Tile : MonoBehaviour, IDragNotify
         if (isVowel) return; // Skip if vowel
         if (draggableScript.isBeingDragged) return;
 
-        if (currentCharmod == CharacterModification.Krus) currentCharmod = CharacterModification.None;
+        if (currentCharmod == Diacritic.Krus) currentCharmod = Diacritic.None;
         else currentCharmod++;
 
         ToggleCharmodObject();
@@ -77,21 +81,25 @@ public class Tile : MonoBehaviour, IDragNotify
 
         switch (currentCharmod)
         {
-            case CharacterModification.None:
+            case Diacritic.None:
+                diacriticScore = 3;
                 latinText = rootConsonant + "a";
                 break;
 
-            case CharacterModification.Top:
+            case Diacritic.Top:
+                diacriticScore = 8;
                 topKudlit.SetActive(true);
                 latinText = rootConsonant + "i";
                 break;
 
-            case CharacterModification.Bottom:
+            case Diacritic.Bottom:
+                diacriticScore = 10;
                 bottomKudlit.SetActive(true);
                 latinText = rootConsonant + "u";
                 break;
 
-            case CharacterModification.Krus:
+            case Diacritic.Krus:
+                diacriticScore = 0;
                 krus.SetActive(true);
                 latinText = rootConsonant;
                 break;
@@ -116,9 +124,13 @@ public class Tile : MonoBehaviour, IDragNotify
 
     private void InitializeStart()
     {
-        currentCharmod = CharacterModification.None;
+        currentCharmod = Diacritic.None;
         ToggleCharmodObject();
-        if (isVowel) latinText = vowel;
+        if (isVowel)
+        {
+            latinText = vowel;
+            diacriticScore = 0;
+        }
         else latinText = rootConsonant + "a";
     }
 }
