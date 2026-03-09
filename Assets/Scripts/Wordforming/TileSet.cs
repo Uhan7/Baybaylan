@@ -9,6 +9,10 @@ public class TileSet : MonoBehaviour
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip spawnSFX;
+
     [Header("References")]
     [SerializeField] private Canvas canvas;
 
@@ -29,6 +33,8 @@ public class TileSet : MonoBehaviour
     {
         GameObject tile = Instantiate(tilePrefab, transform);
         tile.GetComponent<Draggable>().canvas = canvas;
+        tile.GetComponent<Tile>().sfxSource = sfxSource;
+        tile.GetComponent<Draggable>().sfxSource = sfxSource;
     }
 
     public IEnumerator SpawnTiles(int tilesAmount) // Can be called by Salita Slots after valid word
@@ -45,6 +51,7 @@ public class TileSet : MonoBehaviour
             }
 
             SpawnTile(tile);
+            sfxSource.PlayOneShot(spawnSFX);
 
             yield return new WaitForSeconds(0.08f);
         }

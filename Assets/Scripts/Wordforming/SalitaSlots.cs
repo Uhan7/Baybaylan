@@ -27,6 +27,11 @@ public class SalitaSlots : MonoBehaviour
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip wrongSFX;
+    [SerializeField] private AudioClip correctSFX;
+
     [Header("Flags")]
     [SerializeField] private bool replacingTiles;
 
@@ -55,16 +60,18 @@ public class SalitaSlots : MonoBehaviour
         if (!IsSalitaValid())
         {
             StartCoroutine(TempRedText());
+            sfxSource.PlayOneShot(wrongSFX);
         }
         else
         {
             salitaText.color = Color.green; // Eventually make this play animation
             ScoreSalita();
+            sfxSource.PlayOneShot(correctSFX);
+
             GameManager.Instance.wordsUsed.Add(latinSalita);
             GameManager.Instance.ConcludeAksyon();
             if (GameManager.Instance.currentAksyon <= config.maxAksyon)
             {
-                // At this point I think also check for win/lose
                 StartCoroutine(ReplaceActiveTiles());
             }
             else{

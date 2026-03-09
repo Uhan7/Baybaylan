@@ -302,6 +302,8 @@ GameObject:
   - component: {fileID: 5695253453646463390}
   - component: {fileID: 4221005711094560793}
   - component: {fileID: 482540437315076942}
+  - component: {fileID: 8149427845387423121}
+  - component: {fileID: 1713227810667350041}
   m_Layer: 5
   m_Name: Tile Base
   m_TagString: Untagged
@@ -439,16 +441,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7999ea8456ca14de89864e9f7b55130b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTileSlot: {fileID: 0}
   topKudlit: {fileID: 3383251389286085449}
   bottomKudlit: {fileID: 6432145158623040388}
   krus: {fileID: 2241262600043057499}
   currentCharmod: 0
+  sfxSource: {fileID: 0}
+  diacriticSFX: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
   isVowel: 0
   rootConsonant: 
   vowel: 
-  baseTileScore: 10
   latinText: 
+  baseScore: 10
+  diacriticScore: 3
 --- !u!114 &5695253453646463390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +466,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  sfxSource: {fileID: 0}
+  hoverSFX: {fileID: 8300000, guid: 92620a83a86f24dd9b49601f2a219556, type: 3}
+  dragSFX: {fileID: 8300000, guid: f62806463efec4e42a76444ca3fa38ea, type: 3}
   isBeingDragged: 0
 --- !u!225 &4221005711094560793
 CanvasGroup:
@@ -495,6 +502,105 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!95 &8149427845387423121
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319212537239405795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b993648531cb843a09db67138271ed83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1713227810667350041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319212537239405795}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5695253453646463390}
+          m_TargetAssemblyTypeName: Draggable, Assembly-CSharp
+          m_MethodName: DetectHover
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5695253453646463390}
+          m_TargetAssemblyTypeName: Draggable, Assembly-CSharp
+          m_MethodName: DetectHover
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5695253453646463390}
+          m_TargetAssemblyTypeName: Draggable, Assembly-CSharp
+          m_MethodName: DetectHold
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5695253453646463390}
+          m_TargetAssemblyTypeName: Draggable, Assembly-CSharp
+          m_MethodName: DetectHold
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6432145158623040388
 GameObject:
   m_ObjectHideFlags: 0

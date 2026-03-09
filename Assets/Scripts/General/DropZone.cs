@@ -5,7 +5,12 @@ using UnityEngine.EventSystems;
 public class DropZone : MonoBehaviour, IDropHandler
 {
     // Variables ---------------------------------------------------------------
+    [Header("Modifications")]
     [SerializeField] private bool allowInsertion;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip dropSFX;
 
     // Main Functions ----------------------------------------------------------
     public void OnDrop(PointerEventData eventData)
@@ -29,5 +34,7 @@ public class DropZone : MonoBehaviour, IDropHandler
 
         draggedObject.transform.SetParent(transform);
         if (allowInsertion) draggedObject.transform.SetSiblingIndex(newIndex);
+
+        sfxSource.PlayOneShot(dropSFX);
     }
 }

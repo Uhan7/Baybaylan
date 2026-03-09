@@ -26,6 +26,10 @@ public class Tile : MonoBehaviour
     [Header("Current State")]
     [SerializeField] private Diacritic currentCharmod = Diacritic.None;
 
+    [Header("Audio")]
+    [HideInInspector] public AudioSource sfxSource; // To be set by spawners (TileSet.cs)
+    [SerializeField] private AudioClip diacriticSFX;
+
     [Header("Tile Info")]
     [SerializeField] private bool isVowel;
     [HideIf("isVowel"), SerializeField] private string rootConsonant;
@@ -57,6 +61,7 @@ public class Tile : MonoBehaviour
         if (currentCharmod == Diacritic.Krus) currentCharmod = Diacritic.None;
         else currentCharmod++;
 
+        sfxSource.PlayOneShot(diacriticSFX);
         ToggleCharmodObject();
     }
 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7fda2e98aad334da4b4b40d48d665df0
+guid: b42caf714e08348b19acd8b0e8cbfd43
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8972011271198664713
-    second: Serga_Placeholder_CuredLand_0
+      213: -4778637331904542834
+    second: temp_makiling_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Serga_Placeholder_CuredLand_0
+      name: temp_makiling_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 982
+        height: 886
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 908e89427bcf28c70800000000000000
-      internalID: 8972011271198664713
+      spriteID: e87c8693aaedeadb0800000000000000
+      internalID: -4778637331904542834
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Serga_Placeholder_CuredLand_0: 8972011271198664713
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
