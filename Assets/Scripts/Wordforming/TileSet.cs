@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[RequireComponent(typeof(DropZone))]
 public class TileSet : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
@@ -40,12 +41,12 @@ public class TileSet : MonoBehaviour
             else
             {
                 int randomIndex = Random.Range(0, config.tilesSelection.Count);
-                tile = config.predefinedTiles[randomIndex];
+                tile = config.tilesSelection[randomIndex];
             }
 
             SpawnTile(tile);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.08f);
         }
     }
 }

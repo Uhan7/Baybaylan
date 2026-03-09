@@ -23,6 +23,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [Header("Transform")]
     [HideInInspector] private RectTransform rectTransform;
 
+    [Header("Storage Values")]
+    [HideInInspector] private Transform originalParent;
+    [HideInInspector] private int originalSiblingIndex;
+
     [Header("Flags")]
     [HideInInspector] public bool isBeingDragged;
     [HideInInspector] private IDragNotify dragNotify;
@@ -38,7 +42,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         isBeingDragged = true;
         canvasGroup.blocksRaycasts = false;
         layoutElement.ignoreLayout = true;
-        transform.SetAsLastSibling();
+
+        originalParent = transform.parent;
+        originalSiblingIndex = transform.GetSiblingIndex();
+        transform.SetParent(canvas.transform);
 
         dragNotify?.OnDragBegin();
     }
@@ -53,6 +60,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         isBeingDragged = false;
         canvasGroup.blocksRaycasts = true;
         layoutElement.ignoreLayout = false;
+
+        if (transform.parent == canvas.transform)
+        {
+            transform.SetParent(originalParent);
+            transform.SetSiblingIndex(originalSiblingIndex);
+        }
 
         dragNotify?.OnDragEnd();
     }

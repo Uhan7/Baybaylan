@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sample
   m_EditorClassIdentifier: 
   usePredefinedTiles: 0
-  tilesAmount: 10
+  tilesAmount: 12
   tilesSelection:
   - {fileID: 6897560512971629955, guid: e9ec02d21c4724e4b98f6ce1d6a5d013, type: 3}
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
@@ -34,6 +34,6 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 019fbe6f8db594986a1a367c4d1ed04a, type: 3}
   - {fileID: 6897560512971629955, guid: eaf2ef9a282304aa7af6c2cbc2fed3c9, type: 3}
   predefinedTiles: []
-  targetMahika: 150
+  targetMahika: 300
   maxAksyon: 5
   bawalUmulit: 0

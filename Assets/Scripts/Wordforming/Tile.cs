@@ -1,10 +1,11 @@
 using UnityEngine;
 using NaughtyAttributes;
 
-public class Tile : MonoBehaviour, IDragNotify
+[RequireComponent(typeof(Draggable))]
+public class Tile : MonoBehaviour
 {
 
-    // Setups ------------------------------------------------------------------
+    // Setups... put this in an enums manager
     private enum Diacritic
     {
         None,
@@ -16,9 +17,6 @@ public class Tile : MonoBehaviour, IDragNotify
     // Variables ---------------------------------------------------------------
     [Header("Components")]
     [HideInInspector] private Draggable draggableScript;
-
-    [Header("References")]
-    [HideInInspector] public TileSlot currentTileSlot; // Used in TileSlot.cs
 
     [Header("Diacritics")]
     [SerializeField] private GameObject topKudlit;
@@ -49,17 +47,6 @@ public class Tile : MonoBehaviour, IDragNotify
     {
         InitializeStart();
     }
-
-    public void OnDragBegin()
-    {
-        if (currentTileSlot != null)
-        {
-            currentTileSlot.ClearTileSlot();
-            currentTileSlot = null;
-        }
-    }
-
-    public void OnDragEnd() { }
 
     // Helper Functions --------------------------------------------------------
     public void ToggleNextModification() // Called by Button

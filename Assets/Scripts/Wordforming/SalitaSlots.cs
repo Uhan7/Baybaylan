@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
 
+[RequireComponent(typeof(DropZone))]
 public class SalitaSlots : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
@@ -26,10 +27,22 @@ public class SalitaSlots : MonoBehaviour
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
 
+    [Header("Flags")]
+    [SerializeField] private bool replacingTiles;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
         config = GameManager.Instance.config;
+    }
+
+    private void Update() // Temporarily
+    {
+        if (replacingTiles) return;
+
+        UpdateActiveTiles();
+        GetSalitaFromTiles();
+        UpdateSalitaText();
     }
 
     // Button Functions
@@ -41,7 +54,7 @@ public class SalitaSlots : MonoBehaviour
 
         if (!IsSalitaValid())
         {
-            salitaText.color = Color.red; // Eventually make this play animation
+            StartCoroutine(TempRedText());
         }
         else
         {
@@ -54,7 +67,9 @@ public class SalitaSlots : MonoBehaviour
                 // At this point I think also check for win/lose
                 StartCoroutine(ReplaceActiveTiles());
             }
-            else print("UR DONE BRO");
+            else{
+                GameManager.Instance.EndRound();
+            }
         }
     }
 
@@ -112,16 +127,28 @@ public class SalitaSlots : MonoBehaviour
         // Separate function because it may get complicated with i/e and o/u conversion
     }
 
+    private IEnumerator TempRedText() // Temporary Coroutine
+    {
+        salitaText.color = Color.red; // Eventually make this play animation
+        yield return new WaitForSeconds(1f);
+        salitaText.color = Color.white; // Eventually make this play animation
+    }
+
     private IEnumerator ReplaceActiveTiles()
     {
+        replacingTiles = true;
         yield return new WaitForSeconds(1f);
 
         foreach (Tile activeTile in activeTiles)
         {
+            if (activeTile == null) continue;
             Destroy(activeTile.gameObject);
             yield return new WaitForSeconds(0.2f);
         }
 
         StartCoroutine(tileSet.SpawnTiles(activeTiles.Count));
+
+        salitaText.color = Color.white; // Eventually make this play animation
+        replacingTiles = false;
     }
 }

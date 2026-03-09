@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public HashSet<string> validWords = new HashSet<string>();
     [SerializeField] public List<string> wordsUsed = new List<string>();
 
+    [Header("Other Screens")]
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
@@ -60,6 +64,8 @@ public class GameManager : MonoBehaviour
     {
         currentAksyon++;
         if (currentAksyon <= config.maxAksyon) aksyonText.text = currentAksyon.ToString() + " / " + config.maxAksyon;
+
+        if (currentMahika >= config.targetMahika) EndRound();
     }
 
     private void LoadWordlist()
@@ -67,5 +73,13 @@ public class GameManager : MonoBehaviour
         string[] words = wordlist.text.Split("\n");
 
         foreach (string word in words) validWords.Add(word);
+    }
+
+    public void EndRound() // Where 0 is lose and 1 is win
+    {
+        bool didWin = currentMahika >= config.targetMahika;
+
+        if (didWin == false) loseScreen.SetActive(true);
+        else winScreen.SetActive(true);
     }
 }

@@ -11,6 +11,8 @@ public class DropZone : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject draggedObject = eventData.pointerDrag.gameObject;
+        if (draggedObject.GetComponent<Draggable>() == null) return;
+
         RectTransform rectTransform = transform as RectTransform;
         Vector2 localMousePosition;
         int newIndex = 0;

@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using UnityEngine.EventSystems;
 using NaughtyAttributes;
@@ -46,3 +47,4 @@ public class TileSlot : MonoBehaviour, IDropHandler
         currentTileLatinText = "";
     }
 }
+*/
