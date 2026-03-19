@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class Alahas : MonoBehaviour
+[CreateAssetMenu]
+public class Alahas : ScriptableObject
 {
     // Variables ---------------------------------------------------------------
     [Header("Alahas Info")]
     [SerializeField] private string alahasName = "Pangalan ng Alahas";
-    [TextArea(2, 3), SerializeField] private string description = "Deskripsyon tungkol sa Alahas.";
+    [TextArea(2, 2), SerializeField] private string description = "Deskripsyon tungkol sa Alahas.";
 
     [Header("Alahas Properties")]
-    [SerializeField] private string ambot;
+    [SerializeField] public float something;
 }
