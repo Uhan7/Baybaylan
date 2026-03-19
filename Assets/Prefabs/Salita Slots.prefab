@@ -52,11 +52,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9e9a417385a4cfd8f1d733102326de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSet: {fileID: 0}
   activeTiles: []
   baybayinSalita: 
   latinSalita: 
-  baseSalitaScore: 0
+  salitaScore: 0
+  scoreScaleValue: 0.5
   salitaText: {fileID: 0}
+  sfxSource: {fileID: 0}
+  wrongSFX: {fileID: 8300000, guid: 69e082b1d550e4d1dbd5c1a98abac22d, type: 3}
+  correctSFX: {fileID: 8300000, guid: b35c646c33445405d98fbb9f12f8dbfd, type: 3}
+  replacingTiles: 0
 --- !u!114 &6323180489954562308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowInsertion: 1
+  sfxSource: {fileID: 0}
+  dropSFX: {fileID: 0}
 --- !u!222 &8755542779025498738
 CanvasRenderer:
   m_ObjectHideFlags: 0

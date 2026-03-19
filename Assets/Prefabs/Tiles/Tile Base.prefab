@@ -446,7 +446,7 @@ MonoBehaviour:
   krus: {fileID: 2241262600043057499}
   currentCharmod: 0
   sfxSource: {fileID: 0}
-  diacriticSFX: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
+  diacriticSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
   isVowel: 0
   rootConsonant: 
   vowel: 
@@ -467,8 +467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   sfxSource: {fileID: 0}
-  hoverSFX: {fileID: 8300000, guid: 92620a83a86f24dd9b49601f2a219556, type: 3}
-  dragSFX: {fileID: 8300000, guid: f62806463efec4e42a76444ca3fa38ea, type: 3}
+  hoverSFX: {fileID: 8300000, guid: 5dbf0a1fd60e3491ca75535cc7a54027, type: 3}
+  dragSFX: {fileID: 8300000, guid: 6544b41a0f6dd499397e67bf397545b5, type: 3}
   isBeingDragged: 0
 --- !u!225 &4221005711094560793
 CanvasGroup:
