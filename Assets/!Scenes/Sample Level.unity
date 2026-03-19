@@ -1200,6 +1200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594649365}
+  - component: {fileID: 594649366}
   m_Layer: 0
   m_Name: Backgrounds Manager
   m_TagString: Untagged
@@ -1222,6 +1223,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 303577374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594649366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594649364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4d14c9ac004ebc9eb77cdc50c333b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purifiedBackground: {fileID: 1282512510}
+  corruptedBackground: {fileID: 1249771179}
 --- !u!1 &652234311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,11 +1283,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 03f20d7a83aec49ae8a23ea34926f876, type: 2}
   currentMahika: 0
+  targetMahika: 300
+  mahikaPercent: 0
   mahikaText: {fileID: 131900582}
   mahikaBarFill: {fileID: 751682304}
   currentAksyon: 1
   aksyonText: {fileID: 2016418882}
-  wordlist: {fileID: 4900000, guid: 78e256c6ef1f741b2bc674647e4a2c14, type: 3}
+  wordlists:
+  - {fileID: 4900000, guid: 78e256c6ef1f741b2bc674647e4a2c14, type: 3}
+  - {fileID: 4900000, guid: 57c30941d18a248969869e8e401bc944, type: 3}
   wordsUsed: []
   winScreen: {fileID: 1517571310}
   loseScreen: {fileID: 2112277896}
@@ -1715,6 +1734,7 @@ GameObject:
   - component: {fileID: 1249771180}
   - component: {fileID: 1249771182}
   - component: {fileID: 1249771181}
+  - component: {fileID: 1249771183}
   m_Layer: 5
   m_Name: Background Corrupted
   m_TagString: Untagged
@@ -1754,7 +1774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1779,6 +1799,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249771179}
   m_CullTransparentMesh: 1
+--- !u!114 &1249771183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249771179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ad089e6bc9e401fb46f3e9880e23c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1282490074
 GameObject:
   m_ObjectHideFlags: 0

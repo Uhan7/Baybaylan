@@ -68,15 +68,13 @@ public class SalitaSlots : MonoBehaviour
             ScoreSalita();
             sfxSource.PlayOneShot(correctSFX);
 
+            BackgroundsManager.Instance.AdjustCorruptedBG();
+
             GameManager.Instance.wordsUsed.Add(latinSalita);
             GameManager.Instance.ConcludeAksyon();
-            if (GameManager.Instance.currentAksyon <= config.maxAksyon)
-            {
-                StartCoroutine(ReplaceActiveTiles());
-            }
-            else{
-                GameManager.Instance.EndRound();
-            }
+
+            if (GameManager.Instance.currentAksyon <= config.maxAksyon) StartCoroutine(ReplaceActiveTiles());
+            else GameManager.Instance.EndRound();
         }
     }
 
