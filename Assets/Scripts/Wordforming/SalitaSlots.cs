@@ -73,7 +73,7 @@ public class SalitaSlots : MonoBehaviour
             GameManager.Instance.wordsUsed.Add(latinSalita);
             GameManager.Instance.ConcludeAksyon();
 
-            if (GameManager.Instance.currentAksyon <= config.maxAksyon) StartCoroutine(ReplaceActiveTiles());
+            if (GameManager.Instance.currentAksyon <= config.maxAksyon && GameManager.Instance.mahikaPercent < 1) StartCoroutine(ReplaceActiveTiles());
             else GameManager.Instance.EndRound();
         }
     }
