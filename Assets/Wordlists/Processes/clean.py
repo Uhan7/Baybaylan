@@ -45,6 +45,7 @@ def replace_characters(word):
     """
     word = word.replace("ñ", "ny").replace("Ñ", "Ny")
     word = word.replace("qu", "kw")
+    word = word.replace("ch", "ts")
     word = word.replace("f", "p")
     word = word.replace("j", "dy")
     word = word.replace("v", "b")
@@ -85,7 +86,7 @@ def clean_wordlist(input_file, output_file):
     # Step 3: convert word to lowercase
     text = convert_lowercase(text)
 
-    # Step 4: convert ñ->ny, f->p, j->dy, qu->kw, v->b, x->ks, z->s
+    # Step 4: convert ñ->ny, ch-> ts, f->p, j->dy, qu->kw, v->b, x->ks, z->s
     text = replace_characters(text)
 
     # Step 5: split entries -> NOW USING LIST
