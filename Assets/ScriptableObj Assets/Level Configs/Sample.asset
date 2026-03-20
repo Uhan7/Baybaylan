@@ -34,6 +34,6 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 019fbe6f8db594986a1a367c4d1ed04a, type: 3}
   - {fileID: 6897560512971629955, guid: eaf2ef9a282304aa7af6c2cbc2fed3c9, type: 3}
   predefinedTiles: []
-  targetMahika: 300
-  maxAksyon: 5
+  targetMahika: 500
+  maxAksyon: 8
   bawalUmulit: 0
