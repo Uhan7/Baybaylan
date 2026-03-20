@@ -50,6 +50,9 @@ public class Tile : MonoBehaviour
     [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 3;
     [HideInInspector] public int Score => baseScore + diacriticScore; // Used in SalitaSlots.cs
 
+    [Header("Flags")]
+    [HideInInspector] private bool wasBeingDragged = false;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
@@ -70,6 +73,11 @@ public class Tile : MonoBehaviour
             diacriticScore = 0;
         }
         else latinText = rootConsonant + "a";
+    }
+
+    private void Update()
+    {
+        ChangeSpriteOnDrag();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -133,13 +141,20 @@ public class Tile : MonoBehaviour
     {
         if (active)
         {
-            imageComponent.sprite = activeTileSprites[Random.Range(0, activeTileSprites.Length - 1)];
+            imageComponent.sprite = activeTileSprites[Random.Range(0, activeTileSprites.Length)];
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = activeTileColor;
         }
         else
         {
-            imageComponent.sprite = availableTileSprites[Random.Range(0, availableTileSprites.Length - 1)];
+            imageComponent.sprite = availableTileSprites[Random.Range(0, availableTileSprites.Length)];
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableTileColor;
         }
+    }
+
+    private void ChangeSpriteOnDrag()
+    {
+        if (draggableScript.isBeingDragged && !wasBeingDragged) ChangeSprite(false);
+
+        wasBeingDragged = draggableScript.isBeingDragged;
     }
 }
