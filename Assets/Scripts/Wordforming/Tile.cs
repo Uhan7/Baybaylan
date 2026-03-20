@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using NaughtyAttributes;
 
 [RequireComponent(typeof(Draggable))]
@@ -17,6 +18,7 @@ public class Tile : MonoBehaviour
     // Variables ---------------------------------------------------------------
     [Header("Components")]
     [HideInInspector] private Draggable draggableScript;
+    [HideInInspector] private Image imageComponent;
 
     [Header("Diacritics")]
     [SerializeField] private GameObject topKudlit;
@@ -36,6 +38,13 @@ public class Tile : MonoBehaviour
     [ShowIf("isVowel"), SerializeField] private string vowel;
     [ReadOnly, SerializeField] public string latinText; // Used in TileSlot.cs
 
+    [Header("Tile Visuals")]
+    [SerializeField] private Sprite[] availableTileSprites;
+    [SerializeField] private Color availableTileColor;
+    [SerializeField] private Sprite[] activeTileSprites;
+    [SerializeField] private Color activeTileColor;
+    [SerializeField] private GameObject[] strokes;
+
     [Header("Score Info")]
     [SerializeField] private int baseScore = 10;
     [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 3;
@@ -44,12 +53,23 @@ public class Tile : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
-        InitializeAwake();
+        draggableScript = GetComponent<Draggable>();
+        imageComponent = GetComponent<Image>();
     }
 
     private void Start()
     {
-        InitializeStart();
+        // Tiles always start as inactive/available
+        ChangeSprite(false);
+
+        currentCharmod = Diacritic.None;
+        ToggleCharmodObject();
+        if (isVowel)
+        {
+            latinText = vowel;
+            diacriticScore = 0;
+        }
+        else latinText = rootConsonant + "a";
     }
 
     // Helper Functions --------------------------------------------------------
@@ -109,20 +129,17 @@ public class Tile : MonoBehaviour
         krus.SetActive(false);
     }
 
-    private void InitializeAwake()
+    public void ChangeSprite(bool active) // Can be called by the DropZone obj
     {
-        draggableScript = GetComponent<Draggable>();
-    }
-
-    private void InitializeStart()
-    {
-        currentCharmod = Diacritic.None;
-        ToggleCharmodObject();
-        if (isVowel)
+        if (active)
         {
-            latinText = vowel;
-            diacriticScore = 0;
+            imageComponent.sprite = activeTileSprites[Random.Range(0, activeTileSprites.Length - 1)];
+            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = activeTileColor;
         }
-        else latinText = rootConsonant + "a";
+        else
+        {
+            imageComponent.sprite = availableTileSprites[Random.Range(0, availableTileSprites.Length - 1)];
+            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableTileColor;
+        }
     }
 }

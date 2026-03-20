@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9271322, b: 0.8443396, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9271322, b: 0.8443396, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -356,15 +356,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4716981, g: 0.27704975, b: 0.18467425, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0933921e5faf348f9a28830706bf182f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -451,6 +451,21 @@ MonoBehaviour:
   rootConsonant: 
   vowel: 
   latinText: 
+  availableTileSprites:
+  - {fileID: 21300000, guid: 0933921e5faf348f9a28830706bf182f, type: 3}
+  - {fileID: 21300000, guid: 8be12c66352b045ef972a4b92336e7c5, type: 3}
+  - {fileID: 21300000, guid: fd3ec8b5ccc1f48979d443b7d5186b1f, type: 3}
+  availableTileColor: {r: 0.990566, g: 0.9351952, b: 0.8924439, a: 1}
+  activeTileSprites:
+  - {fileID: 21300000, guid: 05623f74711624aedbf297c6cc0a78c4, type: 3}
+  - {fileID: 21300000, guid: adbd26133f1e24557a72c9f8625037c5, type: 3}
+  - {fileID: 21300000, guid: 71fecceb6ea2745bc877499989ae2ab7, type: 3}
+  activeTileColor: {r: 0.103773594, g: 0.08713066, b: 0.078809194, a: 1}
+  strokes:
+  - {fileID: 7206870299288697652}
+  - {fileID: 3383251389286085449}
+  - {fileID: 6432145158623040388}
+  - {fileID: 2241262600043057499}
   baseScore: 10
   diacriticScore: 3
 --- !u!114 &5695253453646463390
@@ -659,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9271322, b: 0.8443396, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -734,7 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9271322, b: 0.8443396, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

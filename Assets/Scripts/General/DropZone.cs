@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using NaughtyAttributes;
 
 public class DropZone : MonoBehaviour, IDropHandler
 {
     // Variables ---------------------------------------------------------------
     [Header("Modifications")]
     [SerializeField] private bool allowInsertion;
+    [SerializeField] private bool changeTileBox;
+    [SerializeField] private bool isActiveDropZone;
 
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
@@ -34,6 +37,8 @@ public class DropZone : MonoBehaviour, IDropHandler
 
         draggedObject.transform.SetParent(transform);
         if (allowInsertion) draggedObject.transform.SetSiblingIndex(newIndex);
+
+        if (changeTileBox) draggedObject.GetComponent<Tile>().ChangeSprite(isActiveDropZone);
 
         sfxSource.PlayOneShot(dropSFX);
     }

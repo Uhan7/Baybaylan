@@ -3461,6 +3461,10 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1543594388}
+    - target: {fileID: 8519567697643234237, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
+      propertyPath: changeTileBox
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_Spacing.x
       value: 10
@@ -3471,11 +3475,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_CellSize.x
-      value: 110
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_CellSize.y
-      value: 110
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_Constraint
@@ -3554,6 +3558,14 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1543594388}
+    - target: {fileID: 941975015876773557, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
+      propertyPath: changeTileBox
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 941975015876773557, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
+      propertyPath: isActiveDropZone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1172751747748684864, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3805,6 +3817,22 @@ PrefabInstance:
     - target: {fileID: 5374824049809661185, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
+      propertyPath: m_Spacing.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
+      propertyPath: m_Spacing.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
+      propertyPath: m_CellSize.x
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323180489954562308, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
+      propertyPath: m_CellSize.y
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 6641278011882157252, guid: 05fd0be12054646c88a95688f1f3e06e, type: 3}
       propertyPath: m_Name
