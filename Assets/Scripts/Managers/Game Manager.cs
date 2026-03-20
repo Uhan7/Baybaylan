@@ -20,10 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mahikaText;
     [SerializeField] private Image mahikaBarFill;
 
-    [Header("Aksyon")]
-    [SerializeField] public int currentAksyon = 1;
-    [SerializeField] private TextMeshProUGUI aksyonText;
-
     [Header("Wordlists")]
     [SerializeField] private TextAsset[] wordlists;
     [HideInInspector] public HashSet<string> validWords = new HashSet<string>();
@@ -50,7 +46,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ChangeMahika(0);
-        StartAksyon();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -63,20 +58,6 @@ public class GameManager : MonoBehaviour
         mahikaBarFill.fillAmount = mahikaPercent;
 
         mahikaText.text = currentMahika.ToString() + "/" + config.targetMahika.ToString();
-    }
-
-    public void StartAksyon()
-    {
-        // dialogues start... blablabla
-        aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
-    }
-
-    public void ConcludeAksyon()
-    {
-        currentAksyon++;
-        if (currentAksyon <= config.maxAksyon) aksyonText.text = currentAksyon.ToString() + " / " + config.maxAksyon;
-
-        if (currentMahika >= config.targetMahika) EndRound();
     }
 
     private void LoadWordlist()

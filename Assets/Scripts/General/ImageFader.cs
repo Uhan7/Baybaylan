@@ -45,4 +45,11 @@ public class ImageFader : MonoBehaviour
 
         targetImage.color = new Color(color.r, color.g, color.b, desiredAlpha);
     }
+
+    public void SetAlpha(float newAlpha)
+    {
+        Color c = targetImage.color;
+        c.a = newAlpha;
+        targetImage.color = c;
+    }
 }
