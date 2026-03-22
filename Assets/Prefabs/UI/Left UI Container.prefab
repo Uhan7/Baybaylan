@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629734199134365374, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
       propertyPath: m_Name
-      value: Side UI Container
+      value: Left UI Container
       objectReference: {fileID: 0}
     - target: {fileID: 1784952988962476477, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
       propertyPath: m_Pivot.x
@@ -91,6 +91,14 @@ PrefabInstance:
     - target: {fileID: 1784952988962476477, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222431929259707973, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228187984382995450, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
