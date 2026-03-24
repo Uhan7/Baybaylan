@@ -1037,6 +1037,7 @@ Transform:
   - {fileID: 172158030}
   - {fileID: 689779452}
   - {fileID: 594649365}
+  - {fileID: 543053964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310660311
@@ -1608,6 +1609,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2406812471065810189, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
   m_PrefabInstance: {fileID: 476391194}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &543053963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543053964}
+  - component: {fileID: 543053965}
+  m_Layer: 0
+  m_Name: Dialogue Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &543053964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543053963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 303577374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543053965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543053963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f79c730fb7e4d4ba1041d5ffae5411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueContainers:
+  - {fileID: 1311801632}
+  aSource: {fileID: 1543594388}
+  dialoguing: 0
 --- !u!1 &577453886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +2037,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2694096807626224845, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1311801628}
+      addedObject: {fileID: 1311801632}
   m_SourcePrefab: {fileID: 100100000, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
 --- !u!224 &591299436 stripped
 RectTransform:
@@ -2707,16 +2756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa834be124a2f42ff99d9a7533722081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    soundToPlay: {fileID: 8300000, guid: 053f1210659ee477189445e457e36bc9, type: 3}
-    textSpeed: 0.02
-    textPunctSpeed: 0.1
-    sentences:
-    - Hello! Bomboclat epicness super gaming awesome poggers buoauwrhao uhroauwh
-    - RAERA ASDGASGRYWE GAY ASDFGASDHGFYW GASHFGAWEYGA SFHJBWRY G wow that "gay"
-      wa a typo lol... thas funny. Bomboclat.
-  dialogueManager: {fileID: 1311801628}
-  nextDialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 72e33323290c24eb9990b6da72932615, type: 2}
   activateOnEnable: 0
   isRepeatable: 1
   alreadyTriggered: 0
@@ -3240,7 +3280,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2694096807626224845, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
   m_PrefabInstance: {fileID: 591299435}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1311801628
+--- !u!114 &1311801632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3249,12 +3289,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311801624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f79c730fb7e4d4ba1041d5ffae5411, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cc949ce2f42543d1a9660b50161b72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 992427802}
   nextIndicator: {fileID: 2111299952}
-  aSource: {fileID: 1543594388}
 --- !u!1 &1317962416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5029,7 +5068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048468448}
   m_Layer: 5
-  m_Name: Dialogue Containers
+  m_Name: Tala Dialogue Containers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

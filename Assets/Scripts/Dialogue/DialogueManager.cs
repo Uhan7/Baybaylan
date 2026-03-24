@@ -1,139 +1,113 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using System.Collections;
 
 public class DialogueManager : MonoBehaviour
 {
-	// Variables ---------------------------------------------------------------
-	[Header("Components")]
-	[HideInInspector] private Animator anim;
+    // Variables ---------------------------------------------------------------
+    [Header("Instance")]
+    [HideInInspector] public static DialogueManager Instance;
 
-	[Header("References")]
-	[SerializeField] private AudioSource aSource;
-	[SerializeField] private TextMeshProUGUI dialogueText;
-	[SerializeField] private GameObject nextIndicator;
+    [Header("References")]
+    [SerializeField] private DialogueContainer[] dialogueContainers;
+    [SerializeField] private AudioSource aSource;
+    [HideInInspector] private DialogueContainer currentContainer;
 
-	[Header("Acquired from DialogueTrigger's Dialogue")]
-	[HideInInspector] private Queue<string> sentences;
-	[HideInInspector] private AudioClip soundToPlay;
-	[HideInInspector] private float textSpeed;
-	[HideInInspector] private float textPunctSpeed;
+    [Header("Dialogue Details")]
+    [HideInInspector] private Dialogue currentDialogue;
+    [HideInInspector] private int currentSentenceIndex;
 
-	[Header("Flags")]
-	[HideInInspector] private bool skip;
+    [Header("Flags")]
+    [HideInInspector] private bool isTyping;
+    [HideInInspector] private bool skip;
+    [HideInInspector] public bool dialoguing; // Used in DialogueBox.cs (open animations)
 
-	[Header("Temporary Global Flags")]
-	[HideInInspector] public static bool open;
-	[HideInInspector] public static bool canNext;
-	[HideInInspector] public static bool endConvo;
-
-	// Main Functions ----------------------------------------------------------
-	void Start()
-	{
-		sentences = new Queue<string>();
-		anim = GetComponent <Animator>();
-	} 
+    // Main Functions ----------------------------------------------------------
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
-		anim.SetBool("dialogueOpen", open);
+        if (currentDialogue == null) return;
 
-		if (!open) return;
-		if (Input.GetMouseButtonDown(0))
-		{
-			skip = true;
-			if (canNext)
-			{
-				canNext = false;
-				nextIndicator.SetActive(false);
-				skip = false;
-				DisplayNextSentence();
-			}
-		}
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isTyping) skip = true;
+            else NextSentence();
+        }
+    }
 
-	// Helper Functions --------------------------------------------------------
-	public IEnumerator StartDialogue(Dialogue dialogue)
-	{
-		endConvo = false;
-		skip = false;
-		canNext = false;
-		nextIndicator.SetActive(false);
-		soundToPlay = dialogue.soundToPlay;
-		textSpeed = dialogue.textSpeed;
-		textPunctSpeed = dialogue.textPunctSpeed;
-		gameObject.SetActive(true);
-		open = true;
+    // Helper Functions --------------------------------------------------------
+    public void StartDialogue(Dialogue dialogue)
+    {
+        dialoguing = true;
 
-		dialogueText.text = " ";
+        currentDialogue = dialogue;
+        currentSentenceIndex = 0;
+        currentContainer = dialogueContainers[dialogue.containerIndex];
 
-		yield return new WaitForSeconds(.5f);
+        NextSentence();
+    }
 
-		sentences.Clear();
+    private void NextSentence()
+    {
+        if (currentSentenceIndex >= currentDialogue.sentences.Length)
+        {
+            EndDialogue();
+            return;
+        }
 
-		foreach (string sentence in dialogue.sentences)
-		{
-			sentences.Enqueue(sentence);
-		}
+        string sentence = currentDialogue.sentences[currentSentenceIndex];
 
-		DisplayNextSentence();
-	}
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
 
-	public void DisplayNextSentence()
-	{
-		if (sentences.Count == 0)
-		{
-			EndDialogue();
-			return;
-		}
+        currentSentenceIndex++;
+    }
 
-		string sentence = sentences.Dequeue();
-		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
-	}
+    private IEnumerator TypeSentence(string sentence)
+    {
+        isTyping = true;
+        skip = false;
 
-	IEnumerator TypeSentence(string sentence)
-	{
-		dialogueText.text = sentence;
-		dialogueText.maxVisibleCharacters = 0;
+        currentContainer.SetTextInstant(sentence);
 
-		int totalChars = sentence.Length;
+        int total = sentence.Length;
 
-		for (int i = 0; i <= totalChars; i++)
-		{
-			if (skip)
-			{
-				dialogueText.maxVisibleCharacters = totalChars;
-				break;
-			}
+        for (int i = 0; i <= total; i++)
+        {
+            if (skip)
+            {
+                currentContainer.ShowFullText();
+                break;
+            }
 
-			dialogueText.maxVisibleCharacters = i;
+            currentContainer.SetVisibleCharacters(i);
 
-			if (i % 4 == 0 && i < totalChars) aSource.PlayOneShot(soundToPlay);
+            if (i % 4 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
 
-			if (i == 0) continue;
-			char letter = sentence[i - 1];
+            if (i == 0) continue;
 
-			if (letter == '.' ||
-				letter == ',' ||
-				letter == '!' ||
-				letter == '?' ||
-				letter == ':' ||
-				letter == ';') yield return new WaitForSeconds(textPunctSpeed);
-			else yield return new WaitForSeconds(textSpeed);
-		}
+            char c = sentence[i - 1];
 
-		dialogueText.maxVisibleCharacters = totalChars;
-		nextIndicator.SetActive(true);
-		canNext = true;
-	}
+            if (c == '.' ||
+                c == ',' ||
+                c == '!' ||
+                c == '?' ||
+                c == ':' ||
+                c == ';') yield return new WaitForSeconds(currentDialogue.textPunctSpeed);
+            else yield return new WaitForSeconds(currentDialogue.textSpeed);
+        }
 
-	public void EndDialogue()
-	{
-		open = false;
-		endConvo = true;
-	}
+        currentContainer.ShowNextIndicator(true);
+        isTyping = false;
+    }
 
+    private void EndDialogue()
+    {
+        currentDialogue = null;
+
+        dialoguing = false;
+    }
 }

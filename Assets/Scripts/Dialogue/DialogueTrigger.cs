@@ -8,8 +8,6 @@ public class DialogueTrigger : MonoBehaviour
     // Variables ---------------------------------------------------------------
     [Header("Dialogue Reference")]
 	[SerializeField] private Dialogue dialogue;
-    [SerializeField] private DialogueManager dialogueManager;
-    [SerializeField] private DialogueTrigger nextDialogue;
 
     [Header("Properties")]
     [SerializeField] private bool activateOnEnable;
@@ -17,7 +15,6 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header("Flags")]
     [ReadOnly, SerializeField] private bool alreadyTriggered;
-    [HideInInspector] private bool waitingForEnd;
 
     // Main Functions ----------------------------------------------------------
     private void OnEnable()
@@ -25,23 +22,12 @@ public class DialogueTrigger : MonoBehaviour
         if (activateOnEnable) TriggerDialogue();
     }
 
-    private void Update()
-    {
-        if (waitingForEnd && DialogueManager.endConvo) //Destroy(gameObject, .1f);
-        if (alreadyTriggered && nextDialogue != null && DialogueManager.endConvo)
-        {
-            nextDialogue.gameObject.SetActive(true);
-            nextDialogue.TriggerDialogue();
-        }
-    }
-
     // Helper Functions --------------------------------------------------------
     public void TriggerDialogue()
 	{
         if (alreadyTriggered && !isRepeatable) return;
 
-        StartCoroutine(dialogueManager.StartDialogue(dialogue));
-        waitingForEnd = true;
+        DialogueManager.Instance.StartDialogue(dialogue);
 
         alreadyTriggered = true;
     }
