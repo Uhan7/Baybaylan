@@ -8,6 +8,7 @@ public class DialogueTrigger : MonoBehaviour
     // Variables ---------------------------------------------------------------
     [Header("Dialogue Reference")]
 	[SerializeField] private Dialogue dialogue;
+    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private DialogueTrigger nextDialogue;
 
     [Header("Properties")]
@@ -26,10 +27,11 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (waitingForEnd && DialogueManager.endConvo) Destroy(gameObject, .1f);
+        if (waitingForEnd && DialogueManager.endConvo) //Destroy(gameObject, .1f);
         if (alreadyTriggered && nextDialogue != null && DialogueManager.endConvo)
         {
             nextDialogue.gameObject.SetActive(true);
+            nextDialogue.TriggerDialogue();
         }
     }
 
@@ -38,7 +40,7 @@ public class DialogueTrigger : MonoBehaviour
 	{
         if (alreadyTriggered && !isRepeatable) return;
 
-        StartCoroutine(FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue));
+        StartCoroutine(dialogueManager.StartDialogue(dialogue));
         waitingForEnd = true;
 
         alreadyTriggered = true;

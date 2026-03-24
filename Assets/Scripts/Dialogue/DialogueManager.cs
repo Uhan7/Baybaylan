@@ -6,13 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-
-	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI dialogueText;
-	public Image chara;
-
-	public float textSpeed;
-	public float textPunctSpeed;
 	public GameObject nextIndicator;
 
 	private Queue<string> sentences;
@@ -22,14 +16,16 @@ public class DialogueManager : MonoBehaviour
 	private bool skip;
 	public static bool canNext;
 
-	private AudioSource aSource;
+	[SerializeField] private AudioSource aSource;
 	private AudioClip soundToPlay;
+
+	private float textSpeed;
+	private float textPunctSpeed;
 
 	public static bool endConvo;
 
 	void Start()
 	{
-		aSource = GetComponent<AudioSource>();
 		sentences = new Queue<string>();
 		anim = GetComponent <Animator>();
 	} 
@@ -40,7 +36,7 @@ public class DialogueManager : MonoBehaviour
 
 		if (!open) return;
 		if (Input.GetMouseButtonDown(0))
-			{
+		{
 			skip = true;
 			if (canNext)
 			{
@@ -58,15 +54,15 @@ public class DialogueManager : MonoBehaviour
 		skip = false;
 		canNext = false;
 		nextIndicator.SetActive(false);
-		nameText.text = dialogue.name;
-		chara.sprite = dialogue.character;
 		soundToPlay = dialogue.soundToPlay;
+		textSpeed = dialogue.textSpeed;
+		textPunctSpeed = dialogue.textPunctSpeed;
 		gameObject.SetActive(true);
 		open = true;
 
 		dialogueText.text = " ";
 
-		yield return new WaitForSeconds(.3f);
+		yield return new WaitForSeconds(.3f); //wth is this for
 
 		sentences.Clear();
 
@@ -93,27 +89,39 @@ public class DialogueManager : MonoBehaviour
 
 	IEnumerator TypeSentence(string sentence)
 	{
-		dialogueText.text = "";
-		foreach (char letter in sentence.ToCharArray())
+		// Preload full sentence
+		dialogueText.text = sentence;
+		dialogueText.maxVisibleCharacters = 0;
+
+		int totalChars = sentence.Length;
+
+		for (int i = 0; i <= totalChars; i++)
 		{
-			if (!skip && !canNext)
-			{
-				if (dialogueText.text.Length % 4 == 0) aSource.PlayOneShot(soundToPlay);
-				dialogueText.text += letter;
-				if (letter == '.' || letter == ',' || letter == '!' || letter == '?')
-					yield return new WaitForSeconds(textPunctSpeed);
-				else yield return new WaitForSeconds(textSpeed);
-			}
 			if (skip)
 			{
-				dialogueText.text = sentence.ToString();
+				dialogueText.maxVisibleCharacters = totalChars;
+				break;
 			}
-			if (dialogueText.text == sentence.ToString())
-            {
-				nextIndicator.SetActive(true);
-				canNext = true;
-			}
+
+			dialogueText.maxVisibleCharacters = i;
+
+			if (i % 4 == 0 && i < totalChars) aSource.PlayOneShot(soundToPlay);
+
+			if (i == 0) continue;
+			char letter = sentence[i - 1];
+
+			if (letter == '.' ||
+				letter == ',' ||
+				letter == '!' ||
+				letter == '?' ||
+				letter == ':' ||
+				letter == ';') yield return new WaitForSeconds(textPunctSpeed);
+			else yield return new WaitForSeconds(textSpeed);
 		}
+
+		dialogueText.maxVisibleCharacters = totalChars;
+		nextIndicator.SetActive(true);
+		canNext = true;
 	}
 
 	public void EndDialogue()

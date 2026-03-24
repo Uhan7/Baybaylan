@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Dialogue
 {
-	public Sprite character; 
-	public string name;
 	public AudioClip soundToPlay;
+	public float textSpeed;
+	public float textPunctSpeed;
 
 	[TextArea(3, 10)]
 	public string[] sentences;
