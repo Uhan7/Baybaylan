@@ -6,24 +6,30 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-	public TextMeshProUGUI dialogueText;
-	public GameObject nextIndicator;
+	// Variables ---------------------------------------------------------------
+	[Header("Components")]
+	[HideInInspector] private Animator anim;
 
-	private Queue<string> sentences;
-
-	private Animator anim;
-	public static bool open;
-	private bool skip;
-	public static bool canNext;
-
+	[Header("References")]
 	[SerializeField] private AudioSource aSource;
-	private AudioClip soundToPlay;
+	[SerializeField] private TextMeshProUGUI dialogueText;
+	[SerializeField] private GameObject nextIndicator;
 
-	private float textSpeed;
-	private float textPunctSpeed;
+	[Header("Acquired from DialogueTrigger's Dialogue")]
+	[HideInInspector] private Queue<string> sentences;
+	[HideInInspector] private AudioClip soundToPlay;
+	[HideInInspector] private float textSpeed;
+	[HideInInspector] private float textPunctSpeed;
 
-	public static bool endConvo;
+	[Header("Flags")]
+	[HideInInspector] private bool skip;
 
+	[Header("Temporary Global Flags")]
+	[HideInInspector] public static bool open;
+	[HideInInspector] public static bool canNext;
+	[HideInInspector] public static bool endConvo;
+
+	// Main Functions ----------------------------------------------------------
 	void Start()
 	{
 		sentences = new Queue<string>();
@@ -48,7 +54,8 @@ public class DialogueManager : MonoBehaviour
 		}
 	}
 
-    public IEnumerator StartDialogue(Dialogue dialogue)
+	// Helper Functions --------------------------------------------------------
+	public IEnumerator StartDialogue(Dialogue dialogue)
 	{
 		endConvo = false;
 		skip = false;
@@ -62,7 +69,7 @@ public class DialogueManager : MonoBehaviour
 
 		dialogueText.text = " ";
 
-		yield return new WaitForSeconds(.3f); //wth is this for
+		yield return new WaitForSeconds(.5f);
 
 		sentences.Clear();
 
@@ -89,7 +96,6 @@ public class DialogueManager : MonoBehaviour
 
 	IEnumerator TypeSentence(string sentence)
 	{
-		// Preload full sentence
 		dialogueText.text = sentence;
 		dialogueText.maxVisibleCharacters = 0;
 
