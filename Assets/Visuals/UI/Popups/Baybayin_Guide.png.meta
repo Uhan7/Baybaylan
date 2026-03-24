@@ -1,0 +1,1690 @@
+fileFormatVersion: 2
+guid: 050efe683df2647439b56d157e3cd19d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6244999269096507534
+    second: Baybayin_Guide_0
+  - first:
+      213: 8912368647265837622
+    second: Baybayin_Guide_1
+  - first:
+      213: -2820670531640180643
+    second: Baybayin_Guide_2
+  - first:
+      213: 3700689112049629855
+    second: Baybayin_Guide_3
+  - first:
+      213: 1770407694771467681
+    second: Baybayin_Guide_4
+  - first:
+      213: -805008569123523183
+    second: Baybayin_Guide_5
+  - first:
+      213: 2112798423772457650
+    second: Baybayin_Guide_6
+  - first:
+      213: 7424638499214649266
+    second: Baybayin_Guide_7
+  - first:
+      213: -7630228827944019457
+    second: Baybayin_Guide_8
+  - first:
+      213: 3020418713342664924
+    second: Baybayin_Guide_9
+  - first:
+      213: 847807376545494453
+    second: Baybayin_Guide_10
+  - first:
+      213: -203716465644031481
+    second: Baybayin_Guide_11
+  - first:
+      213: 1568986346762006112
+    second: Baybayin_Guide_12
+  - first:
+      213: -7426372091215988927
+    second: Baybayin_Guide_13
+  - first:
+      213: -3749843636494801999
+    second: Baybayin_Guide_14
+  - first:
+      213: 2623487501232738293
+    second: Baybayin_Guide_15
+  - first:
+      213: -5436080605345722923
+    second: Baybayin_Guide_16
+  - first:
+      213: -2836643417375170504
+    second: Baybayin_Guide_17
+  - first:
+      213: 4092176617649428780
+    second: Baybayin_Guide_18
+  - first:
+      213: -244855525538059972
+    second: Baybayin_Guide_19
+  - first:
+      213: 2697527786600486231
+    second: Baybayin_Guide_20
+  - first:
+      213: 6070163141923410609
+    second: Baybayin_Guide_21
+  - first:
+      213: 4562543982891452992
+    second: Baybayin_Guide_22
+  - first:
+      213: -175190723894043172
+    second: Baybayin_Guide_23
+  - first:
+      213: -6086553927622098346
+    second: Baybayin_Guide_24
+  - first:
+      213: 7316131170518302878
+    second: Baybayin_Guide_25
+  - first:
+      213: -5788538778790128485
+    second: Baybayin_Guide_26
+  - first:
+      213: -2483405660518480110
+    second: Baybayin_Guide_27
+  - first:
+      213: -2303202386499611459
+    second: Baybayin_Guide_28
+  - first:
+      213: 4403633025424829808
+    second: Baybayin_Guide_29
+  - first:
+      213: 5809670682014619921
+    second: Baybayin_Guide_30
+  - first:
+      213: 4262054990184760085
+    second: Baybayin_Guide_31
+  - first:
+      213: -2334334291715172492
+    second: Baybayin_Guide_32
+  - first:
+      213: 3938939009303240228
+    second: Baybayin_Guide_33
+  - first:
+      213: -554164330625360216
+    second: Baybayin_Guide_34
+  - first:
+      213: 7873326892961911657
+    second: Baybayin_Guide_35
+  - first:
+      213: 4107707830167474386
+    second: Baybayin_Guide_36
+  - first:
+      213: 3691123734749740122
+    second: Baybayin_Guide_37
+  - first:
+      213: -5565977811182150034
+    second: Baybayin_Guide_38
+  - first:
+      213: -5151565859834486283
+    second: Baybayin_Guide_39
+  - first:
+      213: -1904378294379210254
+    second: Baybayin_Guide_40
+  - first:
+      213: 1770774602487916037
+    second: Baybayin_Guide_41
+  - first:
+      213: 6056036022936224243
+    second: Baybayin_Guide_42
+  - first:
+      213: -409943049949173657
+    second: Baybayin_Guide_43
+  - first:
+      213: -648564507548350797
+    second: Baybayin_Guide_44
+  - first:
+      213: 2514653158561763317
+    second: Baybayin_Guide_45
+  - first:
+      213: -5191623733389000417
+    second: Baybayin_Guide_46
+  - first:
+      213: 234627986685231399
+    second: Baybayin_Guide_47
+  - first:
+      213: 6795518101137512761
+    second: Baybayin_Guide_48
+  - first:
+      213: 4465466821486055435
+    second: Baybayin_Guide_49
+  - first:
+      213: 8735272596913562892
+    second: Baybayin_Guide_50
+  - first:
+      213: 6946790102317450182
+    second: Baybayin_Guide_51
+  - first:
+      213: -262181623231973058
+    second: Baybayin_Guide_52
+  - first:
+      213: -5056697834794513502
+    second: Baybayin_Guide_53
+  - first:
+      213: -7730832738406520494
+    second: Baybayin_Guide_54
+  - first:
+      213: 6300409063517989270
+    second: Baybayin_Guide_55
+  - first:
+      213: 7788097535271434813
+    second: Baybayin_Guide_56
+  - first:
+      213: -5446404056000814970
+    second: Baybayin_Guide_57
+  - first:
+      213: 3613073750098605428
+    second: Baybayin_Guide_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Baybayin_Guide_0
+      rect:
+        serializedVersion: 2
+        x: 1742
+        y: 1266
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8842117fb1baa650800000000000000
+      internalID: 6244999269096507534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1119
+        width: 167
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 632eb9f90181fab70800000000000000
+      internalID: 8912368647265837622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_2
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1213
+        width: 154
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d50cc259817fad8d0800000000000000
+      internalID: -2820670531640180643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_3
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1143
+        width: 116
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9abfdbe32d7b5330800000000000000
+      internalID: 3700689112049629855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_4
+      rect:
+        serializedVersion: 2
+        x: 1482
+        y: 1125
+        width: 125
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a5b87a1b60c19810800000000000000
+      internalID: 1770407694771467681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_5
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1136
+        width: 124
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1953f34b8f804d4f0800000000000000
+      internalID: -805008569123523183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_6
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 1138
+        width: 124
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba66fae8fa225d10800000000000000
+      internalID: 2112798423772457650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_7
+      rect:
+        serializedVersion: 2
+        x: 2049
+        y: 1138
+        width: 124
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b7e06ba06d990760800000000000000
+      internalID: 7424638499214649266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_8
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 1141
+        width: 171
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff99373ce4bfb1690800000000000000
+      internalID: -7630228827944019457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_9
+      rect:
+        serializedVersion: 2
+        x: 2095
+        y: 1112
+        width: 44
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd06bb121deaae920800000000000000
+      internalID: 3020418713342664924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_10
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 1121
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b533fc215404cb00800000000000000
+      internalID: 847807376545494453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1039
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 702b36e24f04c2df0800000000000000
+      internalID: -203716465644031481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_12
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1037
+        width: 81
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06eef2005c826c510800000000000000
+      internalID: 1568986346762006112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_13
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1045
+        width: 17
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147323dfde930f890800000000000000
+      internalID: -7426372091215988927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_14
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 1045
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b3e7738411e5fbc0800000000000000
+      internalID: -3749843636494801999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_15
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1028
+        width: 36
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff87a78bff786420800000000000000
+      internalID: 2623487501232738293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_16
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1032
+        width: 40
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dd4af3bd792f84b0800000000000000
+      internalID: -5436080605345722923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_17
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1026
+        width: 76
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83027e057d732a8d0800000000000000
+      internalID: -2836643417375170504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_18
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 1038
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c295725d3f45ac830800000000000000
+      internalID: 4092176617649428780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_19
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 1088
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c39230362391a9cf0800000000000000
+      internalID: -244855525538059972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_20
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 1039
+        width: 42
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7555114da3b8f6520800000000000000
+      internalID: 2697527786600486231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_21
+      rect:
+        serializedVersion: 2
+        x: 2087
+        y: 1039
+        width: 40
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b2930b673d8d3450800000000000000
+      internalID: 6070163141923410609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_22
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 1038
+        width: 19
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a475c3499615f30800000000000000
+      internalID: 4562543982891452992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_23
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 1039
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd1a5ef6f8919df0800000000000000
+      internalID: -175190723894043172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_24
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 859
+        width: 125
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65283d56377388ba0800000000000000
+      internalID: -6086553927622098346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_25
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 865
+        width: 135
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9008ec798e188560800000000000000
+      internalID: 7316131170518302878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_26
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 865
+        width: 141
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9414a156aafaafa0800000000000000
+      internalID: -5788538778790128485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 872
+        width: 171
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2170a9b95bb298dd0800000000000000
+      internalID: -2483405660518480110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_28
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 885
+        width: 128
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4dbd2e1a16900e0800000000000000
+      internalID: -2303202386499611459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_29
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 772
+        width: 76
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07d20a9b7e8dc1d30800000000000000
+      internalID: 4403633025424829808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_30
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 781
+        width: 45
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1199b7f44b810a050800000000000000
+      internalID: 5809670682014619921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_31
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 781
+        width: 42
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513c427ae6cd52b30800000000000000
+      internalID: 4262054990184760085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_32
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 785
+        width: 79
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477dd4b5457ca9fd0800000000000000
+      internalID: -2334334291715172492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_33
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 767
+        width: 87
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42ed279d82ce9a630800000000000000
+      internalID: 3938939009303240228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_34
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 779
+        width: 86
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ae12e53a763f48f0800000000000000
+      internalID: -554164330625360216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_35
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 587
+        width: 139
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963568f281da34d60800000000000000
+      internalID: 7873326892961911657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_36
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 585
+        width: 159
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0193a0282810930800000000000000
+      internalID: 4107707830167474386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_37
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 585
+        width: 131
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5c75c7fa71893330800000000000000
+      internalID: 3691123734749740122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_38
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 568
+        width: 175
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6e18c8abaca1c2b0800000000000000
+      internalID: -5565977811182150034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_39
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 572
+        width: 137
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f129870526f188b0800000000000000
+      internalID: -5151565859834486283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_40
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 505
+        width: 16
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f91095f70a4295e0800000000000000
+      internalID: -1904378294379210254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_41
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 509
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50663967e1e039810800000000000000
+      internalID: 1770774602487916037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_42
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 511
+        width: 108
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f145163dac5b0450800000000000000
+      internalID: 6056036022936224243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_43
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 509
+        width: 78
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768a3a1d7f69f4af0800000000000000
+      internalID: -409943049949173657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_44
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 494
+        width: 63
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b687a14406dff6f0800000000000000
+      internalID: -648564507548350797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_45
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 513
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff436979b7d5e220800000000000000
+      internalID: 2514653158561763317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_46
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 487
+        width: 44
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f118cdb88b5a3f7b0800000000000000
+      internalID: -5191623733389000417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_47
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 503
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7210db829e0914300800000000000000
+      internalID: 234627986685231399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_48
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 355
+        width: 141
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939d90375b78e4e50800000000000000
+      internalID: 6795518101137512761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_49
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 361
+        width: 114
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0018f24a6688fd30800000000000000
+      internalID: 4465466821486055435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_50
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 366
+        width: 114
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05ac3b352ce93970800000000000000
+      internalID: 8735272596913562892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_51
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 357
+        width: 88
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3c4d9dac4f76060800000000000000
+      internalID: 6946790102317450182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_52
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 355
+        width: 130
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e397f98e33b8c5cf0800000000000000
+      internalID: -262181623231973058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_53
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 287
+        width: 70
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab069c5c1003d9b0800000000000000
+      internalID: -5056697834794513502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_54
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 287
+        width: 76
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259a159859096b490800000000000000
+      internalID: -7730832738406520494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_55
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 298
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69924aa89ac8f6750800000000000000
+      internalID: 6300409063517989270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_56
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 294
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3af2f9f171e41c60800000000000000
+      internalID: 7788097535271434813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_57
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 301
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68023da0e5c7a64b0800000000000000
+      internalID: -5446404056000814970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baybayin_Guide_58
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 279
+        width: 72
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4757aedce67342230800000000000000
+      internalID: 3613073750098605428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Baybayin_Guide_0: 6244999269096507534
+      Baybayin_Guide_1: 8912368647265837622
+      Baybayin_Guide_10: 847807376545494453
+      Baybayin_Guide_11: -203716465644031481
+      Baybayin_Guide_12: 1568986346762006112
+      Baybayin_Guide_13: -7426372091215988927
+      Baybayin_Guide_14: -3749843636494801999
+      Baybayin_Guide_15: 2623487501232738293
+      Baybayin_Guide_16: -5436080605345722923
+      Baybayin_Guide_17: -2836643417375170504
+      Baybayin_Guide_18: 4092176617649428780
+      Baybayin_Guide_19: -244855525538059972
+      Baybayin_Guide_2: -2820670531640180643
+      Baybayin_Guide_20: 2697527786600486231
+      Baybayin_Guide_21: 6070163141923410609
+      Baybayin_Guide_22: 4562543982891452992
+      Baybayin_Guide_23: -175190723894043172
+      Baybayin_Guide_24: -6086553927622098346
+      Baybayin_Guide_25: 7316131170518302878
+      Baybayin_Guide_26: -5788538778790128485
+      Baybayin_Guide_27: -2483405660518480110
+      Baybayin_Guide_28: -2303202386499611459
+      Baybayin_Guide_29: 4403633025424829808
+      Baybayin_Guide_3: 3700689112049629855
+      Baybayin_Guide_30: 5809670682014619921
+      Baybayin_Guide_31: 4262054990184760085
+      Baybayin_Guide_32: -2334334291715172492
+      Baybayin_Guide_33: 3938939009303240228
+      Baybayin_Guide_34: -554164330625360216
+      Baybayin_Guide_35: 7873326892961911657
+      Baybayin_Guide_36: 4107707830167474386
+      Baybayin_Guide_37: 3691123734749740122
+      Baybayin_Guide_38: -5565977811182150034
+      Baybayin_Guide_39: -5151565859834486283
+      Baybayin_Guide_4: 1770407694771467681
+      Baybayin_Guide_40: -1904378294379210254
+      Baybayin_Guide_41: 1770774602487916037
+      Baybayin_Guide_42: 6056036022936224243
+      Baybayin_Guide_43: -409943049949173657
+      Baybayin_Guide_44: -648564507548350797
+      Baybayin_Guide_45: 2514653158561763317
+      Baybayin_Guide_46: -5191623733389000417
+      Baybayin_Guide_47: 234627986685231399
+      Baybayin_Guide_48: 6795518101137512761
+      Baybayin_Guide_49: 4465466821486055435
+      Baybayin_Guide_5: -805008569123523183
+      Baybayin_Guide_50: 8735272596913562892
+      Baybayin_Guide_51: 6946790102317450182
+      Baybayin_Guide_52: -262181623231973058
+      Baybayin_Guide_53: -5056697834794513502
+      Baybayin_Guide_54: -7730832738406520494
+      Baybayin_Guide_55: 6300409063517989270
+      Baybayin_Guide_56: 7788097535271434813
+      Baybayin_Guide_57: -5446404056000814970
+      Baybayin_Guide_58: 3613073750098605428
+      Baybayin_Guide_6: 2112798423772457650
+      Baybayin_Guide_7: 7424638499214649266
+      Baybayin_Guide_8: -7630228827944019457
+      Baybayin_Guide_9: 3020418713342664924
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

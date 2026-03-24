@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,9 @@ public class SalitaSlots : MonoBehaviour
     // Variables ---------------------------------------------------------------
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
+
+    [Header("Reference")]
+    [SerializeField] private Button submitButton;
 
     [Header("Tiles")]
     [SerializeField] private TileSet tileSet;
@@ -48,6 +52,8 @@ public class SalitaSlots : MonoBehaviour
         UpdateActiveTiles();
         GetSalitaFromTiles();
         UpdateSalitaText();
+
+        submitButton.interactable = (latinSalita != "");
     }
 
     // Button Functions
