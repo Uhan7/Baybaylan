@@ -26,7 +26,7 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
-    [SerializeField] private float scoreScaleValue = 0.5f;
+    [SerializeField] private float scoreScaleValue = 1f;
 
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
