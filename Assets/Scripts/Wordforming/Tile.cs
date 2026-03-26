@@ -46,6 +46,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject[] strokes;
 
     [Header("Score Info")]
+    [SerializeField] private int chance = 5;
     [SerializeField] private int baseScore = 10;
     [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 3;
     [HideInInspector] public int Score => baseScore + diacriticScore; // Used in SalitaSlots.cs
@@ -102,12 +103,12 @@ public class Tile : MonoBehaviour
         switch (currentCharmod)
         {
             case Diacritic.None:
-                diacriticScore = 3;
+                diacriticScore = 0;
                 latinText = rootConsonant + "a";
                 break;
 
             case Diacritic.Top:
-                diacriticScore = 8;
+                diacriticScore = 5;
                 topKudlit.SetActive(true);
                 latinText = rootConsonant + "i";
                 break;
@@ -119,7 +120,7 @@ public class Tile : MonoBehaviour
                 break;
 
             case Diacritic.Krus:
-                diacriticScore = 0;
+                diacriticScore = 8;
                 krus.SetActive(true);
                 latinText = rootConsonant;
                 break;
@@ -135,6 +136,11 @@ public class Tile : MonoBehaviour
         topKudlit.SetActive(false);
         bottomKudlit.SetActive(false);
         krus.SetActive(false);
+    }
+
+    public int GetChance()
+    {
+        return chance;
     }
 
     public void ChangeSprite(bool active) // Can be called by the DropZone obj

@@ -25,8 +25,16 @@ PrefabInstance:
       value: u
       objectReference: {fileID: 0}
     - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
+      propertyPath: chance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: isVowel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
+      propertyPath: baseScore
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5957782790118923592, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: m_LocalPosition.x

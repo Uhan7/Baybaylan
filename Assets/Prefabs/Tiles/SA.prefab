@@ -21,8 +21,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b148ab4bd308a479681ca4ab66ae6f0a, type: 3}
     - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
-      propertyPath: baseScore
+      propertyPath: chance
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
+      propertyPath: baseScore
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: rootConsonant

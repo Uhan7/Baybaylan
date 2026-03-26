@@ -37,17 +37,31 @@ public class TileSet : MonoBehaviour
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
     }
 
-    public IEnumerator SpawnTiles(int tilesAmount) // Can be called by Salita Slots after valid word
+    public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
     {
+        int totalChance = 0;
+        foreach (GameObject obj in config.tilesSelection) totalChance += obj.GetComponent<Tile>().GetChance();
+
         for (int i = 0; i < tilesAmount; i++)
         {
-            GameObject tile;
+            GameObject tile = null;
 
             if (config.usePredefinedTiles) tile = config.predefinedTiles[i];
             else
             {
-                int randomIndex = Random.Range(0, config.tilesSelection.Count);
-                tile = config.tilesSelection[randomIndex];
+                int roll = Random.Range(0, totalChance);
+
+                foreach (GameObject obj in config.tilesSelection)
+                {
+                    Tile tileComp = obj.GetComponent<Tile>();
+                    roll -= tileComp.GetChance();
+
+                    if (roll < 0)
+                    {
+                        tile = obj;
+                        break;
+                    }
+                }
             }
 
             SpawnTile(tile);
