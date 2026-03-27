@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using NaughtyAttributes;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Flags")]
     [HideInInspector] private bool isTyping;
     [HideInInspector] private bool skip;
-    [HideInInspector] public bool dialoguing; // Used in DialogueBox.cs (open animations)
+    [ReadOnly, SerializeField] public bool dialoguing; // Used in DialogueBox.cs (open animations)
 
     // Main Functions ----------------------------------------------------------
     private void Awake()

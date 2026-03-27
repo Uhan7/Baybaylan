@@ -48,7 +48,7 @@ public class Tile : MonoBehaviour
     [Header("Score Info")]
     [SerializeField] private int chance = 5;
     [SerializeField] private int baseScore = 10;
-    [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 3;
+    [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 0;
     [HideInInspector] public int Score => baseScore + diacriticScore; // Used in SalitaSlots.cs
 
     [Header("Flags")]

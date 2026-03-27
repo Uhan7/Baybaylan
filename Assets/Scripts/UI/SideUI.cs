@@ -19,6 +19,9 @@ public class SideUI : MonoBehaviour
     {
         isOpen = val;
 
+        // Force open if dialoguing
+        if (DialogueManager.Instance.dialoguing) isOpen = true;
+
         CallDimBackground();
         UpdateAnimator();
     }
