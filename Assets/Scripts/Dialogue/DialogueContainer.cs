@@ -25,9 +25,13 @@ public class DialogueContainer : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private void UpdateAnimations()
     {
-        // Force open if dialoguing
-        if (DialogueManager.Instance.dialoguing) anim.SetBool("isOpen", true);
         anim.SetBool("dialogueOpen", DialogueManager.Instance.dialoguing);
+    }
+
+    public void ClearText()
+    {
+        dialogueText.text = "";
+        nextIndicator.SetActive(false);
     }
 
     public void SetTextInstant(string text)

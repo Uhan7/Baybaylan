@@ -47,7 +47,14 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
         currentContainer = dialogueContainers[dialogue.containerIndex];
+        currentContainer.ClearText();
 
+        StartCoroutine(StartDelay());
+    }
+
+    private IEnumerator StartDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
         NextSentence();
     }
 
@@ -69,6 +76,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string sentence)
     {
+        Animator anim = currentContainer.GetComponent<Animator>();
+
         isTyping = true;
         skip = false;
 
@@ -107,8 +116,9 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        currentDialogue = null;
+        currentContainer.ClearText();
 
+        currentDialogue = null;
         dialoguing = false;
     }
 }
