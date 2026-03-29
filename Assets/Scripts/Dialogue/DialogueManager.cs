@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using NaughtyAttributes;
 
@@ -16,6 +17,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue Details")]
     [HideInInspector] private Dialogue currentDialogue;
     [HideInInspector] private int currentSentenceIndex;
+
+    [Header("Actions")]
+    [HideInInspector] public Action OnDialogueEnd;
 
     [Header("Flags")]
     [HideInInspector] private bool isTyping;
@@ -120,5 +124,7 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = null;
         dialoguing = false;
+
+        OnDialogueEnd?.Invoke();
     }
 }

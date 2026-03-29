@@ -2963,6 +2963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 989139173}
   - component: {fileID: 989139174}
+  - component: {fileID: 989139175}
   m_Layer: 5
   m_Name: Dialogue 1
   m_TagString: Untagged
@@ -3002,9 +3003,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 72e33323290c24eb9990b6da72932615, type: 2}
+  dialogueSet: {fileID: 989139175}
   activateOnEnable: 0
   isRepeatable: 1
   alreadyTriggered: 0
+--- !u!114 &989139175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989139172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fd19485892e4eae97f895fa3d53b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - {fileID: 11400000, guid: 72e33323290c24eb9990b6da72932615, type: 2}
+  - {fileID: 11400000, guid: b7598ede6a6fa40148b1dd3608ba9c19, type: 2}
+  - {fileID: 11400000, guid: 523b10e935eb7480486f2e15fdd2a0f1, type: 2}
+  hasCompleted: 0
 --- !u!1 &992427800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,7 +5662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048468448}
   m_Layer: 5
-  m_Name: Tala Dialogue Containers
+  m_Name: Dialogue Sets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

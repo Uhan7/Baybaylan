@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c04b1f020ba8f49729190e402fd98d39, type: 3}
-  m_Name: TestB
+  m_Name: TestC
   m_EditorClassIdentifier: 
-  containerIndex: 1
+  containerIndex: 0
   sentences:
-  - Yes Adam, by the way, did you know you are an optimizer object in PyTorch? Bwahaha!
-  - Oh Adam, never change. By the way, don't you think it's fucked up that God needed
-    to rip out your rib? LMAO!
+  - SKIBIID FUCKIGN TOILETTTT
+  - ASDFASDFADFASDFASDFASDF
   soundToPlay: {fileID: 8300000, guid: 053f1210659ee477189445e457e36bc9, type: 3}
   textSpeed: 0.02
   textPunctSpeed: 0.18
