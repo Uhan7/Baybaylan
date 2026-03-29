@@ -10,30 +10,40 @@ public class SideUI : MonoBehaviour
     [SerializeField] private GameObject dimObj;
 
     [Header("Flags")]
-    [HideInInspector] private bool isOpen;
+    [HideInInspector] private bool isHovering;
+    [HideInInspector] private bool shouldOpen;
 
     // Main Functions ----------------------------------------------------------
+    private void Update()
+    {
+        UpdateAnimator();
+    }
 
     // Event Functions ---------------------------------------------------------
     public void ToggleFocus(bool val)
     {
-        isOpen = val;
+        isHovering = val;
 
         CallDimBackground();
-        UpdateAnimator();
     }
 
     // Helper Functions --------------------------------------------------------
     private void UpdateAnimator()
     {
-        anim.SetBool("isOpen", isOpen);
+        shouldOpen = isHovering || DialogueManager.Instance.dialoguing;
+        anim.SetBool("isOpen", shouldOpen);
+    }
+
+    public bool GetShouldOpen()
+    {
+        return shouldOpen;
     }
 
     private void CallDimBackground()
     {
         Animator dimAnim = dimObj.GetComponent<Animator>();
 
-        if (isOpen == true) dimAnim.Play("image_fade_in");
+        if (isHovering) dimAnim.Play("image_fade_in");
         else dimAnim.Play("image_fade_out");
     }
 }
