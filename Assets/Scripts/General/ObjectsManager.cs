@@ -24,7 +24,7 @@ public class ObjectsManager : MonoBehaviour
 
     public void DeactivateObjects()
     {
-        foreach (GameObject obj in objectsToActivate)
+        foreach (GameObject obj in objectsToDeactivate)
         {
             if (obj == null) continue;
             obj.SetActive(false);
