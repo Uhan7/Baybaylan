@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd65793c7d5674e29804b320fee5ba57, type: 3}
   m_Name: Luya
   m_EditorClassIdentifier: 
-  alahasName: Pangalan ng Alahas
-  alahasSprite: {fileID: 0}
+  alahasName: Luya
+  alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
   description: Deskripsyon tungkol sa Alahas.
   convertChance: 0.5

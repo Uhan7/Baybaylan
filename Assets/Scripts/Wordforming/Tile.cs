@@ -46,13 +46,17 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject[] strokes;
 
     [Header("Score Info")]
-    [SerializeField] private int chance = 5;
     [SerializeField] private int baseScore = 10;
     [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 0;
-    [HideInInspector] public int Score => baseScore + diacriticScore; // Used in SalitaSlots.cs
+    [ReadOnly, SerializeField] private float scoreMultiplier = 1;
+    [HideInInspector] public int Score => Mathf.RoundToInt((baseScore + diacriticScore) * scoreMultiplier); // Used in SalitaSlots.cs
+
+    [Header("Other Tile Info")]
+    [SerializeField] private int chance = 5;
 
     [Header("Flags")]
-    [HideInInspector] private bool wasBeingDragged = false;
+    [HideInInspector] private bool wasBeingDragged;
+    [HideInInspector] private bool isGold; //Set this to be more scaleable soon... have a TileModifier script
 
     // Main Functions ----------------------------------------------------------
     private void Awake()

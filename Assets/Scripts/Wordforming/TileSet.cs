@@ -11,7 +11,7 @@ public class TileSet : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioClip spawnSFX;
+    [SerializeField] private AudioClip spawnSFX; // Should be stored in tile soon
 
     [Header("References")]
     [SerializeField] private Canvas canvas;
