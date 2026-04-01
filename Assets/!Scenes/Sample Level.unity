@@ -2061,7 +2061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600499752800161891, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8600499752800161891, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3205,7 +3205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToActivate:
   - {fileID: 828548497}
-  - {fileID: 1825775555}
   objectsToDeactivate: []
 --- !u!1 &992427800
 GameObject:
@@ -5342,7 +5341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1825775556
 RectTransform:
   m_ObjectHideFlags: 0

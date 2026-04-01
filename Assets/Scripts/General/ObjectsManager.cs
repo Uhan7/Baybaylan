@@ -17,7 +17,11 @@ public class ObjectsManager : MonoBehaviour
     {
         foreach (GameObject obj in objectsToActivate)
         {
-            if (obj == null) continue;
+            if (obj == null)
+            {
+                Debug.LogWarning(name + " Found null Object in the Array objectsToActivate");
+                continue;
+            }
             obj.SetActive(true);
         }
     }
@@ -26,7 +30,11 @@ public class ObjectsManager : MonoBehaviour
     {
         foreach (GameObject obj in objectsToDeactivate)
         {
-            if (obj == null) continue;
+            if (obj == null)
+            {
+                Debug.LogWarning(name + " Found null Object in the Array objectsToDeactivate");
+                continue;
+            }
             obj.SetActive(false);
         }
     }

@@ -18,10 +18,4 @@ public class AlahasManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
-    public void UseUpgrade(Alahas alahas) // IN THE FUTURE... these should probably be additive
-    {
-        // Stats to Modify
-        totalSomething *= alahas.something;
-    }
 }
