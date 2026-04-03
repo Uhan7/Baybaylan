@@ -25,6 +25,13 @@ public class ImageFader : MonoBehaviour
         fadeRoutine = StartCoroutine(Fade(desiredAlpha, duration));
     }
 
+    public void SetAlpha(float newAlpha)
+    {
+        Color c = targetImage.color;
+        c.a = newAlpha;
+        targetImage.color = c;
+    }
+
     private IEnumerator Fade(float desiredAlpha, float duration)
     {
         float elapsedTime = 0f;
@@ -46,10 +53,4 @@ public class ImageFader : MonoBehaviour
         targetImage.color = new Color(color.r, color.g, color.b, desiredAlpha);
     }
 
-    public void SetAlpha(float newAlpha)
-    {
-        Color c = targetImage.color;
-        c.a = newAlpha;
-        targetImage.color = c;
-    }
 }

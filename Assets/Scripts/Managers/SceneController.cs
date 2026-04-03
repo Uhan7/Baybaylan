@@ -1,0 +1,47 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
+public class SceneController : MonoBehaviour
+{
+    // Variables ---------------------------------------------------------------
+    [Header("Transition")]
+    [SerializeField] private GameObject transitionOnStart;
+    [SerializeField] private GameObject transitionOnSwap;
+    [SerializeField] private float transitionTime = 1.25f;
+
+    // Main Functions ----------------------------------------------------------
+    private void Start()
+    {
+        if (transitionOnStart != null)
+        {
+            transitionOnStart.SetActive(true);
+            transitionOnStart.GetComponent<ImageFader>().SetAlpha(1);
+            transitionOnStart.GetComponent<ImageFader>().FadeTo(0, transitionTime);
+        }
+    }
+
+    // Helper Functions --------------------------------------------------------
+    public void SwapWrapper(string sceneName) // Called by buttons n stuff
+    {
+        if (transitionOnSwap != null)
+        {
+            transitionOnSwap.SetActive(true);
+            transitionOnSwap.GetComponent<ImageFader>().SetAlpha(0);
+            transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
+        }
+
+        StartCoroutine(Swap(sceneName));
+    }
+
+    private IEnumerator Swap(string sceneName)
+    {
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+}
