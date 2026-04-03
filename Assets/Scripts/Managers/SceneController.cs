@@ -44,4 +44,23 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void QuitWrapper()
+    {
+        if (transitionOnSwap != null)
+        {
+            transitionOnSwap.SetActive(true);
+            transitionOnSwap.GetComponent<ImageFader>().SetAlpha(0);
+            transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
+        }
+
+        StartCoroutine(Quit());
+    }
+
+    private IEnumerator Quit()
+    {
+        yield return new WaitForSeconds(transitionTime);
+        Application.Quit();
+        Debug.LogError("You quit the game! Paalam!");
+    }
 }
