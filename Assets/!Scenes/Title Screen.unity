@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 977210261053270154, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2406812471065810189, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Pivot.x
@@ -2172,9 +2172,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'I-klik sa labas nito
+  m_text: 'I-klik kahit saan para
 
-    para bumalik sa laro.'
+    bumalik sa laro.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
   m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
@@ -2266,12 +2266,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 258943195}
     - target: {fileID: 1664442009692984375, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9af056f534bfb46acab384214d9f6cc8, type: 3}
+    - target: {fileID: 1664442009692984375, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_Color.b
-      value: 0.8443396
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1664442009692984375, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_Color.g
-      value: 0.95750993
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1664442009692984375, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_Color.r
@@ -2303,11 +2307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253514124306269545, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1350
+      value: 1543
       objectReference: {fileID: 0}
     - target: {fileID: 6253514124306269545, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 650
+      value: 849
       objectReference: {fileID: 0}
     - target: {fileID: 6253514124306269545, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_LocalScale.x

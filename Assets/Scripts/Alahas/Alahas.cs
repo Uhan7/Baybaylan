@@ -9,5 +9,6 @@ public abstract class Alahas : ScriptableObject
     [TextArea(2, 2), SerializeField] private string description = "Deskripsyon tungkol sa Alahas.";
 
     // Helper Functions --------------------------------------------------------
-    public abstract void ApplyAlahas(AlahasManager manager);
+    public abstract void ApplyAlahas();
+    public abstract void RemoveAlahas();
 }

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_text: '[X]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c26c63c5698604bd3a71e90dd4d587a3, type: 2}
-  m_sharedMaterial: {fileID: -1651948992038942814, guid: c26c63c5698604bd3a71e90dd4d587a3, type: 2}
+  m_sharedMaterial: {fileID: 3369897418155278618, guid: c26c63c5698604bd3a71e90dd4d587a3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -465,9 +465,12 @@ MonoBehaviour:
   - {fileID: 3383251389286085449}
   - {fileID: 6432145158623040388}
   - {fileID: 2241262600043057499}
-  chance: 5
+  availableGoldenStrokeColor: {r: 0.95, g: 0.76, b: 0.18999998, a: 1}
+  activeGoldenStrokeColor: {r: 0.8, g: 0.57254905, b: 0.11764703, a: 1}
   baseScore: 10
   diacriticScore: 3
+  scoreMultiplier: 1
+  chance: 5
 --- !u!114 &5695253453646463390
 MonoBehaviour:
   m_ObjectHideFlags: 0

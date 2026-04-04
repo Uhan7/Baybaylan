@@ -38,12 +38,16 @@ public class Tile : MonoBehaviour
     [ShowIf("isVowel"), SerializeField] private string vowel;
     [ReadOnly, SerializeField] public string latinText; // Used in TileSlot.cs
 
-    [Header("Tile Visuals")]
+    [Header("Default Visuals")]
     [SerializeField] private Sprite[] availableTileSprites;
     [SerializeField] private Color availableTileColor;
     [SerializeField] private Sprite[] activeTileSprites;
     [SerializeField] private Color activeTileColor;
     [SerializeField] private GameObject[] strokes;
+
+    [Header("Modified Tile Visuals")]
+    [SerializeField] private Color availableGoldenStrokeColor;
+    [SerializeField] private Color activeGoldenStrokeColor;
 
     [Header("Score Info")]
     [SerializeField] private int baseScore = 10;
@@ -56,7 +60,7 @@ public class Tile : MonoBehaviour
 
     [Header("Flags")]
     [HideInInspector] private bool wasBeingDragged;
-    [HideInInspector] private bool isGold; //Set this to be more scaleable soon... have a TileModifier script
+    [HideInInspector] private bool isGold; //Set this to be more scaleable soon... have a TileModifier script maybe
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -78,6 +82,8 @@ public class Tile : MonoBehaviour
             diacriticScore = 0;
         }
         else latinText = rootConsonant + "a";
+
+        ApplyGoldChance();
     }
 
     private void Update()
@@ -86,7 +92,7 @@ public class Tile : MonoBehaviour
     }
 
     // Helper Functions --------------------------------------------------------
-    public void ToggleNextModification() // Called by Button
+    public void ToggleNextModification() // Called by Button | PLEASE CHANGE NAME TO BE "DIACRITIC"
     {
         if (isVowel) return; // Skip if vowel
         if (draggableScript.isBeingDragged) return;
@@ -153,11 +159,13 @@ public class Tile : MonoBehaviour
         {
             imageComponent.sprite = activeTileSprites[Random.Range(0, activeTileSprites.Length)];
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = activeTileColor;
+            if (isGold) foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = activeGoldenStrokeColor;
         }
         else
         {
             imageComponent.sprite = availableTileSprites[Random.Range(0, availableTileSprites.Length)];
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableTileColor;
+            if (isGold) foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
         }
     }
 
@@ -166,5 +174,19 @@ public class Tile : MonoBehaviour
         if (draggableScript.isBeingDragged && !wasBeingDragged) ChangeSprite(false);
 
         wasBeingDragged = draggableScript.isBeingDragged;
+    }
+
+    // Tile Modifications ------------------------------------------------------
+    private void ApplyGoldChance()
+    {
+        float chance = AlahasManager.Instance.goldenTileChance;
+
+        if (Random.value <= chance)
+        {
+            isGold = true;
+            scoreMultiplier += AlahasManager.Instance.goldenTileMultiplier;
+
+            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
+        }
     }
 }
