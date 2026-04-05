@@ -18,9 +18,11 @@ public class AlahasManager : MonoBehaviour
 
     [Header("Stat Upgrades")]
     [ReadOnly, SerializeField] public float goldenTileChance = 0;
+    [ReadOnly, SerializeField] public bool boostVowels = false;
 
     [Header("Other Alahas Info")]
-    [SerializeField] public float goldenTileMultiplier = 2.5f;
+    [SerializeField] public float goldenTileMultiplier = 1.5f;
+    [SerializeField] public float vowelMultiplier = 3f;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()

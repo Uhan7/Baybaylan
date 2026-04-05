@@ -26,18 +26,23 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
-    [SerializeField] private float scoreScaleValue = 1f;
+    [SerializeField] private float scoreScaleValue = 0.5f;
 
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
+    [SerializeField] private GameObject scoreCalculationsContainer;
+    [SerializeField] private TextMeshProUGUI preMultipliedScoreText;
+    [SerializeField] private TextMeshProUGUI multiplierText;
 
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip wrongSFX;
+    [SerializeField] private AudioClip tileTickSFX;
     [SerializeField] private AudioClip correctSFX;
 
     [Header("Flags")]
     [SerializeField] private bool replacingTiles;
+    [SerializeField] private bool scoringSalita;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -47,7 +52,7 @@ public class SalitaSlots : MonoBehaviour
 
     private void Update() // Temporarily
     {
-        if (replacingTiles) return;
+        if (replacingTiles || scoringSalita) return;
 
         UpdateActiveTiles();
         GetSalitaFromTiles();
@@ -70,17 +75,7 @@ public class SalitaSlots : MonoBehaviour
         }
         else
         {
-            salitaText.color = Color.green; // Eventually make this play animation
-            ScoreSalita();
-            sfxSource.PlayOneShot(correctSFX);
-
-            BackgroundsManager.Instance.AdjustCorruptedBG();
-
-            GameManager.Instance.wordsUsed.Add(latinSalita);
-            AksyonCounter.Instance.ConcludeAksyon();
-
-            if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) StartCoroutine(ReplaceActiveTiles());
-            else GameManager.Instance.EndRound();
+            StartCoroutine(ScoreSalita());
         }
     }
 
@@ -117,19 +112,52 @@ public class SalitaSlots : MonoBehaviour
         foreach (Tile activeTile in activeTiles) latinSalita += activeTile.latinText;
     }
 
-    private void ScoreSalita()
+    private IEnumerator ScoreSalita()
     {
+        scoringSalita = true;
         salitaScore = 0;
+        float activeTileCount = 0;
+        preMultipliedScoreText.text = "";
+        multiplierText.text = "";
+
+        scoreCalculationsContainer.SetActive(true);
 
         foreach (Tile activeTile in activeTiles)
         {
             // Some cool effects here
-            salitaScore += activeTile.Score;
+            if (activeTile == null) continue;
+
+            salitaScore += (int) (activeTile.Score * scoreScaleValue);
+            activeTile.GetComponent<Animator>().Play("tile_hold");
+            activeTile.sfxSource.PlayOneShot(tileTickSFX);
+
+            activeTileCount += 1 * scoreScaleValue;
+
+            preMultipliedScoreText.text = salitaScore.ToString();
+            multiplierText.text = activeTileCount.ToString();
+
+            salitaText.color = Color.green;
+
+            yield return new WaitForSeconds(0.25f);
         }
 
-        salitaScore = (int)(salitaScore * activeTiles.Count * scoreScaleValue);
+        yield return new WaitForSeconds(0.25f);
 
+        salitaScore = (int)(salitaScore * activeTileCount);
         GameManager.Instance.ChangeMahika(salitaScore);
+
+        sfxSource.PlayOneShot(correctSFX);
+        BackgroundsManager.Instance.AdjustCorruptedBG();
+        GameManager.Instance.wordsUsed.Add(latinSalita);
+        AksyonCounter.Instance.ConcludeAksyon();
+
+        yield return new WaitForSeconds(0.25f);
+        scoreCalculationsContainer.SetActive(false);
+
+        scoringSalita = false;
+
+        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) StartCoroutine(ReplaceActiveTiles());
+        else GameManager.Instance.EndRound();
     }
 
     private void UpdateSalitaText()

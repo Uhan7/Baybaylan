@@ -48,6 +48,7 @@ public class Tile : MonoBehaviour
     [Header("Modified Tile Visuals")]
     [SerializeField] private Color availableGoldenStrokeColor;
     [SerializeField] private Color activeGoldenStrokeColor;
+    [SerializeField] private GameObject vowelBoostedSymbol;
 
     [Header("Score Info")]
     [SerializeField] private int baseScore = 10;
@@ -84,6 +85,7 @@ public class Tile : MonoBehaviour
         else latinText = rootConsonant + "a";
 
         ApplyGoldChance();
+        if (isVowel) ApplyVowelBoost();
     }
 
     private void Update()
@@ -188,5 +190,13 @@ public class Tile : MonoBehaviour
 
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
         }
+    }
+
+    private void ApplyVowelBoost()
+    {
+        if (!AlahasManager.Instance.boostVowels) return;
+
+        scoreMultiplier += AlahasManager.Instance.vowelMultiplier;
+        vowelBoostedSymbol.SetActive(true);
     }
 }

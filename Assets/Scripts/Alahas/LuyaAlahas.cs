@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Alahas/Luya")]
 public class LuyaAlahas : Alahas
 {
-    [SerializeField] private float convertChance = 0.5f;
+    [SerializeField] private float convertChance = 0.3f;
 
     public override void ApplyAlahas()
     {
