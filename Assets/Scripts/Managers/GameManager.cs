@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
 
+    [Header("Should not be here but idgaf")]
+    [SerializeField] private AudioClip winSFX;
+    [SerializeField] private AudioClip loseSFX;
+    [SerializeField] private AudioClip winAmbience;
+
     // Main Functions ----------------------------------------------------------
     private void OnValidate()
     {
@@ -77,11 +82,17 @@ public class GameManager : MonoBehaviour
 
         if (didWin == true)
         {
+            AudioManager.Instance.bgmSource.resource = winAmbience;
+            AudioManager.Instance.bgmSource.Play();
+            AudioManager.Instance.sfxSource.PlayOneShot(winSFX);
+
             winScreen.SetActive(true);
         }
 
         else
         {
+            AudioManager.Instance.bgmSource.Stop();
+            AudioManager.Instance.sfxSource.PlayOneShot(loseSFX);
             loseScreen.SetActive(true);
         }
     }

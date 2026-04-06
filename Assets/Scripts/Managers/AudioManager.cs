@@ -11,8 +11,8 @@ public class AudioManager : MonoBehaviour
     [HideInInspector] public static AudioManager Instance;
 
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource bgmSource;
-    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] public AudioSource bgmSource;
+    [SerializeField] public AudioSource sfxSource;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()

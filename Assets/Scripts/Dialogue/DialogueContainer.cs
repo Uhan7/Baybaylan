@@ -25,7 +25,7 @@ public class DialogueContainer : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private void UpdateAnimations()
     {
-        anim.SetBool("dialogueOpen", DialogueManager.Instance.dialoguing);
+        if (anim != null) anim.SetBool("dialogueOpen", DialogueManager.Instance.dialoguing);
     }
 
     public void ClearText()

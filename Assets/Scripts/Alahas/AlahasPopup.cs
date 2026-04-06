@@ -25,6 +25,13 @@ public class AlahasPopup : MonoBehaviour
             return;
         }
 
+        if (AlahasManager.Instance.heldAlahas.Contains(alahas))
+        {
+            Debug.Log("Alahas " + alahas.alahasName + " is already in Alahas Manager.");
+            gameObject.SetActive(false);
+            return;
+        }
+
         ClearAlahasDetails();
         SetNewAlahas();
 
@@ -47,7 +54,7 @@ public class AlahasPopup : MonoBehaviour
         buttonComponent.onClick.RemoveAllListeners();
         buttonComponent.onClick.AddListener(OnClickGeneral);
 
-        buttonComponent.interactable = true;
+        //buttonComponent.interactable = true;
     }
 
     private void OnClickGeneral()

@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionOnStart: {fileID: 0}
   transitionOnSwap: {fileID: 0}
-  transitionTime: 1
+  transitionTime: 1.5

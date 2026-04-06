@@ -2643,9 +2643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5166b444772da427cbbd99ac1ede599b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 03f20d7a83aec49ae8a23ea34926f876, type: 2}
+  config: {fileID: 11400000, guid: f8571ae66179b4bc2ad9613938c6ae10, type: 2}
   currentMahika: 0
-  targetMahika: 800
+  targetMahika: 100
   mahikaPercent: 0
   mahikaText: {fileID: 131900582}
   mahikaBarFill: {fileID: 751682304}
@@ -2655,6 +2655,9 @@ MonoBehaviour:
   wordsUsed: []
   winScreen: {fileID: 1517571310}
   loseScreen: {fileID: 2112277896}
+  winSFX: {fileID: 8300000, guid: 55fb73d354ac043c1a840f716112bcc8, type: 3}
+  loseSFX: {fileID: 8300000, guid: 8a897754e4e9749f28b39a275dcd2da5, type: 3}
+  winAmbience: {fileID: 8300000, guid: 26b3c3998b0e949bbb4574513271bfee, type: 3}
 --- !u!1 &675082770
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,99 +3032,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -140}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &828548497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 828548498}
-  - component: {fileID: 828548501}
-  - component: {fileID: 828548500}
-  - component: {fileID: 828548499}
-  m_Layer: 5
-  m_Name: Dialogue Set 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &828548498
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828548497}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2048468448}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &828548499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828548497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e70f5eda228493a89be951bb4a65e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToActivate: []
-  objectsToDeactivate:
-  - {fileID: 1825775555}
---- !u!114 &828548500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828548497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0fd19485892e4eae97f895fa3d53b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogues:
-  - {fileID: 11400000, guid: 523b10e935eb7480486f2e15fdd2a0f1, type: 2}
-  - {fileID: 11400000, guid: 72e33323290c24eb9990b6da72932615, type: 2}
-  - {fileID: 11400000, guid: b7598ede6a6fa40148b1dd3608ba9c19, type: 2}
-  eventBeforeDialogue:
-    m_PersistentCalls:
-      m_Calls: []
-  eventAfterDialogue:
-    m_PersistentCalls:
-      m_Calls: []
-  hasCompleted: 0
---- !u!114 &828548501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828548497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa834be124a2f42ff99d9a7533722081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
-  dialogueSet: {fileID: 828548500}
-  activateOnEnable: 1
-  isRepeatable: 0
-  alreadyTriggered: 0
 --- !u!1 &839011748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,6 +3190,7 @@ GameObject:
   - component: {fileID: 898010678}
   - component: {fileID: 898010680}
   - component: {fileID: 898010679}
+  - component: {fileID: 898010681}
   m_Layer: 5
   m_Name: Next Indicator
   m_TagString: Untagged
@@ -3344,6 +3255,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898010677}
   m_CullTransparentMesh: 1
+--- !u!114 &898010681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898010677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ad089e6bc9e401fb46f3e9880e23c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImgOnEnable: 1
 --- !u!1 &976596184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
   dialogueSet: {fileID: 989139175}
-  activateOnEnable: 0
+  activateOnEnable: 1
   isRepeatable: 0
   alreadyTriggered: 0
 --- !u!114 &989139175
@@ -3567,39 +3491,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - {fileID: 11400000, guid: 72e33323290c24eb9990b6da72932615, type: 2}
-  - {fileID: 11400000, guid: b7598ede6a6fa40148b1dd3608ba9c19, type: 2}
-  - {fileID: 11400000, guid: 523b10e935eb7480486f2e15fdd2a0f1, type: 2}
+  - {fileID: 11400000, guid: ed5b9c17a875342618cc01b1ee1e7df1, type: 2}
+  - {fileID: 11400000, guid: 3b7c58c51ad734d85a665d9415dc3ccd, type: 2}
   eventBeforeDialogue:
     m_PersistentCalls:
       m_Calls: []
   eventAfterDialogue:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 989139176}
-        m_TargetAssemblyTypeName: ObjectsManager, Assembly-CSharp
-        m_MethodName: ActivateObjects
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1825775558}
-        m_TargetAssemblyTypeName: HelperUI, Assembly-CSharp
-        m_MethodName: FadeIn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   hasCompleted: 0
 --- !u!114 &989139176
 MonoBehaviour:
@@ -3613,8 +3512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e70f5eda228493a89be951bb4a65e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToActivate:
-  - {fileID: 828548497}
+  objectsToActivate: []
   objectsToDeactivate: []
 --- !u!1 &992427800
 GameObject:
@@ -4240,6 +4138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ad089e6bc9e401fb46f3e9880e23c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeImgOnEnable: 0
 --- !u!1 &1265186522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7233,7 +7132,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 989139173}
-  - {fileID: 828548498}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7303,6 +7201,7 @@ GameObject:
   - component: {fileID: 2111299953}
   - component: {fileID: 2111299955}
   - component: {fileID: 2111299954}
+  - component: {fileID: 2111299956}
   m_Layer: 5
   m_Name: Next Indicator
   m_TagString: Untagged
@@ -7367,6 +7266,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111299952}
   m_CullTransparentMesh: 1
+--- !u!114 &2111299956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111299952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ad089e6bc9e401fb46f3e9880e23c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImgOnEnable: 1
 --- !u!1 &2112277896
 GameObject:
   m_ObjectHideFlags: 0

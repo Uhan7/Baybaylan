@@ -46,7 +46,6 @@ public class DialogueManager : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void StartDialogue(Dialogue dialogue)
     {
-        dialoguing = true;
 
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
@@ -54,11 +53,19 @@ public class DialogueManager : MonoBehaviour
         currentContainer.ClearText();
 
         StartCoroutine(StartDelay());
+
+        dialoguing = true;
     }
 
     private IEnumerator StartDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
+        NextSentence();
+    }
+
+    private IEnumerator StartDelay(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
         NextSentence();
     }
 
@@ -99,7 +106,7 @@ public class DialogueManager : MonoBehaviour
 
             currentContainer.SetVisibleCharacters(i);
 
-            if (i % 4 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
+            if (i % 5 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
 
             if (i == 0) continue;
 

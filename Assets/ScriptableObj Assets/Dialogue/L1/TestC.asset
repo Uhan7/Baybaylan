@@ -16,6 +16,6 @@ MonoBehaviour:
   sentences:
   - SKIBIID FUCKIGN TOILETTTT
   - ASDFASDFADFASDFASDFASDF
-  soundToPlay: {fileID: 8300000, guid: 053f1210659ee477189445e457e36bc9, type: 3}
-  textSpeed: 0.02
+  soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
+  textSpeed: 0.015
   textPunctSpeed: 0.18

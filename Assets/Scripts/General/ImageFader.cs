@@ -11,10 +11,22 @@ public class ImageFader : MonoBehaviour
     [Header("Routine References")]
     [HideInInspector] private Coroutine fadeRoutine;
 
+    [Header("Properties")]
+    [SerializeField] private bool fadeImgOnEnable;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
         if (targetImage == null) targetImage = GetComponent<Image>();
+    }
+
+    private void OnEnable()
+    {
+        if (fadeImgOnEnable)
+        {
+            SetAlpha(0);
+            FadeTo(1, 0.25f);
+        }
     }
 
     // Helper Functions --------------------------------------------------------

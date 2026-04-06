@@ -17,7 +17,7 @@ MonoBehaviour:
   description: '30% na pagkakataon magiging <color=yellow>ginto</color> ang mga titik.
 
     Ang
-    mga <color=yellow>ginto</color>ng titik nagbibigay ng 1.5x iskor.'
+    mga <color=yellow>ginto</color>ng titik nagbibigay ng 2x iskor.'
   extraText: Ang bigat naman ng luya na binigay ni Maria Makiling..! Ano kaya ang
     sikreto ng mga luyang ito...
   convertChance: 0.3
