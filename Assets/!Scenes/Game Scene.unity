@@ -2748,9 +2748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5166b444772da427cbbd99ac1ede599b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: f8571ae66179b4bc2ad9613938c6ae10, type: 2}
+  config: {fileID: 11400000, guid: 03f20d7a83aec49ae8a23ea34926f876, type: 2}
   currentMahika: 0
-  targetMahika: 75
+  targetMahika: 800
   mahikaPercent: 0
   mahikaText: {fileID: 131900582}
   mahikaBarFill: {fileID: 751682304}
@@ -7902,7 +7902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1816249566651889346, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7979072672821691597, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: m_Pivot.x

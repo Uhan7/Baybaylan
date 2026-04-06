@@ -22,7 +22,7 @@ public class TileSet : MonoBehaviour
         config = GameManager.Instance.config;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
