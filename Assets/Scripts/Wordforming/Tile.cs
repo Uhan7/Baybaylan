@@ -196,7 +196,8 @@ public class Tile : MonoBehaviour
     {
         if (!AlahasManager.Instance.boostVowels) return;
 
-        scoreMultiplier += AlahasManager.Instance.vowelMultiplier;
+        scoreMultiplier += AlahasManager.Instance.vowelScoreMultiplier;
+        chance *= (int) AlahasManager.Instance.vowelChanceMultiplier;
         vowelBoostedSymbol.SetActive(true);
     }
 }

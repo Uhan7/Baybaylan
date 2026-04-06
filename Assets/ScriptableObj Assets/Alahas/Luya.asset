@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Luya
   m_EditorClassIdentifier: 
   alahasName: Luya
-  alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
-  description: Deskripsyon tungkol sa Alahas.
-  convertChance: 0.5
+  alahasSprite: {fileID: 21300000, guid: 336ed89bdbb334fc2a46b0623c5f3ea6, type: 3}
+  description: '30% na pagkakataon magiging <color=yellow>ginto</color> ang mga titik.
+
+    Ang
+    mga <color=yellow>ginto</color>ng titik nagbibigay ng 1.5x iskor.'
+  extraText: Ang bigat naman ng luya na binigay ni Maria Makiling..! Ano kaya ang
+    sikreto ng mga luyang ito...
+  convertChance: 0.3

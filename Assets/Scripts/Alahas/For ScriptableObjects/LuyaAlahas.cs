@@ -8,10 +8,12 @@ public class LuyaAlahas : Alahas
     public override void ApplyAlahas()
     {
         AlahasManager.Instance.goldenTileChance += convertChance;
+        AddAlahasToList();
     }
 
     public override void RemoveAlahas()
     {
         AlahasManager.Instance.goldenTileChance -= convertChance;
+        RemoveAlahasFromList();
     }
 }

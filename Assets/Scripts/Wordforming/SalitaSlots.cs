@@ -21,7 +21,7 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
-    [ReadOnly, SerializeField] private string baybayinSalita;
+    [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
     [ReadOnly, SerializeField] private string latinSalita;
 
     [Header("Score Properties")]

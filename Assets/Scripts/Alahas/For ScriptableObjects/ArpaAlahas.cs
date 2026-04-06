@@ -6,10 +6,12 @@ public class ArpaAlahas : Alahas
     public override void ApplyAlahas()
     {
         AlahasManager.Instance.boostVowels = true;
+        AddAlahasToList();
     }
 
     public override void RemoveAlahas()
     {
         AlahasManager.Instance.boostVowels = false;
+        RemoveAlahasFromList();
     }
 }

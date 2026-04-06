@@ -1385,7 +1385,6 @@ Transform:
   - {fileID: 652234312}
   - {fileID: 1555142703}
   - {fileID: 172158030}
-  - {fileID: 689779452}
   - {fileID: 594649365}
   - {fileID: 543053964}
   - {fileID: 1779237654}
@@ -2292,34 +2291,22 @@ PrefabInstance:
       propertyPath: dimObj
       value: 
       objectReference: {fileID: 225367869}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+    - target: {fileID: 792250833422966147, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Name
+      value: Alahas Box 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 792250833422966147, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_TagString
+      value: Alahas Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074827381221584107, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 2074827381221584107, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ApplyAlahas
-      objectReference: {fileID: 0}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LuyaAlahas, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 905201408073627809, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2524304518699186300, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2328,33 +2315,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left UI Container
       objectReference: {fileID: 0}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+    - target: {fileID: 3293954743547613817, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Name
+      value: Alahas Box 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: b7aa8df7fbb034005bcfd07b9735175e, type: 2}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ApplyAlahas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ArpaAlahas, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3154545512462022491, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+    - target: {fileID: 3293954743547613817, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_TagString
+      value: Alahas Slot
       objectReference: {fileID: 0}
     - target: {fileID: 3826780291639526350, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       propertyPath: m_Pivot.x
@@ -2436,6 +2403,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4801889448793217681, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Name
+      value: Alahas Box 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801889448793217681, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_TagString
+      value: Alahas Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095158577521863673, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095158577521863673, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6908683369743436974, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
@@ -2472,6 +2455,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8349255768673690627, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349255768673690627, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8600499752800161891, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2520,6 +2511,43 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3826780291639526350, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
   m_PrefabInstance: {fileID: 591299435}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &591299437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4801889448793217681, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+  m_PrefabInstance: {fileID: 591299435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &591299438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3293954743547613817, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+  m_PrefabInstance: {fileID: 591299435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &591299439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 792250833422966147, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+  m_PrefabInstance: {fileID: 591299435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &591299440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3097983337901878489, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+  m_PrefabInstance: {fileID: 591299435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &591299441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3757300192966720377, guid: a4d51bedc4cff4e2996f612f9f789055, type: 3}
+  m_PrefabInstance: {fileID: 591299435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594649364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,57 +2730,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675082770}
   m_CullTransparentMesh: 1
---- !u!1 &689779451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 689779452}
-  - component: {fileID: 689779453}
-  m_Layer: 0
-  m_Name: Alahas Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &689779452
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689779451}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 303577374}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &689779453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689779451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f89b8ad341e394511b10ff0552468c46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alahasSlots: []
-  heldAlahas: []
-  currentAlahasIndex: 0
-  goldenTileChance: 0
-  boostVowels: 0
-  goldenTileMultiplier: 2.5
-  vowelMultiplier: 5
 --- !u!1 &731022749
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,6 +5268,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446857887}
   m_CullTransparentMesh: 1
+--- !u!1 &1447485993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1447485994}
+  - component: {fileID: 1447485995}
+  m_Layer: 0
+  m_Name: Alahas Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1447485994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447485993}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1447485995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447485993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b8ad341e394511b10ff0552468c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alahasSlots:
+  - {fileID: 591299439}
+  - {fileID: 591299438}
+  - {fileID: 591299437}
+  alahasNameText: {fileID: 591299441}
+  alahasDescriptionText: {fileID: 591299440}
+  heldAlahas: []
+  currentAlahasIndex: 0
+  goldenTileChance: 0
+  boostVowels: 0
+  goldenTileMultiplier: 2.5
+  vowelScoreMultiplier: 3
+  vowelChanceMultiplier: 3
 --- !u!1 &1488801039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6045857137026214372, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
@@ -8542,3 +8576,4 @@ SceneRoots:
   - {fileID: 303577374}
   - {fileID: 2048468448}
   - {fileID: 1919836256}
+  - {fileID: 1447485994}
