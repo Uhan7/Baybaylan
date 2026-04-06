@@ -41,6 +41,8 @@ public class SideUI : MonoBehaviour
 
     private void CallDimBackground()
     {
+        if (DialogueManager.Instance.dialoguing) return;
+
         Animator dimAnim = dimObj.GetComponent<Animator>();
 
         if (isHovering) dimAnim.Play("image_fade_in");

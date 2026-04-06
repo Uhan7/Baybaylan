@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using NaughtyAttributes;
@@ -11,6 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private DialogueContainer[] dialogueContainers;
+    [SerializeField] public Image dimmer; // I think this unclean af lol
     [SerializeField] private AudioSource aSource;
     [HideInInspector] private DialogueContainer currentContainer;
 
@@ -106,7 +108,7 @@ public class DialogueManager : MonoBehaviour
 
             currentContainer.SetVisibleCharacters(i);
 
-            if (i % 5 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
+            if (i % 6 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
 
             if (i == 0) continue;
 
