@@ -26,7 +26,7 @@ public class AlahasManager : MonoBehaviour
 
     [Header("Other Alahas Info")] // NOTE THAT THE CHANGES WE USE ARE IN INSPECTOR... PROBABLY CHANGE SOON
     [SerializeField] public float goldenTileMultiplier = 2f;
-    [SerializeField] public float vowelScoreMultiplier = 3f;
+    [SerializeField] public float vowelScoreMultiplier = 4f;
     [SerializeField] public float vowelChanceMultiplier = 4f;
 
     // Main Functions ----------------------------------------------------------

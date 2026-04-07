@@ -84,6 +84,8 @@ public class Tile : MonoBehaviour
         }
         else latinText = rootConsonant + "a";
 
+        ResetTileModifications();
+
         ApplyGoldChance();
         if (isVowel) ApplyVowelBoost();
     }
@@ -203,5 +205,11 @@ public class Tile : MonoBehaviour
         scoreMultiplier *= AlahasManager.Instance.vowelScoreMultiplier;
         chance *= (int) AlahasManager.Instance.vowelChanceMultiplier; // I have to remove it here...?
         vowelBoostedSymbol.SetActive(true);
+    }
+
+    private void ResetTileModifications()
+    {
+        scoreMultiplier = 1;
+        vowelBoostedSymbol.SetActive(false);
     }
 }

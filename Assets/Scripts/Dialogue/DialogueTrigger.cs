@@ -20,7 +20,7 @@ public class DialogueTrigger : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void OnEnable()
     {
-        if (activateOnEnable) Invoke("TriggerDialogue", 0.5f);
+        if (activateOnEnable) Invoke("TriggerDialogue", 2f);
     }
 
     // Helper Functions --------------------------------------------------------

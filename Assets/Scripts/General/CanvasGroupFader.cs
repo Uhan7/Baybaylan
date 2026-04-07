@@ -1,31 +1,31 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ImageFader : MonoBehaviour
+[RequireComponent(typeof(CanvasGroup))]
+public class CanvasGroupFader : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
     [Header("Components")]
-    [HideInInspector] private Image targetImage;
+    [HideInInspector] private CanvasGroup targetGroup;
 
     [Header("Routine References")]
     [HideInInspector] private Coroutine fadeRoutine;
 
     [Header("Properties")]
-    [SerializeField] private bool fadeImgOnEnable;
+    [SerializeField] private bool fadeOnEnable = false;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
-        if (targetImage == null) targetImage = GetComponent<Image>();
+        if (targetGroup == null) targetGroup = GetComponent<CanvasGroup>();
     }
 
     private void OnEnable()
     {
-        if (fadeImgOnEnable)
+        if (fadeOnEnable)
         {
-            SetAlpha(0);
-            FadeTo(1, 0.25f);
+            SetAlpha(0f);
+            FadeTo(1f, 0.25f);
         }
     }
 
@@ -33,7 +33,6 @@ public class ImageFader : MonoBehaviour
     public void FadeTo(float desiredAlpha, float duration)
     {
         if (fadeRoutine != null) StopCoroutine(fadeRoutine);
-
         fadeRoutine = StartCoroutine(Fade(desiredAlpha, duration));
     }
 
@@ -46,30 +45,23 @@ public class ImageFader : MonoBehaviour
 
     public void SetAlpha(float newAlpha)
     {
-        Color c = targetImage.color;
-        c.a = newAlpha;
-        targetImage.color = c;
+        targetGroup.alpha = newAlpha;
     }
 
     private IEnumerator Fade(float desiredAlpha, float duration)
     {
         float elapsedTime = 0f;
+        float startAlpha = targetGroup.alpha;
 
-        Color color = targetImage.color;
-        float startAlpha = color.a;
-
-        while (elapsedTime <= duration)
+        while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
-
-            float newAlpha = Mathf.Lerp(startAlpha, desiredAlpha, t);
-            targetImage.color = new Color(color.r, color.g, color.b, newAlpha);
+            targetGroup.alpha = Mathf.Lerp(startAlpha, desiredAlpha, t);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        targetImage.color = new Color(color.r, color.g, color.b, desiredAlpha);
+        targetGroup.alpha = desiredAlpha;
     }
-
 }
