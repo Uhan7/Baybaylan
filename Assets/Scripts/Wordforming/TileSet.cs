@@ -47,16 +47,40 @@ public class TileSet : MonoBehaviour
         {
             GameObject tile = null;
 
-            if (config.usePredefinedTiles) // THIS PART IS KINDA BAD bc expensive get component stuff... clean it soon
+            if (config.usePredefinedTiles)
             {
-                int index = i;
-                tile = config.predefinedTiles[index];
-                foreach (Transform child in transform)
+                foreach (var candidate in config.predefinedTiles)
                 {
-                    Tile childTile = child.GetComponent<Tile>();
-                    if ((childTile.isVowel && tile.GetComponent<Tile>().isVowel) && (childTile.vowel == tile.GetComponent<Tile>().vowel)) index++;
-                    else if (childTile.rootConsonant == tile.GetComponent<Tile>().rootConsonant) index++;
-                    tile = config.predefinedTiles[index];
+                    Tile candidateTile = candidate.GetComponent<Tile>();
+                    bool isValid = true;
+
+                    foreach (Transform child in transform)
+                    {
+                        Tile childTile = child.GetComponent<Tile>();
+
+                        if (candidateTile.isVowel && childTile.isVowel)
+                        {
+                            if (candidateTile.vowel == childTile.vowel)
+                            {
+                                isValid = false;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (candidateTile.rootConsonant == childTile.rootConsonant)
+                            {
+                                isValid = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (isValid)
+                    {
+                        tile = candidate;
+                        break;
+                    }
                 }
             }
             else

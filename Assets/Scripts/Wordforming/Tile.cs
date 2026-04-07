@@ -181,12 +181,12 @@ public class Tile : MonoBehaviour
     // Tile Modifications ------------------------------------------------------
     private void ApplyGoldChance()
     {
-        float chance = AlahasManager.Instance.goldenTileChance;
+        float goldChance = AlahasManager.Instance.goldenTileChance;
 
-        if (Random.value <= chance)
+        if (Random.value <= goldChance)
         {
             isGold = true;
-            scoreMultiplier += AlahasManager.Instance.goldenTileMultiplier;
+            scoreMultiplier *= AlahasManager.Instance.goldenTileMultiplier;
 
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
         }
@@ -196,8 +196,8 @@ public class Tile : MonoBehaviour
     {
         if (!AlahasManager.Instance.boostVowels) return;
 
-        scoreMultiplier += AlahasManager.Instance.vowelScoreMultiplier;
-        chance *= (int) AlahasManager.Instance.vowelChanceMultiplier;
+        scoreMultiplier *= AlahasManager.Instance.vowelScoreMultiplier;
+        chance *= (int) AlahasManager.Instance.vowelChanceMultiplier; // I have to remove it here...
         vowelBoostedSymbol.SetActive(true);
     }
 }

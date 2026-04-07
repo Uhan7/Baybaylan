@@ -25,6 +25,6 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
   - {fileID: 6897560512971629955, guid: 379f8d9a9440e4b8096d5bdbbff7faa0, type: 3}
-  targetMahika: 80
+  targetMahika: 160
   maxAksyon: 3
   bawalUmulit: 0

@@ -27,7 +27,7 @@ public class AlahasManager : MonoBehaviour
     [Header("Other Alahas Info")]
     [SerializeField] public float goldenTileMultiplier = 2.5f;
     [SerializeField] public float vowelScoreMultiplier = 5f;
-    [SerializeField] public float vowelChanceMultiplier = 4f;
+    [SerializeField] public float vowelChanceMultiplier = 400f;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()

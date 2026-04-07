@@ -32,7 +32,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: chance
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5795353156365764038, guid: 5594fc9270bbe44c0b37d2ff30421856, type: 3}
       propertyPath: isVowel

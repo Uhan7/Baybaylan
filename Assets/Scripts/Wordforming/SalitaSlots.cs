@@ -127,7 +127,7 @@ public class SalitaSlots : MonoBehaviour
             // Some cool effects here
             if (activeTile == null) continue;
 
-            salitaScore += (int) (activeTile.Score * scoreScaleValue);
+            salitaScore += (int) (activeTile.Score); // removed * scoreScaleValue here... pls find way to make it cleaner
             activeTile.GetComponent<Animator>().Play("tile_hold");
             activeTile.sfxSource.PlayOneShot(tileTickSFX);
 
