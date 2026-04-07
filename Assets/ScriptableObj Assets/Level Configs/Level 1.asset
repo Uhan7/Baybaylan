@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
-  m_Name: Tutorial 1
+  m_Name: Level 1
   m_EditorClassIdentifier: 
-  usePredefinedTiles: 1
-  tilesAmount: 2
+  usePredefinedTiles: 0
+  tilesAmount: 12
   tilesSelection:
   - {fileID: 6897560512971629955, guid: e9ec02d21c4724e4b98f6ce1d6a5d013, type: 3}
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
@@ -33,9 +33,7 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: 019fbe6f8db594986a1a367c4d1ed04a, type: 3}
   - {fileID: 6897560512971629955, guid: eaf2ef9a282304aa7af6c2cbc2fed3c9, type: 3}
-  predefinedTiles:
-  - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
-  - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
-  targetMahika: 40
-  maxAksyon: 3
+  predefinedTiles: []
+  targetMahika: 300
+  maxAksyon: 5
   bawalUmulit: 1

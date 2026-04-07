@@ -9,7 +9,7 @@ public class DialogueSet : MonoBehaviour
     [Header("Dialogues")]
     [SerializeField] private Dialogue[] dialogues;
 
-    [Header("Extra Behaviors")]
+    [Header("Events")]
     [SerializeField] private UnityEvent eventBeforeDialogue;
     [SerializeField] private UnityEvent eventAfterDialogue;
 

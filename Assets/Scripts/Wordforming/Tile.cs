@@ -33,9 +33,9 @@ public class Tile : MonoBehaviour
     [SerializeField] private AudioClip diacriticSFX;
 
     [Header("Tile Info")]
-    [SerializeField] private bool isVowel;
-    [HideIf("isVowel"), SerializeField] private string rootConsonant;
-    [ShowIf("isVowel"), SerializeField] private string vowel;
+    [SerializeField] public bool isVowel; // Read in TileSet.cs
+    [HideIf("isVowel"), SerializeField] public string rootConsonant; // Read in TileSet.cs
+    [ShowIf("isVowel"), SerializeField] public string vowel; // Read in TileSet.cs
     [ReadOnly, SerializeField] public string latinText; // Used in TileSlot.cs
 
     [Header("Default Visuals")]

@@ -37,6 +37,7 @@ public class SceneController : MonoBehaviour
             transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
         }
 
+        Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
         StartCoroutine(Swap(sceneName));
     }
 
@@ -48,7 +49,7 @@ public class SceneController : MonoBehaviour
 
     public void Reload()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SwapWrapper(SceneManager.GetActiveScene().name);
     }
 
     public void QuitWrapper()

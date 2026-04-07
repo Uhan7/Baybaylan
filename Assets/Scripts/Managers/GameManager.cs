@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
@@ -25,9 +26,13 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public HashSet<string> validWords = new HashSet<string>();
     [SerializeField] public List<string> wordsUsed = new List<string>();
 
-    [Header("Other Screens")]
-    [SerializeField] private GameObject winScreen;
-    [SerializeField] private GameObject loseScreen;
+    //[Header("Other Screens")]
+    //[SerializeField] private GameObject winScreen;
+    //[SerializeField] private GameObject loseScreen;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent eventOnWin;
+    [SerializeField] private UnityEvent eventOnLose;
 
     [Header("Should not be here but idgaf")]
     [SerializeField] private AudioClip winSFX;
@@ -86,14 +91,19 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.bgmSource.Play();
             AudioManager.Instance.sfxSource.PlayOneShot(winSFX);
 
-            winScreen.SetActive(true);
+            eventOnWin?.Invoke();
+
+            //winScreen.SetActive(true);
         }
 
         else
         {
             AudioManager.Instance.bgmSource.Stop();
             AudioManager.Instance.sfxSource.PlayOneShot(loseSFX);
-            loseScreen.SetActive(true);
+
+            eventOnLose?.Invoke();
+
+            //loseScreen.SetActive(true);
         }
     }
 }

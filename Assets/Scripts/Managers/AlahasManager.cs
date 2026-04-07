@@ -25,9 +25,9 @@ public class AlahasManager : MonoBehaviour
     [ReadOnly, SerializeField] public bool boostVowels = false;
 
     [Header("Other Alahas Info")]
-    [SerializeField] public float goldenTileMultiplier = 2f;
+    [SerializeField] public float goldenTileMultiplier = 2.5f;
     [SerializeField] public float vowelScoreMultiplier = 5f;
-    [SerializeField] public float vowelChanceMultiplier = 3f;
+    [SerializeField] public float vowelChanceMultiplier = 4f;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -63,11 +63,8 @@ public class AlahasManager : MonoBehaviour
         alahasSlots[0] = GameObject.Find("Alahas Box 1");
         alahasSlots[1] = GameObject.Find("Alahas Box 2");
         alahasSlots[2] = GameObject.Find("Alahas Box 3");
-        print(alahasSlots);
         alahasNameText = GameObject.Find("Alahas Name Text").GetComponent<TextMeshProUGUI>();
-        print(alahasNameText);
         alahasDescriptionText = GameObject.Find("Alahas Description Text").GetComponent<TextMeshProUGUI>();
-        print(alahasDescriptionText);
         // END OF THE HORRIBLE THING
 
         if (heldAlahas != null && heldAlahas.Count > 0) SetAlahasSlotsUI();

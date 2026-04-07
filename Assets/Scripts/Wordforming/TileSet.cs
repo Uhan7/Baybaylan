@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(DropZone))]
 public class TileSet : MonoBehaviour
@@ -46,7 +47,18 @@ public class TileSet : MonoBehaviour
         {
             GameObject tile = null;
 
-            if (config.usePredefinedTiles) tile = config.predefinedTiles[i];
+            if (config.usePredefinedTiles) // THIS PART IS KINDA BAD bc expensive get component stuff... clean it soon
+            {
+                int index = i;
+                tile = config.predefinedTiles[index];
+                foreach (Transform child in transform)
+                {
+                    Tile childTile = child.GetComponent<Tile>();
+                    if ((childTile.isVowel && tile.GetComponent<Tile>().isVowel) && (childTile.vowel == tile.GetComponent<Tile>().vowel)) index++;
+                    else if (childTile.rootConsonant == tile.GetComponent<Tile>().rootConsonant) index++;
+                    tile = config.predefinedTiles[index];
+                }
+            }
             else
             {
                 int roll = Random.Range(0, totalChance);
