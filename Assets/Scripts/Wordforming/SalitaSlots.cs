@@ -131,7 +131,7 @@ public class SalitaSlots : MonoBehaviour
             activeTile.GetComponent<Animator>().Play("tile_hold");
             activeTile.sfxSource.PlayOneShot(tileTickSFX);
 
-            activeTileCount += 1 * scoreScaleValue;
+            activeTileCount += 1 * scoreScaleValue; // messy bruh... we have a separate value for scale and not base on just count
 
             preMultipliedScoreText.text = salitaScore.ToString();
             multiplierText.text = activeTileCount.ToString();

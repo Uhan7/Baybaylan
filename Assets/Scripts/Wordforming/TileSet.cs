@@ -90,7 +90,11 @@ public class TileSet : MonoBehaviour
                 foreach (GameObject obj in config.tilesSelection)
                 {
                     Tile tileComp = obj.GetComponent<Tile>();
-                    roll -= tileComp.GetChance();
+                    int effectiveChance = tileComp.GetChance();
+
+                    if (AlahasManager.Instance.boostVowels && tileComp.isVowel) effectiveChance = Mathf.RoundToInt(effectiveChance * AlahasManager.Instance.vowelChanceMultiplier);
+
+                    roll -= effectiveChance;
 
                     if (roll < 0)
                     {

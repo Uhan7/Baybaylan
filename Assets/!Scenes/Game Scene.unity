@@ -6629,9 +6629,9 @@ MonoBehaviour:
   currentAlahasIndex: 0
   goldenTileChance: 0
   boostVowels: 0
-  goldenTileMultiplier: 2.5
+  goldenTileMultiplier: 2
   vowelScoreMultiplier: 3
-  vowelChanceMultiplier: 3
+  vowelChanceMultiplier: 4
 --- !u!1 &1488801039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6045857137026214372, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}

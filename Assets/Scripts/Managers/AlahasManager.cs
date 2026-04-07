@@ -24,10 +24,10 @@ public class AlahasManager : MonoBehaviour
     [ReadOnly, SerializeField] public float goldenTileChance = 0;
     [ReadOnly, SerializeField] public bool boostVowels = false;
 
-    [Header("Other Alahas Info")]
-    [SerializeField] public float goldenTileMultiplier = 2.5f;
-    [SerializeField] public float vowelScoreMultiplier = 5f;
-    [SerializeField] public float vowelChanceMultiplier = 400f;
+    [Header("Other Alahas Info")] // NOTE THAT THE CHANGES WE USE ARE IN INSPECTOR... PROBABLY CHANGE SOON
+    [SerializeField] public float goldenTileMultiplier = 2f;
+    [SerializeField] public float vowelScoreMultiplier = 3f;
+    [SerializeField] public float vowelChanceMultiplier = 4f;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -42,6 +42,7 @@ public class AlahasManager : MonoBehaviour
             return;
         }
 
+        ResetAllAlahas();
         Instance = this;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -88,5 +89,11 @@ public class AlahasManager : MonoBehaviour
     {
         if (alahasNameText != null) alahasNameText.text = selectedAlahas.alahasName;
         if (alahasDescriptionText != null) alahasDescriptionText.text = selectedAlahas.description;
+    }
+
+    private void ResetAllAlahas()
+    {
+        goldenTileChance = 0;
+        boostVowels = false;
     }
 }
