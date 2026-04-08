@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c04b1f020ba8f49729190e402fd98d39, type: 3}
-  m_Name: T1-S2 2
+  m_Name: T2-S2 1
   m_EditorClassIdentifier: 
-  containerIndex: 0
+  containerIndex: 1
   sentences:
-  - 8
+  - 2
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
   textSpeed: 0.015
   textPunctSpeed: 0.18
