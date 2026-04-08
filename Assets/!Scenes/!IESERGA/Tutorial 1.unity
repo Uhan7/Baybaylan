@@ -2700,7 +2700,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_text
-      value: Lumabas
+      value: Mag-Alis
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
@@ -3858,7 +3858,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_text
-      value: Lumabas
+      value: Mag-Alis
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
