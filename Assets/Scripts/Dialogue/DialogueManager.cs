@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentDialogue == null) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isTyping) skip = true;
             else NextSentence();
