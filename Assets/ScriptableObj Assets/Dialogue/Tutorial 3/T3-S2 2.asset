@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containerIndex: 1
   sentences:
-  - Nalulugod ko ang iyong balita! Magtungo na tayo sa aking bundok...
+  - Nalulugod ako sa iyong balita! Magtungo na tayo sa aking bundok...
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
   textSpeed: 0.018
   textPunctSpeed: 0.18
