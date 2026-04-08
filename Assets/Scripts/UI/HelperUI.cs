@@ -24,6 +24,7 @@ public class HelperUI : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void FadePromptWrapper(float desiredAlpha)
     {
+        if (!gameObject.activeInHierarchy) return;
         if (FadeRoutine != null) StopCoroutine(FadeRoutine);
 
         FadeRoutine = StartCoroutine(FadePrompt(desiredAlpha));
@@ -31,11 +32,13 @@ public class HelperUI : MonoBehaviour
 
     public void FadeIn()
     {
+        if (!gameObject.activeInHierarchy) return;
         FadePromptWrapper(1);
     }
 
     public void FadeOut()
     {
+        if (!gameObject.activeInHierarchy) return;
         FadePromptWrapper(0);
     }
 
