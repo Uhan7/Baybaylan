@@ -15,5 +15,5 @@ MonoBehaviour:
   alahasName: Arpa
   alahasSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
   description: 4x iskor sa mga patinig at 4x mas madalas makita ang mga patinig.
-  extraText: Napakaganda talaga ng boses ni Maria Makiling kapag sya'y kumanta kasama
-    ang paglaro ng kanyang Arpa...
+  extraText: Napakaganda talaga ng boses ni Binibining Makiling kapag sya'y kumanta
+    kasama ang paglaro ng kanyang Arpa...

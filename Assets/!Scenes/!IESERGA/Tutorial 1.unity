@@ -374,7 +374,6 @@ MonoBehaviour:
   dialogueSet: {fileID: 74248861}
   activateOnEnable: 1
   isRepeatable: 0
-  extraDelay: 0.5
   alreadyTriggered: 0
 --- !u!114 &74248861
 MonoBehaviour:
@@ -409,7 +408,6 @@ MonoBehaviour:
           m_StringArgument: Tutorial 2
           m_BoolArgument: 0
         m_CallState: 2
-  extraDelay: 0
   hasCompleted: 0
 --- !u!1 &92407439
 GameObject:
@@ -770,6 +768,12 @@ PrefabInstance:
       propertyPath: dimObj
       value: 
       objectReference: {fileID: 225367869}
+    - target: {fileID: 1814342275614178248, guid: 7ae77db6dbfa74eb88e45ec62fbfdbda, type: 3}
+      propertyPath: m_text
+      value: '- Bawal Umulit ng Salita
+
+        - Gamitin ang mga itinakdang titik'
+      objectReference: {fileID: 0}
     - target: {fileID: 2644139608752831329, guid: 7ae77db6dbfa74eb88e45ec62fbfdbda, type: 3}
       propertyPath: m_Name
       value: Right UI Container
@@ -1153,7 +1157,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  extraDelay: 0
   hasCompleted: 0
 --- !u!114 &173828151
 MonoBehaviour:
@@ -1171,7 +1174,6 @@ MonoBehaviour:
   dialogueSet: {fileID: 173828150}
   activateOnEnable: 1
   isRepeatable: 0
-  extraDelay: 0
   alreadyTriggered: 0
 --- !u!1 &175266069
 GameObject:
@@ -4239,7 +4241,6 @@ MonoBehaviour:
   dialogueSet: {fileID: 685363018}
   activateOnEnable: 1
   isRepeatable: 0
-  extraDelay: 0
   alreadyTriggered: 0
 --- !u!114 &685363018
 MonoBehaviour:
@@ -4286,7 +4287,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  extraDelay: 1
   hasCompleted: 0
 --- !u!1 &731022749
 GameObject:

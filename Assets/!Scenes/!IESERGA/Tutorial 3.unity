@@ -768,6 +768,12 @@ PrefabInstance:
       propertyPath: dimObj
       value: 
       objectReference: {fileID: 225367869}
+    - target: {fileID: 1814342275614178248, guid: 7ae77db6dbfa74eb88e45ec62fbfdbda, type: 3}
+      propertyPath: m_text
+      value: '- Bawal Umulit ng Salita
+
+        - Gamitin ang mga itinakdang titik'
+      objectReference: {fileID: 0}
     - target: {fileID: 2644139608752831329, guid: 7ae77db6dbfa74eb88e45ec62fbfdbda, type: 3}
       propertyPath: m_Name
       value: Right UI Container
