@@ -298,7 +298,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BayBaylan Logo_0: -49303090383804869
+      BayBaylan Logo_1: -648417522512645035
+      BayBaylan Logo_2: 3936238226351547715
+      BayBaylan Logo_3: 5317035219041116641
+      BayBaylan Logo_4: 4866170093874507763
+      BayBaylan Logo_5: -2991228100152836255
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
