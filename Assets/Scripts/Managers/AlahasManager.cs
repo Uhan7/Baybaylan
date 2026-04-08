@@ -78,7 +78,7 @@ public class AlahasManager : MonoBehaviour
         {
             int index = i;
 
-            alahasSlots[index].transform.GetChild(0).GetComponent<Image>().sprite = heldAlahas[index].alahasSprite;
+            alahasSlots[index].transform.GetChild(1).GetComponent<Image>().sprite = heldAlahas[index].alahasSprite;
 
             alahasSlots[index].GetComponent<Button>().onClick.RemoveAllListeners();
             alahasSlots[index].GetComponent<Button>().onClick.AddListener(() => { ChangeDescriptionUI(heldAlahas[index]); });

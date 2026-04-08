@@ -23,8 +23,8 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SwapWrapper("Game Scene");
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SwapWrapper("Alahas Scene");
+        // if (Input.GetKeyDown(KeyCode.Alpha1)) SwapWrapper("Game Scene");
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SwapWrapper("Alahas 2");
     }
 
     // Helper Functions --------------------------------------------------------
