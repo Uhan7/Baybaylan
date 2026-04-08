@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containerIndex: 0
   sentences:
-  - 1
+  - Tala, mukhang mahirap ang pinakahuling hiling ko sa iyo...
+  - Kailangan ko pa ng mas maraming Mahika, at baka kailangan mo rin ng tulong ko...
+  - Kuhanin mo na ang naiwan na Alahas...
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
-  textSpeed: 0.015
+  textSpeed: 0.021
   textPunctSpeed: 0.18

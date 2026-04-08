@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containerIndex: 0
   sentences:
-  - 3
+  - Tama iyan. At, may mga ibang titik na mas bihira sa Baybayin kaya mas marami
+    rin ang Mahika.
+  - Kasama na rin ang mga bihirang kudlit at krus.
+  - Kaya naman, ang mas madalas nakikitang titik ay mas maliit ang Mahikang binibigay.
+    Gayundin sa mga kudlit at krus.
+  - (Makikita ko rin ito sa kodigo ko...)
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
-  textSpeed: 0.015
+  textSpeed: 0.018
   textPunctSpeed: 0.18

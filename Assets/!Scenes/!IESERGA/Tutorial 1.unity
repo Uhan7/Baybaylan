@@ -374,6 +374,7 @@ MonoBehaviour:
   dialogueSet: {fileID: 74248861}
   activateOnEnable: 1
   isRepeatable: 0
+  extraDelay: 0.5
   alreadyTriggered: 0
 --- !u!114 &74248861
 MonoBehaviour:
@@ -408,6 +409,7 @@ MonoBehaviour:
           m_StringArgument: Tutorial 2
           m_BoolArgument: 0
         m_CallState: 2
+  extraDelay: 0
   hasCompleted: 0
 --- !u!1 &92407439
 GameObject:
@@ -1151,6 +1153,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  extraDelay: 0
   hasCompleted: 0
 --- !u!114 &173828151
 MonoBehaviour:
@@ -1168,6 +1171,7 @@ MonoBehaviour:
   dialogueSet: {fileID: 173828150}
   activateOnEnable: 1
   isRepeatable: 0
+  extraDelay: 0
   alreadyTriggered: 0
 --- !u!1 &175266069
 GameObject:
@@ -4235,6 +4239,7 @@ MonoBehaviour:
   dialogueSet: {fileID: 685363018}
   activateOnEnable: 1
   isRepeatable: 0
+  extraDelay: 0
   alreadyTriggered: 0
 --- !u!114 &685363018
 MonoBehaviour:
@@ -4281,6 +4286,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  extraDelay: 1
   hasCompleted: 0
 --- !u!1 &731022749
 GameObject:
@@ -5853,7 +5859,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: ae8ca8681718c4d90a95dc518402bdbd, type: 3}
-  m_Type: 1
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6293,9 +6299,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hilahin ang mga titik at idala sa papel sa gitna,
+  m_text: 'Hilahin ang mga titik at dalhin sa papel sa gitna,
 
-    tapos pindutin
+    pagkatapos, pindutin
     ang [      ]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
@@ -6323,8 +6329,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9123,8 +9129,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170.2, y: -24.2}
-  m_SizeDelta: {x: 63, y: 42}
+  m_AnchoredPosition: {x: 217.5, y: -19.4}
+  m_SizeDelta: {x: 54, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080733760
 MonoBehaviour:
