@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6280028680344581300}
   - component: {fileID: 3859284582657050014}
   m_Layer: 5
-  m_Name: Helper UI Sets
+  m_Name: Prompt Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,11 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2517446451546153014, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_Name
-      value: Helper Set
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517446451546153014, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: Prompt Set
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

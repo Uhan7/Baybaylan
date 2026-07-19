@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2033651539359841572}
   - component: {fileID: 1454448539535913529}
   m_Layer: 5
-  m_Name: Dim For Side UI
+  m_Name: Dim Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

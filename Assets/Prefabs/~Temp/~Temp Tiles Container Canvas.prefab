@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 340446817178885364}
   - component: {fileID: 7088581077558243351}
   m_Layer: 5
-  m_Name: Tiles Container Canvas
+  m_Name: ~Temp Tiles Container Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,7 +740,7 @@ PrefabInstance:
       objectReference: {fileID: 977210261053270154}
     - target: {fileID: 8985823143743777433, guid: f151752f049e740fcaa8d61890e72cb9, type: 3}
       propertyPath: m_Name
-      value: Tiles Container
+      value: Tiles Grid
       objectReference: {fileID: 0}
     - target: {fileID: 9129548353998540065, guid: f151752f049e740fcaa8d61890e72cb9, type: 3}
       propertyPath: m_AnchorMax.y

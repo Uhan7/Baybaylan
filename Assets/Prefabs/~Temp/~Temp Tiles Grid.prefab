@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2799724507559017531}
   - component: {fileID: 8799512705450384343}
   m_Layer: 5
-  m_Name: Tiles Grid
+  m_Name: ~Temp Tiles Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5068862520288993207}
   - component: {fileID: 8733379248737892526}
   m_Layer: 5
-  m_Name: (TEMP) Lose Screen
+  m_Name: ~Temp Lose Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

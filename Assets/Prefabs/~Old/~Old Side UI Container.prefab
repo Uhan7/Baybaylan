@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8772552324655056879}
   - component: {fileID: 6728479217317290975}
   m_Layer: 5
-  m_Name: (OLD) Side UI Container
+  m_Name: ~Old Side UI Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
