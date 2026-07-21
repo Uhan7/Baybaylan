@@ -74,8 +74,11 @@ public class GameManager : MonoBehaviour
     {
         foreach (TextAsset wordlist in wordlists)
         {
-            string[] words = wordlist.text.Split("\n");
-            foreach (string word in words) validWords.Add(word);
+            foreach (string rawWord in wordlist.text.Split('\n'))
+            {
+                string word = rawWord.Trim();
+                if (!string.IsNullOrEmpty(word)) validWords.Add(word);
+            }
         }
     }
 
