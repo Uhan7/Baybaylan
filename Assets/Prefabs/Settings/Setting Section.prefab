@@ -205,6 +205,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3880297740148731422}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetBGMVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSlider, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210120570998877554, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5563851230278570886, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
       propertyPath: m_Name
       value: Settings Slider
@@ -232,10 +260,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5563851230278570886, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3880297740148731422}
   m_SourcePrefab: {fileID: 100100000, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
 --- !u!224 &4032602204788755736 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3996946837193433137, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
   m_PrefabInstance: {fileID: 40162609389710633}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5600343342303084207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563851230278570886, guid: cc9084503bf3f42ecb5d02761e748596, type: 3}
+  m_PrefabInstance: {fileID: 40162609389710633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3880297740148731422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600343342303084207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f044a255bed573d40b44f9f60f9dbbb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
