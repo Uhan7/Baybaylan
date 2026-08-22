@@ -45,7 +45,7 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private bool scoringSalita;
 
     // Main Functions ----------------------------------------------------------
-    private void Awake()
+    private void Start()
     {
         config = GameManager.Instance.config;
     }

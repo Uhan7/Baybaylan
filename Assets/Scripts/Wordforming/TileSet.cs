@@ -18,7 +18,7 @@ public class TileSet : MonoBehaviour
     [SerializeField] private Canvas canvas;
 
     // Main Functions ----------------------------------------------------------
-    private void Awake()
+    private void Start()
     {
         config = GameManager.Instance.config;
     }

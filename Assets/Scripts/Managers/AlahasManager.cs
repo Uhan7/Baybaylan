@@ -64,7 +64,7 @@ public class AlahasManager : MonoBehaviour
         alahasSlots[0] = GameObject.Find("Alahas Box 1");
         alahasSlots[1] = GameObject.Find("Alahas Box 2");
         alahasSlots[2] = GameObject.Find("Alahas Box 3");
-        alahasNameText = GameObject.Find("Alahas Name Text").GetComponent<TextMeshProUGUI>();
+        alahasNameText = GameObject.Find("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
         alahasDescriptionText = GameObject.Find("Alahas Description Text").GetComponent<TextMeshProUGUI>();
         // END OF THE HORRIBLE THING
 
