@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
+using System;
+using System.Linq;
 
 public class AlahasManager : MonoBehaviour
 {
@@ -57,17 +59,16 @@ public class AlahasManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // PLEASE CHANGE THIS... THIS IS HORRIBLE CODING... BUT I AM TIRED
-        if (scene.name == "Alahas Scene") return;
+        // Check for the presence of the game manager in the scene
+        GameManager gameManagerInstance = GameObject.FindFirstObjectByType<GameManager>();
+        if (!gameManagerInstance) return;
 
-        //alahasSlots = GameObject.FindGameObjectsWithTag("Alahas Slot");
-        alahasSlots[0] = GameObject.Find("Alahas Box 1");
-        alahasSlots[1] = GameObject.Find("Alahas Box 2");
-        alahasSlots[2] = GameObject.Find("Alahas Box 3");
-        alahasNameText = GameObject.Find("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
-        // I forgot where I saw this (probably kotlin or something), you can put a '?' before the '.' to check if it is null
-        alahasDescriptionText = GameObject.Find("Alahas Description Text")?.GetComponent<TextMeshProUGUI>();
-        // END OF THE HORRIBLE THING
+        // Get Alahas Slots by alphabetical order (1,2,3,...) ((1),(2)<(3),...) (A,B,C,...Z)
+        alahasSlots = GameObject.FindGameObjectsWithTag("Alahas Slot").OrderBy(go => go.name).ToArray();
+        
+        // I forgot where I saw this (probably Kotlin or something), you can put a '?' before the '.' to check if it is null
+        alahasNameText = GameObject.FindGameObjectWithTag("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
+        alahasDescriptionText = GameObject.FindGameObjectWithTag("Alahas Description Text")?.GetComponent<TextMeshProUGUI>();
 
         if (heldAlahas != null && heldAlahas.Count > 0) SetAlahasSlotsUI();
     }
