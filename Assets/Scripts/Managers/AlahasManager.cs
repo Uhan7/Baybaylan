@@ -65,7 +65,8 @@ public class AlahasManager : MonoBehaviour
         alahasSlots[1] = GameObject.Find("Alahas Box 2");
         alahasSlots[2] = GameObject.Find("Alahas Box 3");
         alahasNameText = GameObject.Find("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
-        alahasDescriptionText = GameObject.Find("Alahas Description Text").GetComponent<TextMeshProUGUI>();
+        // I forgot where I saw this (probably kotlin or something), you can put a '?' before the '.' to check if it is null
+        alahasDescriptionText = GameObject.Find("Alahas Description Text")?.GetComponent<TextMeshProUGUI>();
         // END OF THE HORRIBLE THING
 
         if (heldAlahas != null && heldAlahas.Count > 0) SetAlahasSlotsUI();

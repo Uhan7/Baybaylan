@@ -25,6 +25,7 @@ public class TileSet : MonoBehaviour
 
     private void OnEnable()
     {
+        if (!config) return;
         if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
