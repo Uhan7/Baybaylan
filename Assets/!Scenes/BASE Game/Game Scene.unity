@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prompt Container
       objectReference: {fileID: 0}
+    - target: {fileID: 1305878419704753941, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_text
+      value: Bumalik
+      objectReference: {fileID: 0}
     - target: {fileID: 1599428744546915907, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: sfxSource
       value: 
