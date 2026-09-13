@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 806227519595669328, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: popupPrefab
+      value: 
+      objectReference: {fileID: 3177499782277301864, guid: d24357d9410ecf44eb58b7e418242f07, type: 3}
     - target: {fileID: 853760679868543385, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Name
       value: Prompt Container
@@ -316,6 +320,14 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1543594388}
+    - target: {fileID: 4480330844728702183, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_Name
+      value: Invalid Word Popup parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480330844728702183, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4562319795247431159, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -380,6 +392,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3550707670128669036, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
     - {fileID: 2248418949850268843, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+    - {fileID: 1238213463843606276, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}

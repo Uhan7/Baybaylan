@@ -2,61 +2,45 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 class InvalidWordPopup : MonoBehaviour
 {
-    public enum InvalidWordType
-    {
-        NotInWordlist,
-        AlreadyUsed
-    }
-
     [SerializeField] GameObject parentObj;
-    TextMeshProUGUI invalidWordText;
-    Image bgImg; 
+    [SerializeField] GameObject popupPrefab;
+    [SerializeField] float fadeOutTime = 1.5f;
+    [SerializeField] float upDistance = 100f;
 
-    public void ShowInvalidWordPopup(InvalidWordType type)
+    public void ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType type, string word)
     {
-        switch (type)
-        {
-            case InvalidWordType.NotInWordlist:
-                invalidWordText.text = "Salita is not in the wordlist!";
-                break;
-            case InvalidWordType.AlreadyUsed:
-                invalidWordText.text = "Salita has already been used!";
-                break;
-        }
+        GameObject popupInstance = Instantiate(popupPrefab, parentObj.transform);
+        popupInstance.transform.localPosition = Vector3.zero; 
+        TextMeshProUGUI invalidWordText = popupInstance.GetComponentInChildren<TextMeshProUGUI>();
+        Image bgImg = popupInstance.GetComponentInChildren<Image>();
 
-        parentObj.SetActive(true);
-        StartCoroutine(fadeOut(1.5f));
+        invalidWordText.text = InvalidWordTypes.GetInvalidWordMessage(type, word);
+
+        StartCoroutine(fadeOut(fadeOutTime, upDistance, popupInstance, invalidWordText, bgImg));
     }
 
-    IEnumerator fadeOut(float fadeOutTime)
+    IEnumerator fadeOut(float fadeOutTime, float upDistance, GameObject popupInstance, TextMeshProUGUI invalidWordText, Image bgImg)
     {
         float startOpacity = 1f;
         float elapsed = 0f;
+
+        float upPerDelta = upDistance / fadeOutTime;
 
         while (elapsed < fadeOutTime)
         {
             elapsed += Time.deltaTime;
 
+            popupInstance.transform.Translate(Vector3.up * upPerDelta * Time.deltaTime);
             bgImg.color = new Color(bgImg.color.r, bgImg.color.g, bgImg.color.b, Mathf.Lerp(startOpacity, 0f, elapsed / fadeOutTime));
             invalidWordText.color = new Color(invalidWordText.color.r, invalidWordText.color.g, invalidWordText.color.b, Mathf.Lerp(startOpacity, 0f, elapsed / fadeOutTime));
 
             yield return null;
         }
 
-        parentObj.SetActive(false);
-        bgImg.color = new Color(bgImg.color.r, bgImg.color.g, bgImg.color.b, startOpacity); 
-        invalidWordText.color = new Color(invalidWordText.color.r, invalidWordText.color.g, invalidWordText.color.b, startOpacity);
-    }
-
-    //wacky work around to get the components while disabled, gets called in salita slots in its start
-    public void getComponents()
-    {
-        invalidWordText = GetComponentInChildren<TextMeshProUGUI>(true);
-        bgImg = GetComponentInChildren<Image>(true);
-
-        parentObj.SetActive(false);
+        Destroy(popupInstance);
     }
 }

@@ -50,8 +50,7 @@ public class SalitaSlots : MonoBehaviour
     private void Start()
     {
         config = GameManager.Instance.config;
-        invalidWordPopupScript = FindObjectOfType<InvalidWordPopup>(true);
-        invalidWordPopupScript.getComponents();
+        invalidWordPopupScript = FindFirstObjectByType<InvalidWordPopup>();
     }
 
     private void Update() // Temporarily
@@ -93,14 +92,14 @@ public class SalitaSlots : MonoBehaviour
 
         if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) 
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordPopup.InvalidWordType.AlreadyUsed);
+            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AlreadyUsed, latinSalita);
             return false;
         }
 
         if (GameManager.Instance.validWords.Contains(latinSalita)) return true;
         else 
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordPopup.InvalidWordType.NotInWordlist);
+            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
             return false;
         }
     }
