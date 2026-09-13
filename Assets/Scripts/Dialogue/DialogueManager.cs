@@ -51,8 +51,12 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
-        currentContainer = dialogueContainers[dialogue.containerIndex];
-        currentContainer.ClearText();
+
+        if (currentContainer)
+        {
+            currentContainer = dialogueContainers[dialogue.containerIndex];
+            currentContainer.ClearText();
+        }
 
         StartCoroutine(StartDelay());
 
@@ -89,6 +93,9 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string sentence)
     {
+        // If the currentContainer is null, break
+        if (!currentContainer) yield break;
+        
         Animator anim = currentContainer.GetComponent<Animator>();
 
         isTyping = true;
@@ -129,7 +136,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        currentContainer.ClearText();
+        if (currentContainer) currentContainer.ClearText();
 
         currentDialogue = null;
         dialoguing = false;

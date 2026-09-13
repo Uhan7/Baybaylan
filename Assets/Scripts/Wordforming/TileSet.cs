@@ -18,13 +18,14 @@ public class TileSet : MonoBehaviour
     [SerializeField] private Canvas canvas;
 
     // Main Functions ----------------------------------------------------------
-    private void Awake()
+    private void Start()
     {
         config = GameManager.Instance.config;
     }
 
     private void OnEnable()
     {
+        if (!config) return;
         if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
