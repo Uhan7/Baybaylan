@@ -44,10 +44,14 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private bool replacingTiles;
     [SerializeField] private bool scoringSalita;
 
+    InvalidWordPopup invalidWordPopupScript;
+
     // Main Functions ----------------------------------------------------------
     private void Start()
     {
         config = GameManager.Instance.config;
+        invalidWordPopupScript = FindObjectOfType<InvalidWordPopup>(true);
+        invalidWordPopupScript.getComponents();
     }
 
     private void Update() // Temporarily
@@ -87,10 +91,18 @@ public class SalitaSlots : MonoBehaviour
 
         // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
 
-        if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) return false;
+        if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) 
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordPopup.InvalidWordType.AlreadyUsed);
+            return false;
+        }
 
         if (GameManager.Instance.validWords.Contains(latinSalita)) return true;
-        else return false;
+        else 
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordPopup.InvalidWordType.NotInWordlist);
+            return false;
+        }
     }
 
     private void UpdateActiveTiles()
