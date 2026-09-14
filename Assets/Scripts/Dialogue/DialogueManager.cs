@@ -27,6 +27,14 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector] private bool skip;
     [ReadOnly, SerializeField] public bool dialoguing; // Used in DialogueBox.cs (open animations)
 
+    [Header("Dialogue Characters")]
+    [Header("Left")]
+    [SerializeField] private Animator leftAnimator;
+    [SerializeField] private Image leftImage;
+    [Header("Right")]
+    [SerializeField] private Animator rightAnimator;
+    [SerializeField] private Image rightImage;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
@@ -78,24 +86,26 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        string sentence = currentDialogue.sentences[currentSentenceIndex];
+        DialogueSentence dialogueSentence = currentDialogue.sentences[currentSentenceIndex];
 
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(TypeSentence(dialogueSentence));
 
         currentSentenceIndex++;
     }
 
-    private IEnumerator TypeSentence(string sentence)
+    private IEnumerator TypeSentence(DialogueSentence dialogueSentence)
     {
         // If the currentContainer is null, break
         if (!dialogueContainer) yield break;
-        
-        Animator anim = dialogueContainer.GetComponent<Animator>();
 
         isTyping = true;
         skip = false;
 
+        SetCharacterSprite(dialogueSentence);
+        AnimateCharacters(dialogueSentence);
+
+        string sentence = dialogueSentence.sentence;
         dialogueContainer.SetTextInstant(sentence);
 
         int total = sentence.Length;
@@ -127,6 +137,71 @@ public class DialogueManager : MonoBehaviour
 
         dialogueContainer.ShowNextIndicator(true);
         isTyping = false;
+    }
+
+    private void SetCharacterSprite(DialogueSentence dialogueSentence)
+    {
+        // Guard
+        if (!leftImage)
+        {
+            Debug.LogError("The Image of the LEFT dialogue character was not assigned to the DialogueManager");
+            return;
+        }
+        if (!rightImage)
+        {
+            Debug.LogError("The Image of the RIGHT dialogue character was not assigned to the DialogueManager");
+            return;
+        }
+
+        // Logic
+        DialogueSentence.SpeakerPosition speakerPosition = dialogueSentence.speakerPosition;
+        UnityEngine.Sprite characterSprite = dialogueSentence.characterSprite;
+        switch (speakerPosition)
+        {       
+            case DialogueSentence.SpeakerPosition.LEFT:
+                leftImage.sprite = characterSprite;
+                break;
+                
+            case DialogueSentence.SpeakerPosition.RIGHT:
+                rightImage.sprite = characterSprite;
+                break;
+        }
+
+    }
+
+    private void AnimateCharacters(DialogueSentence dialogueSentence)
+    {
+        // Guard
+        if (!leftAnimator)
+        {
+            Debug.LogError("The Animator of the LEFT dialogue character was not assigned to the DialogueManager");
+            return;
+        }
+        if (!rightAnimator)
+        {
+            Debug.LogError("The Animator of the RIGHT dialogue character was not assigned to the DialogueManager"); 
+            return;
+        }
+
+        // Logic
+        DialogueSentence.SpeakerPosition speakerPosition = dialogueSentence.speakerPosition;
+        switch (speakerPosition)
+        {
+            case DialogueSentence.SpeakerPosition.NONE:
+                leftAnimator?.SetBool("isTalking", false);
+                rightAnimator?.SetBool("isTalking", false);
+                break;
+                
+            case DialogueSentence.SpeakerPosition.LEFT:
+                leftAnimator?.SetBool("isTalking", true);
+                rightAnimator?.SetBool("isTalking", false);
+                break;
+                
+            case DialogueSentence.SpeakerPosition.RIGHT:
+                leftAnimator?.SetBool("isTalking", false);
+                rightAnimator?.SetBool("isTalking", true);
+                break;
+        }
     }
 
     private void EndDialogue()
