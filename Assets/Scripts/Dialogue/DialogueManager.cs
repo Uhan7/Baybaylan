@@ -11,10 +11,9 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector] public static DialogueManager Instance;
 
     [Header("References")]
-    [SerializeField] private DialogueContainer[] dialogueContainers;
+    [SerializeField] private DialogueContainer dialogueContainer;
     [SerializeField] public Image dimmer; // I think this unclean af lol
     [SerializeField] private AudioSource aSource;
-    [HideInInspector] private DialogueContainer currentContainer;
 
     [Header("Dialogue Details")]
     [HideInInspector] private Dialogue currentDialogue;
@@ -52,20 +51,16 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
 
-        if (currentContainer)
-        {
-            currentContainer = dialogueContainers[dialogue.containerIndex];
-            currentContainer.ClearText();
-        }
-
-        StartCoroutine(StartDelay());
+        if (dialogueContainer)
+            dialogueContainer.ClearText();
 
         dialoguing = true;
+        StartCoroutine(StartDelay());
     }
 
     private IEnumerator StartDelay()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.75f);
         NextSentence();
     }
 
@@ -94,14 +89,14 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator TypeSentence(string sentence)
     {
         // If the currentContainer is null, break
-        if (!currentContainer) yield break;
+        if (!dialogueContainer) yield break;
         
-        Animator anim = currentContainer.GetComponent<Animator>();
+        Animator anim = dialogueContainer.GetComponent<Animator>();
 
         isTyping = true;
         skip = false;
 
-        currentContainer.SetTextInstant(sentence);
+        dialogueContainer.SetTextInstant(sentence);
 
         int total = sentence.Length;
 
@@ -109,11 +104,11 @@ public class DialogueManager : MonoBehaviour
         {
             if (skip)
             {
-                currentContainer.ShowFullText();
+                dialogueContainer.ShowFullText();
                 break;
             }
 
-            currentContainer.SetVisibleCharacters(i);
+            dialogueContainer.SetVisibleCharacters(i);
 
             if (i % 6 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
 
@@ -130,13 +125,13 @@ public class DialogueManager : MonoBehaviour
             else yield return new WaitForSeconds(currentDialogue.textSpeed);
         }
 
-        currentContainer.ShowNextIndicator(true);
+        dialogueContainer.ShowNextIndicator(true);
         isTyping = false;
     }
 
     private void EndDialogue()
     {
-        if (currentContainer) currentContainer.ClearText();
+        if (dialogueContainer) dialogueContainer.ClearText();
 
         currentDialogue = null;
         dialoguing = false;

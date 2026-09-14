@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Dialogue : ScriptableObject
 {
-	public int containerIndex = 0;
 	[TextArea(3, 10)] public string[] sentences;
 	public AudioClip soundToPlay;
 	public float textSpeed = 0.02f;
