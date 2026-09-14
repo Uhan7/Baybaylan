@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private AudioSource aSource;
 
     [Header("Dialogue Details")]
-    [HideInInspector] private Dialogue currentDialogue;
+    [ReadOnly, SerializeField] private Dialogue currentDialogue;
     [HideInInspector] private int currentSentenceIndex;
 
     [Header("Actions")]
