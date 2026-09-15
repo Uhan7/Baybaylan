@@ -8,18 +8,31 @@ public static class InvalidWordTypes
         AlreadyUsed
     }
 
-    public static string GetInvalidWordMessage(InvalidWordType type, string word)
+    [System.Serializable]
+    public class Messages
     {
-        word = word.ToUpper(); //caps all letters
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string notInWordlist = "Walang salitang \"{word}";
 
-        switch (type)
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string alreadyUsed = "Salitang \"{word}\" has already been used!";
+
+        public string GetInvalidWordMessage(InvalidWordType type, string word)
         {
-            case InvalidWordType.NotInWordlist:
-                return "Walang salitang \"" + word + "\"!";
-            case InvalidWordType.AlreadyUsed:
-                return "Salitang \"" + word + "\" has already been used!";
-            default:
-                return "";
+            string template;
+            switch (type)
+            {
+                case InvalidWordType.NotInWordlist:
+                    template = notInWordlist;
+                    break;
+                case InvalidWordType.AlreadyUsed:
+                    template = alreadyUsed;
+                    break;
+                default:
+                    return "";
+            }
+
+            return (template ?? "").Replace("{word}", word ?? "");
         }
     }
 }

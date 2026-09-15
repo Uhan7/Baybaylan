@@ -1436,7 +1436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 157}
+  m_AnchoredPosition: {x: 0, y: 210}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806227519595669328
@@ -1452,6 +1452,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentObj: {fileID: 4480330844728702183}
+  popupPrefab: {fileID: 3177499782277301864, guid: d24357d9410ecf44eb58b7e418242f07, type: 3}
+  fadeOutTime: 2
+  fadeOutDelay: 0.5
+  moveUpDelay: 1
+  upDistance: 50
+  invalidWordMessages:
+    notInWordlist: Walang salitang "{word}"
+    alreadyUsed: Sinulat na ang salitang "{word}"
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0

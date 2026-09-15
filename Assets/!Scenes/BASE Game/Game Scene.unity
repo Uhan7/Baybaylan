@@ -180,10 +180,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 806227519595669328, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: popupPrefab
-      value: 
-      objectReference: {fileID: 3177499782277301864, guid: d24357d9410ecf44eb58b7e418242f07, type: 3}
     - target: {fileID: 853760679868543385, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Name
       value: Prompt Container
