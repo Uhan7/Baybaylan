@@ -11,13 +11,12 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector] public static DialogueManager Instance;
 
     [Header("References")]
-    [SerializeField] private DialogueContainer[] dialogueContainers;
+    [SerializeField] private DialogueContainer dialogueContainer;
     [SerializeField] public Image dimmer; // I think this unclean af lol
     [SerializeField] private AudioSource aSource;
-    [HideInInspector] private DialogueContainer currentContainer;
 
     [Header("Dialogue Details")]
-    [HideInInspector] private Dialogue currentDialogue;
+    [ReadOnly, SerializeField] private Dialogue currentDialogue;
     [HideInInspector] private int currentSentenceIndex;
 
     [Header("Actions")]
@@ -27,6 +26,14 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector] private bool isTyping;
     [HideInInspector] private bool skip;
     [ReadOnly, SerializeField] public bool dialoguing; // Used in DialogueBox.cs (open animations)
+
+    [Header("Dialogue Characters")]
+    [Header("Left")]
+    [SerializeField] private Animator leftAnimator;
+    [SerializeField] private Image leftImage;
+    [Header("Right")]
+    [SerializeField] private Animator rightAnimator;
+    [SerializeField] private Image rightImage;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -52,20 +59,16 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
 
-        if (currentContainer)
-        {
-            currentContainer = dialogueContainers[dialogue.containerIndex];
-            currentContainer.ClearText();
-        }
-
-        StartCoroutine(StartDelay());
+        if (dialogueContainer)
+            dialogueContainer.ClearText();
 
         dialoguing = true;
+        StartCoroutine(StartDelay());
     }
 
     private IEnumerator StartDelay()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.75f);
         NextSentence();
     }
 
@@ -83,25 +86,27 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        string sentence = currentDialogue.sentences[currentSentenceIndex];
+        DialogueSentence dialogueSentence = currentDialogue.sentences[currentSentenceIndex];
 
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(TypeSentence(dialogueSentence));
 
         currentSentenceIndex++;
     }
 
-    private IEnumerator TypeSentence(string sentence)
+    private IEnumerator TypeSentence(DialogueSentence dialogueSentence)
     {
         // If the currentContainer is null, break
-        if (!currentContainer) yield break;
-        
-        Animator anim = currentContainer.GetComponent<Animator>();
+        if (!dialogueContainer) yield break;
 
         isTyping = true;
         skip = false;
 
-        currentContainer.SetTextInstant(sentence);
+        SetCharacterSprite(dialogueSentence);
+        AnimateCharacters(dialogueSentence);
+
+        string sentence = dialogueSentence.sentence;
+        dialogueContainer.SetTextInstant(sentence);
 
         int total = sentence.Length;
 
@@ -109,11 +114,11 @@ public class DialogueManager : MonoBehaviour
         {
             if (skip)
             {
-                currentContainer.ShowFullText();
+                dialogueContainer.ShowFullText();
                 break;
             }
 
-            currentContainer.SetVisibleCharacters(i);
+            dialogueContainer.SetVisibleCharacters(i);
 
             if (i % 6 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
 
@@ -130,13 +135,76 @@ public class DialogueManager : MonoBehaviour
             else yield return new WaitForSeconds(currentDialogue.textSpeed);
         }
 
-        currentContainer.ShowNextIndicator(true);
+        dialogueContainer.ShowNextIndicator(true);
         isTyping = false;
+    }
+
+    private void SetCharacterSprite(DialogueSentence dialogueSentence)
+    {
+        if (leftImage)
+        {
+            Sprite leftCharacterSprite = dialogueSentence.leftCharacterSprite;
+            leftImage.sprite = dialogueSentence.leftCharacterSprite;
+
+            if (null == leftCharacterSprite) leftImage.enabled = false;
+            else leftImage.enabled = true;
+        }
+        else Debug.LogError("The Image of the LEFT dialogue character was not assigned to the DialogueManager");
+        
+        if (rightImage)
+        {
+            Sprite rightCharacterSprite = dialogueSentence.rightCharacterSprite;
+            rightImage.sprite = rightCharacterSprite;
+
+            if (null == rightCharacterSprite) rightImage.enabled = false;
+            else rightImage.enabled = true;
+        }
+        else Debug.LogError("The Image of the RIGHT dialogue character was not assigned to the DialogueManager");
+    }
+
+    private void AnimateCharacters(DialogueSentence dialogueSentence)
+    {
+        // Guard
+        if (!leftAnimator)
+        {
+            Debug.LogError("The Animator of the LEFT dialogue character was not assigned to the DialogueManager");
+            return;
+        }
+        if (!rightAnimator)
+        {
+            Debug.LogError("The Animator of the RIGHT dialogue character was not assigned to the DialogueManager"); 
+            return;
+        }
+
+        // Logic
+        DialogueSentence.SpeakerPosition speakerPosition = dialogueSentence.speakerPosition;
+        switch (speakerPosition)
+        {
+            case DialogueSentence.SpeakerPosition.NONE:
+                leftAnimator?.SetBool("isTalking", false);
+                rightAnimator?.SetBool("isTalking", false);
+                break;
+                
+            case DialogueSentence.SpeakerPosition.LEFT:
+                leftAnimator?.SetBool("isTalking", true);
+                rightAnimator?.SetBool("isTalking", false);
+                break;
+                
+            case DialogueSentence.SpeakerPosition.RIGHT:
+                leftAnimator?.SetBool("isTalking", false);
+                rightAnimator?.SetBool("isTalking", true);
+                break;
+            
+            case DialogueSentence.SpeakerPosition.BOTH:
+                leftAnimator?.SetBool("isTalking", true);
+                rightAnimator?.SetBool("isTalking", true);
+                break;
+        }
     }
 
     private void EndDialogue()
     {
-        if (currentContainer) currentContainer.ClearText();
+        if (dialogueContainer) dialogueContainer.ClearText();
 
         currentDialogue = null;
         dialoguing = false;
