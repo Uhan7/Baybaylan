@@ -13,30 +13,54 @@ MonoBehaviour:
   m_Name: NewDialogueLogic
   m_EditorClassIdentifier: 
   sentences:
+  - speakerPosition: 0
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 'Narrator: The dialogue begins here'
   - speakerPosition: 1
-    characterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
     sentence: I am... character number 1
   - speakerPosition: 2
-    characterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
     sentence: Ako nga pala si karakter bilang 2
   - speakerPosition: 1
-    characterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
     sentence: I luuuuuuuuv men ! ! ! ! !
   - speakerPosition: 2
-    characterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
     sentence: Mahal ko'y eabab
   - speakerPosition: 0
-    characterSprite: {fileID: 21300000, guid: 3e57a263d7452458a81525b189e44174, type: 3}
+    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
     sentence: '3rd Character: What did you just say?'
   - speakerPosition: 2
-    characterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
     sentence: '! ! !'
   - speakerPosition: 2
-    characterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
     sentence: '! ! !'
+  - speakerPosition: 0
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 0
+    leftCharacterSprite: {fileID: 21300000, guid: 3e57a263d7452458a81525b189e44174, type: 3}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
   - speakerPosition: 1
-    characterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    leftCharacterSprite: {fileID: 21300000, guid: 3e57a263d7452458a81525b189e44174, type: 3}
+    rightCharacterSprite: {fileID: 0}
     sentence: Paki ulit nga.
+  - speakerPosition: 3
+    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+    sentence: :0
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
   textSpeed: 0.02
   textPunctSpeed: 0.15

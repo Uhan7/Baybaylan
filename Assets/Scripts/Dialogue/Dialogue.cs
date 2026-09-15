@@ -11,10 +11,12 @@ public struct DialogueSentence
 	{
 		NONE = 0,
 		LEFT = 1,
-		RIGHT = 2
+		RIGHT = 2,
+		BOTH = 3
 	}
 	public DialogueSentence.SpeakerPosition speakerPosition;
-	public UnityEngine.Sprite characterSprite;
+	public UnityEngine.Sprite leftCharacterSprite;
+	public UnityEngine.Sprite rightCharacterSprite;
 	[TextArea(3, 10)] public string sentence;
 }
 

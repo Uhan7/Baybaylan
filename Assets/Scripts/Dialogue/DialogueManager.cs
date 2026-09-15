@@ -141,32 +141,25 @@ public class DialogueManager : MonoBehaviour
 
     private void SetCharacterSprite(DialogueSentence dialogueSentence)
     {
-        // Guard
-        if (!leftImage)
+        if (leftImage)
         {
-            Debug.LogError("The Image of the LEFT dialogue character was not assigned to the DialogueManager");
-            return;
+            Sprite leftCharacterSprite = dialogueSentence.leftCharacterSprite;
+            leftImage.sprite = dialogueSentence.leftCharacterSprite;
+
+            if (null == leftCharacterSprite) leftImage.enabled = false;
+            else leftImage.enabled = true;
         }
-        if (!rightImage)
+        else Debug.LogError("The Image of the LEFT dialogue character was not assigned to the DialogueManager");
+        
+        if (rightImage)
         {
-            Debug.LogError("The Image of the RIGHT dialogue character was not assigned to the DialogueManager");
-            return;
-        }
+            Sprite rightCharacterSprite = dialogueSentence.rightCharacterSprite;
+            rightImage.sprite = rightCharacterSprite;
 
-        // Logic
-        DialogueSentence.SpeakerPosition speakerPosition = dialogueSentence.speakerPosition;
-        UnityEngine.Sprite characterSprite = dialogueSentence.characterSprite;
-        switch (speakerPosition)
-        {       
-            case DialogueSentence.SpeakerPosition.LEFT:
-                leftImage.sprite = characterSprite;
-                break;
-                
-            case DialogueSentence.SpeakerPosition.RIGHT:
-                rightImage.sprite = characterSprite;
-                break;
+            if (null == rightCharacterSprite) rightImage.enabled = false;
+            else rightImage.enabled = true;
         }
-
+        else Debug.LogError("The Image of the RIGHT dialogue character was not assigned to the DialogueManager");
     }
 
     private void AnimateCharacters(DialogueSentence dialogueSentence)
@@ -199,6 +192,11 @@ public class DialogueManager : MonoBehaviour
                 
             case DialogueSentence.SpeakerPosition.RIGHT:
                 leftAnimator?.SetBool("isTalking", false);
+                rightAnimator?.SetBool("isTalking", true);
+                break;
+            
+            case DialogueSentence.SpeakerPosition.BOTH:
+                leftAnimator?.SetBool("isTalking", true);
                 rightAnimator?.SetBool("isTalking", true);
                 break;
         }
