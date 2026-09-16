@@ -19,6 +19,9 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        SetBGMVolume(SettingsHolder.BGMVolume);
+        SetSFXVolume(SettingsHolder.SFXVolume);
     }
 
     // Helper Functions --------------------------------------------------------

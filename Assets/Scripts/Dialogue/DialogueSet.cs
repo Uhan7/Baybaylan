@@ -68,11 +68,11 @@ public class DialogueSet : MonoBehaviour
         hasCompleted = true;
         isRunning = false;
 
-        eventAfterDialogue?.Invoke();
         if (DialogueManager.Instance.dimmer != null)
         {
             DialogueManager.Instance.dimmer.raycastTarget = false;
             DialogueManager.Instance.dimmer.GetComponent<Animator>().Play("image_fade_out");
         }
+        eventAfterDialogue?.Invoke();
     }
 }
