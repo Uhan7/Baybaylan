@@ -36,10 +36,10 @@ EditorBuildSettings:
     path: Assets/!Scenes/~IESERGA/Level 1-3.unity
     guid: 51d740ddd32414bc493aa938d2e4761c
   - enabled: 0
-    path: Assets/!Scenes/Base Game/Game Scene.unity
+    path: Assets/!Scenes/BASE Game/Game Scene.unity
     guid: cae4f39c211db42bbbfb67e6e12a306b
   - enabled: 0
-    path: Assets/!Scenes/Base Game/Alahas Scene.unity
+    path: Assets/!Scenes/BASE Game/Alahas Scene.unity
     guid: 358d9eec1b2aa490e95dedb24ca3e204
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
