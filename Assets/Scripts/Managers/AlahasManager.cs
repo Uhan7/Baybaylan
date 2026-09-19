@@ -40,8 +40,14 @@ public class AlahasManager : MonoBehaviour
         // if (alahasNameText != null) Instance.alahasNameText = this.alahasNameText;
         // if (alahasDescriptionText != null) Instance.alahasDescriptionText = this.alahasDescriptionText;
 
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         ResetAllAlahas();
 
