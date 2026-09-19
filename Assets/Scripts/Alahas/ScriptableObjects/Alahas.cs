@@ -10,8 +10,11 @@ public abstract class Alahas : ScriptableObject
     [TextArea(2, 2), SerializeField] public string extraText = "Extra text tungkol sa Alahas.";
 
     // Helper Functions --------------------------------------------------------
-    public abstract void ApplyAlahas();
-    public abstract void RemoveAlahas();
+    public abstract bool triggerCondition();
+    public abstract void onTriggerEffect();
+    public abstract void onSubmit();
+    public abstract void onTurnEnd();
+    public abstract void onUpdate();
 
     public void AddAlahasToList()
     {

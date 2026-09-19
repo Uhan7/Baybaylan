@@ -78,6 +78,7 @@ public class SalitaSlots : MonoBehaviour
         }
         else
         {
+            AlahasSubManager.Instance.onSubmit();
             StartCoroutine(ScoreSalita());
         }
     }
@@ -167,7 +168,11 @@ public class SalitaSlots : MonoBehaviour
 
         scoringSalita = false;
 
-        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) StartCoroutine(ReplaceActiveTiles());
+        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
+        {
+            StartCoroutine(ReplaceActiveTiles());
+            AlahasSubManager.Instance.onTurnEnd();
+        }
         else GameManager.Instance.EndRound();
     }
 

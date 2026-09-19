@@ -34,9 +34,30 @@ public class TileSet : MonoBehaviour
     private void SpawnTile(GameObject tilePrefab)
     {
         GameObject tile = Instantiate(tilePrefab, transform);
+        Tile tileScript = tile.GetComponent<Tile>();
         tile.GetComponent<Draggable>().canvas = canvas;
-        tile.GetComponent<Tile>().sfxSource = sfxSource;
+        tileScript.sfxSource = sfxSource;
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
+
+        applyGold(tileScript);
+    }
+
+    void applyVowelBoost(Tile script)
+    {
+        if(script.isVowel && AlahasSubManager.Instance.boostVowels)
+        {
+            script.isVowelBoosted = true;
+            script.scoreMultiplier *= AlahasSubManager.Instance.vowelScoreMulti;
+        }
+    }
+
+    void applyGold(Tile script)
+    {
+        if(AlahasSubManager.Instance.spawnGolds && AlahasSubManager.Instance.goldSpawnChance < Random.value)
+        {
+            script.isGold = true;
+            script.scoreMultiplier *= AlahasSubManager.Instance.goldScoreMulti;
+        }
     }
 
     public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
@@ -93,7 +114,8 @@ public class TileSet : MonoBehaviour
                     Tile tileComp = obj.GetComponent<Tile>();
                     int effectiveChance = tileComp.GetChance();
 
-                    if (AlahasManager.Instance.boostVowels && tileComp.isVowel) effectiveChance = Mathf.RoundToInt(effectiveChance * AlahasManager.Instance.vowelChanceMultiplier);
+                    if (AlahasSubManager.Instance.boostVowels && tileComp.isVowel) 
+                        effectiveChance = Mathf.RoundToInt(effectiveChance * AlahasSubManager.Instance.vowelSpawnChanceIncrease);
 
                     roll -= effectiveChance;
 

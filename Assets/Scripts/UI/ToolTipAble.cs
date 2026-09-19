@@ -5,16 +5,16 @@ using TMPro;
 //slap this on an obj to let the tooltip display its info when hovered over
 class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] GameObject tooltipObj;
+    [SerializeField] protected GameObject tooltipObj;
     [SerializeField] string tipText;
-    [SerializeField] float ToolTipDelay = 1f;
-    [SerializeField] bool followMouse = false;
-    static Vector2 ToolTipPositionOffset = new Vector2(300, 100);
-    GameObject tooltipObjInstance;
+    [SerializeField] protected float ToolTipDelay = 1f;
+    [SerializeField] protected bool followMouse = false;
+    [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(300, 100);
+    protected GameObject tooltipObjInstance;
     TMP_Text tooltipText;
-    float timer = 0f;
-    bool isHovered = false;
-    bool onetime = false;
+    protected float timer = 0f;
+    protected bool isHovered = false;
+    protected bool onetime = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -27,7 +27,7 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         endHover();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (isHovered)
         {
@@ -51,9 +51,9 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-    void startHover()
+    protected virtual void startHover()
     {
-        tooltipObjInstance = Instantiate(tooltipObj, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        tooltipObjInstance = Instantiate(tooltipObj, transform.position, Quaternion.identity, GameObject.FindFirstObjectByType<Canvas>().transform);
         tooltipObjInstance.SetActive(true);
         tooltipText = tooltipObjInstance.GetComponentInChildren<TMP_Text>();
     }
@@ -64,7 +64,7 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         onetime = false;
     }
 
-    void oneTime()
+    protected virtual void oneTime()
     {
         if(onetime)
             return;
