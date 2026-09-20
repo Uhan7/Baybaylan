@@ -39,7 +39,17 @@ public class TileSet : MonoBehaviour
         tileScript.sfxSource = sfxSource;
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
 
+        applyVowelBoost(tileScript);
         applyGold(tileScript);
+    }
+
+    private int GetSpawnWeight(Tile tile)
+    {
+        int weight = tile.GetChance();
+        if (AlahasSubManager.Instance.boostVowels && tile.isVowel)
+            weight = Mathf.RoundToInt(weight * AlahasSubManager.Instance.vowelSpawnChanceIncrease);
+
+        return weight;
     }
 
     void applyVowelBoost(Tile script)
@@ -63,7 +73,7 @@ public class TileSet : MonoBehaviour
     public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
     {
         int totalChance = 0;
-        foreach (GameObject obj in config.tilesSelection) totalChance += obj.GetComponent<Tile>().GetChance();
+        foreach (GameObject obj in config.tilesSelection) totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
 
         for (int i = 0; i < tilesAmount; i++)
         {
@@ -111,13 +121,7 @@ public class TileSet : MonoBehaviour
 
                 foreach (GameObject obj in config.tilesSelection)
                 {
-                    Tile tileComp = obj.GetComponent<Tile>();
-                    int effectiveChance = tileComp.GetChance();
-
-                    if (AlahasSubManager.Instance.boostVowels && tileComp.isVowel) 
-                        effectiveChance = Mathf.RoundToInt(effectiveChance * AlahasSubManager.Instance.vowelSpawnChanceIncrease);
-
-                    roll -= effectiveChance;
+                    roll -= GetSpawnWeight(obj.GetComponent<Tile>());
 
                     if (roll < 0)
                     {

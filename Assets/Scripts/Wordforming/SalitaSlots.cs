@@ -67,6 +67,8 @@ public class SalitaSlots : MonoBehaviour
     // Button Functions
     public void EvaluateSalita()
     {
+        if (scoringSalita || replacingTiles) return;
+
         UpdateActiveTiles();
         GetSalitaFromTiles();
         UpdateSalitaText();
@@ -127,6 +129,7 @@ public class SalitaSlots : MonoBehaviour
     private IEnumerator ScoreSalita()
     {
         scoringSalita = true;
+        submitButton.interactable = false;
         salitaScore = 0;
         float activeTileCount = 0;
         preMultipliedScoreText.text = "";

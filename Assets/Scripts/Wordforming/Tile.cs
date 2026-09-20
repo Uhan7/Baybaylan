@@ -82,6 +82,7 @@ public class Tile : MonoBehaviour
 
         currentCharmod = Diacritic.None;
         ToggleCharmodObject();
+        applyModVisuals();
         if (isVowel)
         {
             latinText = vowel;
