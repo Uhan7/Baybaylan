@@ -4,7 +4,7 @@ using UnityEngine;
 public class LuyaAlahas : Alahas
 {
     public float convertToGoldChance = 0.3f;
-    public static float goldScoreMultiplier = 4f;
+    public static float goldScoreMultiplier = 2f;
 
     public override bool triggerCondition()
     {

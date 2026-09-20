@@ -41,6 +41,8 @@ class AlahasSubManager : MonoBehaviour
     {
         foreach(Alahas alahas in heldAlahas)
         {
+            if (!alahas) continue;
+
             alahas.onSubmit();
         }
     }
@@ -49,6 +51,8 @@ class AlahasSubManager : MonoBehaviour
     {
         foreach(Alahas alahas in heldAlahas)
         {
+            if (!alahas) continue;
+
             alahas.onTurnEnd();
         }
     }

@@ -53,7 +53,7 @@ public class TileSet : MonoBehaviour
 
     void applyGold(Tile script)
     {
-        if(AlahasSubManager.Instance.spawnGolds && AlahasSubManager.Instance.goldSpawnChance < Random.value)
+        if(AlahasSubManager.Instance.spawnGolds && Random.value < AlahasSubManager.Instance.goldSpawnChance)
         {
             script.isGold = true;
             script.scoreMultiplier *= AlahasSubManager.Instance.goldScoreMulti;
