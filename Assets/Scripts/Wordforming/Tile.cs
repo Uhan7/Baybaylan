@@ -68,11 +68,14 @@ public class Tile : MonoBehaviour
     [SerializeField] public bool isBlossom;
     [SerializeField] public bool isToolTipped;
 
+    ToolTipAble tooltipScript;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
         draggableScript = GetComponent<Draggable>();
         imageComponent = GetComponent<Image>();
+        tooltipScript = GetComponentInChildren<ToolTipAble>();
     }
 
     private void Start()
@@ -99,6 +102,7 @@ public class Tile : MonoBehaviour
     private void Update()
     {
         ChangeSpriteOnDrag();
+        updateLatinTooltipText();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -194,6 +198,16 @@ public class Tile : MonoBehaviour
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
         if(isVowelBoosted)
             vowelBoostedSymbol.SetActive(true);
+    }
+
+    void updateLatinTooltipText()
+    {
+        if(isToolTipped)
+        {
+            tooltipScript.tipText = latinText;
+        }
+        else
+            tooltipScript.enabled = false;
     }
 
     // private void ApplyGoldChance()

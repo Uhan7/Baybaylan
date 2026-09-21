@@ -6,7 +6,7 @@ using TMPro;
 class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] protected GameObject tooltipObj;
-    [SerializeField] string tipText;
+    [SerializeField] public string tipText;
     [SerializeField] protected float ToolTipDelay = 1f;
     [SerializeField] protected bool followMouse = false;
     [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(300, 100);
