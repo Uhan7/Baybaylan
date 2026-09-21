@@ -8,9 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 792773709758153052, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Spacing.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 792773709758153052, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Spacing.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 792773709758153052, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_CellSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 792773709758153052, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_CellSize.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 792773709758153052, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_ConstraintCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Name
-      value: Base Side Container
+      value: Left Side Container Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8848890623995944232, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Pivot.x
