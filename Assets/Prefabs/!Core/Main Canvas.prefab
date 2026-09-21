@@ -2931,13 +2931,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4564636090421614898, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633080904485810340, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4782764418055955547, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058942391889496549, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315509100280023553, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8759441091286736747, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
       propertyPath: m_Name
       value: Backgrounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890246040411197735, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4851,6 +4871,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Latin Text Container
       objectReference: {fileID: 0}
+    - target: {fileID: 38718140356465893, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2538154781762273647, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4917,7 +4941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2538154781762273647, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 269.03
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 2538154781762273647, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
