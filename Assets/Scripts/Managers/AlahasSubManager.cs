@@ -40,9 +40,10 @@ class AlahasSubManager : MonoBehaviour
 
     public void onSubmit()
     {
-        foreach(Alahas alahas in heldAlahas)
+        for (int i = 0; i < heldAlahas.Count; i++)
         {
-            if (!alahas || !checkForPrevDupe(alahas)) continue;
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
 
             alahas.onSubmit();
         }
@@ -50,9 +51,10 @@ class AlahasSubManager : MonoBehaviour
 
     public void onTurnEnd()
     {
-        foreach(Alahas alahas in heldAlahas)
+        for (int i = 0; i < heldAlahas.Count; i++)
         {
-            if (!alahas || !checkForPrevDupe(alahas)) continue;
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
 
             alahas.onTurnEnd();
         }
@@ -60,9 +62,10 @@ class AlahasSubManager : MonoBehaviour
 
     void onUpdate()
     {
-        foreach(Alahas alahas in heldAlahas)
+        for (int i = 0; i < heldAlahas.Count; i++)
         {
-            if(!alahas || !checkForPrevDupe(alahas))
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i)
                 continue;
 
             alahas.onUpdate();
@@ -71,16 +74,4 @@ class AlahasSubManager : MonoBehaviour
         }
     }
 
-    bool checkForPrevDupe(Alahas alahas)
-    {
-        int index = heldAlahas.IndexOf(alahas);
-        if(index == -1)
-            return false;
-
-        for(int i = index; i > 0; i--)
-            if(heldAlahas[i] == alahas)
-                return true;
-
-        return false;
-    }
 }

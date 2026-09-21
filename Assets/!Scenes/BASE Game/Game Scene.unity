@@ -1006,6 +1006,14 @@ PrefabInstance:
       propertyPath: 'heldAlahas.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
+    - target: {fileID: 1298603661414612756, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'heldAlahas.Array.data[2]'
+      value:
+      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+    - target: {fileID: 1298603661414612756, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'heldAlahas.Array.data[3]'
+      value:
+      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
     - target: {fileID: 1679403779441987100, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.0029296875
