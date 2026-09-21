@@ -834,7 +834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4566948598260753594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2623,7 +2623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 510}
+  m_AnchoredPosition: {x: 0, y: 93}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6859135513367254571
@@ -3194,7 +3194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4208879090692836251, guid: f785168883c654a9d82d33f99f570031, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -55
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 4208879090692836251, guid: f785168883c654a9d82d33f99f570031, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3744,6 +3744,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2406812471065810189}
     m_Modifications:
+    - target: {fileID: 4293978788038059337, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6740440345611607214, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3827,6 +3831,10 @@ PrefabInstance:
     - target: {fileID: 7748093489402483152, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_Name
       value: Left Side Container Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748093489402483152, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5232,6 +5240,10 @@ PrefabInstance:
     - target: {fileID: 7160751688745169185, guid: d1e4fdac511ba4498944b760bd3ce12a, type: 3}
       propertyPath: m_Name
       value: Salita UI Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160751688745169185, guid: d1e4fdac511ba4498944b760bd3ce12a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -114,7 +114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165, y: 229}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 113, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1252148270883880934
@@ -235,9 +235,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipObj: {fileID: 354709192359970340, guid: efce47b13e7505640a8ab75e840a3f23, type: 3}
   tipText: 
-  ToolTipDelay: 0.25
+  ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: 300, y: 0}
+  ToolTipPositionOffset: {x: 285, y: 115}
   currentAlahas: {fileID: 0}
 --- !u!1 &8229925549601996740
 GameObject:
