@@ -41,6 +41,7 @@ public class TileSet : MonoBehaviour
 
         applyVowelBoost(tileScript);
         applyGold(tileScript);
+        applyToolTip(tileScript);
     }
 
     private int GetSpawnWeight(Tile tile)
@@ -50,6 +51,14 @@ public class TileSet : MonoBehaviour
             weight = Mathf.RoundToInt(weight * AlahasSubManager.Instance.vowelSpawnChanceIncrease);
 
         return weight;
+    }
+
+    void applyToolTip(Tile script)
+    {
+        if(AlahasSubManager.Instance.toolTipTiles)
+        {
+            script.isToolTipped = true;
+        }
     }
 
     void applyVowelBoost(Tile script)

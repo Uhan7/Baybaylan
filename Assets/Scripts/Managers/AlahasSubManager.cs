@@ -10,11 +10,12 @@ class AlahasSubManager : MonoBehaviour
 {
     //states to send to other scripts
     [ReadOnly, SerializeField] public bool boostVowels = false;
-    [ReadOnly,SerializeField] public float vowelSpawnChanceIncrease = 0;
+    [ReadOnly, SerializeField] public float vowelSpawnChanceIncrease = 0;
     [ReadOnly, SerializeField] public float vowelScoreMulti = 1f;
     [ReadOnly, SerializeField] public bool spawnGolds = false;
     [ReadOnly, SerializeField] public float goldSpawnChance = 0;
     [ReadOnly, SerializeField] public float goldScoreMulti = 1f;
+    [ReadOnly, SerializeField] public bool toolTipTiles = false;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
@@ -41,7 +42,7 @@ class AlahasSubManager : MonoBehaviour
     {
         foreach(Alahas alahas in heldAlahas)
         {
-            if (!alahas) continue;
+            if (!alahas || !checkForPrevDupe(alahas)) continue;
 
             alahas.onSubmit();
         }
@@ -51,7 +52,7 @@ class AlahasSubManager : MonoBehaviour
     {
         foreach(Alahas alahas in heldAlahas)
         {
-            if (!alahas) continue;
+            if (!alahas || !checkForPrevDupe(alahas)) continue;
 
             alahas.onTurnEnd();
         }
@@ -61,12 +62,25 @@ class AlahasSubManager : MonoBehaviour
     {
         foreach(Alahas alahas in heldAlahas)
         {
-            if(!alahas)
+            if(!alahas || !checkForPrevDupe(alahas))
                 continue;
 
             alahas.onUpdate();
             if(alahas.triggerCondition())
                 alahas.onTriggerEffect();
         }
+    }
+
+    bool checkForPrevDupe(Alahas alahas)
+    {
+        int index = heldAlahas.IndexOf(alahas);
+        if(index == -1)
+            return false;
+
+        for(int i = index; i > 0; i--)
+            if(heldAlahas[i] == alahas)
+                return true;
+
+        return false;
     }
 }
