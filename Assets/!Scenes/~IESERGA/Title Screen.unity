@@ -389,6 +389,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 495306747892283887, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 495306747892283887, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 571499999779998153, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 571499999779998153, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 571499999779998153, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 977210261053270154, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Camera
       value: 
@@ -475,6 +495,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2406812471065810189, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764264622970539092, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764264622970539092, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764264622970539092, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841333910709369970, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841333910709369970, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6923405883872689811, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
@@ -1211,7 +1251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Umalis
+  m_text: Lumabas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c26c63c5698604bd3a71e90dd4d587a3, type: 2}
   m_sharedMaterial: {fileID: 3369897418155278618, guid: c26c63c5698604bd3a71e90dd4d587a3, type: 2}
