@@ -651,10 +651,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 215
       objectReference: {fileID: 0}
-    - target: {fileID: 8361682754307147544, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: delayTime
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8372680278121190562, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Name
       value: Main Game

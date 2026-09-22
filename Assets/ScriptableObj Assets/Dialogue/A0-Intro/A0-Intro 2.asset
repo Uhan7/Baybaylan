@@ -20,7 +20,7 @@ MonoBehaviour:
   - speakerPosition: 1
     leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
     rightCharacterSprite: {fileID: 0}
-    sentence: "<i>Hmm\u2026</i> Ah!"
+    sentence: <i>Hmm...</i> Ah!
   - speakerPosition: 2
     leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
     rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
@@ -43,5 +43,5 @@ MonoBehaviour:
     rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
     sentence: Halika rito, anak. Sumunod ka sa akin.
   soundToPlay: {fileID: 0}
-  textSpeed: 0.02
-  textPunctSpeed: 0.18
+  textSpeed: 0.022
+  textPunctSpeed: 0.24
