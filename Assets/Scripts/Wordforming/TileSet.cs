@@ -57,15 +57,13 @@ public class TileSet : MonoBehaviour
         applyToolTip(tileScript);
     }
 
-    public void DahonNgKawayanSpawn(GameObject tilePrefab, bool isShy)
+    public void DahonNgKawayanSpawn(GameObject tilePrefab)
     {
         GameObject tile = Instantiate(tilePrefab, transform);
         Tile tileScript = tile.GetComponent<Tile>();
         tile.GetComponent<Draggable>().canvas = canvas;
         tileScript.sfxSource = sfxSource;
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
-
-        tileScript.isShy = isShy;
     }
 
     private int GetSpawnWeight(Tile tile)

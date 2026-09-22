@@ -10,8 +10,6 @@ class DahonNgKawayanUI : MonoBehaviour
     [SerializeField] GameObject tileLayoutGroupParent;
     [SerializeField] GameObject mainUiParent;
     [SerializeField] GameObject spawnButton; //the button to open the main UI 
-    [SerializeField] GameObject normalModButton;
-    [SerializeField] GameObject shyModButton;
     public static DahonNgKawayanUI Instance;
     LevelConfig config;
     List<Image> tileImgs = new List<Image>();
@@ -21,16 +19,12 @@ class DahonNgKawayanUI : MonoBehaviour
     int tileSelectedIndex = 0;
     int prevSelectedIndex = 0;
     bool spawnedTiles = false; //used by the button spawning func as a flag
-    bool shySelected = false;
     bool usedSpawn = false;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
-
-        normalModText = normalModButton.GetComponent<TextMeshProUGUI>();
-        shyModText = shyModButton.GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -76,12 +70,6 @@ class DahonNgKawayanUI : MonoBehaviour
         mainUiParent.SetActive(true);
     }
 
-    //used by the mod buttons
-    public void modTileButton(bool isShySelected)
-    {
-        shySelected = isShySelected;
-    }
-
     //used by the finish button to spawn the tile 
     public void finishSelection()
     {
@@ -89,7 +77,7 @@ class DahonNgKawayanUI : MonoBehaviour
         mainUiParent.SetActive(false);
         
         GameObject newTile = config.tilesSelection[tileSelectedIndex];
-        TileSet.Instance.DahonNgKawayanSpawn(newTile, shySelected);
+        TileSet.Instance.DahonNgKawayanSpawn(newTile);
     }
 
     void selectIndex(int index)
@@ -117,18 +105,6 @@ class DahonNgKawayanUI : MonoBehaviour
             tileImgs[prevSelectedIndex].color = Color.white;
         }
         prevSelectedIndex = tileSelectedIndex;
-
-        //updates the mod button's visuals
-        if(shySelected)
-        {
-            shyModText.color = selectedTileColor;
-            normalModText.color = Color.black;
-        }
-        else
-        {
-            shyModText.color = Color.black;
-            normalModText.color = selectedTileColor;
-        }
 
         //for odd reasons, these funcs are needed in update
         if(!AlahasSubManager.Instance.canCreateTile || usedSpawn)
