@@ -21,11 +21,14 @@ class AlahasSubManager : MonoBehaviour
     AlahasManager alahasManagerScript;
     List<Alahas> heldAlahas;
 
-    void Start()
+    void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
 
+    void Start()
+    {
         alahasManagerScript = AlahasManager.Instance;
         heldAlahas = alahasManagerScript.heldAlahas;
     }

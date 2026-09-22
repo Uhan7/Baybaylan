@@ -21,11 +21,17 @@ public class TileSet : MonoBehaviour
     private void Start()
     {
         config = GameManager.Instance.config;
+        SpawnInitialTiles();
     }
 
     private void OnEnable()
     {
         if (!config) return;
+        SpawnInitialTiles();
+    }
+
+    private void SpawnInitialTiles()
+    {
         if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
