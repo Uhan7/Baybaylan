@@ -86,8 +86,7 @@ public class AlahasManager : MonoBehaviour
             if(!heldAlahas[index])
                 continue;
 
-            alahasSlots[index].transform.GetChild(1).GetComponent<Image>().sprite = heldAlahas[index].alahasSprite;
-            alahasSlots[index].transform.GetComponent<AlahasInfoPopup>().currentAlahas = heldAlahas[index];
+            alahasSlots[index].GetComponent<AlahasInfoPopup>().SetAlahas(heldAlahas[index]);
 
             // alahasSlots[index].GetComponent<Button>().onClick.RemoveAllListeners();
             // alahasSlots[index].GetComponent<Button>().onClick.AddListener(() => 

@@ -209,6 +209,7 @@ MonoBehaviour:
   followMouse: 1
   ToolTipPositionOffset: {x: 285, y: 115}
   currentAlahas: {fileID: 0}
+  alahasImage: {fileID: 7421121468756284873}
 --- !u!1 &8229925549601996740
 GameObject:
   m_ObjectHideFlags: 0

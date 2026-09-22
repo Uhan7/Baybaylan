@@ -5,11 +5,18 @@ using TMPro;
 class AlahasInfoPopup : ToolTipAble
 {
     public Alahas currentAlahas;
+    [SerializeField] private Image alahasImage;
     TextMeshProUGUI alahasName;
     TextMeshProUGUI alahasDesc;
     TextMeshProUGUI alahasExtra;
     Canvas tooltipCanvas;
     RectTransform tooltipCanvasRect;
+
+    public void SetAlahas(Alahas alahas)
+    {
+        currentAlahas = alahas;
+        alahasImage.sprite = alahas ? alahas.alahasSprite : null;
+    }
 
     override protected void startHover()
     {
