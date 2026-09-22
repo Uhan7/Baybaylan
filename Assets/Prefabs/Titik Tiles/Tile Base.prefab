@@ -641,9 +641,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipObj: {fileID: 5159154940744753070, guid: 3dea1fdb39f5bef47bad3565ed5e5757, type: 3}
   tipText: 
-  ToolTipDelay: 0.5
+  ToolTipDelay: 0.2
   followMouse: 0
-  ToolTipPositionOffset: {x: 0, y: 150}
+  ToolTipPositionOffset: {x: 0, y: 90}
 --- !u!1 &6432145158623040388
 GameObject:
   m_ObjectHideFlags: 0
