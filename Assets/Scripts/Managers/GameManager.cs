@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ChangeMahika(0);
+        DahonNgKawayanUI.Instance.getLevelConfig(config);
     }
 
     // Helper Functions --------------------------------------------------------

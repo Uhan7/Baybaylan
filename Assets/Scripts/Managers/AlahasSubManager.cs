@@ -16,6 +16,7 @@ class AlahasSubManager : MonoBehaviour
     [ReadOnly, SerializeField] public float goldSpawnChance = 0;
     [ReadOnly, SerializeField] public float goldScoreMulti = 1f;
     [ReadOnly, SerializeField] public bool toolTipTiles = false;
+    [ReadOnly, SerializeField] public bool canCreateTile = false;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;

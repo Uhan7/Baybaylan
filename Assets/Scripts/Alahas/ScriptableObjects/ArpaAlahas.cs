@@ -18,7 +18,7 @@ public class ArpaAlahas : Alahas
 
     public override void onSubmit()
     {
-        //maybe
+ 
     }
 
     public override void onTurnEnd()
