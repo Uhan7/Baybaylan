@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04b1f020ba8f49729190e402fd98d39, type: 3}
+  m_Name: A0-Intro 1
+  m_EditorClassIdentifier: 
+  sentences:
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 0}
+    rightCharacterSprite: {fileID: 0}
+    sentence: 
+  soundToPlay: {fileID: 0}
+  textSpeed: 0.02
+  textPunctSpeed: 0.15
