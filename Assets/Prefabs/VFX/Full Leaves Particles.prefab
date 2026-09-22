@@ -13,6 +13,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1342559686476405610, guid: 141f841dd489d45a4929b4833e186780, type: 3}
+      propertyPath: cullingMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342559686476405610, guid: 141f841dd489d45a4929b4833e186780, type: 3}
       propertyPath: UVModule.mode
       value: 1
       objectReference: {fileID: 0}
