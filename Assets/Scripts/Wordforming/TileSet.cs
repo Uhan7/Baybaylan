@@ -32,7 +32,7 @@ public class TileSet : MonoBehaviour
 
     private void SpawnInitialTiles()
     {
-        if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
+        if (config.itinakdangTitik) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
@@ -94,7 +94,7 @@ public class TileSet : MonoBehaviour
         {
             GameObject tile = null;
 
-            if (config.usePredefinedTiles)
+            if (config.itinakdangTitik)
             {
                 foreach (var candidate in config.predefinedTiles)
                 {

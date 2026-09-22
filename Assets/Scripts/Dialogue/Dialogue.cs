@@ -26,5 +26,5 @@ public class Dialogue : ScriptableObject
 	public DialogueSentence[] sentences;
 	public AudioClip soundToPlay;
 	public float textSpeed = 0.02f;
-	public float textPunctSpeed = 0.15f;
+	public float textPunctSpeed = 0.18f;
 }

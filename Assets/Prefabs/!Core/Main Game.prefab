@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 6042454051752460023, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 495379188485461517}
     - target: {fileID: 6042454051752460023, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: eventOnLose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -367,6 +367,10 @@ PrefabInstance:
       propertyPath: eventOnLose.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1718224513617720499}
+    - target: {fileID: 6042454051752460023, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -660,6 +664,11 @@ PrefabInstance:
 --- !u!1 &199309557862381408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3092681738898398662, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+  m_PrefabInstance: {fileID: 2895673115429989030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &495379188485461517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3382361529706249387, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
   m_PrefabInstance: {fileID: 2895673115429989030}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &669286383877226411 stripped
