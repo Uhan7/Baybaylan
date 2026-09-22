@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04b1f020ba8f49729190e402fd98d39, type: 3}
+  m_Name: A0-L1 1
+  m_EditorClassIdentifier: 
+  sentences:
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: Narito na tayo, Tala.
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: <i>Kawayan lang naman ito..?</i>
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: "Ayan ang mga unang tao sa mundo natin\u2013sina Malakas at Maganda"
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: "Ah..! Hindi ba\u2019t matagal na silang nakalaya mula sa kawayan?"
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: Oo. Ngunit nang matapos ang kanilang tungkulin, kusa silang bumalik
+      upang magpahinga.
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: Naririnig ko ang kanilang tawag. Gising na sila at nais nilang lumabas...may
+      panganib silang nararamdaman.
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: <i>Ako rin... Ayan ang nagpadala sa akin dito!</i>
+  - speakerPosition: 2
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: Kailangan ko ang tulong mo Tala! Isa kang babaylan, at hindi na ako
+      ganoon kalakas.
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: ...Sige po, Diwata Amihan.
+  - speakerPosition: 1
+    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+    rightCharacterSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+    sentence: <i>Kailangan ko munang magsanay.</i>
+  soundToPlay: {fileID: 0}
+  textSpeed: 0.022
+  textPunctSpeed: 0.24
