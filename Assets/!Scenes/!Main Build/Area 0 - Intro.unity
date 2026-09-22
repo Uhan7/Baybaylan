@@ -181,6 +181,11 @@ MonoBehaviour:
   goldSpawnChance: 0
   goldScoreMulti: 1
   toolTipTiles: 0
+--- !u!1 &406349147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1617693168217642286, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+  m_PrefabInstance: {fileID: 1927150348840607793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &541853994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247,19 +252,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5972127658264430373, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
   m_PrefabInstance: {fileID: 541853994}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1022871447 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2451228849195028876, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-  m_PrefabInstance: {fileID: 1927150348840607793}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1467785678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 491269827255889942, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-  m_PrefabInstance: {fileID: 1927150348840607793}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1782844667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1617693168217642286, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
   m_PrefabInstance: {fileID: 1927150348840607793}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840875703 stripped
@@ -318,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1927150348840607794}
+      objectReference: {fileID: 0}
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -409,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 24b7c46ebbb694c1bbd23291eeeae49f, type: 2}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -426,11 +421,11 @@ PrefabInstance:
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1782844667}
+      objectReference: {fileID: 406349147}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1022871447}
+      objectReference: {fileID: 1840875703}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -481,7 +476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -667,11 +662,6 @@ PrefabInstance:
       addedObject: {fileID: 727971060}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
---- !u!1 &1927150348840607794 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3495803318464383967, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-  m_PrefabInstance: {fileID: 1927150348840607793}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

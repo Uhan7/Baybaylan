@@ -1014,6 +1014,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e726c0f69bc14456b52577405beb108, type: 2}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: targetMahika
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 7652018419864495858, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
