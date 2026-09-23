@@ -5,18 +5,19 @@ using NaughtyAttributes;
 using UnityEngine;
 
 [Serializable]
+public struct DialogueProfile
+{
+	public UnityEngine.Sprite sprite;
+	public bool isTalking;
+}
+
+[Serializable]
 public struct DialogueSentence
 {
-	public enum SpeakerPosition : UInt16
-	{
-		NONE = 0,
-		LEFT = 1,
-		RIGHT = 2,
-		BOTH = 3
-	}
-	public DialogueSentence.SpeakerPosition speakerPosition;
-	public UnityEngine.Sprite leftCharacterSprite;
-	public UnityEngine.Sprite rightCharacterSprite;
+	public DialogueProfile leftPrimaryProfile;
+	public DialogueProfile leftSecondaryProfile;
+	public DialogueProfile rightPrimaryProfile;
+	public DialogueProfile rightSecondaryProfile;
 	[TextArea(3, 10)] public string sentence;
 }
 

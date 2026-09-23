@@ -13,53 +13,148 @@ MonoBehaviour:
   m_Name: NewDialogueLogic
   m_EditorClassIdentifier: 
   sentences:
-  - speakerPosition: 0
-    leftCharacterSprite: {fileID: 0}
-    rightCharacterSprite: {fileID: 0}
+  - leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: 'Narrator: The dialogue begins here'
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: I am... character number 1
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: Ako nga pala si karakter bilang 2
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: I luuuuuuuuv men ! ! ! ! !
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: Mahal ko'y eabab
-  - speakerPosition: 0
-    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: '3rd Character: What did you just say?'
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 0}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: '! ! !'
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 0}
-    rightCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    sentence: '! ! !'
-  - speakerPosition: 0
-    leftCharacterSprite: {fileID: 0}
-    rightCharacterSprite: {fileID: 0}
+  - leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: ...
+  - leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: 
-  - speakerPosition: 0
-    leftCharacterSprite: {fileID: 21300000, guid: 3e57a263d7452458a81525b189e44174, type: 3}
-    rightCharacterSprite: {fileID: 0}
-    sentence: 
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 3e57a263d7452458a81525b189e44174, type: 3}
-    rightCharacterSprite: {fileID: 0}
+  - leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: Paki ulit nga.
-  - speakerPosition: 3
-    leftCharacterSprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
-    rightCharacterSprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+  - leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      isTalking: 1
     sentence: :0
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}
   textSpeed: 0.02

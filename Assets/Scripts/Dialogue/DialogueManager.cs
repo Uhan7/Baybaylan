@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using NaughtyAttributes;
+using System.Linq.Expressions;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -29,11 +30,15 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue Characters")]
     [Header("Left")]
-    [SerializeField] private Animator leftAnimator;
-    [SerializeField] private Image leftImage;
+    [SerializeField] private Animator leftPrimaryAnimator;
+    [SerializeField] private Animator leftSecondaryAnimator;
+    [SerializeField] private UnityEngine.UI.Image leftPrimaryImage;
+    [SerializeField] private UnityEngine.UI.Image leftSecondaryImage;
     [Header("Right")]
-    [SerializeField] private Animator rightAnimator;
-    [SerializeField] private Image rightImage;
+    [SerializeField] private Animator rightPrimaryAnimator;
+    [SerializeField] private Animator rightSecondaryAnimator;
+    [SerializeField] private UnityEngine.UI.Image rightPrimaryImage;
+    [SerializeField] private UnityEngine.UI.Image rightSecondaryImage;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -55,21 +60,17 @@ public class DialogueManager : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void StartDialogue(Dialogue dialogue)
     {
-
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
 
         if (dialogueContainer)
+        {
+            SetProfileSprites(dialogue.sentences[0]);
             dialogueContainer.ClearText();
+        }
 
         dialoguing = true;
-        StartCoroutine(StartDelay());
-    }
-
-    private IEnumerator StartDelay()
-    {
-        yield return new WaitForSeconds(0.75f);
-        NextSentence();
+        StartCoroutine(StartDelay(0.75f));
     }
 
     private IEnumerator StartDelay(float waitTime)
@@ -102,8 +103,8 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
         skip = false;
 
-        SetCharacterSprite(dialogueSentence);
-        AnimateCharacters(dialogueSentence);
+        SetProfileSprites(dialogueSentence);
+        AnimateProfiles(dialogueSentence);
 
         string sentence = dialogueSentence.sentence;
         dialogueContainer.SetTextInstant(sentence);
@@ -143,72 +144,125 @@ public class DialogueManager : MonoBehaviour
         isTyping = false;
     }
 
-    private void SetCharacterSprite(DialogueSentence dialogueSentence)
+    private void SetProfileSprites(DialogueSentence _dialogueSentence)
     {
-        if (leftImage)
-        {
-            Sprite leftCharacterSprite = dialogueSentence.leftCharacterSprite;
-            leftImage.sprite = dialogueSentence.leftCharacterSprite;
+        // Left Primary Image
+        if (null == leftPrimaryImage) Debug.LogError("The Image of the LEFT PRIMARY PROFILE was not assigned to the DialogueManager");
+        else SetProfileSprite(leftPrimaryImage, _dialogueSentence.leftPrimaryProfile.sprite);
 
-            if (null == leftCharacterSprite) leftImage.enabled = false;
-            else leftImage.enabled = true;
-        }
-        else Debug.LogError("The Image of the LEFT dialogue character was not assigned to the DialogueManager");
-        
-        if (rightImage)
-        {
-            Sprite rightCharacterSprite = dialogueSentence.rightCharacterSprite;
-            rightImage.sprite = rightCharacterSprite;
+        // Left Secondary Image
+        if (null == leftSecondaryImage) Debug.LogError("The Image of the LEFT SECONDARY PROFILE was not assigned to the DialogueManager");
+        else SetProfileSprite(leftSecondaryImage, _dialogueSentence.leftSecondaryProfile.sprite);
 
-            if (null == rightCharacterSprite) rightImage.enabled = false;
-            else rightImage.enabled = true;
-        }
-        else Debug.LogError("The Image of the RIGHT dialogue character was not assigned to the DialogueManager");
+        // Right Primary Image
+        if (null == rightPrimaryImage) Debug.LogError("The Image of the RIGHT PRIMARY PROFILE was not assigned to the DialogueManager");
+        else SetProfileSprite(rightPrimaryImage, _dialogueSentence.rightPrimaryProfile.sprite);
+
+        // Right Secondary Image
+        if (null == rightSecondaryImage) Debug.LogError("The Image of the RIGHT SECONDARY PROFILE was not assigned to the DialogueManager");
+        else SetProfileSprite(rightSecondaryImage, _dialogueSentence.rightSecondaryProfile.sprite);
+    }
+    private void SetProfileSprite(UnityEngine.UI.Image _image, UnityEngine.Sprite _sprite = null)
+    {
+        _image.sprite = _sprite;
     }
 
-    private void AnimateCharacters(DialogueSentence dialogueSentence)
+    private void AnimateProfiles(DialogueSentence _dialogueSentence)
     {
-        // Guard
-        if (!leftAnimator)
-        {
-            Debug.LogError("The Animator of the LEFT dialogue character was not assigned to the DialogueManager");
-            return;
-        }
-        if (!rightAnimator)
-        {
-            Debug.LogError("The Animator of the RIGHT dialogue character was not assigned to the DialogueManager"); 
-            return;
-        }
+        // Left Primary Animator
+        if (leftPrimaryAnimator)
+            AnimateProfile
+            (
+                leftPrimaryAnimator,
+                _dialogueSentence.leftPrimaryProfile.isTalking,
+                _dialogueSentence.leftPrimaryProfile.sprite ?? false
+            );
+        else Debug.LogError("The Animator of the LEFT PRIMARY PROFILE was not assigned to the DialogueManager");
 
-        // Logic
-        DialogueSentence.SpeakerPosition speakerPosition = dialogueSentence.speakerPosition;
-        switch (speakerPosition)
-        {
-            case DialogueSentence.SpeakerPosition.NONE:
-                leftAnimator?.SetBool("isTalking", false);
-                rightAnimator?.SetBool("isTalking", false);
-                break;
-                
-            case DialogueSentence.SpeakerPosition.LEFT:
-                leftAnimator?.SetBool("isTalking", true);
-                rightAnimator?.SetBool("isTalking", false);
-                break;
-                
-            case DialogueSentence.SpeakerPosition.RIGHT:
-                leftAnimator?.SetBool("isTalking", false);
-                rightAnimator?.SetBool("isTalking", true);
-                break;
-            
-            case DialogueSentence.SpeakerPosition.BOTH:
-                leftAnimator?.SetBool("isTalking", true);
-                rightAnimator?.SetBool("isTalking", true);
-                break;
-        }
+        // Left Secondary Animator
+        if (leftSecondaryAnimator)
+            AnimateProfile
+            (
+                leftSecondaryAnimator,
+                _dialogueSentence.leftSecondaryProfile.isTalking,
+                _dialogueSentence.leftSecondaryProfile.sprite ?? false
+            );
+        else Debug.LogError("The Animator of the LEFT SECONDARY PROFILE was not assigned to the DialogueManager");
+
+        // Right Primary Animator
+        if (rightPrimaryAnimator)
+            AnimateProfile
+            (
+                rightPrimaryAnimator,
+                _dialogueSentence.rightPrimaryProfile.isTalking,
+                _dialogueSentence.rightPrimaryProfile.sprite ?? false
+            );
+        else Debug.LogError("The Animator of the RIGHT PRIMARY PROFILE was not assigned to the DialogueManager");
+
+        // Right Secondary Animator
+        if (rightSecondaryAnimator)
+            AnimateProfile
+            (
+                rightSecondaryAnimator,
+                _dialogueSentence.rightSecondaryProfile.isTalking,
+                _dialogueSentence.rightSecondaryProfile.sprite ?? false
+            );
+        else Debug.LogError("The Animator of the RIGHT SECONDARY PROFILE was not assigned to the DialogueManager");
+    }
+    private void AnimateProfile(UnityEngine.Animator _animator, bool _isTalking, bool _isVisible = true)
+    {
+        if (null == _animator) return;
+        _animator.SetBool("isTalking", _isTalking);
+        _animator.SetBool("isVisible", _isVisible);
+    }
+
+    private void AnimateEndDialogue()
+    {
+        // Left Primary Animator
+        if (leftPrimaryAnimator)
+            AnimateProfile
+            (
+                leftPrimaryAnimator,
+                false,
+                false
+            );
+        else Debug.LogError("The Animator of the LEFT PRIMARY PROFILE was not assigned to the DialogueManager");
+
+        // Left Secondary Animator
+        if (leftSecondaryAnimator)
+            AnimateProfile
+            (
+                leftSecondaryAnimator,
+                false,
+                false
+            );
+        else Debug.LogError("The Animator of the LEFT SECONDARY PROFILE was not assigned to the DialogueManager");
+
+        // Right Primary Animator
+        if (rightPrimaryAnimator)
+            AnimateProfile
+            (
+                rightPrimaryAnimator,
+                false,
+                false
+            );
+        else Debug.LogError("The Animator of the RIGHT PRIMARY PROFILE was not assigned to the DialogueManager");
+
+        // Right Secondary Animator
+        if (rightSecondaryAnimator)
+            AnimateProfile
+            (
+                rightSecondaryAnimator,
+                false,
+                false
+            );
+        else Debug.LogError("The Animator of the RIGHT SECONDARY PROFILE was not assigned to the DialogueManager");
     }
 
     private void EndDialogue()
     {
         if (dialogueContainer) dialogueContainer.ClearText();
+        AnimateEndDialogue();
 
         currentDialogue = null;
         dialoguing = false;
