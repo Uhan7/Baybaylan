@@ -164,6 +164,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void SetProfileSprite(UnityEngine.UI.Image _image, UnityEngine.Sprite _sprite = null)
     {
+        if (null == _sprite) return;
         _image.sprite = _sprite;
     }
 
