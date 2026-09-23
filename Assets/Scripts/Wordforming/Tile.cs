@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour
     [Header("Score Info")]
     [SerializeField] private int baseScore = 10;
     [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 0;
-    [ReadOnly, SerializeField] private float scoreMultiplier = 1;
+    [ReadOnly, SerializeField] public float scoreMultiplier = 1;
     [HideInInspector] public int Score => Mathf.RoundToInt((baseScore + diacriticScore) * scoreMultiplier); // Used in SalitaSlots.cs
 
     [Header("Other Tile Info")]
@@ -61,7 +61,12 @@ public class Tile : MonoBehaviour
 
     [Header("Flags")]
     [HideInInspector] private bool wasBeingDragged;
-    [HideInInspector] private bool isGold; //Set this to be more scaleable soon... have a TileModifier script maybe
+    [SerializeField] public bool isGold;
+    [SerializeField] public bool isVowelBoosted;
+    [SerializeField] public bool isPearl;
+    [SerializeField] public bool isShy;
+    [SerializeField] public bool isBlossom;
+    [SerializeField] public bool isToolTipped;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -77,6 +82,7 @@ public class Tile : MonoBehaviour
 
         currentCharmod = Diacritic.None;
         ToggleCharmodObject();
+        applyModVisuals();
         if (isVowel)
         {
             latinText = vowel;
@@ -84,10 +90,10 @@ public class Tile : MonoBehaviour
         }
         else latinText = rootConsonant + "a";
 
-        ResetTileModifications();
+        //ResetTileModifications();
 
-        ApplyGoldChance();
-        if (isVowel) ApplyVowelBoost();
+        //AppldChance();
+        //if (isVowel) ApplyVowelBoost();
     }
 
     private void Update()
@@ -181,31 +187,40 @@ public class Tile : MonoBehaviour
     }
 
     // Tile Modifications ------------------------------------------------------
-    private void ApplyGoldChance()
+
+    void applyModVisuals()
     {
-        float goldChance = AlahasManager.Instance.goldenTileChance;
-
-        if (Random.value <= goldChance)
-        {
-            isGold = true;
-            scoreMultiplier *= AlahasManager.Instance.goldenTileMultiplier;
-
+        if(isGold)
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
-        }
+        if(isVowelBoosted)
+            vowelBoostedSymbol.SetActive(true);
     }
 
-    private void ApplyVowelBoost()
-    {
-        if (!AlahasManager.Instance.boostVowels)
-        {
-            vowelBoostedSymbol.SetActive(false);
-            return;
-        }
+    // private void ApplyGoldChance()
+    // {
+    //     float goldChance = AlahasSubManager.Instance.goldSpawnChance;
 
-        scoreMultiplier *= AlahasManager.Instance.vowelScoreMultiplier;
-        chance *= (int) AlahasManager.Instance.vowelChanceMultiplier; // I have to remove it here...?
-        vowelBoostedSymbol.SetActive(true);
-    }
+    //     if (Random.value <= goldChance)
+    //     {
+    //         isGold = true;
+    //         scoreMultiplier *= AlahasManager.Instance.goldenTileMultiplier;
+
+    //         foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
+    //     }
+    // }
+
+    // private void ApplyVowelBoost()
+    // {
+    //     if (!AlahasManager.Instance.boostVowels)
+    //     {
+    //         vowelBoostedSymbol.SetActive(false);
+    //         return;
+    //     }
+
+    //     scoreMultiplier *= AlahasManager.Instance.vowelScoreMultiplier;
+    //     chance *= (int) AlahasManager.Instance.vowelChanceMultiplier; // I have to remove it here...?
+    //     vowelBoostedSymbol.SetActive(true);
+    // }
 
     private void ResetTileModifications()
     {
