@@ -21,12 +21,18 @@ public class TileSet : MonoBehaviour
     private void Start()
     {
         config = GameManager.Instance.config;
+        SpawnInitialTiles();
     }
 
     private void OnEnable()
     {
         if (!config) return;
-        if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
+        SpawnInitialTiles();
+    }
+
+    private void SpawnInitialTiles()
+    {
+        if (config.itinakdangTitik) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
@@ -34,21 +40,61 @@ public class TileSet : MonoBehaviour
     private void SpawnTile(GameObject tilePrefab)
     {
         GameObject tile = Instantiate(tilePrefab, transform);
+        Tile tileScript = tile.GetComponent<Tile>();
         tile.GetComponent<Draggable>().canvas = canvas;
-        tile.GetComponent<Tile>().sfxSource = sfxSource;
+        tileScript.sfxSource = sfxSource;
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
+
+        applyVowelBoost(tileScript);
+        applyGold(tileScript);
+        applyToolTip(tileScript);
+    }
+
+    private int GetSpawnWeight(Tile tile)
+    {
+        int weight = tile.GetChance();
+        if (AlahasSubManager.Instance.boostVowels && tile.isVowel)
+            weight = Mathf.RoundToInt(weight * AlahasSubManager.Instance.vowelSpawnChanceIncrease);
+
+        return weight;
+    }
+
+    void applyToolTip(Tile script)
+    {
+        if(AlahasSubManager.Instance.toolTipTiles)
+        {
+            script.isToolTipped = true;
+        }
+    }
+
+    void applyVowelBoost(Tile script)
+    {
+        if(script.isVowel && AlahasSubManager.Instance.boostVowels)
+        {
+            script.isVowelBoosted = true;
+            script.scoreMultiplier *= AlahasSubManager.Instance.vowelScoreMulti;
+        }
+    }
+
+    void applyGold(Tile script)
+    {
+        if(AlahasSubManager.Instance.spawnGolds && Random.value < AlahasSubManager.Instance.goldSpawnChance)
+        {
+            script.isGold = true;
+            script.scoreMultiplier *= AlahasSubManager.Instance.goldScoreMulti;
+        }
     }
 
     public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
     {
         int totalChance = 0;
-        foreach (GameObject obj in config.tilesSelection) totalChance += obj.GetComponent<Tile>().GetChance();
+        foreach (GameObject obj in config.tilesSelection) totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
 
         for (int i = 0; i < tilesAmount; i++)
         {
             GameObject tile = null;
 
-            if (config.usePredefinedTiles)
+            if (config.itinakdangTitik)
             {
                 foreach (var candidate in config.predefinedTiles)
                 {
@@ -90,12 +136,7 @@ public class TileSet : MonoBehaviour
 
                 foreach (GameObject obj in config.tilesSelection)
                 {
-                    Tile tileComp = obj.GetComponent<Tile>();
-                    int effectiveChance = tileComp.GetChance();
-
-                    if (AlahasManager.Instance.boostVowels && tileComp.isVowel) effectiveChance = Mathf.RoundToInt(effectiveChance * AlahasManager.Instance.vowelChanceMultiplier);
-
-                    roll -= effectiveChance;
+                    roll -= GetSpawnWeight(obj.GetComponent<Tile>());
 
                     if (roll < 0)
                     {

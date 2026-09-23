@@ -67,6 +67,8 @@ public class SalitaSlots : MonoBehaviour
     // Button Functions
     public void EvaluateSalita()
     {
+        if (scoringSalita || replacingTiles) return;
+
         UpdateActiveTiles();
         GetSalitaFromTiles();
         UpdateSalitaText();
@@ -78,6 +80,7 @@ public class SalitaSlots : MonoBehaviour
         }
         else
         {
+            AlahasSubManager.Instance.onSubmit();
             StartCoroutine(ScoreSalita());
         }
     }
@@ -126,6 +129,7 @@ public class SalitaSlots : MonoBehaviour
     private IEnumerator ScoreSalita()
     {
         scoringSalita = true;
+        submitButton.interactable = false;
         salitaScore = 0;
         float activeTileCount = 0;
         preMultipliedScoreText.text = "";
@@ -158,7 +162,7 @@ public class SalitaSlots : MonoBehaviour
         GameManager.Instance.ChangeMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
-        BackgroundsManager.Instance.AdjustCorruptedBG();
+        if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
         GameManager.Instance.wordsUsed.Add(latinSalita);
         AksyonCounter.Instance.ConcludeAksyon();
 
@@ -167,7 +171,11 @@ public class SalitaSlots : MonoBehaviour
 
         scoringSalita = false;
 
-        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) StartCoroutine(ReplaceActiveTiles());
+        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
+        {
+            StartCoroutine(ReplaceActiveTiles());
+            AlahasSubManager.Instance.onTurnEnd();
+        }
         else GameManager.Instance.EndRound();
     }
 

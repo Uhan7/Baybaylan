@@ -3,15 +3,33 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Alahas/Arpa")]
 public class ArpaAlahas : Alahas
 {
-    public override void ApplyAlahas()
+    [SerializeField] float vowelScoreMultiplier = 3f;
+    [SerializeField] float vowelSpawnMultiplier = 3f;
+
+    public override bool triggerCondition()
     {
-        AlahasManager.Instance.boostVowels = true;
-        AddAlahasToList();
+        return false;
     }
 
-    public override void RemoveAlahas()
+    public override void onTriggerEffect()
     {
-        AlahasManager.Instance.boostVowels = false;
-        RemoveAlahasFromList();
+        
+    }
+
+    public override void onSubmit()
+    {
+        //maybe
+    }
+
+    public override void onTurnEnd()
+    {
+        
+    }
+
+    public override void onUpdate()
+    {
+        AlahasSubManager.Instance.boostVowels = true;
+        AlahasSubManager.Instance.vowelSpawnChanceIncrease = vowelSpawnMultiplier;
+        AlahasSubManager.Instance.vowelScoreMulti = vowelScoreMultiplier;
     }
 }

@@ -19,37 +19,39 @@ public class AlahasManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI alahasDescriptionText;
 
     [Header("Current Alahas")]
-    [ReadOnly, SerializeField] public List<Alahas> heldAlahas;
+    [SerializeField] public List<Alahas> heldAlahas;
     [HideInInspector] public int currentAlahasIndex = 0;
 
     [Header("Stat Upgrades")]
-    [ReadOnly, SerializeField] public float goldenTileChance = 0;
-    [ReadOnly, SerializeField] public bool boostVowels = false;
+    // [ReadOnly, SerializeField] public float goldenTileChance = 0;
+    // [ReadOnly, SerializeField] public bool boostVowels = false;
 
     [Header("Other Alahas Info")] // NOTE THAT THE CHANGES WE USE ARE IN INSPECTOR... PROBABLY CHANGE SOON
-    [SerializeField] public float goldenTileMultiplier = 2f;
-    [SerializeField] public float vowelScoreMultiplier = 4f;
-    [SerializeField] public float vowelChanceMultiplier = 4f;
+    // [SerializeField] public float goldenTileMultiplier = 2f;
+    // [SerializeField] public float vowelScoreMultiplier = 4f;
+    // [SerializeField] public float vowelChanceMultiplier = 4f;
+
+    AlahasInfoPopup alahasInfoPopupScript;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
+        // if (alahasSlots != null && alahasSlots.Length > 0) Instance.alahasSlots = this.alahasSlots;
+        // if (alahasNameText != null) Instance.alahasNameText = this.alahasNameText;
+        // if (alahasDescriptionText != null) Instance.alahasDescriptionText = this.alahasDescriptionText;
+
         if (Instance != null && Instance != this)
         {
-            // if (alahasSlots != null && alahasSlots.Length > 0) Instance.alahasSlots = this.alahasSlots;
-            // if (alahasNameText != null) Instance.alahasNameText = this.alahasNameText;
-            // if (alahasDescriptionText != null) Instance.alahasDescriptionText = this.alahasDescriptionText;
-
             Destroy(gameObject);
             return;
         }
 
-        ResetAllAlahas();
         Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        ResetAllAlahas();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()
@@ -70,6 +72,8 @@ public class AlahasManager : MonoBehaviour
         alahasNameText = GameObject.FindGameObjectWithTag("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
         alahasDescriptionText = GameObject.FindGameObjectWithTag("Alahas Description Text")?.GetComponent<TextMeshProUGUI>();
 
+        alahasInfoPopupScript = GameObject.FindObjectOfType<AlahasInfoPopup>(true);
+
         if (heldAlahas != null && heldAlahas.Count > 0) SetAlahasSlotsUI();
     }
 
@@ -79,11 +83,17 @@ public class AlahasManager : MonoBehaviour
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             int index = i;
+            if(!heldAlahas[index])
+                continue;
 
-            alahasSlots[index].transform.GetChild(1).GetComponent<Image>().sprite = heldAlahas[index].alahasSprite;
+            alahasSlots[index].GetComponent<AlahasInfoPopup>().SetAlahas(heldAlahas[index]);
 
-            alahasSlots[index].GetComponent<Button>().onClick.RemoveAllListeners();
-            alahasSlots[index].GetComponent<Button>().onClick.AddListener(() => { ChangeDescriptionUI(heldAlahas[index]); });
+            // alahasSlots[index].GetComponent<Button>().onClick.RemoveAllListeners();
+            // alahasSlots[index].GetComponent<Button>().onClick.AddListener(() => 
+            // { 
+            //     ChangeDescriptionUI(heldAlahas[index]); 
+            //     alahasInfoPopupScript.openPopup();
+            // });
         }
     }
 
@@ -95,7 +105,7 @@ public class AlahasManager : MonoBehaviour
 
     private void ResetAllAlahas()
     {
-        goldenTileChance = 0;
-        boostVowels = false;
+        //goldenTileChance = 0;
+        //boostVowels = false;
     }
 }

@@ -120,13 +120,17 @@ public class DialogueManager : MonoBehaviour
 
             dialogueContainer.SetVisibleCharacters(i);
 
-            if (i % 6 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
+            if (i % 5 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
 
             if (i == 0) continue;
 
             char c = sentence[i - 1];
 
             if (c == '.' ||
+                c == '…' || // Just a fallback,,, but ideally all ellipsis turn into 3 periods
+                c == '–' ||
+                c == '-' ||
+                c == '~' ||
                 c == ',' ||
                 c == '!' ||
                 c == '?' ||
