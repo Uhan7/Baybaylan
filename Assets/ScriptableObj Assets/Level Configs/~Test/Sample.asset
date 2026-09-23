@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: Sample
   m_EditorClassIdentifier: 
+  usePredefinedTiles: 0
   tilesAmount: 12
   tilesSelection:
   - {fileID: 6897560512971629955, guid: e9ec02d21c4724e4b98f6ce1d6a5d013, type: 3}
@@ -35,7 +36,4 @@ MonoBehaviour:
   predefinedTiles: []
   targetMahika: 800
   maxAksyon: 8
-  itinakdangTitik: 0
   bawalUmulit: 0
-  partikularNaSalita: 0
-  partikularNaSalita_wordList: []
