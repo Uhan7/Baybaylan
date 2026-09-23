@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ceea1bc86aff3042851b6de937af4c4, type: 3}
+  m_Name: Dahon Ng Kawayan Alahas
+  m_EditorClassIdentifier: 
+  alahasName: Dahon ng Kawayan
+  alahasSprite: {fileID: 0}
+  description: Pindutin ang Alahas na ito upang magamit. Isang beses bawat level,
+    maaaring gumawa ng 1 napiling titik. Hindi maaaring maging GINTO o PERLAS ang
+    titik. Maaaring maging HIYA at SIBOL ang titik.
+  extraText: "Regalo ito nina Malakas at Maganda sa akin\u2026 Ano na kaya nangyari
+    sa kanila? Sana ay matapos na itong lahat\u2026"
+  numberOfSlotsNeeded: 1
