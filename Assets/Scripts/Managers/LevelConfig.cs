@@ -15,6 +15,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public int targetMahika = 100;
 
     [Header("Aksyon")]
+    [OnValueChanged("UpdatePartikularNaSalitaArray")]
     [SerializeField] public int maxAksyon = 5;
 
     // [Header("Alahas")]
@@ -22,4 +23,15 @@ public class LevelConfig : ScriptableObject
     [Header("Paghihigpit")]
     [SerializeField] public bool itinakdangTitik = false;
     [SerializeField] public bool bawalUmulit = false;
+
+    [OnValueChanged("UpdatePartikularNaSalitaArray")]
+    [SerializeField] public bool partikularNaSalita = false;
+
+    [ShowIf("partikularNaSalita")] [Header("Partikular na Salita")]
+    [SerializeField] public string[] partikularNaSalita_wordList;
+
+    private void UpdatePartikularNaSalitaArray()
+    {
+        partikularNaSalita_wordList = new string[maxAksyon];
+    }
 }
