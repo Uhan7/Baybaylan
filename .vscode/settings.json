@@ -65,7 +65,6 @@
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
-        "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Baybaylan.slnx"
+    "dotnet.defaultSolution": "Baybaylan.sln"
 }
