@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        LoadWordlist();
+        if (config.partikularNaSalita) LoadPartikularNaSalitaWordList();
+        else LoadWordlist();
     }
 
     private void Start()
@@ -80,6 +81,15 @@ public class GameManager : MonoBehaviour
                 string word = rawWord.Trim();
                 if (!string.IsNullOrEmpty(word)) validWords.Add(word);
             }
+        }
+    }
+
+    private void LoadPartikularNaSalitaWordList()
+    {
+        foreach (string word in config.partikularNaSalita_wordList)
+        {
+            if (string.IsNullOrEmpty(word)) continue;
+            validWords.Add(word);
         }
     }
 
