@@ -10,21 +10,25 @@ class AlahasSubManager : MonoBehaviour
 {
     //states to send to other scripts
     [ReadOnly, SerializeField] public bool boostVowels = false;
-    [ReadOnly,SerializeField] public float vowelSpawnChanceIncrease = 0;
+    [ReadOnly, SerializeField] public float vowelSpawnChanceIncrease = 0;
     [ReadOnly, SerializeField] public float vowelScoreMulti = 1f;
     [ReadOnly, SerializeField] public bool spawnGolds = false;
     [ReadOnly, SerializeField] public float goldSpawnChance = 0;
     [ReadOnly, SerializeField] public float goldScoreMulti = 1f;
+    [ReadOnly, SerializeField] public bool toolTipTiles = false;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
     List<Alahas> heldAlahas;
 
-    void Start()
+    void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
 
+    void Start()
+    {
         alahasManagerScript = AlahasManager.Instance;
         heldAlahas = alahasManagerScript.heldAlahas;
     }
@@ -39,9 +43,10 @@ class AlahasSubManager : MonoBehaviour
 
     public void onSubmit()
     {
-        foreach(Alahas alahas in heldAlahas)
+        for (int i = 0; i < heldAlahas.Count; i++)
         {
-            if (!alahas) continue;
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
 
             alahas.onSubmit();
         }
@@ -49,9 +54,10 @@ class AlahasSubManager : MonoBehaviour
 
     public void onTurnEnd()
     {
-        foreach(Alahas alahas in heldAlahas)
+        for (int i = 0; i < heldAlahas.Count; i++)
         {
-            if (!alahas) continue;
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
 
             alahas.onTurnEnd();
         }
@@ -59,9 +65,10 @@ class AlahasSubManager : MonoBehaviour
 
     void onUpdate()
     {
-        foreach(Alahas alahas in heldAlahas)
+        for (int i = 0; i < heldAlahas.Count; i++)
         {
-            if(!alahas)
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i)
                 continue;
 
             alahas.onUpdate();
@@ -69,4 +76,5 @@ class AlahasSubManager : MonoBehaviour
                 alahas.onTriggerEffect();
         }
     }
+
 }

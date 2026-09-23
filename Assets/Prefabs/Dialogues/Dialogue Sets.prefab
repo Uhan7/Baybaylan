@@ -82,6 +82,7 @@ MonoBehaviour:
   dialogueSet: {fileID: 8960489989297795368}
   activateOnEnable: 1
   isRepeatable: 0
+  delayTime: 1
   alreadyTriggered: 0
 --- !u!1 &5368475160991371134
 GameObject:
@@ -165,6 +166,7 @@ MonoBehaviour:
   dialogueSet: {fileID: 7878224533320428627}
   activateOnEnable: 1
   isRepeatable: 0
+  delayTime: 2
   alreadyTriggered: 0
 --- !u!1 &8765624457807170603
 GameObject:

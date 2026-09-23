@@ -162,7 +162,7 @@ public class SalitaSlots : MonoBehaviour
         GameManager.Instance.ChangeMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
-        BackgroundsManager.Instance.AdjustCorruptedBG();
+        if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
         GameManager.Instance.wordsUsed.Add(latinSalita);
         AksyonCounter.Instance.ConcludeAksyon();
 

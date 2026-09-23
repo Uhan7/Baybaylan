@@ -21,12 +21,18 @@ public class TileSet : MonoBehaviour
     private void Start()
     {
         config = GameManager.Instance.config;
+        SpawnInitialTiles();
     }
 
     private void OnEnable()
     {
         if (!config) return;
-        if (config.usePredefinedTiles) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
+        SpawnInitialTiles();
+    }
+
+    private void SpawnInitialTiles()
+    {
+        if (config.itinakdangTitik) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
         else StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
@@ -41,6 +47,7 @@ public class TileSet : MonoBehaviour
 
         applyVowelBoost(tileScript);
         applyGold(tileScript);
+        applyToolTip(tileScript);
     }
 
     private int GetSpawnWeight(Tile tile)
@@ -50,6 +57,14 @@ public class TileSet : MonoBehaviour
             weight = Mathf.RoundToInt(weight * AlahasSubManager.Instance.vowelSpawnChanceIncrease);
 
         return weight;
+    }
+
+    void applyToolTip(Tile script)
+    {
+        if(AlahasSubManager.Instance.toolTipTiles)
+        {
+            script.isToolTipped = true;
+        }
     }
 
     void applyVowelBoost(Tile script)
@@ -79,7 +94,7 @@ public class TileSet : MonoBehaviour
         {
             GameObject tile = null;
 
-            if (config.usePredefinedTiles)
+            if (config.itinakdangTitik)
             {
                 foreach (var candidate in config.predefinedTiles)
                 {

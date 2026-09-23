@@ -8,6 +8,7 @@ public abstract class Alahas : ScriptableObject
     [SerializeField] public Sprite alahasSprite;
     [TextArea(2, 2), SerializeField] public string description = "Deskripsyon tungkol sa Alahas.";
     [TextArea(2, 2), SerializeField] public string extraText = "Extra text tungkol sa Alahas.";
+    [SerializeField] public int numberOfSlotsNeeded = 1;
 
     // Helper Functions --------------------------------------------------------
     public abstract bool triggerCondition();
@@ -18,11 +19,13 @@ public abstract class Alahas : ScriptableObject
 
     public void AddAlahasToList()
     {
-        AlahasManager.Instance.heldAlahas.Add(this);
+        for(int i = 0; i < numberOfSlotsNeeded; i++)
+            AlahasManager.Instance.heldAlahas.Add(this);
     }
 
     public void RemoveAlahasFromList()
     {
-        AlahasManager.Instance.heldAlahas.Remove(this);
+        for(int i = 0; i < numberOfSlotsNeeded; i++)
+            AlahasManager.Instance.heldAlahas.Remove(this);
     }
 }
