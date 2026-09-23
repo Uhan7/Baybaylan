@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(DropZone))]
 public class SalitaSlots : MonoBehaviour
@@ -12,6 +13,11 @@ public class SalitaSlots : MonoBehaviour
     // Variables ---------------------------------------------------------------
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
+
+    [Header("Soft Dependencies")]
+    [HideInInspector] InvalidWordPopup invalidWordPopupScript;
+    [HideInInspector] AksyonCounter aksyonCounter;
+    
 
     [Header("Reference")]
     [SerializeField] private Button submitButton;
@@ -44,13 +50,12 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private bool replacingTiles;
     [SerializeField] private bool scoringSalita;
 
-    InvalidWordPopup invalidWordPopupScript;
-
     // Main Functions ----------------------------------------------------------
     private void Start()
     {
         config = GameManager.Instance.config;
         invalidWordPopupScript = FindFirstObjectByType<InvalidWordPopup>();
+        aksyonCounter = AksyonCounter.Instance;
     }
 
     private void Update() // Temporarily
@@ -93,18 +98,38 @@ public class SalitaSlots : MonoBehaviour
 
         // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
 
+        // Check if the candidate salita is the particular word for that aksyon
+        if (config.partikularNaSalita)
+        {
+            int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? -1;
+            currentAksyon-=1;
+            if (currentAksyon>=0)
+            {
+                string particularWord = config.partikularNaSalita_wordList[currentAksyon];
+                if (!string.Equals(particularWord, latinSalita))
+                {
+                    invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPartikularNaSalita, latinSalita);
+                    return false;
+                }
+            } 
+        }
+
+        // Check if the candidate salita is in the wordlist
+        if (!GameManager.Instance.validWords.Contains(latinSalita))
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
+            return false;
+        }
+
+        // Check if the candidate salita was already submitted
         if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) 
         {
             invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AlreadyUsed, latinSalita);
             return false;
         }
 
-        if (GameManager.Instance.validWords.Contains(latinSalita)) return true;
-        else 
-        {
-            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
-            return false;
-        }
+        // Candidate salita is valid
+        return true;
     }
 
     private void UpdateActiveTiles()

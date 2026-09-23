@@ -5,7 +5,8 @@ public static class InvalidWordTypes
     public enum InvalidWordType
     {
         NotInWordlist,
-        AlreadyUsed
+        AlreadyUsed,
+        NotPartikularNaSalita
     }
 
     [System.Serializable]
@@ -17,6 +18,9 @@ public static class InvalidWordTypes
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string alreadyUsed = "Salitang \"{word}\" has already been used!";
 
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string notPartikularNaSalita = "Salitang \"{word}\" is not the particular word!";
+
         public string GetInvalidWordMessage(InvalidWordType type, string word)
         {
             string template;
@@ -27,6 +31,9 @@ public static class InvalidWordTypes
                     break;
                 case InvalidWordType.AlreadyUsed:
                     template = alreadyUsed;
+                    break;
+                case InvalidWordType.NotPartikularNaSalita:
+                    template = notPartikularNaSalita;
                     break;
                 default:
                     return "";

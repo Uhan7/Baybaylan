@@ -58,4 +58,9 @@ public class AksyonCounter : MonoBehaviour
     {
         return currentAksyon <= GameManager.Instance.config.maxAksyon;
     }
+
+    public int GetCurrentAksyon()
+    {
+        return currentAksyon;
+    }
 }
