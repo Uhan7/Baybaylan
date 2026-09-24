@@ -72,6 +72,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 4030089206807233544, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030089206807233544, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.6000977
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030089206807233544, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122479580185683134, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.100006
+      objectReference: {fileID: 0}
     - target: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Name
       value: Right Side Container Variant
