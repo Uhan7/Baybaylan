@@ -9,8 +9,6 @@ class AlahasInfoPopup : ToolTipAble
     TextMeshProUGUI alahasName;
     TextMeshProUGUI alahasDesc;
     TextMeshProUGUI alahasExtra;
-    Canvas tooltipCanvas;
-    RectTransform tooltipCanvasRect;
 
     public void SetAlahas(Alahas alahas)
     {

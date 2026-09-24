@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class TileSet : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
+    public static TileSet Instance;
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
 
@@ -18,6 +19,12 @@ public class TileSet : MonoBehaviour
     [SerializeField] private Canvas canvas;
 
     // Main Functions ----------------------------------------------------------
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
     private void Start()
     {
         config = GameManager.Instance.config;
@@ -48,6 +55,15 @@ public class TileSet : MonoBehaviour
         applyVowelBoost(tileScript);
         applyGold(tileScript);
         applyToolTip(tileScript);
+    }
+
+    public void DahonNgKawayanSpawn(GameObject tilePrefab)
+    {
+        GameObject tile = Instantiate(tilePrefab, transform);
+        Tile tileScript = tile.GetComponent<Tile>();
+        tile.GetComponent<Draggable>().canvas = canvas;
+        tileScript.sfxSource = sfxSource;
+        tile.GetComponent<Draggable>().sfxSource = sfxSource;
     }
 
     private int GetSpawnWeight(Tile tile)

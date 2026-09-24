@@ -13,8 +13,8 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(300, 100);
     protected GameObject tooltipObjInstance;
     TMP_Text tooltipText;
-    Canvas tooltipCanvas;
-    RectTransform tooltipCanvasRect;
+    protected Canvas tooltipCanvas;
+    protected RectTransform tooltipCanvasRect;
     protected float timer = 0f;
     protected bool isHovered = false;
     protected bool onetime = false;

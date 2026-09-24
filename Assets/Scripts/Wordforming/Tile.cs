@@ -85,7 +85,6 @@ public class Tile : MonoBehaviour
 
         currentCharmod = Diacritic.None;
         ToggleCharmodObject();
-        applyModVisuals();
         if (isVowel)
         {
             latinText = vowel;
@@ -103,6 +102,7 @@ public class Tile : MonoBehaviour
     {
         ChangeSpriteOnDrag();
         updateLatinTooltipText();
+        applyModVisuals();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -196,8 +196,13 @@ public class Tile : MonoBehaviour
     {
         if(isGold)
             foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
+        else    
+            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = Color.white;
+
         if(isVowelBoosted)
             vowelBoostedSymbol.SetActive(true);
+        else
+            vowelBoostedSymbol.SetActive(false);
     }
 
     void updateLatinTooltipText()
