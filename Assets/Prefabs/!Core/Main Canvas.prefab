@@ -1199,6 +1199,7 @@ MonoBehaviour:
   invalidWordMessages:
     notInWordlist: Walang salitang "{word}"
     alreadyUsed: Sinulat na ang salitang "{word}"
+    notPartikularNaSalita: Salitang "{word}" is not the particular word!
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,6 +3155,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2406812471065810189}
     m_Modifications:
     - target: {fileID: 4293978788038059337, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660166113284880555, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

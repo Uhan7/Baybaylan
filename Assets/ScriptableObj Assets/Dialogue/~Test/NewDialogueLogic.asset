@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentences:
   - leftPrimaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 0
     leftSecondaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 856dc61fd54fe4c14b56f243c66efb4f, type: 3}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 856dc61fd54fe4c14b56f243c66efb4f, type: 3}
       isTalking: 0
     rightSecondaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 8254fde546c094664bfaa167ad036f89, type: 3}
       isTalking: 0
     sentence: 'Narrator: The dialogue begins here'
   - leftPrimaryProfile:
