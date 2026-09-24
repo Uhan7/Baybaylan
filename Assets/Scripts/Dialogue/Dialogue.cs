@@ -14,9 +14,16 @@ public struct DialogueProfile
 [Serializable]
 public struct DialogueSentence
 {
+	public bool isFourSpeakers;
 	public DialogueProfile leftPrimaryProfile;
+
+	[ShowIf("isFourSpeakers")]
+	[AllowNesting]
 	public DialogueProfile leftSecondaryProfile;
 	public DialogueProfile rightPrimaryProfile;
+
+	[ShowIf("isFourSpeakers")]
+	[AllowNesting]
 	public DialogueProfile rightSecondaryProfile;
 	[TextArea(3, 10)] public string sentence;
 }
