@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7de1a81960e7c456ba9168add02642cd
+guid: 769979fd4ad5d4b3296a088d4aa90d44
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6102173209136051798
-    second: MALAKAS0_0
+      213: -6718146917248881636
+    second: TALA 2048_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MALAKAS0_0
+      name: TALA 2048_0
       rect:
         serializedVersion: 2
-        x: 326
+        x: 16
         y: 0
-        width: 4311
-        height: 3162
+        width: 1174
+        height: 1149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa94a870cc9b05ba0800000000000000
-      internalID: -6102173209136051798
+      spriteID: c1cae7819f854c2a0800000000000000
+      internalID: -6718146917248881636
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MALAKAS0_0: -6102173209136051798
+      TALA 2048_0: -6718146917248881636
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

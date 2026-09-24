@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2e952ca43dfb04a89be085e3986f5d34
+guid: 66f815a36616f495685cf4ef2e7ba400
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8772318950334226744
-    second: TALA0_0
+      213: 6282005569113666490
+    second: PFP Gold Bar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TALA0_0
+      name: PFP Gold Bar_0
       rect:
         serializedVersion: 2
-        x: 173
+        x: 0
         y: 0
-        width: 3127
-        height: 3070
+        width: 276
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 831691b8b998db970800000000000000
-      internalID: 8772318950334226744
+      spriteID: ab3bb0818ca2e2750800000000000000
+      internalID: 6282005569113666490
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TALA0_0: 8772318950334226744
+      PFP Gold Bar_0: 6282005569113666490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
