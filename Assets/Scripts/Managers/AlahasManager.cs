@@ -7,6 +7,7 @@ using NaughtyAttributes;
 using System;
 using System.Linq;
 
+//holds the equiped alahas, submanager handles the functionality 
 public class AlahasManager : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
@@ -49,7 +50,7 @@ public class AlahasManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        ResetAllAlahas();
+        ResetAllAlahas(); //does nothing rn 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }

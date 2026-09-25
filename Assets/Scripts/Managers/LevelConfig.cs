@@ -18,7 +18,8 @@ public class LevelConfig : ScriptableObject
     [OnValueChanged("UpdatePartikularNaSalitaArray")]
     [SerializeField] public int maxAksyon = 5;
 
-    // [Header("Alahas")]
+    [Header("Alahas")]
+    [SerializeField] public Alahas alahasAquiredAfterWin;
 
     [Header("Paghihigpit")]
     [SerializeField] public bool itinakdangTitik = false;
