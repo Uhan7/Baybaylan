@@ -64,6 +64,9 @@ public class TileSet : MonoBehaviour
         tile.GetComponent<Draggable>().canvas = canvas;
         tileScript.sfxSource = sfxSource;
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
+
+        applyToolTip(tileScript);
+        //include whatever func applies shy 
     }
 
     private int GetSpawnWeight(Tile tile)

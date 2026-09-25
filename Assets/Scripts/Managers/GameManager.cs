@@ -60,6 +60,17 @@ public class GameManager : MonoBehaviour
     }
 
     // Helper Functions --------------------------------------------------------
+    public void aquireAlahasAfterWin()
+    {
+        if(!config.alahasAquiredAfterWin)
+            return;
+
+        TalaAlahasHolder.Instance.availableAlahas.Add(config.alahasAquiredAfterWin);
+        
+        //this one is temporaary until we add the "equip alahas screen" 
+        config.alahasAquiredAfterWin.AddAlahasToList();
+    }
+
     public void ChangeMahika(int score)
     {
         currentMahika += score;
