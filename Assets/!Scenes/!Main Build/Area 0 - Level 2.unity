@@ -181,24 +181,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: heldAlahas.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: alahasSlots.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: b7aa8df7fbb034005bcfd07b9735175e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[3]'
       value: 
@@ -288,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1228620730374529120, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Area 0 - Level 2
+      value: Game Scene
       objectReference: {fileID: 0}
     - target: {fileID: 1298603661414612756, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: heldAlahas.Array.size
@@ -317,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 40e6e020e50da4270a63d88c879f89d3, type: 2}
+      objectReference: {fileID: 11400000, guid: 729b6e4701e7d472799633978cf64344, type: 2}
     - target: {fileID: 2453630319733079574, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -401,10 +401,10 @@ PrefabInstance:
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: config
       value: 
-      objectReference: {fileID: 11400000, guid: dbbb6bbf52ec54faf88982f58ee6e786, type: 2}
+      objectReference: {fileID: 11400000, guid: fe8c2bbbfbc10464ab7c0bcdefc7f1b2, type: 2}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: targetMahika
-      value: 80
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 7652018419864495858, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.x
