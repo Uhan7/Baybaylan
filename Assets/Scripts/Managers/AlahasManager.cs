@@ -14,6 +14,8 @@ public class AlahasManager : MonoBehaviour
     [Header("Singleton")]
     [HideInInspector] public static AlahasManager Instance;
 
+    [SerializeField] public int maxAlahasSlotCount;
+
     [Header("Alahas References")]
     [SerializeField] private GameObject[] alahasSlots;
     [SerializeField] private TextMeshProUGUI alahasNameText;
@@ -108,5 +110,17 @@ public class AlahasManager : MonoBehaviour
     {
         //goldenTileChance = 0;
         //boostVowels = false;
+    }
+
+    public int getEmptySlotAmount()
+    {
+        int amount = 0;
+        foreach(Alahas alahas in heldAlahas)
+        {
+            if(alahas)
+                amount++;
+        }
+
+        return maxAlahasSlotCount - amount;
     }
 }

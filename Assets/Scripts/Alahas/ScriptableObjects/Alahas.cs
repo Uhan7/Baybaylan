@@ -19,8 +19,9 @@ public abstract class Alahas : ScriptableObject
 
     public void AddAlahasToList()
     {
-        for(int i = 0; i < numberOfSlotsNeeded; i++)
-            AlahasManager.Instance.heldAlahas.Add(this);
+        if(AlahasManager.Instance.getEmptySlotAmount() > numberOfSlotsNeeded)
+            for(int i = 0; i < numberOfSlotsNeeded; i++)
+                AlahasManager.Instance.heldAlahas.Add(this);
     }
 
     public void RemoveAlahasFromList()
