@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void OnValidate()
     {
-        targetMahika = config.targetMahika;
+        targetMahika = config != null ? config.targetMahika : 0;
     }
 
     private void Awake()
@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (config == null) return;
+
         ChangeMahika(0);
         DahonNgKawayanUI.Instance.getLevelConfig(config);
     }

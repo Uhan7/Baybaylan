@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 
@@ -12,6 +13,7 @@ public class DialogueSet : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent eventBeforeDialogue;
     [SerializeField] private UnityEvent eventAfterDialogue;
+    [Min(0f), SerializeField] private float eventAfterDialogueDelay = 0.5f;
 
     [Header("Flags")]
     [ReadOnly, SerializeField] private bool hasCompleted;
@@ -73,6 +75,14 @@ public class DialogueSet : MonoBehaviour
             DialogueManager.Instance.dimmer.raycastTarget = false;
             DialogueManager.Instance.dimmer.GetComponent<Animator>().Play("image_fade_out");
         }
+        StartCoroutine(InvokeEventAfterDialogue());
+    }
+
+    private IEnumerator InvokeEventAfterDialogue()
+    {
+        if (eventAfterDialogueDelay > 0f)
+            yield return new WaitForSeconds(eventAfterDialogueDelay);
+
         eventAfterDialogue?.Invoke();
     }
 }

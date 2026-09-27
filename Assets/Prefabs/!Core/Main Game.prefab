@@ -1965,18 +1965,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3177048741761694711, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3177048741761694711, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3177048741761694711, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3177048741761694711, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -2068,14 +2056,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 6845038482070892079}
-    - target: {fileID: 5139985462544308453, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 215
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139985462544308453, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 215
-      objectReference: {fileID: 0}
     - target: {fileID: 6793772274238748643, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2083,18 +2063,6 @@ PrefabInstance:
     - target: {fileID: 6923405883872689811, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Name
       value: Main Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7064988431415885827, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7064988431415885827, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7064988431415885827, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7064988431415885827, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Enabled

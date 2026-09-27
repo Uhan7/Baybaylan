@@ -66,6 +66,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogueContainer)
         {
             SetProfileSprites(dialogue.sentences[0]);
+            AnimateProfiles(dialogue.sentences[0], false);
             dialogueContainer.ClearText();
         }
 
@@ -168,14 +169,14 @@ public class DialogueManager : MonoBehaviour
         _image.sprite = _sprite;
     }
 
-    private void AnimateProfiles(DialogueSentence _dialogueSentence)
+    private void AnimateProfiles(DialogueSentence _dialogueSentence, bool _allowTalking = true)
     {
         // Left Primary Animator
         if (leftPrimaryAnimator)
             AnimateProfile
             (
                 leftPrimaryAnimator,
-                _dialogueSentence.leftPrimaryProfile.isTalking,
+                _allowTalking && _dialogueSentence.leftPrimaryProfile.isTalking,
                 _dialogueSentence.leftPrimaryProfile.sprite ?? false
             );
         else Debug.LogError("The Animator of the LEFT PRIMARY PROFILE was not assigned to the DialogueManager");
@@ -185,7 +186,7 @@ public class DialogueManager : MonoBehaviour
             AnimateProfile
             (
                 leftSecondaryAnimator,
-                _dialogueSentence.leftSecondaryProfile.isTalking,
+                _allowTalking && _dialogueSentence.leftSecondaryProfile.isTalking,
                 _dialogueSentence.leftSecondaryProfile.sprite ?? false
             );
         else Debug.LogError("The Animator of the LEFT SECONDARY PROFILE was not assigned to the DialogueManager");
@@ -195,7 +196,7 @@ public class DialogueManager : MonoBehaviour
             AnimateProfile
             (
                 rightPrimaryAnimator,
-                _dialogueSentence.rightPrimaryProfile.isTalking,
+                _allowTalking && _dialogueSentence.rightPrimaryProfile.isTalking,
                 _dialogueSentence.rightPrimaryProfile.sprite ?? false
             );
         else Debug.LogError("The Animator of the RIGHT PRIMARY PROFILE was not assigned to the DialogueManager");
@@ -205,7 +206,7 @@ public class DialogueManager : MonoBehaviour
             AnimateProfile
             (
                 rightSecondaryAnimator,
-                _dialogueSentence.rightSecondaryProfile.isTalking,
+                _allowTalking && _dialogueSentence.rightSecondaryProfile.isTalking,
                 _dialogueSentence.rightSecondaryProfile.sprite ?? false
             );
         else Debug.LogError("The Animator of the RIGHT SECONDARY PROFILE was not assigned to the DialogueManager");

@@ -13,49 +13,20 @@ MonoBehaviour:
   m_Name: A0-L1 1
   m_EditorClassIdentifier: 
   sentences:
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: Narito na tayo, Tala.
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: <i>Kawayan lang naman ito..?</i>
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: "Ayan ang mga unang tao sa mundo natin\u2013sina Malakas at Maganda"
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: "Ah..! Hindi ba\u2019t matagal na silang nakalaya mula sa kawayan?"
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: Oo. Ngunit nang matapos ang kanilang tungkulin, kusa silang bumalik
-      upang magpahinga.
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: Naririnig ko ang kanilang tawag. Gising na sila at nais nilang lumabas...may
-      panganib silang nararamdaman.
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: <i>Ako rin... Ayan ang nagpadala sa akin dito!</i>
-  - speakerPosition: 2
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: Kailangan ko ang tulong mo Tala! Isa kang babaylan, at hindi na ako
-      ganoon kalakas.
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: ...Sige po, Diwata Amihan.
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 2e952ca43dfb04a89be085e3986f5d34, type: 3}
-    rightCharacterSprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
-    sentence: <i>Kailangan ko munang magsanay.</i>
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -49303090383804869, guid: e825dea471b2f4bf0a7d9e2aa67a3375, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: A0-L1 1
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24
