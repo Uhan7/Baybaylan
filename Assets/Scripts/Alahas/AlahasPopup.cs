@@ -70,7 +70,7 @@ public class AlahasPopup : MonoBehaviour
         alahasDescription.text = alahas.description;
         alahasExtraText.text = alahas.extraText;
 
-        buttonComponent.onClick.AddListener(alahas.ApplyAlahas);
+        buttonComponent.onClick.AddListener(alahas.AddAlahasToList);
     }
 
     private void HandlePopupSelected()

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         bool didWin = currentMahika >= config.targetMahika;
 
-        BackgroundsManager.Instance.ShowEndingBG(didWin);
+        if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.ShowEndingBG(didWin);
 
         if (didWin == true)
         {

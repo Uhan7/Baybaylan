@@ -7,10 +7,9 @@ using NaughtyAttributes;
 public class LevelConfig : ScriptableObject
 {
     [Header("Tiles")]
-    [SerializeField] public bool usePredefinedTiles;
-    [HideIf("usePredefinedTiles"), SerializeField] public int tilesAmount;
-    [HideIf("usePredefinedTiles"), SerializeField] public List<GameObject> tilesSelection;
-    [ShowIf("usePredefinedTiles"), SerializeField] public List<GameObject> predefinedTiles;
+    [HideIf("itinakdangTitik"), SerializeField] public int tilesAmount;
+    [HideIf("itinakdangTitik"), SerializeField] public List<GameObject> tilesSelection;
+    [ShowIf("itinakdangTitik"), SerializeField] public List<GameObject> predefinedTiles;
 
     [Header("Mahika")]
     [SerializeField] public int targetMahika = 100;
@@ -21,5 +20,6 @@ public class LevelConfig : ScriptableObject
     // [Header("Alahas")]
 
     [Header("Paghihigpit")]
+    [SerializeField] public bool itinakdangTitik = false;
     [SerializeField] public bool bawalUmulit = false;
 }

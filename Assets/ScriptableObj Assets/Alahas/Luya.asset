@@ -20,4 +20,4 @@ MonoBehaviour:
     mga <color=yellow>gintong</color> titik nagbibigay ng 2x iskor.'
   extraText: Ang bigat naman ng luya na binigay ni Binibining Makiling..! Ano kaya
     ang sikreto ng mga luyang ito...
-  convertChance: 0.3
+  convertToGoldChance: 0.3

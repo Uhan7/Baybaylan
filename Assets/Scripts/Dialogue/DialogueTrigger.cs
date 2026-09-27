@@ -13,6 +13,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Properties")]
     [SerializeField] private bool activateOnEnable;
     [SerializeField] private bool isRepeatable;
+    [SerializeField] private float delayTime = 2f;
 
     [Header("Flags")]
     [ReadOnly, SerializeField] private bool alreadyTriggered;
@@ -20,7 +21,7 @@ public class DialogueTrigger : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void OnEnable()
     {
-        if (activateOnEnable) Invoke("TriggerDialogue", 2f);
+        if (activateOnEnable) Invoke("TriggerDialogue", delayTime);
     }
 
     // Helper Functions --------------------------------------------------------

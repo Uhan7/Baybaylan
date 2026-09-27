@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 4221005711094560793}
   - component: {fileID: 482540437315076942}
   - component: {fileID: 8149427845387423121}
+  - component: {fileID: 2019883784392459998}
   m_Layer: 5
   m_Name: Tile Base
   m_TagString: Untagged
@@ -549,6 +550,12 @@ MonoBehaviour:
   diacriticScore: 3
   scoreMultiplier: 1
   chance: 5
+  isGold: 0
+  isVowelBoosted: 0
+  isPearl: 0
+  isShy: 0
+  isBlossom: 0
+  isToolTipped: 0
 --- !u!114 &5695253453646463390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,6 +627,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2019883784392459998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319212537239405795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba57d620c8d5d94aa5a15606d201e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipObj: {fileID: 5159154940744753070, guid: 3dea1fdb39f5bef47bad3565ed5e5757, type: 3}
+  tipText: 
+  ToolTipDelay: 0
+  followMouse: 0
+  ToolTipPositionOffset: {x: 0, y: 90}
 --- !u!1 &6432145158623040388
 GameObject:
   m_ObjectHideFlags: 0

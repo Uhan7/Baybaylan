@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class ImageFader : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ImageFader : MonoBehaviour
 
     [Header("Properties")]
     [SerializeField] private bool fadeImgOnEnable;
+    [SerializeField, ShowIf("fadeImgOnEnable")] private float delayTime = 0.5f;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -25,7 +27,7 @@ public class ImageFader : MonoBehaviour
         if (fadeImgOnEnable)
         {
             SetAlpha(0);
-            FadeTo(1, 0.25f);
+            FadeTo(1, delayTime);
         }
     }
 
