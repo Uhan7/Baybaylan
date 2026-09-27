@@ -189,12 +189,12 @@ public class SalitaSlots : MonoBehaviour
         sfxSource.PlayOneShot(correctSFX);
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
         GameManager.Instance.wordsUsed.Add(latinSalita);
-        AksyonCounter.Instance.ConcludeAksyon();
 
         yield return new WaitForSeconds(0.25f);
         scoreCalculationsContainer.SetActive(false);
 
         scoringSalita = false;
+        AksyonCounter.Instance.ConcludeAksyon();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
         {
