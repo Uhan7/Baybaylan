@@ -15,18 +15,146 @@ MonoBehaviour:
   sentences:
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -49303090383804869, guid: e825dea471b2f4bf0a7d9e2aa67a3375, type: 3}
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "Narito na tayo, Tala."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: A0-L1 1
+    sentence: "<i>Kawayan lang naman ito..?</i>"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "Ayan ang mga unang tao sa mundo natin\u2013sina Malakas at Maganda."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "Ah..! Hindi ba\u2019t matagal na silang nakalaya mula sa kawayan?"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "Oo. Ngunit nang matapos ang kanilang tungkulin, kusa silang bumalik
+      upang magpahinga."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "Naririnig ko ang kanilang tawag. Gising na sila at nais nilang lumabas...may
+      panganib silang nararamdaman."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "<i>Ako rin... Ayan ang nagpadala sa akin dito!</i>"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "Kailangan ko ang tulong mo Tala!"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "...Sige po, Diwata Amihan."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "<i>Kailangan ko munang magsanay.</i>"
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

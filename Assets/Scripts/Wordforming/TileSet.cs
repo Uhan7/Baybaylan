@@ -8,6 +8,10 @@ public class TileSet : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
     public static TileSet Instance;
+
+    [Header("Constants")]
+    [HideInInspector] private const float SPAWN_TIME_BETWEEN_TILES = 0.15f;
+
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
 
@@ -17,6 +21,11 @@ public class TileSet : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Canvas canvas;
+
+    private bool waitingForDialogueBeforeCurrentAksyonTiles;
+    private Coroutine dialogueReleasedSpawnRoutine;
+
+    public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
     // Main Functions ----------------------------------------------------------
     void Awake()
@@ -39,8 +48,7 @@ public class TileSet : MonoBehaviour
 
     private void SpawnInitialTiles()
     {
-        if (config.itinakdangTitik) StartCoroutine(SpawnTiles(config.predefinedTiles.Count));
-        else StartCoroutine(SpawnTiles(config.tilesAmount));
+        StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
     // Helper Functions --------------------------------------------------------
@@ -106,62 +114,39 @@ public class TileSet : MonoBehaviour
 
     public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
     {
+        if (config.itinakdangTitik)
+        {
+            int currentAksyon = AksyonCounter.Instance != null
+                ? AksyonCounter.Instance.GetCurrentAksyon()
+                : 1;
+
+            yield return SpawnItinakdangTiles(currentAksyon);
+            yield break;
+        }
+
         int totalChance = 0;
         foreach (GameObject obj in config.tilesSelection) totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
+
+        if (totalChance <= 0)
+        {
+            Debug.LogWarning("TileSet cannot spawn random tiles because the configured total spawn chance is zero.", this);
+            yield break;
+        }
 
         for (int i = 0; i < tilesAmount; i++)
         {
             GameObject tile = null;
 
-            if (config.itinakdangTitik)
+            int roll = Random.Range(0, totalChance);
+
+            foreach (GameObject obj in config.tilesSelection)
             {
-                foreach (var candidate in config.predefinedTiles)
+                roll -= GetSpawnWeight(obj.GetComponent<Tile>());
+
+                if (roll < 0)
                 {
-                    Tile candidateTile = candidate.GetComponent<Tile>();
-                    bool isValid = true;
-
-                    foreach (Transform child in transform)
-                    {
-                        Tile childTile = child.GetComponent<Tile>();
-
-                        if (candidateTile.isVowel && childTile.isVowel)
-                        {
-                            if (candidateTile.vowel == childTile.vowel)
-                            {
-                                isValid = false;
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            if (candidateTile.rootConsonant == childTile.rootConsonant)
-                            {
-                                isValid = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (isValid)
-                    {
-                        tile = candidate;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                int roll = Random.Range(0, totalChance);
-
-                foreach (GameObject obj in config.tilesSelection)
-                {
-                    roll -= GetSpawnWeight(obj.GetComponent<Tile>());
-
-                    if (roll < 0)
-                    {
-                        tile = obj;
-                        break;
-                    }
+                    tile = obj;
+                    break;
                 }
             }
 
@@ -169,6 +154,95 @@ public class TileSet : MonoBehaviour
             sfxSource.PlayOneShot(spawnSFX);
 
             yield return new WaitForSeconds(0.08f);
+        }
+    }
+
+    public IEnumerator ReplaceWithCurrentAksyonTiles()
+    {
+        yield return ClearTiles();
+
+        int currentAksyon = AksyonCounter.Instance != null
+            ? AksyonCounter.Instance.GetCurrentAksyon()
+            : 1;
+
+        yield return SpawnItinakdangTiles(currentAksyon);
+    }
+
+    public IEnumerator ClearTiles()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<Tile>() != null)
+                Destroy(child.gameObject);
+        }
+
+        // Destroy is applied at the end of the frame. Wait before adding the
+        // next tile pool to the same layout group.
+        yield return null;
+    }
+
+    // Call this first from GameManager -> Event On Aksyon, before starting the
+    // dialogue that should hold back this Aksyon's tiles.
+    public void WaitForDialogueBeforeCurrentAksyonTiles()
+    {
+        waitingForDialogueBeforeCurrentAksyonTiles = true;
+    }
+
+    // UnityEvent entry point for Dialogue Set -> Event After Dialogue. The
+    // coroutine also handles a dialogue that finishes before old tiles clear.
+    public void SpawnCurrentAksyonTiles()
+    {
+        if (dialogueReleasedSpawnRoutine != null) return;
+        dialogueReleasedSpawnRoutine = StartCoroutine(SpawnCurrentAksyonTilesWhenReady());
+    }
+
+    private IEnumerator SpawnCurrentAksyonTilesWhenReady()
+    {
+        while (HasTiles())
+            yield return null;
+
+        int currentAksyon = AksyonCounter.Instance != null
+            ? AksyonCounter.Instance.GetCurrentAksyon()
+            : 1;
+
+        yield return SpawnItinakdangTiles(currentAksyon);
+
+        waitingForDialogueBeforeCurrentAksyonTiles = false;
+        dialogueReleasedSpawnRoutine = null;
+    }
+
+    private bool HasTiles()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<Tile>() != null)
+                return true;
+        }
+
+        return false;
+    }
+
+    private IEnumerator SpawnItinakdangTiles(int aksyonNumber)
+    {
+        IReadOnlyList<GameObject> selectedTiles = config.GetItinakdangTilesForAksyon(aksyonNumber);
+
+        if (selectedTiles.Count == 0)
+        {
+            Debug.LogWarning($"No Itinakdang Titik tiles are configured for Aksyon {aksyonNumber}.", config);
+            yield break;
+        }
+
+        foreach (GameObject tilePrefab in selectedTiles)
+        {
+            if (tilePrefab == null)
+            {
+                Debug.LogWarning($"Aksyon {aksyonNumber} has an empty tile entry. It was skipped.", config);
+                continue;
+            }
+
+            SpawnTile(tilePrefab);
+            sfxSource.PlayOneShot(spawnSFX);
+            yield return new WaitForSeconds(SPAWN_TIME_BETWEEN_TILES);
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using NaughtyAttributes;
 
 public class DropZone : MonoBehaviour, IDropHandler
@@ -11,6 +12,12 @@ public class DropZone : MonoBehaviour, IDropHandler
     [SerializeField] private bool changeTileBox;
     [SerializeField] private bool isActiveDropZone;
 
+    [Header("Events")]
+    [SerializeField] private bool invokeOnlyOnce;
+    [SerializeField] private UnityEvent eventOnDrop;
+
+    [HideInInspector] private bool hasInvokedDropEvent;
+
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip dropSFX;
@@ -18,6 +25,8 @@ public class DropZone : MonoBehaviour, IDropHandler
     // Main Functions ----------------------------------------------------------
     public void OnDrop(PointerEventData eventData)
     {
+        if (eventData.pointerDrag == null) return;
+
         GameObject draggedObject = eventData.pointerDrag.gameObject;
         if (draggedObject.GetComponent<Draggable>() == null) return;
 
@@ -41,5 +50,11 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (changeTileBox) draggedObject.GetComponent<Tile>().ChangeSprite(isActiveDropZone);
 
         sfxSource.PlayOneShot(dropSFX);
+
+        if (!invokeOnlyOnce || !hasInvokedDropEvent)
+        {
+            eventOnDrop?.Invoke();
+            hasInvokedDropEvent = true;
+        }
     }
 }

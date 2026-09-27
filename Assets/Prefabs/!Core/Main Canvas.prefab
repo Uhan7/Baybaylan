@@ -1197,9 +1197,9 @@ MonoBehaviour:
   moveUpDelay: 0.5
   upDistance: 25
   invalidWordMessages:
-    notInWordlist: Walang salitang "{word}"
-    alreadyUsed: Sinulat na ang salitang "{word}"
-    notPartikularNaSalita: Salitang "{word}" is not the particular word!
+    notInWordlist: Walang salitang "{word}"!
+    alreadyUsed: Sinulat na ang salitang "{word}"!
+    notPartikularNaSalita: Ang salitang "{word}" ay hindi ang tamang salita!
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0

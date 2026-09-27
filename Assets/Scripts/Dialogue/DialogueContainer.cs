@@ -34,11 +34,24 @@ public class DialogueContainer : MonoBehaviour
         nextIndicator.SetActive(false);
     }
 
-    public void SetTextInstant(string text)
+    public int PrepareText(string text)
     {
+        // Lay out the complete sentence before hiding it so word wrapping stays fixed
+        // while maxVisibleCharacters reveals the already-positioned glyphs.
+        dialogueText.maxVisibleCharacters = int.MaxValue;
         dialogueText.text = text;
+        dialogueText.ForceMeshUpdate();
+
+        int characterCount = dialogueText.textInfo.characterCount;
         dialogueText.maxVisibleCharacters = 0;
         nextIndicator.SetActive(false);
+
+        return characterCount;
+    }
+
+    public char GetVisibleCharacter(int index)
+    {
+        return dialogueText.textInfo.characterInfo[index].character;
     }
 
     public void SetVisibleCharacters(int count)
@@ -48,7 +61,7 @@ public class DialogueContainer : MonoBehaviour
 
     public void ShowFullText()
     {
-        dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+        dialogueText.maxVisibleCharacters = int.MaxValue;
     }
 
     public void ShowNextIndicator(bool value)

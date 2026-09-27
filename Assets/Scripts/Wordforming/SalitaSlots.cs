@@ -29,6 +29,8 @@ public class SalitaSlots : MonoBehaviour
     [Header("Word Properties")]
     [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
     [ReadOnly, SerializeField] private string latinSalita;
+    private string revealedLatinSalita;
+    private string observedLatinSalita;
 
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
@@ -64,6 +66,13 @@ public class SalitaSlots : MonoBehaviour
 
         UpdateActiveTiles();
         GetSalitaFromTiles();
+
+        if (latinSalita != observedLatinSalita)
+        {
+            observedLatinSalita = latinSalita;
+            revealedLatinSalita = null;
+        }
+
         UpdateSalitaText();
 
         submitButton.interactable = (latinSalita != "");
@@ -76,6 +85,8 @@ public class SalitaSlots : MonoBehaviour
 
         UpdateActiveTiles();
         GetSalitaFromTiles();
+        observedLatinSalita = latinSalita;
+        revealedLatinSalita = latinSalita;
         UpdateSalitaText();
 
         if (!IsSalitaValid())
@@ -206,7 +217,7 @@ public class SalitaSlots : MonoBehaviour
 
     private void UpdateSalitaText()
     {
-        salitaText.text = latinSalita;
+        salitaText.text = latinSalita == revealedLatinSalita ? latinSalita : "";
         // Separate function because it may get complicated with i/e and o/u conversion
     }
 
@@ -220,7 +231,11 @@ public class SalitaSlots : MonoBehaviour
     private IEnumerator ReplaceActiveTiles()
     {
         replacingTiles = true;
+        revealedLatinSalita = null;
+        observedLatinSalita = null;
         yield return new WaitForSeconds(1f);
+
+        int submittedTileCount = activeTiles.Count;
 
         foreach (Tile activeTile in activeTiles)
         {
@@ -229,7 +244,15 @@ public class SalitaSlots : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        StartCoroutine(tileSet.SpawnTiles(activeTiles.Count));
+        if (config.itinakdangTitik)
+        {
+            if (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
+                yield return tileSet.ClearTiles();
+            else
+                yield return tileSet.ReplaceWithCurrentAksyonTiles();
+        }
+        else
+            yield return tileSet.SpawnTiles(submittedTileCount);
 
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;

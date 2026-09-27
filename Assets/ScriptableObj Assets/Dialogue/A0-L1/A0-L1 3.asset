@@ -15,8 +15,36 @@ MonoBehaviour:
   sentences:
   - isFourSpeakers: 0
     leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: Ah! Ramdam ko ang mahika, Tala!
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: "<i>Ayan! Umabot kay Diwata Amihan\u2026</i>"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
@@ -26,7 +54,7 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: A0-L1 3
+    sentence: <i>Hmm... Subukan ko pang magbuo ng salita... Gumamit kaya ako ng <b>Kudlit</b>?</i>
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24
