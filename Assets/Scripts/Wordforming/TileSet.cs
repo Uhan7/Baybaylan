@@ -114,7 +114,7 @@ public class TileSet : MonoBehaviour
 
     public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
     {
-        if (config.itinakdangTitik)
+        if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
             int currentAksyon = AksyonCounter.Instance != null
                 ? AksyonCounter.Instance.GetCurrentAksyon()

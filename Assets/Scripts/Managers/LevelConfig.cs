@@ -39,11 +39,9 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public Alahas alahasAquiredAfterWin;
 
     [Header("Paghihigpit")]
-    [SerializeField] public Paghihigpit itinakdangTitik;
-    [SerializeField] public Paghihigpit bawalUmulit;
-
+    [Tooltip("Drop every Paghihigpit active in this level here.")]
     [OnValueChanged("UpdateAksyonSettings")]
-    [SerializeField] public Paghihigpit partikularNaSalita;
+    [SerializeField] public List<Paghihigpit> activePaghihigpit = new List<Paghihigpit>();
 
     [ShowIf("hasPartikularNaSalita")] [Header("Partikular na Salita")]
     [SerializeField] public string[] partikularNaSalita_wordList;
@@ -63,6 +61,24 @@ public class LevelConfig : ScriptableObject
         return setup != null && setup.tiles != null
             ? setup.tiles
             : System.Array.Empty<GameObject>();
+    }
+
+    public bool HasPaghihigpit(PaghihigpitTypes type)
+    {
+        return GetPaghihigpit(type) != null;
+    }
+
+    public Paghihigpit GetPaghihigpit(PaghihigpitTypes type)
+    {
+        if (activePaghihigpit == null) return null;
+
+        foreach (Paghihigpit paghihigpit in activePaghihigpit)
+        {
+            if (paghihigpit != null && paghihigpit.paghihigpitType == type)
+                return paghihigpit;
+        }
+
+        return null;
     }
 
     private bool HasPerAksyonTileSetup()
@@ -86,6 +102,9 @@ public class LevelConfig : ScriptableObject
     private void UpdateAksyonSettings()
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
+
+        if (activePaghihigpit == null)
+            activePaghihigpit = new List<Paghihigpit>();
 
         if (partikularNaSalita_wordList == null)
             partikularNaSalita_wordList = new string[maxAksyon];
@@ -112,11 +131,11 @@ public class LevelConfig : ScriptableObject
 
     bool hasItinakdangTitik()
     {
-        return itinakdangTitik != null;
+        return HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik);
     }
 
     bool hasPartikularNaSalita()
     {
-        return partikularNaSalita != null;
+        return HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita);
     }
 }

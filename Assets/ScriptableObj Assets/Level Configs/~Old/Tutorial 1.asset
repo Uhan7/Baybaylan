@@ -38,4 +38,5 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   targetMahika: 80
   maxAksyon: 3
-  bawalUmulit: 1
+  activePaghihigpit:
+  - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}

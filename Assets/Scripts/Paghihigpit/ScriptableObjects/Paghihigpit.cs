@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//not used rn 
 public enum PaghihigpitTypes
 {
     ItinakdangTitik,
@@ -13,7 +12,7 @@ public class Paghihigpit : ScriptableObject
 {
     // Variables ---------------------------------------------------------------
     [Header("Paghihigpit Info")]
-    //[SerializeField] public PaghihigpitTypes paghihigpitType;
+    [SerializeField] public PaghihigpitTypes paghihigpitType;
     [SerializeField] public string paghihigpitName = "Pangalan ng Paghihigpit";
     [SerializeField] public Sprite paghihigpitSprite;
     [TextArea(2, 2), SerializeField] public string description = "Deskripsyon tungkol sa Paghihigpit.";

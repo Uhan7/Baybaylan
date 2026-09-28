@@ -8,16 +8,20 @@ class PaghihigpitDisplay : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.Instance == null) return;
+
         config = GameManager.Instance.config;
+        if (config == null) return;
 
         setupTiles();
     }
 
     void setupTiles()
     {
-        spawnTile(config.itinakdangTitik);
-        spawnTile(config.bawalUmulit);
-        spawnTile(config.partikularNaSalita);
+        if (config.activePaghihigpit == null) return;
+
+        foreach (Paghihigpit paghihigpit in config.activePaghihigpit)
+            spawnTile(paghihigpit);
     }
 
     void spawnTile(Paghihigpit paghihigpit)

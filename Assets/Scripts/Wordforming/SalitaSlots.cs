@@ -110,7 +110,7 @@ public class SalitaSlots : MonoBehaviour
         // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
 
         // Check if the candidate salita is the particular word for that aksyon
-        if (config.partikularNaSalita)
+        if (config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
         {
             int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? -1;
             currentAksyon-=1;
@@ -133,7 +133,8 @@ public class SalitaSlots : MonoBehaviour
         }
 
         // Check if the candidate salita was already submitted
-        if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) 
+        if (GameManager.Instance.wordsUsed.Contains(latinSalita) &&
+            config.HasPaghihigpit(PaghihigpitTypes.BawalUmulit))
         {
             invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AlreadyUsed, latinSalita);
             return false;
@@ -244,7 +245,7 @@ public class SalitaSlots : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        if (config.itinakdangTitik)
+        if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
             if (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
                 yield return tileSet.ClearTiles();

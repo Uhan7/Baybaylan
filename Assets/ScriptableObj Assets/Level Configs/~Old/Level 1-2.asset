@@ -36,4 +36,5 @@ MonoBehaviour:
   predefinedTiles: []
   targetMahika: 800
   maxAksyon: 6
-  bawalUmulit: 1
+  activePaghihigpit:
+  - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}

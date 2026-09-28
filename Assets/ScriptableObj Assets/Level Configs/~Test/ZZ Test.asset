@@ -38,9 +38,9 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   targetMahika: 160
   maxAksyon: 3
-  itinakdangTitik: 1
-  bawalUmulit: 0
-  partikularNaSalita: 1
+  activePaghihigpit:
+  - {fileID: 11400000, guid: 9241cc720eb97a94baa27ee9e41e4f01, type: 2}
+  - {fileID: 11400000, guid: 07920ac805fc9c649b4840b0a7a4738b, type: 2}
   partikularNaSalita_wordList:
   - ba
   - ta
