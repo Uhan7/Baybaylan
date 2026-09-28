@@ -38,9 +38,9 @@ MonoBehaviour:
   targetMahika: 80
   maxAksyon: 3
   alahasAquiredAfterWin: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
-  itinakdangTitik: 1
-  bawalUmulit: 0
-  partikularNaSalita: 1
+  itinakdangTitik: {fileID: 11400000, guid: 9241cc720eb97a94baa27ee9e41e4f01, type: 2}
+  bawalUmulit: {fileID: 0}
+  partikularNaSalita: {fileID: 11400000, guid: 07920ac805fc9c649b4840b0a7a4738b, type: 2}
   partikularNaSalita_wordList:
   - tala
   - tali

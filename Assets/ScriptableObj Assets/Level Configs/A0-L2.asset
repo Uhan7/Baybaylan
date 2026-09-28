@@ -46,9 +46,9 @@ MonoBehaviour:
   targetMahika: 160
   maxAksyon: 3
   alahasAquiredAfterWin: {fileID: 11400000, guid: 6874d0039fd35b84fbd7ffd84c6c71ce, type: 2}
-  itinakdangTitik: 0
-  bawalUmulit: 0
-  partikularNaSalita: 0
+  itinakdangTitik: {fileID: 0}
+  bawalUmulit: {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
+  partikularNaSalita: {fileID: 0}
   partikularNaSalita_wordList:
   - 
   - 
