@@ -3156,7 +3156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2780379490813127085, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 6059611776159723874}
     - target: {fileID: 4293978788038059337, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_IsActive
@@ -3454,9 +3454,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2837068153327575741, guid: 1a26aa2eda5174072b4f03497e826d25, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7446893713857474405, guid: 1a26aa2eda5174072b4f03497e826d25, type: 3}
       propertyPath: m_Name
-      value: (TEMP) Win Screen
+      value: Alahas Screen
       objectReference: {fileID: 0}
     - target: {fileID: 7446893713857474405, guid: 1a26aa2eda5174072b4f03497e826d25, type: 3}
       propertyPath: m_IsActive
@@ -3612,7 +3616,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3696053671836123586, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 7050882393582664305}
     - target: {fileID: 5211856198093288641, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
       propertyPath: m_Pivot.x

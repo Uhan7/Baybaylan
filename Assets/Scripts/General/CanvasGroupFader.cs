@@ -43,6 +43,16 @@ public class CanvasGroupFader : MonoBehaviour
         fadeRoutine = StartCoroutine(Fade(desiredAlpha, 1));
     }
 
+    public void FadeIn(float duration)
+    {
+        FadeTo(1f, duration);
+    }
+
+    public void FadeOut(float duration)
+    {
+        FadeTo(0f, duration);
+    }
+
     public void SetAlpha(float newAlpha)
     {
         targetGroup.alpha = newAlpha;

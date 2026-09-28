@@ -382,14 +382,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8033184582171521603, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 215
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033184582171521603, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 215
-      objectReference: {fileID: 0}
     - target: {fileID: 8372680278121190562, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Name
       value: Main Game
