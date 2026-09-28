@@ -1448,6 +1448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 553456736109607229, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 21.6
+      objectReference: {fileID: 0}
     - target: {fileID: 669286383877226411, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_LocalScale.x
       value: 0
@@ -1464,6 +1468,10 @@ PrefabInstance:
       propertyPath: 'dialogues.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 60048445ee5684bf0a0b10a1e8ccf330, type: 2}
+    - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Area 0 - Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
       value: Area 0 - Level 2
@@ -1640,6 +1648,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2743855205440061564, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 21.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2865918994179191549, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_text
       value: Buuin ang salitang              at pindutin ang    .
@@ -1764,6 +1776,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3784387120825729944, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 21.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360109901848107198, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 21.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4418378536032452237, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1830,7 +1850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
-      value: FadeTo
+      value: FadeOut
       objectReference: {fileID: 0}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[7].m_MethodName
@@ -1846,6 +1866,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[7].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_FloatArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
@@ -2084,6 +2108,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8101809581268492053, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.199997
+      objectReference: {fileID: 0}
     - target: {fileID: 8158547107027805274, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2091,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 8372680278121190562, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Name
       value: Main Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699440624222048427, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 21.6
       objectReference: {fileID: 0}
     - target: {fileID: 8915162634437102579, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Alpha
@@ -2119,6 +2151,14 @@ PrefabInstance:
     - target: {fileID: 9129367696106157351, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130860767216156579, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130860767216156579, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.600006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

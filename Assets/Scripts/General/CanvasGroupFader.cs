@@ -45,12 +45,23 @@ public class CanvasGroupFader : MonoBehaviour
 
     public void FadeIn(float duration)
     {
+        targetGroup.interactable = true;
+        targetGroup.blocksRaycasts = true;
         FadeTo(1f, duration);
     }
 
     public void FadeOut(float duration)
     {
         FadeTo(0f, duration);
+    }
+
+    public void FadeOutAndDeactivate(float duration)
+    {
+        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+
+        targetGroup.interactable = false;
+        targetGroup.blocksRaycasts = false;
+        fadeRoutine = StartCoroutine(FadeOutAndDeactivateRoutine(duration));
     }
 
     public void SetAlpha(float newAlpha)
@@ -73,5 +84,12 @@ public class CanvasGroupFader : MonoBehaviour
         }
 
         targetGroup.alpha = desiredAlpha;
+    }
+
+    private IEnumerator FadeOutAndDeactivateRoutine(float duration)
+    {
+        yield return Fade(0f, duration);
+        fadeRoutine = null;
+        gameObject.SetActive(false);
     }
 }

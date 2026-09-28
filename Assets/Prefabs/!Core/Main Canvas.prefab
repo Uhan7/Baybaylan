@@ -2333,6 +2333,10 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7609268286547797362, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 550
+      objectReference: {fileID: 0}
     - target: {fileID: 8315509100280023553, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
       propertyPath: m_SortingLayer
       value: 0
