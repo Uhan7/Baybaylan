@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MALAKAS dialogue 2048_0: 3982620014170431212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

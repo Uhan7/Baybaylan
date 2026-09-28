@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TALA dialogue 2048_0: 3223713510222264263
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

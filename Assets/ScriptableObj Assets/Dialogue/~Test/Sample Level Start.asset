@@ -26,7 +26,22 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: Sample Level Start! (Just play around!)
+    sentence: Thank you for playing the demo!
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    sentence: This is just a sample level, feel free to play around or stop whenever
+      you want,
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24
