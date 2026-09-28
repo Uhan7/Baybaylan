@@ -4,6 +4,8 @@ using TMPro;
 
 class PaghihigpitInfoPopup : ToolTipAble
 {
+    const string SalitaPlaceholder = "[SALITA]";
+
     Paghihigpit currentPaghihigpit;
     [SerializeField] private Image paghihigpitImage;
     TextMeshProUGUI paghihigpitName;
@@ -49,11 +51,32 @@ class PaghihigpitInfoPopup : ToolTipAble
             }
 
             paghihigpitName.text = currentPaghihigpit.paghihigpitName;
-            paghihigpitDesc.text = currentPaghihigpit.description;
-            paghihigpitExtra.text = currentPaghihigpit.extraText;
+            paghihigpitDesc.text = ResolveLevelText(currentPaghihigpit.description);
+            paghihigpitExtra.text = ResolveLevelText(currentPaghihigpit.extraText);
 
             PositionTooltip();
         }
+    }
+
+    string ResolveLevelText(string template)
+    {
+        if (string.IsNullOrEmpty(template) ||
+            currentPaghihigpit.paghihigpitType != PaghihigpitTypes.PartikularNaSalita)
+            return template;
+
+        LevelConfig levelConfig = GameManager.Instance != null
+            ? GameManager.Instance.config
+            : null;
+        int currentAksyon = AksyonCounter.Instance != null
+            ? AksyonCounter.Instance.GetCurrentAksyon()
+            : 1;
+        string particularWord = levelConfig != null
+            ? levelConfig.GetPartikularNaSalitaForAksyon(currentAksyon)
+            : null;
+
+        return template.Replace(
+            SalitaPlaceholder,
+            string.IsNullOrEmpty(particularWord) ? "—" : particularWord);
     }
 
     void PositionTooltip()

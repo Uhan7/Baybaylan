@@ -81,6 +81,19 @@ public class LevelConfig : ScriptableObject
         return null;
     }
 
+    public string GetPartikularNaSalitaForAksyon(int aksyonNumber)
+    {
+        if (!HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita) ||
+            partikularNaSalita_wordList == null)
+            return null;
+
+        int index = aksyonNumber - 1;
+        if (index < 0 || index >= partikularNaSalita_wordList.Length)
+            return null;
+
+        return partikularNaSalita_wordList[index];
+    }
+
     private bool HasPerAksyonTileSetup()
     {
         if (itinakdangTitikPerAksyon == null) return false;

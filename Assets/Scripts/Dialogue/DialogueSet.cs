@@ -44,6 +44,15 @@ public class DialogueSet : MonoBehaviour
 
     private void PlayNextDialogue()
     {
+        while (currentIndex < dialogues.Length &&
+               (dialogues[currentIndex] == null ||
+                dialogues[currentIndex].sentences == null ||
+                dialogues[currentIndex].sentences.Length == 0))
+        {
+            Debug.LogWarning($"Skipping empty Dialogue at index {currentIndex} in {name}.", this);
+            currentIndex++;
+        }
+
         if (currentIndex >= dialogues.Length)
         {
             CompleteSet();

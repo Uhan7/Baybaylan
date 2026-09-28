@@ -25,7 +25,12 @@ class AlahasInfoPopup : ToolTipAble
     public void SetAlahas(Alahas alahas)
     {
         currentAlahas = alahas;
-        alahasImage.sprite = alahas ? alahas.alahasSprite : null;
+
+        if (alahasImage == null) return;
+
+        Sprite icon = alahas ? alahas.alahasSprite : null;
+        alahasImage.sprite = icon;
+        alahasImage.enabled = icon != null;
     }
 
     private void HandleAlahasClicked()

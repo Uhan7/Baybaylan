@@ -60,6 +60,12 @@ public class DialogueManager : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void StartDialogue(Dialogue dialogue)
     {
+        if (dialogue == null || dialogue.sentences == null || dialogue.sentences.Length == 0)
+        {
+            Debug.LogError("Cannot start a null or empty Dialogue.", dialogue);
+            return;
+        }
+
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
 

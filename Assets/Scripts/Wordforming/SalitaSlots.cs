@@ -112,11 +112,10 @@ public class SalitaSlots : MonoBehaviour
         // Check if the candidate salita is the particular word for that aksyon
         if (config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
         {
-            int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? -1;
-            currentAksyon-=1;
-            if (currentAksyon>=0)
+            int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? 1;
+            string particularWord = config.GetPartikularNaSalitaForAksyon(currentAksyon);
+            if (!string.IsNullOrEmpty(particularWord))
             {
-                string particularWord = config.partikularNaSalita_wordList[currentAksyon];
                 if (!string.Equals(particularWord, latinSalita))
                 {
                     invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPartikularNaSalita, latinSalita);
