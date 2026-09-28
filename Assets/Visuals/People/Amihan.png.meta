@@ -1,13 +1,28 @@
 fileFormatVersion: 2
-guid: 3d100fcf41a4a4478a2e9d91db1ca357
+guid: cfc3684607e4c48f683453da78f36721
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4390077608277919495
-    second: Tala_0
+      213: -4859484692498443894
+    second: Amihan_0
   - first:
-      213: 136175914751702882
-    second: Tala_1
+      213: 612817034114887080
+    second: Amihan_1
+  - first:
+      213: 7198250154612362072
+    second: Amihan_2
+  - first:
+      213: 6344877592111440629
+    second: Amihan_3
+  - first:
+      213: -3906531336263187200
+    second: Amihan_4
+  - first:
+      213: -8096787308119165924
+    second: Amihan_5
+  - first:
+      213: -2482519583039556100
+    second: Amihan_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +70,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 65, y: 65, z: 65, w: 65}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -78,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -142,45 +157,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tala_0
+      name: Amihan_0
       rect:
         serializedVersion: 2
-        x: 85
-        y: 43
-        width: 1045
-        height: 1087
+        x: 211
+        y: 0
+        width: 1506
+        height: 2048
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7074dc93350bcec30800000000000000
-      internalID: 4390077608277919495
+      spriteID: a819e283b64af8cb0800000000000000
+      internalID: -4859484692498443894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tala_1
+      name: Amihan_1
       rect:
         serializedVersion: 2
-        x: 675
-        y: 1128
-        width: 21
-        height: 6
+        x: 1772
+        y: 807
+        width: 26
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2673db1e54bc3e100800000000000000
-      internalID: 136175914751702882
+      spriteID: 8ade9be78d9218800800000000000000
+      internalID: 612817034114887080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amihan_2
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 834
+        width: 50
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85b021ea06255e360800000000000000
+      internalID: 7198250154612362072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amihan_3
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 554
+        width: 134
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f2632dad888d0850800000000000000
+      internalID: 6344877592111440629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amihan_4
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 669
+        width: 52
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005c916827639c9c0800000000000000
+      internalID: -3906531336263187200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amihan_5
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 0
+        width: 81
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c147aa587de62af80800000000000000
+      internalID: -8096787308119165924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amihan_6
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 0
+        width: 58
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf5f9f897915c8dd0800000000000000
+      internalID: -2482519583039556100
       vertices: []
       indices: 
       edges: []
@@ -190,7 +315,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -199,8 +324,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tala_0: 4390077608277919495
-      Tala_1: 136175914751702882
+      Amihan_0: -4859484692498443894
+      Amihan_1: 612817034114887080
+      Amihan_2: 7198250154612362072
+      Amihan_3: 6344877592111440629
+      Amihan_4: -3906531336263187200
+      Amihan_5: -8096787308119165924
+      Amihan_6: -2482519583039556100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

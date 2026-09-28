@@ -70,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -364,7 +364,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -373,7 +373,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AMIHAN SKETCH 2048_0: -2614182784668869554
+      AMIHAN SKETCH 2048_1: -2458764118038774035
+      AMIHAN SKETCH 2048_2: -3289436206826556373
+      AMIHAN SKETCH 2048_3: -601701177367113484
+      AMIHAN SKETCH 2048_4: 4668903574810048194
+      AMIHAN SKETCH 2048_5: 4178803854969104014
+      AMIHAN SKETCH 2048_6: -5497074709393897130
+      AMIHAN SKETCH 2048_7: -6309999470483292399
+      AMIHAN SKETCH 2048_8: -6752441816235130787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

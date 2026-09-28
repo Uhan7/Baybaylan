@@ -15,5 +15,6 @@ MonoBehaviour:
   paghihigpitType: 0
   paghihigpitName: Itinakdang Titik
   paghihigpitSprite: {fileID: 0}
-  description: Deskripsyon tungkol sa Itinakdang Titik.
-  extraText: Extra text tungkol sa Itinakdang Titik.
+  description: Mayroong mga itinakdang titik, at hindi ito sila pinipili nang random.
+  extraText: <i>Gumagana lamang ang mahika ko kapag ang mga titik na ito ang ginagamit
+    ko.</i>

@@ -15,5 +15,6 @@ MonoBehaviour:
   paghihigpitType: 1
   paghihigpitName: Bawal Umulit
   paghihigpitSprite: {fileID: 0}
-  description: Deskripsyon tungkol sa Bawal Umulit.
-  extraText: Extra text tungkol sa Bawal Umulit.
+  description: Hindi maaaring isulat muli ang salitang naisumite na.
+  extraText: Mukhang hindi gumana ang mahika ng mga salitang naisulat ko na... Ibahin
+    ko dapat ang mga salita.

@@ -15,5 +15,9 @@ MonoBehaviour:
   paghihigpitType: 2
   paghihigpitName: Partikular Na Salita
   paghihigpitSprite: {fileID: 0}
-  description: Deskripsyon tungkol sa Partikular Na Salita.
-  extraText: Extra text tungkol sa Partikular Na Salita.
+  description: 'Mga partikular na salita lamang ang tatanggapin.
+
+
+    Ang salita:
+    [SALITA]'
+  extraText: Hindi puwedeng kung ano-ano lang ang isulat ko...
