@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f828bae8e801a4b5cbfc505ba5970028
+guid: 3d029790bbe434290951322ac397a8de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8772318950334226744
-    second: TALA0_0
+      213: 5689127143753627966
+    second: BAMBOO2 SKETCH 2048_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TALA0_0
+      name: BAMBOO2 SKETCH 2048_0
       rect:
         serializedVersion: 2
-        x: 173
+        x: 7
         y: 0
-        width: 3127
-        height: 3070
+        width: 2023
+        height: 2030
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 831691b8b998db970800000000000000
-      internalID: 8772318950334226744
+      spriteID: e39b775bef6d3fe40800000000000000
+      internalID: 5689127143753627966
       vertices: []
       indices: 
       edges: []

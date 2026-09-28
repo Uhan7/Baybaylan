@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ce488c405cf2d4546bcf3c140cc0c64c
+guid: 64a402069040c470ea94a2a81b02ffb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6432667092415728586
-    second: MAGANDA0_0
+      213: 5398214245685332184
+    second: MAGANDA dialogue 2048_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MAGANDA0_0
+      name: MAGANDA dialogue 2048_0
       rect:
         serializedVersion: 2
-        x: 267
+        x: 58
         y: 0
-        width: 3231
-        height: 3052
+        width: 1358
+        height: 1282
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 63437367c539ab6a0800000000000000
-      internalID: -6432667092415728586
+      spriteID: 8d80787614f4aea40800000000000000
+      internalID: 5398214245685332184
       vertices: []
       indices: 
       edges: []

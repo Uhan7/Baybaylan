@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7ea1558122aa14ee6a26deadd9fde3b0
+guid: 0a93072fe12ae4f6098b2e535f003800
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6990055420779236282
-    second: MAGANDA 2048_0
+      213: 3223713510222264263
+    second: TALA dialogue 2048_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MAGANDA 2048_0
+      name: TALA dialogue 2048_0
       rect:
         serializedVersion: 2
-        x: 58
+        x: 16
         y: 0
-        width: 1358
-        height: 1282
+        width: 1174
+        height: 1149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: abb07dbce5aa10160800000000000000
-      internalID: 6990055420779236282
+      spriteID: 7c7fc6a8b5eecbc20800000000000000
+      internalID: 3223713510222264263
       vertices: []
       indices: 
       edges: []
