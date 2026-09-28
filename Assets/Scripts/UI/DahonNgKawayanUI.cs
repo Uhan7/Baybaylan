@@ -29,7 +29,17 @@ class DahonNgKawayanUI : MonoBehaviour
 
     void Start()
     {
+        Button dismissButton = mainUiParent.GetComponent<Button>();
+        if (dismissButton == null)
+            dismissButton = mainUiParent.AddComponent<Button>();
+
+        dismissButton.transition = Selectable.Transition.None;
+        dismissButton.targetGraphic = mainUiParent.GetComponent<Graphic>();
+        dismissButton.onClick.RemoveListener(CloseSelection);
+        dismissButton.onClick.AddListener(CloseSelection);
+
         mainUiParent.SetActive(false);
+        if (spawnButton != null) spawnButton.SetActive(false);
     }
 
     void spawnTileButtons()
@@ -64,10 +74,24 @@ class DahonNgKawayanUI : MonoBehaviour
         spawnedTiles = true;
     }
 
-    //used by the button to open the main UI
+    public void OpenSelection()
+    {
+        if (usedSpawn || config == null) return;
+        if (AlahasSubManager.Instance == null || !AlahasSubManager.Instance.canCreateTile) return;
+
+        spawnTileButtons();
+        mainUiParent.SetActive(true);
+    }
+
+    // Kept so older scene/prefab event references do not break.
     public void spawnTileButton()
     {
-        mainUiParent.SetActive(true);
+        OpenSelection();
+    }
+
+    public void CloseSelection()
+    {
+        mainUiParent.SetActive(false);
     }
 
     //used by the finish button to spawn the tile 
@@ -106,12 +130,5 @@ class DahonNgKawayanUI : MonoBehaviour
         }
         prevSelectedIndex = tileSelectedIndex;
 
-        //for odd reasons, these funcs are needed in update
-        if(!AlahasSubManager.Instance.canCreateTile || usedSpawn)
-            spawnButton.SetActive(false);
-        else    
-            spawnButton.SetActive(true);
-
-        spawnTileButtons();
     }
 }

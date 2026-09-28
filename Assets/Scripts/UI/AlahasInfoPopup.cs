@@ -6,14 +6,32 @@ class AlahasInfoPopup : ToolTipAble
 {
     public Alahas currentAlahas;
     [SerializeField] private Image alahasImage;
+    private Button alahasButton;
     TextMeshProUGUI alahasName;
     TextMeshProUGUI alahasDesc;
     TextMeshProUGUI alahasExtra;
+
+    private void Awake()
+    {
+        alahasButton = GetComponent<Button>();
+
+        if (alahasButton != null)
+        {
+            alahasButton.onClick.RemoveListener(HandleAlahasClicked);
+            alahasButton.onClick.AddListener(HandleAlahasClicked);
+        }
+    }
 
     public void SetAlahas(Alahas alahas)
     {
         currentAlahas = alahas;
         alahasImage.sprite = alahas ? alahas.alahasSprite : null;
+    }
+
+    private void HandleAlahasClicked()
+    {
+        if (currentAlahas is DahonNgKawayanAlahas && DahonNgKawayanUI.Instance != null)
+            DahonNgKawayanUI.Instance.OpenSelection();
     }
 
     override protected void startHover()

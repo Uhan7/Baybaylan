@@ -15,13 +15,13 @@ MonoBehaviour:
   sentences:
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -29,13 +29,13 @@ MonoBehaviour:
     sentence: Ah! Ramdam ko ang mahika, Tala!
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
     sentence: "<i>Ayan! Umabot kay Diwata Amihan\u2026</i>"
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}

@@ -15,75 +15,75 @@ MonoBehaviour:
   sentences:
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: "Napakahusay, Tala!"
+    sentence: Napakahusay, Tala!
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: "Maraming salamat po, Diwata Amihan, ngunit medyo nahihirapan pa rin
-      akong sumulat..."
+    sentence: Maraming salamat po, Diwata Amihan, ngunit medyo nahihirapan pa rin
+      akong sumulat...
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: "Baka makatulong ito sa iyo, Tala."
+    sentence: Baka makatulong ito sa iyo, Tala.
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: "Halina. Sa mahika mo, mabibiyak natin ang kawayan."
+    sentence: Halina. Sa mahika mo, mabibiyak natin ang kawayan.
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: a357074f7d02d425fa34b93e4ca128bb, type: 3}
+      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: "Sige po, Diwata Amihan!"
+    sentence: Sige po, Diwata Amihan!
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24
