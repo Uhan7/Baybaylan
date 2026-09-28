@@ -1026,6 +1026,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89126ea747fbc4324bca727f7fc8025a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &936786402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 708720706229091593, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
+  m_PrefabInstance: {fileID: 936786399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd52a7b61a1f0411b903b65a050d4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &994993628 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2782217401142151774, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
@@ -1610,34 +1621,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_Mode
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_Target
       value: 
-      objectReference: {fileID: 936786401}
+      objectReference: {fileID: 936786402}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_MethodName
       value: FadeIn
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: HelperUI, Assembly-CSharp
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_TargetAssemblyTypeName
+      value: CanvasGroupFader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_Arguments.m_FloatArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[11].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2453630319733079574, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}

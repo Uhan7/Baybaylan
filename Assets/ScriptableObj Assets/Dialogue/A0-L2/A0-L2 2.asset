@@ -26,7 +26,7 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    sentence: A0-L2 2
+    sentence: Sample Level End!
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

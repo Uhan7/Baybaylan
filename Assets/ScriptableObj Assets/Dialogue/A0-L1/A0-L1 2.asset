@@ -21,7 +21,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+      sprite: {fileID: 21300000, guid: 03d844435ba2c48318f45bcaf54a6869, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
+      sprite: {fileID: 21300000, guid: 03d844435ba2c48318f45bcaf54a6869, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
