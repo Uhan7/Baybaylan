@@ -19,9 +19,9 @@ public class ItinakdangTitikAksyon
 public class LevelConfig : ScriptableObject
 {
     [Header("Tiles")]
-    [HideIf("itinakdangTitik"), SerializeField] public int tilesAmount;
-    [HideIf("itinakdangTitik"), SerializeField] public List<GameObject> tilesSelection;
-    [ShowIf("itinakdangTitik"), Tooltip("Each element is the exact tile pool for its numbered Aksyon."), SerializeField]
+    [HideIf("hasItinakdangTitik"), SerializeField] public int tilesAmount;
+    [HideIf("hasItinakdangTitik"), SerializeField] public List<GameObject> tilesSelection;
+    [ShowIf("hasItinakdangTitik"), Tooltip("Each element is the exact tile pool for its numbered Aksyon."), SerializeField]
     public List<ItinakdangTitikAksyon> itinakdangTitikPerAksyon = new List<ItinakdangTitikAksyon>();
 
     // Kept serialized so existing level configs continue to work until their
@@ -39,13 +39,13 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public Alahas alahasAquiredAfterWin;
 
     [Header("Paghihigpit")]
-    [SerializeField] public bool itinakdangTitik = false;
-    [SerializeField] public bool bawalUmulit = false;
+    [SerializeField] public Paghihigpit itinakdangTitik;
+    [SerializeField] public Paghihigpit bawalUmulit;
 
     [OnValueChanged("UpdateAksyonSettings")]
-    [SerializeField] public bool partikularNaSalita = false;
+    [SerializeField] public Paghihigpit partikularNaSalita;
 
-    [ShowIf("partikularNaSalita")] [Header("Partikular na Salita")]
+    [ShowIf("hasPartikularNaSalita")] [Header("Partikular na Salita")]
     [SerializeField] public string[] partikularNaSalita_wordList;
 
     public IReadOnlyList<GameObject> GetItinakdangTilesForAksyon(int aksyonNumber)
@@ -108,5 +108,15 @@ public class LevelConfig : ScriptableObject
 
             itinakdangTitikPerAksyon[i].SetAksyonNumber(i + 1);
         }
+    }
+
+    bool hasItinakdangTitik()
+    {
+        return itinakdangTitik != null;
+    }
+
+    bool hasPartikularNaSalita()
+    {
+        return partikularNaSalita != null;
     }
 }
