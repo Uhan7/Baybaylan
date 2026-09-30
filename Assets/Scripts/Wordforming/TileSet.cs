@@ -48,11 +48,7 @@ public class TileSet : MonoBehaviour
 
     private void SpawnInitialTiles()
     {
-        int tilesAmount = config.tilesAmount;
-        if(AlahasSubManager.Instance.add3ExtraTiles)
-            tilesAmount += AlahasSubManager.Instance.extraTilesToAdd;
-
-        StartCoroutine(SpawnTiles(tilesAmount));
+        StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
     void Update()
@@ -79,7 +75,16 @@ public class TileSet : MonoBehaviour
     {
         for(int i = 0; i < AlahasSubManager.Instance.tilesToDelete; i++)
             if(transform.childCount > 0)
+            {
                 deleteTile(0, true);
+            }
+    }
+
+    public void PakpakNiPahDeleteTemps()
+    {
+        for(int i = 0; i < transform.childCount; i++)
+            if(transform.GetChild(i).GetComponent<Tile>().isTemp)
+                deleteTile(i, false);
     }
 
     void deleteTile(int childIndex, bool isRandom)
@@ -159,7 +164,15 @@ public class TileSet : MonoBehaviour
             yield break;
         }
 
-        for (int i = 0; i < tilesAmount; i++)
+        int actualAmount = tilesAmount;
+        int tempTilesToAdd = 0;
+        if(AlahasSubManager.Instance.add3ExtraTiles)
+        {
+            actualAmount += AlahasSubManager.Instance.extraTilesToAdd;
+            tempTilesToAdd += AlahasSubManager.Instance.extraTilesToAdd;
+        }
+
+        for (int i = 0; i < actualAmount; i++)
         {
             GameObject tile = null;
 
@@ -175,6 +188,16 @@ public class TileSet : MonoBehaviour
                     break;
                 }
             }
+
+            if(tempTilesToAdd > 0)
+            {
+                tile.GetComponent<Tile>().isTemp = true;
+                tempTilesToAdd--;
+
+                //Debug.Log("temps left: " + tempTilesToAdd);
+            }
+            else    
+                tile.GetComponent<Tile>().isTemp = false;
 
             SpawnTile(tile);
             sfxSource.PlayOneShot(spawnSFX);

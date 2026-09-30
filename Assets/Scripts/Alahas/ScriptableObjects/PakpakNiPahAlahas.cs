@@ -32,6 +32,11 @@ class PakpakNiPahAlahas : Alahas
 
     public override void onTurnEnd()
     {
+        if(alreadyDeleted)
+            AlahasSubManager.Instance.spawnTiles(tilesToDelete);
+
+        TileSet.Instance.PakpakNiPahDeleteTemps();
+
         alreadyDeleted = false;
         timer = 0f;
     }
@@ -44,7 +49,7 @@ class PakpakNiPahAlahas : Alahas
 
         AlahasSubManager.Instance.delete5Tiles = false; //this loop *should* reset the bool in 1 frame 
 
-        Debug.Log("timer: " + timer);
+        //Debug.Log("timer: " + timer);
 
         timer += Time.deltaTime;
         if(timer >= durationTillDelete && !alreadyDeleted)
@@ -52,7 +57,7 @@ class PakpakNiPahAlahas : Alahas
             alreadyDeleted = true;
             AlahasSubManager.Instance.delete5Tiles = true;
 
-            Debug.Log("delete func");
+            //Debug.Log("delete func");
         }
     }
 }

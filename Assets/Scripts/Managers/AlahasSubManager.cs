@@ -90,4 +90,8 @@ class AlahasSubManager : MonoBehaviour
         }
     }
 
+    public void spawnTiles(int amount)
+    {
+        StartCoroutine(TileSet.Instance.SpawnTiles(amount));
+    }
 }

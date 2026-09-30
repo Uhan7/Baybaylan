@@ -68,6 +68,7 @@ public class Tile : MonoBehaviour
     [SerializeField] public bool isShy;
     [SerializeField] public bool isBlossom;
     [SerializeField] public bool isToolTipped;
+    [SerializeField] public bool isTemp; // from the PakpakNiPahAlahas
 
     ToolTipAble tooltipScript;
 
