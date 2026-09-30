@@ -17,6 +17,10 @@ class AlahasSubManager : MonoBehaviour
     [ReadOnly, SerializeField] public float goldScoreMulti = 1f;
     [ReadOnly, SerializeField] public bool toolTipTiles = false;
     [ReadOnly, SerializeField] public bool canCreateTile = false;
+    [ReadOnly, SerializeField] public bool add3ExtraTiles = false;
+    [ReadOnly, SerializeField] public int extraTilesToAdd = 0;
+    [ReadOnly, SerializeField] public bool delete5Tiles = false;
+    [ReadOnly, SerializeField] public int tilesToDelete = 0;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
@@ -32,6 +36,14 @@ class AlahasSubManager : MonoBehaviour
     {
         alahasManagerScript = AlahasManager.Instance;
         heldAlahas = alahasManagerScript.heldAlahas;
+
+        for (int i = 0; i < heldAlahas.Count; i++)
+        {
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
+
+            alahas.onStart();
+        }
     }
 
     void Update()

@@ -11,6 +11,7 @@ public abstract class Alahas : ScriptableObject
     [SerializeField] public int numberOfSlotsNeeded = 1;
 
     // Helper Functions --------------------------------------------------------
+    public abstract void onStart();
     public abstract bool triggerCondition();
     public abstract void onTriggerEffect();
     public abstract void onSubmit();

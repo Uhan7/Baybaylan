@@ -48,7 +48,17 @@ public class TileSet : MonoBehaviour
 
     private void SpawnInitialTiles()
     {
-        StartCoroutine(SpawnTiles(config.tilesAmount));
+        int tilesAmount = config.tilesAmount;
+        if(AlahasSubManager.Instance.add3ExtraTiles)
+            tilesAmount += AlahasSubManager.Instance.extraTilesToAdd;
+
+        StartCoroutine(SpawnTiles(tilesAmount));
+    }
+
+    void Update()
+    {
+        if(AlahasSubManager.Instance.delete5Tiles)
+            PakpakNiPahDelete();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -63,6 +73,22 @@ public class TileSet : MonoBehaviour
         applyVowelBoost(tileScript);
         applyGold(tileScript);
         applyToolTip(tileScript);
+    }
+
+    void PakpakNiPahDelete()
+    {
+        for(int i = 0; i < AlahasSubManager.Instance.tilesToDelete; i++)
+            if(transform.childCount > 0)
+                deleteTile(0, true);
+    }
+
+    void deleteTile(int childIndex, bool isRandom)
+    {
+        int index = childIndex;
+        if(isRandom)
+            index = Random.Range(0, transform.childCount);
+
+        Destroy(transform.GetChild(index).gameObject);
     }
 
     public void DahonNgKawayanSpawn(GameObject tilePrefab)
