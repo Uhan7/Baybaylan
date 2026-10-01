@@ -51,7 +51,9 @@ class PakpakNiPahAlahas : Alahas
 
         //Debug.Log("timer: " + timer);
 
-        timer += Time.deltaTime;
+        if(AlahasSubManager.Instance.dialogueEnded)
+            timer += Time.deltaTime;
+
         if(timer >= durationTillDelete && !alreadyDeleted)
         {
             alreadyDeleted = true;

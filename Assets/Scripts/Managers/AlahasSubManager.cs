@@ -8,6 +8,9 @@ using NaughtyAttributes;
 //detects and changes gamestates for a clean ish implementation of items/alahas
 class AlahasSubManager : MonoBehaviour
 {
+    //states from other scripts
+    [ReadOnly, SerializeField] public bool dialogueEnded = false;
+
     //states to send to other scripts
     [ReadOnly, SerializeField] public bool boostVowels = false;
     [ReadOnly, SerializeField] public float vowelSpawnChanceIncrease = 0;
