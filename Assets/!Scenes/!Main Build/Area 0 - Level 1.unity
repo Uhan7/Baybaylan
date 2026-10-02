@@ -1461,7 +1461,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 553456736109607229, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 21.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 669286383877226411, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_LocalScale.x
@@ -1665,7 +1665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2743855205440061564, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 21.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2865918994179191549, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_text
@@ -1793,11 +1793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3784387120825729944, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 21.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4360109901848107198, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 21.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4735010994122775520, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_text
@@ -1815,6 +1815,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
+    - target: {fileID: 5356605714317180319, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5705537266350011826, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2141,7 +2145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8699440624222048427, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 21.6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8915162634437102579, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Alpha
