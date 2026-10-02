@@ -29,6 +29,8 @@ public class SalitaSlots : MonoBehaviour
     [Header("Word Properties")]
     [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
     [ReadOnly, SerializeField] private string latinSalita;
+    private string revealedLatinSalita;
+    private string observedLatinSalita;
 
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
@@ -64,6 +66,13 @@ public class SalitaSlots : MonoBehaviour
 
         UpdateActiveTiles();
         GetSalitaFromTiles();
+
+        if (latinSalita != observedLatinSalita)
+        {
+            observedLatinSalita = latinSalita;
+            revealedLatinSalita = null;
+        }
+
         UpdateSalitaText();
 
         submitButton.interactable = (latinSalita != "");
@@ -76,6 +85,8 @@ public class SalitaSlots : MonoBehaviour
 
         UpdateActiveTiles();
         GetSalitaFromTiles();
+        observedLatinSalita = latinSalita;
+        revealedLatinSalita = latinSalita;
         UpdateSalitaText();
 
         if (!IsSalitaValid())
@@ -99,13 +110,12 @@ public class SalitaSlots : MonoBehaviour
         // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
 
         // Check if the candidate salita is the particular word for that aksyon
-        if (config.partikularNaSalita)
+        if (config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
         {
-            int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? -1;
-            currentAksyon-=1;
-            if (currentAksyon>=0)
+            int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? 1;
+            string particularWord = config.GetPartikularNaSalitaForAksyon(currentAksyon);
+            if (!string.IsNullOrEmpty(particularWord))
             {
-                string particularWord = config.partikularNaSalita_wordList[currentAksyon];
                 if (!string.Equals(particularWord, latinSalita))
                 {
                     invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPartikularNaSalita, latinSalita);
@@ -122,7 +132,8 @@ public class SalitaSlots : MonoBehaviour
         }
 
         // Check if the candidate salita was already submitted
-        if (GameManager.Instance.wordsUsed.Contains(latinSalita) && config.bawalUmulit) 
+        if (GameManager.Instance.wordsUsed.Contains(latinSalita) &&
+            config.HasPaghihigpit(PaghihigpitTypes.BawalUmulit))
         {
             invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AlreadyUsed, latinSalita);
             return false;
@@ -189,12 +200,12 @@ public class SalitaSlots : MonoBehaviour
         sfxSource.PlayOneShot(correctSFX);
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
         GameManager.Instance.wordsUsed.Add(latinSalita);
-        AksyonCounter.Instance.ConcludeAksyon();
 
         yield return new WaitForSeconds(0.25f);
         scoreCalculationsContainer.SetActive(false);
 
         scoringSalita = false;
+        AksyonCounter.Instance.ConcludeAksyon();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
         {
@@ -206,7 +217,7 @@ public class SalitaSlots : MonoBehaviour
 
     private void UpdateSalitaText()
     {
-        salitaText.text = latinSalita;
+        salitaText.text = latinSalita == revealedLatinSalita ? latinSalita : "";
         // Separate function because it may get complicated with i/e and o/u conversion
     }
 
@@ -220,7 +231,11 @@ public class SalitaSlots : MonoBehaviour
     private IEnumerator ReplaceActiveTiles()
     {
         replacingTiles = true;
+        revealedLatinSalita = null;
+        observedLatinSalita = null;
         yield return new WaitForSeconds(1f);
+
+        int submittedTileCount = activeTiles.Count;
 
         foreach (Tile activeTile in activeTiles)
         {
@@ -229,7 +244,15 @@ public class SalitaSlots : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        StartCoroutine(tileSet.SpawnTiles(activeTiles.Count));
+        if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
+        {
+            if (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
+                yield return tileSet.ClearTiles();
+            else
+                yield return tileSet.ReplaceWithCurrentAksyonTiles();
+        }
+        else
+            yield return tileSet.SpawnTiles(submittedTileCount);
 
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;

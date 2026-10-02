@@ -61,6 +61,7 @@ public class Tile : MonoBehaviour
 
     [Header("Flags")]
     [HideInInspector] private bool wasBeingDragged;
+    [ReadOnly, SerializeField] private bool isActiveTile;
     [SerializeField] public bool isGold;
     [SerializeField] public bool isVowelBoosted;
     [SerializeField] public bool isPearl;
@@ -169,18 +170,18 @@ public class Tile : MonoBehaviour
 
     public void ChangeSprite(bool active) // Can be called by the DropZone obj
     {
+        isActiveTile = active;
+
         if (active)
         {
             imageComponent.sprite = activeTileSprites[Random.Range(0, activeTileSprites.Length)];
-            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = activeTileColor;
-            if (isGold) foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = activeGoldenStrokeColor;
         }
         else
         {
             imageComponent.sprite = availableTileSprites[Random.Range(0, availableTileSprites.Length)];
-            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableTileColor;
-            if (isGold) foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
         }
+
+        ApplyStrokeColor();
     }
 
     private void ChangeSpriteOnDrag()
@@ -194,15 +195,25 @@ public class Tile : MonoBehaviour
 
     void applyModVisuals()
     {
-        if(isGold)
-            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = availableGoldenStrokeColor;
-        else    
-            foreach (GameObject stroke in strokes) stroke.GetComponent<Image>().color = Color.white;
+        ApplyStrokeColor();
 
         if(isVowelBoosted)
             vowelBoostedSymbol.SetActive(true);
         else
             vowelBoostedSymbol.SetActive(false);
+    }
+
+    private void ApplyStrokeColor()
+    {
+        Color strokeColor;
+
+        if (isGold)
+            strokeColor = isActiveTile ? activeGoldenStrokeColor : availableGoldenStrokeColor;
+        else
+            strokeColor = isActiveTile ? activeTileColor : availableTileColor;
+
+        foreach (GameObject stroke in strokes)
+            stroke.GetComponent<Image>().color = strokeColor;
     }
 
     void updateLatinTooltipText()

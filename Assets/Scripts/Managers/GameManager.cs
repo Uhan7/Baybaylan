@@ -7,6 +7,13 @@ using NaughtyAttributes;
 
 public class GameManager : MonoBehaviour
 {
+    [System.Serializable]
+    private class AksyonEvent
+    {
+        public int aksyonNumber = 1;
+        public UnityEvent eventOnAksyon;
+    }
+
     // Variables ---------------------------------------------------------------
     [Header("Instance")]
     [HideInInspector] public static GameManager Instance;
@@ -33,6 +40,7 @@ public class GameManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent eventOnWin;
     [SerializeField] private UnityEvent eventOnLose;
+    [SerializeField] private List<AksyonEvent> eventsOnAksyon = new List<AksyonEvent>();
 
     [Header("Should not be here but idgaf")]
     [SerializeField] private AudioClip winSFX;
@@ -42,7 +50,7 @@ public class GameManager : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void OnValidate()
     {
-        targetMahika = config.targetMahika;
+        targetMahika = config != null ? config.targetMahika : 0;
     }
 
     private void Awake()
@@ -55,11 +63,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (config == null) return;
+
         ChangeMahika(0);
         DahonNgKawayanUI.Instance.getLevelConfig(config);
     }
 
     // Helper Functions --------------------------------------------------------
+    public void aquireAlahasAfterWin()
+    {
+        if(!config.alahasAquiredAfterWin)
+            return;
+
+        TalaAlahasHolder.Instance.availableAlahas.Add(config.alahasAquiredAfterWin);
+        
+        //this one is temporaary until we add the "equip alahas screen" 
+        config.alahasAquiredAfterWin.AddAlahasToList();
+    }
+
     public void ChangeMahika(int score)
     {
         currentMahika += score;
@@ -69,6 +90,15 @@ public class GameManager : MonoBehaviour
         mahikaBarFill.fillAmount = mahikaPercent;
 
         mahikaText.text = currentMahika.ToString() + "/" + config.targetMahika.ToString();
+    }
+
+    public void InvokeEventsOnAksyon(int aksyonNumber)
+    {
+        foreach (AksyonEvent aksyonEvent in eventsOnAksyon)
+        {
+            if (aksyonEvent != null && aksyonEvent.aksyonNumber == aksyonNumber)
+                aksyonEvent.eventOnAksyon?.Invoke();
+        }
     }
 
     private void LoadWordlist()

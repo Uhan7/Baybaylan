@@ -60,6 +60,12 @@ public class DialogueManager : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void StartDialogue(Dialogue dialogue)
     {
+        if (dialogue == null || dialogue.sentences == null || dialogue.sentences.Length == 0)
+        {
+            Debug.LogError("Cannot start a null or empty Dialogue.", dialogue);
+            return;
+        }
+
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
 
@@ -107,9 +113,7 @@ public class DialogueManager : MonoBehaviour
         AnimateProfiles(dialogueSentence);
 
         string sentence = dialogueSentence.sentence;
-        dialogueContainer.SetTextInstant(sentence);
-
-        int total = sentence.Length;
+        int total = dialogueContainer.PrepareText(sentence);
 
         for (int i = 0; i <= total; i++)
         {
@@ -121,11 +125,12 @@ public class DialogueManager : MonoBehaviour
 
             dialogueContainer.SetVisibleCharacters(i);
 
-            if (i % 5 == 0 && i < total) aSource.PlayOneShot(currentDialogue.soundToPlay);
+            if (i % 5 == 0 && i < total && aSource && currentDialogue.soundToPlay)
+                aSource.PlayOneShot(currentDialogue.soundToPlay);
 
             if (i == 0) continue;
 
-            char c = sentence[i - 1];
+            char c = dialogueContainer.GetVisibleCharacter(i - 1);
 
             if (c == '.' ||
                 c == '…' || // Just a fallback,,, but ideally all ellipsis turn into 3 periods

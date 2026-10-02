@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: A0-Intro 1
   m_EditorClassIdentifier: 
   sentences:
-  - speakerPosition: 1
-    leftCharacterSprite: {fileID: 21300000, guid: 3d100fcf41a4a4478a2e9d91db1ca357, type: 3}
-    rightCharacterSprite: {fileID: 0}
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
     sentence: <i>Ilang araw nang may mga tinig na tumatawag sa akin...</i>
   soundToPlay: {fileID: 0}
   textSpeed: 0.022

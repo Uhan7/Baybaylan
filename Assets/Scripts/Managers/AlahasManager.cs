@@ -7,11 +7,14 @@ using NaughtyAttributes;
 using System;
 using System.Linq;
 
+//holds the equiped alahas, submanager handles the functionality 
 public class AlahasManager : MonoBehaviour
 {
     // Variables ---------------------------------------------------------------
     [Header("Singleton")]
     [HideInInspector] public static AlahasManager Instance;
+
+    [SerializeField] public int maxAlahasSlotCount;
 
     [Header("Alahas References")]
     [SerializeField] private GameObject[] alahasSlots;
@@ -49,7 +52,7 @@ public class AlahasManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        ResetAllAlahas();
+        ResetAllAlahas(); //does nothing rn 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -65,8 +68,7 @@ public class AlahasManager : MonoBehaviour
         GameManager gameManagerInstance = GameObject.FindFirstObjectByType<GameManager>();
         if (!gameManagerInstance) return;
 
-        // Get Alahas Slots by alphabetical order (1,2,3,...) ((1),(2)<(3),...) (A,B,C,...Z)
-        alahasSlots = GameObject.FindGameObjectsWithTag("Alahas Slot").OrderBy(go => go.name).ToArray();
+        CacheAlahasSlots();
         
         // I forgot where I saw this (probably Kotlin or something), you can put a '?' before the '.' to check if it is null
         alahasNameText = GameObject.FindGameObjectWithTag("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
@@ -74,19 +76,34 @@ public class AlahasManager : MonoBehaviour
 
         alahasInfoPopupScript = GameObject.FindObjectOfType<AlahasInfoPopup>(true);
 
-        if (heldAlahas != null && heldAlahas.Count > 0) SetAlahasSlotsUI();
+        RefreshAlahasSlotsUI();
     }
 
     // Helper Functions --------------------------------------------------------
-    private void SetAlahasSlotsUI()
+    public void RefreshAlahasSlotsUI()
     {
-        for (int i = 0; i < heldAlahas.Count; i++)
-        {
-            int index = i;
-            if(!heldAlahas[index])
-                continue;
+        // The HUD begins inactive while the intro dialogue runs, so the usual
+        // tag lookup misses every slot. Include inactive popup components so
+        // their images are ready when the HUD is activated.
+        CacheAlahasSlots();
 
-            alahasSlots[index].GetComponent<AlahasInfoPopup>().SetAlahas(heldAlahas[index]);
+        foreach (GameObject slot in alahasSlots)
+        {
+            AlahasInfoPopup popup = slot != null ? slot.GetComponent<AlahasInfoPopup>() : null;
+            if (popup != null) popup.SetAlahas(null);
+        }
+
+        if (heldAlahas == null) return;
+
+        int visibleAlahasCount = Mathf.Min(heldAlahas.Count, alahasSlots.Length);
+        for (int i = 0; i < visibleAlahasCount; i++)
+        {
+            if (!heldAlahas[i]) continue;
+
+            if (alahasSlots[i] == null) continue;
+
+            AlahasInfoPopup popup = alahasSlots[i].GetComponent<AlahasInfoPopup>();
+            if (popup != null) popup.SetAlahas(heldAlahas[i]);
 
             // alahasSlots[index].GetComponent<Button>().onClick.RemoveAllListeners();
             // alahasSlots[index].GetComponent<Button>().onClick.AddListener(() => 
@@ -95,6 +112,17 @@ public class AlahasManager : MonoBehaviour
             //     alahasInfoPopupScript.openPopup();
             // });
         }
+    }
+
+    private void CacheAlahasSlots()
+    {
+        alahasSlots = FindObjectsByType<AlahasInfoPopup>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None)
+            .Where(popup => popup.gameObject.scene.IsValid() && popup.CompareTag("Alahas Slot"))
+            .OrderBy(popup => popup.gameObject.name)
+            .Select(popup => popup.gameObject)
+            .ToArray();
     }
 
     private void ChangeDescriptionUI(Alahas selectedAlahas)
@@ -107,5 +135,15 @@ public class AlahasManager : MonoBehaviour
     {
         //goldenTileChance = 0;
         //boostVowels = false;
+    }
+
+    public int getEmptySlotAmount()
+    {
+        int occupiedSlotCount = heldAlahas?.Count(alahas => alahas) ?? 0;
+        int slotCapacity = maxAlahasSlotCount > 0
+            ? maxAlahasSlotCount
+            : alahasSlots?.Length ?? 0;
+
+        return Mathf.Max(0, slotCapacity - occupiedSlotCount);
     }
 }

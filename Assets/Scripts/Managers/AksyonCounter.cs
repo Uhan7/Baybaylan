@@ -28,6 +28,7 @@ public class AksyonCounter : MonoBehaviour
     {
         //aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
         SpawnAvailableAksyons();
+        GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
     // Helper Functions --------------------------------------------------------
@@ -50,8 +51,7 @@ public class AksyonCounter : MonoBehaviour
         // increment
         currentAksyon++;
 
-        // Then check if it exceeded
-        if (currentAksyon > GameManager.Instance.config.maxAksyon) GameManager.Instance.EndRound();
+        if (currentAksyon <= GameManager.Instance.config.maxAksyon && GameManager.Instance.mahikaPercent < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
     public bool HasRemainingAksyon() // Called on Submit Word
