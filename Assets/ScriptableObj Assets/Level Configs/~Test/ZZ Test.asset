@@ -47,7 +47,7 @@ MonoBehaviour:
   maxAksyon: 3
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
-  - {fileID: 11400000, guid: e04c4071c7ee97f45a3d4112e35a319c, type: 2}
+  - {fileID: 11400000, guid: 3ecca783864192940b4ad6561e5972d2, type: 2}
   partikularNaSalita_wordList:
   - ba
   - ta

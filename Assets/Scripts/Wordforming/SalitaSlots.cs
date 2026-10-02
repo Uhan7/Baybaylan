@@ -109,13 +109,20 @@ public class SalitaSlots : MonoBehaviour
 
         // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
 
+        // PAGHIHIGPIT: Partikular na Salita
         // Check if the candidate salita is the particular word for that aksyon
         if (config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
         {
+            // Get current aksyon
             int currentAksyon = aksyonCounter?.GetCurrentAksyon() ?? 1;
+
+            // Get the particular word for that aksyon
             string particularWord = config.GetPartikularNaSalitaForAksyon(currentAksyon);
+
+            // Check if that particular word is not null or empty
             if (!string.IsNullOrEmpty(particularWord))
             {
+                // Check if the submitted word is not the same as the particular word
                 if (!string.Equals(particularWord, latinSalita))
                 {
                     invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPartikularNaSalita, latinSalita);
@@ -124,6 +131,18 @@ public class SalitaSlots : MonoBehaviour
             } 
         }
 
+        // PAGHIHIGPIT: Mahabang Salita
+        // Check if the candidate salita has 3 or less tiles
+        if (config.HasPaghihigpit(PaghihigpitTypes.MahabangSalita))
+        {
+            if (activeTiles.Count <= 3)
+            {
+                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.MahabangSalita, latinSalita);
+                return false;
+            }
+        }
+
+        // PAGHIHIGPIT: Marka ng Baybayin
         // Check if the candidate salita has no diacritic
         if (config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin))
         {
@@ -135,6 +154,7 @@ public class SalitaSlots : MonoBehaviour
             }
         }
 
+        // PAGHIHIGPIT: Bawal Umulit
         // Check if the candidate salita was already submitted
         if (GameManager.Instance.wordsUsed.Contains(latinSalita) &&
             config.HasPaghihigpit(PaghihigpitTypes.BawalUmulit))
