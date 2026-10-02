@@ -6,6 +6,11 @@ public class ArpaAlahas : Alahas
     [SerializeField] float vowelScoreMultiplier = 3f;
     [SerializeField] float vowelSpawnMultiplier = 3f;
 
+    public override void onStart()
+    {
+        
+    }
+
     public override bool triggerCondition()
     {
         return false;

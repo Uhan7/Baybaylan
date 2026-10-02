@@ -6,6 +6,11 @@ public class LuyaAlahas : Alahas
     public float convertToGoldChance = 0.3f;
     public static float goldScoreMultiplier = 2f;
 
+    public override void onStart()
+    {
+        
+    }
+
     public override bool triggerCondition()
     {
         return false;

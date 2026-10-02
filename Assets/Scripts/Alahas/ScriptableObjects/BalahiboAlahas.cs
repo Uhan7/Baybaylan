@@ -3,6 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Alahas/Balahibo")]
 public class BalahiboAlahas : Alahas
 {
+    public override void onStart()
+    {
+        
+    }
+    
     public override bool triggerCondition()
     {
         return false;

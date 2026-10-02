@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2527bc727ecbafe45bb153c61c7eb04a, type: 3}
+  m_Name: Daliri ni Tarabusaw
+  m_EditorClassIdentifier: 
+  alahasName: Daliri ni Tarabusaw
+  alahasSprite: {fileID: 0}
+  description: "Pindutin ang Alahas na ito upang magamit. Gumagamit ng 2 na puwesto
+    itong Alahas. Isang beses, magbibigay ito ng mungkahing salita gamit ang mga
+    kasalukuyang titik. Ipapakita ang mungkahing salita sa Baybayin at Latin na baybay.
+    Gagamit ang salita ng 3\u20135 tile lamang."
+  extraText: "Nakakatakot talaga si Tarabusaw\u2026 Ilang tao na kaya na\u2026 Ah!
+    Hindi ko na iyan pag-iisipan\u2026"
+  numberOfSlotsNeeded: 2

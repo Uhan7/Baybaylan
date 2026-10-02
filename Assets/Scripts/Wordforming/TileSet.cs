@@ -51,6 +51,12 @@ public class TileSet : MonoBehaviour
         StartCoroutine(SpawnTiles(config.tilesAmount));
     }
 
+    void Update()
+    {
+        if(AlahasSubManager.Instance.delete5Tiles)
+            PakpakNiPahDelete();
+    }
+
     // Helper Functions --------------------------------------------------------
     private void SpawnTile(GameObject tilePrefab)
     {
@@ -63,6 +69,31 @@ public class TileSet : MonoBehaviour
         applyVowelBoost(tileScript);
         applyGold(tileScript);
         applyToolTip(tileScript);
+    }
+
+    void PakpakNiPahDelete()
+    {
+        for(int i = 0; i < AlahasSubManager.Instance.tilesToDelete; i++)
+            if(transform.childCount > 0)
+            {
+                deleteTile(0, true);
+            }
+    }
+
+    public void PakpakNiPahDeleteTemps()
+    {
+        for(int i = 0; i < transform.childCount; i++)
+            if(transform.GetChild(i).GetComponent<Tile>().isTemp)
+                deleteTile(i, false);
+    }
+
+    void deleteTile(int childIndex, bool isRandom)
+    {
+        int index = childIndex;
+        if(isRandom)
+            index = Random.Range(0, transform.childCount);
+
+        Destroy(transform.GetChild(index).gameObject);
     }
 
     public void DahonNgKawayanSpawn(GameObject tilePrefab)
@@ -133,7 +164,15 @@ public class TileSet : MonoBehaviour
             yield break;
         }
 
-        for (int i = 0; i < tilesAmount; i++)
+        int actualAmount = tilesAmount;
+        int tempTilesToAdd = 0;
+        if(AlahasSubManager.Instance.add3ExtraTiles)
+        {
+            actualAmount += AlahasSubManager.Instance.extraTilesToAdd;
+            tempTilesToAdd += AlahasSubManager.Instance.extraTilesToAdd;
+        }
+
+        for (int i = 0; i < actualAmount; i++)
         {
             GameObject tile = null;
 
@@ -149,6 +188,16 @@ public class TileSet : MonoBehaviour
                     break;
                 }
             }
+
+            if(tempTilesToAdd > 0)
+            {
+                tile.GetComponent<Tile>().isTemp = true;
+                tempTilesToAdd--;
+
+                //Debug.Log("temps left: " + tempTilesToAdd);
+            }
+            else    
+                tile.GetComponent<Tile>().isTemp = false;
 
             SpawnTile(tile);
             sfxSource.PlayOneShot(spawnSFX);
