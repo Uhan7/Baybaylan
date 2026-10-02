@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: ZZ Test
   m_EditorClassIdentifier: 
-  tilesAmount: 8
+  tilesAmount: 12
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
   - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
@@ -47,7 +47,7 @@ MonoBehaviour:
   maxAksyon: 3
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
-  - {fileID: 11400000, guid: 3ecca783864192940b4ad6561e5972d2, type: 2}
+  - {fileID: 11400000, guid: c35de9df5fb0fe44086d5f6c54709201, type: 2}
   partikularNaSalita_wordList:
   - ba
   - ta

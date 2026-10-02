@@ -15,6 +15,7 @@ public class AksyonCounter : MonoBehaviour
     [SerializeField] private GameObject activeAksyonPrefab;
 
     [Header("Aksyon Variables")]
+    [SerializeField, ReadOnly] private int maxAksyon = 0;
     [SerializeField, ReadOnly] private int currentAksyon = 1;
 
     // Main Functions ----------------------------------------------------------
@@ -26,6 +27,7 @@ public class AksyonCounter : MonoBehaviour
 
     private void Start()
     {
+        maxAksyon = GameManager.Instance.config.maxAksyon;
         //aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
         SpawnAvailableAksyons();
         GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
@@ -34,7 +36,7 @@ public class AksyonCounter : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private void SpawnAvailableAksyons()
     {
-        for (int i = 0; i < GameManager.Instance.config.maxAksyon; i++)
+        for (int i = 0; i < maxAksyon; i++)
         {
             Instantiate(availableAksyonPrefab, availableContainer.transform);
             GameObject active = Instantiate(activeAksyonPrefab, activeContainer.transform);
@@ -51,12 +53,12 @@ public class AksyonCounter : MonoBehaviour
         // increment
         currentAksyon++;
 
-        if (currentAksyon <= GameManager.Instance.config.maxAksyon && GameManager.Instance.mahikaPercent < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        if (currentAksyon <= maxAksyon && GameManager.Instance.mahikaPercent < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
     public bool HasRemainingAksyon() // Called on Submit Word
     {
-        return currentAksyon <= GameManager.Instance.config.maxAksyon;
+        return currentAksyon <= maxAksyon;
     }
 
     public int GetCurrentAksyon()
