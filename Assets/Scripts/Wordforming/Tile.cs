@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
 {
 
     // Setups... put this in an enums manager
-    private enum Diacritic
+    public enum Diacritic
     {
         None,
         Top,
@@ -256,5 +256,11 @@ public class Tile : MonoBehaviour
     {
         scoreMultiplier = 1;
         vowelBoostedSymbol.SetActive(false);
+    }
+
+    public Tile.Diacritic GetCurrentCharMod()
+    {
+        if (isVowel) return Tile.Diacritic.None;
+        else return currentCharmod;
     }
 }

@@ -4,7 +4,8 @@ public enum PaghihigpitTypes
 {
     ItinakdangTitik,
     BawalUmulit,
-    PartikularNaSalita
+    PartikularNaSalita,
+    MarkaNgBaybayin
 }
 
 [CreateAssetMenu]

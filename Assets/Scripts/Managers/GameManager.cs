@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
                 if (!string.IsNullOrEmpty(word)) validWords.Add(word);
             }
         }
+        print(validWords.Count);
     }
 
     public void EndRound()

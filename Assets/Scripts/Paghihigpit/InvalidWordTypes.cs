@@ -6,7 +6,8 @@ public static class InvalidWordTypes
     {
         NotInWordlist,
         AlreadyUsed,
-        NotPartikularNaSalita
+        NotPartikularNaSalita,
+        AbsentDiacritic
     }
 
     [System.Serializable]
@@ -20,6 +21,9 @@ public static class InvalidWordTypes
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string notPartikularNaSalita = "Salitang \"{word}\" is not the particular word!";
+        
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string absentDiacritic = "\"{word}\" has at least one letter without a diacritic!";
 
         public string GetInvalidWordMessage(InvalidWordType type, string word)
         {
@@ -34,6 +38,9 @@ public static class InvalidWordTypes
                     break;
                 case InvalidWordType.NotPartikularNaSalita:
                     template = notPartikularNaSalita;
+                    break;
+                case InvalidWordType.AbsentDiacritic:
+                    template = absentDiacritic;
                     break;
                 default:
                     return "";

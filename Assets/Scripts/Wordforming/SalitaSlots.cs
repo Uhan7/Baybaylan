@@ -124,11 +124,15 @@ public class SalitaSlots : MonoBehaviour
             } 
         }
 
-        // Check if the candidate salita is in the wordlist
-        if (!GameManager.Instance.validWords.Contains(latinSalita))
+        // Check if the candidate salita has no diacritic
+        if (config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin))
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
-            return false;
+            foreach (Tile tile in activeTiles)
+            {
+                if (tile.GetCurrentCharMod() != Tile.Diacritic.None) continue;
+                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AbsentDiacritic, latinSalita);
+                return false;
+            }
         }
 
         // Check if the candidate salita was already submitted
@@ -138,6 +142,14 @@ public class SalitaSlots : MonoBehaviour
             invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AlreadyUsed, latinSalita);
             return false;
         }
+
+        // Check if the candidate salita is in the wordlist
+        if (!GameManager.Instance.validWords.Contains(latinSalita))
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
+            return false;
+        }
+
 
         // Candidate salita is valid
         return true;
@@ -150,7 +162,8 @@ public class SalitaSlots : MonoBehaviour
         foreach (Transform child in transform)
         {
             Tile tile = child.GetComponent<Tile>();
-            if (tile != null) activeTiles.Add(tile);
+            if (tile == null) continue;
+            activeTiles.Add(tile);
         }
     }
 
