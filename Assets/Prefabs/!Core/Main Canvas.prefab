@@ -1200,6 +1200,8 @@ MonoBehaviour:
     notInWordlist: Walang salitang "{word}"!
     alreadyUsed: Sinulat na ang salitang "{word}"!
     notPartikularNaSalita: Ang salitang "{word}" ay hindi ang tamang salita!
+    absentDiacritic: '"{word}" has at least one letter without a diacritic!'
+    mahabangSalita: '"{word}" has less than 4 tiles!'
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0
