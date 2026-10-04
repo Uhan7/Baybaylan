@@ -21,6 +21,11 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [SerializeField] private string attackStateName = "Base Layer.Attack";
     [SerializeField] private string healStateName = "Base Layer.Heal";
 
+    [Header("Attack Target")]
+    [SerializeField] private StoryTargetAnimationPlayer storyTarget;
+    [Tooltip("The Attack clip reaches the target on frame 11 at 60 FPS.")]
+    [SerializeField, Min(0f)] private float targetHitDelay = 11f / 60f;
+
     [Header("Safety")]
     [Tooltip("Stops a looping or misconfigured state from blocking the rest of the turn forever.")]
     [SerializeField, Min(0.1f)] private float maximumWaitSeconds = 10f;
@@ -35,6 +40,12 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     {
         targetAnimator = GetComponent<Animator>();
         if (targetAnimator == null) targetAnimator = GetComponentInChildren<Animator>();
+    }
+
+    private void Awake()
+    {
+        if (storyTarget == null)
+            storyTarget = FindFirstObjectByType<StoryTargetAnimationPlayer>();
     }
 
     public IEnumerator PlaySelectedAnimation()
@@ -75,8 +86,19 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
             yield break;
         }
 
-        targetAnimator.Play(stateHash, animatorLayer, 0f);
+        Coroutine targetHit = null;
+        if (animation == SuccessfulWordAnimation.Attack && storyTarget != null)
+            targetHit = StartCoroutine(storyTarget.PlayHitAfterDelay(targetHitDelay));
 
+        targetAnimator.Play(stateHash, animatorLayer, 0f);
+        yield return WaitForStateToFinish(stateHash, stateName);
+        ReturnToIdle();
+
+        if (targetHit != null) yield return targetHit;
+    }
+
+    private IEnumerator WaitForStateToFinish(int stateHash, string stateName)
+    {
         float deadline = Time.unscaledTime + maximumWaitSeconds;
         bool enteredState = false;
 
@@ -89,14 +111,10 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
             {
                 enteredState = true;
                 if (!targetAnimator.IsInTransition(animatorLayer) && stateInfo.normalizedTime >= 1f)
-                {
-                    ReturnToIdle();
                     yield break;
-                }
             }
             else if (enteredState && !targetAnimator.IsInTransition(animatorLayer))
             {
-                ReturnToIdle();
                 yield break;
             }
 
@@ -104,7 +122,6 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
         }
 
         Debug.LogWarning($"Animator state '{stateName}' exceeded the {maximumWaitSeconds:0.##} second wait limit.", this);
-        ReturnToIdle();
     }
 
     private void ReturnToIdle()

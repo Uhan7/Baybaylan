@@ -144,4 +144,6 @@ MonoBehaviour:
   idleStateName: Base Layer.Idle
   attackStateName: Base Layer.Attack
   healStateName: Base Layer.Heal
+  storyTarget: {fileID: 0}
+  targetHitDelay: 0.18333334
   maximumWaitSeconds: 10
