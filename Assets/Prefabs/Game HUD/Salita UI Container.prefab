@@ -54,6 +54,10 @@ MonoBehaviour:
   activeContainer: {fileID: 3341672791450066504}
   availableAksyonPrefab: {fileID: 94155892371094730, guid: 8254f490ef06b42cd906c7beb663b60f, type: 3}
   activeAksyonPrefab: {fileID: 2184611654439788480, guid: 0028f39b111ef4fecbadc8a42d7bbdcf, type: 3}
+  kaposAksyonPrefab: {fileID: 2184611654439788480, guid: fda6922df27b8ff4ea658f1cd5b66fc2, type: 3}
+  maxAksyon: 0
+  maxAvailableAksyon: 0
+  numKaposAksyon: 0
   currentAksyon: 1
 --- !u!1 &1594296702825965978
 GameObject:
@@ -223,6 +227,10 @@ MonoBehaviour:
   allowInsertion: 1
   changeTileBox: 1
   isActiveDropZone: 1
+  invokeOnlyOnce: 0
+  eventOnDrop:
+    m_PersistentCalls:
+      m_Calls: []
   sfxSource: {fileID: 0}
   dropSFX: {fileID: 8300000, guid: a874ac9a95a1b4b45968f3cba21af9fd, type: 3}
 --- !u!222 &4056125752721392526

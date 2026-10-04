@@ -13,11 +13,13 @@ public class AksyonCounter : MonoBehaviour
     [SerializeField] private GameObject activeContainer;
     [SerializeField] private GameObject availableAksyonPrefab;
     [SerializeField] private GameObject activeAksyonPrefab;
+    [SerializeField] private GameObject kaposAksyonPrefab;
 
     [Header("Aksyon Variables")]
+    [SerializeField, ReadOnly] private int maxAksyon = 0;
+    [SerializeField, ReadOnly] private int maxAvailableAksyon = 0;
+    [SerializeField, ReadOnly] private int numKaposAksyon = 0;
     [SerializeField, ReadOnly] private int currentAksyon = 1;
-
-    private ImageBlinker currentAksyonBlinker;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -28,27 +30,40 @@ public class AksyonCounter : MonoBehaviour
 
     private void Start()
     {
+        maxAksyon = GameManager.Instance.config.maxAksyon;
+        if (GameManager.Instance.config.HasPaghihigpit(PaghihigpitTypes.KaposNaAksyon))
+        {
+            numKaposAksyon = GameManager.Instance.config.numKaposAksyon;
+            maxAvailableAksyon = (maxAksyon - numKaposAksyon);
+        }
+        else
+        {
+            maxAvailableAksyon = maxAksyon;
+        }
+
         //aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
         SpawnAvailableAksyons();
-        StartCurrentAksyonBlinking();
         GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
     // Helper Functions --------------------------------------------------------
     private void SpawnAvailableAksyons()
     {
-        for (int i = 0; i < GameManager.Instance.config.maxAksyon; i++)
+        for (int i = 0; i < maxAvailableAksyon; i++)
         {
             Instantiate(availableAksyonPrefab, availableContainer.transform);
             GameObject active = Instantiate(activeAksyonPrefab, activeContainer.transform);
             active.GetComponent<ImageFader>().SetAlpha(0);
         }
+        for (int i = 0; i < numKaposAksyon; i++)
+        {
+            Instantiate(availableAksyonPrefab, availableContainer.transform);
+            Instantiate(kaposAksyonPrefab, activeContainer.transform);
+        }
     }
 
     public void ConcludeAksyon()
     {
-        StopCurrentAksyonBlinking();
-
         // Set the alpha to be visible, -1 because aksyon starts at 1
         Transform child = activeContainer.transform.GetChild(currentAksyon - 1);
         child.GetComponent<ImageFader>().SetAlpha(1);
@@ -56,33 +71,12 @@ public class AksyonCounter : MonoBehaviour
         // increment
         currentAksyon++;
 
-        if (currentAksyon <= GameManager.Instance.config.maxAksyon && GameManager.Instance.mahikaPercent < 1f)
-        {
-            StartCurrentAksyonBlinking();
-            GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
-        }
-    }
-
-    private void StartCurrentAksyonBlinking()
-    {
-        int currentIndex = currentAksyon - 1;
-        if (currentIndex < 0 || currentIndex >= activeContainer.transform.childCount) return;
-
-        Transform currentFill = activeContainer.transform.GetChild(currentIndex);
-        currentFill.GetComponent<ImageFader>().SetAlpha(1f);
-        currentAksyonBlinker = currentFill.GetComponent<ImageBlinker>();
-        currentAksyonBlinker?.SetAllowBlink(true);
-    }
-
-    private void StopCurrentAksyonBlinking()
-    {
-        currentAksyonBlinker?.SetAllowBlink(false);
-        currentAksyonBlinker = null;
+        if (currentAksyon <= maxAvailableAksyon && GameManager.Instance.mahikaPercent < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
     public bool HasRemainingAksyon() // Called on Submit Word
     {
-        return currentAksyon <= GameManager.Instance.config.maxAksyon;
+        return currentAksyon <= maxAvailableAksyon;
     }
 
     public int GetCurrentAksyon()

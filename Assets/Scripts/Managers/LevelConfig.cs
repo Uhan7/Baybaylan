@@ -34,6 +34,9 @@ public class LevelConfig : ScriptableObject
     [Header("Aksyon")]
     [OnValueChanged("UpdateAksyonSettings")]
     [SerializeField] public int maxAksyon = 5;
+    [ShowIf("hasKaposNaAksyon")]
+    [OnValueChanged("UpdateAksyonSettings")]
+    [SerializeField] public int numKaposAksyon;
 
     [Header("Alahas")]
     [SerializeField] public Alahas alahasAquiredAfterWin;
@@ -116,6 +119,10 @@ public class LevelConfig : ScriptableObject
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
 
+        // Logic for Kapos na Aksyon
+        if (numKaposAksyon >= maxAksyon) numKaposAksyon = Mathf.Max(0, maxAksyon-1);
+        if (numKaposAksyon < 0) numKaposAksyon = 0;
+
         if (activePaghihigpit == null)
             activePaghihigpit = new List<Paghihigpit>();
 
@@ -150,5 +157,10 @@ public class LevelConfig : ScriptableObject
     bool hasPartikularNaSalita()
     {
         return HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita);
+    }
+
+    bool hasKaposNaAksyon()
+    {
+        return HasPaghihigpit(PaghihigpitTypes.KaposNaAksyon);
     }
 }
