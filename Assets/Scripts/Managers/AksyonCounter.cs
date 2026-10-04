@@ -17,6 +17,8 @@ public class AksyonCounter : MonoBehaviour
     [Header("Aksyon Variables")]
     [SerializeField, ReadOnly] private int currentAksyon = 1;
 
+    private ImageBlinker currentAksyonBlinker;
+
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class AksyonCounter : MonoBehaviour
     {
         //aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
         SpawnAvailableAksyons();
+        StartCurrentAksyonBlinking();
         GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
@@ -44,6 +47,8 @@ public class AksyonCounter : MonoBehaviour
 
     public void ConcludeAksyon()
     {
+        StopCurrentAksyonBlinking();
+
         // Set the alpha to be visible, -1 because aksyon starts at 1
         Transform child = activeContainer.transform.GetChild(currentAksyon - 1);
         child.GetComponent<ImageFader>().SetAlpha(1);
@@ -51,7 +56,28 @@ public class AksyonCounter : MonoBehaviour
         // increment
         currentAksyon++;
 
-        if (currentAksyon <= GameManager.Instance.config.maxAksyon && GameManager.Instance.mahikaPercent < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        if (currentAksyon <= GameManager.Instance.config.maxAksyon && GameManager.Instance.mahikaPercent < 1f)
+        {
+            StartCurrentAksyonBlinking();
+            GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        }
+    }
+
+    private void StartCurrentAksyonBlinking()
+    {
+        int currentIndex = currentAksyon - 1;
+        if (currentIndex < 0 || currentIndex >= activeContainer.transform.childCount) return;
+
+        Transform currentFill = activeContainer.transform.GetChild(currentIndex);
+        currentFill.GetComponent<ImageFader>().SetAlpha(1f);
+        currentAksyonBlinker = currentFill.GetComponent<ImageBlinker>();
+        currentAksyonBlinker?.SetAllowBlink(true);
+    }
+
+    private void StopCurrentAksyonBlinking()
+    {
+        currentAksyonBlinker?.SetAllowBlink(false);
+        currentAksyonBlinker = null;
     }
 
     public bool HasRemainingAksyon() // Called on Submit Word

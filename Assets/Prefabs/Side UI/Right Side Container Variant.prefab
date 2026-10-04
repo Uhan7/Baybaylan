@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 2076176052834936015, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Name
+      value: Paghihigpit Container
+      objectReference: {fileID: 0}
     - target: {fileID: 2750442621362791040, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -188,7 +192,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7869500001234510002}
   m_SourcePrefab: {fileID: 100100000, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
---- !u!1 &7869500001234510001 stripped
+--- !u!1 &3335381322267004198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2076176052834936015, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
   m_PrefabInstance: {fileID: 3646130892840413673}
@@ -199,11 +203,11 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7869500001234510001}
+  m_GameObject: {fileID: 3335381322267004198}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18c96b450403d2b4f981e01649df949a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  layoutParentObj: {fileID: 7869500001234510001}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layoutParentObj: {fileID: 3335381322267004198}
   tilePrefab: {fileID: 3319992689537381626, guid: 686a6d9dc7dcde143be09affea83e10b, type: 3}

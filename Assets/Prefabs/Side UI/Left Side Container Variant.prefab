@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2076176052834936015, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Name
+      value: Alahas Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584406712058847975, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Name
+      value: Hint Button
+      objectReference: {fileID: 0}
     - target: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Name
       value: Left Side Container Variant
