@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alahas Container
       objectReference: {fileID: 0}
+    - target: {fileID: 4438819810762659443, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 607770cb789e94f4b82413b8a8428481, type: 2}
     - target: {fileID: 4584406712058847975, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Name
       value: Hint Button
@@ -20,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Side Container Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7978712670044391019, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 607770cb789e94f4b82413b8a8428481, type: 2}
     - target: {fileID: 8848890623995944232, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -103,5 +111,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5308219120935437086}
   m_SourcePrefab: {fileID: 100100000, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+--- !u!95 &5331519847657605101 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7978712670044391019, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+  m_PrefabInstance: {fileID: 2830312167552844166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7748093489402483152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+  m_PrefabInstance: {fileID: 2830312167552844166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5308219120935437086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748093489402483152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fee26582d34b48609e4b1b4486da42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationAfterSuccessfulWord: 0
+  targetAnimator: {fileID: 5331519847657605101}
+  animatorLayer: 0
+  idleStateName: Base Layer.Idle
+  attackStateName: Base Layer.Attack
+  healStateName: Base Layer.Heal
+  maximumWaitSeconds: 10

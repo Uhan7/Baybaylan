@@ -17,6 +17,7 @@ public class SalitaSlots : MonoBehaviour
     [Header("Soft Dependencies")]
     [HideInInspector] InvalidWordPopup invalidWordPopupScript;
     [HideInInspector] AksyonCounter aksyonCounter;
+    [SerializeField] private WordSubmissionAnimationPlayer successfulWordAnimationPlayer;
     
 
     [Header("Reference")]
@@ -58,6 +59,8 @@ public class SalitaSlots : MonoBehaviour
         config = GameManager.Instance.config;
         invalidWordPopupScript = FindFirstObjectByType<InvalidWordPopup>();
         aksyonCounter = AksyonCounter.Instance;
+        if (successfulWordAnimationPlayer == null)
+            successfulWordAnimationPlayer = FindFirstObjectByType<WordSubmissionAnimationPlayer>();
     }
 
     private void Update() // Temporarily
@@ -236,6 +239,9 @@ public class SalitaSlots : MonoBehaviour
 
         yield return new WaitForSeconds(0.25f);
         scoreCalculationsContainer.SetActive(false);
+
+        if (successfulWordAnimationPlayer != null)
+            yield return successfulWordAnimationPlayer.PlaySelectedAnimation();
 
         scoringSalita = false;
         AksyonCounter.Instance.ConcludeAksyon();

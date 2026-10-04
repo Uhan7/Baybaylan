@@ -1911,6 +1911,7 @@ GameObject:
   - component: {fileID: 977210261053270154}
   - component: {fileID: 340446817178885364}
   - component: {fileID: 7088581077558243351}
+  - component: {fileID: 9050403261712086421}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -2023,6 +2024,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &9050403261712086421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923405883872689811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f4e1a9b6c74265b3d8e4f0a1c9b7e2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  shakeTargets: []
+  defaultDuration: 0.2
+  defaultIntensity: 8
+  frequency: 30
+  useUnscaledTime: 1
 --- !u!1 &8007908024553612152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,9 +3198,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2406812471065810189}
     m_Modifications:
+    - target: {fileID: 1200923037127771534, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.700012
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200923037127771534, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.600006
+      objectReference: {fileID: 0}
     - target: {fileID: 1790282514768274273, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_Name
       value: Hint Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194014695221945656, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.200012
       objectReference: {fileID: 0}
     - target: {fileID: 2780379490813127085, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3194,6 +3224,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660166113284880555, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308219120935437086, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: animationAfterSuccessfulWord
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6740440345611607214, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}

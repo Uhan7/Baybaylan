@@ -15,9 +15,8 @@ MonoBehaviour:
   paghihigpitType: 2
   paghihigpitName: Partikular Na Salita
   paghihigpitSprite: {fileID: 0}
-  description: 'Mga partikular na salita lamang ang tatanggapin.
+  description: 'Mga partikular na salita lamang ang tatanggapin. Nagbabago ito kada
+    aksyon.
 
-
-    Buuin ang
-    salitang:<size=40>'
+    Buuin ang salitang:<size=40>'
   extraText: Hindi puwedeng kung ano-ano lang ang isulat ko...

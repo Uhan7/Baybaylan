@@ -603,6 +603,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 99113c3e77b0843e9b2d4e251b9a0504, type: 2}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: targetMahika
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 6601106498251759983, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -674,15 +682,15 @@ PrefabInstance:
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[5]'
       value: 
-      objectReference: {fileID: 11400000, guid: 364ca5de1960c2f41b322ba72e3511a0, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8372680278121190562, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Name
       value: Main Game

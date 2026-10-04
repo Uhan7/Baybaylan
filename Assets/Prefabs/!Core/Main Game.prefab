@@ -447,6 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa7037ee04a7bc40842d889994f3b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEnded: 0
+  reccButtonPressed: 0
   boostVowels: 0
   vowelSpawnChanceIncrease: 0
   vowelScoreMulti: 1
@@ -455,6 +457,11 @@ MonoBehaviour:
   goldScoreMulti: 1
   toolTipTiles: 0
   canCreateTile: 0
+  add3ExtraTiles: 0
+  extraTilesToAdd: 0
+  delete5Tiles: 0
+  tilesToDelete: 0
+  reccWordButtonActive: 0
 --- !u!1 &2931207855000954438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3464,23 +3471,23 @@ PrefabInstance:
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: b7aa8df7fbb034005bcfd07b9735175e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: 6874d0039fd35b84fbd7ffd84c6c71ce, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5750622890409589368, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: m_Name
       value: Alahas Manager
