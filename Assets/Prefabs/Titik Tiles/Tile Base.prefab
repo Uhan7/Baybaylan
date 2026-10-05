@@ -550,6 +550,7 @@ MonoBehaviour:
   diacriticScore: 3
   scoreMultiplier: 1
   chance: 5
+  isActiveTile: 0
   isGold: 0
   isVowelBoosted: 0
   isPearl: 0
