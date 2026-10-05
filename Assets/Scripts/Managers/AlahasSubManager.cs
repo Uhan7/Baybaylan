@@ -28,6 +28,7 @@ class AlahasSubManager : MonoBehaviour
     [ReadOnly, SerializeField] public bool delete5Tiles = false;
     [ReadOnly, SerializeField] public int tilesToDelete = 0;
     [ReadOnly, SerializeField] public bool reccWordButtonActive = false;
+    [ReadOnly, SerializeField] public float scoreMultiplier = 1f; //general use 
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
@@ -97,6 +98,8 @@ class AlahasSubManager : MonoBehaviour
 
     void onUpdate()
     {
+        scoreMultiplier = 1f; //reset mutliplier so alahas can just add every frame
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];

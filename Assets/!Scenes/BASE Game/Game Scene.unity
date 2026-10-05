@@ -676,6 +676,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'heldAlahas.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 336830bb4f67d0d4badbe80ae5cfc049, type: 2}
+    - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[2]'
       value: 
       objectReference: {fileID: 0}

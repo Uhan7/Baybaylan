@@ -223,7 +223,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Animation_TalaFlair10022_0: -4267600471123538812
+      Animation_TalaFlair10022_1: 7168833950975438249
+      Animation_TalaFlair10022_2: 1176701043197738635
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
