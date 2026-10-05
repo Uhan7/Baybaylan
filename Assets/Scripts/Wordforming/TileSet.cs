@@ -211,7 +211,9 @@ public class TileSet : MonoBehaviour
         tileScript.sfxSource = sfxSource;
         draggable.sfxSource = sfxSource;
 
-        applyToolTip(tileScript);
+        // Dahon choices always identify their Baybayin letter on hover,
+        // independently of whether Balahibo ni Amihan is equipped.
+        tileScript.isToolTipped = true;
         //include whatever func applies shy 
     }
 

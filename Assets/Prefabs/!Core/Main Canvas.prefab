@@ -2323,11 +2323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3572476345982998597, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3572476345982998597, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3572476345982998597, guid: 8c4dff1adf0324fdd955a4fc8e0144c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3255,6 +3255,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6628638595866849898}
     - target: {fileID: 5308219120935437086, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: targetHitDelay
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308219120935437086, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: animationAfterSuccessfulWord
       value: 1
       objectReference: {fileID: 0}
@@ -3709,6 +3713,14 @@ PrefabInstance:
     - target: {fileID: 938645548267440910, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062241235773068323, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
+      propertyPath: screenShakeDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062241235773068323, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
+      propertyPath: screenShakeIntensity
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3696053671836123586, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
