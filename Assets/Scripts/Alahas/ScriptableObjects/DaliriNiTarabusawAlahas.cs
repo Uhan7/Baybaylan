@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Alahas/Daliri ni Tarabusaw")]
 class DaliriNiTarabusawAlahas : Alahas
 {
-    int minTilesToRecc = 3;
-    int maxTilesToRecc = 5;
+    int minTilesToRecc = 4;
+    int maxTilesToRecc = 6;
     bool hasReccomended = false;
 
     public override void onStart()

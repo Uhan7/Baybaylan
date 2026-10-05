@@ -19,6 +19,8 @@ MonoBehaviour:
   extraText: "Galing ito kay Pah\u2026 Ang bilis naging gabi noong tinakpan niya
     ang araw\u2026"
   numberOfSlotsNeeded: 1
+  showActivationCounter: 0
+  maximumActivations: 0
   disappearanceCurve:
     serializedVersion: 2
     m_Curve:

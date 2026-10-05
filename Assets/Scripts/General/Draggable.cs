@@ -49,6 +49,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (dragNotify == null) dragNotify = GetComponent<IDragNotify>();
+
         anyBeingDragged = true;
         isBeingDragged = true;
         canvasGroup.blocksRaycasts = false;

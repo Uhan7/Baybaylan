@@ -18,3 +18,5 @@ MonoBehaviour:
     na titik upang makita ang Latin na baybay nito.
   extraText: Maraming salamat, Amihan. Ang ganda naman ng balahibo mo!
   numberOfSlotsNeeded: 2
+  showActivationCounter: 0
+  maximumActivations: 0

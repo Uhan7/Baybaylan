@@ -30,6 +30,7 @@ public class DahonNgKawayanAlahas : Alahas
 
     public override void onUpdate()
     {
-        AlahasSubManager.Instance.canCreateTile = true;
+        AlahasSubManager.Instance.canCreateTile =
+            AlahasManager.Instance != null && AlahasManager.Instance.CanActivate(this);
     }
 }

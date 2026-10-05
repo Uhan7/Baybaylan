@@ -6,6 +6,8 @@ class AlahasInfoPopup : ToolTipAble
 {
     public Alahas currentAlahas;
     [SerializeField] private Image alahasImage;
+    [SerializeField] private GameObject activationBadge;
+    [SerializeField] private TextMeshProUGUI activationCountText;
     private Button alahasButton;
     TextMeshProUGUI alahasName;
     TextMeshProUGUI alahasDesc;
@@ -31,12 +33,29 @@ class AlahasInfoPopup : ToolTipAble
         Sprite icon = alahas ? alahas.alahasSprite : null;
         alahasImage.sprite = icon;
         alahasImage.enabled = icon != null;
+
+        bool shouldShowActivationCounter = alahas != null && alahas.showActivationCounter;
+
+        if (activationBadge != null)
+            activationBadge.SetActive(shouldShowActivationCounter);
+
+        if (activationCountText != null && shouldShowActivationCounter)
+        {
+            int remaining = AlahasManager.Instance != null
+                ? AlahasManager.Instance.GetRemainingActivations(alahas)
+                : alahas != null ? Mathf.Max(0, alahas.maximumActivations) : 0;
+            activationCountText.text = remaining.ToString();
+        }
     }
 
     private void HandleAlahasClicked()
     {
-        if (currentAlahas is DahonNgKawayanAlahas && DahonNgKawayanUI.Instance != null)
-            DahonNgKawayanUI.Instance.OpenSelection();
+        if (!currentAlahas || AlahasManager.Instance == null ||
+            !AlahasManager.Instance.CanActivate(currentAlahas))
+            return;
+
+        if (currentAlahas is DahonNgKawayanAlahas dahon && DahonNgKawayanUI.Instance != null)
+            DahonNgKawayanUI.Instance.OpenSelection(dahon);
     }
 
     override protected void startHover()

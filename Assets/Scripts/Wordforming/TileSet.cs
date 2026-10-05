@@ -196,10 +196,20 @@ public class TileSet : MonoBehaviour
     public void DahonNgKawayanSpawn(GameObject tilePrefab)
     {
         GameObject tile = Instantiate(tilePrefab, transform);
+        PrepareDahonNgKawayanTile(tile);
+    }
+
+    public void PrepareDahonNgKawayanTile(GameObject tile)
+    {
+        if (tile == null) return;
+
         Tile tileScript = tile.GetComponent<Tile>();
-        tile.GetComponent<Draggable>().canvas = canvas;
+        Draggable draggable = tile.GetComponent<Draggable>();
+        if (tileScript == null || draggable == null) return;
+
+        draggable.canvas = canvas;
         tileScript.sfxSource = sfxSource;
-        tile.GetComponent<Draggable>().sfxSource = sfxSource;
+        draggable.sfxSource = sfxSource;
 
         applyToolTip(tileScript);
         //include whatever func applies shy 

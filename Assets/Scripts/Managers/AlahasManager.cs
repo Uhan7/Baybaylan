@@ -25,6 +25,8 @@ public class AlahasManager : MonoBehaviour
     [SerializeField] public List<Alahas> heldAlahas;
     [HideInInspector] public int currentAlahasIndex = 0;
 
+    private readonly Dictionary<Alahas, int> remainingActivations = new Dictionary<Alahas, int>();
+
     [Header("Stat Upgrades")]
     // [ReadOnly, SerializeField] public float goldenTileChance = 0;
     // [ReadOnly, SerializeField] public bool boostVowels = false;
@@ -53,6 +55,7 @@ public class AlahasManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         ResetAllAlahas(); //does nothing rn 
+        ResetActivationCounts();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -67,6 +70,8 @@ public class AlahasManager : MonoBehaviour
         // Check for the presence of the game manager in the scene
         GameManager gameManagerInstance = GameObject.FindFirstObjectByType<GameManager>();
         if (!gameManagerInstance) return;
+
+        ResetActivationCounts();
 
         CacheAlahasSlots();
         
@@ -135,6 +140,46 @@ public class AlahasManager : MonoBehaviour
     {
         //goldenTileChance = 0;
         //boostVowels = false;
+    }
+
+    private void ResetActivationCounts()
+    {
+        remainingActivations.Clear();
+        if (heldAlahas == null) return;
+
+        foreach (Alahas alahas in heldAlahas)
+        {
+            if (!alahas || remainingActivations.ContainsKey(alahas)) continue;
+            remainingActivations.Add(alahas, Mathf.Max(0, alahas.maximumActivations));
+        }
+    }
+
+    public int GetRemainingActivations(Alahas alahas)
+    {
+        if (!alahas) return 0;
+
+        if (!remainingActivations.TryGetValue(alahas, out int remaining))
+        {
+            remaining = Mathf.Max(0, alahas.maximumActivations);
+            remainingActivations.Add(alahas, remaining);
+        }
+
+        return remaining;
+    }
+
+    public bool CanActivate(Alahas alahas)
+    {
+        return GetRemainingActivations(alahas) > 0;
+    }
+
+    public bool TryConsumeActivation(Alahas alahas)
+    {
+        int remaining = GetRemainingActivations(alahas);
+        if (remaining <= 0) return false;
+
+        remainingActivations[alahas] = remaining - 1;
+        RefreshAlahasSlotsUI();
+        return true;
     }
 
     public int getEmptySlotAmount()

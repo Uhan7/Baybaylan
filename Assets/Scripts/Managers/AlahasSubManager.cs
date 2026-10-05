@@ -104,7 +104,9 @@ class AlahasSubManager : MonoBehaviour
                 continue;
 
             alahas.onUpdate();
-            if(alahas.triggerCondition())
+            if(alahas.triggerCondition() &&
+                AlahasManager.Instance != null &&
+                AlahasManager.Instance.TryConsumeActivation(alahas))
                 alahas.onTriggerEffect();
         }
     }

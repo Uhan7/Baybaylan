@@ -21,3 +21,5 @@ MonoBehaviour:
   extraText: "Nakakatakot talaga si Tarabusaw\u2026 Ilang tao na kaya na\u2026 Ah!
     Hindi ko na iyan pag-iisipan\u2026"
   numberOfSlotsNeeded: 2
+  showActivationCounter: 1
+  maximumActivations: 1

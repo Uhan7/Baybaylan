@@ -1,25 +1,19 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
 
 class DahonNgKawayanUI : MonoBehaviour
 {
-    [SerializeField] GameObject tileButtonPrefab;
-    [SerializeField] Color selectedTileColor;
     [SerializeField] GameObject tileLayoutGroupParent;
     [SerializeField] GameObject mainUiParent;
-    [SerializeField] GameObject spawnButton; //the button to open the main UI 
+    [SerializeField] GameObject spawnButton;
+
     public static DahonNgKawayanUI Instance;
-    LevelConfig config;
-    List<Image> tileImgs = new List<Image>();
-    TextMeshProUGUI normalModText;
-    TextMeshProUGUI shyModText;
-    int totalTilesInSelection; //in hindsight this isnt used
-    int tileSelectedIndex = 0;
-    int prevSelectedIndex = 0;
-    bool spawnedTiles = false; //used by the button spawning func as a flag
-    bool usedSpawn = false;
+
+    private readonly List<GameObject> tileChoices = new List<GameObject>();
+    private LevelConfig config;
+    private DahonNgKawayanAlahas activeAlahas;
 
     void Awake()
     {
@@ -29,58 +23,94 @@ class DahonNgKawayanUI : MonoBehaviour
 
     void Start()
     {
-        Button dismissButton = mainUiParent.GetComponent<Button>();
-        if (dismissButton == null)
-            dismissButton = mainUiParent.AddComponent<Button>();
-
-        dismissButton.transition = Selectable.Transition.None;
-        dismissButton.targetGraphic = mainUiParent.GetComponent<Graphic>();
-        dismissButton.onClick.RemoveListener(CloseSelection);
-        dismissButton.onClick.AddListener(CloseSelection);
-
+        ConfigureSelectionTray();
         mainUiParent.SetActive(false);
         if (spawnButton != null) spawnButton.SetActive(false);
     }
 
-    void spawnTileButtons()
+    private void ConfigureSelectionTray()
     {
-        if(!config || spawnedTiles)
-            return;
+        Image trayImage = mainUiParent.GetComponent<Image>();
+        if (trayImage != null) trayImage.raycastTarget = false;
 
-        int index = 0;
-
-        foreach(GameObject obj in config.tilesSelection)
+        RectTransform trayRect = mainUiParent.transform as RectTransform;
+        if (trayRect != null)
         {
-            GameObject newButton = Instantiate(tileButtonPrefab, tileLayoutGroupParent.transform);
+            trayRect.anchorMin = new Vector2(0.5f, 1f);
+            trayRect.anchorMax = new Vector2(0.5f, 1f);
+            trayRect.pivot = new Vector2(0.5f, 1f);
+            trayRect.anchoredPosition = new Vector2(0f, -24f);
+            trayRect.sizeDelta = new Vector2(1210f, 330f);
+        }
 
-            Image newImg = newButton.transform.GetChild(2).GetComponent<Image>();
-            newImg.sprite = obj.transform.GetChild(2).GetComponent<Image>().sprite;
-            if(index == 0)
-                newImg.color = selectedTileColor;
-            else
-                newImg.color = Color.white;
-            tileImgs.Add(newImg);
+        foreach (TextMeshProUGUI text in mainUiParent.GetComponentsInChildren<TextMeshProUGUI>(true))
+        {
+            text.raycastTarget = false;
+            if (text.gameObject.name.Trim() != "select tile text") continue;
 
-            Button buttonComp = newButton.GetComponent<Button>();
-            int temp = new int();
-            temp = index;
-            buttonComp.onClick.AddListener(() => selectIndex(temp));
+            text.text = "drag whatever tile u want";
+            RectTransform textRect = text.rectTransform;
+            textRect.anchorMin = new Vector2(0.5f, 1f);
+            textRect.anchorMax = new Vector2(0.5f, 1f);
+            textRect.pivot = new Vector2(0.5f, 0.5f);
+            textRect.anchoredPosition = new Vector2(0f, -48f);
+            textRect.sizeDelta = new Vector2(700f, 60f);
+            textRect.localScale = Vector3.one;
+        }
 
-            index++;
-        } 
+        foreach (Button button in mainUiParent.GetComponentsInChildren<Button>(true))
+            button.gameObject.SetActive(false);
 
-        //Debug.Log("final index: " + index + "    max index: " + totalTilesInSelection);
-
-        spawnedTiles = true;
+        RectTransform layoutRect = tileLayoutGroupParent.transform as RectTransform;
+        if (layoutRect != null)
+        {
+            layoutRect.anchorMin = new Vector2(0.5f, 1f);
+            layoutRect.anchorMax = new Vector2(0.5f, 1f);
+            layoutRect.pivot = new Vector2(0.5f, 0.5f);
+            layoutRect.anchoredPosition = new Vector2(0f, -190f);
+            layoutRect.sizeDelta = new Vector2(1000f, 220f);
+        }
     }
 
+    private void SpawnTileChoices()
+    {
+        ClearTileChoices();
+        if (config == null || TileSet.Instance == null) return;
+
+        foreach (GameObject tilePrefab in config.tilesSelection)
+        {
+            if (tilePrefab == null) continue;
+
+            GameObject choice = Instantiate(tilePrefab, tileLayoutGroupParent.transform);
+            choice.name = $"{tilePrefab.name} (Dahon Choice)";
+            TileSet.Instance.PrepareDahonNgKawayanTile(choice);
+            choice.AddComponent<DahonNgKawayanChoice>().Initialize(this);
+            tileChoices.Add(choice);
+        }
+    }
+
+    public void OpenSelection(DahonNgKawayanAlahas alahas)
+    {
+        if (mainUiParent.activeSelf)
+        {
+            CloseSelection();
+            return;
+        }
+
+        if (alahas == null || config == null || AlahasManager.Instance == null ||
+            !AlahasManager.Instance.CanActivate(alahas))
+            return;
+
+        activeAlahas = alahas;
+        SpawnTileChoices();
+        mainUiParent.SetActive(tileChoices.Count > 0);
+    }
+
+    // Kept so older scene/prefab event references do not break.
     public void OpenSelection()
     {
-        if (usedSpawn || config == null) return;
-        if (AlahasSubManager.Instance == null || !AlahasSubManager.Instance.canCreateTile) return;
-
-        spawnTileButtons();
-        mainUiParent.SetActive(true);
+        DahonNgKawayanAlahas dahon = FindHeldDahon();
+        if (dahon != null) OpenSelection(dahon);
     }
 
     // Kept so older scene/prefab event references do not break.
@@ -89,46 +119,85 @@ class DahonNgKawayanUI : MonoBehaviour
         OpenSelection();
     }
 
-    public void CloseSelection()
-    {
-        mainUiParent.SetActive(false);
-    }
-
-    //used by the finish button to spawn the tile 
+    // The old confirm button is hidden; direct dropping completes the selection.
     public void finishSelection()
     {
-        usedSpawn = true;
+    }
+
+    public void CloseSelection()
+    {
+        ClearTileChoices();
+        activeAlahas = null;
         mainUiParent.SetActive(false);
-        
-        GameObject newTile = config.tilesSelection[tileSelectedIndex];
-        TileSet.Instance.DahonNgKawayanSpawn(newTile);
     }
 
-    void selectIndex(int index)
+    public void CompleteSelection(GameObject selectedTile)
     {
-        tileSelectedIndex = index;
-
-        //Debug.Log("pressed index: " + index);
-    }
-
-    public void getLevelConfig(LevelConfig config)
-    {
-        this.config = config;
-
-        totalTilesInSelection = 0;
-        foreach(GameObject obj in config.tilesSelection)
-            totalTilesInSelection++;
-    }
-
-    void Update()
-    {
-        //updates the selected tile's visuals
-        if(tileSelectedIndex != prevSelectedIndex)
+        if (selectedTile == null || activeAlahas == null || AlahasManager.Instance == null ||
+            !AlahasManager.Instance.TryConsumeActivation(activeAlahas))
         {
-            tileImgs[tileSelectedIndex].color = selectedTileColor;
-            tileImgs[prevSelectedIndex].color = Color.white;
+            if (selectedTile != null) Destroy(selectedTile);
+            CloseSelection();
+            return;
         }
-        prevSelectedIndex = tileSelectedIndex;
 
+        tileChoices.Remove(selectedTile);
+        DahonNgKawayanChoice choice = selectedTile.GetComponent<DahonNgKawayanChoice>();
+        if (choice != null) choice.Complete();
+        CloseSelection();
+    }
+
+    public void getLevelConfig(LevelConfig levelConfig)
+    {
+        config = levelConfig;
+    }
+
+    private DahonNgKawayanAlahas FindHeldDahon()
+    {
+        if (AlahasManager.Instance == null || AlahasManager.Instance.heldAlahas == null)
+            return null;
+
+        foreach (Alahas alahas in AlahasManager.Instance.heldAlahas)
+            if (alahas is DahonNgKawayanAlahas dahon) return dahon;
+
+        return null;
+    }
+
+    private void ClearTileChoices()
+    {
+        foreach (GameObject choice in tileChoices)
+            if (choice != null) Destroy(choice);
+
+        tileChoices.Clear();
+    }
+}
+
+class DahonNgKawayanChoice : MonoBehaviour, IDragNotify
+{
+    private DahonNgKawayanUI owner;
+
+    public void Initialize(DahonNgKawayanUI selectionOwner)
+    {
+        owner = selectionOwner;
+    }
+
+    public void Complete()
+    {
+        owner = null;
+    }
+
+    public void OnDragBegin()
+    {
+    }
+
+    public void OnDragEnd()
+    {
+        if (owner == null) return;
+
+        bool landedInTileSet = GetComponentInParent<TileSet>() != null;
+        bool landedInSalita = GetComponentInParent<SalitaSlots>() != null;
+
+        if (landedInTileSet || landedInSalita)
+            owner?.CompleteSelection(gameObject);
     }
 }
