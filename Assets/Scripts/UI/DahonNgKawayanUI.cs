@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 class DahonNgKawayanUI : MonoBehaviour
 {
@@ -23,53 +21,8 @@ class DahonNgKawayanUI : MonoBehaviour
 
     void Start()
     {
-        ConfigureSelectionTray();
         mainUiParent.SetActive(false);
         if (spawnButton != null) spawnButton.SetActive(false);
-    }
-
-    private void ConfigureSelectionTray()
-    {
-        Image trayImage = mainUiParent.GetComponent<Image>();
-        if (trayImage != null) trayImage.raycastTarget = false;
-
-        RectTransform trayRect = mainUiParent.transform as RectTransform;
-        if (trayRect != null)
-        {
-            trayRect.anchorMin = new Vector2(0.5f, 1f);
-            trayRect.anchorMax = new Vector2(0.5f, 1f);
-            trayRect.pivot = new Vector2(0.5f, 1f);
-            trayRect.anchoredPosition = new Vector2(0f, -24f);
-            trayRect.sizeDelta = new Vector2(1210f, 330f);
-        }
-
-        foreach (TextMeshProUGUI text in mainUiParent.GetComponentsInChildren<TextMeshProUGUI>(true))
-        {
-            text.raycastTarget = false;
-            if (text.gameObject.name.Trim() != "select tile text") continue;
-
-            text.text = "drag whatever tile u want";
-            RectTransform textRect = text.rectTransform;
-            textRect.anchorMin = new Vector2(0.5f, 1f);
-            textRect.anchorMax = new Vector2(0.5f, 1f);
-            textRect.pivot = new Vector2(0.5f, 0.5f);
-            textRect.anchoredPosition = new Vector2(0f, -48f);
-            textRect.sizeDelta = new Vector2(700f, 60f);
-            textRect.localScale = Vector3.one;
-        }
-
-        foreach (Button button in mainUiParent.GetComponentsInChildren<Button>(true))
-            button.gameObject.SetActive(false);
-
-        RectTransform layoutRect = tileLayoutGroupParent.transform as RectTransform;
-        if (layoutRect != null)
-        {
-            layoutRect.anchorMin = new Vector2(0.5f, 1f);
-            layoutRect.anchorMax = new Vector2(0.5f, 1f);
-            layoutRect.pivot = new Vector2(0.5f, 0.5f);
-            layoutRect.anchoredPosition = new Vector2(0f, -190f);
-            layoutRect.sizeDelta = new Vector2(1000f, 220f);
-        }
     }
 
     private void SpawnTileChoices()
