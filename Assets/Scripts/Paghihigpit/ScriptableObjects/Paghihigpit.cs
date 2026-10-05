@@ -7,7 +7,8 @@ public enum PaghihigpitTypes
     PartikularNaSalita,
     MarkaNgBaybayin,
     MahabangSalita,
-    KaposNaAksyon
+    KaposNaAksyon,
+    HanginHabagat
 }
 
 [CreateAssetMenu]
