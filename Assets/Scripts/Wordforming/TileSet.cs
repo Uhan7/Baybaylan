@@ -260,9 +260,9 @@ public class TileSet : MonoBehaviour
         {
             int remainingTiles = GetRemainingTiles();
             int numTilesToRemove;
-            if (remainingTiles >= 3) numTilesToRemove = 3;
+            if (remainingTiles > 3) numTilesToRemove = 3;
             else numTilesToRemove = remainingTiles;
-
+            
             yield return StartCoroutine(RemoveRandomTiles(numTilesToRemove));
             tilesAmount += numTilesToRemove;
         }
@@ -415,12 +415,21 @@ public class TileSet : MonoBehaviour
     {
         for (int i = 0; i < _numTilesToRemove; i++)
         {
+            // Get Random Tile
             int randomTileIndex = Random.Range(0, GetRemainingTiles());
             Transform randomTransform = transform.GetChild(randomTileIndex);
             GameObject randomTile = randomTransform.gameObject;
-            Destroy(randomTile);
+
+            // Play Tile Destruction Animation
+            randomTile.TryGetComponent<Tile>(out var tileComponent);
+            tileComponent.PlayBlowAwayAnimation();
             sfxSource.PlayOneShot(despawnSFX);
+            yield return new WaitForSeconds(5 * SPAWN_TIME_BETWEEN_TILES);
+
+            // Destroy Tile
+            Destroy(randomTile);
             yield return new WaitForSeconds(SPAWN_TIME_BETWEEN_TILES);
         }
+        yield return new WaitForSeconds(3 * SPAWN_TIME_BETWEEN_TILES);
     }
 }

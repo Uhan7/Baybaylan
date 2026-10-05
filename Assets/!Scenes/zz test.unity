@@ -269,6 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa7037ee04a7bc40842d889994f3b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEnded: 0
+  reccButtonPressed: 0
   boostVowels: 0
   vowelSpawnChanceIncrease: 0
   vowelScoreMulti: 1
@@ -277,6 +279,11 @@ MonoBehaviour:
   goldScoreMulti: 1
   toolTipTiles: 0
   canCreateTile: 0
+  add3ExtraTiles: 0
+  extraTilesToAdd: 0
+  delete5Tiles: 0
+  tilesToDelete: 0
+  reccWordButtonActive: 0
 --- !u!1001 &277135391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,8 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf3b047dffc684982a8bc6396c01b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileButtonPrefab: {fileID: 8029821208153712443, guid: 4555455df4b5bd44b9233500a50be17a, type: 3}
-  selectedTileColor: {r: 0.065040804, g: 0.98490566, b: 0.31956327, a: 1}
   tileLayoutGroupParent: {fileID: 1849103759}
   mainUiParent: {fileID: 980627911}
   spawnButton: {fileID: 2135902564}
@@ -1056,7 +1061,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1304,7 +1308,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1603,7 +1606,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1788,15 +1790,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 669286383877226411, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 669286383877226411, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 669286383877226411, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007463779969931788, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
@@ -1894,6 +1896,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6473220004461279683, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: despawnSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 4356415c7c38b374cb778c005e077156, type: 3}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: config
       value: 
