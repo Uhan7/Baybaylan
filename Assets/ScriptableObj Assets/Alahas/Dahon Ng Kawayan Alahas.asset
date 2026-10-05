@@ -26,3 +26,5 @@ MonoBehaviour:
   extraText: "Regalo ito nina Malakas at Maganda sa akin\u2026 Ano na kaya nangyari
     sa kanila? Sana ay matapos na itong lahat\u2026"
   numberOfSlotsNeeded: 1
+  showActivationCounter: 1
+  maximumActivations: 1

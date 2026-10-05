@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6287781735110186203}
   - component: {fileID: 81948997451871508}
   - component: {fileID: 269027665080309980}
+  - component: {fileID: 7302182138475121305}
   m_Layer: 5
   m_Name: Active Aksyon
   m_TagString: Untagged
@@ -88,3 +89,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ad089e6bc9e401fb46f3e9880e23c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeImgOnEnable: 0
+  delayTime: 0.5
+--- !u!114 &7302182138475121305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184611654439788480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37e558f90e64ddfa7a2c50e5e69fe2f, type: 3}
+  m_Name: ''
+  m_EditorClassIdentifier: ''
+  allowBlink: 0
+  minimumAlpha: 0
+  fadeDuration: 0.75
+  useUnscaledTime: 1

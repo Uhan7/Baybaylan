@@ -109,8 +109,8 @@ MonoBehaviour:
 
     Isa pang linya.. Just in case...'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
-  m_sharedMaterial: {fileID: 5517721512700420806, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
+  m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -320,8 +320,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Alahas Name Here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
-  m_sharedMaterial: {fileID: 5517721512700420806, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
+  m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -463,8 +463,8 @@ MonoBehaviour:
 
     Anddd one more por gu dmeshor'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
-  m_sharedMaterial: {fileID: 5517721512700420806, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
+  m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -1200,6 +1200,8 @@ MonoBehaviour:
     notInWordlist: Walang salitang "{word}"!
     alreadyUsed: Sinulat na ang salitang "{word}"!
     notPartikularNaSalita: Ang salitang "{word}" ay hindi ang tamang salita!
+    absentDiacritic: '"{word}" has at least one letter without a diacritic!'
+    mahabangSalita: '"{word}" has less than 4 tiles!'
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +1911,7 @@ GameObject:
   - component: {fileID: 977210261053270154}
   - component: {fileID: 340446817178885364}
   - component: {fileID: 7088581077558243351}
+  - component: {fileID: 9050403261712086421}
   m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
@@ -2021,6 +2024,47 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &9050403261712086421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6923405883872689811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f4e1a9b6c74265b3d8e4f0a1c9b7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeTargets: []
+  defaultDuration: 0.2
+  defaultIntensity: 8
+  frequency: 30
+  strengthOverTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useUnscaledTime: 1
 --- !u!1 &8007908024553612152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3222,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2406812471065810189}
     m_Modifications:
+    - target: {fileID: 1200923037127771534, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.700012
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200923037127771534, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790282514768274273, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_Name
+      value: Hint Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2194014695221945656, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.200012
+      objectReference: {fileID: 0}
     - target: {fileID: 2780379490813127085, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3188,6 +3248,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660166113284880555, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308219120935437086, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: storyTarget
+      value: 
+      objectReference: {fileID: 6628638595866849898}
+    - target: {fileID: 5308219120935437086, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: animationAfterSuccessfulWord
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6740440345611607214, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
@@ -3638,6 +3706,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2406812471065810189}
     m_Modifications:
+    - target: {fileID: 938645548267440910, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
+      propertyPath: m_Name
+      value: Settings Button
+      objectReference: {fileID: 0}
     - target: {fileID: 3696053671836123586, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3736,6 +3808,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5211856198093288641, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
   m_PrefabInstance: {fileID: 6143034585221490249}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6628638595866849898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1062241235773068323, guid: 1400dce8915094052afca1bed11c5da1, type: 3}
+  m_PrefabInstance: {fileID: 6143034585221490249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2425cc39461d34e9fbf8b324fb61a66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6800907830783453659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3956,30 +4039,6 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: a874ac9a95a1b4b45968f3cba21af9fd, type: 3}
     - target: {fileID: 8519567697643234237, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: changeTileBox
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_Spacing.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_Spacing.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_CellSize.x
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_CellSize.y
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_Constraint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_ConstraintCount
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

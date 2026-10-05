@@ -52,6 +52,7 @@ MonoBehaviour:
   predefinedTiles: []
   targetMahika: 2000
   maxAksyon: 8
+  numKaposAksyon: 0
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
   - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}

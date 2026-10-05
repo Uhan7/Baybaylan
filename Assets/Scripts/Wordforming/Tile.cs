@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Draggable))]
 public class Tile : MonoBehaviour
@@ -68,8 +69,13 @@ public class Tile : MonoBehaviour
     [SerializeField] public bool isShy;
     [SerializeField] public bool isBlossom;
     [SerializeField] public bool isToolTipped;
+    [SerializeField] public bool isTemp; // from the PakpakNiPahAlahas
 
     ToolTipAble tooltipScript;
+    private readonly List<Graphic> pakpakFadeGraphics = new List<Graphic>();
+    private readonly List<Color> pakpakFadeStartColors = new List<Color>();
+    private bool isPakpakFading;
+    private float pakpakFadeProgress;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -104,6 +110,7 @@ public class Tile : MonoBehaviour
         ChangeSpriteOnDrag();
         updateLatinTooltipText();
         applyModVisuals();
+        ApplyPakpakFadeVisuals();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -201,6 +208,56 @@ public class Tile : MonoBehaviour
             vowelBoostedSymbol.SetActive(true);
         else
             vowelBoostedSymbol.SetActive(false);
+    }
+
+    public void BeginPakpakFade()
+    {
+        pakpakFadeGraphics.Clear();
+        pakpakFadeStartColors.Clear();
+
+        foreach (Graphic graphic in GetComponentsInChildren<Graphic>(true))
+        {
+            pakpakFadeGraphics.Add(graphic);
+            pakpakFadeStartColors.Add(graphic.color);
+        }
+
+        pakpakFadeProgress = 0f;
+        isPakpakFading = true;
+    }
+
+    public void SetPakpakFadeProgress(float progress)
+    {
+        pakpakFadeProgress = Mathf.Clamp01(progress);
+        ApplyPakpakFadeVisuals();
+    }
+
+    public void CancelPakpakFade()
+    {
+        for (int i = 0; i < pakpakFadeGraphics.Count; i++)
+        {
+            if (pakpakFadeGraphics[i] != null)
+                pakpakFadeGraphics[i].color = pakpakFadeStartColors[i];
+        }
+
+        pakpakFadeGraphics.Clear();
+        pakpakFadeStartColors.Clear();
+        pakpakFadeProgress = 0f;
+        isPakpakFading = false;
+    }
+
+    private void ApplyPakpakFadeVisuals()
+    {
+        if (!isPakpakFading) return;
+
+        Color fadeTarget = new Color(0f, 0f, 0f, 0f);
+        for (int i = 0; i < pakpakFadeGraphics.Count; i++)
+        {
+            if (pakpakFadeGraphics[i] != null)
+                pakpakFadeGraphics[i].color = Color.Lerp(
+                    pakpakFadeStartColors[i],
+                    fadeTarget,
+                    pakpakFadeProgress);
+        }
     }
 
     private void ApplyStrokeColor()

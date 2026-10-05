@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: 910ae537d74f74bf3a0e2d796358736b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5973948211142772462
+    second: Animation_TalaFlair10055_0
+  - first:
+      213: -1924911356693666627
+    second: Animation_TalaFlair10055_1
+  - first:
+      213: 1997705361462376300
+    second: Animation_TalaFlair10055_2
+  - first:
+      213: 5745401182787896895
+    second: Animation_TalaFlair10055_3
+  - first:
+      213: -3491223852809339390
+    second: Animation_TalaFlair10055_4
+  - first:
+      213: 117321842493527843
+    second: Animation_TalaFlair10055_5
+  - first:
+      213: -8267692848972429338
+    second: Animation_TalaFlair10055_6
+  - first:
+      213: -2740586036957129731
+    second: Animation_TalaFlair10055_7
+  - first:
+      213: 2054750227136190256
+    second: Animation_TalaFlair10055_8
+  - first:
+      213: -1770642549069457886
+    second: Animation_TalaFlair10055_9
+  - first:
+      213: 2469484168442125915
+    second: Animation_TalaFlair10055_10
+  - first:
+      213: 7190761158265654742
+    second: Animation_TalaFlair10055_11
+  - first:
+      213: -2119967831336690033
+    second: Animation_TalaFlair10055_12
+  - first:
+      213: -3263191114477570006
+    second: Animation_TalaFlair10055_13
+  - first:
+      213: 7939713182543146225
+    second: Animation_TalaFlair10055_14
+  - first:
+      213: -3592777933905762741
+    second: Animation_TalaFlair10055_15
+  - first:
+      213: -1567980005882559952
+    second: Animation_TalaFlair10055_16
+  - first:
+      213: -2411716066703427923
+    second: Animation_TalaFlair10055_17
+  - first:
+      213: -3043582331761737431
+    second: Animation_TalaFlair10055_18
+  - first:
+      213: -9059206203881073976
+    second: Animation_TalaFlair10055_19
+  - first:
+      213: 2244739310164315581
+    second: Animation_TalaFlair10055_20
+  - first:
+      213: -3027636796996566230
+    second: Animation_TalaFlair10055_21
+  - first:
+      213: 612788346068394568
+    second: Animation_TalaFlair10055_22
+  - first:
+      213: -8525008629039543978
+    second: Animation_TalaFlair10055_23
+  - first:
+      213: 3008872916612019407
+    second: Animation_TalaFlair10055_24
+  - first:
+      213: -1622762515337500126
+    second: Animation_TalaFlair10055_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 808
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2193148d0c5481da0800000000000000
+      internalID: -5973948211142772462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_1
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 641
+        width: 205
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4a828d1575945e0800000000000000
+      internalID: -1924911356693666627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_2
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 529
+        width: 477
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c67bbd3217649bb10800000000000000
+      internalID: 1997705361462376300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 643
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f368e207fe3cbbf40800000000000000
+      internalID: 5745401182787896895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_4
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 449
+        width: 332
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ebde5376eac8fc0800000000000000
+      internalID: -3491223852809339390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_5
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 608
+        width: 84
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 327983a189fc0a100800000000000000
+      internalID: 117321842493527843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_6
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 606
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e706f07821434d80800000000000000
+      internalID: -8267692848972429338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_7
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 397
+        width: 208
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df356c6058b77f9d0800000000000000
+      internalID: -2740586036957129731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_8
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 441
+        width: 117
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0371b9ee170f38c10800000000000000
+      internalID: 2054750227136190256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_9
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 481
+        width: 77
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226d58e9bf96d67e0800000000000000
+      internalID: -1770642549069457886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_10
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 301
+        width: 192
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e917e64ce554220800000000000000
+      internalID: 2469484168442125915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_11
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 0
+        width: 229
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ddc917dc27bac360800000000000000
+      internalID: 7190761158265654742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_12
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 393
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8edbed4d7c5492e0800000000000000
+      internalID: -2119967831336690033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_13
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 309
+        width: 185
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a287a5378f0d6b2d0800000000000000
+      internalID: -3263191114477570006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_14
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 328
+        width: 9
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fc68f7b2178f2e60800000000000000
+      internalID: 7939713182543146225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_15
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 265
+        width: 59
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b466fa42183e32ec0800000000000000
+      internalID: -3592777933905762741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_16
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 246
+        width: 27
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 032847efd7a6d3ae0800000000000000
+      internalID: -1567980005882559952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_17
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 0
+        width: 64
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da63a01e30dd78ed0800000000000000
+      internalID: -2411716066703427923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_18
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 165
+        width: 57
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921cfaeaef503c5d0800000000000000
+      internalID: -3043582331761737431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_19
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 107
+        width: 15
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c257ae84fb374280800000000000000
+      internalID: -9059206203881073976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_20
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 144
+        width: 34
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbd03bb628ae62f10800000000000000
+      internalID: 2244739310164315581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_21
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 113
+        width: 18
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a234e1ecf5cabf5d0800000000000000
+      internalID: -3027636796996566230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_22
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 66
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842e7e901cf018800800000000000000
+      internalID: 612788346068394568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_23
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 82
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65945feb1d511b980800000000000000
+      internalID: -8525008629039543978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_24
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 64
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc4f3f8d9f9a1c920800000000000000
+      internalID: 3008872916612019407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animation_TalaFlair10055_25
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 8
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22a2d7e071aca79e0800000000000000
+      internalID: -1622762515337500126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

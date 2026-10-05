@@ -3,6 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Alahas/Dahon Ng Kawayan")]
 public class DahonNgKawayanAlahas : Alahas
 {
+    public override void onStart()
+    {
+        
+    }
+    
     public override bool triggerCondition()
     {
         return false;
@@ -25,6 +30,7 @@ public class DahonNgKawayanAlahas : Alahas
 
     public override void onUpdate()
     {
-        AlahasSubManager.Instance.canCreateTile = true;
+        AlahasSubManager.Instance.canCreateTile =
+            AlahasManager.Instance != null && AlahasManager.Instance.CanActivate(this);
     }
 }

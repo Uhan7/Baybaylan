@@ -17,5 +17,7 @@ MonoBehaviour:
   description: 3x iskor sa mga patinig at 3x mas madalas makita ang mga patinig.
   extraText: Napakaganda talaga ng boses ni Binibining Makiling kapag sya'y kumanta
     kasama ang paglaro ng kanyang Arpa...
+  showActivationCounter: 0
+  maximumActivations: 0
   vowelScoreMultiplier: 3
   vowelSpawnMultiplier: 3

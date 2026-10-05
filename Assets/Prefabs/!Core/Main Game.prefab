@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5190848526271645181}
   - component: {fileID: 2601351998698269705}
   m_Layer: 5
-  m_Name: bg img
+  m_Name: UI Container Set
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,11 +35,11 @@ RectTransform:
   - {fileID: 1335200075476303263}
   m_Father: {fileID: 3788040843027046513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -28.536896}
-  m_SizeDelta: {x: 1210.3584, y: 598.4064}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -24}
+  m_SizeDelta: {x: 1210, y: 330}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5190848526271645181
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1335200075476303263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -447,6 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa7037ee04a7bc40842d889994f3b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEnded: 0
+  reccButtonPressed: 0
   boostVowels: 0
   vowelSpawnChanceIncrease: 0
   vowelScoreMulti: 1
@@ -455,6 +457,11 @@ MonoBehaviour:
   goldScoreMulti: 1
   toolTipTiles: 0
   canCreateTile: 0
+  add3ExtraTiles: 0
+  extraTilesToAdd: 0
+  delete5Tiles: 0
+  tilesToDelete: 0
+  reccWordButtonActive: 0
 --- !u!1 &2931207855000954438
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,15 +625,15 @@ RectTransform:
   m_GameObject: {fileID: 4498298016464222187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7071, y: 1.7071, z: 1.7071}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7545472314058610075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -80}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: -48}
+  m_SizeDelta: {x: 700, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5713201009133565665
 CanvasRenderer:
@@ -650,13 +657,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Select Tile
+  m_text: drag whatever tile u want
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
   m_sharedMaterial: {fileID: 5517721512700420806, guid: 52fbc9c84244c4d18b096dfcf37d3fdf, type: 2}
@@ -760,8 +767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -247}
-  m_SizeDelta: {x: 936.7918, y: 262.2745}
+  m_AnchoredPosition: {x: 0, y: -190}
+  m_SizeDelta: {x: 1000, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5683324510911206264
 MonoBehaviour:
@@ -3464,23 +3471,23 @@ PrefabInstance:
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: b7aa8df7fbb034005bcfd07b9735175e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: 'heldAlahas.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: 6874d0039fd35b84fbd7ffd84c6c71ce, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5750622890409589368, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: m_Name
       value: Alahas Manager

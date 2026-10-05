@@ -9,8 +9,11 @@ public abstract class Alahas : ScriptableObject
     [TextArea(2, 2), SerializeField] public string description = "Deskripsyon tungkol sa Alahas.";
     [TextArea(2, 2), SerializeField] public string extraText = "Extra text tungkol sa Alahas.";
     [SerializeField] public int numberOfSlotsNeeded = 1;
+    [SerializeField] public bool showActivationCounter;
+    [Min(0), SerializeField] public int maximumActivations;
 
     // Helper Functions --------------------------------------------------------
+    public abstract void onStart();
     public abstract bool triggerCondition();
     public abstract void onTriggerEffect();
     public abstract void onSubmit();

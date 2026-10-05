@@ -274,5 +274,7 @@ public class DialogueManager : MonoBehaviour
         dialoguing = false;
 
         OnDialogueEnd?.Invoke();
+
+        AlahasSubManager.Instance.dialogueEnded = true;
     }
 }

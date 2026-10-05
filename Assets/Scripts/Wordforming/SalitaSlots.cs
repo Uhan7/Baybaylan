@@ -17,6 +17,7 @@ public class SalitaSlots : MonoBehaviour
     [Header("Soft Dependencies")]
     [HideInInspector] InvalidWordPopup invalidWordPopupScript;
     [HideInInspector] AksyonCounter aksyonCounter;
+    [SerializeField] private WordSubmissionAnimationPlayer successfulWordAnimationPlayer;
     
 
     [Header("Reference")]
@@ -58,6 +59,8 @@ public class SalitaSlots : MonoBehaviour
         config = GameManager.Instance.config;
         invalidWordPopupScript = FindFirstObjectByType<InvalidWordPopup>();
         aksyonCounter = AksyonCounter.Instance;
+        if (successfulWordAnimationPlayer == null)
+            successfulWordAnimationPlayer = FindFirstObjectByType<WordSubmissionAnimationPlayer>();
     }
 
     private void Update() // Temporarily
@@ -237,13 +240,16 @@ public class SalitaSlots : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         scoreCalculationsContainer.SetActive(false);
 
+        if (successfulWordAnimationPlayer != null)
+            yield return successfulWordAnimationPlayer.PlaySelectedAnimation();
+
         scoringSalita = false;
         AksyonCounter.Instance.ConcludeAksyon();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
         {
-            StartCoroutine(ReplaceActiveTiles());
             AlahasSubManager.Instance.onTurnEnd();
+            StartCoroutine(ReplaceActiveTiles());
         }
         else GameManager.Instance.EndRound();
     }
@@ -266,26 +272,39 @@ public class SalitaSlots : MonoBehaviour
         replacingTiles = true;
         revealedLatinSalita = null;
         observedLatinSalita = null;
+        yield return tileSet.RemovePakpakTemporaryTiles();
         yield return new WaitForSeconds(1f);
 
-        int submittedTileCount = activeTiles.Count;
+        int submittedNormalTileCount = 0;
 
         foreach (Tile activeTile in activeTiles)
         {
             if (activeTile == null) continue;
+            if (!activeTile.isTemp) submittedNormalTileCount++;
             Destroy(activeTile.gameObject);
             yield return new WaitForSeconds(0.2f);
         }
 
         if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
+            tileSet.ConsumePakpakNormalTilesRemoved();
+
             if (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
                 yield return tileSet.ClearTiles();
             else
+            {
                 yield return tileSet.ReplaceWithCurrentAksyonTiles();
+                yield return tileSet.SpawnPakpakTemporaryTiles();
+            }
         }
         else
-            yield return tileSet.SpawnTiles(submittedTileCount);
+        {
+            int normalTilesToReplenish = submittedNormalTileCount
+                + tileSet.ConsumePakpakNormalTilesRemoved();
+
+            yield return tileSet.SpawnTiles(normalTilesToReplenish);
+            yield return tileSet.SpawnPakpakTemporaryTiles();
+        }
 
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;

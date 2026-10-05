@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 2076176052834936015, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Name
+      value: Paghihigpit Container
+      objectReference: {fileID: 0}
     - target: {fileID: 2750442621362791040, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -96,6 +100,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7978712670044391019, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      propertyPath: m_Controller
+      value:
+      objectReference: {fileID: 9100000, guid: 607770cb789e94f4b82413b8a8428481, type: 2}
     - target: {fileID: 8288995887723524557, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -184,11 +192,14 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1062241235773068323}
     - targetCorrespondingSourceObject: {fileID: 2076176052834936015, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7869500001234510002}
   m_SourcePrefab: {fileID: 100100000, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
---- !u!1 &7869500001234510001 stripped
+--- !u!1 &3335381322267004198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2076176052834936015, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
   m_PrefabInstance: {fileID: 3646130892840413673}
@@ -199,11 +210,41 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7869500001234510001}
+  m_GameObject: {fileID: 3335381322267004198}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18c96b450403d2b4f981e01649df949a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layoutParentObj: {fileID: 3335381322267004198}
+  tilePrefab: {fileID: 3319992689537381626, guid: 686a6d9dc7dcde143be09affea83e10b, type: 3}
+--- !u!95 &6639357382733541250 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7978712670044391019, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+  m_PrefabInstance: {fileID: 3646130892840413673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9104062566287194559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5530851426335330390, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
+  m_PrefabInstance: {fileID: 3646130892840413673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1062241235773068323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104062566287194559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2425cc39461d34e9fbf8b324fb61a66d, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  layoutParentObj: {fileID: 7869500001234510001}
-  tilePrefab: {fileID: 3319992689537381626, guid: 686a6d9dc7dcde143be09affea83e10b, type: 3}
+  targetAnimator: {fileID: 6639357382733541250}
+  animatorLayer: 0
+  idleStateName: Base Layer.Idle
+  hitStateName: Base Layer.Hit
+  shakeScreenOnHit: 1
+  screenShakeDuration: 0.12
+  screenShakeIntensity: 8
+  maximumWaitSeconds: 5

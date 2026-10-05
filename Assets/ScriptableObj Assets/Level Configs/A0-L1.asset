@@ -31,12 +31,29 @@ MonoBehaviour:
     - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
     - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
     - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
+  - aksyon: 4
+    tiles:
+    - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
+    - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+    - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
+  - aksyon: 5
+    tiles:
+    - {fileID: 6897560512971629955, guid: e9ec02d21c4724e4b98f6ce1d6a5d013, type: 3}
+    - {fileID: 6897560512971629955, guid: c3eadfde37fe14b64b5046e7d2bb58fd, type: 3}
+    - {fileID: 6897560512971629955, guid: 1787ae0ccc78841e9b99cd835f75f0f0, type: 3}
+    - {fileID: 6897560512971629955, guid: 379f8d9a9440e4b8096d5bdbbff7faa0, type: 3}
+  - aksyon: 6
+    tiles:
+    - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
+    - {fileID: 6897560512971629955, guid: 019fbe6f8db594986a1a367c4d1ed04a, type: 3}
+    - {fileID: 6897560512971629955, guid: eaf2ef9a282304aa7af6c2cbc2fed3c9, type: 3}
+    - {fileID: 6897560512971629955, guid: 379f8d9a9440e4b8096d5bdbbff7faa0, type: 3}
   predefinedTiles:
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
-  targetMahika: 120
-  maxAksyon: 3
+  targetMahika: 450
+  maxAksyon: 6
   alahasAquiredAfterWin: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
   activePaghihigpit:
   - {fileID: 11400000, guid: 9241cc720eb97a94baa27ee9e41e4f01, type: 2}
@@ -44,4 +61,7 @@ MonoBehaviour:
   partikularNaSalita_wordList:
   - tala
   - tali
+  - sulat
   - salita
+  - amihan
+  - kawayan
