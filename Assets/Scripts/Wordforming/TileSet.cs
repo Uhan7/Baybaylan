@@ -24,6 +24,8 @@ public class TileSet : MonoBehaviour
 
     private bool waitingForDialogueBeforeCurrentAksyonTiles;
     private Coroutine dialogueReleasedSpawnRoutine;
+    private Coroutine pakpakDeleteRoutine;
+    private int pakpakNormalTilesRemoved;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -37,31 +39,24 @@ public class TileSet : MonoBehaviour
     private void Start()
     {
         config = GameManager.Instance.config;
-        SpawnInitialTiles();
+        StartCoroutine(SpawnInitialTiles());
     }
 
-    private void OnEnable()
+    private IEnumerator SpawnInitialTiles()
     {
-        if (!config) return;
-        SpawnInitialTiles();
-    }
-
-    private void SpawnInitialTiles()
-    {
-        StartCoroutine(SpawnTiles(config.tilesAmount));
-    }
-
-    void Update()
-    {
-        if(AlahasSubManager.Instance.delete5Tiles)
-            PakpakNiPahDelete();
+        // Let the Alahas sub-manager initialize first, regardless of component
+        // Start order, then add Pakpak's temporary tiles after the normal pool.
+        yield return null;
+        yield return SpawnTiles(config.tilesAmount);
+        yield return SpawnPakpakTemporaryTiles();
     }
 
     // Helper Functions --------------------------------------------------------
-    private void SpawnTile(GameObject tilePrefab)
+    private void SpawnTile(GameObject tilePrefab, bool isTemporary = false)
     {
         GameObject tile = Instantiate(tilePrefab, transform);
         Tile tileScript = tile.GetComponent<Tile>();
+        tileScript.isTemp = isTemporary;
         tile.GetComponent<Draggable>().canvas = canvas;
         tileScript.sfxSource = sfxSource;
         tile.GetComponent<Draggable>().sfxSource = sfxSource;
@@ -71,29 +66,64 @@ public class TileSet : MonoBehaviour
         applyToolTip(tileScript);
     }
 
-    void PakpakNiPahDelete()
+    public void StartPakpakTileDeletion(int amount, float interval)
     {
-        for(int i = 0; i < AlahasSubManager.Instance.tilesToDelete; i++)
-            if(transform.childCount > 0)
-            {
-                deleteTile(0, true);
-            }
+        if (pakpakDeleteRoutine != null) return;
+        pakpakDeleteRoutine = StartCoroutine(DeletePakpakTilesOneByOne(amount, interval));
     }
 
-    public void PakpakNiPahDeleteTemps()
+    private IEnumerator DeletePakpakTilesOneByOne(int amount, float interval)
     {
-        for(int i = 0; i < transform.childCount; i++)
-            if(transform.GetChild(i).GetComponent<Tile>().isTemp)
-                deleteTile(i, false);
+        for (int i = 0; i < amount && transform.childCount > 0; i++)
+        {
+            int index = Random.Range(0, transform.childCount);
+            Tile tile = transform.GetChild(index).GetComponent<Tile>();
+
+            if (tile != null && !tile.isTemp)
+                pakpakNormalTilesRemoved++;
+
+            Destroy(transform.GetChild(index).gameObject);
+
+            if (i < amount - 1)
+                yield return interval > 0f ? new WaitForSeconds(interval) : null;
+        }
+
+        pakpakDeleteRoutine = null;
     }
 
-    void deleteTile(int childIndex, bool isRandom)
+    public IEnumerator RemovePakpakTemporaryTiles()
     {
-        int index = childIndex;
-        if(isRandom)
-            index = Random.Range(0, transform.childCount);
+        bool removedAny = false;
 
-        Destroy(transform.GetChild(index).gameObject);
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Tile tile = transform.GetChild(i).GetComponent<Tile>();
+            if (tile == null || !tile.isTemp) continue;
+
+            Destroy(tile.gameObject);
+            removedAny = true;
+        }
+
+        if (removedAny)
+            yield return null;
+    }
+
+    public int ConsumePakpakNormalTilesRemoved()
+    {
+        int amount = pakpakNormalTilesRemoved;
+        pakpakNormalTilesRemoved = 0;
+        return amount;
+    }
+
+    public IEnumerator SpawnPakpakTemporaryTiles()
+    {
+        if (AlahasSubManager.Instance == null ||
+            !AlahasSubManager.Instance.add3ExtraTiles ||
+            AlahasSubManager.Instance.extraTilesToAdd <= 0)
+            yield break;
+
+        yield return SpawnRandomTiles(AlahasSubManager.Instance.extraTilesToAdd, true);
+        AlahasSubManager.Instance.onTilesRefreshed();
     }
 
     public void DahonNgKawayanSpawn(GameObject tilePrefab)
@@ -155,6 +185,12 @@ public class TileSet : MonoBehaviour
             yield break;
         }
 
+        yield return SpawnRandomTiles(tilesAmount, false);
+    }
+
+    private IEnumerator SpawnRandomTiles(int tilesAmount, bool isTemporary)
+    {
+
         int totalChance = 0;
         foreach (GameObject obj in config.tilesSelection) totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
 
@@ -164,15 +200,7 @@ public class TileSet : MonoBehaviour
             yield break;
         }
 
-        int actualAmount = tilesAmount;
-        int tempTilesToAdd = 0;
-        if(AlahasSubManager.Instance.add3ExtraTiles)
-        {
-            actualAmount += AlahasSubManager.Instance.extraTilesToAdd;
-            tempTilesToAdd += AlahasSubManager.Instance.extraTilesToAdd;
-        }
-
-        for (int i = 0; i < actualAmount; i++)
+        for (int i = 0; i < tilesAmount; i++)
         {
             GameObject tile = null;
 
@@ -189,17 +217,7 @@ public class TileSet : MonoBehaviour
                 }
             }
 
-            if(tempTilesToAdd > 0)
-            {
-                tile.GetComponent<Tile>().isTemp = true;
-                tempTilesToAdd--;
-
-                //Debug.Log("temps left: " + tempTilesToAdd);
-            }
-            else    
-                tile.GetComponent<Tile>().isTemp = false;
-
-            SpawnTile(tile);
+            SpawnTile(tile, isTemporary);
             sfxSource.PlayOneShot(spawnSFX);
 
             yield return new WaitForSeconds(0.08f);
@@ -255,6 +273,7 @@ public class TileSet : MonoBehaviour
             : 1;
 
         yield return SpawnItinakdangTiles(currentAksyon);
+        yield return SpawnPakpakTemporaryTiles();
 
         waitingForDialogueBeforeCurrentAksyonTiles = false;
         dialogueReleasedSpawnRoutine = null;

@@ -83,6 +83,18 @@ class AlahasSubManager : MonoBehaviour
         }
     }
 
+    public void onTilesRefreshed()
+    {
+        for (int i = 0; i < heldAlahas.Count; i++)
+        {
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
+
+            if (alahas is PakpakNiPahAlahas pakpak)
+                pakpak.OnTilesRefreshed();
+        }
+    }
+
     void onUpdate()
     {
         for (int i = 0; i < heldAlahas.Count; i++)

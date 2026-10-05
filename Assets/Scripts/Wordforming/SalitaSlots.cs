@@ -248,8 +248,8 @@ public class SalitaSlots : MonoBehaviour
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
         {
-            StartCoroutine(ReplaceActiveTiles());
             AlahasSubManager.Instance.onTurnEnd();
+            StartCoroutine(ReplaceActiveTiles());
         }
         else GameManager.Instance.EndRound();
     }
@@ -272,26 +272,39 @@ public class SalitaSlots : MonoBehaviour
         replacingTiles = true;
         revealedLatinSalita = null;
         observedLatinSalita = null;
+        yield return tileSet.RemovePakpakTemporaryTiles();
         yield return new WaitForSeconds(1f);
 
-        int submittedTileCount = activeTiles.Count;
+        int submittedNormalTileCount = 0;
 
         foreach (Tile activeTile in activeTiles)
         {
             if (activeTile == null) continue;
+            if (!activeTile.isTemp) submittedNormalTileCount++;
             Destroy(activeTile.gameObject);
             yield return new WaitForSeconds(0.2f);
         }
 
         if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
+            tileSet.ConsumePakpakNormalTilesRemoved();
+
             if (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
                 yield return tileSet.ClearTiles();
             else
+            {
                 yield return tileSet.ReplaceWithCurrentAksyonTiles();
+                yield return tileSet.SpawnPakpakTemporaryTiles();
+            }
         }
         else
-            yield return tileSet.SpawnTiles(submittedTileCount);
+        {
+            int normalTilesToReplenish = submittedNormalTileCount
+                + tileSet.ConsumePakpakNormalTilesRemoved();
+
+            yield return tileSet.SpawnTiles(normalTilesToReplenish);
+            yield return tileSet.SpawnPakpakTemporaryTiles();
+        }
 
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;

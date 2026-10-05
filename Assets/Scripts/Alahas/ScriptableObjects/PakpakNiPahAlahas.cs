@@ -5,7 +5,9 @@ class PakpakNiPahAlahas : Alahas
 {
     float timer = 0f;
     bool alreadyDeleted = false;
+    bool tilesAreReady = false;
     float durationTillDelete = 15f;
+    float tileDeleteInterval = 0.1f;
     int tilesToAdd = 3;
     int tilesToDelete = 5;
 
@@ -13,6 +15,10 @@ class PakpakNiPahAlahas : Alahas
     {
         timer = 0f;
         alreadyDeleted = false;
+        tilesAreReady = false;
+
+        AlahasSubManager.Instance.add3ExtraTiles = true;
+        AlahasSubManager.Instance.extraTilesToAdd = tilesToAdd;
     }
 
     public override bool triggerCondition()
@@ -32,12 +38,7 @@ class PakpakNiPahAlahas : Alahas
 
     public override void onTurnEnd()
     {
-        if(alreadyDeleted)
-            AlahasSubManager.Instance.spawnTiles(tilesToDelete);
-
-        TileSet.Instance.PakpakNiPahDeleteTemps();
-
-        alreadyDeleted = false;
+        tilesAreReady = false;
         timer = 0f;
     }
 
@@ -45,21 +46,20 @@ class PakpakNiPahAlahas : Alahas
     {
         AlahasSubManager.Instance.add3ExtraTiles = true;
         AlahasSubManager.Instance.extraTilesToAdd = tilesToAdd;
-        AlahasSubManager.Instance.tilesToDelete = tilesToDelete;
-
-        AlahasSubManager.Instance.delete5Tiles = false; //this loop *should* reset the bool in 1 frame 
-
-        //Debug.Log("timer: " + timer);
-
-        if(AlahasSubManager.Instance.dialogueEnded)
+        if(AlahasSubManager.Instance.dialogueEnded && tilesAreReady)
             timer += Time.deltaTime;
 
         if(timer >= durationTillDelete && !alreadyDeleted)
         {
             alreadyDeleted = true;
-            AlahasSubManager.Instance.delete5Tiles = true;
-
-            //Debug.Log("delete func");
+            TileSet.Instance.StartPakpakTileDeletion(tilesToDelete, tileDeleteInterval);
         }
+    }
+
+    public void OnTilesRefreshed()
+    {
+        timer = 0f;
+        alreadyDeleted = false;
+        tilesAreReady = true;
     }
 }
