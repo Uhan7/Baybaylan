@@ -4041,30 +4041,6 @@ PrefabInstance:
       propertyPath: changeTileBox
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_Spacing.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_Spacing.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_CellSize.x
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_CellSize.y
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_Constraint
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8630140916236873577, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: m_ConstraintCount
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

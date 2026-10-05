@@ -25,7 +25,9 @@ public class TileSet : MonoBehaviour
     private bool waitingForDialogueBeforeCurrentAksyonTiles;
     private Coroutine dialogueReleasedSpawnRoutine;
     private Coroutine pakpakDeleteRoutine;
+    private readonly List<Tile> pakpakFadeTargets = new List<Tile>();
     private int pakpakNormalTilesRemoved;
+    private float pakpakTemporaryTileSpawnDelay = 0.5f;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -66,28 +68,90 @@ public class TileSet : MonoBehaviour
         applyToolTip(tileScript);
     }
 
-    public void StartPakpakTileDeletion(int amount, float interval)
+    public void StartPakpakTileCountdown(
+        int amount,
+        float fadeDuration,
+        AnimationCurve fadeCurve,
+        float deleteInterval)
     {
         if (pakpakDeleteRoutine != null) return;
-        pakpakDeleteRoutine = StartCoroutine(DeletePakpakTilesOneByOne(amount, interval));
+
+        List<Tile> availableTiles = new List<Tile>();
+        foreach (Transform child in transform)
+        {
+            Tile tile = child.GetComponent<Tile>();
+            if (tile != null) availableTiles.Add(tile);
+        }
+
+        pakpakFadeTargets.Clear();
+        int targetCount = Mathf.Min(amount, availableTiles.Count);
+        for (int i = 0; i < targetCount; i++)
+        {
+            int index = Random.Range(0, availableTiles.Count);
+            Tile target = availableTiles[index];
+            availableTiles.RemoveAt(index);
+            target.BeginPakpakFade();
+            pakpakFadeTargets.Add(target);
+        }
+
+        pakpakDeleteRoutine = StartCoroutine(PakpakCountdown(
+            fadeDuration,
+            fadeCurve,
+            deleteInterval));
     }
 
-    private IEnumerator DeletePakpakTilesOneByOne(int amount, float interval)
+    public void CancelPakpakTileCountdown()
     {
-        for (int i = 0; i < amount && transform.childCount > 0; i++)
+        if (pakpakDeleteRoutine != null)
         {
-            int index = Random.Range(0, transform.childCount);
-            Tile tile = transform.GetChild(index).GetComponent<Tile>();
+            StopCoroutine(pakpakDeleteRoutine);
+            pakpakDeleteRoutine = null;
+        }
+
+        foreach (Tile tile in pakpakFadeTargets)
+            if (tile != null) tile.CancelPakpakFade();
+
+        pakpakFadeTargets.Clear();
+    }
+
+    private IEnumerator PakpakCountdown(
+        float fadeDuration,
+        AnimationCurve fadeCurve,
+        float deleteInterval)
+    {
+        float elapsed = 0f;
+        float safeDuration = Mathf.Max(0f, fadeDuration);
+
+        while (elapsed < safeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float linearProgress = safeDuration > 0f ? elapsed / safeDuration : 1f;
+            float fadeProgress = fadeCurve != null
+                ? Mathf.Clamp01(fadeCurve.Evaluate(linearProgress))
+                : linearProgress;
+
+            foreach (Tile tile in pakpakFadeTargets)
+                if (tile != null) tile.SetPakpakFadeProgress(fadeProgress);
+
+            yield return null;
+        }
+
+        foreach (Tile tile in pakpakFadeTargets)
+        {
+            if (tile == null) continue;
 
             if (tile != null && !tile.isTemp)
                 pakpakNormalTilesRemoved++;
 
-            Destroy(transform.GetChild(index).gameObject);
+            Destroy(tile.gameObject);
 
-            if (i < amount - 1)
-                yield return interval > 0f ? new WaitForSeconds(interval) : null;
+            if (deleteInterval > 0f)
+                yield return new WaitForSeconds(deleteInterval);
+            else
+                yield return null;
         }
 
+        pakpakFadeTargets.Clear();
         pakpakDeleteRoutine = null;
     }
 
@@ -121,6 +185,9 @@ public class TileSet : MonoBehaviour
             !AlahasSubManager.Instance.add3ExtraTiles ||
             AlahasSubManager.Instance.extraTilesToAdd <= 0)
             yield break;
+
+        if (pakpakTemporaryTileSpawnDelay > 0f)
+            yield return new WaitForSeconds(pakpakTemporaryTileSpawnDelay);
 
         yield return SpawnRandomTiles(AlahasSubManager.Instance.extraTilesToAdd, true);
         AlahasSubManager.Instance.onTilesRefreshed();
