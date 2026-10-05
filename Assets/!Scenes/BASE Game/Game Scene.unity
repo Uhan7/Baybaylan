@@ -672,13 +672,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: heldAlahas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
+      objectReference: {fileID: 11400000, guid: 364ca5de1960c2f41b322ba72e3511a0, type: 2}
+    - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'heldAlahas.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 364ca5de1960c2f41b322ba72e3511a0, type: 2}
     - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'heldAlahas.Array.data[5]'
       value: 
