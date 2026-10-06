@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 
 //slap this on an obj to let the tooltip display its info when hovered over
-class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] protected GameObject tooltipObj;
     [SerializeField] public string tipText;
@@ -58,8 +58,10 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     protected virtual void startHover()
     {
         tooltipCanvas = GetComponentInParent<Canvas>();
-        if (tooltipCanvas) tooltipCanvas = tooltipCanvas.rootCanvas;
-        else tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
+        if (tooltipCanvas && !tooltipCanvas.overrideSorting)
+            tooltipCanvas = tooltipCanvas.rootCanvas;
+        if (!tooltipCanvas)
+            tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
 
         if (!tooltipCanvas) return;
 
@@ -113,10 +115,18 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         tooltipRect.localPosition += correction;
     }
 
-    void endHover()
+    public void HideTooltip()
     {
         Destroy(tooltipObjInstance);
+        tooltipObjInstance = null;
+        isHovered = false;
+        timer = 0f;
         onetime = false;
+    }
+
+    void endHover()
+    {
+        HideTooltip();
     }
 
     protected virtual void oneTime()

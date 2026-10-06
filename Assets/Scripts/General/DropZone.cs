@@ -25,6 +25,7 @@ public class DropZone : MonoBehaviour, IDropHandler
     // Main Functions ----------------------------------------------------------
     public void OnDrop(PointerEventData eventData)
     {
+        if (Draggable.InteractionLocked) return;
         if (eventData.pointerDrag == null) return;
 
         GameObject draggedObject = eventData.pointerDrag.gameObject;

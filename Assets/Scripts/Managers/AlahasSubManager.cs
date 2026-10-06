@@ -33,6 +33,7 @@ class AlahasSubManager : MonoBehaviour
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
     List<Alahas> heldAlahas;
+    private bool gameplayStarted;
 
     void Awake()
     {
@@ -42,8 +43,17 @@ class AlahasSubManager : MonoBehaviour
 
     void Start()
     {
+        // TileSet begins Alahas effects after the pre-game loadout is confirmed.
+    }
+
+    public void BeginGameplay()
+    {
+        if (gameplayStarted) return;
+
         alahasManagerScript = AlahasManager.Instance;
-        heldAlahas = alahasManagerScript.heldAlahas;
+        heldAlahas = alahasManagerScript != null
+            ? alahasManagerScript.heldAlahas
+            : new List<Alahas>();
 
         for (int i = 0; i < heldAlahas.Count; i++)
         {
@@ -52,10 +62,14 @@ class AlahasSubManager : MonoBehaviour
 
             alahas.onStart();
         }
+
+        gameplayStarted = true;
     }
 
     void Update()
     {
+        if (!gameplayStarted) return;
+
         onUpdate();
 
         //updates all the needed bools 
@@ -64,6 +78,8 @@ class AlahasSubManager : MonoBehaviour
 
     public void onSubmit()
     {
+        if (!gameplayStarted || heldAlahas == null) return;
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];
@@ -75,6 +91,8 @@ class AlahasSubManager : MonoBehaviour
 
     public void onTurnEnd()
     {
+        if (!gameplayStarted || heldAlahas == null) return;
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];
@@ -86,6 +104,8 @@ class AlahasSubManager : MonoBehaviour
 
     public void onTilesRefreshed()
     {
+        if (!gameplayStarted || heldAlahas == null) return;
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];

@@ -12,6 +12,7 @@ public class SideUI : MonoBehaviour
     [Header("Flags")]
     [HideInInspector] private bool isHovering;
     [HideInInspector] private bool shouldOpen;
+    [HideInInspector] private bool forceOpen;
 
     // Main Functions ----------------------------------------------------------
     private void Update()
@@ -30,8 +31,15 @@ public class SideUI : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private void UpdateAnimator()
     {
-        shouldOpen = isHovering || DialogueManager.Instance.dialoguing;
+        shouldOpen = forceOpen || isHovering ||
+            (DialogueManager.Instance != null && DialogueManager.Instance.dialoguing);
         anim.SetBool("isOpen", shouldOpen);
+    }
+
+    public void SetForcedOpen(bool value)
+    {
+        forceOpen = value;
+        UpdateAnimator();
     }
 
     public bool GetShouldOpen()
@@ -41,7 +49,7 @@ public class SideUI : MonoBehaviour
 
     private void CallDimBackground()
     {
-        if (DialogueManager.Instance.dialoguing) return;
+        if (DialogueManager.Instance != null && DialogueManager.Instance.dialoguing) return;
 
         Animator dimAnim = dimObj.GetComponent<Animator>();
 

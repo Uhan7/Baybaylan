@@ -201,6 +201,7 @@ public class SalitaSlots : MonoBehaviour
     private IEnumerator ScoreSalita()
     {
         scoringSalita = true;
+        Draggable.SetInteractionLocked(true);
         submitButton.interactable = false;
         salitaScore = 0;
         float activeTileCount = 0;
@@ -244,15 +245,26 @@ public class SalitaSlots : MonoBehaviour
         if (successfulWordAnimationPlayer != null)
             yield return successfulWordAnimationPlayer.PlaySelectedAnimation();
 
-        scoringSalita = false;
         AksyonCounter.Instance.ConcludeAksyon();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
         {
             AlahasSubManager.Instance.onTurnEnd();
-            StartCoroutine(ReplaceActiveTiles());
+            yield return ReplaceActiveTiles();
+
+            // Itinakdang Titik can intentionally wait for a dialogue before
+            // spawning the next pool. Keep tiles locked until that pool exists.
+            while (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
+                yield return null;
+
+            scoringSalita = false;
+            Draggable.SetInteractionLocked(false);
         }
-        else GameManager.Instance.EndRound();
+        else
+        {
+            scoringSalita = false;
+            GameManager.Instance.EndRound();
+        }
     }
 
     private void UpdateSalitaText()

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowInsertion: 1
-  changeTileBox: 1
+  changeTileBox: 0
   isActiveDropZone: 1
   invokeOnlyOnce: 0
   eventOnDrop:

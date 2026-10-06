@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-class AlahasInfoPopup : ToolTipAble
+public class AlahasInfoPopup : ToolTipAble
 {
     public Alahas currentAlahas;
     [SerializeField] private Image alahasImage;
@@ -12,6 +12,7 @@ class AlahasInfoPopup : ToolTipAble
     TextMeshProUGUI alahasName;
     TextMeshProUGUI alahasDesc;
     TextMeshProUGUI alahasExtra;
+    private bool selectionMode;
 
     private void Awake()
     {
@@ -48,8 +49,16 @@ class AlahasInfoPopup : ToolTipAble
         }
     }
 
+    public void SetTooltipAlahas(Alahas alahas)
+    {
+        currentAlahas = alahas;
+        if (alahas == null) HideTooltip();
+    }
+
     private void HandleAlahasClicked()
     {
+        if (selectionMode) return;
+
         if (!currentAlahas || AlahasManager.Instance == null ||
             !AlahasManager.Instance.CanActivate(currentAlahas))
             return;
@@ -58,11 +67,18 @@ class AlahasInfoPopup : ToolTipAble
             DahonNgKawayanUI.Instance.OpenSelection(dahon);
     }
 
+    public void SetSelectionMode(bool value)
+    {
+        selectionMode = value;
+    }
+
     override protected void startHover()
     {
         tooltipCanvas = GetComponentInParent<Canvas>();
-        if (tooltipCanvas) tooltipCanvas = tooltipCanvas.rootCanvas;
-        else tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
+        if (tooltipCanvas && !tooltipCanvas.overrideSorting)
+            tooltipCanvas = tooltipCanvas.rootCanvas;
+        if (!tooltipCanvas)
+            tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
 
         if (!tooltipCanvas) return;
 

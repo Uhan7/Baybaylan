@@ -24,6 +24,7 @@ public class TileSet : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Canvas canvas;
+    [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
 
     private bool waitingForDialogueBeforeCurrentAksyonTiles;
     private Coroutine dialogueReleasedSpawnRoutine;
@@ -31,6 +32,7 @@ public class TileSet : MonoBehaviour
     private readonly List<Tile> pakpakFadeTargets = new List<Tile>();
     private int pakpakNormalTilesRemoved;
     private float pakpakTemporaryTileSpawnDelay = 0.5f;
+    private bool gameplayStarted;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -43,7 +45,35 @@ public class TileSet : MonoBehaviour
 
     private void Start()
     {
+        Draggable.SetInteractionLocked(false);
         config = GameManager.Instance.config;
+
+        if (AlahasSelectionController.TryBeginSelection(this)) return;
+
+        if (alahasSelectionPrefab != null && canvas != null)
+        {
+            Canvas parentCanvas = canvas.rootCanvas != null ? canvas.rootCanvas : canvas;
+            AlahasSelectionController selector = Instantiate(
+                alahasSelectionPrefab,
+                parentCanvas.transform);
+            selector.BeginSelection(this);
+            return;
+        }
+
+        Debug.LogWarning(
+            "No Alahas selection screen was found or assigned; starting gameplay directly.",
+            this);
+        BeginGameplay();
+    }
+
+    public void BeginGameplay()
+    {
+        if (gameplayStarted) return;
+        gameplayStarted = true;
+
+        if (AlahasSubManager.Instance != null)
+            AlahasSubManager.Instance.BeginGameplay();
+
         StartCoroutine(SpawnInitialTiles());
     }
 

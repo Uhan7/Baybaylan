@@ -66,7 +66,8 @@ public class GameManager : MonoBehaviour
         if (config == null) return;
 
         ChangeMahika(0);
-        DahonNgKawayanUI.Instance.getLevelConfig(config);
+        if (DahonNgKawayanUI.Instance != null)
+            DahonNgKawayanUI.Instance.getLevelConfig(config);
     }
 
     // Helper Functions --------------------------------------------------------
@@ -75,10 +76,8 @@ public class GameManager : MonoBehaviour
         if(!config.alahasAquiredAfterWin)
             return;
 
-        TalaAlahasHolder.Instance.availableAlahas.Add(config.alahasAquiredAfterWin);
-        
-        //this one is temporaary until we add the "equip alahas screen" 
-        config.alahasAquiredAfterWin.AddAlahasToList();
+        if (TalaAlahasHolder.Instance != null)
+            TalaAlahasHolder.Instance.Unlock(config.alahasAquiredAfterWin);
     }
 
     public void ChangeMahika(int score)

@@ -121,6 +121,7 @@ public class Tile : MonoBehaviour
     public void ToggleNextModification() // Called by Button | PLEASE CHANGE NAME TO BE "DIACRITIC"
     {
         if (isVowel) return; // Skip if vowel
+        if (Draggable.InteractionLocked) return;
         if (draggableScript.isBeingDragged) return;
 
         if (currentCharmod == Diacritic.Krus) currentCharmod = Diacritic.None;
