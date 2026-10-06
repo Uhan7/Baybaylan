@@ -26,6 +26,10 @@ public class TileSet : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
 
+    [Header("Alahas Selection Flow")]
+    [Tooltip("Wait for the first Dialogue Set to call ShowAlahasSelection before gameplay begins.")]
+    [SerializeField] private bool waitForFirstDialogue = true;
+
     private bool waitingForDialogueBeforeCurrentAksyonTiles;
     private Coroutine dialogueReleasedSpawnRoutine;
     private Coroutine pakpakDeleteRoutine;
@@ -47,6 +51,17 @@ public class TileSet : MonoBehaviour
     {
         Draggable.SetInteractionLocked(false);
         config = GameManager.Instance.config;
+
+        if (waitForFirstDialogue) return;
+
+        ShowAlahasSelection();
+    }
+
+    // UnityEvent entry point for the first Dialogue Set -> Event After Dialogue.
+    // Keeping this parameterless makes the Inspector hookup reliable.
+    public void ShowAlahasSelection()
+    {
+        if (gameplayStarted) return;
 
         if (AlahasSelectionController.TryBeginSelection(this)) return;
 

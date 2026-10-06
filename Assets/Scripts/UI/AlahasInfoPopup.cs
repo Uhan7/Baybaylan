@@ -85,6 +85,7 @@ public class AlahasInfoPopup : ToolTipAble
         tooltipCanvasRect = tooltipCanvas.transform as RectTransform;
         tooltipObjInstance = Instantiate(tooltipObj, tooltipCanvas.transform);
         tooltipObjInstance.SetActive(true);
+        DisableTooltipRaycasts();
         alahasName = tooltipObjInstance.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>();
         alahasDesc = tooltipObjInstance.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>();
         alahasExtra = tooltipObjInstance.transform.GetChild(3).transform.GetComponent<TextMeshProUGUI>();

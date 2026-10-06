@@ -38,6 +38,7 @@ public class AlahasSelectionController : MonoBehaviour
     private Vector2 hiddenPosition;
     private Vector2 shownPosition;
     private bool selectionActive;
+    private bool proceedRequested;
 
     private sealed class HiddenGraphicState
     {
@@ -93,6 +94,7 @@ public class AlahasSelectionController : MonoBehaviour
         }
 
         selectionActive = true;
+        proceedRequested = false;
         pendingTileSet = tileSet;
         CacheInventoryItems();
         CacheSelectionSlots();
@@ -255,8 +257,12 @@ public class AlahasSelectionController : MonoBehaviour
 
     public void Proceed()
     {
-        if (!selectionActive) return;
+        if (!selectionActive || proceedRequested) return;
+        proceedRequested = true;
         selectionActive = false;
+
+        foreach (ToolTipAble tooltip in GetComponentsInChildren<ToolTipAble>(true))
+            tooltip.HideTooltip();
 
         AlahasManager.Instance.SetLoadout(draftSlots);
 

@@ -68,7 +68,18 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         tooltipCanvasRect = tooltipCanvas.transform as RectTransform;
         tooltipObjInstance = Instantiate(tooltipObj, tooltipCanvas.transform);
         tooltipObjInstance.SetActive(true);
+        DisableTooltipRaycasts();
         tooltipText = tooltipObjInstance.GetComponentInChildren<TMP_Text>();
+    }
+
+    // Tooltips are visual-only. If their Images accept raycasts, they can eat
+    // the first click intended for controls underneath (such as MAGPATULOY).
+    protected void DisableTooltipRaycasts()
+    {
+        if (!tooltipObjInstance) return;
+
+        foreach (Graphic graphic in tooltipObjInstance.GetComponentsInChildren<Graphic>(true))
+            graphic.raycastTarget = false;
     }
 
     void PositionTooltip()
