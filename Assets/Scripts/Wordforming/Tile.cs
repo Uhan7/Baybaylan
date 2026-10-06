@@ -29,6 +29,9 @@ public class Tile : MonoBehaviour
     [Header("Current State")]
     [SerializeField] private Diacritic currentCharmod = Diacritic.None;
 
+    [Header("Animator")]
+    [SerializeField] private Animator m_animator = null;
+
     [Header("Audio")]
     [HideInInspector] public AudioSource sfxSource; // To be set by spawners (TileSet.cs)
     [SerializeField] private AudioClip diacriticSFX;
@@ -83,6 +86,7 @@ public class Tile : MonoBehaviour
         draggableScript = GetComponent<Draggable>();
         imageComponent = GetComponent<Image>();
         tooltipScript = GetComponentInChildren<ToolTipAble>();
+        if(null == m_animator) m_animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -319,5 +323,11 @@ public class Tile : MonoBehaviour
     {
         if (isVowel) return Tile.Diacritic.None;
         else return currentCharmod;
+    }
+
+    public void PlayBlowAwayAnimation()
+    {
+        if (null == m_animator) return;
+        m_animator.SetBool("Blow", true);
     }
 }

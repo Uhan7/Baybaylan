@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(DropZone))]
 public class TileSet : MonoBehaviour
@@ -11,6 +12,7 @@ public class TileSet : MonoBehaviour
 
     [Header("Constants")]
     [HideInInspector] private const float SPAWN_TIME_BETWEEN_TILES = 0.15f;
+    [HideInInspector] private const int m_hanginHabagatNumTilesChanged = 3;
 
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
@@ -18,6 +20,7 @@ public class TileSet : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip spawnSFX; // Should be stored in tile soon
+    [SerializeField] private AudioClip despawnSFX; // Should be stored in tile soon
 
     [Header("References")]
     [SerializeField] private Canvas canvas;
@@ -252,8 +255,20 @@ public class TileSet : MonoBehaviour
         }
     }
 
-    public IEnumerator SpawnTiles(int tilesAmount) // Can be called by SalitaSlots after valid word
+    public IEnumerator SpawnTiles(int _tilesAmount) // Can be called by SalitaSlots after valid word
     {
+        int tilesAmount = _tilesAmount;
+        if (config.HasPaghihigpit(PaghihigpitTypes.HanginHabagat))
+        {
+            int remainingTiles = GetRemainingTiles();
+            int numTilesToRemove;
+            if (remainingTiles > 3) numTilesToRemove = 3;
+            else numTilesToRemove = remainingTiles;
+            
+            yield return StartCoroutine(RemoveRandomTiles(numTilesToRemove));
+            tilesAmount += numTilesToRemove;
+        }
+
         if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
             int currentAksyon = AksyonCounter.Instance != null
@@ -391,5 +406,32 @@ public class TileSet : MonoBehaviour
             sfxSource.PlayOneShot(spawnSFX);
             yield return new WaitForSeconds(SPAWN_TIME_BETWEEN_TILES);
         }
+    }
+
+    // Paghihigpit: Hangin Habagat Functions --------------------------------------------------------
+    private int GetRemainingTiles()
+    {
+        return transform.childCount;
+    }
+    private IEnumerator RemoveRandomTiles(int _numTilesToRemove)
+    {
+        for (int i = 0; i < _numTilesToRemove; i++)
+        {
+            // Get Random Tile
+            int randomTileIndex = Random.Range(0, GetRemainingTiles());
+            Transform randomTransform = transform.GetChild(randomTileIndex);
+            GameObject randomTile = randomTransform.gameObject;
+
+            // Play Tile Destruction Animation
+            randomTile.TryGetComponent<Tile>(out var tileComponent);
+            tileComponent.PlayBlowAwayAnimation();
+            sfxSource.PlayOneShot(despawnSFX);
+            yield return new WaitForSeconds(5 * SPAWN_TIME_BETWEEN_TILES);
+
+            // Destroy Tile
+            Destroy(randomTile);
+            yield return new WaitForSeconds(SPAWN_TIME_BETWEEN_TILES);
+        }
+        yield return new WaitForSeconds(3 * SPAWN_TIME_BETWEEN_TILES);
     }
 }

@@ -521,6 +521,7 @@ MonoBehaviour:
   bottomKudlit: {fileID: 6432145158623040388}
   krus: {fileID: 2241262600043057499}
   currentCharmod: 0
+  m_animator: {fileID: 8149427845387423121}
   sfxSource: {fileID: 0}
   diacriticSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
   isVowel: 0
@@ -550,12 +551,14 @@ MonoBehaviour:
   diacriticScore: 3
   scoreMultiplier: 1
   chance: 5
+  isActiveTile: 0
   isGold: 0
   isVowelBoosted: 0
   isPearl: 0
   isShy: 0
   isBlossom: 0
   isToolTipped: 0
+  isTemp: 0
 --- !u!114 &5695253453646463390
 MonoBehaviour:
   m_ObjectHideFlags: 0
