@@ -11,7 +11,11 @@ public class SceneController : MonoBehaviour
     [SerializeField] private float transitionTime = 1.25f;
 
     [Header("Alahas Selection")]
+    [Tooltip("Disable this in intro/cutscene scenes. When disabled, Alahas-selection requests are ignored and scene swaps continue normally.")]
+    [SerializeField] private bool allowAlahasSelection = true;
     [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
+
+    public bool AllowsAlahasSelection => allowAlahasSelection;
 
     // Main Functions ----------------------------------------------------------
     private void Start()
@@ -46,11 +50,24 @@ public class SceneController : MonoBehaviour
 
     public void SwapAfterAlahasSelection(string sceneName)
     {
+        if (!allowAlahasSelection ||
+            !AlahasSelectionController.IsSelectionAllowedInActiveScene())
+        {
+            Debug.Log(
+                $"[Alahas Selection] Ignored SceneController.SwapAfterAlahasSelection " +
+                $"in '{SceneManager.GetActiveScene().name}' because selection is disabled for this scene. " +
+                $"Continuing normal transition to '{sceneName}'.",
+                this);
+            SwapWrapper(sceneName);
+            return;
+        }
+
         AlahasSelectionController selector = FindFirstObjectByType<AlahasSelectionController>(
             FindObjectsInactive.Include);
 
         Debug.Log(
-            $"Alahas scene gate requested for '{sceneName}'. " +
+            $"[Alahas Selection] OPEN requested by the " +
+            $"SceneController.SwapAfterAlahasSelection UnityEvent for '{sceneName}'. " +
             $"Existing selector: {selector != null}; fallback prefab: {alahasSelectionPrefab != null}.",
             this);
 

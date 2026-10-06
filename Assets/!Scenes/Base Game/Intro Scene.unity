@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3836831027520647065, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: allowAlahasSelection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1007463779969931788, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
       value: 1

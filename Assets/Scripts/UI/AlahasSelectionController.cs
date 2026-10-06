@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class AlahasSelectionController : MonoBehaviour
 {
+    private const string AreaZeroIntroScene = "Area 0 - Intro";
+
     [Header("Inventory")]
     [SerializeField] private Transform inventoryGrid;
     [SerializeField] private GameObject fallbackSlotPanel;
@@ -75,6 +78,14 @@ public class AlahasSelectionController : MonoBehaviour
 
     public static bool TryBeginSelection(TileSet tileSet)
     {
+        if (!IsSelectionAllowedInActiveScene())
+        {
+            Debug.LogWarning(
+                $"[Alahas Selection] BLOCKED in '{SceneManager.GetActiveScene().name}'. " +
+                $"A caller tried AlahasSelectionController.TryBeginSelection, but this is an intro scene.");
+            return false;
+        }
+
         AlahasSelectionController controller = FindFirstObjectByType<AlahasSelectionController>(
             FindObjectsInactive.Include);
         if (controller == null) return false;
@@ -85,6 +96,15 @@ public class AlahasSelectionController : MonoBehaviour
 
     public void BeginSelection(TileSet tileSet)
     {
+        if (!IsSelectionAllowedInActiveScene())
+        {
+            Debug.LogWarning(
+                $"[Alahas Selection] BLOCKED AlahasSelectionController.BeginSelection " +
+                $"in '{SceneManager.GetActiveScene().name}'.",
+                this);
+            return;
+        }
+
         if (selectionActive) return;
         if (AlahasManager.Instance == null)
         {
@@ -125,6 +145,15 @@ public class AlahasSelectionController : MonoBehaviour
         SceneController sceneController,
         string sceneName)
     {
+        if (!IsSelectionAllowedInActiveScene())
+        {
+            Debug.LogWarning(
+                $"[Alahas Selection] BLOCKED BeginSelectionBeforeSceneSwap " +
+                $"in '{SceneManager.GetActiveScene().name}'. The normal scene transition will continue.",
+                this);
+            return false;
+        }
+
         if (sceneController == null || string.IsNullOrEmpty(sceneName))
             return false;
 
@@ -143,6 +172,14 @@ public class AlahasSelectionController : MonoBehaviour
         pendingSceneController = null;
         pendingSceneName = null;
         return false;
+    }
+
+    public static bool IsSelectionAllowedInActiveScene()
+    {
+        // Area 0 - Intro must always transition directly into Level 1. Keep
+        // this runtime guard even if a stale nested-prefab UnityEvent still
+        // points at an Alahas selection method in an open Unity scene.
+        return SceneManager.GetActiveScene().name != AreaZeroIntroScene;
     }
 
     public void TryAutoEquip(Alahas alahas)

@@ -63,6 +63,32 @@ public class TileSet : MonoBehaviour
     {
         if (gameplayStarted) return;
 
+        if (!AlahasSelectionController.IsSelectionAllowedInActiveScene())
+        {
+            Debug.LogWarning(
+                $"[Alahas Selection] BLOCKED TileSet.ShowAlahasSelection UnityEvent " +
+                $"in '{UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}'.",
+                this);
+            return;
+        }
+
+        SceneController sceneController = FindFirstObjectByType<SceneController>(
+            FindObjectsInactive.Include);
+        if (sceneController != null && !sceneController.AllowsAlahasSelection)
+        {
+            Debug.Log(
+                $"[Alahas Selection] Ignored TileSet.ShowAlahasSelection UnityEvent " +
+                $"in '{UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}' because " +
+                $"Allow Alahas Selection is disabled on SceneController.",
+                this);
+            return;
+        }
+
+        Debug.Log(
+            $"[Alahas Selection] OPEN requested by TileSet.ShowAlahasSelection. " +
+            $"Expected source: the gameplay scene's first Dialogue Set -> Event After Dialogue.",
+            this);
+
         if (AlahasSelectionController.TryBeginSelection(this)) return;
 
         if (alahasSelectionPrefab != null && canvas != null)
