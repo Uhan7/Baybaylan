@@ -25,7 +25,7 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Tiles")]
     [SerializeField] private TileSet tileSet;
-    [SerializeField] private List<Tile> activeTiles = new List<Tile>();
+    [SerializeField] public List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
     [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
@@ -214,7 +214,8 @@ public class SalitaSlots : MonoBehaviour
             // Some cool effects here
             if (activeTile == null) continue;
 
-            salitaScore += (int) (activeTile.Score); // removed * scoreScaleValue here... pls find way to make it cleaner
+            // i just slapped on the alahas' score multiplier on here
+            salitaScore += (int) (activeTile.Score * AlahasSubManager.Instance.scoreMultiplier); // removed * scoreScaleValue here... pls find way to make it cleaner
             activeTile.GetComponent<Animator>().Play("tile_hold");
             activeTile.sfxSource.PlayOneShot(tileTickSFX);
 

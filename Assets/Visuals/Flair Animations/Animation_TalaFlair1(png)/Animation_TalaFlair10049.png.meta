@@ -773,7 +773,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Animation_TalaFlair10049_0: 1902782090257849222
+      Animation_TalaFlair10049_1: -3313313412228895590
+      Animation_TalaFlair10049_10: -5428045859343271934
+      Animation_TalaFlair10049_11: -8628355472698373963
+      Animation_TalaFlair10049_12: 2664953968664775305
+      Animation_TalaFlair10049_13: 7576653898400182890
+      Animation_TalaFlair10049_14: -3011680565209188437
+      Animation_TalaFlair10049_15: -2680926655512597737
+      Animation_TalaFlair10049_16: 6824602388416879324
+      Animation_TalaFlair10049_17: -3351751408108433384
+      Animation_TalaFlair10049_18: -442513607083747141
+      Animation_TalaFlair10049_19: -3327652655800150874
+      Animation_TalaFlair10049_2: -6549201110590889161
+      Animation_TalaFlair10049_20: 8038156909564468367
+      Animation_TalaFlair10049_21: -7712990986742281022
+      Animation_TalaFlair10049_22: 624431089286337899
+      Animation_TalaFlair10049_23: 2691567875830040301
+      Animation_TalaFlair10049_24: 8249072334000402519
+      Animation_TalaFlair10049_3: -1764969623531660421
+      Animation_TalaFlair10049_4: -3740463781180991023
+      Animation_TalaFlair10049_5: -8950522394030073975
+      Animation_TalaFlair10049_6: 3297077215443966516
+      Animation_TalaFlair10049_7: 626757418666683175
+      Animation_TalaFlair10049_8: 4712272806277212646
+      Animation_TalaFlair10049_9: -6770066886639926980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
