@@ -9,7 +9,8 @@ public enum PaghihigpitTypes
     MahabangSalita,
     KaposNaAksyon,
     HanginHabagat,
-    MaiklingSalita
+    MaiklingSalita,
+    SumpaNgPitongUlo,
 }
 
 [CreateAssetMenu]

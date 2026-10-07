@@ -119,6 +119,9 @@ public class LevelConfig : ScriptableObject
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
 
+        // Logic for Sumpa ng Pitong Ulo
+        if (HasPaghihigpit(PaghihigpitTypes.SumpaNgPitongUlo)) maxAksyon = 7;
+
         // Logic for Kapos na Aksyon
         if (numKaposAksyon >= maxAksyon) numKaposAksyon = Mathf.Max(0, maxAksyon-1);
         if (numKaposAksyon < 0) numKaposAksyon = 0;
