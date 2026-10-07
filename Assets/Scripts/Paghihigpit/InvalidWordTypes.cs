@@ -8,7 +8,8 @@ public static class InvalidWordTypes
         AlreadyUsed,
         NotPartikularNaSalita,
         AbsentDiacritic,
-        MahabangSalita
+        MahabangSalita,
+        MaiklingSalita
     }
 
     [System.Serializable]
@@ -27,6 +28,8 @@ public static class InvalidWordTypes
         [SerializeField] string absentDiacritic = "\"{word}\" has at least one letter without a diacritic!";
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string mahabangSalita = "\"{word}\" has less than 4 tiles!";
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string maiklingSalita = "\"{word}\" has more than 4 tiles!";
 
         public string GetInvalidWordMessage(InvalidWordType type, string word)
         {
@@ -47,6 +50,9 @@ public static class InvalidWordTypes
                     break;
                 case InvalidWordType.MahabangSalita:
                     template = mahabangSalita;
+                    break;
+                case InvalidWordType.MaiklingSalita:
+                    template = maiklingSalita;
                     break;
                 default:
                     return "";

@@ -145,6 +145,17 @@ public class SalitaSlots : MonoBehaviour
             }
         }
 
+        // PAGHIHIGPIT: Maikkling Salita
+        // Check if the candidate salita has 5 or more tiles
+        if (config.HasPaghihigpit(PaghihigpitTypes.MaiklingSalita))
+        {
+            if (activeTiles.Count >= 5)
+            {
+                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.MaiklingSalita, latinSalita);
+                return false;
+            }
+        }
+
         // PAGHIHIGPIT: Marka ng Baybayin
         // Check if the candidate salita has no diacritic
         if (config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin))
