@@ -28,10 +28,15 @@ class AlahasSubManager : MonoBehaviour
     [ReadOnly, SerializeField] public bool delete5Tiles = false;
     [ReadOnly, SerializeField] public int tilesToDelete = 0;
     [ReadOnly, SerializeField] public bool reccWordButtonActive = false;
+    [ReadOnly, SerializeField] public float scoreMultiplier = 1f; //general use 
+    [ReadOnly, SerializeField] public bool addExtraTurnAndTile = false;
+    [ReadOnly, SerializeField] public int extraTurn = 0;
+    [ReadOnly, SerializeField] public int extraTile = 0;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
     List<Alahas> heldAlahas;
+    public bool gameplayStarted { get; private set; } = false;
 
     void Awake()
     {
@@ -41,8 +46,17 @@ class AlahasSubManager : MonoBehaviour
 
     void Start()
     {
+        // TileSet begins Alahas effects after the pre-game loadout is confirmed.
+    }
+
+    public void BeginGameplay()
+    {
+        if (gameplayStarted) return;
+
         alahasManagerScript = AlahasManager.Instance;
-        heldAlahas = alahasManagerScript.heldAlahas;
+        heldAlahas = alahasManagerScript != null
+            ? alahasManagerScript.heldAlahas
+            : new List<Alahas>();
 
         for (int i = 0; i < heldAlahas.Count; i++)
         {
@@ -51,10 +65,14 @@ class AlahasSubManager : MonoBehaviour
 
             alahas.onStart();
         }
+
+        gameplayStarted = true;
     }
 
     void Update()
     {
+        if (!gameplayStarted) return;
+
         onUpdate();
 
         //updates all the needed bools 
@@ -63,6 +81,8 @@ class AlahasSubManager : MonoBehaviour
 
     public void onSubmit()
     {
+        if (!gameplayStarted || heldAlahas == null) return;
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];
@@ -74,6 +94,8 @@ class AlahasSubManager : MonoBehaviour
 
     public void onTurnEnd()
     {
+        if (!gameplayStarted || heldAlahas == null) return;
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];
@@ -85,6 +107,8 @@ class AlahasSubManager : MonoBehaviour
 
     public void onTilesRefreshed()
     {
+        if (!gameplayStarted || heldAlahas == null) return;
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];
@@ -97,6 +121,8 @@ class AlahasSubManager : MonoBehaviour
 
     void onUpdate()
     {
+        scoreMultiplier = 1f; //reset mutliplier so alahas can just add every frame
+
         for (int i = 0; i < heldAlahas.Count; i++)
         {
             Alahas alahas = heldAlahas[i];

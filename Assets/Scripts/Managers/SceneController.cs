@@ -10,6 +10,13 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject transitionOnSwap;
     [SerializeField] private float transitionTime = 1.25f;
 
+    [Header("Alahas Selection")]
+    [Tooltip("Disable this in intro/cutscene scenes. When disabled, Alahas-selection requests are ignored and scene swaps continue normally.")]
+    [SerializeField] private bool allowAlahasSelection = true;
+    [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
+
+    public bool AllowsAlahasSelection => allowAlahasSelection;
+
     // Main Functions ----------------------------------------------------------
     private void Start()
     {
@@ -39,6 +46,58 @@ public class SceneController : MonoBehaviour
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
         StartCoroutine(Swap(sceneName));
+    }
+
+    public void SwapAfterAlahasSelection(string sceneName)
+    {
+        if (!allowAlahasSelection ||
+            !AlahasSelectionController.IsSelectionAllowedInActiveScene())
+        {
+            Debug.Log(
+                $"[Alahas Selection] Ignored SceneController.SwapAfterAlahasSelection " +
+                $"in '{SceneManager.GetActiveScene().name}' because selection is disabled for this scene. " +
+                $"Continuing normal transition to '{sceneName}'.",
+                this);
+            SwapWrapper(sceneName);
+            return;
+        }
+
+        AlahasSelectionController selector = FindFirstObjectByType<AlahasSelectionController>(
+            FindObjectsInactive.Include);
+
+        Debug.Log(
+            $"[Alahas Selection] OPEN requested by the " +
+            $"SceneController.SwapAfterAlahasSelection UnityEvent for '{sceneName}'. " +
+            $"Existing selector: {selector != null}; fallback prefab: {alahasSelectionPrefab != null}.",
+            this);
+
+        if (selector == null && alahasSelectionPrefab != null)
+        {
+            Canvas parentCanvas = null;
+            Canvas[] canvases = FindObjectsByType<Canvas>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+
+            foreach (Canvas candidate in canvases)
+            {
+                if (!candidate.gameObject.scene.IsValid() || candidate.rootCanvas != candidate)
+                    continue;
+
+                parentCanvas = candidate;
+                if (candidate.gameObject.activeInHierarchy) break;
+            }
+
+            selector = parentCanvas != null
+                ? Instantiate(alahasSelectionPrefab, parentCanvas.transform)
+                : Instantiate(alahasSelectionPrefab);
+        }
+
+        if (selector != null && selector.BeginSelectionBeforeSceneSwap(this, sceneName))
+            return;
+
+        Debug.LogWarning("Alahas scene gate could not start; continuing with the scene swap.", this);
+
+        SwapWrapper(sceneName);
     }
 
     private IEnumerator Swap(string sceneName)

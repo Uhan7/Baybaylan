@@ -47,17 +47,41 @@ public class AlahasManager : MonoBehaviour
 
         if (Instance != null && Instance != this)
         {
+            Instance.AbsorbSceneLoadout(this);
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
+        transform.SetParent(null, true);
         DontDestroyOnLoad(gameObject);
 
         ResetAllAlahas(); //does nothing rn 
         ResetActivationCounts();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void AbsorbSceneLoadout(AlahasManager sceneManager)
+    {
+        if (sceneManager == null) return;
+
+        if (maxAlahasSlotCount <= 0)
+            maxAlahasSlotCount = sceneManager.maxAlahasSlotCount;
+
+        bool currentLoadoutHasAlahas = heldAlahas != null && heldAlahas.Any(alahas => alahas);
+        bool sceneLoadoutHasAlahas = sceneManager.heldAlahas != null &&
+            sceneManager.heldAlahas.Any(alahas => alahas);
+
+        // Several older scenes contain both the persistent manager prefab and
+        // a scene-authored manager with the intended starting Alahas. Keep a
+        // player's existing selection, but import the authored list when the
+        // persistent manager is still empty.
+        if (!currentLoadoutHasAlahas && sceneLoadoutHasAlahas)
+        {
+            heldAlahas = new List<Alahas>(sceneManager.heldAlahas);
+            ResetActivationCounts();
+        }
     }
 
     private void OnDestroy()
@@ -180,6 +204,40 @@ public class AlahasManager : MonoBehaviour
         remainingActivations[alahas] = remaining - 1;
         RefreshAlahasSlotsUI();
         return true;
+    }
+
+    public void SetLoadout(IReadOnlyList<Alahas> selectedSlots)
+    {
+        if (heldAlahas == null)
+            heldAlahas = new List<Alahas>();
+
+        heldAlahas.Clear();
+
+        int slotCapacity = Mathf.Max(0, maxAlahasSlotCount);
+        if (slotCapacity == 0)
+            slotCapacity = selectedSlots != null ? selectedSlots.Count : 0;
+
+        for (int i = 0; i < slotCapacity; i++)
+        {
+            Alahas selectedAlahas = selectedSlots != null && i < selectedSlots.Count
+                ? selectedSlots[i]
+                : null;
+            heldAlahas.Add(selectedAlahas);
+        }
+
+        ResetActivationCounts();
+        RefreshAlahasSlotsUI();
+    }
+
+    public List<Alahas> GetLoadoutSnapshot(int slotCount)
+    {
+        int capacity = Mathf.Max(0, slotCount);
+        List<Alahas> snapshot = new List<Alahas>(capacity);
+
+        for (int i = 0; i < capacity; i++)
+            snapshot.Add(heldAlahas != null && i < heldAlahas.Count ? heldAlahas[i] : null);
+
+        return snapshot;
     }
 
     public int getEmptySlotAmount()

@@ -1,8 +1,16 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 class DahonNgKawayanUI : MonoBehaviour
 {
+    private static readonly string[] LetterOrder =
+    {
+        "BA", "KA", "DA", "GA", "HA", "LA", "MA", "NA", "NGA",
+        "PA", "RA", "SA", "TA", "WA", "YA", "A", "I", "U"
+    };
+
     [SerializeField] GameObject tileLayoutGroupParent;
     [SerializeField] GameObject mainUiParent;
     [SerializeField] GameObject spawnButton;
@@ -12,6 +20,9 @@ class DahonNgKawayanUI : MonoBehaviour
     private readonly List<GameObject> tileChoices = new List<GameObject>();
     private LevelConfig config;
     private DahonNgKawayanAlahas activeAlahas;
+    private bool pointerStartedOnTileChoice;
+    private bool closePending;
+    private int openedFrame = -1;
 
     void Awake()
     {
@@ -25,12 +36,35 @@ class DahonNgKawayanUI : MonoBehaviour
         if (spawnButton != null) spawnButton.SetActive(false);
     }
 
+    void Update()
+    {
+        if (!mainUiParent.activeSelf || Time.frameCount == openedFrame) return;
+
+        if (Input.GetMouseButtonUp(0) && !closePending)
+            StartCoroutine(CloseAfterPointerRelease());
+    }
+
+    private IEnumerator CloseAfterPointerRelease()
+    {
+        closePending = true;
+        yield return null;
+
+        if (mainUiParent.activeSelf && !pointerStartedOnTileChoice)
+            CloseSelection();
+
+        pointerStartedOnTileChoice = false;
+        closePending = false;
+    }
+
     private void SpawnTileChoices()
     {
         ClearTileChoices();
         if (config == null || TileSet.Instance == null) return;
 
-        foreach (GameObject tilePrefab in config.tilesSelection)
+        List<GameObject> orderedTilePrefabs = new List<GameObject>(config.tilesSelection);
+        orderedTilePrefabs.Sort(CompareTilePrefabs);
+
+        foreach (GameObject tilePrefab in orderedTilePrefabs)
         {
             if (tilePrefab == null) continue;
 
@@ -40,6 +74,34 @@ class DahonNgKawayanUI : MonoBehaviour
             choice.AddComponent<DahonNgKawayanChoice>().Initialize(this);
             tileChoices.Add(choice);
         }
+    }
+
+    private static int CompareTilePrefabs(GameObject left, GameObject right)
+    {
+        int orderComparison = GetTileOrderIndex(left).CompareTo(GetTileOrderIndex(right));
+        if (orderComparison != 0) return orderComparison;
+
+        string leftName = left != null ? left.name : string.Empty;
+        string rightName = right != null ? right.name : string.Empty;
+        return string.CompareOrdinal(leftName, rightName);
+    }
+
+    private static int GetTileOrderIndex(GameObject tilePrefab)
+    {
+        if (tilePrefab == null) return int.MaxValue;
+
+        Tile tile = tilePrefab.GetComponent<Tile>();
+        string letter = tile == null
+            ? tilePrefab.name
+            : tile.isVowel
+                ? tile.vowel
+                : tile.rootConsonant + "a";
+        letter = letter.ToUpperInvariant();
+
+        for (int i = 0; i < LetterOrder.Length; i++)
+            if (LetterOrder[i] == letter) return i;
+
+        return int.MaxValue;
     }
 
     public void OpenSelection(DahonNgKawayanAlahas alahas)
@@ -56,7 +118,9 @@ class DahonNgKawayanUI : MonoBehaviour
 
         activeAlahas = alahas;
         SpawnTileChoices();
+        pointerStartedOnTileChoice = false;
         mainUiParent.SetActive(tileChoices.Count > 0);
+        openedFrame = Time.frameCount;
     }
 
     // Kept so older scene/prefab event references do not break.
@@ -81,6 +145,7 @@ class DahonNgKawayanUI : MonoBehaviour
     {
         ClearTileChoices();
         activeAlahas = null;
+        pointerStartedOnTileChoice = false;
         mainUiParent.SetActive(false);
     }
 
@@ -98,6 +163,11 @@ class DahonNgKawayanUI : MonoBehaviour
         DahonNgKawayanChoice choice = selectedTile.GetComponent<DahonNgKawayanChoice>();
         if (choice != null) choice.Complete();
         CloseSelection();
+    }
+
+    public void NotifyTilePointerDown()
+    {
+        pointerStartedOnTileChoice = true;
     }
 
     public void getLevelConfig(LevelConfig levelConfig)
@@ -125,7 +195,7 @@ class DahonNgKawayanUI : MonoBehaviour
     }
 }
 
-class DahonNgKawayanChoice : MonoBehaviour, IDragNotify
+class DahonNgKawayanChoice : MonoBehaviour, IDragNotify, IPointerDownHandler
 {
     private DahonNgKawayanUI owner;
 
@@ -141,6 +211,12 @@ class DahonNgKawayanChoice : MonoBehaviour, IDragNotify
 
     public void OnDragBegin()
     {
+        owner?.NotifyTilePointerDown();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        owner?.NotifyTilePointerDown();
     }
 
     public void OnDragEnd()

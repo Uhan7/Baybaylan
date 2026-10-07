@@ -54,7 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 0}
   spawnSFX: {fileID: 0}
+  despawnSFX: {fileID: 0}
   canvas: {fileID: 0}
+  alahasSelectionPrefab: {fileID: 978456780214191470, guid: 8c09724b1b82c49649b8838839b2cf99, type: 3}
+  waitForFirstDialogue: 1
 --- !u!114 &8630140916236873577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +78,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 110, y: 110}
+  m_CellSize: {x: 105, y: 105}
   m_Spacing: {x: 4, y: 4}
   m_Constraint: 2
   m_ConstraintCount: 1

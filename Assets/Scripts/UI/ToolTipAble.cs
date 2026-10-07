@@ -4,13 +4,13 @@ using UnityEngine.UI;
 using TMPro;
 
 //slap this on an obj to let the tooltip display its info when hovered over
-class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] protected GameObject tooltipObj;
     [SerializeField] public string tipText;
     [SerializeField] protected float ToolTipDelay = 1f;
     [SerializeField] protected bool followMouse = false;
-    [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(300, 100);
+    [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(-18, -18);
     protected GameObject tooltipObjInstance;
     TMP_Text tooltipText;
     protected Canvas tooltipCanvas;
@@ -58,18 +58,31 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     protected virtual void startHover()
     {
         tooltipCanvas = GetComponentInParent<Canvas>();
-        if (tooltipCanvas) tooltipCanvas = tooltipCanvas.rootCanvas;
-        else tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
+        if (tooltipCanvas && !tooltipCanvas.overrideSorting)
+            tooltipCanvas = tooltipCanvas.rootCanvas;
+        if (!tooltipCanvas)
+            tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
 
         if (!tooltipCanvas) return;
 
         tooltipCanvasRect = tooltipCanvas.transform as RectTransform;
         tooltipObjInstance = Instantiate(tooltipObj, tooltipCanvas.transform);
         tooltipObjInstance.SetActive(true);
+        DisableTooltipRaycasts();
         tooltipText = tooltipObjInstance.GetComponentInChildren<TMP_Text>();
     }
 
-    void PositionTooltip()
+    // Tooltips are visual-only. If their Images accept raycasts, they can eat
+    // the first click intended for controls underneath (such as MAGPATULOY).
+    protected void DisableTooltipRaycasts()
+    {
+        if (!tooltipObjInstance) return;
+
+        foreach (Graphic graphic in tooltipObjInstance.GetComponentsInChildren<Graphic>(true))
+            graphic.raycastTarget = false;
+    }
+
+    protected void PositionTooltip()
     {
         Camera canvasCamera = tooltipCanvas.renderMode == RenderMode.ScreenSpaceOverlay
             ? null
@@ -92,6 +105,17 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             ToolTipPositionOffset.y * canvasSize.y / referenceSize.y);
 
         RectTransform tooltipRect = tooltipObjInstance.transform as RectTransform;
+        if (followMouse)
+        {
+            // Place the tooltip's top-right corner just below and left of the
+            // cursor, so its full body grows toward the bottom-left.
+            tooltipRect.anchorMin = new Vector2(0.5f, 0.5f);
+            tooltipRect.anchorMax = new Vector2(0.5f, 0.5f);
+            tooltipRect.pivot = Vector2.one;
+            responsiveOffset = new Vector2(
+                -Mathf.Abs(responsiveOffset.x),
+                -Mathf.Abs(responsiveOffset.y));
+        }
         tooltipRect.localPosition = canvasPosition + responsiveOffset;
 
         Canvas.ForceUpdateCanvases();
@@ -113,10 +137,18 @@ class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         tooltipRect.localPosition += correction;
     }
 
-    void endHover()
+    public void HideTooltip()
     {
         Destroy(tooltipObjInstance);
+        tooltipObjInstance = null;
+        isHovered = false;
+        timer = 0f;
         onetime = false;
+    }
+
+    void endHover()
+    {
+        HideTooltip();
     }
 
     protected virtual void oneTime()

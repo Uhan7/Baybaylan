@@ -24,6 +24,11 @@ public class TileSet : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Canvas canvas;
+    [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
+
+    [Header("Alahas Selection Flow")]
+    [Tooltip("Wait for the first Dialogue Set to call ShowAlahasSelection before gameplay begins.")]
+    [SerializeField] private bool waitForFirstDialogue = true;
 
     private bool waitingForDialogueBeforeCurrentAksyonTiles;
     private Coroutine dialogueReleasedSpawnRoutine;
@@ -31,6 +36,7 @@ public class TileSet : MonoBehaviour
     private readonly List<Tile> pakpakFadeTargets = new List<Tile>();
     private int pakpakNormalTilesRemoved;
     private float pakpakTemporaryTileSpawnDelay = 0.5f;
+    private bool gameplayStarted;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -43,7 +49,72 @@ public class TileSet : MonoBehaviour
 
     private void Start()
     {
+        Draggable.SetInteractionLocked(false);
         config = GameManager.Instance.config;
+
+        if (waitForFirstDialogue) return;
+
+        ShowAlahasSelection();
+    }
+
+    // UnityEvent entry point for the first Dialogue Set -> Event After Dialogue.
+    // Keeping this parameterless makes the Inspector hookup reliable.
+    public void ShowAlahasSelection()
+    {
+        if (gameplayStarted) return;
+
+        if (!AlahasSelectionController.IsSelectionAllowedInActiveScene())
+        {
+            Debug.LogWarning(
+                $"[Alahas Selection] BLOCKED TileSet.ShowAlahasSelection UnityEvent " +
+                $"in '{UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}'.",
+                this);
+            return;
+        }
+
+        SceneController sceneController = FindFirstObjectByType<SceneController>(
+            FindObjectsInactive.Include);
+        if (sceneController != null && !sceneController.AllowsAlahasSelection)
+        {
+            Debug.Log(
+                $"[Alahas Selection] Ignored TileSet.ShowAlahasSelection UnityEvent " +
+                $"in '{UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}' because " +
+                $"Allow Alahas Selection is disabled on SceneController.",
+                this);
+            return;
+        }
+
+        Debug.Log(
+            $"[Alahas Selection] OPEN requested by TileSet.ShowAlahasSelection. " +
+            $"Expected source: the gameplay scene's first Dialogue Set -> Event After Dialogue.",
+            this);
+
+        if (AlahasSelectionController.TryBeginSelection(this)) return;
+
+        if (alahasSelectionPrefab != null && canvas != null)
+        {
+            Canvas parentCanvas = canvas.rootCanvas != null ? canvas.rootCanvas : canvas;
+            AlahasSelectionController selector = Instantiate(
+                alahasSelectionPrefab,
+                parentCanvas.transform);
+            selector.BeginSelection(this);
+            return;
+        }
+
+        Debug.LogWarning(
+            "No Alahas selection screen was found or assigned; starting gameplay directly.",
+            this);
+        BeginGameplay();
+    }
+
+    public void BeginGameplay()
+    {
+        if (gameplayStarted) return;
+        gameplayStarted = true;
+
+        if (AlahasSubManager.Instance != null)
+            AlahasSubManager.Instance.BeginGameplay();
+
         StartCoroutine(SpawnInitialTiles());
     }
 
@@ -52,7 +123,8 @@ public class TileSet : MonoBehaviour
         // Let the Alahas sub-manager initialize first, regardless of component
         // Start order, then add Pakpak's temporary tiles after the normal pool.
         yield return null;
-        yield return SpawnTiles(config.tilesAmount);
+        int extraTiles = AlahasSubManager.Instance != null ? AlahasSubManager.Instance.extraTile : 0;
+        yield return SpawnTiles(config.tilesAmount + extraTiles);
         yield return SpawnPakpakTemporaryTiles();
     }
 
@@ -214,7 +286,9 @@ public class TileSet : MonoBehaviour
         tileScript.sfxSource = sfxSource;
         draggable.sfxSource = sfxSource;
 
-        applyToolTip(tileScript);
+        // Dahon choices always identify their Baybayin letter on hover,
+        // independently of whether Balahibo ni Amihan is equipped.
+        tileScript.isToolTipped = true;
         //include whatever func applies shy 
     }
 

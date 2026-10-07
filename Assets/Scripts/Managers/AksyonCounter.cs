@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using System.Collections.Generic;
+using System.Collections;
 
 public class AksyonCounter : MonoBehaviour
 {
@@ -30,7 +32,16 @@ public class AksyonCounter : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(waitForGameStart());
+    }
+
+    IEnumerator waitForGameStart()
+    {
+        yield return new WaitUntil(() => AlahasSubManager.Instance.gameplayStarted);
+        
         maxAksyon = GameManager.Instance.config.maxAksyon;
+        if(AlahasSubManager.Instance.addExtraTurnAndTile)
+            maxAksyon += AlahasSubManager.Instance.extraTurn;
         if (GameManager.Instance.config.HasPaghihigpit(PaghihigpitTypes.KaposNaAksyon))
         {
             numKaposAksyon = GameManager.Instance.config.numKaposAksyon;

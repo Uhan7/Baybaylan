@@ -47,3 +47,5 @@ MonoBehaviour:
   transitionOnStart: {fileID: 0}
   transitionOnSwap: {fileID: 0}
   transitionTime: 1.5
+  allowAlahasSelection: 1
+  alahasSelectionPrefab: {fileID: 978456780214191470, guid: 8c09724b1b82c49649b8838839b2cf99, type: 3}

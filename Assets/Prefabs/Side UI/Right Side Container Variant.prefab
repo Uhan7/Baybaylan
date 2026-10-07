@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7978712670044391019, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Controller
-      value:
+      value: 
       objectReference: {fileID: 9100000, guid: 607770cb789e94f4b82413b8a8428481, type: 2}
     - target: {fileID: 8288995887723524557, guid: a730638e412e54c95b0cda62b9a0964a, type: 3}
       propertyPath: m_Sprite
@@ -238,13 +238,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2425cc39461d34e9fbf8b324fb61a66d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetAnimator: {fileID: 6639357382733541250}
   animatorLayer: 0
   idleStateName: Base Layer.Idle
   hitStateName: Base Layer.Hit
   shakeScreenOnHit: 1
-  screenShakeDuration: 0.12
+  screenShakeDuration: 0.24
   screenShakeIntensity: 8
   maximumWaitSeconds: 5

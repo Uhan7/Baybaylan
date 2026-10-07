@@ -25,7 +25,7 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Tiles")]
     [SerializeField] private TileSet tileSet;
-    [SerializeField] private List<Tile> activeTiles = new List<Tile>();
+    [SerializeField] public List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
     [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
@@ -157,11 +157,13 @@ public class SalitaSlots : MonoBehaviour
         }
 
         // PAGHIHIGPIT: Marka ng Baybayin
-        // Check if the candidate salita has no diacritic
+        // Require a diacritic on every consonant tile. Vowel tiles are exempt
+        // because Baybayin vowels cannot receive a Kudlit or Krus.
         if (config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin))
         {
             foreach (Tile tile in activeTiles)
             {
+                if (tile.isVowel) continue;
                 if (tile.GetCurrentCharMod() != Tile.Diacritic.None) continue;
                 invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AbsentDiacritic, latinSalita);
                 return false;
@@ -212,6 +214,7 @@ public class SalitaSlots : MonoBehaviour
     private IEnumerator ScoreSalita()
     {
         scoringSalita = true;
+        Draggable.SetInteractionLocked(true);
         submitButton.interactable = false;
         salitaScore = 0;
         float activeTileCount = 0;
@@ -225,7 +228,8 @@ public class SalitaSlots : MonoBehaviour
             // Some cool effects here
             if (activeTile == null) continue;
 
-            salitaScore += (int) (activeTile.Score); // removed * scoreScaleValue here... pls find way to make it cleaner
+            // i just slapped on the alahas' score multiplier on here
+            salitaScore += (int) (activeTile.Score * AlahasSubManager.Instance.scoreMultiplier); // removed * scoreScaleValue here... pls find way to make it cleaner
             activeTile.GetComponent<Animator>().Play("tile_hold");
             activeTile.sfxSource.PlayOneShot(tileTickSFX);
 
@@ -254,15 +258,26 @@ public class SalitaSlots : MonoBehaviour
         if (successfulWordAnimationPlayer != null)
             yield return successfulWordAnimationPlayer.PlaySelectedAnimation();
 
-        scoringSalita = false;
         AksyonCounter.Instance.ConcludeAksyon();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
         {
             AlahasSubManager.Instance.onTurnEnd();
-            StartCoroutine(ReplaceActiveTiles());
+            yield return ReplaceActiveTiles();
+
+            // Itinakdang Titik can intentionally wait for a dialogue before
+            // spawning the next pool. Keep tiles locked until that pool exists.
+            while (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
+                yield return null;
+
+            scoringSalita = false;
+            Draggable.SetInteractionLocked(false);
         }
-        else GameManager.Instance.EndRound();
+        else
+        {
+            scoringSalita = false;
+            GameManager.Instance.EndRound();
+        }
     }
 
     private void UpdateSalitaText()

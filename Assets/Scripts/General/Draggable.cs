@@ -15,6 +15,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     // Variables ---------------------------------------------------------------
     [Header("Events")]
     [HideInInspector] public static bool anyBeingDragged = false;
+    public static bool InteractionLocked { get; private set; }
 
     [Header("Components")]
     [HideInInspector] private RectTransform rectTransform;
@@ -49,6 +50,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (InteractionLocked) return;
+
         if (dragNotify == null) dragNotify = GetComponent<IDragNotify>();
 
         anyBeingDragged = true;
@@ -70,11 +73,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (InteractionLocked || !isBeingDragged) return;
+
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!isBeingDragged) return;
+
         anyBeingDragged = false;
         isBeingDragged = false;
         canvasGroup.blocksRaycasts = true;
@@ -91,7 +98,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (anyBeingDragged) return;
+        if (InteractionLocked || anyBeingDragged) return;
 
         sfxSource.PlayOneShot(hoverSFX);
         anim.SetBool("Hover", true);
@@ -104,7 +111,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (anyBeingDragged) return;
+        if (InteractionLocked || anyBeingDragged) return;
 
         anim.SetBool("Hold", true);
     }
@@ -115,4 +122,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
 
     // Helper Functions --------------------------------------------------------
+    public static void SetInteractionLocked(bool locked)
+    {
+        InteractionLocked = locked;
+    }
 }

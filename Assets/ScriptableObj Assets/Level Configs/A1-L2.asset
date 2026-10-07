@@ -50,7 +50,7 @@ MonoBehaviour:
   numKaposAksyon: 1
   alahasAquiredAfterWin: {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
   activePaghihigpit:
-  - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
+  - {fileID: 11400000, guid: 3ecca783864192940b4ad6561e5972d2, type: 2}
   - {fileID: 11400000, guid: c35de9df5fb0fe44086d5f6c54709201, type: 2}
   partikularNaSalita_wordList:
   - 
