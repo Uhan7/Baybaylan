@@ -123,7 +123,8 @@ public class TileSet : MonoBehaviour
         // Let the Alahas sub-manager initialize first, regardless of component
         // Start order, then add Pakpak's temporary tiles after the normal pool.
         yield return null;
-        yield return SpawnTiles(config.tilesAmount);
+        int extraTiles = AlahasSubManager.Instance != null ? AlahasSubManager.Instance.extraTile : 0;
+        yield return SpawnTiles(config.tilesAmount + extraTiles);
         yield return SpawnPakpakTemporaryTiles();
     }
 

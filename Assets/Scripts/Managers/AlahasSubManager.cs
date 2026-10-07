@@ -29,11 +29,14 @@ class AlahasSubManager : MonoBehaviour
     [ReadOnly, SerializeField] public int tilesToDelete = 0;
     [ReadOnly, SerializeField] public bool reccWordButtonActive = false;
     [ReadOnly, SerializeField] public float scoreMultiplier = 1f; //general use 
+    [ReadOnly, SerializeField] public bool addExtraTurnAndTile = false;
+    [ReadOnly, SerializeField] public int extraTurn = 0;
+    [ReadOnly, SerializeField] public int extraTile = 0;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
     List<Alahas> heldAlahas;
-    private bool gameplayStarted;
+    public bool gameplayStarted { get; private set; } = false;
 
     void Awake()
     {
