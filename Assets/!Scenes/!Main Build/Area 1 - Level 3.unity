@@ -455,6 +455,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ad10ce1acdd8a4ef09b8ddd06d405d27, type: 2}
     - target: {fileID: 1144634152735386940, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

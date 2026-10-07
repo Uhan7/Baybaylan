@@ -14,15 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alahasName: Dahon ng Kawayan
   alahasSprite: {fileID: 21300000, guid: 3a7dfadf846b343c59bcfbf75a800c42, type: 3}
-  description: 'Pindutin ang Alahas na ito upang magamit. Isang beses bawat level,
+  description: Pindutin ang Alahas na ito upang magamit. Dalawang beses bawat level,
     maaaring gumawa ng 1 napiling titik.
-
-
-    Hindi maaaring maging GINTO o PERLAS
-    ang titik.
-
-
-    Maaaring maging HIYA at SIBOL ang titik.'
   extraText: "Regalo ito nina Malakas at Maganda sa akin\u2026 Ano na kaya nangyari
     sa kanila? Sana ay matapos na itong lahat\u2026"
   numberOfSlotsNeeded: 1

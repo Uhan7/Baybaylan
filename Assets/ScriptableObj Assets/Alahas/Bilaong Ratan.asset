@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bilaong Ratan
   m_EditorClassIdentifier: 
   alahasName: Bilaong Ratan
-  alahasSprite: {fileID: 0}
+  alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
   description: Magdagdag ng 1 na aksyon. Magdagdag ng 1 na titik.
   extraText: Ang ganda ng bilaong ito na ibinigay ni Sulayman!
   numberOfSlotsNeeded: 1

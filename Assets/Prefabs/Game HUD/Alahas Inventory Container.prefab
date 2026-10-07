@@ -141,7 +141,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -287,7 +287,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -433,7 +433,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -579,7 +579,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -840,7 +840,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1344,7 +1344,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1490,7 +1490,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -1881,17 +1881,9 @@ MonoBehaviour:
   proceedButton: {fileID: 1981613281610135351}
   slidingRoot: {fileID: 4335671534448637184}
   foregroundSortingOrder: 1000
-  slideDistance: 900
+  slideDistance: 1000
   slideDuration: 0.45
   slideCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  gameplayRevealDelay: 0
-  gameplayRevealDuration: 1
-  gameplayRevealCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
@@ -1918,7 +1910,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1000
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &4524549943907360772
 MonoBehaviour:
@@ -2078,7 +2070,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -2224,7 +2216,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -2370,7 +2362,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}
@@ -2516,7 +2508,7 @@ MonoBehaviour:
   tipText: 
   ToolTipDelay: 0.2
   followMouse: 1
-  ToolTipPositionOffset: {x: -300, y: -90}
+  ToolTipPositionOffset: {x: -300, y: -300}
   currentAlahas: {fileID: 0}
   alahasImage: {fileID: 0}
   activationBadge: {fileID: 0}

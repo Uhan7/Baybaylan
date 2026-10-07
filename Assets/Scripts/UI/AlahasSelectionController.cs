@@ -23,15 +23,10 @@ public class AlahasSelectionController : MonoBehaviour
     [Min(0f), SerializeField] private float slideDistance = 900f;
     [Min(0f), SerializeField] private float slideDuration = 0.45f;
     [SerializeField] private AnimationCurve slideCurve = null;
-    [Min(0f), SerializeField] private float gameplayRevealDelay = 0.2f;
-    [Min(0f), SerializeField] private float gameplayRevealDuration = 1f;
-    [SerializeField] private AnimationCurve gameplayRevealCurve = null;
 
     private readonly List<AlahasInventoryItem> inventoryItems = new List<AlahasInventoryItem>();
     private readonly List<AlahasSelectionSlot> selectionSlots = new List<AlahasSelectionSlot>();
     private readonly List<SideUI> forcedSidePanels = new List<SideUI>();
-    private readonly List<HiddenGraphicState> hiddenGraphics = new List<HiddenGraphicState>();
-    private readonly List<HiddenSelectableState> hiddenSelectables = new List<HiddenSelectableState>();
     private List<Alahas> draftSlots = new List<Alahas>();
     private CanvasGroup canvasGroup;
     private TileSet pendingTileSet;
@@ -42,19 +37,6 @@ public class AlahasSelectionController : MonoBehaviour
     private Vector2 shownPosition;
     private bool selectionActive;
     private bool proceedRequested;
-
-    private sealed class HiddenGraphicState
-    {
-        public Graphic graphic;
-        public bool enabled;
-        public Color color;
-    }
-
-    private sealed class HiddenSelectableState
-    {
-        public Selectable selectable;
-        public bool interactable;
-    }
 
     private void Awake()
     {
@@ -132,7 +114,6 @@ public class AlahasSelectionController : MonoBehaviour
             }
         }
 
-        HideGameplayHud();
         RefreshSelectionUI();
         transform.SetAsLastSibling();
         canvasGroup.alpha = 1f;
@@ -320,19 +301,13 @@ public class AlahasSelectionController : MonoBehaviour
             string sceneName = pendingSceneName;
             pendingSceneController = null;
             pendingSceneName = null;
-            RestoreGameplayHud();
             sceneController.SwapWrapper(sceneName);
             return;
         }
 
         TileSet tileSet = pendingTileSet;
         pendingTileSet = null;
-        StartCoroutine(RevealGameplayHud(tileSet));
-    }
-
-    private void OnDestroy()
-    {
-        RestoreGameplayHud();
+        tileSet?.BeginGameplay();
     }
 
     private void EnsureForegroundCanvas()
@@ -344,141 +319,6 @@ public class AlahasSelectionController : MonoBehaviour
 
         if (GetComponent<GraphicRaycaster>() == null)
             gameObject.AddComponent<GraphicRaycaster>();
-    }
-
-    private void HideGameplayHud()
-    {
-        RestoreGameplayHud();
-
-        Canvas selectorCanvas = GetComponent<Canvas>();
-        Canvas rootCanvas = selectorCanvas != null ? selectorCanvas.rootCanvas : null;
-        if (rootCanvas == null) return;
-
-        HashSet<Transform> visibleRoots = new HashSet<Transform> { transform };
-        Transform sceneBackgrounds = rootCanvas.transform.Find("Backgrounds");
-        if (sceneBackgrounds != null)
-            visibleRoots.Add(sceneBackgrounds);
-
-        foreach (SideUI sidePanel in forcedSidePanels)
-            if (sidePanel != null) visibleRoots.Add(sidePanel.transform);
-        foreach (AlahasSelectionSlot slot in selectionSlots)
-        {
-            // The current side prefab no longer has SideUI on its root. Keep
-            // the slot's entire top-level canvas branch visible so the player
-            // portrait, name, background, and Alahas slots remain together.
-            Transform sideRoot = FindTopLevelCanvasChild(slot.transform, rootCanvas.transform);
-            visibleRoots.Add(sideRoot != null ? sideRoot : slot.transform);
-        }
-
-        foreach (Graphic graphic in rootCanvas.GetComponentsInChildren<Graphic>(true))
-        {
-            if (IsInsideVisibleRoot(graphic.transform, visibleRoots)) continue;
-
-            hiddenGraphics.Add(new HiddenGraphicState
-                { graphic = graphic, enabled = graphic.enabled, color = graphic.color });
-            graphic.enabled = false;
-        }
-
-        foreach (Selectable selectable in rootCanvas.GetComponentsInChildren<Selectable>(true))
-        {
-            if (IsInsideVisibleRoot(selectable.transform, visibleRoots)) continue;
-
-            hiddenSelectables.Add(new HiddenSelectableState
-                { selectable = selectable, interactable = selectable.interactable });
-            selectable.interactable = false;
-        }
-    }
-
-    private void RestoreGameplayHud()
-    {
-        foreach (HiddenGraphicState state in hiddenGraphics)
-        {
-            if (state.graphic == null) continue;
-            state.graphic.enabled = state.enabled;
-            state.graphic.color = state.color;
-        }
-        hiddenGraphics.Clear();
-
-        foreach (HiddenSelectableState state in hiddenSelectables)
-            if (state.selectable != null) state.selectable.interactable = state.interactable;
-        hiddenSelectables.Clear();
-    }
-
-    private IEnumerator RevealGameplayHud(TileSet tileSet)
-    {
-        if (gameplayRevealDelay > 0f)
-            yield return new WaitForSeconds(gameplayRevealDelay);
-
-        foreach (HiddenGraphicState state in hiddenGraphics)
-        {
-            if (state.graphic == null) continue;
-            state.graphic.enabled = state.enabled;
-            if (!state.enabled) continue;
-
-            Color transparent = state.color;
-            transparent.a = 0f;
-            state.graphic.color = transparent;
-        }
-
-        tileSet?.BeginGameplay();
-
-        float duration = Mathf.Max(0f, gameplayRevealDuration);
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float linear = duration > 0f ? Mathf.Clamp01(elapsed / duration) : 1f;
-            float eased = gameplayRevealCurve != null && gameplayRevealCurve.length > 0
-                ? gameplayRevealCurve.Evaluate(linear)
-                : Mathf.SmoothStep(0f, 1f, linear);
-
-            foreach (HiddenGraphicState state in hiddenGraphics)
-            {
-                if (state.graphic == null || !state.enabled) continue;
-                Color color = state.color;
-                color.a *= eased;
-                state.graphic.color = color;
-            }
-
-            yield return null;
-        }
-
-        foreach (HiddenGraphicState state in hiddenGraphics)
-        {
-            if (state.graphic == null) continue;
-            state.graphic.enabled = state.enabled;
-            state.graphic.color = state.color;
-        }
-        hiddenGraphics.Clear();
-
-        foreach (HiddenSelectableState state in hiddenSelectables)
-            if (state.selectable != null) state.selectable.interactable = state.interactable;
-        hiddenSelectables.Clear();
-    }
-
-    private static bool IsInsideVisibleRoot(
-        Transform candidate,
-        HashSet<Transform> visibleRoots)
-    {
-        if (candidate == null) return false;
-
-        foreach (Transform visibleRoot in visibleRoots)
-            if (visibleRoot != null &&
-                (candidate == visibleRoot || candidate.IsChildOf(visibleRoot)))
-                return true;
-
-        return false;
-    }
-
-    private static Transform FindTopLevelCanvasChild(Transform candidate, Transform canvasRoot)
-    {
-        if (candidate == null || canvasRoot == null) return candidate;
-
-        Transform current = candidate;
-        while (current.parent != null && current.parent != canvasRoot)
-            current = current.parent;
-
-        return current.parent == canvasRoot ? current : candidate;
     }
 
     private void CacheInventoryItems()

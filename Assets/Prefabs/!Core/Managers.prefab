@@ -45,12 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f79c730fb7e4d4ba1041d5ffae5411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainers:
-  - {fileID: 0}
-  - {fileID: 0}
+  dialogueContainer: {fileID: 0}
   dimmer: {fileID: 0}
   aSource: {fileID: 6293236958178410416}
+  currentDialogue: {fileID: 0}
   dialoguing: 0
+  leftPrimaryAnimator: {fileID: 0}
+  leftSecondaryAnimator: {fileID: 0}
+  leftPrimaryImage: {fileID: 0}
+  leftSecondaryImage: {fileID: 0}
+  rightPrimaryAnimator: {fileID: 0}
+  rightSecondaryAnimator: {fileID: 0}
+  rightPrimaryImage: {fileID: 0}
+  rightSecondaryImage: {fileID: 0}
 --- !u!1 &536534097547576144
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +262,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  eventsOnAksyon: []
   winSFX: {fileID: 8300000, guid: 55fb73d354ac043c1a840f716112bcc8, type: 3}
   loseSFX: {fileID: 8300000, guid: 8a897754e4e9749f28b39a275dcd2da5, type: 3}
   winAmbience: {fileID: 8300000, guid: 90925f9a35d064dd08938592acdcb16e, type: 3}
@@ -287,9 +295,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2390401950448394221}
   - {fileID: 7336371259299805185}
   - {fileID: 6671187693398700107}
-  - {fileID: 2390401950448394221}
   - {fileID: 9201497751194814362}
   - {fileID: 7098130982596852634}
   - {fileID: 1306731985222434634}

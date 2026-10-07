@@ -108,8 +108,6 @@ public static class AlahasSelectionPrefabSetup
             serializedController.FindProperty("foregroundSortingOrder").intValue = 1000;
             serializedController.FindProperty("slideDistance").floatValue = 900f;
             serializedController.FindProperty("slideDuration").floatValue = 0.45f;
-            serializedController.FindProperty("gameplayRevealDelay").floatValue = 0.2f;
-            serializedController.FindProperty("gameplayRevealDuration").floatValue = 1f;
 
             SerializedProperty alahasProperty = serializedController.FindProperty("allAlahas");
             alahasProperty.arraySize = allAlahas.Length;
