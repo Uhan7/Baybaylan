@@ -91,6 +91,10 @@ class AlahasSubManager : MonoBehaviour
 
             alahas.onSubmit();
         }
+
+        // Some passives (notably Kuwintas) change their multiplier on submit.
+        // Refresh it before ScoreSalita reads the value for its very first tile.
+        ApplyPassiveEffects();
     }
 
     public void onTurnEnd()
@@ -122,7 +126,24 @@ class AlahasSubManager : MonoBehaviour
 
     void onUpdate()
     {
-        scoreMultiplier = 1f; //reset mutliplier so alahas can just add every frame
+        ApplyPassiveEffects();
+
+        for (int i = 0; i < heldAlahas.Count; i++)
+        {
+            Alahas alahas = heldAlahas[i];
+            if (!alahas || heldAlahas.IndexOf(alahas) != i)
+                continue;
+
+            if(alahas.triggerCondition() &&
+                AlahasManager.Instance != null &&
+                AlahasManager.Instance.TryConsumeActivation(alahas))
+                alahas.onTriggerEffect();
+        }
+    }
+
+    private void ApplyPassiveEffects()
+    {
+        ResetPassiveEffects();
 
         for (int i = 0; i < heldAlahas.Count; i++)
         {
@@ -131,11 +152,22 @@ class AlahasSubManager : MonoBehaviour
                 continue;
 
             alahas.onUpdate();
-            if(alahas.triggerCondition() &&
-                AlahasManager.Instance != null &&
-                AlahasManager.Instance.TryConsumeActivation(alahas))
-                alahas.onTriggerEffect();
         }
+    }
+
+    private void ResetPassiveEffects()
+    {
+        // These values describe the currently equipped passive Alahas. Reset
+        // them before rebuilding the effects so an unequipped Luya (or another
+        // passive) cannot leave stale values behind.
+        boostVowels = false;
+        vowelSpawnChanceIncrease = 0f;
+        vowelScoreMulti = 1f;
+        spawnGolds = false;
+        goldSpawnChance = 0f;
+        goldScoreMulti = 1f;
+        toolTipTiles = false;
+        scoreMultiplier = 1f;
     }
 
     public void spawnTiles(int amount)

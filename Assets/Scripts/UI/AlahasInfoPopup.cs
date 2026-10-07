@@ -82,18 +82,7 @@ public class AlahasInfoPopup : ToolTipAble
 
     override protected void startHover()
     {
-        tooltipCanvas = GetComponentInParent<Canvas>();
-        if (tooltipCanvas && !tooltipCanvas.overrideSorting)
-            tooltipCanvas = tooltipCanvas.rootCanvas;
-        if (!tooltipCanvas)
-            tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
-
-        if (!tooltipCanvas) return;
-
-        tooltipCanvasRect = tooltipCanvas.transform as RectTransform;
-        tooltipObjInstance = Instantiate(tooltipObj, tooltipCanvas.transform);
-        tooltipObjInstance.SetActive(true);
-        DisableTooltipRaycasts();
+        if (!CreateTooltipInstance()) return;
         alahasName = tooltipObjInstance.transform.GetChild(1).transform.GetComponent<TextMeshProUGUI>();
         alahasDesc = tooltipObjInstance.transform.GetChild(2).transform.GetComponent<TextMeshProUGUI>();
         alahasExtra = tooltipObjInstance.transform.GetChild(3).transform.GetComponent<TextMeshProUGUI>();

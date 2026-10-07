@@ -4,7 +4,7 @@ using UnityEngine;
 public class LuyaAlahas : Alahas
 {
     public float convertToGoldChance = 0.3f;
-    public static float goldScoreMultiplier = 2f;
+    private const float GoldScoreMultiplier = 2f;
 
     public override void onStart()
     {
@@ -34,7 +34,7 @@ public class LuyaAlahas : Alahas
     public override void onUpdate()
     {
         AlahasSubManager.Instance.spawnGolds = true;
-        AlahasSubManager.Instance.goldSpawnChance = convertToGoldChance;
-        AlahasSubManager.Instance.goldScoreMulti = goldScoreMultiplier;
+        AlahasSubManager.Instance.goldSpawnChance = Mathf.Clamp01(convertToGoldChance);
+        AlahasSubManager.Instance.goldScoreMulti = GoldScoreMultiplier;
     }
 }

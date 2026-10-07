@@ -36,7 +36,9 @@ class KuwintasNgPitongTukaAlahas : Alahas
         int totalLetterCount = text.Length;
         if(totalLetterCount >= letterCountRequirement)
         {
-            totalScoreMultiplier += totalLetterCount * scoreMultiplier;
+            // The description promises one 20% increase per qualifying word,
+            // not 20% per letter (which made a seven-letter word add 140%).
+            totalScoreMultiplier += scoreMultiplier;
             Debug.Log("Kuwintas ng Pitong Tuka: " + totalLetterCount + " letters submitted. Total score multiplier: " + totalScoreMultiplier);
         }
         else
@@ -53,6 +55,7 @@ class KuwintasNgPitongTukaAlahas : Alahas
 
     public override void onUpdate()
     {
-        AlahasSubManager.Instance.scoreMultiplier += 1f + totalScoreMultiplier;
+        // AlahasSubManager already supplies the base 1x multiplier.
+        AlahasSubManager.Instance.scoreMultiplier += totalScoreMultiplier;
     }
 }

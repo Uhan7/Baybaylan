@@ -6,6 +6,7 @@ using TMPro;
 //slap this on an obj to let the tooltip display its info when hovered over
 public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private const float MouseTooltipGap = 18f;
     [SerializeField] protected GameObject tooltipObj;
     [SerializeField] public string tipText;
     [SerializeField] protected float ToolTipDelay = 1f;
@@ -28,6 +29,16 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         isHovered = false;
         endHover();
+    }
+
+    protected virtual void OnDisable()
+    {
+        HideTooltip();
+    }
+
+    protected virtual void OnDestroy()
+    {
+        HideTooltip();
     }
 
     protected virtual void Update()
@@ -57,19 +68,37 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     protected virtual void startHover()
     {
-        tooltipCanvas = GetComponentInParent<Canvas>();
-        if (tooltipCanvas && !tooltipCanvas.overrideSorting)
-            tooltipCanvas = tooltipCanvas.rootCanvas;
+        if (!CreateTooltipInstance()) return;
+        tooltipText = tooltipObjInstance.GetComponentInChildren<TMP_Text>();
+    }
+
+    protected bool CreateTooltipInstance()
+    {
+        Canvas sourceCanvas = GetComponentInParent<Canvas>();
+        tooltipCanvas = sourceCanvas != null ? sourceCanvas.rootCanvas : null;
         if (!tooltipCanvas)
             tooltipCanvas = GameObject.FindFirstObjectByType<Canvas>();
 
-        if (!tooltipCanvas) return;
+        if (!tooltipCanvas || !tooltipObj) return false;
 
         tooltipCanvasRect = tooltipCanvas.transform as RectTransform;
         tooltipObjInstance = Instantiate(tooltipObj, tooltipCanvas.transform);
         tooltipObjInstance.SetActive(true);
+        tooltipObjInstance.transform.SetAsLastSibling();
+
+        // Position in the actual screen canvas, then render above the nested
+        // Alahas selector canvas. Mixing the selector's world-space RectTransform
+        // with screen mouse coordinates caused its X position to appear stuck.
+        Canvas visualCanvas = tooltipObjInstance.GetComponent<Canvas>();
+        if (visualCanvas == null)
+            visualCanvas = tooltipObjInstance.AddComponent<Canvas>();
+        visualCanvas.overrideSorting = true;
+        visualCanvas.sortingOrder = Mathf.Max(
+            tooltipCanvas.sortingOrder,
+            sourceCanvas != null ? sourceCanvas.sortingOrder : 0) + 1;
+
         DisableTooltipRaycasts();
-        tooltipText = tooltipObjInstance.GetComponentInChildren<TMP_Text>();
+        return true;
     }
 
     // Tooltips are visual-only. If their Images accept raycasts, they can eat
@@ -107,14 +136,19 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         RectTransform tooltipRect = tooltipObjInstance.transform as RectTransform;
         if (followMouse)
         {
-            // Place the tooltip's top-right corner just below and left of the
-            // cursor, so its full body grows toward the bottom-left.
+            // Grow away from the nearest horizontal edge. A tooltip that always
+            // grows left gets clamped in place over Tala's equipped slots, which
+            // makes it look as though it is not following the cursor on X.
+            bool growRight = canvasPosition.x < tooltipCanvasRect.rect.center.x;
+            float horizontalGap = MouseTooltipGap * canvasSize.x / referenceSize.x;
+            float verticalGap = MouseTooltipGap * canvasSize.y / referenceSize.y;
+
             tooltipRect.anchorMin = new Vector2(0.5f, 0.5f);
             tooltipRect.anchorMax = new Vector2(0.5f, 0.5f);
-            tooltipRect.pivot = Vector2.one;
+            tooltipRect.pivot = new Vector2(growRight ? 0f : 1f, 1f);
             responsiveOffset = new Vector2(
-                -Mathf.Abs(responsiveOffset.x),
-                -Mathf.Abs(responsiveOffset.y));
+                growRight ? horizontalGap : -horizontalGap,
+                -verticalGap);
         }
         tooltipRect.localPosition = canvasPosition + responsiveOffset;
 
