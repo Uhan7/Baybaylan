@@ -28,7 +28,7 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] public List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
-    [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
+    //[ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
     [ReadOnly, SerializeField] private string latinSalita;
     private string revealedLatinSalita;
     private string observedLatinSalita;
@@ -206,7 +206,7 @@ public class SalitaSlots : MonoBehaviour
     private void GetSalitaFromTiles()
     {
         latinSalita = "";
-        baybayinSalita = ""; // Eventually get the baybayin as well
+        //baybayinSalita = ""; // Eventually get the baybayin as well
 
         foreach (Tile activeTile in activeTiles) latinSalita += activeTile.latinText;
     }

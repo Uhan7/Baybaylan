@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public LevelConfig config; // References whole game
 
     [Header("Mahika")]
+    [SerializeField] private MahikaContainer m_mahikaContainer;
     [SerializeField] private int currentMahika = 0;
     [ReadOnly, SerializeField] private int targetMahika;
     [ReadOnly, SerializeField] public float mahikaPercent; // Used in BackgroundsManager.cs
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         if (config == null) return;
 
+        m_mahikaContainer.InitializeMahikaBars(5);
         ChangeMahika(0);
         if (DahonNgKawayanUI.Instance != null)
             DahonNgKawayanUI.Instance.getLevelConfig(config);
