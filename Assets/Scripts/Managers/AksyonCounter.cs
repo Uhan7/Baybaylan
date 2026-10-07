@@ -82,7 +82,7 @@ public class AksyonCounter : MonoBehaviour
         // increment
         currentAksyon++;
 
-        if (currentAksyon <= maxAvailableAksyon && GameManager.Instance.mahikaPercent < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        if (currentAksyon <= maxAvailableAksyon && MahikaManager.Instance.GetMahikaPercent() < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
     }
 
     public bool HasRemainingAksyon() // Called on Submit Word

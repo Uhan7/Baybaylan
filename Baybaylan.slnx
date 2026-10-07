@@ -3,4 +3,7 @@
   <Project Path="NaughtyAttributes.Core.csproj" />
   <Project Path="NaughtyAttributes.Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Coffee.UIParticle.csproj" />
+  <Project Path="Coffee.UIParticle.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>

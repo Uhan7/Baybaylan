@@ -15,6 +15,7 @@ public class MahikaContainer : MonoBehaviour
         // Delete the mahika bars currently in the mahika group
         foreach (Transform mahikaBar in m_mahikaGroup.transform)
         {
+            mahikaBar.SetParent(null, false);
             Destroy(mahikaBar.gameObject);
         }
     }
@@ -22,7 +23,11 @@ public class MahikaContainer : MonoBehaviour
     public void InitializeMahikaBars(int _numMahikaBars = 1)
     {
         if (_numMahikaBars < 1) return;
-        if (_numMahikaBars == m_mahikaGroup.transform.childCount) return;
+        if (_numMahikaBars == m_mahikaGroup.transform.childCount)
+        {
+            ResetMahikaBarFill();
+            return;
+        }
         InitializeMahikaBarsInternal(_numMahikaBars);
     }
 
@@ -46,5 +51,31 @@ public class MahikaContainer : MonoBehaviour
             position.z = 0.0f;
             newMahikaBarRectTransform.localPosition = position;
         }
+
+        ResetMahikaBarFill();
+    }
+
+    private void ResetMahikaBarFill()
+    {
+        // Set all mahika bar fill amounts to 0.0f
+        for (int i = 0; i < m_mahikaGroup.childCount; i++)
+        {
+            SetMahikaBarFill(0.0f, i);
+        }
+    }
+
+    public void SetMahikaBarFill(float _value, int _index = 0)
+    {
+        // Guards
+        if (_index < 0) return;
+        if (_index >= m_mahikaGroup.childCount) return;
+
+        // Logic
+        Transform mahikaBarTransform = m_mahikaGroup.transform.GetChild(_index);
+        GameObject mahikaBar = mahikaBarTransform.gameObject;
+        if (mahikaBar.TryGetComponent<MahikaBar>(out var mahikaBarScript))
+        {
+            mahikaBarScript.SetFill(_value);
+        }        
     }
 }

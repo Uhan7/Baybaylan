@@ -29,7 +29,14 @@ public class LevelConfig : ScriptableObject
     [HideInInspector, SerializeField] public List<GameObject> predefinedTiles;
 
     [Header("Mahika")]
+    [OnValueChanged("UpdateAksyonSettings")]
+    public bool hasMultipleTargetMahika = false;
+    [HideIf("hasMultipleTargetMahika")]
+    [OnValueChanged("UpdateAksyonSettings")]
     [SerializeField] public int targetMahika = 100;
+    [ShowIf("hasMultipleTargetMahika")]
+    [OnValueChanged("UpdateAksyonSettings")]
+    [SerializeField] public int[] multipleTargetMahika = new int[1] {100};
 
     [Header("Aksyon")]
     [OnValueChanged("UpdateAksyonSettings")]
@@ -119,8 +126,16 @@ public class LevelConfig : ScriptableObject
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
 
+        // If ever the targetMahika is set to 0 elements, automatically create one entry with targetMahika = 100
+        if (multipleTargetMahika.Length <= 0 ) multipleTargetMahika = new int[1] {targetMahika};
+
         // Logic for Sumpa ng Pitong Ulo
-        if (HasPaghihigpit(PaghihigpitTypes.SumpaNgPitongUlo)) maxAksyon = 7;
+        if (HasPaghihigpit(PaghihigpitTypes.SumpaNgPitongUlo))
+        {
+            hasMultipleTargetMahika = true;
+            maxAksyon = 7;
+            if (multipleTargetMahika.Length != 7) multipleTargetMahika = new int[7] {targetMahika, targetMahika, targetMahika, targetMahika, targetMahika, targetMahika, targetMahika};
+        }
 
         // Logic for Kapos na Aksyon
         if (numKaposAksyon >= maxAksyon) numKaposAksyon = Mathf.Max(0, maxAksyon-1);
@@ -165,5 +180,10 @@ public class LevelConfig : ScriptableObject
     bool hasKaposNaAksyon()
     {
         return HasPaghihigpit(PaghihigpitTypes.KaposNaAksyon);
+    }
+
+    bool hasSumpaNgPitongUlo()
+    {
+        return HasPaghihigpit(PaghihigpitTypes.SumpaNgPitongUlo);
     }
 }

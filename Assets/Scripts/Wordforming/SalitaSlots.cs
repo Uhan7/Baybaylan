@@ -246,7 +246,7 @@ public class SalitaSlots : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         salitaScore = (int)(salitaScore * activeTileCount);
-        GameManager.Instance.ChangeMahika(salitaScore);
+        MahikaManager.Instance.UpdateMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
@@ -260,7 +260,7 @@ public class SalitaSlots : MonoBehaviour
 
         AksyonCounter.Instance.ConcludeAksyon();
 
-        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
+        if (AksyonCounter.Instance.HasRemainingAksyon() && MahikaManager.Instance.GetMahikaPercent() < 1) 
         {
             AlahasSubManager.Instance.onTurnEnd();
             yield return ReplaceActiveTiles();

@@ -1584,6 +1584,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 620772494581503468, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: m_mahikaText
+      value: 
+      objectReference: {fileID: 7813329898557688720}
+    - target: {fileID: 620772494581503468, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: m_mahikaContainer
+      value: 
+      objectReference: {fileID: 7909711210398265098}
+    - target: {fileID: 620772494581503468, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: m_mahikaScoreText
+      value: 
+      objectReference: {fileID: 7813329898557688720}
     - target: {fileID: 1114976113468629385, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

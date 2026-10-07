@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 3137230537010354294}
   - component: {fileID: 9171964800047829964}
   - component: {fileID: 1903937233349550978}
+  - component: {fileID: 2814777716707783615}
   m_Layer: 5
   m_Name: Mahika Bar Container
   m_TagString: Untagged
@@ -227,3 +228,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2814777716707783615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495765114696823494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18b450c16caf6f479292b9a83834160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fill: {fileID: 8644778908870061410}

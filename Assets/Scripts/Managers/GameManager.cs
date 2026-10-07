@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,14 +21,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Configurations")]
     [SerializeField] public LevelConfig config; // References whole game
-
-    [Header("Mahika")]
-    [SerializeField] private MahikaContainer m_mahikaContainer;
-    [SerializeField] private int currentMahika = 0;
-    [ReadOnly, SerializeField] private int targetMahika;
-    [ReadOnly, SerializeField] public float mahikaPercent; // Used in BackgroundsManager.cs
-    [SerializeField] private TextMeshProUGUI mahikaText;
-    [SerializeField] private Image mahikaBarFill;
 
     [Header("Wordlists")]
     [SerializeField] private TextAsset[] wordlists;
@@ -49,10 +42,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip winAmbience;
 
     // Main Functions ----------------------------------------------------------
-    private void OnValidate()
-    {
-        targetMahika = config != null ? config.targetMahika : 0;
-    }
 
     private void Awake()
     {
@@ -66,8 +55,10 @@ public class GameManager : MonoBehaviour
     {
         if (config == null) return;
 
-        m_mahikaContainer.InitializeMahikaBars(5);
-        ChangeMahika(0);
+        // Initialize Mahika Manager
+        if (MahikaManager.Instance != null)
+            MahikaManager.Instance.Initialize(config);
+
         if (DahonNgKawayanUI.Instance != null)
             DahonNgKawayanUI.Instance.getLevelConfig(config);
     }
@@ -80,17 +71,6 @@ public class GameManager : MonoBehaviour
 
         if (TalaAlahasHolder.Instance != null)
             TalaAlahasHolder.Instance.Unlock(config.alahasAquiredAfterWin);
-    }
-
-    public void ChangeMahika(int score)
-    {
-        currentMahika += score;
-        if (currentMahika >= targetMahika) currentMahika = targetMahika;
-
-        mahikaPercent = (float)currentMahika / config.targetMahika;
-        mahikaBarFill.fillAmount = mahikaPercent;
-
-        mahikaText.text = currentMahika.ToString() + "/" + config.targetMahika.ToString();
     }
 
     public void InvokeEventsOnAksyon(int aksyonNumber)
@@ -117,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
-        bool didWin = currentMahika >= config.targetMahika;
+        bool didWin = MahikaManager.Instance.DidWin();
 
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.ShowEndingBG(didWin);
 
