@@ -273,13 +273,10 @@ public class AlahasSelectionController : MonoBehaviour
     {
         List<Alahas> displayAlahas = new List<Alahas>();
 
-        // Keep the currently equipped Alahas first and in slot order. This is
-        // more useful than alphabetical sorting and keeps Balahibo (the usual
-        // starting Alahas) in the first inventory cell.
-        AddUnique(displayAlahas, draftSlots.Where(IsUnlocked));
-
+        // Selection must not reorder the inventory. Keep the designer/player
+        // inventory order stable and only change the selected item's tint.
         if (inventory != null && inventory.availableAlahas != null)
-            AddUnique(displayAlahas, inventory.availableAlahas.Where(inventory.IsUnlocked));
+            AddUnique(displayAlahas, inventory.availableAlahas);
 
         AddUnique(displayAlahas, allAlahas.Where(alahas => alahas != null));
         return displayAlahas;
@@ -365,7 +362,13 @@ public class AlahasSelectionController : MonoBehaviour
         foreach (SideUI sidePanel in forcedSidePanels)
             if (sidePanel != null) visibleRoots.Add(sidePanel.transform);
         foreach (AlahasSelectionSlot slot in selectionSlots)
-            visibleRoots.Add(slot.transform);
+        {
+            // The current side prefab no longer has SideUI on its root. Keep
+            // the slot's entire top-level canvas branch visible so the player
+            // portrait, name, background, and Alahas slots remain together.
+            Transform sideRoot = FindTopLevelCanvasChild(slot.transform, rootCanvas.transform);
+            visibleRoots.Add(sideRoot != null ? sideRoot : slot.transform);
+        }
 
         foreach (Graphic graphic in rootCanvas.GetComponentsInChildren<Graphic>(true))
         {
@@ -465,6 +468,17 @@ public class AlahasSelectionController : MonoBehaviour
                 return true;
 
         return false;
+    }
+
+    private static Transform FindTopLevelCanvasChild(Transform candidate, Transform canvasRoot)
+    {
+        if (candidate == null || canvasRoot == null) return candidate;
+
+        Transform current = candidate;
+        while (current.parent != null && current.parent != canvasRoot)
+            current = current.parent;
+
+        return current.parent == canvasRoot ? current : candidate;
     }
 
     private void CacheInventoryItems()

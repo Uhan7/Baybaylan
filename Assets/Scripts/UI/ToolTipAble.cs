@@ -10,7 +10,7 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] public string tipText;
     [SerializeField] protected float ToolTipDelay = 1f;
     [SerializeField] protected bool followMouse = false;
-    [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(300, 100);
+    [SerializeField] protected Vector2 ToolTipPositionOffset = new Vector2(-18, -18);
     protected GameObject tooltipObjInstance;
     TMP_Text tooltipText;
     protected Canvas tooltipCanvas;
@@ -82,7 +82,7 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             graphic.raycastTarget = false;
     }
 
-    void PositionTooltip()
+    protected void PositionTooltip()
     {
         Camera canvasCamera = tooltipCanvas.renderMode == RenderMode.ScreenSpaceOverlay
             ? null
@@ -105,6 +105,17 @@ public class ToolTipAble : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             ToolTipPositionOffset.y * canvasSize.y / referenceSize.y);
 
         RectTransform tooltipRect = tooltipObjInstance.transform as RectTransform;
+        if (followMouse)
+        {
+            // Place the tooltip's top-right corner just below and left of the
+            // cursor, so its full body grows toward the bottom-left.
+            tooltipRect.anchorMin = new Vector2(0.5f, 0.5f);
+            tooltipRect.anchorMax = new Vector2(0.5f, 0.5f);
+            tooltipRect.pivot = Vector2.one;
+            responsiveOffset = new Vector2(
+                -Mathf.Abs(responsiveOffset.x),
+                -Mathf.Abs(responsiveOffset.y));
+        }
         tooltipRect.localPosition = canvasPosition + responsiveOffset;
 
         Canvas.ForceUpdateCanvases();

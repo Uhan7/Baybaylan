@@ -146,11 +146,13 @@ public class SalitaSlots : MonoBehaviour
         }
 
         // PAGHIHIGPIT: Marka ng Baybayin
-        // Check if the candidate salita has no diacritic
+        // Require a diacritic on every consonant tile. Vowel tiles are exempt
+        // because Baybayin vowels cannot receive a Kudlit or Krus.
         if (config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin))
         {
             foreach (Tile tile in activeTiles)
             {
+                if (tile.isVowel) continue;
                 if (tile.GetCurrentCharMod() != Tile.Diacritic.None) continue;
                 invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AbsentDiacritic, latinSalita);
                 return false;

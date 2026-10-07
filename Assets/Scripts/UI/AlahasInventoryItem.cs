@@ -8,6 +8,7 @@ public class AlahasInventoryItem : MonoBehaviour,
 {
     private AlahasSelectionController controller;
     private Image itemImage;
+    private Canvas sourceCanvas;
     private Canvas rootCanvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -35,7 +36,8 @@ public class AlahasInventoryItem : MonoBehaviour,
         itemImage = image;
         alahas = representedAlahas;
         unlocked = isUnlocked && alahas != null;
-        rootCanvas = GetComponentInParent<Canvas>();
+        sourceCanvas = GetComponentInParent<Canvas>();
+        rootCanvas = sourceCanvas != null ? sourceCanvas.rootCanvas : null;
         rectTransform = transform as RectTransform;
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
@@ -53,7 +55,7 @@ public class AlahasInventoryItem : MonoBehaviour,
         itemImage.raycastTarget = true;
 
         normalColor = unlocked
-            ? (isEquipped ? new Color(1f, 1f, 1f, 0.45f) : Color.white)
+            ? (isEquipped ? new Color(0.45f, 0.45f, 0.45f, 0.45f) : Color.white)
             : new Color(1f, 1f, 1f, 0.7f);
         itemImage.color = normalColor;
     }
@@ -135,6 +137,7 @@ public class AlahasInventoryItem : MonoBehaviour,
         GameObject previewObject = new GameObject(
             $"{gameObject.name} Drag Preview",
             typeof(RectTransform),
+            typeof(Canvas),
             typeof(CanvasRenderer),
             typeof(Image),
             typeof(CanvasGroup));
@@ -144,7 +147,13 @@ public class AlahasInventoryItem : MonoBehaviour,
         dragPreview.anchorMin = new Vector2(0.5f, 0.5f);
         dragPreview.anchorMax = new Vector2(0.5f, 0.5f);
         dragPreview.pivot = new Vector2(0.5f, 0.5f);
-        dragPreview.sizeDelta = rectTransform.rect.size;
+        dragPreview.sizeDelta = GetDragPreviewSize();
+
+        Canvas previewCanvas = previewObject.GetComponent<Canvas>();
+        previewCanvas.overrideSorting = true;
+        previewCanvas.sortingOrder = sourceCanvas != null
+            ? sourceCanvas.sortingOrder + 1
+            : 1001;
 
         Image previewImage = previewObject.GetComponent<Image>();
         previewImage.sprite = itemImage.sprite;
@@ -170,10 +179,35 @@ public class AlahasInventoryItem : MonoBehaviour,
         RectTransform canvasRect = rootCanvas.transform as RectTransform;
         Camera eventCamera = rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay
             ? null
-            : eventData.pressEventCamera;
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRect, eventData.position, eventCamera, out Vector2 localPoint))
-            dragPreview.anchoredPosition = localPoint;
+            : rootCanvas.worldCamera;
+
+        // Set the preview in world space. The project's root canvas uses a
+        // bottom-left pivot, so assigning a centre-anchored local point caused
+        // a large aspect-ratio-dependent offset from the cursor.
+        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                canvasRect, eventData.position, eventCamera, out Vector3 worldPoint))
+            dragPreview.position = worldPoint;
+    }
+
+    private Vector2 GetDragPreviewSize()
+    {
+        if (rectTransform == null || rootCanvas == null)
+            return rectTransform != null ? rectTransform.rect.size : Vector2.zero;
+
+        Vector3[] corners = new Vector3[4];
+        rectTransform.GetWorldCorners(corners);
+
+        Camera sourceCamera = sourceCanvas != null &&
+            sourceCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+                ? sourceCanvas.worldCamera
+                : null;
+        Vector2 bottomLeft = RectTransformUtility.WorldToScreenPoint(sourceCamera, corners[0]);
+        Vector2 topRight = RectTransformUtility.WorldToScreenPoint(sourceCamera, corners[2]);
+        float scaleFactor = Mathf.Max(0.0001f, rootCanvas.scaleFactor);
+
+        return new Vector2(
+            Mathf.Abs(topRight.x - bottomLeft.x) / scaleFactor,
+            Mathf.Abs(topRight.y - bottomLeft.y) / scaleFactor);
     }
 
     private void DestroyDragPreview()
