@@ -104,6 +104,14 @@ public class SalitaSlots : MonoBehaviour
         }
     }
 
+    public void ShowRecommendedWord(string word)
+    {
+        latinSalita = word ?? string.Empty;
+        observedLatinSalita = latinSalita;
+        revealedLatinSalita = latinSalita;
+        UpdateSalitaText();
+    }
+
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {

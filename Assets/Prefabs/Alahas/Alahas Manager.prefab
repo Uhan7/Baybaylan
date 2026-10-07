@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89b8ad341e394511b10ff0552468c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxAlahasSlotCount: 0
   alahasSlots:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -52,8 +54,3 @@ MonoBehaviour:
   alahasDescriptionText: {fileID: 0}
   heldAlahas: []
   currentAlahasIndex: 0
-  goldenTileChance: 0
-  boostVowels: 0
-  goldenTileMultiplier: 2
-  vowelScoreMultiplier: 4
-  vowelChanceMultiplier: 4

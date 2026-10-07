@@ -65,6 +65,12 @@ public class AlahasInfoPopup : ToolTipAble
             !AlahasManager.Instance.CanActivate(currentAlahas))
             return;
 
+        if (currentAlahas is DaliriNiTarabusawAlahas daliri)
+        {
+            daliri.TryActivate();
+            return;
+        }
+
         if (currentAlahas is DahonNgKawayanAlahas dahon && DahonNgKawayanUI.Instance != null)
             DahonNgKawayanUI.Instance.OpenSelection(dahon);
     }

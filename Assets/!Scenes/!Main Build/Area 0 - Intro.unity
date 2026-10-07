@@ -190,6 +190,9 @@ MonoBehaviour:
   tilesToDelete: 0
   reccWordButtonActive: 0
   scoreMultiplier: 1
+  addExtraTurnAndTile: 0
+  extraTurn: 0
+  extraTile: 0
 --- !u!1 &406349147 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1617693168217642286, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
@@ -370,10 +373,6 @@ PrefabInstance:
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3836831027520647065, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: allowAlahasSelection
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1007463779969931788, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
@@ -747,6 +746,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3836831027520647065, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: allowAlahasSelection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4150257113002442400, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -925,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: targetMahika
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6523606551270130518, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
@@ -990,6 +993,10 @@ PrefabInstance:
     - target: {fileID: 7710339385127343828, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839774057570480328, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: alahasSlots.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8033184582171521603, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_SizeDelta.y

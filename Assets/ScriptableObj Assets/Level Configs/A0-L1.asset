@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
   targetMahika: 450
   maxAksyon: 6
+  alahasSlotCount: 3
   alahasAquiredAfterWin: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
   activePaghihigpit:
   - {fileID: 11400000, guid: 9241cc720eb97a94baa27ee9e41e4f01, type: 2}

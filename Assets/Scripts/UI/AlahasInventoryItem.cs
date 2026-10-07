@@ -17,7 +17,6 @@ public class AlahasInventoryItem : MonoBehaviour,
     private Alahas alahas;
     private bool unlocked;
     private bool dragging;
-    private bool suppressNextClick;
     private RectTransform dragPreview;
     private Color normalColor = Color.white;
 
@@ -55,7 +54,7 @@ public class AlahasInventoryItem : MonoBehaviour,
         itemImage.raycastTarget = true;
 
         normalColor = unlocked
-            ? (isEquipped ? new Color(0.45f, 0.45f, 0.45f, 0.45f) : Color.white)
+            ? (isEquipped ? new Color(0.5f, 0.5f, 0.5f, 0.5f) : Color.white)
             : new Color(1f, 1f, 1f, 0.7f);
         itemImage.color = normalColor;
     }
@@ -65,7 +64,6 @@ public class AlahasInventoryItem : MonoBehaviour,
         if (!unlocked || controller == null || rootCanvas == null || rectTransform == null) return;
 
         dragging = true;
-        suppressNextClick = true;
         tooltip?.HideTooltip();
         animator?.SetBool("Hover", false);
         animator?.SetBool("Hold", false);
@@ -98,12 +96,6 @@ public class AlahasInventoryItem : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (suppressNextClick)
-        {
-            suppressNextClick = false;
-            return;
-        }
-
         if (!dragging && unlocked && controller != null)
             controller.TryAutoEquip(alahas);
     }

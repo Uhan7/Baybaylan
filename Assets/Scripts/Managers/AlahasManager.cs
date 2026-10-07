@@ -98,6 +98,7 @@ public class AlahasManager : MonoBehaviour
         ResetActivationCounts();
 
         CacheAlahasSlots();
+        ApplyLevelSlotCapacity();
         
         // I forgot where I saw this (probably Kotlin or something), you can put a '?' before the '.' to check if it is null
         alahasNameText = GameObject.FindGameObjectWithTag("Alahas Name Text")?.GetComponent<TextMeshProUGUI>();
@@ -115,6 +116,7 @@ public class AlahasManager : MonoBehaviour
         // tag lookup misses every slot. Include inactive popup components so
         // their images are ready when the HUD is activated.
         CacheAlahasSlots();
+        ApplyLevelSlotCapacity();
 
         foreach (GameObject slot in alahasSlots)
         {
@@ -148,10 +150,28 @@ public class AlahasManager : MonoBehaviour
         alahasSlots = FindObjectsByType<AlahasInfoPopup>(
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None)
-            .Where(popup => popup.gameObject.scene.IsValid() && popup.CompareTag("Alahas Slot"))
+            .Where(popup =>
+                popup.gameObject.scene.IsValid() &&
+                popup.CompareTag("Alahas Slot") &&
+                popup.GetComponentInParent<AlahasSelectionController>(true) == null)
             .OrderBy(popup => popup.gameObject.name)
             .Select(popup => popup.gameObject)
             .ToArray();
+    }
+
+    private void ApplyLevelSlotCapacity()
+    {
+        LevelConfig levelConfig = GameManager.Instance != null
+            ? GameManager.Instance.config
+            : null;
+        if (levelConfig != null)
+            maxAlahasSlotCount = Mathf.Max(1, levelConfig.alahasSlotCount);
+
+        if (alahasSlots == null || maxAlahasSlotCount <= 0) return;
+
+        for (int i = 0; i < alahasSlots.Length; i++)
+            if (alahasSlots[i] != null)
+                alahasSlots[i].SetActive(i < maxAlahasSlotCount);
     }
 
     private void ChangeDescriptionUI(Alahas selectedAlahas)

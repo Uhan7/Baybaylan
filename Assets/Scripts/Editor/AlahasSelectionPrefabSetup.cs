@@ -83,7 +83,7 @@ public static class AlahasSelectionPrefabSetup
                 serializedTooltip.FindProperty("ToolTipDelay").floatValue = 0.2f;
                 serializedTooltip.FindProperty("followMouse").boolValue = true;
                 serializedTooltip.FindProperty("ToolTipPositionOffset").vector2Value =
-                    new Vector2(-300f, -90f);
+                    new Vector2(-18f, -18f);
                 serializedTooltip.ApplyModifiedPropertiesWithoutUndo();
             }
 

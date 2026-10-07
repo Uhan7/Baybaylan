@@ -598,6 +598,9 @@ MonoBehaviour:
   tilesToDelete: 0
   reccWordButtonActive: 0
   scoreMultiplier: 1
+  addExtraTurnAndTile: 0
+  extraTurn: 0
+  extraTile: 0
 --- !u!1 &2931207855000954438
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,34 +4354,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 491269827255889942}
     m_Modifications:
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: heldAlahas.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: alahasSlots.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: 'heldAlahas.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: 'heldAlahas.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: 'heldAlahas.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: 'heldAlahas.Array.data[3]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
-      propertyPath: 'heldAlahas.Array.data[4]'
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5750622890409589368, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: m_Name
       value: Alahas Manager

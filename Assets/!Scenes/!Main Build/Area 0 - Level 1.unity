@@ -2365,7 +2365,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: maxAlahasSlotCount
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1574119242148583909, guid: f9a30aa166e834a21934ba9f8cb64290, type: 3}
       propertyPath: heldAlahas.Array.size
