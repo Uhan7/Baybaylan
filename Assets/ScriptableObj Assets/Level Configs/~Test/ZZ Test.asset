@@ -52,8 +52,8 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   hasMultipleTargetMahika: 1
-  targetMahika: 200
-  multipleTargetMahika: c8000000c8000000c8000000c8000000c8000000c8000000c8000000
+  targetMahika: 100
+  multipleTargetMahika: 0b00000016000000210000002c00000037000000420000004d000000
   maxAksyon: 7
   numKaposAksyon: 0
   alahasAquiredAfterWin: {fileID: 0}
