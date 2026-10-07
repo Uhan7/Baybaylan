@@ -55,7 +55,7 @@ public class MahikaManager : MonoBehaviour
         for (int i = 0; i < numMahikaBars; i++)
         {
             // If multiple target mahika is DISABLED, get the value of the 'target mahika'
-            if (numMahikaBars == 1) m_mahikaDatas[i].targetMahika = config.targetMahika;
+            if (!config.hasMultipleTargetMahika) m_mahikaDatas[i].targetMahika = config.targetMahika;
             // if multiple target mahika is ENABLED, get the values of the 'multiple target mahika'
             else m_mahikaDatas[i].targetMahika = config.multipleTargetMahika[i];
         }
