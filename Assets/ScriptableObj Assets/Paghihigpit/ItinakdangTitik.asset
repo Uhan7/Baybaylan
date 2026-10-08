@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 0
   paghihigpitName: Itinakdang Titik
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 21300000, guid: 260d300b0f6ba4187884bc1406a78f90, type: 3}
   description: Mayroong mga itinakdang titik, at hindi ito sila pinipili nang random.
   extraText: <i>Gumagana lamang ang mahika ko kapag ang mga titik na ito ang ginagamit
     ko.</i>

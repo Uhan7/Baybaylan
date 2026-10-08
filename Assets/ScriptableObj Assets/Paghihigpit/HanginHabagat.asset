@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 6
   paghihigpitName: Hangin Habagat
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 21300000, guid: e8045ff7194d242459fecf80e1f30919, type: 3}
   description: Pagkatapos magsumite ng salita, 3 random na titik ang papalitan. Kung
     mas kaunti sa 3 titik ang natitira, ang mga natitirang tile lamang ang papalitan.
   extraText: "Palaging nagbabago ang mga titik dahil sa malakas na hangin\u2026"
