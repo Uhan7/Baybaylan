@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Gumamela
   m_EditorClassIdentifier: 
   alahasName: Gumamela
+  saveDataName: 19
   alahasSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
   description: 3x iskor sa mga patinig at 3x mas madalas makita ang mga patinig.
   extraText: Napakaganda talaga ng boses ni Binibining Makiling kapag sya'y kumanta

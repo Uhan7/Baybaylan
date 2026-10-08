@@ -6,6 +6,7 @@ public class TalaAlahasHolder : MonoBehaviour
 {
     [HideInInspector] public static TalaAlahasHolder Instance;
     public List<Alahas> availableAlahas = new List<Alahas>();
+    public List<Alahas> allAlahas = new List<Alahas>();
 
     public bool IsUnlocked(Alahas alahas)
     {
@@ -35,21 +36,42 @@ public class TalaAlahasHolder : MonoBehaviour
     {
         if (!alahas) return;
         if (availableAlahas == null) availableAlahas = new List<Alahas>();
-        if (!availableAlahas.Contains(alahas)) availableAlahas.Add(alahas);
+        if (!availableAlahas.Contains(alahas)) availableAlahas.Add(alahas); //this line is now useless
+
+        SaveManager.Instance.saveData(alahas.saveDataName, 1);
+    }
+
+    void getUnlockedAlahasFromSave()
+    {
+        availableAlahas.Clear();
+
+        foreach(Alahas alahas in allAlahas)
+        {
+            int data = SaveManager.Instance.getSaveData<int>(alahas.saveDataName);
+            //Debug.Log("retrieved data " + alahas.saveDataName.ToString() + " with data " + data);
+            if(data == 1)
+            {
+                availableAlahas.Add(alahas);
+            }
+        }
+
+        //Debug.Log("availableAlahas: " + availableAlahas.Count);
     }
 
     void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            if (availableAlahas != null)
-                foreach (Alahas alahas in availableAlahas)
-                    Instance.Unlock(alahas);
+            // if (availableAlahas != null)
+            //     foreach (Alahas alahas in availableAlahas)
+            //         Instance.Unlock(alahas);
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        transform.SetParent(null, true);
-        DontDestroyOnLoad(gameObject);
+        //transform.SetParent(null, true);
+        //DontDestroyOnLoad(gameObject);
+
+        getUnlockedAlahasFromSave();
     }
 }

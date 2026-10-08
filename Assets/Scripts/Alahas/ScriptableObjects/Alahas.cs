@@ -5,6 +5,7 @@ public abstract class Alahas : ScriptableObject
     // Variables ---------------------------------------------------------------
     [Header("Alahas Info")]
     [SerializeField] public string alahasName = "Pangalan ng Alahas";
+    [SerializeField] public SaveManager.SaveDataNames saveDataName;
     [SerializeField] public Sprite alahasSprite;
     [TextArea(2, 2), SerializeField] public string description = "Deskripsyon tungkol sa Alahas.";
     [TextArea(2, 2), SerializeField] public string extraText = "Extra text tungkol sa Alahas.";
