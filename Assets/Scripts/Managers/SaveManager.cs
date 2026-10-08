@@ -54,10 +54,13 @@ public class SaveManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        //checks if data exists in prefs and makes one 
         foreach(SaveData data in saveDatas)
+        {
             if(!data.doesDataExist())
                 defualtData(data.dataName);
+
+            data.updateCurrentValue();
+        }
     }
 
     public void saveData<T>(SaveDataNames name, T value)

@@ -30,7 +30,7 @@ class SaveData : ScriptableObject
     [ShowIf("dataType", DataType.String)] [OnValueChanged("saveCurrentValue")]
     public string currentStringValue;
 
-    void updateCurrentValue()
+    public void updateCurrentValue()
     {
         switch (dataType)
         {
@@ -48,12 +48,6 @@ class SaveData : ScriptableObject
 
     void saveCurrentValue()
     {
-        if(!doesDataExist())
-        {
-            resetToDefaultValue();
-            return;
-        }
-
         switch (dataType)
         {
             case DataType.Int:
