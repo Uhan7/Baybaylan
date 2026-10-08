@@ -22,7 +22,8 @@ public class BackgroundsManager : MonoBehaviour
     public void AdjustCorruptedBG()
     {
         float newAlphaValue;
-        if (GameManager.Instance.mahikaPercent <= 1) newAlphaValue = (float)(1 - (0.5 * GameManager.Instance.mahikaPercent));
+        float mahikaPercent = MahikaManager.Instance.GetMahikaPercent();
+        if (mahikaPercent <= 1) newAlphaValue = (float)(1 - (0.5 * mahikaPercent));
         else newAlphaValue = 1;
 
         corruptedBackground.GetComponent<ImageFader>().FadeTo(newAlphaValue, 1f);

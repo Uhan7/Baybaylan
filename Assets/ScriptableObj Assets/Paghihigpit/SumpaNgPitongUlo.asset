@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e03391ae0cec842b9596c363abf90f, type: 3}
+  m_Name: SumpaNgPitongUlo
+  m_EditorClassIdentifier: 
+  paghihigpitType: 8
+  paghihigpitName: Sumpa ng Pitong Ulo
+  paghihigpitSprite: {fileID: 0}
+  description: Mayroong 7 bar ng mahika at 7 aksyon. Sa bawat aksyon, kailangang
+    mapuno ang isang bar. Kapag hindi napuno ang lahat ng bar, matatalo si Sulayman.
+  extraText: "Ang ibong may pitong ulo\u2026 Paano kaya siya talunin? Baka kailangang
+    isa-isahin ang mga ulo niya\u2026"

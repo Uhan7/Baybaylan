@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: ZZ Test
   m_EditorClassIdentifier: 
-  tilesAmount: 5
+  tilesAmount: 15
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
   - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
@@ -43,18 +43,26 @@ MonoBehaviour:
     tiles: []
   - aksyon: 5
     tiles: []
+  - aksyon: 6
+    tiles: []
+  - aksyon: 7
+    tiles: []
   predefinedTiles:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
-  targetMahika: 500
-  maxAksyon: 5
-  numKaposAksyon: 3
+  hasMultipleTargetMahika: 1
+  targetMahika: 100
+  multipleTargetMahika: 0b00000016000000210000002c00000037000000420000004d000000
+  maxAksyon: 7
+  numKaposAksyon: 0
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
-  - {fileID: 11400000, guid: de7de40f3748f3d4e86c8cf9a2dcb366, type: 2}
+  - {fileID: 11400000, guid: 7849d4880d93e8e4dbb7eee692f052c0, type: 2}
   partikularNaSalita_wordList:
   - ba
+  - 
+  - 
   - 
   - 
   - 

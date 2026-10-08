@@ -28,7 +28,7 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] public List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
-    [ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
+    //[ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
     [ReadOnly, SerializeField] private string latinSalita;
     private string revealedLatinSalita;
     private string observedLatinSalita;
@@ -153,6 +153,17 @@ public class SalitaSlots : MonoBehaviour
             }
         }
 
+        // PAGHIHIGPIT: Maikkling Salita
+        // Check if the candidate salita has 5 or more tiles
+        if (config.HasPaghihigpit(PaghihigpitTypes.MaiklingSalita))
+        {
+            if (activeTiles.Count >= 5)
+            {
+                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.MaiklingSalita, latinSalita);
+                return false;
+            }
+        }
+
         // PAGHIHIGPIT: Marka ng Baybayin
         // Require a diacritic on every consonant tile. Vowel tiles are exempt
         // because Baybayin vowels cannot receive a Kudlit or Krus.
@@ -203,7 +214,7 @@ public class SalitaSlots : MonoBehaviour
     private void GetSalitaFromTiles()
     {
         latinSalita = "";
-        baybayinSalita = ""; // Eventually get the baybayin as well
+        //baybayinSalita = ""; // Eventually get the baybayin as well
 
         foreach (Tile activeTile in activeTiles) latinSalita += activeTile.latinText;
     }
@@ -243,7 +254,7 @@ public class SalitaSlots : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         salitaScore = (int)(salitaScore * activeTileCount);
-        GameManager.Instance.ChangeMahika(salitaScore);
+        MahikaManager.Instance.UpdateMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
@@ -257,7 +268,7 @@ public class SalitaSlots : MonoBehaviour
 
         AksyonCounter.Instance.ConcludeAksyon();
 
-        if (AksyonCounter.Instance.HasRemainingAksyon() && GameManager.Instance.mahikaPercent < 1) 
+        if (AksyonCounter.Instance.HasRemainingAksyon() && MahikaManager.Instance.GetMahikaPercent() < 1) 
         {
             AlahasSubManager.Instance.onTurnEnd();
             yield return ReplaceActiveTiles();

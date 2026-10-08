@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Environment_Area1_Mountainside_0: -5784362669076807093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
