@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Alahas/Arpa")]
-public class ArpaAlahas : Alahas
+[CreateAssetMenu(menuName = "Alahas/Gumamela")]
+public class GumamelaAlahas : Alahas
 {
     [SerializeField] float vowelScoreMultiplier = 3f;
     [SerializeField] float vowelSpawnMultiplier = 3f;

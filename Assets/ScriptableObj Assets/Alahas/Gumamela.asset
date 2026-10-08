@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c630719be6ae94cd49e311baca4aa045, type: 3}
-  m_Name: Arpa
+  m_Name: Gumamela
   m_EditorClassIdentifier: 
-  alahasName: Arpa
+  alahasName: Gumamela
   alahasSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
   description: 3x iskor sa mga patinig at 3x mas madalas makita ang mga patinig.
   extraText: Napakaganda talaga ng boses ni Binibining Makiling kapag sya'y kumanta
     kasama ang paglaro ng kanyang Arpa...
+  numberOfSlotsNeeded: 1
   showActivationCounter: 0
   maximumActivations: 0
   vowelScoreMultiplier: 3

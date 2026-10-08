@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6471077f368b3c84e99b1524f94cf3f3, type: 3}
-  m_Name: Pakpa ni Pah
+  m_Name: Pakpak ni Pah
   m_EditorClassIdentifier: 
   alahasName: Pakpak ni Pah
   alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}

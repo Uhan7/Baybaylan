@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Alahas/Luya")]
-public class LuyaAlahas : Alahas
+[CreateAssetMenu(menuName = "Alahas/Kuwintas na Luya")]
+public class KuwintasNaLuyaAlahas : Alahas
 {
     public float convertToGoldChance = 0.3f;
     private const float GoldScoreMultiplier = 2f;
