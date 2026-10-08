@@ -1197,12 +1197,12 @@ MonoBehaviour:
   moveUpDelay: 0.5
   upDistance: 25
   invalidWordMessages:
-    notInWordlist: Walang salitang "{word}"!
-    alreadyUsed: Sinulat na ang salitang "{word}"!
-    notPartikularNaSalita: Ang salitang "{word}" ay hindi ang tamang salita!
-    absentDiacritic: '"{word}" has at least one letter without a diacritic!'
-    mahabangSalita: '"{word}" has less than 4 tiles!'
-    maiklingSalita: '"{word}" has more than 4 tiles!'
+    notInWordlist: Wala sa talaan ang salitang “{word}”!
+    alreadyUsed: Naisumite na ang salitang “{word}”!
+    notPartikularNaSalita: Hindi “{word}” ang salitang kailangan buuin!
+    absentDiacritic: May titik sa “{word}” na walang Kudlit o Krus!
+    mahabangSalita: Masyadong maikli ang “{word}”. Kailangan ng 4 na titik o higit pa!
+    maiklingSalita: Masyadong mahaba ang “{word}”. Hanggang 4 na titik lamang!
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0
