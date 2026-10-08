@@ -16,7 +16,7 @@ MonoBehaviour:
   alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
   description: "Pindutin ang Alahas na ito upang magamit.\n\nIsang beses, magbibigay
     ito ng mungkahing salita gamit ang mga kasalukuyang titik.\n\nGagamit ang salita
-    ng 3\u20135 tile lamang."
+    ng 3\u20135 titik lamang."
   extraText: "Nakakatakot talaga si Tarabusaw\u2026 Ilang tao na kaya na\u2026 Ah!
     Hindi ko na iyan pag-iisipan\u2026"
   numberOfSlotsNeeded: 1
