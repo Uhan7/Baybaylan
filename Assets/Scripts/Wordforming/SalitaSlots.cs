@@ -263,8 +263,27 @@ public class SalitaSlots : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         scoreCalculationsContainer.SetActive(false);
 
+        Coroutine winningAttackSlowMotion = null;
+        Coroutine winningAttackCharacterSwap = null;
+        bool isWinningAttack = MahikaManager.Instance.DidWin() &&
+            successfulWordAnimationPlayer != null &&
+            successfulWordAnimationPlayer.AnimationAfterSuccessfulWord ==
+                WordSubmissionAnimationPlayer.SuccessfulWordAnimation.Attack;
+
+        if (isWinningAttack && GameManager.Instance != null)
+        {
+            winningAttackSlowMotion = GameManager.Instance.StartWinningAttackSlowMotion();
+            winningAttackCharacterSwap = GameManager.Instance.StartWinningAttackCharacterSwap();
+        }
+
         if (successfulWordAnimationPlayer != null)
             yield return successfulWordAnimationPlayer.PlaySelectedAnimation();
+
+        if (winningAttackSlowMotion != null)
+            yield return winningAttackSlowMotion;
+
+        if (winningAttackCharacterSwap != null)
+            yield return winningAttackCharacterSwap;
 
         AksyonCounter.Instance.ConcludeAksyon();
 
