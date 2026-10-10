@@ -27,6 +27,17 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [ShowIf(nameof(IsAttackSelected))]
     [Tooltip("The Attack clip reaches the target on frame 11 at 60 FPS.")]
     [SerializeField, Min(0f)] private float targetHitDelay = 11f / 60f;
+    [ShowIf(nameof(IsAttackSelected))]
+    [Tooltip("Uses a scene-specific color instead of the particle prefab's default color.")]
+    [SerializeField] private bool overrideAttackParticleColor;
+    [ShowIf(EConditionOperator.And, nameof(IsAttackSelected), nameof(UsesAttackParticleColorOverride))]
+    [Label("Particle Color A")]
+    [Tooltip("First possible tint for each attack-impact particle in this scene.")]
+    [SerializeField, ColorUsage(true, true)] private Color attackParticleColor = Color.white;
+    [ShowIf(EConditionOperator.And, nameof(IsAttackSelected), nameof(UsesAttackParticleColorOverride))]
+    [Label("Particle Color B")]
+    [Tooltip("Second possible tint. Each emitted particle randomly chooses between A and B.")]
+    [SerializeField, ColorUsage(true, true)] private Color attackParticleColorB = Color.white;
 
     [ShowIf(nameof(IsHealSelected)), Header("Heal Effects")]
     [Tooltip("Particles sent from the protagonist toward the story target.")]
@@ -70,6 +81,8 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     private bool HasSelectedAnimation() => animationAfterSuccessfulWord != SuccessfulWordAnimation.DoNothing;
 
     private bool IsAttackSelected() => animationAfterSuccessfulWord == SuccessfulWordAnimation.Attack;
+
+    private bool UsesAttackParticleColorOverride() => overrideAttackParticleColor;
 
     private bool IsHealSelected() => animationAfterSuccessfulWord == SuccessfulWordAnimation.Heal;
 
@@ -134,7 +147,14 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
         Coroutine targetResponse = null;
         Coroutine healEffects = null;
         if (animation == SuccessfulWordAnimation.Attack && storyTarget != null)
-            targetResponse = StartCoroutine(storyTarget.PlayHitAfterDelay(targetHitDelay));
+        {
+            targetResponse = overrideAttackParticleColor
+                ? StartCoroutine(storyTarget.PlayHitAfterDelay(
+                    targetHitDelay,
+                    attackParticleColor,
+                    attackParticleColorB))
+                : StartCoroutine(storyTarget.PlayHitAfterDelay(targetHitDelay));
+        }
         else if (animation == SuccessfulWordAnimation.Heal)
         {
             BeginHealAnimatorSpeed();

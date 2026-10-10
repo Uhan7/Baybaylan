@@ -154,6 +154,9 @@ MonoBehaviour:
   healStateName: Base Layer.Heal
   storyTarget: {fileID: 0}
   targetHitDelay: 0.18333334
+  overrideAttackParticleColor: 0
+  attackParticleColor: {r: 1, g: 1, b: 1, a: 1}
+  attackParticleColorB: {r: 1, g: 1, b: 1, a: 1}
   healMagicParticles: {fileID: 3877382978996168275}
   healAnimationSpeed: 1.75
   healMagicDelay: 0.38333333

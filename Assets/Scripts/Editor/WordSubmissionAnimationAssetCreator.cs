@@ -13,6 +13,7 @@ public static class WordSubmissionAnimationAssetCreator
     private const string HitClipPath = RootFolder + "/Hit.anim";
     private const string LeftSidePrefabPath = "Assets/Prefabs/Side UI/Left Side Container Variant.prefab";
     private const string RightSidePrefabPath = "Assets/Prefabs/Side UI/Right Side Container Variant.prefab";
+    private const string AttackImpactPrefabPath = "Assets/Prefabs/VFX/Attack Impact Particles.prefab";
     private const string HealAuraPrefabPath = "Assets/Prefabs/VFX/Heal Aura Particles.prefab";
     private const string HealMagicPrefabPath = "Assets/Prefabs/VFX/Heal Magic Particles.prefab";
 
@@ -38,6 +39,7 @@ public static class WordSubmissionAnimationAssetCreator
         EnsureState(stateMachine, "Hit", hitClip);
         if (stateMachine.defaultState == null) stateMachine.defaultState = idleState;
 
+        GameObject attackImpactPrefab = GetOrCreateAttackImpactParticlePrefab();
         GameObject healAuraPrefab = GetOrCreateHealParticlePrefab(
             HealAuraPrefabPath,
             "Heal Aura Particles",
@@ -48,7 +50,7 @@ public static class WordSubmissionAnimationAssetCreator
             false);
 
         ConfigureLeftSidePrefab(controller, healMagicPrefab);
-        ConfigureRightSidePrefab(controller, healAuraPrefab);
+        ConfigureRightSidePrefab(controller, attackImpactPrefab, healAuraPrefab);
 
         AssetDatabase.SaveAssets();
 
@@ -151,11 +153,14 @@ public static class WordSubmissionAnimationAssetCreator
 
             Transform portraitHolder = prefabRoot.transform.Find("Portrait Holder");
             RemoveChildIfPresent(portraitHolder, "Heal Aura Particles");
-            ParticleSystem healMagic = EnsureHealParticleInstance(portraitHolder, healMagicPrefab);
+            ParticleSystem healMagic = EnsureParticleInstance(portraitHolder, healMagicPrefab);
 
             SerializedObject serializedPlayer = new SerializedObject(player);
             SerializedProperty animatorProperty = serializedPlayer.FindProperty("targetAnimator");
             animatorProperty.objectReferenceValue = animator;
+            serializedPlayer.FindProperty("overrideAttackParticleColor").boolValue = false;
+            serializedPlayer.FindProperty("attackParticleColor").colorValue = Color.white;
+            serializedPlayer.FindProperty("attackParticleColorB").colorValue = Color.white;
             serializedPlayer.FindProperty("healMagicParticles").objectReferenceValue = healMagic;
             serializedPlayer.FindProperty("healAnimationSpeed").floatValue = 1.75f;
             serializedPlayer.FindProperty("healMagicDelay").floatValue = 23f / 60f;
@@ -174,7 +179,10 @@ public static class WordSubmissionAnimationAssetCreator
         }
     }
 
-    private static void ConfigureRightSidePrefab(AnimatorController controller, GameObject healAuraPrefab)
+    private static void ConfigureRightSidePrefab(
+        AnimatorController controller,
+        GameObject attackImpactPrefab,
+        GameObject healAuraPrefab)
     {
         GameObject prefabRoot = PrefabUtility.LoadPrefabContents(RightSidePrefabPath);
 
@@ -206,10 +214,12 @@ public static class WordSubmissionAnimationAssetCreator
 
             Transform portraitHolder = prefabRoot.transform.Find("Portrait Holder");
             Transform characterImage = portraitHolder.Find("Character Image");
-            ParticleSystem healAura = EnsureHealParticleInstance(portraitHolder, healAuraPrefab);
+            ParticleSystem attackImpact = EnsureParticleInstance(portraitHolder, attackImpactPrefab);
+            ParticleSystem healAura = EnsureParticleInstance(portraitHolder, healAuraPrefab);
 
             SerializedObject serializedPlayer = new SerializedObject(player);
             serializedPlayer.FindProperty("targetAnimator").objectReferenceValue = animator;
+            serializedPlayer.FindProperty("attackImpactParticles").objectReferenceValue = attackImpact;
             serializedPlayer.FindProperty("healCharacterGraphic").objectReferenceValue =
                 characterImage != null ? characterImage.GetComponent<UnityEngine.UI.Graphic>() : null;
             serializedPlayer.FindProperty("healAuraParticles").objectReferenceValue = healAura;
@@ -279,7 +289,23 @@ public static class WordSubmissionAnimationAssetCreator
         }
     }
 
-    private static ParticleSystem EnsureHealParticleInstance(Transform portraitHolder, GameObject particlePrefab)
+    private static GameObject GetOrCreateAttackImpactParticlePrefab()
+    {
+        GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(AttackImpactPrefabPath);
+        if (existingPrefab != null) return existingPrefab;
+
+        GameObject effectObject = CreateAttackImpactParticleObject();
+        try
+        {
+            return PrefabUtility.SaveAsPrefabAsset(effectObject, AttackImpactPrefabPath);
+        }
+        finally
+        {
+            Object.DestroyImmediate(effectObject);
+        }
+    }
+
+    private static ParticleSystem EnsureParticleInstance(Transform portraitHolder, GameObject particlePrefab)
     {
         Transform existing = portraitHolder.Find(particlePrefab.name);
         if (existing != null)
@@ -299,6 +325,102 @@ public static class WordSubmissionAnimationAssetCreator
         instance.name = particlePrefab.name;
         instance.transform.localScale = Vector3.one;
         return instance.GetComponent<ParticleSystem>();
+    }
+
+    private static GameObject CreateAttackImpactParticleObject()
+    {
+        GameObject effectObject = new GameObject(
+            "Attack Impact Particles",
+            typeof(RectTransform),
+            typeof(CanvasRenderer),
+            typeof(ParticleSystem),
+            typeof(UIParticle));
+
+        effectObject.layer = LayerMask.NameToLayer("UI");
+        RectTransform rectTransform = effectObject.GetComponent<RectTransform>();
+        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.sizeDelta = new Vector2(520f, 520f);
+
+        UIParticle uiParticle = effectObject.GetComponent<UIParticle>();
+        uiParticle.scale = 50f;
+        uiParticle.raycastTarget = false;
+
+        ParticleSystem particles = effectObject.GetComponent<ParticleSystem>();
+        ConfigureAttackImpactParticles(particles);
+
+        ParticleSystemRenderer renderer = effectObject.GetComponent<ParticleSystemRenderer>();
+        string materialPath = AssetDatabase.GUIDToAssetPath("9944483a3e009401ba5dcc42f14d5c63");
+        renderer.sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
+        renderer.enabled = false;
+
+        uiParticle.RefreshParticles();
+        particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        return effectObject;
+    }
+
+    private static void ConfigureAttackImpactParticles(ParticleSystem particles)
+    {
+        ParticleSystem.MainModule main = particles.main;
+        main.loop = false;
+        main.playOnAwake = false;
+        main.duration = 0.35f;
+        main.simulationSpace = ParticleSystemSimulationSpace.Local;
+        main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+        main.maxParticles = 40;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.18f, 0.42f);
+        main.startSpeed = new ParticleSystem.MinMaxCurve(2.5f, 6.5f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.12f, 0.34f);
+        main.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
+        main.startColor = Color.white;
+
+        ParticleSystem.EmissionModule emission = particles.emission;
+        emission.enabled = true;
+        emission.rateOverTime = 0f;
+        emission.SetBursts(new[]
+        {
+            new ParticleSystem.Burst(0f, 22)
+        });
+
+        ParticleSystem.ShapeModule shape = particles.shape;
+        shape.enabled = true;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.radius = 0.28f;
+        shape.radiusThickness = 1f;
+
+        ParticleSystem.ColorOverLifetimeModule colorOverLifetime = particles.colorOverLifetime;
+        colorOverLifetime.enabled = true;
+        Gradient fade = new Gradient();
+        fade.SetKeys(
+            new[]
+            {
+                new GradientColorKey(Color.white, 0f),
+                new GradientColorKey(Color.white, 1f)
+            },
+            new[]
+            {
+                new GradientAlphaKey(1f, 0f),
+                new GradientAlphaKey(0.9f, 0.35f),
+                new GradientAlphaKey(0f, 1f)
+            });
+        colorOverLifetime.color = fade;
+
+        ParticleSystem.SizeOverLifetimeModule sizeOverLifetime = particles.sizeOverLifetime;
+        sizeOverLifetime.enabled = true;
+        sizeOverLifetime.size = new ParticleSystem.MinMaxCurve(1f, new AnimationCurve(
+            new Keyframe(0f, 0.35f),
+            new Keyframe(0.15f, 1f),
+            new Keyframe(1f, 0.1f)));
+
+        ParticleSystem.NoiseModule noise = particles.noise;
+        noise.enabled = true;
+        noise.quality = ParticleSystemNoiseQuality.Low;
+        noise.strength = 0.18f;
+        noise.frequency = 1.2f;
+        noise.scrollSpeed = 0.4f;
+        noise.damping = true;
     }
 
     private static void RemoveChildIfPresent(Transform parent, string childName)

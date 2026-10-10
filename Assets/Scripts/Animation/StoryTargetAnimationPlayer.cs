@@ -11,6 +11,8 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
     [SerializeField] private string hitStateName = "Base Layer.Hit";
 
     [Header("Impact")]
+    [Tooltip("White UI particle burst played when the protagonist's attack reaches this target.")]
+    [SerializeField] private ParticleSystem attackImpactParticles;
     [SerializeField] private bool shakeScreenOnHit = true;
     [SerializeField, Min(0f)] private float screenShakeDuration = 0.12f;
     [SerializeField, Min(0f)] private float screenShakeIntensity = 8f;
@@ -34,6 +36,8 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
 
     private Image healPulseOverlay;
     private Image healPulseSource;
+    private ParticleSystem.MinMaxGradient defaultAttackImpactColor;
+    private bool hasDefaultAttackImpactColor;
 
     private void Reset()
     {
@@ -44,11 +48,14 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
 
     private void Awake()
     {
+        CacheDefaultAttackImpactColor();
+        StopAttackImpactParticles();
         StopHealAura(true);
     }
 
     private void OnDisable()
     {
+        StopAttackImpactParticles();
         StopHealAura(true);
         HideHealPulseOverlay();
     }
@@ -174,12 +181,25 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
     public IEnumerator PlayHitAfterDelay(float delaySeconds)
     {
         if (delaySeconds > 0f) yield return new WaitForSeconds(delaySeconds);
-        yield return PlayHit();
+        yield return PlayHitInternal(false, Color.white, Color.white);
+    }
+
+    public IEnumerator PlayHitAfterDelay(float delaySeconds, Color impactColorA, Color impactColorB)
+    {
+        if (delaySeconds > 0f) yield return new WaitForSeconds(delaySeconds);
+        yield return PlayHitInternal(true, impactColorA, impactColorB);
     }
 
     public IEnumerator PlayHit()
     {
+        yield return PlayHitInternal(false, Color.white, Color.white);
+    }
+
+    private IEnumerator PlayHitInternal(bool overrideImpactColors, Color impactColorA, Color impactColorB)
+    {
         if (!CanPlayState(hitStateName, out int stateHash)) yield break;
+
+        PlayAttackImpactParticles(overrideImpactColors, impactColorA, impactColorB);
 
         if (shakeScreenOnHit)
             ScreenShake.ShakeGlobal(screenShakeDuration, screenShakeIntensity);
@@ -187,6 +207,35 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
         targetAnimator.Play(stateHash, animatorLayer, 0f);
         yield return WaitForStateToFinish(stateHash, hitStateName);
         ReturnToIdle();
+    }
+
+    private void PlayAttackImpactParticles(bool overrideColors, Color colorA, Color colorB)
+    {
+        if (attackImpactParticles == null) return;
+
+        if (!hasDefaultAttackImpactColor) CacheDefaultAttackImpactColor();
+
+        ParticleSystem.MainModule main = attackImpactParticles.main;
+        main.startColor = overrideColors
+            ? new ParticleSystem.MinMaxGradient(colorA, colorB)
+            : defaultAttackImpactColor;
+
+        attackImpactParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        attackImpactParticles.Play(true);
+    }
+
+    private void CacheDefaultAttackImpactColor()
+    {
+        if (attackImpactParticles == null) return;
+
+        defaultAttackImpactColor = attackImpactParticles.main.startColor;
+        hasDefaultAttackImpactColor = true;
+    }
+
+    private void StopAttackImpactParticles()
+    {
+        if (attackImpactParticles != null)
+            attackImpactParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
     private bool CanPlayState(string stateName, out int stateHash)
