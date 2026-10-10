@@ -48,6 +48,13 @@ class SaveData : ScriptableObject
 
     void saveCurrentValue()
     {
+        if(dataName == SaveManager.SaveDataNames.NoneOrNull)
+        {
+            Debug.LogWarning("Tried to save " + dataName + " with data " + currentStringValue);
+            updateCurrentValue();
+            return;
+        }
+
         switch (dataType)
         {
             case DataType.Int:
@@ -70,6 +77,9 @@ class SaveData : ScriptableObject
 
     public T getCurrentData<T>()
     {
+        if(dataName == SaveManager.SaveDataNames.NoneOrNull)
+            return default;
+
         switch (dataType)
         {
             case DataType.Int:
