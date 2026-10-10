@@ -1,4 +1,5 @@
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class WordSubmissionAnimationPlayer : MonoBehaviour
@@ -13,38 +14,46 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [Header("Successful Word Result")]
     [SerializeField] private SuccessfulWordAnimation animationAfterSuccessfulWord;
 
-    [Header("Animator")]
+    [ShowIf(nameof(HasSelectedAnimation)), Header("Animator")]
     [Tooltip("The Animator that contains the Attack and Heal states.")]
     [SerializeField] private Animator targetAnimator;
-    [SerializeField, Min(0)] private int animatorLayer;
-    [SerializeField] private string idleStateName = "Base Layer.Idle";
-    [SerializeField] private string attackStateName = "Base Layer.Attack";
-    [SerializeField] private string healStateName = "Base Layer.Heal";
+    [ShowIf(nameof(HasSelectedAnimation)), SerializeField, Min(0)] private int animatorLayer;
+    [ShowIf(nameof(HasSelectedAnimation)), SerializeField] private string idleStateName = "Base Layer.Idle";
+    [ShowIf(nameof(IsAttackSelected)), SerializeField] private string attackStateName = "Base Layer.Attack";
+    [ShowIf(nameof(IsHealSelected)), SerializeField] private string healStateName = "Base Layer.Heal";
 
-    [Header("Attack Target")]
+    [ShowIf(nameof(HasSelectedAnimation)), Header("Story Target")]
     [SerializeField] private StoryTargetAnimationPlayer storyTarget;
+    [ShowIf(nameof(IsAttackSelected))]
     [Tooltip("The Attack clip reaches the target on frame 11 at 60 FPS.")]
     [SerializeField, Min(0f)] private float targetHitDelay = 11f / 60f;
 
-    [Header("Heal Effects")]
+    [ShowIf(nameof(IsHealSelected)), Header("Heal Effects")]
     [Tooltip("Particles sent from the protagonist toward the story target.")]
     [SerializeField] private ParticleSystem healMagicParticles;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Speeds up only the Heal animation. Effect timings below are measured in real game seconds.")]
     [SerializeField, Min(0.01f)] private float healAnimationSpeed = 1.75f;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Time from the start of Heal before the projectile begins emitting.")]
     [SerializeField, Min(0f)] private float healMagicDelay = 23f / 60f;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Time from the start of Heal before the magic projectile stops emitting.")]
     [SerializeField, Min(0f)] private float healEffectsStopDelay = 0.58f;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("The target waits for every projectile particle to finish before starting its dim pulse.")]
     [SerializeField, Min(0f)] private float targetHealDelay = 0.92f;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Where to pause the Heal state while the target effect plays. 0.7 is frame 84 of the current 120-frame clip.")]
     [SerializeField, Range(0f, 1f)] private float healPoseHoldNormalizedTime = 0.7f;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Fallback hold time used only when no Story Target is available.")]
     [SerializeField, Min(0f)] private float healPoseHoldDuration = 0.8f;
+    [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Small beat after the target aura appears before the protagonist returns.")]
     [SerializeField, Min(0f)] private float healReturnDelayAfterTarget;
 
-    [Header("Safety")]
+    [ShowIf(nameof(HasSelectedAnimation)), Header("Safety")]
     [Tooltip("Stops a looping or misconfigured state from blocking the rest of the turn forever.")]
     [SerializeField, Min(0.1f)] private float maximumWaitSeconds = 10f;
 
@@ -57,6 +66,12 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
         get => animationAfterSuccessfulWord;
         set => animationAfterSuccessfulWord = value;
     }
+
+    private bool HasSelectedAnimation() => animationAfterSuccessfulWord != SuccessfulWordAnimation.DoNothing;
+
+    private bool IsAttackSelected() => animationAfterSuccessfulWord == SuccessfulWordAnimation.Attack;
+
+    private bool IsHealSelected() => animationAfterSuccessfulWord == SuccessfulWordAnimation.Heal;
 
     private void Reset()
     {

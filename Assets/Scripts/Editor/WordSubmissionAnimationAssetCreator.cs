@@ -8,20 +8,20 @@ public static class WordSubmissionAnimationAssetCreator
 {
     private const string RootFolder = "Assets/Animations/Word Submission";
     private const string ControllerPath = RootFolder + "/Word Submission.controller";
-    private const string AttackClipPath = RootFolder + "/Attack Placeholder.anim";
-    private const string HealClipPath = RootFolder + "/Heal Placeholder.anim";
-    private const string HitClipPath = RootFolder + "/Hit Placeholder.anim";
+    private const string AttackClipPath = RootFolder + "/Attack.anim";
+    private const string HealClipPath = RootFolder + "/Heal.anim";
+    private const string HitClipPath = RootFolder + "/Hit.anim";
     private const string LeftSidePrefabPath = "Assets/Prefabs/Side UI/Left Side Container Variant.prefab";
     private const string RightSidePrefabPath = "Assets/Prefabs/Side UI/Right Side Container Variant.prefab";
     private const string HealAuraPrefabPath = "Assets/Prefabs/VFX/Heal Aura Particles.prefab";
     private const string HealMagicPrefabPath = "Assets/Prefabs/VFX/Heal Magic Particles.prefab";
 
     [MenuItem("Tools/Baybaylan/Set Up Word Submission Animations")]
-    public static void CreatePlaceholderAssets()
+    public static void CreateAnimationAssets()
     {
         EnsureFolderExists();
 
-        AnimationClip attackClip = GetOrCreateClip(AttackClipPath, "Attack Placeholder");
+        AnimationClip attackClip = GetOrCreateClip(AttackClipPath, "Attack");
         AnimationClip healClip = GetOrCreateHealClip();
         AnimationClip hitClip = GetOrCreateHitClip();
 
@@ -52,7 +52,7 @@ public static class WordSubmissionAnimationAssetCreator
 
         AssetDatabase.SaveAssets();
 
-        Debug.Log($"Word submission animations are set up. Placeholder assets are in {RootFolder}.");
+        Debug.Log($"Word submission animations are set up in {RootFolder}.");
     }
 
     private static AnimationClip GetOrCreateClip(string path, string clipName)
@@ -76,14 +76,14 @@ public static class WordSubmissionAnimationAssetCreator
         AnimationClip clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(HitClipPath);
         if (clip != null) return clip;
 
-        clip = GetOrCreateClip(HitClipPath, "Hit Placeholder");
+        clip = GetOrCreateClip(HitClipPath, "Hit");
         ApplyDefaultHitCurves(clip);
         return clip;
     }
 
     private static AnimationClip GetOrCreateHealClip()
     {
-        AnimationClip clip = GetOrCreateClip(HealClipPath, "Heal Placeholder");
+        AnimationClip clip = GetOrCreateClip(HealClipPath, "Heal");
         if (AnimationUtility.GetCurveBindings(clip).Length == 0 &&
             AnimationUtility.GetObjectReferenceCurveBindings(clip).Length == 0)
         {
