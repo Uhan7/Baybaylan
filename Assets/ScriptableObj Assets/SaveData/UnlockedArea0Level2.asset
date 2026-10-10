@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10ceba1c1fee1c44298aab63e6f51e8f, type: 3}
-  m_Name: LevelProgress
+  m_Name: UnlockedArea0Level2
   m_EditorClassIdentifier: 
-  dataName: 1
+  dataName: 5
   dataType: 0
   defualtIntValue: 0
   currentIntValue: 0

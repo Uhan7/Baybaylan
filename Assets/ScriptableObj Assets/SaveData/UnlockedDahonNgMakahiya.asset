@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ceba1c1fee1c44298aab63e6f51e8f, type: 3}
   m_Name: UnlockedDahonNgMakahiya
   m_EditorClassIdentifier: 
-  dataName: 21
+  dataName: 29
   dataType: 0
   defualtIntValue: 0
   currentIntValue: 0

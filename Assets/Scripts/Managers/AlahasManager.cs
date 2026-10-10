@@ -310,22 +310,22 @@ public class AlahasManager : MonoBehaviour
             switch(i)
             {
                 case 0:
-                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot1, name);
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot1, name, true);
                     break;
                 case 1:
-                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot2, name);
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot2, name, true);
                     break;
                 case 2:
-                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot3, name);
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot3, name, true);
                     break;
                 case 3:
-                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot4, name);
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot4, name, true);
                     break;
                 case 4:
-                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot5, name);
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot5, name, true);
                     break;
                 case 5:
-                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot6, name);
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot6, name, true);
                     break;
             }
         }

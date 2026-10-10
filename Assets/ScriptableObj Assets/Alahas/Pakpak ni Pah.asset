@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pakpak ni Pah
   m_EditorClassIdentifier: 
   alahasName: Pakpak ni Pah
-  saveDataName: 12
+  saveDataName: 20
   alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
   description: Magdagdag ng 3 na titik. Pagkalipas ng 15 segundo mula sa paglilitaw
     ng titik, aalisin ang 5 random na titik.

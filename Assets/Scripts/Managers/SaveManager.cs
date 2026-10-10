@@ -1,46 +1,59 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using NaughtyAttributes;
 
 public class SaveManager : MonoBehaviour
 {
+    //when making a new enum, just give it a unique number, doesnt need to be in order
     public enum SaveDataNames
     {
         //misc
-        NewSave,
+        NoneOrNull = 0,
+        NewSave = 1,
 
         //level data
-        LevelProgress,
+        LevelSelectionIndex = 2,
+        UnlockedArea0Intro = 3,
+        UnlockedArea0Level1 = 4,
+        UnlockedArea0Level2 = 5,
+        UnlockedArea1Intro = 6,
+        UnlockedArea1Level1 = 7,
+        UnlockedArea1Level2 = 8,
+        UnlockedArea1Level3 = 9,
 
         //settings data
         //add ts eventually
 
         //alahas current inventory data
         //uses the unlock data names as a raw string id
-        AlahasSlot1,
-        AlahasSlot2,
-        AlahasSlot3,
-        AlahasSlot4,
-        AlahasSlot5,
-        AlahasSlot6,
+        AlahasSlot1 = 10,
+        AlahasSlot2 = 11,
+        AlahasSlot3 = 12,
+        AlahasSlot4 = 13,
+        AlahasSlot5 = 14,
+        AlahasSlot6 = 15,
 
         //alahas unlock data 
-        UnlockedBalahiboNiAmihan,
-        UnlockedDahonNgKawayan,
-        UnlockedBilaongRatan,
-        UnlockedDaliriNiTarabusaw,
-        UnlockedPakpakNiPah,
-        UnlockedKuwintasNaLuya,
-        UnlockedKuwintasNgPitongTuka,
-        UnlockedSungayNiTandayag,
-        UnlockedMataNiRabot,
-        UnlockedPangilNiOryol,
-        UnlockedIlangIlang,
-        UnlockedGumamela,
-        UnlockedPulseras,
-        UnlockedDahonNgMakahiya,
+        UnlockedBalahiboNiAmihan = 16,
+        UnlockedDahonNgKawayan = 17,
+        UnlockedBilaongRatan = 18,
+        UnlockedDaliriNiTarabusaw = 19,
+        UnlockedPakpakNiPah = 20,
+        UnlockedKuwintasNaLuya = 21,
+        UnlockedKuwintasNgPitongTuka = 22,
+        UnlockedSungayNiTandayag = 23,
+        UnlockedMataNiRabot = 24,
+        UnlockedPangilNiOryol = 25,
+        UnlockedIlangIlang = 26,
+        UnlockedGumamela = 27,
+        UnlockedPulseras = 28,
+        UnlockedDahonNgMakahiya = 29,
     }
 
     public static SaveManager Instance;
+    [OnValueChanged("defualtAllData")]
+    [SerializeField] bool manualSaveReset;
     [SerializeField] SaveData[] saveDatas;
 
     void Awake()
@@ -54,6 +67,8 @@ public class SaveManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        checkAllSaves();
+
         foreach(SaveData data in saveDatas)
         {
             if(!data.doesDataExist())
@@ -63,16 +78,42 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void saveData<T>(SaveDataNames name, T value)
+    void checkAllSaves()
+    {
+        //by gpt
+        HashSet<int> ids = new HashSet<int>();
+        foreach (SaveDataNames value in (SaveDataNames[])Enum.GetValues(typeof(SaveDataNames)))
+        {
+            int id = Convert.ToInt32(value);
+
+            if (!ids.Add(id))
+            {
+                Debug.LogError($"Duplicate enum ID found: {value} = {id}");
+            }
+        }
+
+        foreach(SaveDataNames id in (SaveDataNames[])Enum.GetValues(typeof(SaveDataNames)))
+        {
+            bool found = false;
+            foreach(SaveData data in saveDatas)
+                if(data.dataName == id)
+                    found = true;
+            if(!found)
+                Debug.LogError("Save Data: " + id + " not found in SaveManager's list");
+        }
+    }
+
+    public void saveData<T>(SaveDataNames name, T value, bool affectNewStatus)
     {
         foreach(SaveData data in saveDatas)
             if(data.dataName == name)
             {
                 data.setCurrentValue(value);
-                return;
+                break;
             }
 
-        Debug.LogWarning("Data name " + name + " couldnt be found!");
+        if(affectNewStatus && getSaveData<int>(SaveDataNames.NewSave) == 1)
+            saveData(SaveDataNames.NewSave, 0, false);
     }
 
     public T getSaveData<T>(SaveDataNames name)

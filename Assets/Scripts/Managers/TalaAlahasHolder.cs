@@ -38,7 +38,7 @@ public class TalaAlahasHolder : MonoBehaviour
         if (availableAlahas == null) availableAlahas = new List<Alahas>();
         if (!availableAlahas.Contains(alahas)) availableAlahas.Add(alahas); //this line is now useless
 
-        SaveManager.Instance.saveData(alahas.saveDataName, 1);
+        SaveManager.Instance.saveData(alahas.saveDataName, 1, true);
     }
 
     void getUnlockedAlahasFromSave()
@@ -72,6 +72,11 @@ public class TalaAlahasHolder : MonoBehaviour
         //transform.SetParent(null, true);
         //DontDestroyOnLoad(gameObject);
 
+        
+    }
+
+    void Start()
+    {
         getUnlockedAlahasFromSave();
     }
 }

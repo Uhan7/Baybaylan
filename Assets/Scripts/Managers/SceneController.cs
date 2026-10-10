@@ -45,7 +45,34 @@ public class SceneController : MonoBehaviour
         }
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
-        StartCoroutine(Swap(sceneName));
+
+        //checks if this is the first time finishing the level
+        int data = SaveManager.Instance.getSaveData<int>(GameManager.Instance.saveNextLevelID);
+        if(data == 0)
+        {
+            SaveManager.Instance.saveData(GameManager.Instance.saveNextLevelID, 1, true);
+            StartCoroutine(Swap(sceneName));
+        }
+        else    
+            StartCoroutine(Swap("Level Selection"));
+    }
+
+    public void titleStartButton()
+    {
+        if (transitionOnSwap != null)
+        {
+            transitionOnSwap.SetActive(true);
+            transitionOnSwap.GetComponent<ImageFader>().SetAlpha(0);
+            transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
+        }
+
+        Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
+
+        //names are hardcoded cuz i cant put 2 vars to pass for a button func
+        if(SaveManager.Instance.getSaveData<int>(SaveManager.SaveDataNames.NewSave) == 1)
+            StartCoroutine(Swap("Area 0 - Intro"));
+        else
+            StartCoroutine(Swap("Level Selection"));
     }
 
     public void SwapAfterAlahasSelection(string sceneName)

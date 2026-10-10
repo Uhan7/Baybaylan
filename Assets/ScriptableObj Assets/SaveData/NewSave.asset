@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ceba1c1fee1c44298aab63e6f51e8f, type: 3}
   m_Name: NewSave
   m_EditorClassIdentifier: 
-  dataName: 0
+  dataName: 1
   dataType: 0
   defualtIntValue: 1
-  currentIntValue: 0
+  currentIntValue: 1
   defaultFloatValue: 0
   currentFloatValue: 0
   defualtStringValue: 

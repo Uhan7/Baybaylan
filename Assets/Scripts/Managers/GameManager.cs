@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Configurations")]
     [SerializeField] public LevelConfig config; // References whole game
+    [SerializeField] public SaveManager.SaveDataNames saveNextLevelID;
 
     [Header("Wordlists")]
     [SerializeField] private TextAsset[] wordlists;
