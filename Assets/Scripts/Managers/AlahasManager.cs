@@ -47,19 +47,68 @@ public class AlahasManager : MonoBehaviour
 
         if (Instance != null && Instance != this)
         {
-            Instance.AbsorbSceneLoadout(this);
+            //Instance.AbsorbSceneLoadout(this);
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
-        transform.SetParent(null, true);
-        DontDestroyOnLoad(gameObject);
+        // transform.SetParent(null, true);
+        // DontDestroyOnLoad(gameObject);
 
         ResetAllAlahas(); //does nothing rn 
-        ResetActivationCounts();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Start()
+    {
+        getHeldAlahasFromSave();
+        ResetActivationCounts();
+    }
+
+    void getHeldAlahasFromSave()
+    {
+        List<Alahas> allAlahas = TalaAlahasHolder.Instance.allAlahas;
+        heldAlahas.Clear();
+        heldAlahas.AddRange(Enumerable.Repeat(default(Alahas), 6)); 
+
+        for(int i = 0; i < maxAlahasSlotCount; i++)
+        {
+            switch(i)
+            {
+                case 0:
+                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot1);
+                    break;
+                case 1:
+                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot2);
+                    break;
+                case 2:
+                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot3);
+                    break;
+                case 3:
+                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot4);
+                    break;
+                case 4:
+                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot5);
+                    break;
+                case 5:
+                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot6);
+                    break;
+            }
+        }
+    }
+
+    Alahas getSpecificAlahasFromSave(List<Alahas> list, SaveManager.SaveDataNames slotName)
+    {
+        string data = SaveManager.Instance.getSaveData<string>(slotName);
+        foreach(Alahas alahas in list)
+        {
+            if(alahas.saveDataName.ToString() == data)
+                return alahas;
+        }
+
+        return null;
     }
 
     private void AbsorbSceneLoadout(AlahasManager sceneManager)
@@ -247,6 +296,39 @@ public class AlahasManager : MonoBehaviour
 
         ResetActivationCounts();
         RefreshAlahasSlotsUI();
+        saveNewAlahasEquip(selectedSlots, slotCapacity);
+    }
+
+    void saveNewAlahasEquip(IReadOnlyList<Alahas> selectedSlots, int slotCapacity)
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            string name = "";
+            if(i < slotCapacity && selectedSlots[i])
+                name = selectedSlots[i].saveDataName.ToString();
+
+            switch(i)
+            {
+                case 0:
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot1, name, true);
+                    break;
+                case 1:
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot2, name, true);
+                    break;
+                case 2:
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot3, name, true);
+                    break;
+                case 3:
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot4, name, true);
+                    break;
+                case 4:
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot5, name, true);
+                    break;
+                case 5:
+                    SaveManager.Instance.saveData(SaveManager.SaveDataNames.AlahasSlot6, name, true);
+                    break;
+            }
+        }
     }
 
     public List<Alahas> GetLoadoutSnapshot(int slotCount)

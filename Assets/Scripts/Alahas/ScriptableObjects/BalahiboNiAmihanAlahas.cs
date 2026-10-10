@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Alahas/Balahibo")]
-public class BalahiboAlahas : Alahas
+[CreateAssetMenu(menuName = "Alahas/Balahibo ni Amihan")]
+public class BalahiboNiAmihanAlahas : Alahas
 {
     public override void onStart()
     {

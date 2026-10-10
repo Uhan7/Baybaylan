@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dahon Ng Kawayan Alahas
   m_EditorClassIdentifier: 
   alahasName: Dahon ng Kawayan
+  saveDataName: 17
   alahasSprite: {fileID: 21300000, guid: 3a7dfadf846b343c59bcfbf75a800c42, type: 3}
   description: Pindutin ang Alahas na ito upang magamit. Dalawang beses bawat level,
     maaaring gumawa ng 1 napiling titik.
