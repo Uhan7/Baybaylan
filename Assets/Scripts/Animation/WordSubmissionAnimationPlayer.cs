@@ -27,20 +27,30 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [SerializeField, Min(0f)] private float targetHitDelay = 11f / 60f;
 
     [Header("Heal Effects")]
-    [Tooltip("Soft aura emitted around the protagonist while casting Heal.")]
-    [SerializeField] private ParticleSystem healAuraParticles;
     [Tooltip("Particles sent from the protagonist toward the story target.")]
     [SerializeField] private ParticleSystem healMagicParticles;
-    [SerializeField, Min(0f)] private float healAuraDelay = 0.35f;
-    [SerializeField, Min(0f)] private float healMagicDelay = 0.72f;
-    [Tooltip("Time from the start of Heal before both emitters stop producing new particles.")]
-    [SerializeField, Min(0f)] private float healEffectsStopDelay = 1.35f;
-    [Tooltip("Time from the start of Heal before the target begins its darken-and-restore response.")]
+    [Tooltip("Speeds up only the Heal animation. Effect timings below are measured in real game seconds.")]
+    [SerializeField, Min(0.01f)] private float healAnimationSpeed = 1.75f;
+    [Tooltip("Time from the start of Heal before the projectile begins emitting.")]
+    [SerializeField, Min(0f)] private float healMagicDelay = 23f / 60f;
+    [Tooltip("Time from the start of Heal before the magic projectile stops emitting.")]
+    [SerializeField, Min(0f)] private float healEffectsStopDelay = 0.58f;
+    [Tooltip("The target waits for every projectile particle to finish before starting its dim pulse.")]
     [SerializeField, Min(0f)] private float targetHealDelay = 0.92f;
+    [Tooltip("Where to pause the Heal state while the target effect plays. 0.7 is frame 84 of the current 120-frame clip.")]
+    [SerializeField, Range(0f, 1f)] private float healPoseHoldNormalizedTime = 0.7f;
+    [Tooltip("Fallback hold time used only when no Story Target is available.")]
+    [SerializeField, Min(0f)] private float healPoseHoldDuration = 0.8f;
+    [Tooltip("Small beat after the target aura appears before the protagonist returns.")]
+    [SerializeField, Min(0f)] private float healReturnDelayAfterTarget;
 
     [Header("Safety")]
     [Tooltip("Stops a looping or misconfigured state from blocking the rest of the turn forever.")]
     [SerializeField, Min(0.1f)] private float maximumWaitSeconds = 10f;
+
+    private float animatorSpeedBeforeHeal = float.NaN;
+    private float animatorSpeedDuringHeal = 1f;
+    private bool healTargetSequenceFinished;
 
     public SuccessfulWordAnimation AnimationAfterSuccessfulWord
     {
@@ -65,6 +75,7 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     private void OnDisable()
     {
         StopHealParticles(true);
+        RestoreAnimatorSpeed();
     }
 
     public IEnumerator PlaySelectedAnimation()
@@ -111,14 +122,20 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
             targetResponse = StartCoroutine(storyTarget.PlayHitAfterDelay(targetHitDelay));
         else if (animation == SuccessfulWordAnimation.Heal)
         {
+            BeginHealAnimatorSpeed();
+            healTargetSequenceFinished = storyTarget == null;
             healEffects = StartCoroutine(PlayHealEffects());
             if (storyTarget != null)
-                targetResponse = StartCoroutine(storyTarget.PlayHealResponseAfterDelay(targetHealDelay));
+                targetResponse = StartCoroutine(PlayTargetHealSequence());
         }
 
         targetAnimator.Play(stateHash, animatorLayer, 0f);
+        if (animation == SuccessfulWordAnimation.Heal)
+            StartCoroutine(HoldHealPose(stateHash));
+
         yield return WaitForStateToFinish(stateHash, stateName);
         ReturnToIdle();
+        if (animation == SuccessfulWordAnimation.Heal) RestoreAnimatorSpeed();
 
         if (healEffects != null) yield return healEffects;
         if (targetResponse != null) yield return targetResponse;
@@ -128,18 +145,61 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     {
         StopHealParticles(true);
 
-        float auraTime = Mathf.Max(0f, healAuraDelay);
-        float magicTime = Mathf.Max(auraTime, healMagicDelay);
+        float magicTime = Mathf.Max(0f, healMagicDelay);
         float stopTime = Mathf.Max(magicTime, healEffectsStopDelay);
 
-        if (auraTime > 0f) yield return new WaitForSeconds(auraTime);
-        PlayParticleSystem(healAuraParticles);
-
-        if (magicTime > auraTime) yield return new WaitForSeconds(magicTime - auraTime);
+        if (magicTime > 0f) yield return new WaitForSeconds(magicTime);
         PlayParticleSystem(healMagicParticles);
 
         if (stopTime > magicTime) yield return new WaitForSeconds(stopTime - magicTime);
         StopHealParticles(false);
+    }
+
+    private IEnumerator HoldHealPose(int stateHash)
+    {
+        float deadline = Time.unscaledTime + maximumWaitSeconds;
+        float holdPoint = Mathf.Clamp01(healPoseHoldNormalizedTime);
+
+        while (Time.unscaledTime < deadline)
+        {
+            AnimatorStateInfo stateInfo = targetAnimator.GetCurrentAnimatorStateInfo(animatorLayer);
+            if (stateInfo.fullPathHash == stateHash && stateInfo.normalizedTime >= holdPoint)
+                break;
+
+            yield return null;
+        }
+
+        if (Time.unscaledTime >= deadline) yield break;
+
+        targetAnimator.speed = 0f;
+
+        if (storyTarget == null)
+        {
+            if (healPoseHoldDuration > 0f) yield return new WaitForSeconds(healPoseHoldDuration);
+        }
+        else
+        {
+            while (!healTargetSequenceFinished && Time.unscaledTime < deadline)
+                yield return null;
+
+            if (healReturnDelayAfterTarget > 0f)
+                yield return new WaitForSeconds(healReturnDelayAfterTarget);
+        }
+
+        targetAnimator.speed = animatorSpeedDuringHeal;
+    }
+
+    private IEnumerator PlayTargetHealSequence()
+    {
+        yield return storyTarget.PlayHealResponseAfterDelay(targetHealDelay);
+        healTargetSequenceFinished = true;
+    }
+
+    private void BeginHealAnimatorSpeed()
+    {
+        animatorSpeedBeforeHeal = targetAnimator.speed;
+        animatorSpeedDuringHeal = animatorSpeedBeforeHeal * Mathf.Max(0.01f, healAnimationSpeed);
+        targetAnimator.speed = animatorSpeedDuringHeal;
     }
 
     private static void PlayParticleSystem(ParticleSystem particles)
@@ -154,8 +214,16 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
             ? ParticleSystemStopBehavior.StopEmittingAndClear
             : ParticleSystemStopBehavior.StopEmitting;
 
-        if (healAuraParticles != null) healAuraParticles.Stop(true, behavior);
         if (healMagicParticles != null) healMagicParticles.Stop(true, behavior);
+    }
+
+    private void RestoreAnimatorSpeed()
+    {
+        if (targetAnimator == null || float.IsNaN(animatorSpeedBeforeHeal)) return;
+
+        targetAnimator.speed = animatorSpeedBeforeHeal;
+        animatorSpeedBeforeHeal = float.NaN;
+        animatorSpeedDuringHeal = 1f;
     }
 
     private IEnumerator WaitForStateToFinish(int stateHash, string stateName)

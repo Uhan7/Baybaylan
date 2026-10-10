@@ -1197,12 +1197,14 @@ MonoBehaviour:
   moveUpDelay: 0.5
   upDistance: 25
   invalidWordMessages:
-    notInWordlist: Wala sa talaan ang salitang “{word}”!
-    alreadyUsed: Naisumite na ang salitang “{word}”!
-    notPartikularNaSalita: Hindi “{word}” ang salitang kailangan buuin!
-    absentDiacritic: May titik sa “{word}” na walang Kudlit o Krus!
-    mahabangSalita: Masyadong maikli ang “{word}”. Kailangan ng 4 na titik o higit pa!
-    maiklingSalita: Masyadong mahaba ang “{word}”. Hanggang 4 na titik lamang!
+    notInWordlist: "Wala sa talaan ang salitang \u201C{word}\u201D!"
+    alreadyUsed: "Naisumite na ang salitang \u201C{word}\u201D!"
+    notPartikularNaSalita: "Hindi \u201C{word}\u201D ang salitang kailangan buuin!"
+    absentDiacritic: "May titik sa \u201C{word}\u201D na walang Kudlit o Krus!"
+    mahabangSalita: "Masyadong maikli ang \u201C{word}\u201D. Kailangan ng 4 na titik
+      o higit pa!"
+    maiklingSalita: "Masyadong mahaba ang \u201C{word}\u201D. Hanggang 4 na titik
+      lamang!"
 --- !u!1 &4586554156043149112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,6 +3869,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2406812471065810189}
     m_Modifications:
+    - target: {fileID: 196329874322986320, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 808550549201194165, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 808550549201194165, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 808550549201194165, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1200923037127771534, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 6.700012
@@ -3875,6 +3893,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 21.600006
       objectReference: {fileID: 0}
+    - target: {fileID: 1482385433323441892, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1790282514768274273, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_Name
       value: Hint Button
@@ -3882,6 +3904,18 @@ PrefabInstance:
     - target: {fileID: 2194014695221945656, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 7.200012
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539364006709136299, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539364006709136299, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539364006709136299, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2780379490813127085, guid: d77bd0a66604547c18ca8aac038aaeb8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

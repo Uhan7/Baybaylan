@@ -47,8 +47,8 @@ public static class WordSubmissionAnimationAssetCreator
             "Heal Magic Particles",
             false);
 
-        ConfigureLeftSidePrefab(controller, healAuraPrefab, healMagicPrefab);
-        ConfigureRightSidePrefab(controller);
+        ConfigureLeftSidePrefab(controller, healMagicPrefab);
+        ConfigureRightSidePrefab(controller, healAuraPrefab);
 
         AssetDatabase.SaveAssets();
 
@@ -118,7 +118,6 @@ public static class WordSubmissionAnimationAssetCreator
 
     private static void ConfigureLeftSidePrefab(
         AnimatorController controller,
-        GameObject healAuraPrefab,
         GameObject healMagicPrefab)
     {
         GameObject prefabRoot = PrefabUtility.LoadPrefabContents(LeftSidePrefabPath);
@@ -151,14 +150,20 @@ public static class WordSubmissionAnimationAssetCreator
             if (player == null) player = prefabRoot.AddComponent<WordSubmissionAnimationPlayer>();
 
             Transform portraitHolder = prefabRoot.transform.Find("Portrait Holder");
-            ParticleSystem healAura = EnsureHealParticleInstance(portraitHolder, healAuraPrefab);
+            RemoveChildIfPresent(portraitHolder, "Heal Aura Particles");
             ParticleSystem healMagic = EnsureHealParticleInstance(portraitHolder, healMagicPrefab);
 
             SerializedObject serializedPlayer = new SerializedObject(player);
             SerializedProperty animatorProperty = serializedPlayer.FindProperty("targetAnimator");
             animatorProperty.objectReferenceValue = animator;
-            serializedPlayer.FindProperty("healAuraParticles").objectReferenceValue = healAura;
             serializedPlayer.FindProperty("healMagicParticles").objectReferenceValue = healMagic;
+            serializedPlayer.FindProperty("healAnimationSpeed").floatValue = 1.75f;
+            serializedPlayer.FindProperty("healMagicDelay").floatValue = 23f / 60f;
+            serializedPlayer.FindProperty("healEffectsStopDelay").floatValue = 0.58f;
+            serializedPlayer.FindProperty("targetHealDelay").floatValue = 0.92f;
+            serializedPlayer.FindProperty("healPoseHoldNormalizedTime").floatValue = 0.7f;
+            serializedPlayer.FindProperty("healPoseHoldDuration").floatValue = 0.8f;
+            serializedPlayer.FindProperty("healReturnDelayAfterTarget").floatValue = 0f;
             serializedPlayer.ApplyModifiedPropertiesWithoutUndo();
 
             PrefabUtility.SaveAsPrefabAsset(prefabRoot, LeftSidePrefabPath);
@@ -169,7 +174,7 @@ public static class WordSubmissionAnimationAssetCreator
         }
     }
 
-    private static void ConfigureRightSidePrefab(AnimatorController controller)
+    private static void ConfigureRightSidePrefab(AnimatorController controller, GameObject healAuraPrefab)
     {
         GameObject prefabRoot = PrefabUtility.LoadPrefabContents(RightSidePrefabPath);
 
@@ -199,9 +204,19 @@ public static class WordSubmissionAnimationAssetCreator
             StoryTargetAnimationPlayer player = prefabRoot.GetComponent<StoryTargetAnimationPlayer>();
             if (player == null) player = prefabRoot.AddComponent<StoryTargetAnimationPlayer>();
 
+            Transform portraitHolder = prefabRoot.transform.Find("Portrait Holder");
+            Transform characterImage = portraitHolder.Find("Character Image");
+            ParticleSystem healAura = EnsureHealParticleInstance(portraitHolder, healAuraPrefab);
+
             SerializedObject serializedPlayer = new SerializedObject(player);
             serializedPlayer.FindProperty("targetAnimator").objectReferenceValue = animator;
-            serializedPlayer.FindProperty("healVisualRoot").objectReferenceValue = prefabRoot.transform.Find("Portrait Holder");
+            serializedPlayer.FindProperty("healCharacterGraphic").objectReferenceValue =
+                characterImage != null ? characterImage.GetComponent<UnityEngine.UI.Graphic>() : null;
+            serializedPlayer.FindProperty("healAuraParticles").objectReferenceValue = healAura;
+            serializedPlayer.FindProperty("healAuraEmissionDuration").floatValue = 0.25f;
+            serializedPlayer.FindProperty("healDarkenDuration").floatValue = 0.22f;
+            serializedPlayer.FindProperty("healDarkHoldDuration").floatValue = 0.18f;
+            serializedPlayer.FindProperty("healRestoreDuration").floatValue = 0.4f;
             serializedPlayer.ApplyModifiedPropertiesWithoutUndo();
 
             PrefabUtility.SaveAsPrefabAsset(prefabRoot, RightSidePrefabPath);
@@ -232,16 +247,16 @@ public static class WordSubmissionAnimationAssetCreator
 
     private static void ApplyDefaultHealCurves(AnimationClip clip)
     {
-        float[] times = { 0f, 0.25f, 0.58f, 1.35f, 1.62f, 1.95f };
+        float[] times = { 0f, 40f / 60f, 84f / 60f, 100f / 60f, 2f };
 
-        SetCurve(clip, times, "m_AnchoredPosition.x", 20f, 0f, 1040f, 1040f, 520f, 20f);
-        SetCurve(clip, times, "m_AnchoredPosition.y", -20f, -8f, 0f, 0f, -10f, -20f);
-        SetCurve(clip, times, "localEulerAnglesRaw.x", 0f, 0f, 0f, 0f, 0f, 0f);
-        SetCurve(clip, times, "localEulerAnglesRaw.y", 0f, 0f, 0f, 0f, 0f, 0f);
-        SetCurve(clip, times, "localEulerAnglesRaw.z", 0f, 2f, -2f, -2f, 1f, 0f);
-        SetCurve(clip, times, "m_LocalScale.x", 1f, 0.98f, 1.01f, 1.01f, 1f, 1f);
-        SetCurve(clip, times, "m_LocalScale.y", 1f, 1.02f, 0.99f, 0.99f, 1f, 1f);
-        SetCurve(clip, times, "m_LocalScale.z", 1f, 1f, 1f, 1f, 1f, 1f);
+        SetCurve(clip, times, "m_AnchoredPosition.x", 20f, 1040f, 1040f, 520f, 20f);
+        SetCurve(clip, times, "m_AnchoredPosition.y", -20f, 0f, 0f, -10f, -20f);
+        SetCurve(clip, times, "localEulerAnglesRaw.x", 0f, 0f, 0f, 0f, 0f);
+        SetCurve(clip, times, "localEulerAnglesRaw.y", 0f, 0f, 0f, 0f, 0f);
+        SetCurve(clip, times, "localEulerAnglesRaw.z", 0f, -2f, -2f, 1f, 0f);
+        SetCurve(clip, times, "m_LocalScale.x", 1f, 1.01f, 1.01f, 1f, 1f);
+        SetCurve(clip, times, "m_LocalScale.y", 1f, 0.99f, 0.99f, 1f, 1f);
+        SetCurve(clip, times, "m_LocalScale.z", 1f, 1f, 1f, 1f, 1f);
 
         clip.frameRate = 60f;
         clip.wrapMode = WrapMode.Once;
@@ -272,14 +287,24 @@ public static class WordSubmissionAnimationAssetCreator
             GameObject source = PrefabUtility.GetCorrespondingObjectFromSource(existing.gameObject);
             string sourcePath = AssetDatabase.GetAssetPath(source);
             if (sourcePath == AssetDatabase.GetAssetPath(particlePrefab))
+            {
+                existing.localScale = Vector3.one;
                 return existing.GetComponent<ParticleSystem>();
+            }
 
             Object.DestroyImmediate(existing.gameObject);
         }
 
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(particlePrefab, portraitHolder);
         instance.name = particlePrefab.name;
+        instance.transform.localScale = Vector3.one;
         return instance.GetComponent<ParticleSystem>();
+    }
+
+    private static void RemoveChildIfPresent(Transform parent, string childName)
+    {
+        Transform child = parent.Find(childName);
+        if (child != null) Object.DestroyImmediate(child.gameObject);
     }
 
     private static GameObject CreateHealParticleObject(string objectName, bool isAura)
@@ -327,10 +352,10 @@ public static class WordSubmissionAnimationAssetCreator
         main.maxParticles = isAura ? 100 : 140;
         main.startLifetime = isAura
             ? new ParticleSystem.MinMaxCurve(0.65f, 1.05f)
-            : new ParticleSystem.MinMaxCurve(0.8f, 1.15f);
+            : new ParticleSystem.MinMaxCurve(0.2f, 0.32f);
         main.startSpeed = isAura
             ? new ParticleSystem.MinMaxCurve(0.7f, 1.5f)
-            : new ParticleSystem.MinMaxCurve(13f, 16f);
+            : new ParticleSystem.MinMaxCurve(5f, 10f);
         main.startSize = isAura
             ? new ParticleSystem.MinMaxCurve(0.18f, 0.38f)
             : new ParticleSystem.MinMaxCurve(0.12f, 0.28f);
