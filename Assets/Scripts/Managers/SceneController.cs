@@ -37,6 +37,23 @@ public class SceneController : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void SwapWrapper(string sceneName) // Called by buttons n stuff
     {
+        StartSceneSwap(sceneName);
+    }
+
+    public void CompleteLevel(string sceneName)
+    {
+        SaveManager.SaveDataNames nextLevelId = GameManager.Instance.saveNextLevelID;
+        if (nextLevelId != SaveManager.SaveDataNames.NoneOrNull &&
+            SaveManager.Instance.getSaveData<int>(nextLevelId) == 0)
+        {
+            SaveManager.Instance.saveData(nextLevelId, 1, true);
+        }
+
+        StartSceneSwap(sceneName);
+    }
+
+    private void StartSceneSwap(string sceneName)
+    {
         if (transitionOnSwap != null)
         {
             transitionOnSwap.SetActive(true);
@@ -46,15 +63,7 @@ public class SceneController : MonoBehaviour
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
 
-        //checks if this is the first time finishing the level
-        int data = SaveManager.Instance.getSaveData<int>(GameManager.Instance.saveNextLevelID);
-        if(data == 0)
-        {
-            SaveManager.Instance.saveData(GameManager.Instance.saveNextLevelID, 1, true);
-            StartCoroutine(Swap(sceneName));
-        }
-        else    
-            StartCoroutine(Swap("Level Selection"));
+        StartCoroutine(Swap(sceneName));
     }
 
     public void titleStartButton()
@@ -68,11 +77,7 @@ public class SceneController : MonoBehaviour
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
 
-        //names are hardcoded cuz i cant put 2 vars to pass for a button func
-        if(SaveManager.Instance.getSaveData<int>(SaveManager.SaveDataNames.NewSave) == 1)
-            StartCoroutine(Swap("Area 0 - Intro"));
-        else
-            StartCoroutine(Swap("Level Selection"));
+        StartCoroutine(Swap("Area 0 - Intro"));
     }
 
     public void SwapAfterAlahasSelection(string sceneName)
