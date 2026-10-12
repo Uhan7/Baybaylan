@@ -9,7 +9,8 @@ public static class InvalidWordTypes
         NotPartikularNaSalita,
         AbsentDiacritic,
         MahabangSalita,
-        MaiklingSalita
+        MaiklingSalita,
+        NotPagiibangTitik
     }
 
     [System.Serializable]
@@ -30,6 +31,8 @@ public static class InvalidWordTypes
         [SerializeField] string mahabangSalita = "Masyadong maikli ang “{word}”. Kailangan ng 4 na titik o higit pa!";
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string maiklingSalita = "Masyadong mahaba ang “{word}”. Hanggang 4 na titik lamang!";
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string notPagiibangTitik = "May umulit na titik sa “{word}”. Bawal umulit ang titik!";
 
         public string GetInvalidWordMessage(InvalidWordType type, string word)
         {
@@ -53,6 +56,9 @@ public static class InvalidWordTypes
                     break;
                 case InvalidWordType.MaiklingSalita:
                     template = maiklingSalita;
+                    break;
+                case InvalidWordType.NotPagiibangTitik:
+                    template = notPagiibangTitik;
                     break;
                 default:
                     return "";

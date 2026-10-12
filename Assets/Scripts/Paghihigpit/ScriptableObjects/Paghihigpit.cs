@@ -12,8 +12,9 @@ public enum PaghihigpitTypes
     MaiklingSalita,
     SumpaNgPitongUlo,
     KaposNaTitik,
+    PagiibangTitik,
 }
-    
+
 [CreateAssetMenu]
 public class Paghihigpit : ScriptableObject
 {

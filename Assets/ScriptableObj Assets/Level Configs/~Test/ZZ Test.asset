@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: ZZ Test
   m_EditorClassIdentifier: 
-  tilesAmount: 5
-  kaposNaTitik: 1
+  tilesAmount: 15
+  kaposNaTitik: 3
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
   - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
@@ -57,9 +57,9 @@ MonoBehaviour:
   multipleTargetMahika: 0b00000016000000210000002c00000037000000420000004d000000
   maxAksyon: 7
   numKaposAksyon: 0
+  alahasSlotCount: 3
   alahasAquiredAfterWin: {fileID: 0}
-  activePaghihigpit:
-  - {fileID: 11400000, guid: 4ccbb2a1285bb9c4eb2a78e8ca2eb6ec, type: 2}
+  activePaghihigpit: []
   partikularNaSalita_wordList:
   - ba
   - 

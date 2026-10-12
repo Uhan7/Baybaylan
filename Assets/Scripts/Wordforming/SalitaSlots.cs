@@ -187,6 +187,30 @@ public class SalitaSlots : MonoBehaviour
             return false;
         }
 
+        // PAGHIHIGPIT: Pag-iibang Titik
+        // Check for duplicate Baybayin tiles
+        if (config.HasPaghihigpit(PaghihigpitTypes.PagiibangTitik))
+        {
+            int numActiveTiles = activeTiles.Count;
+            for (int i = 0; i < (numActiveTiles-1); i++)
+            {
+                for (int j = i+1; j < numActiveTiles; j++)
+                {
+                    string tile1 = activeTiles[i].latinText;
+                    string tile2 = activeTiles[j].latinText;
+                    char char1 = tile1.ToCharArray()[0];
+                    char char2 = tile2.ToCharArray()[0];
+
+                    if (char1 == char2)
+                    {
+                        invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPagiibangTitik, latinSalita);
+                        print("Pagiibang Titik");
+                        return false;
+                    }
+                }
+            }
+        }
+
         // Check if the candidate salita is in the wordlist
         if (!GameManager.Instance.validWords.Contains(latinSalita))
         {
