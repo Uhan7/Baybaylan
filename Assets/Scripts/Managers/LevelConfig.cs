@@ -20,6 +20,7 @@ public class LevelConfig : ScriptableObject
 {
     [Header("Tiles")]
     [HideIf("hasItinakdangTitik"), SerializeField] public int tilesAmount;
+    [ShowIf("hasKaposNaTitik"), SerializeField] public int kaposNaTitik = 1;
     [HideIf("hasItinakdangTitik"), SerializeField] public List<GameObject> tilesSelection;
     [ShowIf("hasItinakdangTitik"), Tooltip("Each element is the exact tile pool for its numbered Aksyon."), SerializeField]
     public List<ItinakdangTitikAksyon> itinakdangTitikPerAksyon = new List<ItinakdangTitikAksyon>();
@@ -126,6 +127,13 @@ public class LevelConfig : ScriptableObject
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
 
+        // Logic for Kapos na Titik
+        if (HasPaghihigpit(PaghihigpitTypes.KaposNaTitik))
+        {
+            if (kaposNaTitik < 1) kaposNaTitik = 1;
+            if (kaposNaTitik >= tilesAmount) kaposNaTitik = (tilesAmount - 1);
+        }
+
         // If ever the targetMahika is set to 0 elements, automatically create one entry with targetMahika = 100
         if (multipleTargetMahika.Length <= 0 ) multipleTargetMahika = new int[1] {targetMahika};
 
@@ -185,5 +193,10 @@ public class LevelConfig : ScriptableObject
     bool hasSumpaNgPitongUlo()
     {
         return HasPaghihigpit(PaghihigpitTypes.SumpaNgPitongUlo);
+    }
+
+    bool hasKaposNaTitik()
+    {
+        return HasPaghihigpit(PaghihigpitTypes.KaposNaTitik);
     }
 }
