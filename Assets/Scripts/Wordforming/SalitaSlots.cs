@@ -115,10 +115,17 @@ public class SalitaSlots : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {
-        // Note that words may be "spelled" same but still be incorrect if it won't appear in the baybayin wordlist
-        // Because Ako can be spelled A-K-O (instead of A-Ko) which is 3 characters,,,, thas wrong since Baybayin emphasizes "syllables"
-
-        // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
+        // A standalone vowel is only valid at the start of a word or after a
+        // tile whose Latin text already ends in a vowel. This distinguishes
+        // valid sequences such as MA-A-A-RI from shortcuts such as
+        // MA-GA-N-D-A, even though both approaches can produce a valid word.
+        if (!BaybayinTileSequenceRules.HasValidStandaloneVowelPlacement(activeTiles))
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(
+                InvalidWordTypes.InvalidWordType.InvalidVowelPlacement,
+                latinSalita);
+            return false;
+        }
 
         // PAGHIHIGPIT: Partikular na Salita
         // Check if the candidate salita is the particular word for that aksyon
