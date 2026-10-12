@@ -1092,6 +1092,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: useEditorAlahasOverride
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: availableAlahas.Array.size
       value: 8
       objectReference: {fileID: 0}

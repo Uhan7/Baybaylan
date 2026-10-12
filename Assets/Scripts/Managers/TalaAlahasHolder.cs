@@ -5,8 +5,25 @@ using System.Collections.Generic;
 public class TalaAlahasHolder : MonoBehaviour
 {
     [HideInInspector] public static TalaAlahasHolder Instance;
+
+    [Header("Editor Testing")]
+    [Tooltip("Editor only. Uses Available Alahas instead of the unlock save and blocks save writes while this scene is being tested.")]
+    [SerializeField] private bool useEditorAlahasOverride;
+
     public List<Alahas> availableAlahas = new List<Alahas>();
     public List<Alahas> allAlahas = new List<Alahas>();
+
+    public bool IsUsingEditorAlahasOverride
+    {
+        get
+        {
+#if UNITY_EDITOR
+            return useEditorAlahasOverride;
+#else
+            return false;
+#endif
+        }
+    }
 
     public bool IsUnlocked(Alahas alahas)
     {
@@ -36,7 +53,9 @@ public class TalaAlahasHolder : MonoBehaviour
     {
         if (!alahas) return;
         if (availableAlahas == null) availableAlahas = new List<Alahas>();
-        if (!availableAlahas.Contains(alahas)) availableAlahas.Add(alahas); //this line is now useless
+        if (!availableAlahas.Contains(alahas)) availableAlahas.Add(alahas);
+
+        if (IsUsingEditorAlahasOverride) return;
 
         SaveManager.Instance.saveData(alahas.saveDataName, 1, true);
     }
@@ -77,6 +96,15 @@ public class TalaAlahasHolder : MonoBehaviour
 
     void Start()
     {
+        if (IsUsingEditorAlahasOverride)
+        {
+            Debug.Log(
+                $"[Alahas Test Override] Using {availableAlahas.Count} Inspector-assigned " +
+                "Alahas. Save writes are disabled for this play session.",
+                this);
+            return;
+        }
+
         getUnlockedAlahasFromSave();
     }
 }
