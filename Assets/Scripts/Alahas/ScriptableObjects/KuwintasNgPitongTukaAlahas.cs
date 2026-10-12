@@ -58,4 +58,10 @@ class KuwintasNgPitongTukaAlahas : Alahas
         // AlahasSubManager already supplies the base 1x multiplier.
         AlahasSubManager.Instance.scoreMultiplier += totalScoreMultiplier;
     }
+
+    public override bool TryGetExtraBadgeText(out string text)
+    {
+        text = Mathf.RoundToInt(totalScoreMultiplier * 100f) + "%";
+        return true;
+    }
 }

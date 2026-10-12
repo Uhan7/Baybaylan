@@ -65,6 +65,7 @@ public class AlahasManager : MonoBehaviour
     {
         getHeldAlahasFromSave();
         ResetActivationCounts();
+        RefreshAlahasSlotsUI();
     }
 
     void getHeldAlahasFromSave()

@@ -127,6 +127,16 @@ public class SalitaSlots : MonoBehaviour
             return false;
         }
 
+        // The Baybayin NG character must be used instead of separate N and G
+        // tiles, regardless of the G tile's diacritic.
+        if (!BaybayinTileSequenceRules.UsesDedicatedNgTile(activeTiles))
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(
+                InvalidWordTypes.InvalidWordType.SplitNgTiles,
+                latinSalita);
+            return false;
+        }
+
         // PAGHIHIGPIT: Partikular na Salita
         // Check if the candidate salita is the particular word for that aksyon
         if (config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))

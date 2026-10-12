@@ -10,7 +10,8 @@ public static class InvalidWordTypes
         AbsentDiacritic,
         MahabangSalita,
         MaiklingSalita,
-        InvalidVowelPlacement
+        InvalidVowelPlacement,
+        SplitNgTiles
     }
 
     [System.Serializable]
@@ -21,6 +22,9 @@ public static class InvalidWordTypes
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string invalidVowelPlacement = "Pagsamahin ang katinig at patinig ng bawat pantig!";
+
+        [TextArea]
+        [SerializeField] string splitNgTiles = "Gamitin ang titik NG!";
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string alreadyUsed = "Naisumite na ang salitang “{word}”!";
@@ -47,6 +51,9 @@ public static class InvalidWordTypes
                     break;
                 case InvalidWordType.InvalidVowelPlacement:
                     template = invalidVowelPlacement;
+                    break;
+                case InvalidWordType.SplitNgTiles:
+                    template = splitNgTiles;
                     break;
                 case InvalidWordType.AlreadyUsed:
                     template = alreadyUsed;
