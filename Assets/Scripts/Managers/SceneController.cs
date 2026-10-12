@@ -37,6 +37,23 @@ public class SceneController : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void SwapWrapper(string sceneName) // Called by buttons n stuff
     {
+        StartSceneSwap(sceneName);
+    }
+
+    public void CompleteLevel(string sceneName)
+    {
+        SaveManager.SaveDataNames nextLevelId = GameManager.Instance.saveNextLevelID;
+        if (nextLevelId != SaveManager.SaveDataNames.NoneOrNull &&
+            SaveManager.Instance.getSaveData<int>(nextLevelId) == 0)
+        {
+            SaveManager.Instance.saveData(nextLevelId, 1, true);
+        }
+
+        StartSceneSwap(sceneName);
+    }
+
+    private void StartSceneSwap(string sceneName)
+    {
         if (transitionOnSwap != null)
         {
             transitionOnSwap.SetActive(true);
@@ -45,7 +62,22 @@ public class SceneController : MonoBehaviour
         }
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
+
         StartCoroutine(Swap(sceneName));
+    }
+
+    public void titleStartButton()
+    {
+        if (transitionOnSwap != null)
+        {
+            transitionOnSwap.SetActive(true);
+            transitionOnSwap.GetComponent<ImageFader>().SetAlpha(0);
+            transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
+        }
+
+        Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
+
+        StartCoroutine(Swap("Area 0 - Intro"));
     }
 
     public void SwapAfterAlahasSelection(string sceneName)

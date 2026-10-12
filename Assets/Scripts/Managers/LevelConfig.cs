@@ -47,6 +47,8 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public int numKaposAksyon;
 
     [Header("Alahas")]
+    [Min(1), Tooltip("Number of Alahas slots available to Tala in this level.")]
+    [SerializeField] public int alahasSlotCount = 3;
     [SerializeField] public Alahas alahasAquiredAfterWin;
 
     [Header("Paghihigpit")]
@@ -126,6 +128,7 @@ public class LevelConfig : ScriptableObject
     private void UpdateAksyonSettings()
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
+        alahasSlotCount = Mathf.Max(1, alahasSlotCount);
 
         // Logic for Kapos na Titik
         if (HasPaghihigpit(PaghihigpitTypes.KaposNaTitik))

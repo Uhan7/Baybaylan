@@ -100,6 +100,7 @@ public class AlahasSelectionController : MonoBehaviour
         pendingTileSet = tileSet;
         CacheInventoryItems();
         CacheSelectionSlots();
+        ApplyConfiguredSlotCapacity();
 
         int slotCount = Mathf.Max(1, selectionSlots.Count);
         draftSlots = AlahasManager.Instance.GetLoadoutSnapshot(slotCount);
@@ -372,6 +373,26 @@ public class AlahasSelectionController : MonoBehaviour
             slot.Configure(this, popups[i], i);
             selectionSlots.Add(slot);
         }
+    }
+
+    private void ApplyConfiguredSlotCapacity()
+    {
+        LevelConfig levelConfig = GameManager.Instance != null
+            ? GameManager.Instance.config
+            : null;
+        int configuredCount = levelConfig != null
+            ? Mathf.Max(1, levelConfig.alahasSlotCount)
+            : selectionSlots.Count;
+        int activeCount = Mathf.Min(configuredCount, selectionSlots.Count);
+
+        for (int i = 0; i < selectionSlots.Count; i++)
+            selectionSlots[i].gameObject.SetActive(i < activeCount);
+
+        if (activeCount < selectionSlots.Count)
+            selectionSlots.RemoveRange(activeCount, selectionSlots.Count - activeCount);
+
+        if (AlahasManager.Instance != null)
+            AlahasManager.Instance.maxAlahasSlotCount = activeCount;
     }
 
     private void TryEquipInFirstAvailableBlock(Alahas alahas)

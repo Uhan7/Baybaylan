@@ -19,8 +19,15 @@ class ReccomendWordButton : MonoBehaviour
 
     public void OnClick()
     {
-        AlahasSubManager.Instance.reccButtonPressed = true;
-        displayWord = true;
+        if (AlahasManager.Instance == null || AlahasManager.Instance.heldAlahas == null)
+            return;
+
+        foreach (Alahas alahas in AlahasManager.Instance.heldAlahas)
+        {
+            if (!(alahas is DaliriNiTarabusawAlahas daliri)) continue;
+            displayWord = daliri.TryActivate();
+            return;
+        }
     }
 
     void Update()

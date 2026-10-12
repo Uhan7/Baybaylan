@@ -17,7 +17,6 @@ public class AlahasInventoryItem : MonoBehaviour,
     private Alahas alahas;
     private bool unlocked;
     private bool dragging;
-    private bool suppressNextClick;
     private RectTransform dragPreview;
     private Color normalColor = Color.white;
 
@@ -55,9 +54,18 @@ public class AlahasInventoryItem : MonoBehaviour,
         itemImage.raycastTarget = true;
 
         normalColor = unlocked
-            ? (isEquipped ? new Color(0.45f, 0.45f, 0.45f, 0.45f) : Color.white)
+            ? (isEquipped ? new Color(0.5f, 0.5f, 0.5f, 0.5f) : Color.white)
             : new Color(1f, 1f, 1f, 0.7f);
-        itemImage.color = normalColor;
+        ApplyVisualState();
+    }
+
+    private void LateUpdate()
+    {
+        // Tile Base uses Write Defaults and includes color animation in one of
+        // its states, so the Animator can restore this Image to white after
+        // Configure runs. Reapply the selection tint after animation while
+        // leaving its hover/hold scale animation intact.
+        ApplyVisualState();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -65,16 +73,13 @@ public class AlahasInventoryItem : MonoBehaviour,
         if (!unlocked || controller == null || rootCanvas == null || rectTransform == null) return;
 
         dragging = true;
-        suppressNextClick = true;
         tooltip?.HideTooltip();
         animator?.SetBool("Hover", false);
         animator?.SetBool("Hold", false);
         canvasGroup.blocksRaycasts = false;
         CreateDragPreview(eventData);
 
-        Color faded = normalColor;
-        faded.a *= 0.35f;
-        itemImage.color = faded;
+        ApplyVisualState();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -98,12 +103,6 @@ public class AlahasInventoryItem : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (suppressNextClick)
-        {
-            suppressNextClick = false;
-            return;
-        }
-
         if (!dragging && unlocked && controller != null)
             controller.TryAutoEquip(alahas);
     }
@@ -215,6 +214,15 @@ public class AlahasInventoryItem : MonoBehaviour,
         if (dragPreview != null)
             Destroy(dragPreview.gameObject);
         dragPreview = null;
+    }
+
+    private void ApplyVisualState()
+    {
+        if (itemImage == null) return;
+
+        Color color = normalColor;
+        if (dragging) color.a *= 0.35f;
+        itemImage.color = color;
     }
 
     private void OnDisable()

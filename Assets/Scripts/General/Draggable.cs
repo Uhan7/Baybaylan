@@ -52,6 +52,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (InteractionLocked) return;
 
+        ToolTipAble tooltip = GetComponentInChildren<ToolTipAble>();
+        if (tooltip) tooltip.HideTooltip();
+
         if (dragNotify == null) dragNotify = GetComponent<IDragNotify>();
 
         anyBeingDragged = true;

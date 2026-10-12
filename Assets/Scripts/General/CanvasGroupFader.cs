@@ -52,6 +52,10 @@ public class CanvasGroupFader : MonoBehaviour
 
     public void FadeOut(float duration)
     {
+        // A transparent CanvasGroup can still intercept UI pointer events. Stop
+        // the outgoing UI from blocking the game as soon as its fade begins.
+        targetGroup.interactable = false;
+        targetGroup.blocksRaycasts = false;
         FadeTo(0f, duration);
     }
 

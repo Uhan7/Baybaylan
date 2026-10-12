@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 2
   paghihigpitName: Partikular Na Salita
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 21300000, guid: 581d0df7ffb7f485a8906fcbe23627c4, type: 3}
   description: 'Mga partikular na salita lamang ang tatanggapin. Nagbabago ito kada
     aksyon.
 

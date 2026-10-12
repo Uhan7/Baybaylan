@@ -574,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 729b6e4701e7d472799633978cf64344, type: 2}
+      objectReference: {fileID: 11400000, guid: b4f42271094eb4a9fa152161cd1cedff, type: 2}
     - target: {fileID: 2094052328367243392, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

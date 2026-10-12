@@ -41,7 +41,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     sentence: This is just a sample level, feel free to play around or stop whenever
-      you want,
+      you want.
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

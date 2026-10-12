@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 1
   paghihigpitName: Bawal Umulit
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 21300000, guid: e0b661635de0b405dae509a4f7636dfa, type: 3}
   description: Hindi maaaring isulat muli ang salitang naisumite na.
   extraText: Mukhang hindi gumana ang mahika ng mga salitang naisulat ko na... Ibahin
     ko dapat ang mga salita.

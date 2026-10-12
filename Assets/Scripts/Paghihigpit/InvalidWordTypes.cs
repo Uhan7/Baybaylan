@@ -16,20 +16,20 @@ public static class InvalidWordTypes
     public class Messages
     {
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
-        [SerializeField] string notInWordlist = "Walang salitang \"{word}";
+        [SerializeField] string notInWordlist = "Wala sa talaan ang salitang “{word}”!";
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
-        [SerializeField] string alreadyUsed = "Salitang \"{word}\" has already been used!";
+        [SerializeField] string alreadyUsed = "Naisumite na ang salitang “{word}”!";
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
-        [SerializeField] string notPartikularNaSalita = "Salitang \"{word}\" is not the particular word!";
+        [SerializeField] string notPartikularNaSalita = "Hindi “{word}” ang salitang kailangan buuin!";
         
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
-        [SerializeField] string absentDiacritic = "\"{word}\" has at least one letter without a diacritic!";
+        [SerializeField] string absentDiacritic = "May titik sa “{word}” na walang Kudlit o Krus!";
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
-        [SerializeField] string mahabangSalita = "\"{word}\" has less than 4 tiles!";
+        [SerializeField] string mahabangSalita = "Masyadong maikli ang “{word}”. Kailangan ng 4 na titik o higit pa!";
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
-        [SerializeField] string maiklingSalita = "\"{word}\" has more than 4 tiles!";
+        [SerializeField] string maiklingSalita = "Masyadong mahaba ang “{word}”. Hanggang 4 na titik lamang!";
 
         public string GetInvalidWordMessage(InvalidWordType type, string word)
         {
