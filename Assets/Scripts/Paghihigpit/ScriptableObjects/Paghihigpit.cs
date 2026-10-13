@@ -11,6 +11,8 @@ public enum PaghihigpitTypes
     HanginHabagat,
     MaiklingSalita,
     SumpaNgPitongUlo,
+    KaposNaTitik,
+    PagiibangTitik,
 }
 
 [CreateAssetMenu]
