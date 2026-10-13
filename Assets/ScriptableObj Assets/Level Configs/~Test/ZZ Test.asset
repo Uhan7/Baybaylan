@@ -59,7 +59,8 @@ MonoBehaviour:
   numKaposAksyon: 0
   alahasSlotCount: 3
   alahasAquiredAfterWin: {fileID: 0}
-  activePaghihigpit: []
+  activePaghihigpit:
+  - {fileID: 11400000, guid: 7849d4880d93e8e4dbb7eee692f052c0, type: 2}
   partikularNaSalita_wordList:
   - ba
   - 
