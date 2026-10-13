@@ -10,6 +10,8 @@ public static class InvalidWordTypes
         AbsentDiacritic,
         MahabangSalita,
         MaiklingSalita,
+        InvalidVowelPlacement,
+        SplitNgTiles,
         NotPagiibangTitik
     }
 
@@ -20,6 +22,12 @@ public static class InvalidWordTypes
         [SerializeField] string notInWordlist = "Wala sa talaan ang salitang “{word}”!";
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string invalidVowelPlacement = "Pagsamahin ang katinig at patinig ng bawat pantig!";
+
+        [TextArea]
+        [SerializeField] string splitNgTiles = "Gamitin ang titik NG!";
+
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string alreadyUsed = "Naisumite na ang salitang “{word}”!";
 
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
@@ -27,8 +35,10 @@ public static class InvalidWordTypes
         
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string absentDiacritic = "May titik sa “{word}” na walang Kudlit o Krus!";
+
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string mahabangSalita = "Masyadong maikli ang “{word}”. Kailangan ng 4 na titik o higit pa!";
+
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string maiklingSalita = "Masyadong mahaba ang “{word}”. Hanggang 4 na titik lamang!";
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
@@ -41,6 +51,12 @@ public static class InvalidWordTypes
             {
                 case InvalidWordType.NotInWordlist:
                     template = notInWordlist;
+                    break;
+                case InvalidWordType.InvalidVowelPlacement:
+                    template = invalidVowelPlacement;
+                    break;
+                case InvalidWordType.SplitNgTiles:
+                    template = splitNgTiles;
                     break;
                 case InvalidWordType.AlreadyUsed:
                     template = alreadyUsed;

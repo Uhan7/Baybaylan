@@ -224,12 +224,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentObj: {fileID: 4480330844728702183}
   popupPrefab: {fileID: 3177499782277301864, guid: d24357d9410ecf44eb58b7e418242f07, type: 3}
-  fadeOutTime: 1
-  fadeOutDelay: 0.25
-  moveUpDelay: 0.5
+  fadeOutTime: 1.25
+  fadeOutDelay: 1.5
+  moveUpDelay: 1.75
   upDistance: 25
   invalidWordMessages:
     notInWordlist: "Wala sa talaan ang salitang \u201C{word}\u201D!"
+    invalidVowelPlacement: Pagsamahin ang katinig at patinig ng bawat pantig!
     alreadyUsed: "Naisumite na ang salitang \u201C{word}\u201D!"
     notPartikularNaSalita: "Hindi \u201C{word}\u201D ang salitang kailangan buuin!"
     absentDiacritic: "May titik sa \u201C{word}\u201D na walang Kudlit o Krus!"

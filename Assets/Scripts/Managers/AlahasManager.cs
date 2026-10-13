@@ -65,6 +65,7 @@ public class AlahasManager : MonoBehaviour
     {
         getHeldAlahasFromSave();
         ResetActivationCounts();
+        RefreshAlahasSlotsUI();
     }
 
     void getHeldAlahasFromSave()
@@ -296,7 +297,19 @@ public class AlahasManager : MonoBehaviour
 
         ResetActivationCounts();
         RefreshAlahasSlotsUI();
-        saveNewAlahasEquip(selectedSlots, slotCapacity);
+
+        bool blockSaveForEditorTesting = TalaAlahasHolder.Instance != null &&
+            TalaAlahasHolder.Instance.IsUsingEditorAlahasOverride;
+        if (blockSaveForEditorTesting)
+        {
+            Debug.Log(
+                "[Alahas Test Override] Applied the temporary loadout without changing the save.",
+                this);
+        }
+        else
+        {
+            saveNewAlahasEquip(selectedSlots, slotCapacity);
+        }
     }
 
     void saveNewAlahasEquip(IReadOnlyList<Alahas> selectedSlots, int slotCapacity)

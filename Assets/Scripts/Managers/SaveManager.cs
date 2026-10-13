@@ -105,6 +105,12 @@ public class SaveManager : MonoBehaviour
 
     public void saveData<T>(SaveDataNames name, T value, bool affectNewStatus)
     {
+        if (ShouldBlockWritesForEditorAlahasTesting())
+        {
+            Debug.Log($"[Alahas Test Override] Ignored save write for {name}.", this);
+            return;
+        }
+
         foreach(SaveData data in saveDatas)
             if(data.dataName == name)
             {
@@ -130,6 +136,12 @@ public class SaveManager : MonoBehaviour
 
     public void defualtData(SaveDataNames name)
     {
+        if (ShouldBlockWritesForEditorAlahasTesting())
+        {
+            Debug.Log($"[Alahas Test Override] Ignored save reset for {name}.", this);
+            return;
+        }
+
         foreach(SaveData data in saveDatas)
             if(data.dataName == name)
             {
@@ -142,8 +154,30 @@ public class SaveManager : MonoBehaviour
 
     public void defualtAllData()
     {
+        if (ShouldBlockWritesForEditorAlahasTesting())
+        {
+            Debug.Log("[Alahas Test Override] Ignored full save reset.", this);
+            return;
+        }
+
         foreach(SaveData data in saveDatas)
             data.resetToDefaultValue();
+    }
+
+    private static bool ShouldBlockWritesForEditorAlahasTesting()
+    {
+#if UNITY_EDITOR
+        TalaAlahasHolder holder = TalaAlahasHolder.Instance;
+        if (holder == null)
+        {
+            holder = FindFirstObjectByType<TalaAlahasHolder>(
+                FindObjectsInactive.Include);
+        }
+
+        return holder != null && holder.IsUsingEditorAlahasOverride;
+#else
+        return false;
+#endif
     }
 
     void Update()

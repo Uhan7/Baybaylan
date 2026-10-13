@@ -8,6 +8,8 @@ public class AlahasInfoPopup : ToolTipAble
     [SerializeField] private Image alahasImage;
     [SerializeField] private GameObject activationBadge;
     [SerializeField] private TextMeshProUGUI activationCountText;
+    [SerializeField] private GameObject extraBadge;
+    [SerializeField] private TextMeshProUGUI extraBadgeText;
     private Button alahasButton;
     TextMeshProUGUI alahasName;
     TextMeshProUGUI alahasDesc;
@@ -31,11 +33,12 @@ public class AlahasInfoPopup : ToolTipAble
     {
         currentAlahas = alahas;
 
-        if (alahasImage == null) return;
-
-        Sprite icon = alahas ? alahas.alahasSprite : null;
-        alahasImage.sprite = icon;
-        alahasImage.enabled = icon != null;
+        if (alahasImage != null)
+        {
+            Sprite icon = alahas ? alahas.alahasSprite : null;
+            alahasImage.sprite = icon;
+            alahasImage.enabled = icon != null;
+        }
 
         bool shouldShowActivationCounter = alahas != null && alahas.showActivationCounter;
 
@@ -49,6 +52,8 @@ public class AlahasInfoPopup : ToolTipAble
                 : alahas != null ? Mathf.Max(0, alahas.maximumActivations) : 0;
             activationCountText.text = remaining.ToString();
         }
+
+        RefreshExtraBadge();
     }
 
     public void SetTooltipAlahas(Alahas alahas)
@@ -90,6 +95,8 @@ public class AlahasInfoPopup : ToolTipAble
 
     override protected void Update()
     {
+        RefreshExtraBadge();
+
         if(!currentAlahas) return;
 
         if (isHovered) timer += Time.deltaTime;
@@ -110,5 +117,18 @@ public class AlahasInfoPopup : ToolTipAble
 
             PositionTooltip();
         }
+    }
+
+    private void RefreshExtraBadge()
+    {
+        string badgeText = string.Empty;
+        bool shouldShow = currentAlahas != null &&
+            currentAlahas.TryGetExtraBadgeText(out badgeText);
+
+        if (extraBadge != null && extraBadge.activeSelf != shouldShow)
+            extraBadge.SetActive(shouldShow);
+
+        if (extraBadgeText != null && shouldShow && extraBadgeText.text != badgeText)
+            extraBadgeText.text = badgeText;
     }
 }

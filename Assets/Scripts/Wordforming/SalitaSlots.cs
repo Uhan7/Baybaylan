@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using NaughtyAttributes;
 using Unity.VisualScripting;
@@ -36,6 +37,9 @@ public class SalitaSlots : MonoBehaviour
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
     [SerializeField] private float scoreScaleValue = 0.5f;
+    [SerializeField, Min(0f)] private float scoreTileDelay = 0.4f;
+    [Tooltip("Pitch increase per scored tile. Two semitones equal one whole tone.")]
+    [SerializeField, Min(0f)] private float tileTickSemitoneStep = 2f;
 
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
@@ -45,9 +49,13 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource tileScoreSfxSource;
     [SerializeField] private AudioClip wrongSFX;
     [SerializeField] private AudioClip tileTickSFX;
     [SerializeField] private AudioClip correctSFX;
+    private float tileScoreBasePitch = 1f;
+    private readonly List<AudioSource> tileScoreSfxPool = new List<AudioSource>();
+    private int nextTileScoreSfxIndex;
 
     [Header("Flags")]
     [SerializeField] private bool replacingTiles;
@@ -61,6 +69,15 @@ public class SalitaSlots : MonoBehaviour
         aksyonCounter = AksyonCounter.Instance;
         if (successfulWordAnimationPlayer == null)
             successfulWordAnimationPlayer = FindFirstObjectByType<WordSubmissionAnimationPlayer>();
+
+        if (tileScoreSfxSource == null)
+        {
+            tileScoreSfxSource = gameObject.AddComponent<AudioSource>();
+            tileScoreSfxSource.playOnAwake = false;
+        }
+
+        tileScoreBasePitch = tileScoreSfxSource.pitch;
+        InitializeTileScoreSfxPool();
     }
 
     private void Update() // Temporarily
@@ -115,10 +132,27 @@ public class SalitaSlots : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {
-        // Note that words may be "spelled" same but still be incorrect if it won't appear in the baybayin wordlist
-        // Because Ako can be spelled A-K-O (instead of A-Ko) which is 3 characters,,,, thas wrong since Baybayin emphasizes "syllables"
+        // A standalone vowel is only valid at the start of a word or after a
+        // tile whose Latin text already ends in a vowel. This distinguishes
+        // valid sequences such as MA-A-A-RI from shortcuts such as
+        // MA-GA-N-D-A, even though both approaches can produce a valid word.
+        if (!BaybayinTileSequenceRules.HasValidStandaloneVowelPlacement(activeTiles))
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(
+                InvalidWordTypes.InvalidWordType.InvalidVowelPlacement,
+                latinSalita);
+            return false;
+        }
 
-        // This means eventually... we'll probably use comparisons based on the Baybayin-ized wordlist instead
+        // The Baybayin NG character must be used instead of separate N and G
+        // tiles, regardless of the G tile's diacritic.
+        if (!BaybayinTileSequenceRules.UsesDedicatedNgTile(activeTiles))
+        {
+            invalidWordPopupScript.ShowInvalidWordPopup(
+                InvalidWordTypes.InvalidWordType.SplitNgTiles,
+                latinSalita);
+            return false;
+        }
 
         // PAGHIHIGPIT: Partikular na Salita
         // Check if the candidate salita is the particular word for that aksyon
@@ -249,7 +283,12 @@ public class SalitaSlots : MonoBehaviour
         Draggable.SetInteractionLocked(true);
         submitButton.interactable = false;
         salitaScore = 0;
-        float activeTileCount = 0;
+        int tileScoreTotal = 0;
+        float wordLengthMultiplier = 0;
+        float mahikaScoreMultiplier = AlahasSubManager.Instance != null
+            ? AlahasSubManager.Instance.scoreMultiplier
+            : 1f;
+        List<string> tileScoreTerms = new List<string>();
         preMultipliedScoreText.text = "";
         multiplierText.text = "";
 
@@ -260,24 +299,40 @@ public class SalitaSlots : MonoBehaviour
             // Some cool effects here
             if (activeTile == null) continue;
 
-            // i just slapped on the alahas' score multiplier on here
-            salitaScore += (int) (activeTile.Score * AlahasSubManager.Instance.scoreMultiplier); // removed * scoreScaleValue here... pls find way to make it cleaner
+            tileScoreTotal += activeTile.Score;
+            tileScoreTerms.Add(GetTileScoreTerm(activeTile));
             activeTile.GetComponent<Animator>().Play("tile_hold");
-            activeTile.sfxSource.PlayOneShot(tileTickSFX);
 
-            activeTileCount += 1 * scoreScaleValue; // messy bruh... we have a separate value for scale and not base on just count
+            AudioSource scoreSfxSource = GetAvailableTileScoreSfxSource();
+            if (scoreSfxSource != null)
+            {
+                SyncTileScoreSfxSettings(scoreSfxSource);
+                int pitchStepIndex = tileScoreTerms.Count - 1;
+                scoreSfxSource.pitch = Mathf.Clamp(
+                    tileScoreBasePitch * Mathf.Pow(
+                        2f,
+                        tileTickSemitoneStep * pitchStepIndex / 12f),
+                    0.01f,
+                    3f);
+                scoreSfxSource.PlayOneShot(tileTickSFX);
+            }
 
-            preMultipliedScoreText.text = salitaScore.ToString();
-            multiplierText.text = activeTileCount.ToString();
+            wordLengthMultiplier += scoreScaleValue;
+
+            preMultipliedScoreText.text = BuildScoreCalculationText(
+                tileScoreTerms,
+                wordLengthMultiplier,
+                mahikaScoreMultiplier);
+            multiplierText.text = "";
 
             salitaText.color = Color.green;
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(scoreTileDelay);
         }
 
         yield return new WaitForSeconds(0.25f);
 
-        salitaScore = (int)(salitaScore * activeTileCount);
+        salitaScore = (int)(tileScoreTotal * wordLengthMultiplier * mahikaScoreMultiplier);
         MahikaManager.Instance.UpdateMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
@@ -329,6 +384,97 @@ public class SalitaSlots : MonoBehaviour
             scoringSalita = false;
             GameManager.Instance.EndRound();
         }
+    }
+
+    private static string GetTileScoreTerm(Tile tile)
+    {
+        string score = tile.UnmultipliedScore.ToString(CultureInfo.InvariantCulture);
+        if (Mathf.Approximately(tile.scoreMultiplier, 1f)) return score;
+
+        return $"{score} (x{FormatMultiplier(tile.scoreMultiplier)})";
+    }
+
+    private static string BuildMultiplierText(
+        float wordLengthMultiplier,
+        float mahikaScoreMultiplier)
+    {
+        string text = FormatMultiplier(wordLengthMultiplier);
+        if (!Mathf.Approximately(mahikaScoreMultiplier, 1f))
+            text += $" x {FormatMultiplier(mahikaScoreMultiplier)}";
+
+        return text;
+    }
+
+    private static string BuildScoreCalculationText(
+        List<string> tileScoreTerms,
+        float wordLengthMultiplier,
+        float mahikaScoreMultiplier)
+    {
+        return $"({string.Join(" + ", tileScoreTerms)}) x "
+            + BuildMultiplierText(wordLengthMultiplier, mahikaScoreMultiplier);
+    }
+
+    private static string FormatMultiplier(float multiplier)
+    {
+        return multiplier.ToString("0.##", CultureInfo.InvariantCulture);
+    }
+
+    private void InitializeTileScoreSfxPool()
+    {
+        tileScoreSfxPool.Clear();
+        tileScoreSfxPool.Add(tileScoreSfxSource);
+
+        int initialPoolSize = 1;
+        if (tileTickSFX != null && scoreTileDelay > 0f)
+        {
+            initialPoolSize = Mathf.CeilToInt(tileTickSFX.length / scoreTileDelay) + 1;
+        }
+
+        while (tileScoreSfxPool.Count < initialPoolSize)
+            AddTileScoreSfxSourceToPool();
+
+        foreach (AudioSource source in tileScoreSfxPool)
+            SyncTileScoreSfxSettings(source);
+    }
+
+    private AudioSource GetAvailableTileScoreSfxSource()
+    {
+        if (tileScoreSfxPool.Count == 0) return null;
+
+        for (int offset = 0; offset < tileScoreSfxPool.Count; offset++)
+        {
+            int sourceIndex = (nextTileScoreSfxIndex + offset) % tileScoreSfxPool.Count;
+            AudioSource source = tileScoreSfxPool[sourceIndex];
+            if (source == null || source.isPlaying) continue;
+
+            nextTileScoreSfxIndex = (sourceIndex + 1) % tileScoreSfxPool.Count;
+            return source;
+        }
+
+        AudioSource addedSource = AddTileScoreSfxSourceToPool();
+        nextTileScoreSfxIndex = 0;
+        return addedSource;
+    }
+
+    private AudioSource AddTileScoreSfxSourceToPool()
+    {
+        AudioSource source = gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
+        source.pitch = tileScoreBasePitch;
+        tileScoreSfxPool.Add(source);
+        SyncTileScoreSfxSettings(source);
+        return source;
+    }
+
+    private void SyncTileScoreSfxSettings(AudioSource tileScoreSource)
+    {
+        if (sfxSource == null || tileScoreSource == null) return;
+
+        tileScoreSource.outputAudioMixerGroup = sfxSource.outputAudioMixerGroup;
+        tileScoreSource.volume = sfxSource.volume;
+        tileScoreSource.mute = sfxSource.mute;
+        tileScoreSource.ignoreListenerPause = sfxSource.ignoreListenerPause;
+        tileScoreSource.ignoreListenerVolume = sfxSource.ignoreListenerVolume;
     }
 
     private void UpdateSalitaText()

@@ -15,8 +15,8 @@ MonoBehaviour:
   alahasName: Kuwintas ng Pitong Tuka
   saveDataName: 22
   alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
-  description: 'Sa bawat salitang may 7 o higit pang letra sa Latin na baybay, madadagdagan
-    ng 20% ang kabuuang multiplier ng mahika.
+  description: 'Sa bawat salitang may 7 o higit pang letra sa Latin na baybay, tataas
+    ang multiplier ng mahika mula x1 patungong x1.2, x1.4, x1.6, at iba pa.
 
 
     Mawawala ang naipong multiplier

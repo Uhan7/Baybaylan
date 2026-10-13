@@ -43,13 +43,23 @@ public class SceneController : MonoBehaviour
     public void CompleteLevel(string sceneName)
     {
         SaveManager.SaveDataNames nextLevelId = GameManager.Instance.saveNextLevelID;
-        if (nextLevelId != SaveManager.SaveDataNames.NoneOrNull &&
-            SaveManager.Instance.getSaveData<int>(nextLevelId) == 0)
+
+        // A final level has nothing left to unlock, so honor its configured exit.
+        if (nextLevelId == SaveManager.SaveDataNames.NoneOrNull)
         {
-            SaveManager.Instance.saveData(nextLevelId, 1, true);
+            StartSceneSwap(sceneName);
+            return;
         }
 
-        StartSceneSwap(sceneName);
+        bool isFirstClear = SaveManager.Instance.getSaveData<int>(nextLevelId) == 0;
+        if (isFirstClear)
+        {
+            SaveManager.Instance.saveData(nextLevelId, 1, true);
+            StartSceneSwap(sceneName);
+            return;
+        }
+
+        StartSceneSwap("Level Selection");
     }
 
     private void StartSceneSwap(string sceneName)
@@ -68,16 +78,8 @@ public class SceneController : MonoBehaviour
 
     public void titleStartButton()
     {
-        if (transitionOnSwap != null)
-        {
-            transitionOnSwap.SetActive(true);
-            transitionOnSwap.GetComponent<ImageFader>().SetAlpha(0);
-            transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
-        }
-
-        Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
-
-        StartCoroutine(Swap("Area 0 - Intro"));
+        bool isNewSave = SaveManager.Instance.getSaveData<int>(SaveManager.SaveDataNames.NewSave) == 1;
+        StartSceneSwap(isNewSave ? "Area 0 - Intro" : "Level Selection");
     }
 
     public void SwapAfterAlahasSelection(string sceneName)

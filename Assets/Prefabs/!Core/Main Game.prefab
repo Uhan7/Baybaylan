@@ -1074,6 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae6423163ff9aa4ba8bec309d5e0ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEditorAlahasOverride: 0
   availableAlahas: []
   allAlahas:
   - {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}

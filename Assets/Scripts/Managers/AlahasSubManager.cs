@@ -287,6 +287,8 @@ class AlahasSubManager : MonoBehaviour
             if (requireMarkedConsonants && !tile.isVowel &&
                 tile.GetCurrentCharMod() == Tile.Diacritic.None)
                 continue;
+            if (!BaybayinTileSequenceRules.CanAppendTile(selectedTiles, tile))
+                continue;
 
             string tileText = tile.latinText;
             if (string.IsNullOrEmpty(tileText) ||
