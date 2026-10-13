@@ -16,6 +16,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] public Image dimmer; // I think this unclean af lol
     [SerializeField] private AudioSource aSource;
 
+    [Header("Background Presentation")]
+    [Range(0f, 1f), SerializeField] private float normalDialogueDimAlpha = 0.75f;
+    [Min(0f), SerializeField] private float defaultBackgroundFadeDuration = 0.33333334f;
+
     [Header("Dialogue Details")]
     [ReadOnly, SerializeField] private Dialogue currentDialogue;
     [HideInInspector] private int currentSentenceIndex;
@@ -27,6 +31,11 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector] private bool isTyping;
     [HideInInspector] private bool skip;
     [ReadOnly, SerializeField] public bool dialoguing; // Used in DialogueBox.cs (open animations)
+
+    private Coroutine startDelayRoutine;
+    private Coroutine sentenceRoutine;
+    private Coroutine backgroundFadeRoutine;
+    private Animator dimmerAnimator;
 
     [Header("Dialogue Characters")]
     [Header("Left")]
@@ -76,12 +85,14 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialoguing = true;
-        StartCoroutine(StartDelay(0.75f));
+        if (startDelayRoutine != null) StopCoroutine(startDelayRoutine);
+        startDelayRoutine = StartCoroutine(StartDelay(0.75f));
     }
 
     private IEnumerator StartDelay(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        startDelayRoutine = null;
         NextSentence();
     }
 
@@ -95,8 +106,8 @@ public class DialogueManager : MonoBehaviour
 
         DialogueSentence dialogueSentence = currentDialogue.sentences[currentSentenceIndex];
 
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(dialogueSentence));
+        if (sentenceRoutine != null) StopCoroutine(sentenceRoutine);
+        sentenceRoutine = StartCoroutine(TypeSentence(dialogueSentence));
 
         currentSentenceIndex++;
     }
@@ -109,6 +120,7 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
         skip = false;
 
+        ApplyBackgroundMode(dialogueSentence);
         SetProfileSprites(dialogueSentence);
         AnimateProfiles(dialogueSentence);
 
@@ -147,6 +159,76 @@ public class DialogueManager : MonoBehaviour
 
         dialogueContainer.ShowNextIndicator(true);
         isTyping = false;
+        sentenceRoutine = null;
+    }
+
+    public void ShowDefaultDialogueDim()
+    {
+        if (!dimmer) return;
+
+        dimmer.raycastTarget = true;
+        FadeBackgroundTo(normalDialogueDimAlpha, defaultBackgroundFadeDuration);
+    }
+
+    public void HideDialogueDim()
+    {
+        if (!dimmer) return;
+
+        dimmer.raycastTarget = false;
+        FadeBackgroundTo(0f, defaultBackgroundFadeDuration, true);
+    }
+
+    private void ApplyBackgroundMode(DialogueSentence dialogueSentence)
+    {
+        switch (dialogueSentence.backgroundMode)
+        {
+            case DialogueBackgroundMode.Black:
+                FadeBackgroundTo(1f, dialogueSentence.backgroundFadeDuration);
+                break;
+            case DialogueBackgroundMode.Dimmed:
+                FadeBackgroundTo(normalDialogueDimAlpha, dialogueSentence.backgroundFadeDuration);
+                break;
+            case DialogueBackgroundMode.Clear:
+                FadeBackgroundTo(0f, dialogueSentence.backgroundFadeDuration);
+                break;
+        }
+    }
+
+    private void FadeBackgroundTo(float targetAlpha, float duration, bool restoreAnimatorAfterFade = false)
+    {
+        if (!dimmer) return;
+
+        if (!dimmerAnimator) dimmerAnimator = dimmer.GetComponent<Animator>();
+        if (dimmerAnimator) dimmerAnimator.enabled = false;
+
+        if (backgroundFadeRoutine != null) StopCoroutine(backgroundFadeRoutine);
+        backgroundFadeRoutine = StartCoroutine(FadeBackgroundRoutine(
+            Mathf.Clamp01(targetAlpha),
+            Mathf.Max(0f, duration),
+            restoreAnimatorAfterFade));
+    }
+
+    private IEnumerator FadeBackgroundRoutine(float targetAlpha, float duration, bool restoreAnimatorAfterFade)
+    {
+        Color startColor = dimmer.color;
+
+        if (duration > 0f)
+        {
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(startColor.a, targetAlpha, Mathf.Clamp01(elapsed / duration));
+                dimmer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+                yield return null;
+            }
+        }
+
+        dimmer.color = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+        backgroundFadeRoutine = null;
+
+        if (restoreAnimatorAfterFade && dimmerAnimator)
+            dimmerAnimator.enabled = true;
     }
 
     private void SetProfileSprites(DialogueSentence _dialogueSentence)
