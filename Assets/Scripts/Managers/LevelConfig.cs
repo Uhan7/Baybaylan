@@ -144,7 +144,8 @@ public class LevelConfig : ScriptableObject
         if (HasPaghihigpit(PaghihigpitTypes.SumpaNgPitongUlo))
         {
             hasMultipleTargetMahika = true;
-            maxAksyon = 7;
+            // The seven Mahika targets represent the seven heads, but the
+            // level's Aksyon limit is configured independently.
             if (multipleTargetMahika.Length != 7) multipleTargetMahika = new int[7] {targetMahika, targetMahika, targetMahika, targetMahika, targetMahika, targetMahika, targetMahika};
         }
 

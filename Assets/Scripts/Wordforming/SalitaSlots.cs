@@ -38,6 +38,7 @@ public class SalitaSlots : MonoBehaviour
     [ReadOnly, SerializeField] private int salitaScore = 0;
     [SerializeField] private float scoreScaleValue = 0.5f;
     [SerializeField, Min(0f)] private float scoreTileDelay = 0.4f;
+    [SerializeField, Min(0f)] private float finalScoreDisplayDelay = 0.75f;
     [Tooltip("Pitch increase per scored tile. Two semitones equal one whole tone.")]
     [SerializeField, Min(0f)] private float tileTickSemitoneStep = 2f;
 
@@ -333,13 +334,18 @@ public class SalitaSlots : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         salitaScore = (int)(tileScoreTotal * wordLengthMultiplier * mahikaScoreMultiplier);
+        preMultipliedScoreText.text = BuildFinalScoreCalculationText(
+            tileScoreTerms,
+            wordLengthMultiplier,
+            mahikaScoreMultiplier,
+            salitaScore);
         MahikaManager.Instance.UpdateMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
         GameManager.Instance.wordsUsed.Add(latinSalita);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(finalScoreDisplayDelay);
         scoreCalculationsContainer.SetActive(false);
 
         Coroutine winningAttackSlowMotion = null;
@@ -412,6 +418,19 @@ public class SalitaSlots : MonoBehaviour
     {
         return $"({string.Join(" + ", tileScoreTerms)}) x "
             + BuildMultiplierText(wordLengthMultiplier, mahikaScoreMultiplier);
+    }
+
+    private static string BuildFinalScoreCalculationText(
+        List<string> tileScoreTerms,
+        float wordLengthMultiplier,
+        float mahikaScoreMultiplier,
+        int finalScore)
+    {
+        return BuildScoreCalculationText(
+                tileScoreTerms,
+                wordLengthMultiplier,
+                mahikaScoreMultiplier)
+            + $" = <size=+8>{finalScore.ToString(CultureInfo.InvariantCulture)}</size>";
     }
 
     private static string FormatMultiplier(float multiplier)

@@ -155,7 +155,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 78e256c6ef1f741b2bc674647e4a2c14, type: 3}
   - {fileID: 4900000, guid: 57c30941d18a248969869e8e401bc944, type: 3}
   wordsUsed: []
-  enableWinningAttackSlowMotion: 0
+  enableWinningAttackSlowMotion: 1
   winningAttackSlowMotionDuration: 1.8
   winningAttackTimeScaleCurve:
     serializedVersion: 2
@@ -170,8 +170,17 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.2966677
-      value: 0.44870317
+      time: 0.26650286
+      value: 0.9684981
+      inSlope: -0.33360103
+      outSlope: -0.33360103
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6686234
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.42118284
+      value: 0.11658338
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -179,13 +188,13 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.72
-      value: 0.45
-      inSlope: 0
-      outSlope: 0
+      time: 0.81438226
+      value: 0.44119546
+      inSlope: 2.2680833
+      outSlope: 2.2680833
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.06337894
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1

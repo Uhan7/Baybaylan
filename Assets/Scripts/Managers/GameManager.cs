@@ -37,8 +37,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("X is normalized real time (0-1). Y is a multiplier for the time scale that was active before the effect.")]
     [SerializeField] private AnimationCurve winningAttackTimeScaleCurve = new AnimationCurve(
         new Keyframe(0f, 1f),
-        new Keyframe(0.18f, 0.45f),
-        new Keyframe(0.72f, 0.45f),
+        new Keyframe(0.26650286f, 0.9684981f, -0.33360103f, -0.33360103f),
+        new Keyframe(0.42118284f, 0.11658338f),
+        new Keyframe(0.81438226f, 0.44119546f, 2.2680833f, 2.2680833f),
         new Keyframe(1f, 1f));
 
     [Header("Winning Attack Character Swap")]

@@ -21,6 +21,9 @@ public class SaveManager : MonoBehaviour
         UnlockedArea1Level1 = 7,
         UnlockedArea1Level2 = 8,
         UnlockedArea1Level3 = 9,
+        UnlockedArea1Level4 = 30,
+        UnlockedArea1Level4Point5 = 31,
+        UnlockedArea1Level5 = 32,
 
         //settings data
         //add ts eventually

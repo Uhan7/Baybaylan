@@ -1056,6 +1056,9 @@ RectTransform:
   - {fileID: 1079264932}
   - {fileID: 1320092643}
   - {fileID: 1555836784}
+  - {fileID: 2000000101}
+  - {fileID: 2000000151}
+  - {fileID: 2000000201}
   m_Father: {fileID: 1825362453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1749,6 +1752,120 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2730396378369354098, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
   m_PrefabInstance: {fileID: 1555836783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2000000100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 884495456}
+    m_Modifications:
+    - target: {fileID: 6342013481681056545, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_Name
+      value: Level Screen base (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_text
+      value: Area 1 - Level 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: levelId
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: sceneNameToEnter
+      value: Area 1 - Level 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+--- !u!224 &2000000101 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2730396378369354098, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+  m_PrefabInstance: {fileID: 2000000100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2000000150
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 884495456}
+    m_Modifications:
+    - target: {fileID: 6342013481681056545, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_Name
+      value: Level Screen base (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_text
+      value: Area 1 - Level 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: levelId
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: sceneNameToEnter
+      value: Area 1 - Level 4.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+--- !u!224 &2000000151 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2730396378369354098, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+  m_PrefabInstance: {fileID: 2000000150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2000000200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 884495456}
+    m_Modifications:
+    - target: {fileID: 6342013481681056545, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_Name
+      value: Level Screen base (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_text
+      value: Area 1 - Level 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: levelId
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: sceneNameToEnter
+      value: Area 1 - Level 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+--- !u!224 &2000000201 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2730396378369354098, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+  m_PrefabInstance: {fileID: 2000000200}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730907854
 GameObject:

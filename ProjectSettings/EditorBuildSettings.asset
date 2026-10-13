@@ -33,6 +33,15 @@ EditorBuildSettings:
     path: Assets/!Scenes/!Main Build/Area 1 - Level 3.unity
     guid: 92373f322386b4843b7d2ac421a96918
   - enabled: 1
+    path: Assets/!Scenes/!Main Build/Area 1 - Level 4.unity
+    guid: 7138ff9c1beaa4ec38bf35f738092da5
+  - enabled: 1
+    path: Assets/!Scenes/!Main Build/Area 1 - Level 4.5.unity
+    guid: 117f9b96a73a94b53bfe46cf3790d2d7
+  - enabled: 1
+    path: Assets/!Scenes/!Main Build/Area 1 - Level 5.unity
+    guid: 4b420e0abe5c84cd4805d95286a16b28
+  - enabled: 1
     path: Assets/!Scenes/BASE Game/Game Scene.unity
     guid: cae4f39c211db42bbbfb67e6e12a306b
   - enabled: 0

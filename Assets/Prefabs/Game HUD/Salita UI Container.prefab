@@ -180,6 +180,7 @@ MonoBehaviour:
   salitaScore: 0
   scoreScaleValue: 0.5
   scoreTileDelay: 0.4
+  finalScoreDisplayDelay: 0.75
   tileTickSemitoneStep: 2
   salitaText: {fileID: 0}
   scoreCalculationsContainer: {fileID: 0}
