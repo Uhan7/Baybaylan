@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alahasName: Pakpak ni Pah
   saveDataName: 20
-  alahasSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
+  alahasSprite: {fileID: 21300000, guid: 821e58e64be994199ae7c281abb21c3e, type: 3}
   description: Magdagdag ng 3 na titik. Pagkalipas ng 15 segundo mula sa paglilitaw
     ng titik, aalisin ang 5 random na titik.
   extraText: "Galing ito kay Pah\u2026 Ang bilis naging gabi noong tinakpan niya

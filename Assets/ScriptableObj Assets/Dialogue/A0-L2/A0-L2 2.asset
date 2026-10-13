@@ -21,7 +21,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 900d563fe53dc41a1b4ce65478db5acf, type: 3}
+      sprite: {fileID: 21300000, guid: 72e69f5a3867c4a8a8d73ba00321501f, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
