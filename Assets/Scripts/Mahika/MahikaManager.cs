@@ -92,6 +92,7 @@ public class MahikaManager : MonoBehaviour
     {
         if (m_mahikaDataCounter >= (m_mahikaDatas.Length - 1)) return;
         m_mahikaDataCounter++;
+        m_mahikaContainer.SetCurrentMahikaBar(m_mahikaDataCounter);
     }
     private void UpdateMahikaText()
     {

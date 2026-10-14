@@ -4,6 +4,7 @@ public class MahikaContainer : MonoBehaviour
 {
     [SerializeField] private RectTransform m_mahikaGroup;
     [SerializeField] private GameObject m_mahikaBarPrefab;
+    [SerializeField, Range(0f, 1f)] private float inactiveBarOpacity = 0.35f;
 
     private void OnDestroy()
     {
@@ -13,8 +14,10 @@ public class MahikaContainer : MonoBehaviour
     private void DestroyMahikaBars()
     {
         // Delete the mahika bars currently in the mahika group
-        foreach (Transform mahikaBar in m_mahikaGroup.transform)
+        if (m_mahikaGroup == null) return;
+        for (int i = m_mahikaGroup.childCount - 1; i >= 0; i--)
         {
+            Transform mahikaBar = m_mahikaGroup.GetChild(i);
             mahikaBar.SetParent(null, false);
             Destroy(mahikaBar.gameObject);
         }
@@ -61,6 +64,16 @@ public class MahikaContainer : MonoBehaviour
         for (int i = 0; i < m_mahikaGroup.childCount; i++)
         {
             SetMahikaBarFill(0.0f, i);
+        }
+        SetCurrentMahikaBar(0);
+    }
+
+    public void SetCurrentMahikaBar(int index)
+    {
+        for (int i = 0; i < m_mahikaGroup.childCount; i++)
+        {
+            if (m_mahikaGroup.GetChild(i).TryGetComponent<MahikaBar>(out var bar))
+                bar.SetBackgroundOpacity(i <= index ? 1f : inactiveBarOpacity);
         }
     }
 

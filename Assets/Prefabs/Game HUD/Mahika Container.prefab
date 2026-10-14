@@ -430,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mahikaGroup: {fileID: 340191535176055874}
   m_mahikaBarPrefab: {fileID: 8495765114696823494, guid: c2c921eab77256b47a2a593954d5cae0, type: 3}
+  inactiveBarOpacity: 0.75
 --- !u!1 &5745273020813799480
 GameObject:
   m_ObjectHideFlags: 0
