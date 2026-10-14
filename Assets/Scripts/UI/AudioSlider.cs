@@ -3,22 +3,43 @@ using UnityEngine.UI;
 
 public class AudioSlider : MonoBehaviour
 {
-    Slider slider;
+    public enum AudioChannel
+    {
+        BGM,
+        SFX
+    }
 
-    void Awake()
+    [SerializeField] private AudioChannel audioChannel;
+
+    private Slider slider;
+
+    private void Awake()
     {
         slider = GetComponent<Slider>();
-    }   
+    }
+
+    private void OnEnable()
+    {
+        if (slider == null) slider = GetComponent<Slider>();
+
+        float savedVolume = audioChannel == AudioChannel.BGM
+            ? SettingsHolder.BGMVolume
+            : SettingsHolder.SFXVolume;
+
+        slider.SetValueWithoutNotify(savedVolume);
+    }
 
     public void SetBGMVolume(float volume)
     {
         SettingsHolder.BGMVolume = volume;
-        AudioManager.Instance.SetBGMVolume(volume);
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.SetBGMVolume(volume);
     }
 
     public void SetSFXVolume(float volume)
     {
         SettingsHolder.SFXVolume = volume;
-        AudioManager.Instance.SetSFXVolume(volume);
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.SetSFXVolume(volume);
     }
 }

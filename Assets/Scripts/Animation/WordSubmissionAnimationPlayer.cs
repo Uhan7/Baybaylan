@@ -39,6 +39,12 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [Tooltip("Second possible tint. Each emitted particle randomly chooses between A and B.")]
     [SerializeField, ColorUsage(true, true)] private Color attackParticleColorB = Color.white;
 
+    [ShowIf(nameof(IsAttackSelected)), Header("Attack Audio")]
+    [SerializeField] private AudioClip attackSfx;
+    [ShowIf(nameof(IsAttackSelected))]
+    [Tooltip("Scaled seconds after the Attack animation begins. Leave at 0 when the clip already contains its own buildup.")]
+    [SerializeField, Min(0f)] private float attackSfxDelay;
+
     [ShowIf(nameof(IsHealSelected)), Header("Heal Effects")]
     [Tooltip("Particles sent from the protagonist toward the story target.")]
     [SerializeField] private ParticleSystem healMagicParticles;
@@ -63,6 +69,12 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [ShowIf(nameof(IsHealSelected))]
     [Tooltip("Small beat after the target aura appears before the protagonist returns.")]
     [SerializeField, Min(0f)] private float healReturnDelayAfterTarget;
+
+    [ShowIf(nameof(IsHealSelected)), Header("Heal Audio")]
+    [SerializeField] private AudioClip healSfx;
+    [ShowIf(nameof(IsHealSelected))]
+    [Tooltip("Scaled seconds after the Heal animation begins. Leave at 0 when the clip already contains its own buildup.")]
+    [SerializeField, Min(0f)] private float healSfxDelay;
 
     [ShowIf(nameof(HasSelectedAnimation)), Header("Safety")]
     [Tooltip("Stops a looping or misconfigured state from blocking the rest of the turn forever.")]
@@ -164,6 +176,7 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
                 targetResponse = StartCoroutine(PlayTargetHealSequence());
         }
 
+        PlayResultSfx(animation);
         targetAnimator.Play(stateHash, animatorLayer, 0f);
         if (animation == SuccessfulWordAnimation.Heal)
             StartCoroutine(HoldHealPose(stateHash));
@@ -235,6 +248,19 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
         animatorSpeedBeforeHeal = targetAnimator.speed;
         animatorSpeedDuringHeal = animatorSpeedBeforeHeal * Mathf.Max(0.01f, healAnimationSpeed);
         targetAnimator.speed = animatorSpeedDuringHeal;
+    }
+
+    private void PlayResultSfx(SuccessfulWordAnimation animation)
+    {
+        AudioClip clip = animation == SuccessfulWordAnimation.Attack
+            ? attackSfx
+            : healSfx;
+        float delay = animation == SuccessfulWordAnimation.Attack
+            ? attackSfxDelay
+            : healSfxDelay;
+
+        if (clip != null && AudioManager.Instance != null)
+            AudioManager.Instance.PlayResultSFX(clip, delay);
     }
 
     private static void PlayParticleSystem(ParticleSystem particles)

@@ -241,6 +241,8 @@ public class GameManager : MonoBehaviour
 
             Time.timeScale = timeScaleBeforeWinningAttack * timeScaleMultiplier;
             Time.fixedDeltaTime = fixedDeltaTimeBeforeWinningAttack * timeScaleMultiplier;
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.SetResultSFXPitchMultiplier(timeScaleMultiplier);
 
             elapsed += Time.unscaledDeltaTime;
             yield return null;
@@ -256,6 +258,8 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = timeScaleBeforeWinningAttack;
         Time.fixedDeltaTime = fixedDeltaTimeBeforeWinningAttack;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.ResetResultSFXPitch();
         controlsTimeScale = false;
     }
 
@@ -292,6 +296,10 @@ public class GameManager : MonoBehaviour
     public void EndRound()
     {
         bool didWin = MahikaManager.Instance.DidWin();
+
+        // Tutorial prompts are no longer relevant once the round has ended.
+        // Hide them immediately so slow motion cannot leave the hint visible.
+        HelperUI.HideAllImmediately();
 
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.ShowEndingBG(didWin);
 

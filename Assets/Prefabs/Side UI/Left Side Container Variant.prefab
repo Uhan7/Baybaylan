@@ -157,6 +157,8 @@ MonoBehaviour:
   overrideAttackParticleColor: 0
   attackParticleColor: {r: 1, g: 1, b: 1, a: 1}
   attackParticleColorB: {r: 1, g: 1, b: 1, a: 1}
+  attackSfx: {fileID: 8300000, guid: d49c3f4a7e393450aa19b11d48628c36, type: 3}
+  attackSfxDelay: 0
   healMagicParticles: {fileID: 3877382978996168275}
   healAnimationSpeed: 1.75
   healMagicDelay: 0.38333333
@@ -165,6 +167,8 @@ MonoBehaviour:
   healPoseHoldNormalizedTime: 0.7
   healPoseHoldDuration: 0.8
   healReturnDelayAfterTarget: 0
+  healSfx: {fileID: 8300000, guid: 721023a1f3aa644eab4ee07eac1dfe91, type: 3}
+  healSfxDelay: 0
   maximumWaitSeconds: 10
 --- !u!1001 &5695611848955879534
 PrefabInstance:

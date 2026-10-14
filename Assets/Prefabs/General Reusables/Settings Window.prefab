@@ -361,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFX Text
       objectReference: {fileID: 0}
+    - target: {fileID: 3880297740148731422, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: audioChannel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4032602204788755736, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 450
@@ -475,11 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4243505703678820443, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioManager, Assembly-CSharp
+      value: AudioSlider, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4243505703678820443, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 4334568349754290495, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -742,6 +746,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1511193796255716573, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
+      propertyPath: toggleWithEscape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511193796255716573, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
+      propertyPath: alwaysOnTop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511193796255716573, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
+      propertyPath: topSortingOrder
+      value: 32000
+      objectReference: {fileID: 0}
     - target: {fileID: 1664442009692984375, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1287,11 +1303,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4243505703678820443, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioManager, Assembly-CSharp
+      value: AudioSlider, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4243505703678820443, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4334568349754290495, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_SizeDelta.x

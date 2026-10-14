@@ -691,6 +691,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2724882822264955020, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: useEditorAlahasOverride
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2941930039543285138, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.6100006

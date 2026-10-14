@@ -16,6 +16,8 @@ public static class WordSubmissionAnimationAssetCreator
     private const string AttackImpactPrefabPath = "Assets/Prefabs/VFX/Attack Impact Particles.prefab";
     private const string HealAuraPrefabPath = "Assets/Prefabs/VFX/Heal Aura Particles.prefab";
     private const string HealMagicPrefabPath = "Assets/Prefabs/VFX/Heal Magic Particles.prefab";
+    private const string AttackSfxPath = "Assets/Audio/SFX/SFX_Attack_Amihan.mp3";
+    private const string HealSfxPath = "Assets/Audio/SFX/SFX_Heal_Tala_1.mp3";
 
     [MenuItem("Tools/Baybaylan/Set Up Word Submission Animations")]
     public static void CreateAnimationAssets()
@@ -48,8 +50,10 @@ public static class WordSubmissionAnimationAssetCreator
             HealMagicPrefabPath,
             "Heal Magic Particles",
             false);
+        AudioClip attackSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(AttackSfxPath);
+        AudioClip healSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(HealSfxPath);
 
-        ConfigureLeftSidePrefab(controller, healMagicPrefab);
+        ConfigureLeftSidePrefab(controller, healMagicPrefab, attackSfx, healSfx);
         ConfigureRightSidePrefab(controller, attackImpactPrefab, healAuraPrefab);
 
         AssetDatabase.SaveAssets();
@@ -120,7 +124,9 @@ public static class WordSubmissionAnimationAssetCreator
 
     private static void ConfigureLeftSidePrefab(
         AnimatorController controller,
-        GameObject healMagicPrefab)
+        GameObject healMagicPrefab,
+        AudioClip attackSfx,
+        AudioClip healSfx)
     {
         GameObject prefabRoot = PrefabUtility.LoadPrefabContents(LeftSidePrefabPath);
 
@@ -161,6 +167,8 @@ public static class WordSubmissionAnimationAssetCreator
             serializedPlayer.FindProperty("overrideAttackParticleColor").boolValue = false;
             serializedPlayer.FindProperty("attackParticleColor").colorValue = Color.white;
             serializedPlayer.FindProperty("attackParticleColorB").colorValue = Color.white;
+            serializedPlayer.FindProperty("attackSfx").objectReferenceValue = attackSfx;
+            serializedPlayer.FindProperty("attackSfxDelay").floatValue = 0f;
             serializedPlayer.FindProperty("healMagicParticles").objectReferenceValue = healMagic;
             serializedPlayer.FindProperty("healAnimationSpeed").floatValue = 1.75f;
             serializedPlayer.FindProperty("healMagicDelay").floatValue = 23f / 60f;
@@ -169,6 +177,8 @@ public static class WordSubmissionAnimationAssetCreator
             serializedPlayer.FindProperty("healPoseHoldNormalizedTime").floatValue = 0.7f;
             serializedPlayer.FindProperty("healPoseHoldDuration").floatValue = 0.8f;
             serializedPlayer.FindProperty("healReturnDelayAfterTarget").floatValue = 0f;
+            serializedPlayer.FindProperty("healSfx").objectReferenceValue = healSfx;
+            serializedPlayer.FindProperty("healSfxDelay").floatValue = 0f;
             serializedPlayer.ApplyModifiedPropertiesWithoutUndo();
 
             PrefabUtility.SaveAsPrefabAsset(prefabRoot, LeftSidePrefabPath);
@@ -488,7 +498,11 @@ public static class WordSubmissionAnimationAssetCreator
 
         ParticleSystem.EmissionModule emission = particles.emission;
         emission.enabled = true;
-        emission.rateOverTime = isAura ? 25f : 36f;
+        emission.rateOverTime = 0f;
+        emission.SetBursts(new[]
+        {
+            new ParticleSystem.Burst(0f, (short)(isAura ? 16 : 10))
+        });
 
         ParticleSystem.ShapeModule shape = particles.shape;
         shape.enabled = true;

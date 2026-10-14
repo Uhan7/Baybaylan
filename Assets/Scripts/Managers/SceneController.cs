@@ -20,6 +20,10 @@ public class SceneController : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void Start()
     {
+        // A scene change should never inherit temporary winning-attack slow motion.
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
         if (transitionOnStart != null)
         {
             transitionOnStart.SetActive(true);
@@ -136,7 +140,7 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator Swap(string sceneName)
     {
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -159,7 +163,7 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator Quit()
     {
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
         Application.Quit();
         Debug.LogError("You quit the game! Paalam!");
     }
