@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 0}
   dimmer: {fileID: 0}
+  vignetteSprite: {fileID: 21300000, guid: 08439234eb7fc4498a702b627c1d6931, type: 3}
   aSource: {fileID: 6293236958178410416}
   currentDialogue: {fileID: 0}
   dialoguing: 0

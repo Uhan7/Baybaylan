@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private DialogueContainer dialogueContainer;
     [SerializeField] public Image dimmer; // I think this unclean af lol
+    [SerializeField] private Sprite vignetteSprite;
     [SerializeField] private AudioSource aSource;
 
     [Header("Background Presentation")]
@@ -36,6 +37,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine sentenceRoutine;
     private Coroutine backgroundFadeRoutine;
     private Animator dimmerAnimator;
+    private Image vignetteOverlay;
 
     [Header("Dialogue Characters")]
     [Header("Left")]
@@ -53,6 +55,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        CreateVignetteOverlay();
     }
 
     private void Update()
@@ -167,7 +170,7 @@ public class DialogueManager : MonoBehaviour
         if (!dimmer) return;
 
         dimmer.raycastTarget = true;
-        FadeBackgroundTo(normalDialogueDimAlpha, defaultBackgroundFadeDuration);
+        FadeBackgroundTo(normalDialogueDimAlpha, 0f, defaultBackgroundFadeDuration);
     }
 
     public void HideDialogueDim()
@@ -175,7 +178,7 @@ public class DialogueManager : MonoBehaviour
         if (!dimmer) return;
 
         dimmer.raycastTarget = false;
-        FadeBackgroundTo(0f, defaultBackgroundFadeDuration, true);
+        FadeBackgroundTo(0f, 0f, defaultBackgroundFadeDuration, true);
     }
 
     private void ApplyBackgroundMode(DialogueSentence dialogueSentence)
@@ -183,18 +186,22 @@ public class DialogueManager : MonoBehaviour
         switch (dialogueSentence.backgroundMode)
         {
             case DialogueBackgroundMode.Black:
-                FadeBackgroundTo(1f, dialogueSentence.backgroundFadeDuration);
+                FadeBackgroundTo(1f, 0f, dialogueSentence.backgroundFadeDuration);
                 break;
-            case DialogueBackgroundMode.Dimmed:
-                FadeBackgroundTo(normalDialogueDimAlpha, dialogueSentence.backgroundFadeDuration);
+            case DialogueBackgroundMode.Dim:
+                FadeBackgroundTo(0f, dialogueSentence.vignetteIntensity, dialogueSentence.backgroundFadeDuration);
                 break;
-            case DialogueBackgroundMode.Clear:
-                FadeBackgroundTo(0f, dialogueSentence.backgroundFadeDuration);
+            default:
+                FadeBackgroundTo(normalDialogueDimAlpha, 0f, dialogueSentence.backgroundFadeDuration);
                 break;
         }
     }
 
-    private void FadeBackgroundTo(float targetAlpha, float duration, bool restoreAnimatorAfterFade = false)
+    private void FadeBackgroundTo(
+        float targetDimmerAlpha,
+        float targetVignetteAlpha,
+        float duration,
+        bool restoreAnimatorAfterFade = false)
     {
         if (!dimmer) return;
 
@@ -203,14 +210,20 @@ public class DialogueManager : MonoBehaviour
 
         if (backgroundFadeRoutine != null) StopCoroutine(backgroundFadeRoutine);
         backgroundFadeRoutine = StartCoroutine(FadeBackgroundRoutine(
-            Mathf.Clamp01(targetAlpha),
+            Mathf.Clamp01(targetDimmerAlpha),
+            Mathf.Clamp01(targetVignetteAlpha),
             Mathf.Max(0f, duration),
             restoreAnimatorAfterFade));
     }
 
-    private IEnumerator FadeBackgroundRoutine(float targetAlpha, float duration, bool restoreAnimatorAfterFade)
+    private IEnumerator FadeBackgroundRoutine(
+        float targetDimmerAlpha,
+        float targetVignetteAlpha,
+        float duration,
+        bool restoreAnimatorAfterFade)
     {
-        Color startColor = dimmer.color;
+        Color startDimmerColor = dimmer.color;
+        Color startVignetteColor = vignetteOverlay ? vignetteOverlay.color : Color.clear;
 
         if (duration > 0f)
         {
@@ -218,17 +231,54 @@ public class DialogueManager : MonoBehaviour
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
-                float alpha = Mathf.Lerp(startColor.a, targetAlpha, Mathf.Clamp01(elapsed / duration));
-                dimmer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+                float progress = Mathf.Clamp01(elapsed / duration);
+                SetImageAlpha(dimmer, Mathf.Lerp(startDimmerColor.a, targetDimmerAlpha, progress));
+                SetImageAlpha(vignetteOverlay, Mathf.Lerp(startVignetteColor.a, targetVignetteAlpha, progress));
                 yield return null;
             }
         }
 
-        dimmer.color = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+        SetImageAlpha(dimmer, targetDimmerAlpha);
+        SetImageAlpha(vignetteOverlay, targetVignetteAlpha);
         backgroundFadeRoutine = null;
 
         if (restoreAnimatorAfterFade && dimmerAnimator)
             dimmerAnimator.enabled = true;
+    }
+
+    private void CreateVignetteOverlay()
+    {
+        if (!dimmer || !vignetteSprite) return;
+
+        GameObject vignetteObject = new GameObject(
+            "Dialogue Vignette",
+            typeof(RectTransform),
+            typeof(CanvasRenderer),
+            typeof(Image));
+
+        vignetteObject.layer = dimmer.gameObject.layer;
+
+        RectTransform vignetteTransform = vignetteObject.GetComponent<RectTransform>();
+        vignetteTransform.SetParent(dimmer.transform.parent, false);
+        vignetteTransform.SetSiblingIndex(dimmer.transform.GetSiblingIndex() + 1);
+        vignetteTransform.anchorMin = Vector2.zero;
+        vignetteTransform.anchorMax = Vector2.one;
+        vignetteTransform.anchoredPosition = Vector2.zero;
+        vignetteTransform.sizeDelta = Vector2.zero;
+
+        vignetteOverlay = vignetteObject.GetComponent<Image>();
+        vignetteOverlay.sprite = vignetteSprite;
+        vignetteOverlay.raycastTarget = false;
+        vignetteOverlay.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    private static void SetImageAlpha(Image image, float alpha)
+    {
+        if (!image) return;
+
+        Color color = image.color;
+        color.a = alpha;
+        image.color = color;
     }
 
     private void SetProfileSprites(DialogueSentence _dialogueSentence)

@@ -13,10 +13,9 @@ public struct DialogueProfile
 
 public enum DialogueBackgroundMode
 {
-	KeepCurrent,
+	Default,
 	Black,
-	Dimmed,
-	Clear
+	Dim
 }
 
 [Serializable]
@@ -35,8 +34,14 @@ public struct DialogueSentence
 	public DialogueProfile rightSecondaryProfile;
 
 	[Header("Background")]
-	[Tooltip("Keep Current preserves the previous line's background. Black fully covers it, Dimmed uses the normal dialogue darkness, and Clear shows it without an overlay.")]
+	[Tooltip("Default uses the normal dialogue dim. Black completely covers the background. Dim uses a vignette.")]
 	public DialogueBackgroundMode backgroundMode;
+
+	[ShowIf("backgroundMode", DialogueBackgroundMode.Dim)]
+	[AllowNesting]
+	[Range(0f, 1f), Tooltip("How dark the vignette is. 0 is invisible and 1 is fully dark.")]
+	public float vignetteIntensity;
+
 	[Min(0f), Tooltip("Seconds used to fade to the selected background mode. Use 0 for an instant change.")]
 	public float backgroundFadeDuration;
 
