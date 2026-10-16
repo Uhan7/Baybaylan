@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04b1f020ba8f49729190e402fd98d39, type: 3}
+  m_Name: A1-L2 3
+  m_EditorClassIdentifier: 
+  sentences:
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 1
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "...Maraming salamat sa tulong, Tala."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 1
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "Walang anuman... Tungkulin ko lang naman bilang babaylan."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 1
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "...Hanga ako sa iyo, Sulayman. Kahit pagod ka na, iniisip mo pa rin ang mga taong nais mong protektahan."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 1
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "...Tiririiiit!"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 1
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "...Ano yun?"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 2
+    vignetteIntensity: 0.75
+    backgroundFadeDuration: 0
+    sentence: "..."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 2
+    vignetteIntensity: 0.75
+    backgroundFadeDuration: 0
+    sentence: "Biglang dumilim..."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 1
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "... ... ...!"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 2
+    vignetteIntensity: 0.75
+    backgroundFadeDuration: 0
+    sentence: "Sulayman. Pasensya na sa pag-abala. Sumama ka sa akin."
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 2
+    vignetteIntensity: 0.75
+    backgroundFadeDuration: 0
+    sentence: "Saan tayo pupunta, Tala?"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 2
+    vignetteIntensity: 0.75
+    backgroundFadeDuration: 0
+    sentence: "Sa isa pang halimaw..."
+  soundToPlay: {fileID: 0}
+  textSpeed: 0.022
+  textPunctSpeed: 0.24

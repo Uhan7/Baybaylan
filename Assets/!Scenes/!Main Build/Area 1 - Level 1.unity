@@ -451,10 +451,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6376082575871313111, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a6dcf6fcde694351a970d0a5aadee5e, type: 2}
     - target: {fileID: 403949181921111037, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: de64a8ee28465416fbb6fe8d8b43946c, type: 2}
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Area 1 - Level 2
@@ -559,6 +567,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 28c63eac71df548d7ba47d0c335010a1, type: 2}
     - target: {fileID: 2094052328367243392, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -1,0 +1,601 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04b1f020ba8f49729190e402fd98d39, type: 3}
+  m_Name: A1-Intro 2
+  m_EditorClassIdentifier: 
+  sentences:
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Ito ba ang tamang lugar? Tila walang tao...?
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Mga kawal! Bantayan ninyo ang mga tarangkahan. Kayo naman, suriin ang
+      hilagang daan!
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Opo, Hari Indarapatra!
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Sino kayo? Bakit kayo narito?
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Ako po si Tala, isang babaylan. Hinatid po ako rito ni Diwata Amihan.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: May masama nararamdaman po ako sa lupaing ito.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Ako si Indarapatra, hari ng Mantapuli.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Hindi rin namin alam kung ano ang pinagmumulan nito.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Ipinadala ko ang kapatid kong si Sulayman upang siyasatin ang paligid,
+      ngunit hindi pa siya nakabalik.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: "Sa totoo lang, nag-aala\u2013"
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: BANG!
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: K-Kuya...
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Wasak ang... Mga yantok...
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Ang bundok... Mga halimaw...? Ahhh...
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Sulayman! Magpahinga ka muna.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Lumalakas ang mga tinig... Mula sa bundok...
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Hari Indarapatra, sa bundok ng mga punong yantok nagmumula ang masasamang
+      diwa na nararamdaman ko.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Doon din ako galing... Doon ko nakita ang mga sirang puno.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Kailangan kong bumalik bago makarating sa Mantapuli ang nilalang na
+      iyon.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Sa kalagayan mo? Hindi maaari, Sulayman.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Kung hindi ako, sino? Hindi mo maaaring iwanan ang kaharian.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Sasamahan ko po siya. Kaya kong sundan ang tinig naiyon.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Palalakasin ko si Sulayman gamit ang aking mahika bilang babaylan.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Ngayon lang tayo nagkakilala. Bakit ko ipagkatiwala sa iyo ang buhay
+      ng kapatid ko?
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Kuya, tama ang sinabi niya. Kailangan ko ang tulong niya.
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: ...
+  - isFourSpeakers: 1
+    leftPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: ...Kung gayon.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Dalhin mo ang mga Olisi, Sulayman.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Kuya... ang mga Olisi mo?
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Mas kailangan mo ang mga iyan.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Babalik ako, Kuya.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: Maraming salamat sa inyong pagtitiwala, Hari Indarapatra. Paalam.
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: ...
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: -6855409850860907103, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: ...
+  soundToPlay: {fileID: 0}
+  textSpeed: 0.022
+  textPunctSpeed: 0.24
