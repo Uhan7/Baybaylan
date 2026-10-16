@@ -11,6 +11,13 @@ public struct DialogueProfile
 	public bool isTalking;
 }
 
+public enum DialogueBackgroundMode
+{
+	Default,
+	Black,
+	Dim
+}
+
 [Serializable]
 public struct DialogueSentence
 {
@@ -25,6 +32,19 @@ public struct DialogueSentence
 	[ShowIf("isFourSpeakers")]
 	[AllowNesting]
 	public DialogueProfile rightSecondaryProfile;
+
+	[Header("Background")]
+	[Tooltip("Default uses the normal dialogue dim. Black completely covers the background. Dim uses a vignette.")]
+	public DialogueBackgroundMode backgroundMode;
+
+	[ShowIf("backgroundMode", DialogueBackgroundMode.Dim)]
+	[AllowNesting]
+	[Range(0f, 1f), Tooltip("How dark the vignette is. 0 is invisible and 1 is fully dark.")]
+	public float vignetteIntensity;
+
+	[Min(0f), Tooltip("Seconds used to fade to the selected background mode. Use 0 for an instant change.")]
+	public float backgroundFadeDuration;
+
 	[TextArea(3, 10)] public string sentence;
 }
 

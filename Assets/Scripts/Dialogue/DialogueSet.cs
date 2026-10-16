@@ -30,11 +30,7 @@ public class DialogueSet : MonoBehaviour
 
         eventBeforeDialogue?.Invoke();
 
-        if (DialogueManager.Instance.dimmer != null) // This dimmer shi also feels unclean as hell
-        {
-            DialogueManager.Instance.dimmer.raycastTarget = true;
-            DialogueManager.Instance.dimmer.GetComponent<Animator>().Play("image_fade_in");
-        }
+        DialogueManager.Instance.ShowDefaultDialogueDim();
 
         isRunning = true;
         currentIndex = 0;
@@ -79,11 +75,7 @@ public class DialogueSet : MonoBehaviour
         hasCompleted = true;
         isRunning = false;
 
-        if (DialogueManager.Instance.dimmer != null)
-        {
-            DialogueManager.Instance.dimmer.raycastTarget = false;
-            DialogueManager.Instance.dimmer.GetComponent<Animator>().Play("image_fade_out");
-        }
+        DialogueManager.Instance.HideDialogueDim();
         StartCoroutine(InvokeEventAfterDialogue());
     }
 

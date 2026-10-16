@@ -20,6 +20,10 @@ public class SceneController : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void Start()
     {
+        // A scene change should never inherit temporary winning-attack slow motion.
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
         if (transitionOnStart != null)
         {
             transitionOnStart.SetActive(true);
@@ -37,6 +41,33 @@ public class SceneController : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void SwapWrapper(string sceneName) // Called by buttons n stuff
     {
+        StartSceneSwap(sceneName);
+    }
+
+    public void CompleteLevel(string sceneName)
+    {
+        SaveManager.SaveDataNames nextLevelId = GameManager.Instance.saveNextLevelID;
+
+        // A final level has nothing left to unlock, so honor its configured exit.
+        if (nextLevelId == SaveManager.SaveDataNames.NoneOrNull)
+        {
+            StartSceneSwap(sceneName);
+            return;
+        }
+
+        bool isFirstClear = SaveManager.Instance.getSaveData<int>(nextLevelId) == 0;
+        if (isFirstClear)
+        {
+            SaveManager.Instance.saveData(nextLevelId, 1, true);
+            StartSceneSwap(sceneName);
+            return;
+        }
+
+        StartSceneSwap("Level Selection");
+    }
+
+    private void StartSceneSwap(string sceneName)
+    {
         if (transitionOnSwap != null)
         {
             transitionOnSwap.SetActive(true);
@@ -45,7 +76,14 @@ public class SceneController : MonoBehaviour
         }
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
+
         StartCoroutine(Swap(sceneName));
+    }
+
+    public void titleStartButton()
+    {
+        bool isNewSave = SaveManager.Instance.getSaveData<int>(SaveManager.SaveDataNames.NewSave) == 1;
+        StartSceneSwap(isNewSave ? "Area 0 - Intro" : "Level Selection");
     }
 
     public void SwapAfterAlahasSelection(string sceneName)
@@ -102,7 +140,7 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator Swap(string sceneName)
     {
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -125,7 +163,7 @@ public class SceneController : MonoBehaviour
 
     private IEnumerator Quit()
     {
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
         Application.Quit();
         Debug.LogError("You quit the game! Paalam!");
     }

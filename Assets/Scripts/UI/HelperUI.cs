@@ -18,7 +18,7 @@ public class HelperUI : MonoBehaviour
     // Main Functions ----------------------------------------------------------
     private void Start()
     {
-        promptCanvasGroup.alpha = 0;
+        HideImmediately();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -42,6 +42,28 @@ public class HelperUI : MonoBehaviour
         FadePromptWrapper(0);
     }
 
+    public void HideImmediately()
+    {
+        if (FadeRoutine != null)
+        {
+            StopCoroutine(FadeRoutine);
+            FadeRoutine = null;
+        }
+
+        if (promptCanvasGroup != null)
+            promptCanvasGroup.alpha = 0f;
+    }
+
+    public static void HideAllImmediately()
+    {
+        HelperUI[] helpers = FindObjectsByType<HelperUI>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+
+        foreach (HelperUI helper in helpers)
+            helper.HideImmediately();
+    }
+
     private IEnumerator FadePrompt(float desiredAlpha)
     {
         float elapsedTime = 0f;
@@ -54,10 +76,11 @@ public class HelperUI : MonoBehaviour
 
             promptCanvasGroup.alpha = Mathf.Lerp(originalCanvasGroupAlpha, desiredAlpha, t);
 
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
         promptCanvasGroup.alpha = desiredAlpha;
+        FadeRoutine = null;
     }
 }

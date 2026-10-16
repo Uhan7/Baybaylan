@@ -26,6 +26,8 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
+    backgroundMode: 1
+    backgroundFadeDuration: 0
     sentence: <i>Ilang araw nang may mga tinig na tumatawag sa akin...</i>
   soundToPlay: {fileID: 0}
   textSpeed: 0.022

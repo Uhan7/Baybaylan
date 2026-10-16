@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Globalization;
 
 [CreateAssetMenu(menuName = "Alahas/Kuwintas ng Pitong Tuka")]
 class KuwintasNgPitongTukaAlahas : Alahas
@@ -36,15 +37,19 @@ class KuwintasNgPitongTukaAlahas : Alahas
         int totalLetterCount = text.Length;
         if(totalLetterCount >= letterCountRequirement)
         {
-            // The description promises one 20% increase per qualifying word,
-            // not 20% per letter (which made a seven-letter word add 140%).
+            // Each qualifying word adds 0.2 to the total multiplier:
+            // x1.2, x1.4, x1.6, and so on.
             totalScoreMultiplier += scoreMultiplier;
-            Debug.Log("Kuwintas ng Pitong Tuka: " + totalLetterCount + " letters submitted. Total score multiplier: " + totalScoreMultiplier);
+            Debug.Log(
+                "Kuwintas ng Pitong Tuka: " + totalLetterCount +
+                " letters submitted. Total score multiplier: " + FormatCurrentMultiplier());
         }
         else
         {
             totalScoreMultiplier = 0f;
-            Debug.Log("Kuwintas ng Pitong Tuka: Not enough letters submitted. Total score multiplier reset to 0.");
+            Debug.Log(
+                "Kuwintas ng Pitong Tuka: Not enough letters submitted. " +
+                "Total score multiplier reset to x1.");
         }
     }
 
@@ -57,5 +62,17 @@ class KuwintasNgPitongTukaAlahas : Alahas
     {
         // AlahasSubManager already supplies the base 1x multiplier.
         AlahasSubManager.Instance.scoreMultiplier += totalScoreMultiplier;
+    }
+
+    public override bool TryGetExtraBadgeText(out string text)
+    {
+        text = FormatCurrentMultiplier();
+        return true;
+    }
+
+    private string FormatCurrentMultiplier()
+    {
+        float currentMultiplier = 1f + totalScoreMultiplier;
+        return "x" + currentMultiplier.ToString("0.#", CultureInfo.InvariantCulture);
     }
 }

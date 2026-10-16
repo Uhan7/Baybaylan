@@ -58,6 +58,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private int baseScore = 10;
     [HideIf("isVowel"), ReadOnly, SerializeField] private int diacriticScore = 0;
     [ReadOnly, SerializeField] public float scoreMultiplier = 1;
+    [HideInInspector] public int UnmultipliedScore => baseScore + diacriticScore;
     [HideInInspector] public int Score => Mathf.RoundToInt((baseScore + diacriticScore) * scoreMultiplier); // Used in SalitaSlots.cs
 
     [Header("Other Tile Info")]

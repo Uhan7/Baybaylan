@@ -124,7 +124,8 @@ public class TileSet : MonoBehaviour
         // Start order, then add Pakpak's temporary tiles after the normal pool.
         yield return null;
         int extraTiles = AlahasSubManager.Instance != null ? AlahasSubManager.Instance.extraTile : 0;
-        yield return SpawnTiles(config.tilesAmount + extraTiles);
+        int num_kaposNaTitik = GetNumKaposNaTitik();
+        yield return SpawnTiles(config.tilesAmount + extraTiles - num_kaposNaTitik);
         yield return SpawnPakpakTemporaryTiles();
     }
 
@@ -141,6 +142,15 @@ public class TileSet : MonoBehaviour
         applyVowelBoost(tileScript);
         applyGold(tileScript);
         applyToolTip(tileScript);
+    }
+
+    // PAGHIHIGPIT: Kapos na Titik
+    // Logic for getting the number of kapos na titik
+    private int GetNumKaposNaTitik()
+    {
+        int num_kaposNaAksyon = 0;
+        if (config.HasPaghihigpit(PaghihigpitTypes.KaposNaTitik)) num_kaposNaAksyon = config.kaposNaTitik;
+        return num_kaposNaAksyon;
     }
 
     public void StartPakpakTileCountdown(
