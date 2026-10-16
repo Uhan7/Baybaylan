@@ -1,28 +1,13 @@
 fileFormatVersion: 2
-guid: 260d300b0f6ba4187884bc1406a78f90
+guid: 84172cf523e3c44808db932a6f75ad78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3862784833516531504
-    second: Paghihigpit_ItinakdangTitik_0
+      213: -2435866314854048245
+    second: KURITA 2048_0
   - first:
-      213: 8732718434340600316
-    second: Paghihigpit_ItinakdangTitik_1
-  - first:
-      213: -5423402410480041268
-    second: Paghihigpit_ItinakdangTitik_2
-  - first:
-      213: -7195946338145701444
-    second: Paghihigpit_ItinakdangTitik_3
-  - first:
-      213: -6953580230185427665
-    second: Paghihigpit_ItinakdangTitik_4
-  - first:
-      213: -6608989470582822387
-    second: Paghihigpit_ItinakdangTitik_5
-  - first:
-      213: -3997612457950017331
-    second: Paghihigpit_ItinakdangTitik_6
+      213: 1441761628355046784
+    second: KURITA 2048_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -157,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_0
+      name: KURITA 2048_0
       rect:
         serializedVersion: 2
-        x: 84
-        y: 578
-        width: 52
-        height: 196
+        x: 0
+        y: 183
+        width: 40
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d01b7ae8a1a46ac0800000000000000
-      internalID: -3862784833516531504
+      spriteID: b0ed8ce0e70123ed0800000000000000
+      internalID: -2435866314854048245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_1
+      name: KURITA 2048_1
       rect:
         serializedVersion: 2
-        x: 147
-        y: 580
-        width: 53
-        height: 193
+        x: 5
+        y: 0
+        width: 2043
+        height: 2025
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,118 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf9706ae529d03970800000000000000
-      internalID: 8732718434340600316
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_2
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 432
-        width: 124
-        height: 148
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cc20759fd343cb4b0800000000000000
-      internalID: -5423402410480041268
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_3
-      rect:
-        serializedVersion: 2
-        x: 452
-        y: 417
-        width: 126
-        height: 161
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb17d046eecd22c90800000000000000
-      internalID: -7195946338145701444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_4
-      rect:
-        serializedVersion: 2
-        x: 668
-        y: 422
-        width: 116
-        height: 153
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f2d5e9e4f9bef7f90800000000000000
-      internalID: -6953580230185427665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_5
-      rect:
-        serializedVersion: 2
-        x: 821
-        y: 224
-        width: 53
-        height: 193
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d0a2d99a7172844a0800000000000000
-      internalID: -6608989470582822387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_ItinakdangTitik_6
-      rect:
-        serializedVersion: 2
-        x: 885
-        y: 223
-        width: 52
-        height: 196
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dc8863656a0a588c0800000000000000
-      internalID: -3997612457950017331
+      spriteID: 08d24ecef8a220410800000000000000
+      internalID: 1441761628355046784
       vertices: []
       indices: 
       edges: []
@@ -314,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +198,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Paghihigpit_ItinakdangTitik_0: -3862784833516531504
-      Paghihigpit_ItinakdangTitik_1: 8732718434340600316
-      Paghihigpit_ItinakdangTitik_2: -5423402410480041268
-      Paghihigpit_ItinakdangTitik_3: -7195946338145701444
-      Paghihigpit_ItinakdangTitik_4: -6953580230185427665
-      Paghihigpit_ItinakdangTitik_5: -6608989470582822387
-      Paghihigpit_ItinakdangTitik_6: -3997612457950017331
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

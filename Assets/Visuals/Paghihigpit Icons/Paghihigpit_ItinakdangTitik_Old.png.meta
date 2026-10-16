@@ -1,43 +1,28 @@
 fileFormatVersion: 2
-guid: e0b661635de0b405dae509a4f7636dfa
+guid: c42a16f15340e4d579d7968f69e3096c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4395955565623876845
-    second: Paghihigpit_BawalUmulit_0
+      213: 2401332154526616881
+    second: Paghihigpit_ItinakdangTitik_Old_0
   - first:
-      213: -5201058951163275321
-    second: Paghihigpit_BawalUmulit_1
+      213: 7100683736760858339
+    second: Paghihigpit_ItinakdangTitik_Old_1
   - first:
-      213: 2074009805224939805
-    second: Paghihigpit_BawalUmulit_2
+      213: 3048541762060887051
+    second: Paghihigpit_ItinakdangTitik_Old_2
   - first:
-      213: 6225071627793886472
-    second: Paghihigpit_BawalUmulit_3
+      213: -8039152309018588979
+    second: Paghihigpit_ItinakdangTitik_Old_3
   - first:
-      213: -6019946103929911089
-    second: Paghihigpit_BawalUmulit_4
+      213: 2457268378174583257
+    second: Paghihigpit_ItinakdangTitik_Old_4
   - first:
-      213: -5366213578943106424
-    second: Paghihigpit_BawalUmulit_5
+      213: -680704693660813813
+    second: Paghihigpit_ItinakdangTitik_Old_5
   - first:
-      213: 2534741877530931603
-    second: Paghihigpit_BawalUmulit_6
-  - first:
-      213: 8069189494562588416
-    second: Paghihigpit_BawalUmulit_7
-  - first:
-      213: 792327447265853214
-    second: Paghihigpit_BawalUmulit_8
-  - first:
-      213: 205433619012686377
-    second: Paghihigpit_BawalUmulit_9
-  - first:
-      213: 1054010436268080731
-    second: Paghihigpit_BawalUmulit_10
-  - first:
-      213: -7952714133895388839
-    second: Paghihigpit_BawalUmulit_11
+      213: 6204092205975848657
+    second: Paghihigpit_ItinakdangTitik_Old_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -79,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -172,13 +157,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_0
+      name: Paghihigpit_ItinakdangTitik_Old_0
       rect:
         serializedVersion: 2
-        x: 141
-        y: 116
-        width: 742
-        height: 814
+        x: 84
+        y: 578
+        width: 52
+        height: 196
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dec9961db42910d30800000000000000
-      internalID: 4395955565623876845
+      spriteID: 13d484a2fde335120800000000000000
+      internalID: 2401332154526616881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_1
+      name: Paghihigpit_ItinakdangTitik_Old_1
       rect:
         serializedVersion: 2
-        x: 816
-        y: 906
-        width: 6
-        height: 6
+        x: 147
+        y: 580
+        width: 53
+        height: 193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +194,86 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c71c08b07022d7b0800000000000000
-      internalID: -5201058951163275321
+      spriteID: 3e63600dc32ba8260800000000000000
+      internalID: 7100683736760858339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_2
+      name: Paghihigpit_ItinakdangTitik_Old_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 432
+        width: 124
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b04259aa4989e4a20800000000000000
+      internalID: 3048541762060887051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paghihigpit_ItinakdangTitik_Old_3
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 417
+        width: 126
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc88fa571913f6090800000000000000
+      internalID: -8039152309018588979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paghihigpit_ItinakdangTitik_Old_4
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 422
+        width: 116
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d175ee1298f91220800000000000000
+      internalID: 2457268378174583257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paghihigpit_ItinakdangTitik_Old_5
       rect:
         serializedVersion: 2
         x: 821
-        y: 908
-        width: 8
-        height: 7
+        y: 224
+        width: 53
+        height: 193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,20 +282,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d111c15edec58cc10800000000000000
-      internalID: 2074009805224939805
+      spriteID: b06f76900b6ad86f0800000000000000
+      internalID: -680704693660813813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_3
+      name: Paghihigpit_ItinakdangTitik_Old_6
       rect:
         serializedVersion: 2
-        x: 845
-        y: 908
-        width: 10
-        height: 10
+        x: 885
+        y: 223
+        width: 52
+        height: 196
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,184 +304,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80d6404e9a5e36650800000000000000
-      internalID: 6225071627793886472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_4
-      rect:
-        serializedVersion: 2
-        x: 865
-        y: 909
-        width: 6
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc8c24cd9ead47ca0800000000000000
-      internalID: -6019946103929911089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_5
-      rect:
-        serializedVersion: 2
-        x: 846
-        y: 884
-        width: 17
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 882f73e6e216785b0800000000000000
-      internalID: -5366213578943106424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_6
-      rect:
-        serializedVersion: 2
-        x: 868
-        y: 868
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 391b987de463d2320800000000000000
-      internalID: 2534741877530931603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_7
-      rect:
-        serializedVersion: 2
-        x: 868
-        y: 857
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00787b8c7158bff60800000000000000
-      internalID: 8069189494562588416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_8
-      rect:
-        serializedVersion: 2
-        x: 872
-        y: 852
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e1fb2188d99eefa00800000000000000
-      internalID: 792327447265853214
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_9
-      rect:
-        serializedVersion: 2
-        x: 876
-        y: 841
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9229c2eb9c8d9d200800000000000000
-      internalID: 205433619012686377
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_10
-      rect:
-        serializedVersion: 2
-        x: 815
-        y: 119
-        width: 13
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5e305b48e890ae00800000000000000
-      internalID: 1054010436268080731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_BawalUmulit_11
-      rect:
-        serializedVersion: 2
-        x: 846
-        y: 116
-        width: 10
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 951efe861a842a190800000000000000
-      internalID: -7952714133895388839
+      spriteID: 1d6c5fa9dfc591650800000000000000
+      internalID: 6204092205975848657
       vertices: []
       indices: 
       edges: []
@@ -439,7 +314,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -448,19 +323,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Paghihigpit_BawalUmulit_0: 4395955565623876845
-      Paghihigpit_BawalUmulit_1: -5201058951163275321
-      Paghihigpit_BawalUmulit_10: 1054010436268080731
-      Paghihigpit_BawalUmulit_11: -7952714133895388839
-      Paghihigpit_BawalUmulit_2: 2074009805224939805
-      Paghihigpit_BawalUmulit_3: 6225071627793886472
-      Paghihigpit_BawalUmulit_4: -6019946103929911089
-      Paghihigpit_BawalUmulit_5: -5366213578943106424
-      Paghihigpit_BawalUmulit_6: 2534741877530931603
-      Paghihigpit_BawalUmulit_7: 8069189494562588416
-      Paghihigpit_BawalUmulit_8: 792327447265853214
-      Paghihigpit_BawalUmulit_9: 205433619012686377
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -21,6 +21,10 @@ public class DialogueManager : MonoBehaviour
     [Range(0f, 1f), SerializeField] private float normalDialogueDimAlpha = 0.75f;
     [Min(0f), SerializeField] private float defaultBackgroundFadeDuration = 0.33333334f;
 
+    [Header("Character Presentation")]
+    [Min(0f), SerializeField, Tooltip("Seconds allotted to each half of a portrait swap: old portrait fades out, then the replacement fades in.")]
+    private float profileSwapFadeDuration = 0.33333334f;
+
     [Header("Dialogue Details")]
     [ReadOnly, SerializeField] private Dialogue currentDialogue;
     [HideInInspector] private int currentSentenceIndex;
@@ -124,8 +128,16 @@ public class DialogueManager : MonoBehaviour
         skip = false;
 
         ApplyBackgroundMode(dialogueSentence);
+
+        bool isReplacingVisibleProfile = HideProfilesBeingReplaced(dialogueSentence);
+        if (isReplacingVisibleProfile && profileSwapFadeDuration > 0f)
+            yield return new WaitForSeconds(profileSwapFadeDuration);
+
         SetProfileSprites(dialogueSentence);
         AnimateProfiles(dialogueSentence);
+
+        if (isReplacingVisibleProfile && profileSwapFadeDuration > 0f)
+            yield return new WaitForSeconds(profileSwapFadeDuration);
 
         string sentence = dialogueSentence.sentence;
         int total = dialogueContainer.PrepareText(sentence);
@@ -183,16 +195,20 @@ public class DialogueManager : MonoBehaviour
 
     private void ApplyBackgroundMode(DialogueSentence dialogueSentence)
     {
+        float fadeDuration = dialogueSentence.backgroundFadeDuration > 0f
+            ? dialogueSentence.backgroundFadeDuration
+            : defaultBackgroundFadeDuration;
+
         switch (dialogueSentence.backgroundMode)
         {
             case DialogueBackgroundMode.Black:
-                FadeBackgroundTo(1f, 0f, dialogueSentence.backgroundFadeDuration);
+                FadeBackgroundTo(1f, 0f, fadeDuration);
                 break;
             case DialogueBackgroundMode.Dim:
-                FadeBackgroundTo(0f, dialogueSentence.vignetteIntensity, dialogueSentence.backgroundFadeDuration);
+                FadeBackgroundTo(0f, dialogueSentence.vignetteIntensity, fadeDuration);
                 break;
             default:
-                FadeBackgroundTo(normalDialogueDimAlpha, 0f, dialogueSentence.backgroundFadeDuration);
+                FadeBackgroundTo(normalDialogueDimAlpha, 0f, fadeDuration);
                 break;
         }
     }
@@ -303,6 +319,39 @@ public class DialogueManager : MonoBehaviour
     {
         if (null == _sprite) return;
         _image.sprite = _sprite;
+    }
+
+    private bool HideProfilesBeingReplaced(DialogueSentence dialogueSentence)
+    {
+        bool isReplacingVisibleProfile = false;
+
+        isReplacingVisibleProfile |= HideProfileIfBeingReplaced(
+            leftPrimaryImage,
+            leftPrimaryAnimator,
+            dialogueSentence.leftPrimaryProfile.sprite);
+        isReplacingVisibleProfile |= HideProfileIfBeingReplaced(
+            leftSecondaryImage,
+            leftSecondaryAnimator,
+            dialogueSentence.leftSecondaryProfile.sprite);
+        isReplacingVisibleProfile |= HideProfileIfBeingReplaced(
+            rightPrimaryImage,
+            rightPrimaryAnimator,
+            dialogueSentence.rightPrimaryProfile.sprite);
+        isReplacingVisibleProfile |= HideProfileIfBeingReplaced(
+            rightSecondaryImage,
+            rightSecondaryAnimator,
+            dialogueSentence.rightSecondaryProfile.sprite);
+
+        return isReplacingVisibleProfile;
+    }
+
+    private bool HideProfileIfBeingReplaced(Image image, Animator animator, Sprite nextSprite)
+    {
+        if (!image || !animator || !nextSprite) return false;
+        if (!animator.GetBool("isVisible") || image.sprite == nextSprite) return false;
+
+        AnimateProfile(animator, false, false);
+        return true;
     }
 
     private void AnimateProfiles(DialogueSentence _dialogueSentence)

@@ -21,7 +21,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -38,7 +38,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -72,7 +72,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -191,7 +191,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -225,7 +225,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -8403772460739551594, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
+      sprite: {fileID: 3730163991204493436, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}

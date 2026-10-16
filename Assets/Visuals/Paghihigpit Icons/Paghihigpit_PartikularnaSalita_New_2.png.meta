@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: e8045ff7194d242459fecf80e1f30919
+guid: bb3e8bb170b8b4edeb32b8d77d9aa0b1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8480882948710385822
-    second: Paghihigpit_HanginAbagat_0
-  - first:
-      213: 8839606848803020569
-    second: Paghihigpit_HanginAbagat_1
-  - first:
-      213: -3570702907895500321
-    second: Paghihigpit_HanginAbagat_2
-  - first:
-      213: 5132358193533979984
-    second: Paghihigpit_HanginAbagat_3
-  - first:
-      213: 7941153103489116017
-    second: Paghihigpit_HanginAbagat_4
+      213: 7905656013879333651
+    second: Paghihigpit_PartikularnaSalita_New_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -151,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paghihigpit_HanginAbagat_0
+      name: Paghihigpit_PartikularnaSalita_New_2_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 579
-        width: 247
-        height: 186
+        x: 20
+        y: 28
+        width: 978
+        height: 971
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,96 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e98cc83bb1622b570800000000000000
-      internalID: 8480882948710385822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_HanginAbagat_1
-      rect:
-        serializedVersion: 2
-        x: 705
-        y: 643
-        width: 72
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 91f930148979caa70800000000000000
-      internalID: 8839606848803020569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_HanginAbagat_2
-      rect:
-        serializedVersion: 2
-        x: 726
-        y: 637
-        width: 189
-        height: 162
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd13f68af90527ec0800000000000000
-      internalID: -3570702907895500321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_HanginAbagat_3
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 274
-        width: 850
-        height: 365
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05d88a9a59cc93740800000000000000
-      internalID: 5132358193533979984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_HanginAbagat_4
-      rect:
-        serializedVersion: 2
-        x: 333
-        y: 232
-        width: 211
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 177a5707ca4a43e60800000000000000
-      internalID: 7941153103489116017
+      spriteID: 31355b7324886bd60800000000000000
+      internalID: 7905656013879333651
       vertices: []
       indices: 
       edges: []
@@ -264,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Paghihigpit_HanginAbagat_0: 8480882948710385822
-      Paghihigpit_HanginAbagat_1: 8839606848803020569
-      Paghihigpit_HanginAbagat_2: -3570702907895500321
-      Paghihigpit_HanginAbagat_3: 5132358193533979984
-      Paghihigpit_HanginAbagat_4: 7941153103489116017
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

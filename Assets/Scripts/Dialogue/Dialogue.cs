@@ -42,7 +42,7 @@ public struct DialogueSentence
 	[Range(0f, 1f), Tooltip("How dark the vignette is. 0 is invisible and 1 is fully dark.")]
 	public float vignetteIntensity;
 
-	[Min(0f), Tooltip("Seconds used to fade to the selected background mode. Use 0 for an instant change.")]
+	[Min(0f), Tooltip("Seconds used to fade to the selected background mode. Use 0 for the default fade duration.")]
 	public float backgroundFadeDuration;
 
 	[TextArea(3, 10)] public string sentence;
