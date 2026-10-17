@@ -79,4 +79,13 @@ public class AlahasPopup : MonoBehaviour
 
         buttonComponent.interactable = false;
     }
+
+
+
+
+    void OnTriggerEnter(Collider coolname)
+    {
+        print("Collected coin!");
+        Destroy(coolname.gameObject);
+    }
 }

@@ -29,7 +29,8 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag == null) return;
 
         GameObject draggedObject = eventData.pointerDrag.gameObject;
-        if (draggedObject.GetComponent<Draggable>() == null) return;
+        Draggable draggable = draggedObject.GetComponent<Draggable>();
+        if (draggable == null) return;
 
         RectTransform rectTransform = transform as RectTransform;
         Vector2 localMousePosition;
@@ -51,6 +52,7 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (changeTileBox) draggedObject.GetComponent<Tile>().ChangeSprite(isActiveDropZone);
 
         sfxSource.PlayOneShot(dropSFX);
+        draggable.PlayDropParticles();
 
         if (!invokeOnlyOnce || !hasInvokedDropEvent)
         {

@@ -302,6 +302,7 @@ public class SalitaSlots : MonoBehaviour
 
             tileScoreTotal += activeTile.Score;
             tileScoreTerms.Add(GetTileScoreTerm(activeTile));
+            activeTile.GetComponent<Draggable>().PlayScoreParticles();
             activeTile.GetComponent<Animator>().Play("tile_hold");
 
             AudioSource scoreSfxSource = GetAvailableTileScoreSfxSource();
