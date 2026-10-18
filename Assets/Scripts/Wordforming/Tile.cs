@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Draggable))]
@@ -20,6 +21,8 @@ public class Tile : MonoBehaviour
     [Header("Components")]
     [HideInInspector] private Draggable draggableScript;
     [HideInInspector] private Image imageComponent;
+    [HideInInspector] private CanvasGroup canvasGroup;
+    [HideInInspector] private RectTransform rectTransform;
 
     [Header("Diacritics")]
     [SerializeField] private GameObject topKudlit;
@@ -80,12 +83,23 @@ public class Tile : MonoBehaviour
     private readonly List<Color> pakpakFadeStartColors = new List<Color>();
     private bool isPakpakFading;
     private float pakpakFadeProgress;
+    private Coroutine appearanceTransitionRoutine;
+    private Coroutine scorePulseRoutine;
+    private Graphic[] scorePulseGraphics;
+    private Color[] scorePulseBaseColors;
+    private Vector3 scorePulseBaseScale;
+    private float scorePulseIntensity;
+    private float scorePulseScaleMultiplier = 1f;
+    private float scorePulseBrightness;
+    private bool scorePulseActive;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
         draggableScript = GetComponent<Draggable>();
         imageComponent = GetComponent<Image>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        rectTransform = GetComponent<RectTransform>();
         tooltipScript = GetComponentInChildren<ToolTipAble>();
         if(null == m_animator) m_animator = GetComponent<Animator>();
     }
@@ -116,6 +130,45 @@ public class Tile : MonoBehaviour
         updateLatinTooltipText();
         applyModVisuals();
         ApplyPakpakFadeVisuals();
+    }
+
+    private void LateUpdate()
+    {
+        if (!scorePulseActive) return;
+
+        rectTransform.localScale = scorePulseBaseScale * Mathf.Lerp(
+            1f,
+            scorePulseScaleMultiplier,
+            scorePulseIntensity);
+
+        Color highlight = new Color(1f, 0.92f, 0.55f, 1f);
+        for (int i = 0; i < scorePulseGraphics.Length; i++)
+        {
+            Graphic graphic = scorePulseGraphics[i];
+            if (graphic == null) continue;
+
+            Color baseColor = scorePulseBaseColors[i];
+            Color brightColor = new Color(
+                highlight.r,
+                highlight.g,
+                highlight.b,
+                baseColor.a);
+            graphic.color = Color.Lerp(
+                baseColor,
+                brightColor,
+                scorePulseBrightness * scorePulseIntensity);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (appearanceTransitionRoutine != null) StopCoroutine(appearanceTransitionRoutine);
+        if (scorePulseRoutine != null) StopCoroutine(scorePulseRoutine);
+
+        appearanceTransitionRoutine = null;
+        scorePulseRoutine = null;
+        if (canvasGroup != null) canvasGroup.alpha = 1f;
+        ResetScorePulse();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -195,6 +248,110 @@ public class Tile : MonoBehaviour
         }
 
         ApplyStrokeColor();
+    }
+
+    public void TransitionToScoredAppearance(float duration)
+    {
+        if (appearanceTransitionRoutine != null)
+            StopCoroutine(appearanceTransitionRoutine);
+
+        if (duration <= 0f)
+        {
+            ChangeSprite(true);
+            if (canvasGroup != null) canvasGroup.alpha = 1f;
+            appearanceTransitionRoutine = null;
+            return;
+        }
+
+        appearanceTransitionRoutine = StartCoroutine(
+            FadeToScoredAppearance(duration));
+    }
+
+    public void PlayScorePulse(float duration, float scaleMultiplier, float brightness)
+    {
+        if (scorePulseRoutine != null)
+        {
+            StopCoroutine(scorePulseRoutine);
+            ResetScorePulse();
+        }
+
+        if (duration <= 0f) return;
+
+        scorePulseGraphics = GetComponentsInChildren<Graphic>(true);
+        scorePulseBaseColors = new Color[scorePulseGraphics.Length];
+        for (int i = 0; i < scorePulseGraphics.Length; i++)
+            scorePulseBaseColors[i] = scorePulseGraphics[i].color;
+
+        scorePulseBaseScale = rectTransform.localScale;
+        scorePulseScaleMultiplier = Mathf.Max(1f, scaleMultiplier);
+        scorePulseBrightness = Mathf.Clamp01(brightness);
+        scorePulseActive = true;
+        scorePulseRoutine = StartCoroutine(AnimateScorePulse(duration));
+    }
+
+    private IEnumerator FadeToScoredAppearance(float duration)
+    {
+        float startAlpha = canvasGroup != null ? canvasGroup.alpha : 1f;
+        float halfDuration = duration * 0.5f;
+
+        yield return FadeCanvasGroup(startAlpha, 0f, halfDuration);
+        ChangeSprite(true);
+        yield return FadeCanvasGroup(0f, startAlpha, halfDuration);
+
+        appearanceTransitionRoutine = null;
+    }
+
+    private IEnumerator FadeCanvasGroup(float from, float to, float duration)
+    {
+        if (canvasGroup == null || duration <= 0f)
+        {
+            if (canvasGroup != null) canvasGroup.alpha = to;
+            yield break;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float progress = Mathf.SmoothStep(0f, 1f, elapsed / duration);
+            canvasGroup.alpha = Mathf.Lerp(from, to, progress);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        canvasGroup.alpha = to;
+    }
+
+    private IEnumerator AnimateScorePulse(float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float progress = Mathf.Clamp01(elapsed / duration);
+            scorePulseIntensity = Mathf.Sin(progress * Mathf.PI);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        ResetScorePulse();
+        scorePulseRoutine = null;
+    }
+
+    private void ResetScorePulse()
+    {
+        if (!scorePulseActive) return;
+
+        if (rectTransform != null) rectTransform.localScale = scorePulseBaseScale;
+        if (scorePulseGraphics != null && scorePulseBaseColors != null)
+        {
+            for (int i = 0; i < scorePulseGraphics.Length; i++)
+            {
+                if (scorePulseGraphics[i] != null)
+                    scorePulseGraphics[i].color = scorePulseBaseColors[i];
+            }
+        }
+
+        scorePulseIntensity = 0f;
+        scorePulseActive = false;
     }
 
     private void ChangeSpriteOnDrag()

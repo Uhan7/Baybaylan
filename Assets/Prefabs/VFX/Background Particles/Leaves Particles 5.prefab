@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 480133329349106621, guid: 620cc1f4c9f9447658426d97c2ab2393, type: 3}
       propertyPath: m_Name
-      value: Full Leaves Particles 5 Variant
+      value: Leaves Particles 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468200873382369553, guid: 620cc1f4c9f9447658426d97c2ab2393, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2468200873382369553, guid: 620cc1f4c9f9447658426d97c2ab2393, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar

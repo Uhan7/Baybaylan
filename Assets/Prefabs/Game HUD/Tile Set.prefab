@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1816249566651889346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: b7eae8fbbefb44d6aa1b918a764e3e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -82,6 +82,8 @@ MonoBehaviour:
   m_Spacing: {x: 4, y: 4}
   m_Constraint: 2
   m_ConstraintCount: 1
+  moveSmoothTime: 0.09
+  maxMoveSpeed: 3000
 --- !u!222 &6265096152994266810
 CanvasRenderer:
   m_ObjectHideFlags: 0

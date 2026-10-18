@@ -339,7 +339,7 @@ class AlahasSubManager : MonoBehaviour
         {
             tile.transform.SetParent(salitaSlots.transform, false);
             tile.transform.SetAsLastSibling();
-            tile.ChangeSprite(true);
+            tile.ChangeSprite(false);
         }
 
         salitaSlots.ShowRecommendedWord(word);

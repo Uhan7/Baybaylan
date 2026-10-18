@@ -179,7 +179,12 @@ MonoBehaviour:
   latinSalita: 
   salitaScore: 0
   scoreScaleValue: 0.5
+  scoredTileTransitionDuration: 0.25
+  delayBeforeTileScoring: 0.15
   scoreTileDelay: 0.4
+  scorePulseDuration: 0.22
+  scorePulseScale: 1.12
+  scorePulseBrightness: 0.35
   finalScoreDisplayDelay: 0.75
   tileTickSemitoneStep: 2
   salitaText: {fileID: 0}
@@ -299,7 +304,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2153037346865534264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: b7eae8fbbefb44d6aa1b918a764e3e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -314,6 +319,8 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 2
   m_ConstraintCount: 1
+  moveSmoothTime: 0.14
+  maxMoveSpeed: 3000
 --- !u!114 &5537525851352475465
 MonoBehaviour:
   m_ObjectHideFlags: 0

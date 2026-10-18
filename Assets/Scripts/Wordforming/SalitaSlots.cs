@@ -37,7 +37,14 @@ public class SalitaSlots : MonoBehaviour
     [Header("Score Properties")]
     [ReadOnly, SerializeField] private int salitaScore = 0;
     [SerializeField] private float scoreScaleValue = 0.5f;
+    [Tooltip("Time for submitted tiles to fade into their scored appearance.")]
+    [SerializeField, Min(0f)] private float scoredTileTransitionDuration = 0.25f;
+    [Tooltip("Extra pause after the scored appearance is visible and before counting begins.")]
+    [SerializeField, Min(0f)] private float delayBeforeTileScoring = 0.15f;
     [SerializeField, Min(0f)] private float scoreTileDelay = 0.4f;
+    [SerializeField, Min(0f)] private float scorePulseDuration = 0.22f;
+    [SerializeField, Min(1f)] private float scorePulseScale = 1.12f;
+    [SerializeField, Range(0f, 1f)] private float scorePulseBrightness = 0.35f;
     [SerializeField, Min(0f)] private float finalScoreDisplayDelay = 0.75f;
     [Tooltip("Pitch increase per scored tile. Two semitones equal one whole tone.")]
     [SerializeField, Min(0f)] private float tileTickSemitoneStep = 2f;
@@ -293,6 +300,15 @@ public class SalitaSlots : MonoBehaviour
         preMultipliedScoreText.text = "";
         multiplierText.text = "";
 
+        foreach (Tile activeTile in activeTiles)
+            if (activeTile != null)
+                activeTile.TransitionToScoredAppearance(scoredTileTransitionDuration);
+
+        if (scoredTileTransitionDuration > 0f)
+            yield return new WaitForSeconds(scoredTileTransitionDuration);
+        if (delayBeforeTileScoring > 0f)
+            yield return new WaitForSeconds(delayBeforeTileScoring);
+
         scoreCalculationsContainer.SetActive(true);
 
         foreach (Tile activeTile in activeTiles)
@@ -302,8 +318,13 @@ public class SalitaSlots : MonoBehaviour
 
             tileScoreTotal += activeTile.Score;
             tileScoreTerms.Add(GetTileScoreTerm(activeTile));
-            activeTile.GetComponent<Draggable>().PlayScoreParticles();
-            activeTile.GetComponent<Animator>().Play("tile_hold");
+            Draggable activeDraggable = activeTile.GetComponent<Draggable>();
+            activeDraggable.PlayScoreParticles();
+            activeDraggable.PlayAngleJiggle();
+            activeTile.PlayScorePulse(
+                scorePulseDuration,
+                scorePulseScale,
+                scorePulseBrightness);
 
             AudioSource scoreSfxSource = GetAvailableTileScoreSfxSource();
             if (scoreSfxSource != null)

@@ -579,7 +579,9 @@ MonoBehaviour:
   hoverSFX: {fileID: 8300000, guid: 5dbf0a1fd60e3491ca75535cc7a54027, type: 3}
   dragSFX: {fileID: 8300000, guid: 6544b41a0f6dd499397e67bf397545b5, type: 3}
   maxJiggleAngle: 10
-  jiggleDuration: 0.0667
+  jiggleDuration: 0.1
+  pressedScale: 0.94
+  pressScaleDuration: 0.06
   dragParticles: {fileID: 2934748777232441026}
   dropParticles: {fileID: 6789385515841900949}
   scoreParticles: {fileID: 1794167198347328242}
@@ -851,15 +853,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalPosition.x

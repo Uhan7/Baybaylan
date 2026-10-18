@@ -46,18 +46,53 @@ public class DropZone : MonoBehaviour, IDropHandler
             if (localMousePosition.x > child.localPosition.x) newIndex = i + 1;
         }
 
+        if (allowInsertion)
+            newIndex = draggable.GetPreviewSiblingIndex(transform, newIndex);
+
         draggedObject.transform.SetParent(transform);
+        draggable.RegisterSmoothLayoutStart(transform);
         if (allowInsertion) draggedObject.transform.SetSiblingIndex(newIndex);
 
         if (changeTileBox) draggedObject.GetComponent<Tile>().ChangeSprite(isActiveDropZone);
 
         sfxSource.PlayOneShot(dropSFX);
-        draggable.PlayDropParticles();
 
         if (!invokeOnlyOnce || !hasInvokedDropEvent)
         {
             eventOnDrop?.Invoke();
             hasInvokedDropEvent = true;
         }
+    }
+
+    public bool PreviewInsertion(Draggable draggable, PointerEventData eventData)
+    {
+        if (!allowInsertion || draggable == null) return false;
+
+        RectTransform placeholder = draggable.GetDragPlaceholder();
+        RectTransform rectTransform = transform as RectTransform;
+        if (placeholder == null || rectTransform == null) return false;
+
+        placeholder.SetParent(transform, false);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out Vector2 localMousePosition);
+
+        int insertionIndex = 0;
+        foreach (Transform child in transform)
+        {
+            if (child == placeholder) continue;
+
+            RectTransform childRect = child as RectTransform;
+            if (childRect != null && localMousePosition.x > childRect.localPosition.x)
+                insertionIndex++;
+        }
+
+        placeholder.SetSiblingIndex(insertionIndex);
+        LayoutRebuilder.MarkLayoutForRebuild(rectTransform);
+        return true;
     }
 }
