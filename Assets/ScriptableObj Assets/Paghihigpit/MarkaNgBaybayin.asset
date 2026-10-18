@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 3
   paghihigpitName: Marka ng Baybayin
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: -3509836634195392935, guid: 2a80afe987b824592a163fe551760d94, type: 3}
   description: Liban sa mga patinig, kailangan ng Kudlit o Krus ang lahat ng titik
     ng salita na isusulat ni Tala.
   extraText: Hmm... Paano ko kaya magamit ang mga marka ng Baybayin?

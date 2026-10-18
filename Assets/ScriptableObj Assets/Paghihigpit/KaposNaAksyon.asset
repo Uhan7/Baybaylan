@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 5
   paghihigpitName: Kapos na Aksyon
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 5105077169478254464, guid: fe6ff82197c2343b7b0a800f161f5b55, type: 3}
   description: Mas kaunti ang mga aksyon.
   extraText: "Mas kaunti ang mga aksyon ko\u2026 kailangan kong sulitin ang bawat
     salita!"

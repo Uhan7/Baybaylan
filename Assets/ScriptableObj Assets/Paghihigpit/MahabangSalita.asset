@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 4
   paghihigpitName: Mahabang Salita
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: -9035196817857897616, guid: b7c81ccf474674f6cbe0748ca8816655, type: 3}
   description: Walang puntos ng mahika ang salitang gumagamit ng 3 titik o mas kaunti.
   extraText: "Kailangan kong pahabain ang mga salita ko\u2026 Baka may mga panlapi
     akong magagamit dito?"
