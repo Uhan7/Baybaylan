@@ -23,6 +23,10 @@ public class Tile : MonoBehaviour
     [HideInInspector] private Image imageComponent;
     [HideInInspector] private CanvasGroup canvasGroup;
     [HideInInspector] private RectTransform rectTransform;
+    [HideInInspector] private LayoutElement layoutElement;
+
+    [Header("Lifecycle Animation")]
+    [SerializeField, Min(0f)] private float spawnFadeDuration = 0.2f;
 
     [Header("Diacritics")]
     [SerializeField] private GameObject topKudlit;
@@ -85,6 +89,8 @@ public class Tile : MonoBehaviour
     private float pakpakFadeProgress;
     private Coroutine appearanceTransitionRoutine;
     private Coroutine scorePulseRoutine;
+    private Coroutine spawnFadeRoutine;
+    private Coroutine submitExitRoutine;
     private Graphic[] scorePulseGraphics;
     private Color[] scorePulseBaseColors;
     private Vector3 scorePulseBaseScale;
@@ -100,8 +106,12 @@ public class Tile : MonoBehaviour
         imageComponent = GetComponent<Image>();
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
+        layoutElement = GetComponent<LayoutElement>();
         tooltipScript = GetComponentInChildren<ToolTipAble>();
         if(null == m_animator) m_animator = GetComponent<Animator>();
+
+        if (canvasGroup != null && spawnFadeDuration > 0f)
+            canvasGroup.alpha = 0f;
     }
 
     private void Start()
@@ -117,6 +127,9 @@ public class Tile : MonoBehaviour
             diacriticScore = 0;
         }
         else latinText = rootConsonant + "a";
+
+        if (canvasGroup != null && spawnFadeDuration > 0f)
+            spawnFadeRoutine = StartCoroutine(FadeInOnSpawn());
 
         //ResetTileModifications();
 
@@ -164,9 +177,13 @@ public class Tile : MonoBehaviour
     {
         if (appearanceTransitionRoutine != null) StopCoroutine(appearanceTransitionRoutine);
         if (scorePulseRoutine != null) StopCoroutine(scorePulseRoutine);
+        if (spawnFadeRoutine != null) StopCoroutine(spawnFadeRoutine);
+        if (submitExitRoutine != null) StopCoroutine(submitExitRoutine);
 
         appearanceTransitionRoutine = null;
         scorePulseRoutine = null;
+        spawnFadeRoutine = null;
+        submitExitRoutine = null;
         if (canvasGroup != null) canvasGroup.alpha = 1f;
         ResetScorePulse();
     }
@@ -267,6 +284,33 @@ public class Tile : MonoBehaviour
             FadeToScoredAppearance(duration));
     }
 
+    public void PlaySubmitExitAnimation(float duration, float slideDistance)
+    {
+        if (submitExitRoutine != null) StopCoroutine(submitExitRoutine);
+        if (appearanceTransitionRoutine != null)
+        {
+            StopCoroutine(appearanceTransitionRoutine);
+            appearanceTransitionRoutine = null;
+        }
+
+        if (scorePulseRoutine != null)
+        {
+            StopCoroutine(scorePulseRoutine);
+            scorePulseRoutine = null;
+            ResetScorePulse();
+        }
+
+        if (layoutElement != null) layoutElement.ignoreLayout = true;
+        if (canvasGroup != null)
+        {
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
+
+        submitExitRoutine = StartCoroutine(
+            AnimateSubmitExit(duration, slideDistance));
+    }
+
     public void PlayScorePulse(float duration, float scaleMultiplier, float brightness)
     {
         if (scorePulseRoutine != null)
@@ -299,6 +343,39 @@ public class Tile : MonoBehaviour
         yield return FadeCanvasGroup(0f, startAlpha, halfDuration);
 
         appearanceTransitionRoutine = null;
+    }
+
+    private IEnumerator FadeInOnSpawn()
+    {
+        yield return FadeCanvasGroup(0f, 1f, spawnFadeDuration);
+        spawnFadeRoutine = null;
+    }
+
+    private IEnumerator AnimateSubmitExit(float duration, float slideDistance)
+    {
+        Vector2 startPosition = rectTransform.anchoredPosition;
+        Vector2 targetPosition = startPosition + Vector2.down * Mathf.Max(0f, slideDistance);
+        float startAlpha = canvasGroup != null ? canvasGroup.alpha : 1f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float progress = duration <= 0f ? 1f : elapsed / duration;
+            float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
+            rectTransform.anchoredPosition = Vector2.Lerp(
+                startPosition,
+                targetPosition,
+                easedProgress);
+            if (canvasGroup != null)
+                canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, easedProgress);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rectTransform.anchoredPosition = targetPosition;
+        if (canvasGroup != null) canvasGroup.alpha = 0f;
+        submitExitRoutine = null;
     }
 
     private IEnumerator FadeCanvasGroup(float from, float to, float duration)

@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7999ea8456ca14de89864e9f7b55130b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnFadeDuration: 0.2
   topKudlit: {fileID: 3383251389286085449}
   bottomKudlit: {fileID: 6432145158623040388}
   krus: {fileID: 2241262600043057499}
@@ -580,7 +581,7 @@ MonoBehaviour:
   dragSFX: {fileID: 8300000, guid: 6544b41a0f6dd499397e67bf397545b5, type: 3}
   maxJiggleAngle: 10
   jiggleDuration: 0.1
-  pressedScale: 0.94
+  pressedScale: 0.97
   pressScaleDuration: 0.06
   dragParticles: {fileID: 2934748777232441026}
   dropParticles: {fileID: 6789385515841900949}

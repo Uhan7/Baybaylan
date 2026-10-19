@@ -40,7 +40,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     [Header("Press Scale")]
     [Tooltip("Scale used while the tile is pressed, like a button.")]
-    [SerializeField, Range(0.5f, 1f)] private float pressedScale = 0.94f;
+    [SerializeField, Range(0.5f, 1f)] private float pressedScale = 0.97f;
     [SerializeField, Min(0f)] private float pressScaleDuration = 0.06f;
 
     [Header("Tile Particles")]
@@ -140,6 +140,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         originalSiblingIndex = transform.GetSiblingIndex();
         CreateDragPlaceholder();
         transform.SetParent(canvas.transform);
+        PlayParticleBurst(dragParticles);
 
         sfxSource.PlayOneShot(dragSFX);
 
@@ -220,21 +221,25 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void PlayDropParticles()
     {
-        PlayParticles(dropParticles);
+        PlayParticleBurst(dropParticles);
     }
 
     public void PlayScoreParticles()
     {
-        if (scoreParticles == null) return;
+        PlayParticleBurst(scoreParticles);
+    }
 
-        // Spawn scoring feedback above the tile UI instead of playing the
-        // nested emitter in place. Salita slots can mask or cover descendants,
-        // which made the burst run without being visible.
+    private void PlayParticleBurst(ParticleSystem particleTemplate)
+    {
+        if (particleTemplate == null) return;
+
+        // Render transient tile feedback above layout masks and sibling UI.
+        // The nested systems remain editable templates and are never played.
         Transform effectParent = canvas != null
             ? canvas.transform
-            : scoreParticles.transform.parent;
-        GameObject effectObject = Instantiate(scoreParticles.gameObject, effectParent);
-        effectObject.name = scoreParticles.gameObject.name + " (Runtime)";
+            : particleTemplate.transform.parent;
+        GameObject effectObject = Instantiate(particleTemplate.gameObject, effectParent);
+        effectObject.name = particleTemplate.gameObject.name + " (Runtime)";
 
         RectTransform effectRect = effectObject.transform as RectTransform;
         if (effectRect != null)
@@ -246,23 +251,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
 
         ParticleSystem runtimeParticles = effectObject.GetComponent<ParticleSystem>();
+        runtimeParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         ParticleSystem.MainModule main = runtimeParticles.main;
         main.stopAction = ParticleSystemStopAction.Destroy;
-        PlayParticles(runtimeParticles);
+        runtimeParticles.Play(true);
     }
 
     public void PlayAngleJiggle()
     {
         StopAngleJiggleSequence();
         angleJiggleSequenceRoutine = StartCoroutine(PlayAngleJiggleSequence());
-    }
-
-    private static void PlayParticles(ParticleSystem particles)
-    {
-        if (particles == null) return;
-
-        particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        particles.Play(true);
     }
 
     public RectTransform GetDragPlaceholder()

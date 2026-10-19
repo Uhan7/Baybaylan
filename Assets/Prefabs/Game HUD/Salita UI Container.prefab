@@ -187,6 +187,9 @@ MonoBehaviour:
   scorePulseBrightness: 0.35
   finalScoreDisplayDelay: 0.75
   tileTickSemitoneStep: 2
+  tileExitDelay: 0.15
+  tileExitDuration: 0.25
+  tileExitSlideDistance: 18
   salitaText: {fileID: 0}
   scoreCalculationsContainer: {fileID: 0}
   preMultipliedScoreText: {fileID: 0}

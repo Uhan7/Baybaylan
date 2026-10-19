@@ -56,6 +56,7 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (changeTileBox) draggedObject.GetComponent<Tile>().ChangeSprite(isActiveDropZone);
 
         sfxSource.PlayOneShot(dropSFX);
+        draggable.PlayDropParticles();
 
         if (!invokeOnlyOnce || !hasInvokedDropEvent)
         {

@@ -49,6 +49,11 @@ public class SalitaSlots : MonoBehaviour
     [Tooltip("Pitch increase per scored tile. Two semitones equal one whole tone.")]
     [SerializeField, Min(0f)] private float tileTickSemitoneStep = 2f;
 
+    [Header("Submitted Tile Exit")]
+    [SerializeField, Min(0f)] private float tileExitDelay = 0.15f;
+    [SerializeField, Min(0f)] private float tileExitDuration = 0.25f;
+    [SerializeField, Min(0f)] private float tileExitSlideDistance = 18f;
+
     [Header("UI Stuff")]
     [SerializeField] private TextMeshProUGUI salitaText;
     [SerializeField] private GameObject scoreCalculationsContainer;
@@ -537,7 +542,8 @@ public class SalitaSlots : MonoBehaviour
         revealedLatinSalita = null;
         observedLatinSalita = null;
         yield return tileSet.RemovePakpakTemporaryTiles();
-        yield return new WaitForSeconds(1f);
+        if (tileExitDelay > 0f)
+            yield return new WaitForSeconds(tileExitDelay);
 
         int submittedNormalTileCount = 0;
 
@@ -545,9 +551,23 @@ public class SalitaSlots : MonoBehaviour
         {
             if (activeTile == null) continue;
             if (!activeTile.isTemp) submittedNormalTileCount++;
-            Destroy(activeTile.gameObject);
-            yield return new WaitForSeconds(0.2f);
+            activeTile.PlaySubmitExitAnimation(
+                tileExitDuration,
+                tileExitSlideDistance);
         }
+
+        if (tileExitDuration > 0f)
+            yield return new WaitForSeconds(tileExitDuration);
+
+        foreach (Tile activeTile in activeTiles)
+        {
+            if (activeTile == null) continue;
+            Destroy(activeTile.gameObject);
+        }
+
+        // Let every submitted tile leave the hierarchy together before the
+        // replacement pool begins to populate the layouts.
+        yield return null;
 
         if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
