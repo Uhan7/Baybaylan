@@ -9,6 +9,7 @@ public static class TileParticlePrefabSetup
     private const string TileBasePath = "Assets/Prefabs/Titik Tiles/Tile Base.prefab";
     private const string DragPath = ParticleFolder + "/Tile Drag Particles.prefab";
     private const string DropPath = ParticleFolder + "/Tile Drop Particles.prefab";
+    private const string ClickPath = ParticleFolder + "/Tile Click Particles.prefab";
     private const string ScorePath = ParticleFolder + "/Tile Score Particles.prefab";
     private const string ParticleMaterialGuid = "9944483a3e009401ba5dcc42f14d5c63";
 
@@ -26,13 +27,47 @@ public static class TileParticlePrefabSetup
 
         GameObject dragPrefab = CreateParticlePrefab(DragPath, "Tile Drag Particles", BurstStyle.Drag);
         GameObject dropPrefab = CreateParticlePrefab(DropPath, "Tile Drop Particles", BurstStyle.Drop);
+        GameObject clickPrefab = CreateParticlePrefab(ClickPath, "Tile Click Particles", BurstStyle.Drop);
         GameObject scorePrefab = CreateParticlePrefab(ScorePath, "Tile Score Particles", BurstStyle.Score);
 
-        ConnectParticlesToTileBase(dragPrefab, dropPrefab, scorePrefab);
+        ConnectParticlesToTileBase(dragPrefab, dropPrefab, clickPrefab, scorePrefab);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
         Debug.Log($"Created editable tile particle prefabs in {ParticleFolder} and connected them to Tile Base.");
+    }
+
+    [MenuItem("Tools/Baybaylan/Create Tile Click Particle From Drop")]
+    public static void CreateTileClickParticleFromDrop()
+    {
+        EnsureFolder("Assets/Prefabs/VFX", "Tile Particles");
+
+        if (AssetDatabase.LoadAssetAtPath<GameObject>(DropPath) == null)
+            throw new MissingReferenceException($"Missing drop particle prefab at {DropPath}.");
+
+        if (AssetDatabase.LoadAssetAtPath<GameObject>(ClickPath) == null
+            && !AssetDatabase.CopyAsset(DropPath, ClickPath))
+        {
+            throw new UnityException("Could not copy the drop particle prefab for tile clicks.");
+        }
+
+        GameObject clickRoot = PrefabUtility.LoadPrefabContents(ClickPath);
+        try
+        {
+            clickRoot.name = "Tile Click Particles";
+            PrefabUtility.SaveAsPrefabAsset(clickRoot, ClickPath);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(clickRoot);
+        }
+
+        GameObject clickPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(ClickPath);
+        ConnectClickParticleToTileBase(clickPrefab);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        Debug.Log("Copied DROP juice to Tile Click Particles and connected it to Tile Base.");
     }
 
     private static GameObject CreateParticlePrefab(string path, string objectName, BurstStyle style)
@@ -196,6 +231,7 @@ public static class TileParticlePrefabSetup
     private static void ConnectParticlesToTileBase(
         GameObject dragPrefab,
         GameObject dropPrefab,
+        GameObject clickPrefab,
         GameObject scorePrefab)
     {
         GameObject tileRoot = PrefabUtility.LoadPrefabContents(TileBasePath);
@@ -207,16 +243,43 @@ public static class TileParticlePrefabSetup
 
             RemoveChild(tileRoot.transform, "Tile Drag Particles");
             RemoveChild(tileRoot.transform, "Tile Drop Particles");
+            RemoveChild(tileRoot.transform, "Tile Click Particles");
             RemoveChild(tileRoot.transform, "Tile Score Particles");
 
             ParticleSystem drag = AddNestedParticle(dragPrefab, tileRoot.transform);
             ParticleSystem drop = AddNestedParticle(dropPrefab, tileRoot.transform);
+            ParticleSystem click = AddNestedParticle(clickPrefab, tileRoot.transform);
             ParticleSystem score = AddNestedParticle(scorePrefab, tileRoot.transform);
 
             SerializedObject serializedDraggable = new SerializedObject(draggable);
             serializedDraggable.FindProperty("dragParticles").objectReferenceValue = drag;
             serializedDraggable.FindProperty("dropParticles").objectReferenceValue = drop;
+            serializedDraggable.FindProperty("clickParticles").objectReferenceValue = click;
             serializedDraggable.FindProperty("scoreParticles").objectReferenceValue = score;
+            serializedDraggable.ApplyModifiedPropertiesWithoutUndo();
+
+            PrefabUtility.SaveAsPrefabAsset(tileRoot, TileBasePath);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(tileRoot);
+        }
+    }
+
+    private static void ConnectClickParticleToTileBase(GameObject clickPrefab)
+    {
+        GameObject tileRoot = PrefabUtility.LoadPrefabContents(TileBasePath);
+        try
+        {
+            Draggable draggable = tileRoot.GetComponent<Draggable>();
+            if (draggable == null)
+                throw new MissingComponentException("Tile Base needs a Draggable component.");
+
+            RemoveChild(tileRoot.transform, "Tile Click Particles");
+            ParticleSystem click = AddNestedParticle(clickPrefab, tileRoot.transform);
+
+            SerializedObject serializedDraggable = new SerializedObject(draggable);
+            serializedDraggable.FindProperty("clickParticles").objectReferenceValue = click;
             serializedDraggable.ApplyModifiedPropertiesWithoutUndo();
 
             PrefabUtility.SaveAsPrefabAsset(tileRoot, TileBasePath);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Coffee.UIExtensions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -46,6 +47,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [Header("Tile Particles")]
     [SerializeField] private ParticleSystem dragParticles;
     [SerializeField] private ParticleSystem dropParticles;
+    [SerializeField] private ParticleSystem clickParticles;
     [SerializeField] private ParticleSystem scoreParticles;
 
     [Header("Storage Values")]
@@ -212,6 +214,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (InteractionLocked || anyBeingDragged || isBeingDragged) return;
 
+        PlayParticleBurst(clickParticles);
         PlayAngleJiggle();
     }
 
@@ -228,10 +231,18 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void PlayScoreParticles()
     {
-        PlayParticleBurst(scoreParticles);
+        PlayParticleBurst(scoreParticles, true);
     }
 
-    private void PlayParticleBurst(ParticleSystem particleTemplate)
+    public void PlayScoreFeedback()
+    {
+        PlayScoreParticles();
+        PlayAngleJiggle();
+    }
+
+    private void PlayParticleBurst(
+        ParticleSystem particleTemplate,
+        bool emitBurstImmediately = false)
     {
         if (particleTemplate == null) return;
 
@@ -255,8 +266,63 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         ParticleSystem runtimeParticles = effectObject.GetComponent<ParticleSystem>();
         runtimeParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         ParticleSystem.MainModule main = runtimeParticles.main;
-        main.stopAction = ParticleSystemStopAction.Destroy;
-        runtimeParticles.Play(true);
+        main.cullingMode = ParticleSystemCullingMode.AlwaysSimulate;
+        main.stopAction = ParticleSystemStopAction.None;
+
+        UIParticle uiParticle = effectObject.GetComponent<UIParticle>();
+        if (uiParticle != null)
+        {
+            // Runtime clones need to rebuild their UI renderers before the
+            // package can simulate and draw them on the canvas.
+            uiParticle.RefreshParticles();
+
+            if (emitBurstImmediately)
+            {
+                // UIParticle can miss a burst scheduled exactly at time zero
+                // when a system is cloned mid-frame. Emit the configured score
+                // burst ourselves so it appears on the same scoring beat as
+                // the tile jiggle and pitched tick.
+                int burstCount = GetImmediateBurstCount(runtimeParticles);
+                ParticleSystem.EmissionModule emission = runtimeParticles.emission;
+                emission.enabled = false;
+                runtimeParticles.Play(false);
+                runtimeParticles.Emit(burstCount);
+                uiParticle.Resume();
+            }
+            else
+            {
+                uiParticle.Play();
+            }
+        }
+        else
+        {
+            runtimeParticles.Play(true);
+        }
+
+        float destroyDelay = main.duration
+            + main.startDelay.constantMax
+            + main.startLifetime.constantMax
+            + 0.25f;
+        Destroy(effectObject, destroyDelay);
+    }
+
+    private static int GetImmediateBurstCount(ParticleSystem particles)
+    {
+        ParticleSystem.EmissionModule emission = particles.emission;
+        int configuredBurstCount = emission.burstCount;
+        if (configuredBurstCount <= 0) return 1;
+
+        ParticleSystem.Burst[] bursts = new ParticleSystem.Burst[configuredBurstCount];
+        emission.GetBursts(bursts);
+
+        int particleCount = 0;
+        foreach (ParticleSystem.Burst burst in bursts)
+        {
+            if (burst.time > 0.001f) continue;
+            particleCount += Mathf.CeilToInt(burst.count.constantMax);
+        }
+
+        return Mathf.Max(1, particleCount);
     }
 
     public void PlayAngleJiggle()

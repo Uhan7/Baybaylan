@@ -324,8 +324,7 @@ public class SalitaSlots : MonoBehaviour
             tileScoreTotal += activeTile.Score;
             tileScoreTerms.Add(GetTileScoreTerm(activeTile));
             Draggable activeDraggable = activeTile.GetComponent<Draggable>();
-            activeDraggable.PlayScoreParticles();
-            activeDraggable.PlayAngleJiggle();
+            activeDraggable.PlayScoreFeedback();
             activeTile.PlayScorePulse(
                 scorePulseDuration,
                 scorePulseScale,
