@@ -255,6 +255,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89104502}
   m_CullTransparentMesh: 1
+--- !u!1 &695378810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3157310359917193094, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+  m_PrefabInstance: {fileID: 1927150348840607793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &829217903
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ad10ce1acdd8a4ef09b8ddd06d405d27, type: 2}
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: Game Scene
+      value: Area 1 - Level 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1144634152735386940, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
@@ -562,6 +567,14 @@ PrefabInstance:
     - target: {fileID: 1806835101933097566, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022499206127247221, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 38.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022499206127247221, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 22.191294
       objectReference: {fileID: 0}
     - target: {fileID: 2094052328367243392, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
@@ -938,6 +951,14 @@ PrefabInstance:
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: targetMahika
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 695378810}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: eventOnWin.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 6560131228161492887, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Enabled

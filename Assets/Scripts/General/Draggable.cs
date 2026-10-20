@@ -40,8 +40,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     [Header("Press Scale")]
     [Tooltip("Scale used while the tile is pressed, like a button.")]
-    [SerializeField, Range(0.5f, 1f)] private float pressedScale = 0.97f;
-    [SerializeField, Min(0f)] private float pressScaleDuration = 0.06f;
+    [SerializeField, Range(0.5f, 1f)] private float pressedScale = 0.985f;
+    [SerializeField, Min(0f)] private float pressScaleDuration = 0.1f;
 
     [Header("Tile Particles")]
     [SerializeField] private ParticleSystem dragParticles;
@@ -79,17 +79,19 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private void LateUpdate()
     {
-        // Apply interaction feedback after the Animator so its authored clips
-        // cannot overwrite the chosen angle or button-like press scale.
+        // Apply interaction feedback after the Animator. Press scale is a
+        // multiplier of the current animated size, so hover and press blend
+        // instead of snapping between unrelated absolute scales.
         if (controlsJiggleRotation)
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, currentJiggleAngle);
 
         if (controlsPressScale)
         {
+            Vector3 animatedScale = rectTransform.localScale;
             rectTransform.localScale = new Vector3(
-                baseLocalScale.x * currentPressScale,
-                baseLocalScale.y * currentPressScale,
-                baseLocalScale.z);
+                animatedScale.x * currentPressScale,
+                animatedScale.y * currentPressScale,
+                animatedScale.z);
         }
     }
 
@@ -391,11 +393,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
 
         currentPressScale = targetScale;
-        rectTransform.localScale = new Vector3(
-            baseLocalScale.x * currentPressScale,
-            baseLocalScale.y * currentPressScale,
-            baseLocalScale.z);
-        controlsPressScale = !Mathf.Approximately(targetScale, 1f);
+        // Keep applying a neutral x1 multiplier after release. This lets the
+        // Animator remain the source of the hover size without a one-frame
+        // reset to the prefab's base scale.
+        controlsPressScale = true;
         pressScaleRoutine = null;
     }
 

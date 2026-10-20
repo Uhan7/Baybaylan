@@ -58,7 +58,7 @@ MonoBehaviour:
   maxAksyon: 7
   numKaposAksyon: 0
   alahasSlotCount: 5
-  alahasAquiredAfterWin: {fileID: 11400000, guid: 336830bb4f67d0d4badbe80ae5cfc049, type: 2}
+  alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
   - {fileID: 11400000, guid: 7849d4880d93e8e4dbb7eee692f052c0, type: 2}
   - {fileID: 11400000, guid: a72c54938cccf8f4e8dc954a5a02af24, type: 2}

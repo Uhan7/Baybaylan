@@ -579,10 +579,10 @@ MonoBehaviour:
   sfxSource: {fileID: 0}
   hoverSFX: {fileID: 8300000, guid: 5dbf0a1fd60e3491ca75535cc7a54027, type: 3}
   dragSFX: {fileID: 8300000, guid: 6544b41a0f6dd499397e67bf397545b5, type: 3}
-  maxJiggleAngle: 10
+  maxJiggleAngle: 6
   jiggleDuration: 0.1
-  pressedScale: 0.97
-  pressScaleDuration: 0.06
+  pressedScale: 0.87
+  pressScaleDuration: 0.05
   dragParticles: {fileID: 2934748777232441026}
   dropParticles: {fileID: 6789385515841900949}
   scoreParticles: {fileID: 1794167198347328242}

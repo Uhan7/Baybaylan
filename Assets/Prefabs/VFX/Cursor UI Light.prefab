@@ -205,10 +205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlayImage: {fileID: 679735368762236905}
-  innerRadius: 10
-  outerRadius: 3000
+  innerRadius: 300
+  outerRadius: 3300
   cursorOffset: {x: 0, y: 0}
   darknessColor: {r: 0, g: 0, b: 0, a: 1}
   darknessOpacity: 0.45
-  followSharpness: 0
+  followSharpness: 0.1
   clampToScreen: 1
