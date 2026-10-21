@@ -68,6 +68,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [HideInInspector] private Vector3 baseLocalScale;
     [HideInInspector] private float currentPressScale = 1f;
     [HideInInspector] private bool controlsPressScale;
+    [HideInInspector] private int suppressHoverSFXUntilFrame = -1;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -111,6 +112,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         controlsJiggleRotation = false;
         currentPressScale = 1f;
         controlsPressScale = false;
+        suppressHoverSFXUntilFrame = -1;
 
         if (rectTransform != null)
         {
@@ -167,6 +169,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         anyBeingDragged = false;
         isBeingDragged = false;
+        // Restoring raycasts can make Unity report a fresh pointer-enter on
+        // the tile under the cursor. Ignore only that immediate hover sound.
+        suppressHoverSFXUntilFrame = Time.frameCount + 1;
         canvasGroup.blocksRaycasts = true;
         layoutElement.ignoreLayout = false;
         anim.SetBool("Hold", false);
@@ -189,7 +194,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (InteractionLocked || anyBeingDragged) return;
 
-        sfxSource.PlayOneShot(hoverSFX);
+        if (Time.frameCount > suppressHoverSFXUntilFrame)
+            sfxSource.PlayOneShot(hoverSFX);
         anim.SetBool("Hover", true);
     }
 

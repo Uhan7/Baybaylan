@@ -63,7 +63,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Hm...? May hawakang halimaw..."
+    sentence: "Hm..? May hawak ang halimaw..."
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -81,23 +81,6 @@ MonoBehaviour:
     vignetteIntensity: 0
     backgroundFadeDuration: 0
     sentence: "Ah! Maaari nating gamitin ang yantok na iyan..."
-  - isFourSpeakers: 0
-    leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
-      isTalking: 0
-    leftSecondaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
-      isTalking: 1
-    rightSecondaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    backgroundMode: 0
-    vignetteIntensity: 0
-    backgroundFadeDuration: 0
-    sentence: "Teka lang... Tala..."
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -131,7 +114,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Tala! Tanggapin mo ito!"
+    sentence: "Ayan! Tala, tanggapin mo ito!"
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}

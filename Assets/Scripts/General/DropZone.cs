@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-using NaughtyAttributes;
 
 public class DropZone : MonoBehaviour, IDropHandler
 {
@@ -18,10 +17,6 @@ public class DropZone : MonoBehaviour, IDropHandler
 
     [HideInInspector] private bool hasInvokedDropEvent;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioClip dropSFX;
-
     // Main Functions ----------------------------------------------------------
     public void OnDrop(PointerEventData eventData)
     {
@@ -31,6 +26,7 @@ public class DropZone : MonoBehaviour, IDropHandler
         GameObject draggedObject = eventData.pointerDrag.gameObject;
         Draggable draggable = draggedObject.GetComponent<Draggable>();
         if (draggable == null) return;
+        Tile tile = draggedObject.GetComponent<Tile>();
 
         RectTransform rectTransform = transform as RectTransform;
         Vector2 localMousePosition;
@@ -53,9 +49,9 @@ public class DropZone : MonoBehaviour, IDropHandler
         draggable.RegisterSmoothLayoutStart(transform);
         if (allowInsertion) draggedObject.transform.SetSiblingIndex(newIndex);
 
-        if (changeTileBox) draggedObject.GetComponent<Tile>().ChangeSprite(isActiveDropZone);
+        if (changeTileBox && tile != null) tile.ChangeSprite(isActiveDropZone);
 
-        sfxSource.PlayOneShot(dropSFX);
+        tile?.PlayPlacementSFX(isActiveDropZone);
         draggable.PlayDropParticles();
 
         if (!invokeOnlyOnce || !hasInvokedDropEvent)

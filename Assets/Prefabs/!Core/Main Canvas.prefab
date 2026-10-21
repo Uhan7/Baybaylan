@@ -2914,10 +2914,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8519567697643234237, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
-      propertyPath: dropSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: a874ac9a95a1b4b45968f3cba21af9fd, type: 3}
-    - target: {fileID: 8519567697643234237, guid: 9b4a4bf92968e42ef8357d505b319cbe, type: 3}
       propertyPath: changeTileBox
       value: 1
       objectReference: {fileID: 0}

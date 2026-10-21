@@ -463,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: ad10ce1acdd8a4ef09b8ddd06d405d27, type: 2}
+      objectReference: {fileID: 11400000, guid: a1130000000000000000000000000000, type: 2}
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Area 1 - Level 5.5
@@ -576,6 +576,10 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.y
       value: 22.191294
       objectReference: {fileID: 0}
+    - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1110000000000000000000000000000, type: 2}
     - target: {fileID: 2094052328367243392, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -940,6 +944,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6376082575871313111, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1120000000000000000000000000000, type: 2}
     - target: {fileID: 6436757203969753731, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -26,10 +26,10 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    backgroundMode: 0
+    backgroundMode: 1
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: Maraming salamat po, Diwata Amihan. Mula rito, kaya ko na.
+    sentence: "Maraming salamat po, Diwata Amihan. Mula rito, kaya ko na."
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 03d844435ba2c48318f45bcaf54a6869, type: 3}
@@ -43,11 +43,10 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    backgroundMode: 0
+    backgroundMode: 1
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: Mag-ingat ka, anak. May dahilan kung bakit ka ginabayan ng mga tinig
-      patungo rito. Paalam.
+    sentence: "Mag-ingat ka, anak. May dahilan kung bakit ka ginabayan ng mga tinig patungo rito. Paalam."
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

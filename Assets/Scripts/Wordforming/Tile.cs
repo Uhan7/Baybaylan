@@ -42,6 +42,8 @@ public class Tile : MonoBehaviour
     [Header("Audio")]
     [HideInInspector] public AudioSource sfxSource; // To be set by spawners (TileSet.cs)
     [SerializeField] private AudioClip diacriticSFX;
+    [SerializeField] private AudioClip writeSFX;
+    [SerializeField] private AudioClip dropSFX;
 
     [Header("Tile Info")]
     [SerializeField] public bool isVowel; // Read in TileSet.cs
@@ -249,6 +251,13 @@ public class Tile : MonoBehaviour
     public int GetChance()
     {
         return chance;
+    }
+
+    public void PlayPlacementSFX(bool placedInSalita)
+    {
+        AudioClip placementSFX = placedInSalita ? writeSFX : dropSFX;
+        if (sfxSource != null && placementSFX != null)
+            sfxSource.PlayOneShot(placementSFX);
     }
 
     public void ChangeSprite(bool active) // Can be called by the DropZone obj

@@ -141,5 +141,3 @@ MonoBehaviour:
   eventOnDrop:
     m_PersistentCalls:
       m_Calls: []
-  sfxSource: {fileID: 0}
-  dropSFX: {fileID: 0}

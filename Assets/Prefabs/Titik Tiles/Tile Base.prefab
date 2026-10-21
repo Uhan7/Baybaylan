@@ -529,6 +529,8 @@ MonoBehaviour:
   m_animator: {fileID: 8149427845387423121}
   sfxSource: {fileID: 0}
   diacriticSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
+  writeSFX: {fileID: 8300000, guid: 532bb3e7ae5184176859ff43b36ecee1, type: 3}
+  dropSFX: {fileID: 8300000, guid: 014b508ed78444ffe8989dd6ea837824, type: 3}
   isVowel: 0
   rootConsonant: 
   vowel: 
@@ -856,15 +858,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5400982272904791338, guid: 756ed6f90e2d54171bd2532ea6c02945, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1209,15 +1211,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2362544482382346951, guid: 719ca437b8b06429c9db18c6b30036ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362544482382346951, guid: 719ca437b8b06429c9db18c6b30036ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362544482382346951, guid: 719ca437b8b06429c9db18c6b30036ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2362544482382346951, guid: 719ca437b8b06429c9db18c6b30036ce, type: 3}
       propertyPath: m_LocalPosition.x

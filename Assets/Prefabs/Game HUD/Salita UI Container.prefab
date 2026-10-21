@@ -343,8 +343,6 @@ MonoBehaviour:
   eventOnDrop:
     m_PersistentCalls:
       m_Calls: []
-  sfxSource: {fileID: 0}
-  dropSFX: {fileID: 8300000, guid: a874ac9a95a1b4b45968f3cba21af9fd, type: 3}
 --- !u!222 &4056125752721392526
 CanvasRenderer:
   m_ObjectHideFlags: 0

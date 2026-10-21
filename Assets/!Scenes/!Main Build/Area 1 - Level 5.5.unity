@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 1cd4e782b97b049718a9be64e8ae8efc, type: 2}
+      objectReference: {fileID: 11400000, guid: a1160000000000000000000000000000, type: 2}
     - target: {fileID: 866012486111102123, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4c51808f5d5c94a9ba98c8503a8b3227, type: 2}
+      objectReference: {fileID: 11400000, guid: a1140000000000000000000000000000, type: 2}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -930,6 +930,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6376082575871313111, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1150000000000000000000000000000, type: 2}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: config
       value: 
@@ -1068,8 +1072,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5166b444772da427cbbd99ac1ede599b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
