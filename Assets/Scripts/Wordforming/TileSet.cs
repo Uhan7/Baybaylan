@@ -36,6 +36,9 @@ public class TileSet : MonoBehaviour
     private readonly List<Tile> pakpakFadeTargets = new List<Tile>();
     private int pakpakNormalTilesRemoved;
     private float pakpakTemporaryTileSpawnDelay = 0.5f;
+    private bool pakpakHasApplicationFocus = true;
+    private bool pakpakApplicationIsPaused;
+    private bool skipNextPakpakElapsedFrame;
     private bool gameplayStarted;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
@@ -55,6 +58,18 @@ public class TileSet : MonoBehaviour
         if (waitForFirstDialogue) return;
 
         ShowAlahasSelection();
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        pakpakHasApplicationFocus = hasFocus;
+        if (hasFocus) skipNextPakpakElapsedFrame = true;
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        pakpakApplicationIsPaused = pauseStatus;
+        if (!pauseStatus) skipNextPakpakElapsedFrame = true;
     }
 
     // UnityEvent entry point for the first Dialogue Set -> Event After Dialogue.
@@ -209,6 +224,12 @@ public class TileSet : MonoBehaviour
 
         while (elapsed < safeDuration)
         {
+            if (!CanAdvancePakpakTimer())
+            {
+                yield return null;
+                continue;
+            }
+
             elapsed += Time.deltaTime;
             float linearProgress = safeDuration > 0f ? elapsed / safeDuration : 1f;
             float fadeProgress = fadeCurve != null
@@ -231,13 +252,41 @@ public class TileSet : MonoBehaviour
             Destroy(tile.gameObject);
 
             if (deleteInterval > 0f)
-                yield return new WaitForSeconds(deleteInterval);
+                yield return WaitForPakpakActiveTime(deleteInterval);
             else
                 yield return null;
         }
 
         pakpakFadeTargets.Clear();
         pakpakDeleteRoutine = null;
+    }
+
+    private bool CanAdvancePakpakTimer()
+    {
+        if (!pakpakHasApplicationFocus ||
+            pakpakApplicationIsPaused ||
+            !Application.isFocused)
+            return false;
+
+        if (!skipNextPakpakElapsedFrame) return true;
+
+        // The first frame after regaining focus can include catch-up time from
+        // while the application was suspended. It should not count toward the
+        // tile disappearance timer.
+        skipNextPakpakElapsedFrame = false;
+        return false;
+    }
+
+    private IEnumerator WaitForPakpakActiveTime(float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            if (CanAdvancePakpakTimer())
+                elapsed += Time.deltaTime;
+
+            yield return null;
+        }
     }
 
     public IEnumerator RemovePakpakTemporaryTiles()

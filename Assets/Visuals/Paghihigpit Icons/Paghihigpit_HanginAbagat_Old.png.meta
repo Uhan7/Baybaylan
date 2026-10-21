@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68fe87392e6124d3794b9c2a50551362
+guid: e8045ff7194d242459fecf80e1f30919
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -58,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -264,7 +264,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -273,7 +273,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Paghihigpit_HanginAbagat_Old_0: 4437596215934481992
+      Paghihigpit_HanginAbagat_Old_1: 3298971333510572611
+      Paghihigpit_HanginAbagat_Old_2: 8530438840774946965
+      Paghihigpit_HanginAbagat_Old_3: -5688855435930484080
+      Paghihigpit_HanginAbagat_Old_4: 2583578961847149726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
