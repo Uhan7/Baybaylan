@@ -33,6 +33,13 @@ public class HelperUI : MonoBehaviour
     public void FadeIn()
     {
         if (!gameObject.activeInHierarchy) return;
+
+        // Tutorial prompts share a parent and are intended to be mutually
+        // exclusive. A fast submission can advance to the next prompt before
+        // the previous prompt's fade has finished, leaving both visible and
+        // making their text/images overlap. Clear the siblings first so only
+        // this prompt participates in the incoming fade.
+        HideSiblingPromptsImmediately();
         FadePromptWrapper(1);
     }
 
@@ -64,8 +71,34 @@ public class HelperUI : MonoBehaviour
             helper.HideImmediately();
     }
 
+    private void HideSiblingPromptsImmediately()
+    {
+        Transform promptParent = transform.parent;
+        if (promptParent == null) return;
+
+        HelperUI[] siblingHelpers = promptParent.GetComponentsInChildren<HelperUI>(true);
+        foreach (HelperUI helper in siblingHelpers)
+        {
+            if (helper == this || helper.transform.parent != promptParent) continue;
+            helper.HideImmediately();
+        }
+    }
+
     private IEnumerator FadePrompt(float desiredAlpha)
     {
+        if (promptCanvasGroup == null)
+        {
+            FadeRoutine = null;
+            yield break;
+        }
+
+        if (fadeDuration <= 0f)
+        {
+            promptCanvasGroup.alpha = desiredAlpha;
+            FadeRoutine = null;
+            yield break;
+        }
+
         float elapsedTime = 0f;
         float t = 0;
         float originalCanvasGroupAlpha = promptCanvasGroup.alpha;

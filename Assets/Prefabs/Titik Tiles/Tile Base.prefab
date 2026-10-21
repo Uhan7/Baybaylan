@@ -529,7 +529,7 @@ MonoBehaviour:
   m_animator: {fileID: 8149427845387423121}
   sfxSource: {fileID: 0}
   diacriticSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
-  writeSFX: {fileID: 8300000, guid: 532bb3e7ae5184176859ff43b36ecee1, type: 3}
+  writeSFX: {fileID: 8300000, guid: 014b508ed78444ffe8989dd6ea837824, type: 3}
   dropSFX: {fileID: 8300000, guid: 014b508ed78444ffe8989dd6ea837824, type: 3}
   isVowel: 0
   rootConsonant: 
