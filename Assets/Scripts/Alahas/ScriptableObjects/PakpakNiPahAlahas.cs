@@ -36,7 +36,12 @@ class PakpakNiPahAlahas : Alahas
 
     public override void onSubmit()
     {
- 
+        // Submitted tiles can still be among the countdown's fade targets.
+        // Stop the countdown before the scoring sequence begins so it cannot
+        // destroy those tiles while their score/exit animations are playing.
+        TileSet.Instance.CancelPakpakTileCountdown();
+        countdownStarted = false;
+        tilesAreReady = false;
     }
 
     public override void onTurnEnd()
