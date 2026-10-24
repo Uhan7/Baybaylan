@@ -50,16 +50,19 @@ MonoBehaviour:
     tiles: []
   - aksyon: 8
     tiles: []
+  - aksyon: 9
+    tiles: []
   predefinedTiles: []
   hasMultipleTargetMahika: 0
-  targetMahika: 2000
+  targetMahika: 2400
   multipleTargetMahika: 32000000320000003200000032000000320000003200000032000000
-  maxAksyon: 8
+  maxAksyon: 9
   numKaposAksyon: 3
   alahasSlotCount: 6
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit: []
   partikularNaSalita_wordList:
+  - 
   - 
   - 
   - 
