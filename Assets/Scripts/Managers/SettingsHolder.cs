@@ -5,7 +5,7 @@ public static class SettingsHolder
 {
     private const string BGMVolumeKey = "BGMVolume";
     private const string SFXVolumeKey = "SFXVolume";
-    private const float DefaultVolume = 1f;
+    private const float DefaultVolume = 0.75f;
 
     public static float BGMVolume
     {

@@ -68,6 +68,7 @@ public class SceneController : MonoBehaviour
 
     private void StartSceneSwap(string sceneName)
     {
+        PopupUI.HideSettingsForSceneChange();
         if (transitionOnSwap != null)
         {
             transitionOnSwap.SetActive(true);
@@ -82,8 +83,7 @@ public class SceneController : MonoBehaviour
 
     public void titleStartButton()
     {
-        bool isNewSave = SaveManager.Instance.getSaveData<int>(SaveManager.SaveDataNames.NewSave) == 1;
-        StartSceneSwap(isNewSave ? "Area 0 - Intro" : "Level Selection");
+        StartSceneSwap(SaveManager.Instance.GetContinueScene());
     }
 
     public void SwapAfterAlahasSelection(string sceneName)

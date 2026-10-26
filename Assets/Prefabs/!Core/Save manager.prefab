@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7e29688b7e4e14a872684e8cc04366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manualSaveReset: 0
   saveDatas:
   - {fileID: 11400000, guid: 4e36bfc011f8fc946b2e32f548b4d207, type: 2}
   - {fileID: 11400000, guid: 57ba0be376372914dbfc70198c512989, type: 2}
@@ -78,3 +79,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd94ef3906d748b99efac36f18191b8d, type: 2}
   - {fileID: 11400000, guid: c67cea1eecf1a254da6b180224d5ab74, type: 2}
   - {fileID: 11400000, guid: a498a8182cf52bc4b90dc7891e717794, type: 2}
+  - {fileID: 11400000, guid: 4e3d59350b7564aeba366473954a527b, type: 2}
+  - {fileID: 11400000, guid: 6419ff4ba4cd4bbca54e9900c7207759, type: 2}

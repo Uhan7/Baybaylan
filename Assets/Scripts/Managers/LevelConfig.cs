@@ -18,6 +18,21 @@ public class ItinakdangTitikAksyon
 [CreateAssetMenu]
 public class LevelConfig : ScriptableObject
 {
+    [Header("Level Selection")]
+    public string levelName;
+    [NaughtyAttributes.Scene] public string sceneName;
+    [Header("Protagonist (Left Portrait)")]
+    public string protagonistName;
+    [Tooltip("Leave empty to hide the entire left portrait holder on the level-selection card.")]
+    public Sprite protagonistPortrait;
+    [Header("Story Target (Right Portrait)")]
+    public string targetName;
+    [Tooltip("Leave empty to hide the entire right portrait holder on the level-selection card.")]
+    public Sprite targetPortrait;
+    [Header("Level Selection Background")]
+    public Sprite selectionBackground;
+    public bool flipSelectionBackground;
+
     [Header("Tiles")]
     [HideIf("hasItinakdangTitik"), SerializeField] public int tilesAmount;
     [ShowIf("hasKaposNaTitik"), SerializeField] public int kaposNaTitik = 1;

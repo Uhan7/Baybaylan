@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A0-L1
   m_EditorClassIdentifier: 
+  levelName: Area 0 - Level 1
+  sceneName: Area 0 - Level 1
+  protagonistName: Tala
+  protagonistPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
+  targetName: Amihan
+  targetPortrait: {fileID: 21300000, guid: cfc3684607e4c48f683453da78f36721, type: 3}
+  selectionBackground: {fileID: 21300000, guid: e701bf43cf8bf471f8105b362d61f9bb, type: 3}
+  flipSelectionBackground: 0
   tilesAmount: 3
+  kaposNaTitik: 1
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}

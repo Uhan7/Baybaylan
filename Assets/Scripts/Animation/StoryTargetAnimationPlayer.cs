@@ -22,6 +22,8 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
     [SerializeField] private Graphic healCharacterGraphic;
     [Tooltip("Aura emitted by the target after the healing projectile reaches it.")]
     [SerializeField] private ParticleSystem healAuraParticles;
+    [Tooltip("Sound played when the target begins emitting its healing aura.")]
+    [SerializeField] private AudioClip healAuraSfx;
     [SerializeField, Min(0f)] private float healAuraEmissionDuration = 0.25f;
     [Tooltip("RGB multiplier at the darkest point. 0.196 is approximately a value of 50 out of 255.")]
     [SerializeField, Range(0f, 1f)] private float healDarkness = 50f / 255f;
@@ -162,6 +164,9 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
         if (healAuraParticles == null) yield break;
 
         healAuraParticles.Play(true);
+        if (healAuraSfx != null && AudioManager.Instance != null && AudioManager.Instance.sfxSource != null)
+            AudioManager.Instance.sfxSource.PlayOneShot(healAuraSfx);
+
         if (healAuraEmissionDuration > 0f)
             yield return new WaitForSeconds(healAuraEmissionDuration);
 

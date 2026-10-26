@@ -34,12 +34,11 @@ public class HelperUI : MonoBehaviour
     {
         if (!gameObject.activeInHierarchy) return;
 
-        // Tutorial prompts share a parent and are intended to be mutually
-        // exclusive. A fast submission can advance to the next prompt before
-        // the previous prompt's fade has finished, leaving both visible and
-        // making their text/images overlap. Clear the siblings first so only
-        // this prompt participates in the incoming fade.
-        HideSiblingPromptsImmediately();
+        // Some prompts are nested in Main Game while scene-specific prompts
+        // are added directly to the scene. They are visually one group but
+        // are not guaranteed to be siblings, so clear every other prompt in
+        // the loaded scene before this one fades in.
+        HideOtherPromptsImmediately();
         FadePromptWrapper(1);
     }
 
@@ -71,15 +70,14 @@ public class HelperUI : MonoBehaviour
             helper.HideImmediately();
     }
 
-    private void HideSiblingPromptsImmediately()
+    private void HideOtherPromptsImmediately()
     {
-        Transform promptParent = transform.parent;
-        if (promptParent == null) return;
-
-        HelperUI[] siblingHelpers = promptParent.GetComponentsInChildren<HelperUI>(true);
-        foreach (HelperUI helper in siblingHelpers)
+        HelperUI[] helpers = FindObjectsByType<HelperUI>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+        foreach (HelperUI helper in helpers)
         {
-            if (helper == this || helper.transform.parent != promptParent) continue;
+            if (helper == this || helper.gameObject.scene != gameObject.scene) continue;
             helper.HideImmediately();
         }
     }

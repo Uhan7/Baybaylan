@@ -68,6 +68,7 @@ public class DialogueManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
+            if (PopupUI.BlocksDialogueInput()) return;
             if (isTyping) skip = true;
             else NextSentence();
         }

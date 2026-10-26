@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
+  m_Name: A1-Intro
+  m_EditorClassIdentifier: 
+  levelName: Area 1 - Intro
+  sceneName: Area 1 - Intro
+  protagonistName: 
+  protagonistPortrait: {fileID: 0}
+  targetName: 
+  targetPortrait: {fileID: 0}
+  selectionBackground: {fileID: 21300000, guid: 6eaa39efa65114f7aa8e37b8996fde35, type: 3}
+  flipSelectionBackground: 0
+  tilesAmount: 0
+  kaposNaTitik: 1
+  tilesSelection: []
+  itinakdangTitikPerAksyon:
+  - aksyon: 1
+    tiles: []
+  - aksyon: 2
+    tiles: []
+  - aksyon: 3
+    tiles: []
+  - aksyon: 4
+    tiles: []
+  - aksyon: 5
+    tiles: []
+  predefinedTiles: []
+  hasMultipleTargetMahika: 0
+  targetMahika: 100
+  multipleTargetMahika: 64000000
+  maxAksyon: 5
+  numKaposAksyon: 0
+  alahasSlotCount: 3
+  alahasAquiredAfterWin: {fileID: 0}
+  activePaghihigpit: []
+  partikularNaSalita_wordList:
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -1035,10 +1035,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2406812471065810189, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1812341784}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6923405883872689811, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1218020186}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
 --- !u!224 &164687366 stripped
 RectTransform:
@@ -1192,7 +1189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42, y: -330.24997}
+  m_AnchoredPosition: {x: -42, y: -424}
   m_SizeDelta: {x: 441, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &375136105
@@ -1956,6 +1953,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666226993}
   m_CullTransparentMesh: 1
+--- !u!114 &735382014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185864015942242617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07b0b144aa846e390f48b3f0c434e01, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  playLabel: {fileID: 4954545334632306139}
+  levelSelectButton: {fileID: 916189903}
+  exitButton: {fileID: 375136104}
+  buttonSpacing: 124
+  sidePanel: {fileID: 926119320}
+  gameLogo: {fileID: 38223616}
+  panelDelay: 0.5
+  panelDuration: 0.75
+  logoDelay: 1
+  logoDuration: 0.77
+  buttonDelay: 1.43
+  buttonDuration: 1
+  buttonStagger: 0.17
+  logoStartOffset: 405
+  buttonStartOffset: -554
 --- !u!1 &764688230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2211,7 @@ GameObject:
   - component: {fileID: 916189904}
   - component: {fileID: 916189908}
   m_Layer: 5
-  m_Name: About Button
+  m_Name: Level Select Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2210,7 +2234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42, y: -240}
+  m_AnchoredPosition: {x: -42, y: -300}
   m_SizeDelta: {x: 441, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &916189904
@@ -2279,17 +2303,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1791766096}
-        m_TargetAssemblyTypeName: PopupUI, Assembly-CSharp
-        m_MethodName: Popup
-        m_Mode: 6
+      - m_Target: {fileID: 367192196}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: SwapWrapper
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: Level Selection
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &916189906
 MonoBehaviour:
@@ -2575,7 +2599,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 350, y: 50}
+  m_SizeDelta: {x: 390, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202703942
 MonoBehaviour:
@@ -2597,7 +2621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tungkol sa "Baybaylan"
+  m_text: Maglaro ng Ibang Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
@@ -2624,8 +2648,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.79699
-  m_fontSizeBase: 59.79699
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 33.63581
@@ -2636,7 +2660,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -36.98273
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2681,28 +2705,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6923405883872689811, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
   m_PrefabInstance: {fileID: 164687365}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1218020186
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218020182}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ee53a91076c024a56879ea260e98c620, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1330498862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,7 +3447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (v0.4.3)
+  m_text: (v0.4.4)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
@@ -3472,8 +3474,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.97771
-  m_fontSizeBase: 37.97771
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18.98886
@@ -3802,6 +3804,7 @@ GameObject:
   - component: {fileID: 8420543460151176695}
   - component: {fileID: 3982585718492294370}
   - component: {fileID: 6862427468064785055}
+  - component: {fileID: 735382014}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged

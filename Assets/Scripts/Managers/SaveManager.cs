@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SaveManager : MonoBehaviour
 
         //level data
         LevelSelectionIndex = 2,
+        LastPlayedScene = 34,
         UnlockedArea0Intro = 3,
         UnlockedArea0Level1 = 4,
         UnlockedArea0Level2 = 5,
@@ -24,6 +26,7 @@ public class SaveManager : MonoBehaviour
         UnlockedArea1Level4 = 30,
         UnlockedArea1Level4Point5 = 31,
         UnlockedArea1Level5 = 32,
+        UnlockedArea1Level5Point5 = 33,
 
         //settings data
         //add ts eventually
@@ -59,6 +62,65 @@ public class SaveManager : MonoBehaviour
     [SerializeField] bool manualSaveReset;
     [SerializeField] SaveData[] saveDatas;
 
+    // Story order also provides a sensible fallback for saves made before resume existed.
+    private static readonly (SaveDataNames unlockId, string sceneName)[] storyLevels =
+    {
+        (SaveDataNames.UnlockedArea0Intro, "Area 0 - Intro"),
+        (SaveDataNames.UnlockedArea0Level1, "Area 0 - Level 1"),
+        (SaveDataNames.UnlockedArea0Level2, "Area 0 - Level 2"),
+        (SaveDataNames.UnlockedArea1Intro, "Area 1 - Intro"),
+        (SaveDataNames.UnlockedArea1Level1, "Area 1 - Level 1"),
+        (SaveDataNames.UnlockedArea1Level2, "Area 1 - Level 2"),
+        (SaveDataNames.UnlockedArea1Level3, "Area 1 - Level 3"),
+        (SaveDataNames.UnlockedArea1Level4, "Area 1 - Level 4"),
+        (SaveDataNames.UnlockedArea1Level4Point5, "Area 1 - Level 4.5"),
+        (SaveDataNames.UnlockedArea1Level5, "Area 1 - Level 5"),
+        (SaveDataNames.UnlockedArea1Level5Point5, "Area 1 - Level 5.5")
+    };
+
+    public bool HasPlayed => getSaveData<int>(SaveDataNames.NewSave) == 0;
+
+    public string GetContinueScene()
+    {
+        if (!HasPlayed) return storyLevels[0].sceneName;
+
+        string lastScene = getSaveData<string>(SaveDataNames.LastPlayedScene);
+        foreach (var level in storyLevels)
+            if (level.sceneName == lastScene && Application.CanStreamedLevelBeLoaded(lastScene))
+                return lastScene;
+
+        for (int i = storyLevels.Length - 1; i >= 0; i--)
+            if (getSaveData<int>(storyLevels[i].unlockId) == 1 &&
+                Application.CanStreamedLevelBeLoaded(storyLevels[i].sceneName))
+                return storyLevels[i].sceneName;
+
+        return storyLevels[0].sceneName;
+    }
+
+    private void Start()
+    {
+        RememberLevel(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance != this) return;
+        SceneManager.sceneLoaded -= RememberLevel;
+        Instance = null;
+    }
+
+    private void RememberLevel(Scene scene, LoadSceneMode mode)
+    {
+        foreach (var level in storyLevels)
+        {
+            if (level.sceneName != scene.name) continue;
+            // Save on entry, so closing the app mid-level still leaves a resume point.
+            if (!HasPlayed || getSaveData<string>(SaveDataNames.LastPlayedScene) != scene.name)
+                saveData(SaveDataNames.LastPlayedScene, scene.name, true);
+            return;
+        }
+    }
+
     void Awake()
     {
         if (Instance == null)
@@ -66,9 +128,13 @@ public class SaveManager : MonoBehaviour
             Instance = this;
             transform.SetParent(null, true);
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += RememberLevel;
         }
         else
+        {
             Destroy(gameObject);
+            return;
+        }
 
         checkAllSaves();
 

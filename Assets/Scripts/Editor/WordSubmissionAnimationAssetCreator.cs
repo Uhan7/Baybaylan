@@ -18,6 +18,7 @@ public static class WordSubmissionAnimationAssetCreator
     private const string HealMagicPrefabPath = "Assets/Prefabs/VFX/Heal Magic Particles.prefab";
     private const string AttackSfxPath = "Assets/Audio/SFX/SFX_Attack_Amihan.mp3";
     private const string HealSfxPath = "Assets/Audio/SFX/SFX_Heal_Tala_1.mp3";
+    private const string HealAuraSfxPath = "Assets/Audio/SFX/SFX_Heal_Tala_2.mp3";
 
     [MenuItem("Tools/Baybaylan/Set Up Word Submission Animations")]
     public static void CreateAnimationAssets()
@@ -52,9 +53,10 @@ public static class WordSubmissionAnimationAssetCreator
             false);
         AudioClip attackSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(AttackSfxPath);
         AudioClip healSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(HealSfxPath);
+        AudioClip healAuraSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(HealAuraSfxPath);
 
         ConfigureLeftSidePrefab(controller, healMagicPrefab, attackSfx, healSfx);
-        ConfigureRightSidePrefab(controller, attackImpactPrefab, healAuraPrefab);
+        ConfigureRightSidePrefab(controller, attackImpactPrefab, healAuraPrefab, healAuraSfx);
 
         AssetDatabase.SaveAssets();
 
@@ -192,7 +194,8 @@ public static class WordSubmissionAnimationAssetCreator
     private static void ConfigureRightSidePrefab(
         AnimatorController controller,
         GameObject attackImpactPrefab,
-        GameObject healAuraPrefab)
+        GameObject healAuraPrefab,
+        AudioClip healAuraSfx)
     {
         GameObject prefabRoot = PrefabUtility.LoadPrefabContents(RightSidePrefabPath);
 
@@ -233,6 +236,7 @@ public static class WordSubmissionAnimationAssetCreator
             serializedPlayer.FindProperty("healCharacterGraphic").objectReferenceValue =
                 characterImage != null ? characterImage.GetComponent<UnityEngine.UI.Graphic>() : null;
             serializedPlayer.FindProperty("healAuraParticles").objectReferenceValue = healAura;
+            serializedPlayer.FindProperty("healAuraSfx").objectReferenceValue = healAuraSfx;
             serializedPlayer.FindProperty("healAuraEmissionDuration").floatValue = 0.25f;
             serializedPlayer.FindProperty("healDarkenDuration").floatValue = 0.22f;
             serializedPlayer.FindProperty("healDarkHoldDuration").floatValue = 0.18f;

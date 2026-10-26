@@ -524,11 +524,11 @@ PrefabInstance:
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_text
       value: "Pindutin ang isang titik upang lagyan ito ng <b>Kudlit</b>\nBuuin ang
-        salitang \u201CTALI\u201D (          )"
+        salitang \u201CTALI\u201D (<space=2.5em>)"
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSize
-      value: 34.958
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_colorMode
@@ -536,11 +536,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_lineSpacing
-      value: -1.022651
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 34.958
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.b
@@ -816,11 +816,11 @@ PrefabInstance:
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_text
       value: "Pindutin muli ang titik upang lagyan ito ng <b>Krus</b>\nBuuin ang
-        salitang \u201CSULAT\u201D (                )"
+        salitang \u201CSULAT\u201D (<space=4em>)"
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSize
-      value: 34.958
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_colorMode
@@ -828,11 +828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_lineSpacing
-      value: 3.840328
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 34.958
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.b
@@ -1359,7 +1359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSize
-      value: 39.0707
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_colorMode
@@ -1367,7 +1367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 39.0707
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.b
@@ -1407,7 +1407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_lineSpacing
-      value: 28.15522
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1839,7 +1839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSize
-      value: 30.84529
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_colorMode
@@ -1847,11 +1847,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_lineSpacing
-      value: 8.703306
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 30.84529
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.b
@@ -2020,11 +2020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_text
-      value: Punuin ang                 bago maubos ang iyong mga aksyon.
+      value: Punuin ang <space=4.25em>bago maubos ang iyong mga aksyon.
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSize
-      value: 33.92982
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_colorMode
@@ -2032,11 +2032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_lineSpacing
-      value: 8.703306
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 33.92982
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.b
@@ -2240,14 +2240,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_text
-      value: 'Makikita sa baba ng       ang mga aksyon
+      value: 'Makikita sa baba ng <space=1.75em>ang mga aksyon
 
         Kapag napuno ito,
         matatalo ka'
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSize
-      value: 30.84529
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_colorMode
@@ -2255,11 +2255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_lineSpacing
-      value: 8.703306
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontSizeBase
-      value: 30.84529
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2109097857826816790, guid: 4c8928936da214174bb7e48ab0af00bd, type: 3}
       propertyPath: m_fontColorGradient.bottomLeft.b
@@ -3510,7 +3510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2865918994179191549, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_text
-      value: Buuin ang salitang              at pindutin ang    .
+      value: Buuin ang salitang <space=3.5em>at pindutin ang <space=1em>.
       objectReference: {fileID: 0}
     - target: {fileID: 2865918994179191549, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_fontSize

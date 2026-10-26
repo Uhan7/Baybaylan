@@ -469,6 +469,7 @@ MonoBehaviour:
   screenShakeIntensity: 8
   healCharacterGraphic: {fileID: 3621225986156214621}
   healAuraParticles: {fileID: 255867373863880460}
+  healAuraSfx: {fileID: 8300000, guid: 63d1d59edc9684590acadbdf960bdd5d, type: 3}
   healAuraEmissionDuration: 0.25
   healDarkness: 0.19607843
   healDarkenDuration: 0.22

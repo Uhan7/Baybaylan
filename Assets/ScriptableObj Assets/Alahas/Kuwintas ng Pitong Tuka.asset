@@ -15,13 +15,12 @@ MonoBehaviour:
   alahasName: Kuwintas ng Pitong Tuka
   saveDataName: 22
   alahasSprite: {fileID: 21300000, guid: 140fb7da8bf1e484694910d3e689a8f0, type: 3}
-  description: 'Sa bawat salitang may 7 o higit pang letra sa Latin na baybay, tataas
-    ang multiplier ng mahika mula x1 patungong x1.2, x1.4, x1.6, at iba pa.
+  description: 'Bawat salitang may 7 o higit pang letra sa Latin na baybay ay nagdaragdag
+    ng 0.2 sa multiplier ng mahika (x1, x1.2, x1.4, at higit pa).
 
 
-    Mawawala
-    ang naipong multiplier kapag nagsumite ng salitang may mas kaunti sa 7 letra
-    sa Latin na baybay.'
+    Babalik sa
+    x1 ang multiplier kapag nagsumite ng salitang may mas kaunti sa 7 letra.'
   extraText: "Ang mga tuka ng ibong may pitong ulo\u2026 Napakagaling ng paglalaban
     ni Indarapatra\u2026 Ang galit niya rin tingnan noon\u2026"
   numberOfSlotsNeeded: 1

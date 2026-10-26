@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A1-L5.5
   m_EditorClassIdentifier: 
+  levelName: Area 1 - Level 5.5
+  sceneName: Area 1 - Level 5.5
+  protagonistName: 
+  protagonistPortrait: {fileID: 0}
+  targetName: 
+  targetPortrait: {fileID: 0}
+  selectionBackground: {fileID: 21300000, guid: 6eaa39efa65114f7aa8e37b8996fde35, type: 3}
+  flipSelectionBackground: 1
   tilesAmount: 10
   kaposNaTitik: 1
   tilesSelection: []
@@ -21,7 +29,7 @@ MonoBehaviour:
   predefinedTiles: []
   hasMultipleTargetMahika: 0
   targetMahika: 100
-  multipleTargetMahika: 
+  multipleTargetMahika: 64000000
   maxAksyon: 1
   numKaposAksyon: 0
   alahasSlotCount: 5
