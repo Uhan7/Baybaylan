@@ -601,6 +601,7 @@ MonoBehaviour:
   addExtraTurnAndTile: 0
   extraTurn: 0
   extraTile: 0
+  canRefreshTiles: 0
 --- !u!1 &2931207855000954438
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +2004,18 @@ PrefabInstance:
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[10].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3204555146420367635, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: allAlahas.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204555146420367635, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: 'allAlahas.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}
+    - target: {fileID: 3204555146420367635, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: 'allAlahas.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
     - target: {fileID: 3311373080243080059, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: dimmer
       value: 
@@ -3095,6 +3108,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.6100006
       objectReference: {fileID: 0}
+    - target: {fileID: 1596162771797238255, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: allAlahas.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596162771797238255, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: 'allAlahas.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8676a782083642b4a92825b56748d5af, type: 2}
+    - target: {fileID: 1596162771797238255, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: 'allAlahas.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}
+    - target: {fileID: 1596162771797238255, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: 'allAlahas.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
     - target: {fileID: 1599428744546915907, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: sfxSource
       value: 

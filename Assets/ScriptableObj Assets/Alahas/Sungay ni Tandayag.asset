@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6859ca5b0117f794d95c02c1c9bf1d4d, type: 3}
   m_Name: Sungay ni Tandayag
   m_EditorClassIdentifier: 
-  alahasName: Pangalan ng Alahas
-  saveDataName: 0
+  alahasName: Sungay ni Tandayag
+  saveDataName: 23
   alahasSprite: {fileID: 0}
-  description: Deskripsyon tungkol sa Alahas.
-  extraText: Extra text tungkol sa Alahas.
+  description: Makakakuha ng x1.5 mahika kapag naisumite ang salita sa loob ng 10
+    segundo matapos sa paglilitaw ng mga titik.
+  extraText: Paano kaya ito nabunot ni Baltog gamit lang ang kanyang kamay..?
   numberOfSlotsNeeded: 1
   showActivationCounter: 0
   maximumActivations: 0

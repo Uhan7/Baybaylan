@@ -78,6 +78,9 @@ public class AlahasInfoPopup : ToolTipAble
 
         if (currentAlahas is DahonNgKawayanAlahas dahon && DahonNgKawayanUI.Instance != null)
             DahonNgKawayanUI.Instance.OpenSelection(dahon);
+
+        if(currentAlahas is PangilNiOryolAlahas pangil)
+            pangil.refreshTiles();
     }
 
     public void SetSelectionMode(bool value)

@@ -33,6 +33,7 @@ class AlahasSubManager : MonoBehaviour
     [ReadOnly, SerializeField] public bool addExtraTurnAndTile = false;
     [ReadOnly, SerializeField] public int extraTurn = 0;
     [ReadOnly, SerializeField] public int extraTile = 0;
+    [ReadOnly, SerializeField] public bool canRefreshTiles = false;
     //-------------------------------------------
     public static AlahasSubManager Instance;
     AlahasManager alahasManagerScript;
@@ -168,6 +169,7 @@ class AlahasSubManager : MonoBehaviour
         goldScoreMulti = 1f;
         toolTipTiles = false;
         scoreMultiplier = 1f;
+        canRefreshTiles = false;
     }
 
     public void spawnTiles(int amount)
