@@ -4,11 +4,12 @@ using UnityEngine;
 class SungayNiTandayagAlahas : Alahas
 {
     float timer = 0;
+    float maxTime = 10;
     float scoreMulti = 0.5f;
 
     public override void onStart()
     {
-        timer = 0;
+        timer = maxTime * 2;
     }
     
     public override bool triggerCondition()
@@ -34,7 +35,7 @@ class SungayNiTandayagAlahas : Alahas
     public override void onUpdate()
     {
         timer += Time.deltaTime;
-        if(timer <= 10)
+        if(timer <= maxTime)
             AlahasSubManager.Instance.scoreMultiplier += scoreMulti;
     }
 }
