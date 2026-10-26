@@ -3226,14 +3226,34 @@ PrefabInstance:
     - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 1bd8d2ec6be464430a262d08db680a46, type: 2}
+      objectReference: {fileID: 11400000, guid: a6c614eec49f04a47aae049340beeddd, type: 2}
     - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -3289133265362164888, guid: 1bd8d2ec6be464430a262d08db680a46, type: 2}
+      objectReference: {fileID: -2270901219027345329, guid: a6c614eec49f04a47aae049340beeddd, type: 2}
     - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
+      propertyPath: m_fontSize
+      value: 52.4012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 52.4012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 13.1003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 52.4012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557840682659501514, guid: f1ba4bc6a314b42f39da21f7f34ca5dd, type: 3}
+      propertyPath: m_lineSpacing
+      value: 37.99823
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

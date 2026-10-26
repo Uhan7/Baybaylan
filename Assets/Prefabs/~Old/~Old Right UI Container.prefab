@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- Bawal Umulit ng Salita'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
-  m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
+  m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,19 +92,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 28.78894
+  m_fontSizeBase: 28.78894
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 18.50718
+  m_fontSizeMax: 74.0287
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 28.15522
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -522,6 +522,26 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8e082f405fd0a418490635e1cf5c2a4b, type: 2}
+    - target: {fileID: 2274821668092554081, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_fontSize
+      value: 43.18341
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274821668092554081, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 43.18341
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274821668092554081, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 18.50718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274821668092554081, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 74.0287
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274821668092554081, guid: bb777deddb34746a7a2abf4e25753d82, type: 3}
+      propertyPath: m_lineSpacing
+      value: 28.15522
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

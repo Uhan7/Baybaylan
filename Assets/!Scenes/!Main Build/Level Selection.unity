@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 67.85
+      value: 48.03776
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -443,6 +443,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 0 - Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -689,7 +705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 67.85
+      value: 48.03776
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -698,6 +714,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -864,7 +896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -873,6 +905,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 0 - Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -943,8 +991,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '>'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+  m_sharedMaterial: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -968,19 +1016,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 24
+  m_fontSize: 97.63088
+  m_fontSizeBase: 32.54363
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 24.40772
+  m_fontSizeMax: 97.63088
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -12.59797
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1228,7 +1276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -1237,6 +1285,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1307,8 +1371,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+  m_sharedMaterial: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1332,19 +1396,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 24
+  m_fontSize: 97.63088
+  m_fontSizeBase: 32.54363
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 24.40772
+  m_fontSizeMax: 97.63088
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -12.59797
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1482,7 +1546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -1491,6 +1555,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1733,7 +1813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -1742,6 +1822,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1771,7 +1867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -1780,6 +1876,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Level 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1809,7 +1921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -1818,6 +1930,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Level 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1847,7 +1975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 50.97596
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -1856,6 +1984,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 1 - Level 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2075,8 +2219,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back to Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+  m_sharedMaterial: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2100,19 +2244,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.15
-  m_fontSizeBase: 24
+  m_fontSize: 38.33817
+  m_fontSizeBase: 16.99199
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 12.74399
+  m_fontSizeMax: 50.97596
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 65.01571
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2383,7 +2527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: m_fontSize
-      value: 67.85
+      value: 48.03776
       objectReference: {fileID: 0}
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: levelId
@@ -2392,6 +2536,22 @@ PrefabInstance:
     - target: {fileID: 8550966105787042001, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
       propertyPath: sceneNameToEnter
       value: Area 0 - Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25.48798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 12.74399
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50.97596
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156163617159566557, guid: 78f972f47dfb8944e9366d67fc4c313a, type: 3}
+      propertyPath: m_lineSpacing
+      value: 65.01571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -69,8 +69,8 @@ MonoBehaviour:
 
     para bumalik sa laro.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
-  m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
+  m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -94,19 +94,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 32.90165
+  m_fontSizeBase: 32.90165
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 18.50718
+  m_fontSizeMax: 74.0287
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 28.15522
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -205,8 +205,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Mga Opsyon
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
-  m_sharedMaterial: {fileID: 538920796620781368, guid: 4acdc63b8780348f49e9003111a37997, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
+  m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -230,19 +230,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 71.97235
+  m_fontSizeBase: 71.97235
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 18.50718
+  m_fontSizeMax: 74.0287
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 28.15522
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -507,11 +507,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_fontSize
-      value: 42
+      value: 40.20553
       objectReference: {fileID: 0}
     - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 42
+      value: 40.20553
       objectReference: {fileID: 0}
     - target: {fileID: 7094304984442998359, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -537,6 +537,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFX Section
       objectReference: {fileID: 0}
+    - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 17.23094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 68.92377
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: m_lineSpacing
+      value: 37.7361
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -561,15 +573,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
-      value: 22
+      value: 27.59044
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_lineSpacing
-      value: 0
+      value: -1.71469
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeBase
-      value: 22
+      value: 27.59044
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -726,6 +738,14 @@ PrefabInstance:
     - target: {fileID: 8102208045814929375, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_SizeDelta.y
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 22.574
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 90.29598
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 916856723378353502, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
@@ -1012,11 +1032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
-      value: 23
+      value: 28.84455
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeBase
-      value: 23
+      value: 28.84455
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1165,6 +1185,18 @@ PrefabInstance:
     - target: {fileID: 8102208045814929375, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_SizeDelta.y
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 22.574
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 90.29598
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_lineSpacing
+      value: -1.71469
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 916856723378353502, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
@@ -1327,11 +1359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_fontSize
-      value: 42
+      value: 43.18341
       objectReference: {fileID: 0}
     - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 42
+      value: 43.18341
       objectReference: {fileID: 0}
     - target: {fileID: 7094304984442998359, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1357,6 +1389,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Musika Section
       objectReference: {fileID: 0}
+    - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 18.50718
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 74.0287
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221593855951720922, guid: 3782a7396ca5f4232983e7adc6d1122b, type: 3}
+      propertyPath: m_lineSpacing
+      value: 28.15522
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1381,15 +1425,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
-      value: 22
+      value: 27.59044
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_lineSpacing
-      value: 0
+      value: -1.71469
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeBase
-      value: 22
+      value: 27.59044
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1554,6 +1598,14 @@ PrefabInstance:
     - target: {fileID: 8102208045814929375, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_SizeDelta.y
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 22.574
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 90.29598
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 916856723378353502, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
