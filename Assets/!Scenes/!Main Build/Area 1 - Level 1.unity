@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 829217906}
   - component: {fileID: 829217905}
   - component: {fileID: 829217907}
+  - component: {fileID: 9000000000000000101}
   m_Layer: 5
   m_Name: button
   m_TagString: Untagged
@@ -1144,3 +1145,17 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1927150348840607793}
+--- !u!114 &9000000000000000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829217903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}

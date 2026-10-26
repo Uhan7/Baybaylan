@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -613,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwapWrapper
+      value: ReturnToTitle
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -621,8 +621,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneController, Assembly-CSharp
+      value: PopupUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value:
+      objectReference: {fileID: 5951658649093991381}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
@@ -944,6 +948,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6045857137026214372, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6689851609301435866}
+    - targetCorrespondingSourceObject: {fileID: 6045857137026214372, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9000000000000000101}
   m_SourcePrefab: {fileID: 100100000, guid: 069f5ddca2f4b43aba30e19dab756e6b, type: 3}
 --- !u!224 &1200399743806716513 stripped
 RectTransform:
@@ -1633,3 +1640,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6753182623756718616, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
   m_PrefabInstance: {fileID: 8381479900035535593}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9000000000000000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551331514053908204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}

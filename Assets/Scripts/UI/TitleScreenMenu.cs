@@ -8,6 +8,7 @@ public class TitleScreenMenu : MonoBehaviour
     [SerializeField] private RectTransform levelSelectButton;
     [SerializeField] private RectTransform exitButton;
     [SerializeField, Min(0f)] private float buttonSpacing = 124f;
+    [SerializeField] private AudioClip buttonSFX;
 
     [Header("Intro Animation")]
     [SerializeField] private RectTransform sidePanel;
@@ -46,6 +47,10 @@ public class TitleScreenMenu : MonoBehaviour
             ? new[] { playButton, levelSelectButton, exitButton }
             : new[] { playButton, exitButton };
 
+        RegisterButtonSFX(playButton);
+        RegisterButtonSFX(levelSelectButton);
+        RegisterButtonSFX(exitButton);
+
         // Animate from the chosen layout, so a hidden button never leaves a gap.
         buttonPositions = new Vector2[visibleButtons.Length];
         for (int i = 0; i < visibleButtons.Length; i++)
@@ -62,6 +67,23 @@ public class TitleScreenMenu : MonoBehaviour
         hasRenderedFirstFrame = false;
         isAnimating = true;
         ApplyIntro(0f);
+    }
+
+    private void RegisterButtonSFX(RectTransform buttonTransform)
+    {
+        if (buttonTransform == null || !buttonTransform.TryGetComponent(out UnityEngine.UI.Button button))
+            return;
+
+        button.onClick.AddListener(PlayButtonSFX);
+    }
+
+    private void PlayButtonSFX()
+    {
+        if (AudioManager.Instance == null) return;
+
+        AudioManager.Instance.PlaySFX(buttonSFX);
+        if (AudioManager.Instance.bgmSource != null)
+            AudioManager.Instance.bgmSource.Stop();
     }
 
     private void Update()

@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 295962205}
   - component: {fileID: 295962204}
   - component: {fileID: 295962203}
+  - component: {fileID: 9000000000000000101}
   m_Layer: 5
   m_Name: Right Button
   m_TagString: Untagged
@@ -1298,6 +1299,7 @@ GameObject:
   - component: {fileID: 1363159537}
   - component: {fileID: 1363159536}
   - component: {fileID: 1363159535}
+  - component: {fileID: 9000000000000000102}
   m_Layer: 5
   m_Name: Back To Title Button
   m_TagString: Untagged
@@ -2176,6 +2178,7 @@ GameObject:
   - component: {fileID: 2053659212}
   - component: {fileID: 2053659211}
   - component: {fileID: 2053659210}
+  - component: {fileID: 9000000000000000103}
   m_Layer: 5
   m_Name: Left Button
   m_TagString: Untagged
@@ -2536,3 +2539,45 @@ SceneRoots:
   - {fileID: 278969638}
   - {fileID: 590193518}
   - {fileID: 1730907856}
+--- !u!114 &9000000000000000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295962201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
+--- !u!114 &9000000000000000102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363159533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
+--- !u!114 &9000000000000000103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053659208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}

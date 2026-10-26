@@ -56,6 +56,13 @@ public class AudioManager : MonoBehaviour
         if (resultSfxSource != null) resultSfxSource.volume = clampedVolume;
     }
 
+    public void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || sfxSource == null) return;
+
+        sfxSource.PlayOneShot(clip);
+    }
+
     public void PlayResultSFX(AudioClip clip, float delaySeconds = 0f)
     {
         if (clip == null) return;

@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/!Scenes/!Main Build/Area 1 - Level 5.unity
     guid: 4b420e0abe5c84cd4805d95286a16b28
   - enabled: 1
-    path: Assets/!Scenes/!Main Build/Area 1 - Level 5.5.unity
+    path: Assets/!Scenes/!Main Build/Area 1 - Ending.unity
     guid: d0e48c765233a460a9c91478d55e701a
   - enabled: 1
     path: Assets/!Scenes/Base Game/Game Scene.unity

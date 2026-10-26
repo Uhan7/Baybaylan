@@ -80,6 +80,19 @@ public class PopupUI : MonoBehaviour
     }
 
     // Helper Functions --------------------------------------------------------
+    public void ReturnToTitle()
+    {
+        SceneController sceneController = FindFirstObjectByType<SceneController>();
+        if (sceneController == null)
+        {
+            Debug.LogError("Cannot return to title: no active SceneController was found.", this);
+            return;
+        }
+
+        // SceneController closes settings through Popup(false), preserving its slide animation.
+        sceneController.SwapWrapper("Title Screen");
+    }
+
     public void Popup(bool val)
     {
         if (anim == null) return;

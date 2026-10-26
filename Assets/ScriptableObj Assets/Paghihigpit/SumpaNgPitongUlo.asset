@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 8
   paghihigpitName: Sumpa ng Pitong Ulo
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 1370011464995720946, guid: 4d7bebcf4e5cd014d8efaf3fca596a78, type: 3}
   description: Mayroong 7 bar ng mahika at 7 aksyon. Sa bawat aksyon, kailangang
     mapuno ang isang bar. Kapag hindi napuno ang lahat ng bar, matatalo si Sulayman.
   extraText: "Ang ibong may pitong ulo\u2026 Paano kaya siya talunin? Baka kailangang
