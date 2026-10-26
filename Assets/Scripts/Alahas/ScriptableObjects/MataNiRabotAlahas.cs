@@ -21,7 +21,7 @@ class MataNiRabot : Alahas
 
     public override void onStart()
     {
-        
+        inited = false;
     }
     
     public override bool triggerCondition()
