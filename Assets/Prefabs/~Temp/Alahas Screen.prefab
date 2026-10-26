@@ -821,11 +821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
-      value: 50.16443
+      value: 74.74623
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeBase
-      value: 50.16443
+      value: 74.74623
       objectReference: {fileID: 0}
     - target: {fileID: 2836896752513784374, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -997,15 +997,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeMin
-      value: 22.574
+      value: 33.63581
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeMax
-      value: 90.29598
+      value: 134.5432
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_lineSpacing
-      value: -1.71469
+      value: -36.98273
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 916856723378353502, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}

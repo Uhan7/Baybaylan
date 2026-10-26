@@ -142,8 +142,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hindi sapat ang iyong mahika
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
-  m_sharedMaterial: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
+  m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -167,19 +167,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.30905
-  m_fontSizeBase: 24.30905
+  m_fontSize: 36.22108
+  m_fontSizeBase: 36.22108
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 12.8695
-  m_fontSizeMax: 51.47799
+  m_fontSizeMin: 19.17587
+  m_fontSizeMax: 76.70347
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 63.43177
+  m_lineSpacing: 6.739011
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Natalo ka
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
-  m_sharedMaterial: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
+  m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -303,19 +303,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.05766
-  m_fontSizeBase: 60.05766
+  m_fontSize: 89.48738
+  m_fontSizeBase: 89.48738
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 12.8695
-  m_fontSizeMax: 51.47799
+  m_fontSizeMin: 19.17587
+  m_fontSizeMax: 76.70347
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 63.43177
+  m_lineSpacing: 6.739011
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -513,20 +513,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
-      value: 22.87911
+      value: 34.09043
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+      objectReference: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeBase
-      value: 22.87911
+      value: 34.09043
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+      objectReference: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -665,15 +665,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeMin
-      value: 12.8695
+      value: 19.17587
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeMax
-      value: 51.47799
+      value: 76.70347
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_lineSpacing
-      value: 63.43177
+      value: 6.739011
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 916856723378353502, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
@@ -700,20 +700,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSize
-      value: 24.30905
+      value: 36.22108
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+      objectReference: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeBase
-      value: 24.30905
+      value: 36.22108
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+      objectReference: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -860,15 +860,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeMin
-      value: 12.8695
+      value: 19.17587
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_fontSizeMax
-      value: 51.47799
+      value: 76.70347
       objectReference: {fileID: 0}
     - target: {fileID: 1677447384161083930, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}
       propertyPath: m_lineSpacing
-      value: 63.43177
+      value: 6.739011
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 916856723378353502, guid: 2a58264ad57e745b68b46dc19fc9a091, type: 3}

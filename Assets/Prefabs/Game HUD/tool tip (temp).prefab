@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: This is an unside down heart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
-  m_sharedMaterial: {fileID: 8381468938948267941, guid: 08411937c7e114ea6ab9b929ea8eed92, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
+  m_sharedMaterial: {fileID: 673215776540226060, guid: ebd9ff2b8a7e2434b85998013846964e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,19 +92,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.34835
-  m_fontSizeBase: 25.48798
+  m_fontSize: 97.37064
+  m_fontSizeBase: 37.97771
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 12.74399
-  m_fontSizeMax: 707.9994
+  m_fontSizeMin: 18.98886
+  m_fontSizeMax: 1054.936
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 65.01571
+  m_lineSpacing: 7.80204
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
