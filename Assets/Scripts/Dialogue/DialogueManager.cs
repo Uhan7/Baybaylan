@@ -135,7 +135,9 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(profileSwapFadeDuration);
 
         SetProfileSprites(dialogueSentence);
-        AnimateProfiles(dialogueSentence);
+        AnimateProfiles(
+            dialogueSentence,
+            dialogueSentence.backgroundMode == DialogueBackgroundMode.Black);
 
         if (isReplacingVisibleProfile && profileSwapFadeDuration > 0f)
             yield return new WaitForSeconds(profileSwapFadeDuration);
@@ -206,7 +208,9 @@ public class DialogueManager : MonoBehaviour
                 FadeBackgroundTo(1f, 0f, fadeDuration);
                 break;
             case DialogueBackgroundMode.Dim:
-                FadeBackgroundTo(0f, dialogueSentence.vignetteIntensity, fadeDuration);
+                float intensifiedVignette = Mathf.Clamp01(dialogueSentence.vignetteIntensity * 2f);
+                float nearBlackDim = Mathf.Lerp(normalDialogueDimAlpha, 0.95f, intensifiedVignette);
+                FadeBackgroundTo(nearBlackDim, intensifiedVignette, fadeDuration);
                 break;
             default:
                 FadeBackgroundTo(normalDialogueDimAlpha, 0f, fadeDuration);
@@ -355,7 +359,7 @@ public class DialogueManager : MonoBehaviour
         return true;
     }
 
-    private void AnimateProfiles(DialogueSentence _dialogueSentence)
+    private void AnimateProfiles(DialogueSentence _dialogueSentence, bool hideBehindBlackout)
     {
         // Left Primary Animator
         if (leftPrimaryAnimator)
@@ -363,7 +367,7 @@ public class DialogueManager : MonoBehaviour
             (
                 leftPrimaryAnimator,
                 _dialogueSentence.leftPrimaryProfile.isTalking,
-                _dialogueSentence.leftPrimaryProfile.sprite ?? false
+                !hideBehindBlackout && (_dialogueSentence.leftPrimaryProfile.sprite ?? false)
             );
         else Debug.LogError("The Animator of the LEFT PRIMARY PROFILE was not assigned to the DialogueManager");
 
@@ -373,7 +377,7 @@ public class DialogueManager : MonoBehaviour
             (
                 leftSecondaryAnimator,
                 _dialogueSentence.leftSecondaryProfile.isTalking,
-                _dialogueSentence.leftSecondaryProfile.sprite ?? false
+                !hideBehindBlackout && (_dialogueSentence.leftSecondaryProfile.sprite ?? false)
             );
         else Debug.LogError("The Animator of the LEFT SECONDARY PROFILE was not assigned to the DialogueManager");
 
@@ -383,7 +387,7 @@ public class DialogueManager : MonoBehaviour
             (
                 rightPrimaryAnimator,
                 _dialogueSentence.rightPrimaryProfile.isTalking,
-                _dialogueSentence.rightPrimaryProfile.sprite ?? false
+                !hideBehindBlackout && (_dialogueSentence.rightPrimaryProfile.sprite ?? false)
             );
         else Debug.LogError("The Animator of the RIGHT PRIMARY PROFILE was not assigned to the DialogueManager");
 
@@ -393,7 +397,7 @@ public class DialogueManager : MonoBehaviour
             (
                 rightSecondaryAnimator,
                 _dialogueSentence.rightSecondaryProfile.isTalking,
-                _dialogueSentence.rightSecondaryProfile.sprite ?? false
+                !hideBehindBlackout && (_dialogueSentence.rightSecondaryProfile.sprite ?? false)
             );
         else Debug.LogError("The Animator of the RIGHT SECONDARY PROFILE was not assigned to the DialogueManager");
     }

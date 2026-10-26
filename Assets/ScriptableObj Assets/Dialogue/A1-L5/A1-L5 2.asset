@@ -21,7 +21,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 6496633420529998956, guid: 97ad444baedac4dc6b0fcb1099118ff0, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Naputol mo ang isang ulo?!"
+    sentence: Naputol mo ang isang ulo?!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -38,7 +38,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
       isTalking: 1
     rightPrimaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 6496633420529998956, guid: 97ad444baedac4dc6b0fcb1099118ff0, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Isa-isa nating putulin ang mga ulo nito!"
-  - isFourSpeakers: 0
+    sentence: Isa-isa nating putulin ang mga ulo nito!
+  - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
       isTalking: 0
@@ -55,15 +55,15 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
-      isTalking: 1
+      sprite: {fileID: 6496633420529998956, guid: 97ad444baedac4dc6b0fcb1099118ff0, type: 3}
+      isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Tala! Doon na naman tayo umatake!"
+    sentence: Tala! Doon na naman tayo umatake!
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

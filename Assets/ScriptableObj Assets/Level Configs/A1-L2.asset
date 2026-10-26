@@ -16,8 +16,8 @@ MonoBehaviour:
   sceneName: Area 1 - Level 2
   protagonistName: Tala
   protagonistPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
-  targetName: Tala
-  targetPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
+  targetName: Tarabusaw
+  targetPortrait: {fileID: 21300000, guid: e33bdcd9d3216447986cc309e1165491, type: 3}
   selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 10

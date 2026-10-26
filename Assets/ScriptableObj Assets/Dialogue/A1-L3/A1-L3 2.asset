@@ -29,7 +29,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Sulayman! Umilag ka!"
+    sentence: Sulayman! Umilag ka!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "..!"
+    sentence: ..!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Hnggg!"
+    sentence: Hnggg!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -80,7 +80,7 @@ MonoBehaviour:
     backgroundMode: 1
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "AAH–!"
+    sentence: "AAH\u2013!"
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: 1921253574880258478, guid: 286010dcbebf541389a0e40810e58841, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "..."
+    sentence: ...
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

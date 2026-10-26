@@ -29,7 +29,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ito ba ang tamang lugar? Tila walang tao...?"
+    sentence: Ito ba ang tamang lugar? Tila walang tao...?
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -46,7 +46,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Mga kawal! Bantayan ninyo ang mga tarangkahan. Kayo naman, suriin ang hilagang daan!"
+    sentence: Mga kawal! Bantayan ninyo ang mga tarangkahan. Kayo naman, suriin ang
+      hilagang daan!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -63,7 +64,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Opo, Hari Indarapatra!"
+    sentence: Opo, Hari Indarapatra!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -80,7 +81,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Sino kayo? Bakit kayo narito?"
+    sentence: Sino kayo? Bakit kayo narito?
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -97,7 +98,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ako po si Tala, isang babaylan. Hinatid po ako rito ni Diwata Amihan."
+    sentence: Ako po si Tala, isang babaylan. Hinatid po ako rito ni Diwata Amihan.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -114,7 +115,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "May masama po akong nararamdaman sa lupaing ito."
+    sentence: May masama po akong nararamdaman sa lupaing ito.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -131,7 +132,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ako si Indarapatra, hari ng Mantapuli."
+    sentence: Ako si Indarapatra, hari ng Mantapuli.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -148,7 +149,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Hindi rin namin alam kung ano ang pinagmumulan nito."
+    sentence: Hindi rin namin alam kung ano ang pinagmumulan nito.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -165,7 +166,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ipinadala ko ang kapatid kong si Sulayman upang siyasatin ang paligid, ngunit hindi pa siya nakabalik."
+    sentence: Ipinadala ko ang kapatid kong si Sulayman upang siyasatin ang paligid,
+      ngunit hindi pa siya nakabalik.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -182,7 +184,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Sa totoo lang, nag-aala–"
+    sentence: "Sa totoo lang, nag-aala\u2013"
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -199,7 +201,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "BANG!"
+    sentence: BANG!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -216,7 +218,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "K-Kuya..."
+    sentence: K-Kuya...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -233,7 +235,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Wasak ang... Mga yantok..."
+    sentence: Wasak ang... Mga yantok...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -250,7 +252,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ang bundok... Mga halimaw..? Ahhh..."
+    sentence: Ang bundok... Mga halimaw..? Ahhh...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -267,7 +269,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Sulayman! Magpahinga ka muna."
+    sentence: Sulayman! Magpahinga ka muna.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -284,7 +286,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Lumalakas ang mga tinig... Mula sa bundok..."
+    sentence: Lumalakas ang mga tinig... Mula sa bundok...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -301,7 +303,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Hari Indarapatra, sa bundok ng mga punong yantok nagmumula ang masasamang diwa na nararamdaman ko."
+    sentence: Hari Indarapatra, sa bundok ng mga punong yantok nagmumula ang masasamang
+      diwa na nararamdaman ko.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -318,7 +321,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Doon din ako galing... Doon ko nakita ang mga sirang puno."
+    sentence: Doon din ako galing... Doon ko nakita ang mga sirang puno.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -335,7 +338,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Kailangan kong bumalik bago makarating sa Mantapuli ang nilalang na iyon."
+    sentence: Kailangan kong bumalik bago makarating sa Mantapuli ang nilalang na
+      iyon.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -352,7 +356,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Sa kalagayan mo? Hindi maaari, Sulayman."
+    sentence: Sa kalagayan mo? Hindi maaari, Sulayman.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -369,7 +373,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Kung hindi ako, sino? Hindi mo maaaring iwanan ang kaharian."
+    sentence: Kung hindi ako, sino? Hindi mo maaaring iwanan ang kaharian.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -386,7 +390,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Sasamahan ko po siya. Kaya kong sundan ang tinig na iyon."
+    sentence: Sasamahan ko po siya. Kaya kong sundan ang tinig na iyon.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -403,7 +407,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Palalakasin ko si Sulayman gamit ang aking mahika bilang babaylan."
+    sentence: Palalakasin ko si Sulayman gamit ang aking mahika bilang babaylan.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -420,7 +424,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ngayon lang tayo nagkakilala. Bakit ko ipagkatiwala sa iyo ang buhay ng kapatid ko?"
+    sentence: Ngayon lang tayo nagkakilala. Bakit ko ipagkatiwala sa iyo ang buhay
+      ng kapatid ko?
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -437,7 +442,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Kuya, tama ang sinabi niya. Kailangan ko ang tulong niya."
+    sentence: Kuya, tama ang sinabi niya. Kailangan ko ang tulong niya.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -454,7 +459,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "..."
+    sentence: ...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -471,7 +476,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "...Kung gayon."
+    sentence: ...Kung gayon.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
@@ -488,7 +493,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Dalhin mo ang mga Olisi, Sulayman."
+    sentence: Dalhin mo ang mga Olisi, Sulayman.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
@@ -505,7 +510,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Kuya... ang mga Olisi mo?"
+    sentence: Kuya... ang mga Olisi mo?
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
@@ -522,7 +527,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Babalik ako, Kuya."
+    sentence: Babalik ako, Kuya.
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
@@ -539,7 +544,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Maraming salamat sa inyong pagtitiwala, Hari Indarapatra. Paalam."
+    sentence: Maraming salamat sa inyong pagtitiwala, Hari Indarapatra. Paalam.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 0}
@@ -556,8 +561,8 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "..."
-  - isFourSpeakers: 0
+    sentence: ...
+  - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
@@ -568,12 +573,12 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
       isTalking: 1
     rightSecondaryProfile:
-      sprite: {fileID: 0}
+      sprite: {fileID: -6237491598411294591, guid: 01422e74556ff494aa2b5e6a3062dfae, type: 3}
       isTalking: 0
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "..."
+    sentence: ...
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24

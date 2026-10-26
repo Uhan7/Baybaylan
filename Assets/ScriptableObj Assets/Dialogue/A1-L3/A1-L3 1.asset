@@ -29,7 +29,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Dito na ba tayo..?"
+    sentence: Dito na ba tayo..?
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
     backgroundMode: 2
     vignetteIntensity: 0.75
     backgroundFadeDuration: 0
-    sentence: "Ayan! Dumilim ulit..."
+    sentence: Ayan! Dumilim ulit...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
     backgroundMode: 2
     vignetteIntensity: 0.75
     backgroundFadeDuration: 0
-    sentence: "Ahh... Tumingala ka, Tala!"
+    sentence: Ahh... Tumingala ka, Tala!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -80,7 +80,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ah..!"
+    sentence: Ah..!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -97,7 +97,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "...Tiririiiit!"
+    sentence: ...Tiririiiit!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -114,7 +114,7 @@ MonoBehaviour:
     backgroundMode: 2
     vignetteIntensity: 0.75
     backgroundFadeDuration: 0
-    sentence: "Napakalaki... Tinatakpan ng mga pakpak nito ang araw!"
+    sentence: Napakalaki... Tinatakpan ng mga pakpak nito ang araw!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -131,7 +131,7 @@ MonoBehaviour:
     backgroundMode: 2
     vignetteIntensity: 0.75
     backgroundFadeDuration: 0
-    sentence: "Paano natin siya aabutin..."
+    sentence: Paano natin siya aabutin...
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -148,7 +148,8 @@ MonoBehaviour:
     backgroundMode: 2
     vignetteIntensity: 0.75
     backgroundFadeDuration: 0
-    sentence: "Babalutin ko ng liwanag ang mga Olisi mo, Sulayman! Pagkatapos, ibato mo sa halimaw na iyon!"
+    sentence: Babalutin ko ng liwanag ang mga Olisi mo, Sulayman! Pagkatapos, ibato
+      mo sa halimaw na iyon!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -165,7 +166,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "..!"
+    sentence: ..!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -182,7 +183,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Maraming salamat, Tala!"
+    sentence: Maraming salamat, Tala!
   - isFourSpeakers: 1
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -199,7 +200,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Dito lang ako, Sulayman. Labanan natin siya!"
+    sentence: Dito lang ako, Sulayman. Labanan natin siya!
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24
