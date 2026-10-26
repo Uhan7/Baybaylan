@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Area 1 - Level 2
   sceneName: Area 1 - Level 2
-  protagonistName: Tala
-  protagonistPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
+  protagonistName: Sulayman
+  protagonistPortrait: {fileID: 21300000, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
   targetName: Tarabusaw
   targetPortrait: {fileID: 21300000, guid: e33bdcd9d3216447986cc309e1165491, type: 3}
   selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}

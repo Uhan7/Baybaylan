@@ -165,7 +165,6 @@ public class DialogueManager : MonoBehaviour
             if (c == '.' ||
                 c == '…' || // Just a fallback,,, but ideally all ellipsis turn into 3 periods
                 c == '–' ||
-                c == '-' ||
                 c == '~' ||
                 c == ',' ||
                 c == '!' ||

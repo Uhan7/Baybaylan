@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Area 1 - Level 5
   sceneName: Area 1 - Level 5
-  protagonistName: Tala
-  protagonistPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
+  protagonistName: Indarapatra
+  protagonistPortrait: {fileID: 21300000, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}
   targetName: Ibon ng Bundok Gurayan
   targetPortrait: {fileID: -2713426715766678824, guid: b3799278a1a72464dad5e9b895ac8359, type: 3}
   selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
