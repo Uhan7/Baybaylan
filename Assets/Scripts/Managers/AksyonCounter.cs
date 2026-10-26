@@ -19,7 +19,7 @@ public class AksyonCounter : MonoBehaviour
 
     [Header("Aksyon Variables")]
     [SerializeField, ReadOnly] private int maxAksyon = 0;
-    [SerializeField, ReadOnly] private int maxAvailableAksyon = 0;
+    [SerializeField, ReadOnly] public int maxAvailableAksyon = 0;
     [SerializeField, ReadOnly] private int numKaposAksyon = 0;
     [SerializeField, ReadOnly] private int currentAksyon = 1;
 

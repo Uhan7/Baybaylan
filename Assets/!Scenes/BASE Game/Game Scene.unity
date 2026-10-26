@@ -1121,7 +1121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: allAlahas.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'allAlahas.Array.data[8]'
@@ -1136,8 +1136,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'allAlahas.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d2019e2db34dea4b88b739d82ceee05, type: 2}
+    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: availableAlahas.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'availableAlahas.Array.data[0]'
@@ -1179,6 +1183,10 @@ PrefabInstance:
       propertyPath: 'availableAlahas.Array.data[9]'
       value: 
       objectReference: {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
+    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: 'availableAlahas.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d2019e2db34dea4b88b739d82ceee05, type: 2}
     - target: {fileID: 7710339385127343828, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b8131a1a5aa5c4e8db0362551ca692, type: 3}
+  m_Name: Mata ni Rabot
+  m_EditorClassIdentifier: 
+  alahasName: Mata ni Rabot
+  saveDataName: 24
+  alahasSprite: {fileID: 0}
+  description: Ang kabuuang multiplier ng mahika ay nakabatay sa kasalukuyang aksyon.
+    Magsisimula ito sa x0.75 sa unang aksyon at unti-unting tataas hanggang x1.25
+    na sa huling aksyon.
+  extraText: Kahit na wala naman si Rabot, nakakatakot pa rin tingnan ang matang
+    ito.
+  numberOfSlotsNeeded: 1
+  showActivationCounter: 0
+  maximumActivations: 0
