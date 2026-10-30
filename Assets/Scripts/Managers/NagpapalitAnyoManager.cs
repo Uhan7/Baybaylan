@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 class NagpapalitAnyoManager : MonoBehaviour
 {
     static public NagpapalitAnyoManager Instance;
     [SerializeField] Image enemyImage;
+    [SerializeField] TextMeshProUGUI enemyNameText;
     [SerializeField] PaghihigpitDisplay paghihigpitDisplay;
     NagpapalitAnyoPaghihigpit nagpapalitAnyo;
     int currentIndex;
@@ -23,7 +25,7 @@ class NagpapalitAnyoManager : MonoBehaviour
     }
 
     //gets called from the alahas submanager cuz i got lazy 
-    public void switchBoss()
+    public void switchBoss(bool keepIndex)
     {
         if(!nagpapalitAnyo)
         {
@@ -31,13 +33,13 @@ class NagpapalitAnyoManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("called");
-
-        currentIndex = getNewIndex();
+        if(!keepIndex)
+            currentIndex = getNewIndex();
         List<Paghihigpit> newPaghihigpit = new List<Paghihigpit>();
         setNewPaghihigpitList(newPaghihigpit);
 
         enemyImage.sprite = nagpapalitAnyo.bosses[currentIndex].sprite;
+        enemyNameText.text = nagpapalitAnyo.bosses[currentIndex].name;
         paghihigpitDisplay.setNewTiles(newPaghihigpit);
         GameManager.Instance.config.replaceActivePaghihigpits(newPaghihigpit);
     }
@@ -56,7 +58,7 @@ class NagpapalitAnyoManager : MonoBehaviour
         int newIndex = 0;
         do
         {
-            currentIndex = UnityEngine.Random.Range(0, nagpapalitAnyo.bosses.Length);
+            newIndex = UnityEngine.Random.Range(0, nagpapalitAnyo.bosses.Length);
         } while(newIndex == currentIndex);
 
         return newIndex;

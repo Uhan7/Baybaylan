@@ -69,6 +69,7 @@ class AlahasSubManager : MonoBehaviour
         }
 
         gameplayStarted = true;
+        NagpapalitAnyoManager.Instance.switchBoss(true);
     }
 
     void Update()
@@ -110,7 +111,7 @@ class AlahasSubManager : MonoBehaviour
             alahas.onTurnEnd();
         }
 
-        NagpapalitAnyoManager.Instance.switchBoss();
+        NagpapalitAnyoManager.Instance.switchBoss(false);
     }
 
     public void onTilesRefreshed()

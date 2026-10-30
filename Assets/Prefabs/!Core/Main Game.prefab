@@ -1091,6 +1091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyImage: {fileID: 5705537266350011826}
+  enemyNameText: {fileID: 5123425484994397517}
   paghihigpitDisplay: {fileID: 1178002179610274909}
 --- !u!1 &5902780430576204921
 GameObject:
@@ -4134,6 +4135,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cc949ce2f42543d1a9660b50161b72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5123425484994397517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8013433218510106603, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+  m_PrefabInstance: {fileID: 2895673115429989030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &5125060491858813291 stripped
