@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 class PaghihigpitDisplay : MonoBehaviour
 {
@@ -31,5 +32,14 @@ class PaghihigpitDisplay : MonoBehaviour
 
         GameObject newTile = Instantiate(tilePrefab, layoutParentObj.transform);
         newTile.GetComponent<PaghihigpitInfoPopup>().SetPaghihigpit(paghihigpit);
+    }
+
+    public void setNewTiles(List<Paghihigpit> list)
+    {
+        foreach(Transform child in layoutParentObj.transform)
+            Destroy(child.gameObject);
+
+        foreach(Paghihigpit paghihigpit in list)
+            spawnTile(paghihigpit);
     }
 }

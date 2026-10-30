@@ -109,6 +109,8 @@ class AlahasSubManager : MonoBehaviour
 
             alahas.onTurnEnd();
         }
+
+        NagpapalitAnyoManager.Instance.switchBoss();
     }
 
     public void onTilesRefreshed()
