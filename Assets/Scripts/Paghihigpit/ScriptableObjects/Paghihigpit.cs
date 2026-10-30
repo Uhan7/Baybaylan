@@ -13,6 +13,8 @@ public enum PaghihigpitTypes
     SumpaNgPitongUlo,
     KaposNaTitik,
     PagiibangTitik,
+    SagradongTitik,
+    HanginAmihan,
 }
 
 [CreateAssetMenu]

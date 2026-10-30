@@ -189,6 +189,37 @@ public class SalitaSlots : MonoBehaviour
             } 
         }
 
+        // PAGHIHIGPIT: Sagradong Titik
+        // Check if the word contains the indicated character
+        if (config.HasPaghihigpit(PaghihigpitTypes.SagradongTitik))
+        {
+            bool wordContainsSagradongTitik = false;
+
+            // Get indicated character
+            GameObject sagradongTitikGameObject = null;
+            string sagradongTitikString = "";
+
+            // Check SagradongTitik against each character of the submitted word
+            foreach (Tile tile in activeTiles)
+            {
+                string latinText = tile.latinText;
+
+                // Check each tile against the sagradong titik
+                if (string.Equals(sagradongTitikString, latinText, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    wordContainsSagradongTitik = true;
+                }
+            }
+
+            // If the word does not contain sagradong titik, invalid input
+            if (!wordContainsSagradongTitik)
+            {
+                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotSagradongTitik, latinSalita, sagradongTitikString);
+                return false;
+            }
+        }
+        
+
         // PAGHIHIGPIT: Mahabang Salita
         // Check if the candidate salita has 3 or less tiles
         if (config.HasPaghihigpit(PaghihigpitTypes.MahabangSalita))

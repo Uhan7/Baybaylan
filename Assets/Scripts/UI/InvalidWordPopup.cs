@@ -15,14 +15,14 @@ class InvalidWordPopup : MonoBehaviour
     [SerializeField] float upDistance = 100f;
     [SerializeField] InvalidWordTypes.Messages invalidWordMessages = new InvalidWordTypes.Messages();
 
-    public void ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType type, string word)
+    public void ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType type, string word, string sagradongTitik = "")
     {
         GameObject popupInstance = Instantiate(popupPrefab, parentObj.transform);
         popupInstance.transform.localPosition = Vector3.zero; 
         TextMeshProUGUI invalidWordText = popupInstance.GetComponentInChildren<TextMeshProUGUI>();
         Image bgImg = popupInstance.GetComponentInChildren<Image>();
 
-        invalidWordText.text = invalidWordMessages.GetInvalidWordMessage(type, word);
+        invalidWordText.text = invalidWordMessages.GetInvalidWordMessage(type, word, sagradongTitik);
 
         StartCoroutine(FadeOut(popupInstance, invalidWordText, bgImg));
     }
