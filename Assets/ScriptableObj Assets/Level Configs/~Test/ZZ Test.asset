@@ -69,6 +69,7 @@ MonoBehaviour:
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
   - {fileID: 11400000, guid: b52525881aafd284c83008b4ab0a282b, type: 2}
+  - {fileID: 11400000, guid: 680e14ad6df79f04484e51d787d882af, type: 2}
   partikularNaSalita_wordList:
   - ba
   - 

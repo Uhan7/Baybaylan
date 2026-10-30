@@ -349,6 +349,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9000000000000000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552365858372686662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
 --- !u!1 &2633453881344581682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1235,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9000000000000000102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190893109845096794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
 --- !u!1 &7305118901101181122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,6 +3430,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4068551355962492667, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: m_salitaSlots
+      value: 
+      objectReference: {fileID: 6383380388546905402}
     - target: {fileID: 4117292058970802886, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -4085,6 +4117,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd52a7b61a1f0411b903b65a050d4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6383380388546905402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8122573979590520732, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+  m_PrefabInstance: {fileID: 2895673115429989030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9e9a417385a4cfd8f1d733102326de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6473220004461279683 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8212876970858877797, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
@@ -4621,31 +4664,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4520180789969273025, guid: b1d9a276167ba9b4b95d8101f9ba4cfb, type: 3}
   m_PrefabInstance: {fileID: 8932866592766988961}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9000000000000000101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2552365858372686662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  hoverSFX: {fileID: 0}
-  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
---- !u!114 &9000000000000000102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7190893109845096794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  hoverSFX: {fileID: 0}
-  clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}

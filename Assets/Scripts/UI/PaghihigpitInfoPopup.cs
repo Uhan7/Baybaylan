@@ -59,9 +59,26 @@ class PaghihigpitInfoPopup : ToolTipAble
     string ResolveDescriptionText()
     {
         string description = currentPaghihigpit.description ?? string.Empty;
-        if (currentPaghihigpit.paghihigpitType != PaghihigpitTypes.PartikularNaSalita)
-            return description;
+        
+        // Return description of Partikular na Salita
+        if (currentPaghihigpit.paghihigpitType == PaghihigpitTypes.PartikularNaSalita)
+        {
+            string displayedWord = GetPartikularNaSalita();
+            return $"{description.TrimEnd()} \"<uppercase>{displayedWord}</uppercase>\"";
+        }
+        
+        // Return description of Sagradong Titik
+        if (currentPaghihigpit.paghihigpitType == PaghihigpitTypes.SagradongTitik)
+        {
+            string sagradongTitik = GetSagradongTitik();
+            return $"{description.TrimEnd()} <size=80>\"<uppercase>{sagradongTitik}</uppercase>\"";
+        }
 
+        return description;
+    }
+
+    private string GetPartikularNaSalita()
+    {
         LevelConfig levelConfig = GameManager.Instance != null
             ? GameManager.Instance.config
             : null;
@@ -72,8 +89,16 @@ class PaghihigpitInfoPopup : ToolTipAble
             ? levelConfig.GetPartikularNaSalitaForAksyon(currentAksyon)
             : null;
         string displayedWord = string.IsNullOrEmpty(particularWord) ? "—" : particularWord;
+        return displayedWord;
+    }
 
-        return $"{description.TrimEnd()} \"<uppercase>{displayedWord}</uppercase>\"";
+    private string GetSagradongTitik()
+    {
+        Tile tile = SalitaSlots.Instance != null
+            ? SalitaSlots.Instance.GetSagradongTitik()
+            : null;
+        string sagradongTitik = tile != null ? tile.latinText : string.Empty;
+        return string.IsNullOrEmpty(sagradongTitik) ? "—" : sagradongTitik;
     }
 
     void PositionTooltip()

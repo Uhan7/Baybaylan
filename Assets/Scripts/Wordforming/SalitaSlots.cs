@@ -7,10 +7,14 @@ using System.Globalization;
 using TMPro;
 using NaughtyAttributes;
 using Unity.VisualScripting;
+using System.ComponentModel;
+using System;
 
 [RequireComponent(typeof(DropZone))]
 public class SalitaSlots : MonoBehaviour
 {
+    public static SalitaSlots Instance;
+
     // Variables ---------------------------------------------------------------
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
@@ -26,16 +30,17 @@ public class SalitaSlots : MonoBehaviour
 
     [Header("Tiles")]
     [SerializeField] private TileSet tileSet;
+    [SerializeField, NaughtyAttributes.ReadOnly] private Tile m_sagradongTitik;
     [SerializeField] public List<Tile> activeTiles = new List<Tile>();
 
     [Header("Word Properties")]
     //[ReadOnly, SerializeField] private string baybayinSalita; // maybe will use eventually ..?
-    [ReadOnly, SerializeField] private string latinSalita;
+    [NaughtyAttributes.ReadOnly, SerializeField] private string latinSalita;
     private string revealedLatinSalita;
     private string observedLatinSalita;
 
     [Header("Score Properties")]
-    [ReadOnly, SerializeField] private int salitaScore = 0;
+    [NaughtyAttributes.ReadOnly, SerializeField] private int salitaScore = 0;
     [SerializeField] private float scoreScaleValue = 0.5f;
     [Tooltip("Time for submitted tiles to fade into their scored appearance.")]
     [SerializeField, Min(0f)] private float scoredTileTransitionDuration = 0.25f;
@@ -75,6 +80,17 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private bool scoringSalita;
 
     // Main Functions ----------------------------------------------------------
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            // If a duplicate exists, destroy this GameObject to enforce the singleton rule
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     private void Start()
     {
         config = GameManager.Instance.config;
@@ -196,8 +212,7 @@ public class SalitaSlots : MonoBehaviour
             bool wordContainsSagradongTitik = false;
 
             // Get indicated character
-            GameObject sagradongTitikGameObject = null;
-            string sagradongTitikString = "";
+            string sagradongTitikString = m_sagradongTitik?.latinText ?? "";
 
             // Check SagradongTitik against each character of the submitted word
             foreach (Tile tile in activeTiles)
@@ -428,6 +443,7 @@ public class SalitaSlots : MonoBehaviour
             yield return winningAttackCharacterSwap;
 
         AksyonCounter.Instance.ConcludeAksyon();
+        RandomizeSagradongTile();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && MahikaManager.Instance.GetMahikaPercent() < 1) 
         {
@@ -622,5 +638,18 @@ public class SalitaSlots : MonoBehaviour
 
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;
+    }
+
+    public void RandomizeSagradongTile()
+    {
+        TileSet tileSet = TileSet.Instance;
+        if (tileSet == null) return;
+
+        m_sagradongTitik = tileSet.GetRandomTile();
+    }
+
+    public Tile GetSagradongTitik()
+    {
+        return m_sagradongTitik;
     }
 }
