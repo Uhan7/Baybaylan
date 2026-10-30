@@ -8,7 +8,6 @@ class NagpapalitAnyoPaghihigpit : Paghihigpit
     [Serializable] 
     public struct Bosses
     {
-        public string name;
         public Sprite sprite;
         public Paghihigpit[] paghihigpit;
     }

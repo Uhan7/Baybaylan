@@ -20,17 +20,4 @@ MonoBehaviour:
     ni Oryol.
   extraText: "Si Oryol\u2013ang mapanlinlang at tusong ahas na nagpapalit ng anyo\u2026
     Mababago kaya talaga siya ni Handyong? Mukhang may ugnayan silang dalawa\u2026"
-  bosses:
-  - name: og boss
-    sprite: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
-    paghihigpit:
-    - {fileID: 11400000}
-    - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
-  - name: boss 2
-    sprite: {fileID: 21300000, guid: cfc3684607e4c48f683453da78f36721, type: 3}
-    paghihigpit:
-    - {fileID: 11400000, guid: 3ecca783864192940b4ad6561e5972d2, type: 2}
-  - name: boss 3
-    sprite: {fileID: 21300000, guid: 3d029790bbe434290951322ac397a8de, type: 3}
-    paghihigpit:
-    - {fileID: 11400000, guid: e04c4071c7ee97f45a3d4112e35a319c, type: 2}
+  bosses: []

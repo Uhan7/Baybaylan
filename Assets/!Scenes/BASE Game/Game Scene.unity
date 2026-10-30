@@ -595,18 +595,6 @@ PrefabInstance:
       propertyPath: 'dialogues.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: b4f42271094eb4a9fa152161cd1cedff, type: 2}
-    - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2094052328367243392, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1030,7 +1018,7 @@ PrefabInstance:
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: config
       value: 
-      objectReference: {fileID: 11400000, guid: 1dc052c60bc1d3d44a0610ee8eaf3bb3, type: 2}
+      objectReference: {fileID: 11400000, guid: df688e0d1dadd4e61910ed839e0f76dd, type: 2}
     - target: {fileID: 6601106498251759983, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
