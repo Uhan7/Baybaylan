@@ -13,6 +13,7 @@ class PaghihigpitDisplay : MonoBehaviour
 
         config = GameManager.Instance.config;
         if (config == null) return;
+        if(config.HasPaghihigpit(PaghihigpitTypes.NagpapalitAnyo)) return;
 
         setupTiles();
     }
