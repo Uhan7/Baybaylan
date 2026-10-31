@@ -142,6 +142,7 @@ public class TileSet : MonoBehaviour
         int num_kaposNaTitik = GetNumKaposNaTitik();
         yield return SpawnTiles(config.tilesAmount + extraTiles - num_kaposNaTitik);
         yield return SpawnPakpakTemporaryTiles();
+        if (SalitaSlots.Instance != null) SalitaSlots.Instance.RandomizeSagradongTile();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -544,6 +545,17 @@ public class TileSet : MonoBehaviour
     {
         return transform.childCount;
     }
+
+    public Tile GetRandomTile()
+    {
+        Tile randomTile = null;
+
+        int randomIndex = UnityEngine.Random.Range(0, transform.childCount-1);
+        randomTile = transform.GetChild(randomIndex).GetComponent<Tile>();
+
+        return randomTile;
+    }
+
     private IEnumerator RemoveRandomTiles(int _numTilesToRemove)
     {
         for (int i = 0; i < _numTilesToRemove; i++)

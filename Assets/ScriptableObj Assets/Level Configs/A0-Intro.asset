@@ -21,7 +21,7 @@ MonoBehaviour:
   selectionBackground: {fileID: 21300000, guid: e701bf43cf8bf471f8105b362d61f9bb, type: 3}
   flipSelectionBackground: 1
   tilesAmount: 0
-  kaposNaTitik: 1
+  kaposNaTitik: 2
   tilesSelection: []
   itinakdangTitikPerAksyon:
   - aksyon: 1

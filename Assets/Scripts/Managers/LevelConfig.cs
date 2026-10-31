@@ -35,7 +35,7 @@ public class LevelConfig : ScriptableObject
 
     [Header("Tiles")]
     [HideIf("hasItinakdangTitik"), SerializeField] public int tilesAmount;
-    [ShowIf("hasKaposNaTitik"), SerializeField] public int kaposNaTitik = 1;
+    [ShowIf("hasKaposNaTitik"), SerializeField] public int kaposNaTitik = 2;
     [HideIf("hasItinakdangTitik"), SerializeField] public List<GameObject> tilesSelection;
     [ShowIf("hasItinakdangTitik"), Tooltip("Each element is the exact tile pool for its numbered Aksyon."), SerializeField]
     public List<ItinakdangTitikAksyon> itinakdangTitikPerAksyon = new List<ItinakdangTitikAksyon>();
@@ -155,7 +155,7 @@ public class LevelConfig : ScriptableObject
         // Logic for Kapos na Titik
         if (HasPaghihigpit(PaghihigpitTypes.KaposNaTitik))
         {
-            if (kaposNaTitik < 1) kaposNaTitik = 1;
+            if (kaposNaTitik < 2) kaposNaTitik = 2;
             if (kaposNaTitik >= tilesAmount) kaposNaTitik = (tilesAmount - 1);
         }
 

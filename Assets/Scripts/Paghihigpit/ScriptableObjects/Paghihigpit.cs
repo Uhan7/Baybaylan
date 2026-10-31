@@ -13,7 +13,9 @@ public enum PaghihigpitTypes
     SumpaNgPitongUlo,
     KaposNaTitik,
     PagiibangTitik,
-    NagpapalitAnyo,
+    NagpapalitAnyo = 11,
+    SagradongTitik = 12,
+    HanginAmihan = 13,
 }
 
 [CreateAssetMenu(menuName = "Paghihigpit/Default")]

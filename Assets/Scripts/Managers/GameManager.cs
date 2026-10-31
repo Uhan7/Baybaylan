@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using NaughtyAttributes;
 using System;
+using System.ComponentModel;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,6 +75,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip winSFX;
     [SerializeField] private AudioClip loseSFX;
     [SerializeField] private AudioClip winAmbience;
+
+    [Header("Paghihigpit")]
+    [SerializeField, NaughtyAttributes.ReadOnly] private Tile m_sagradongTitik;
 
     // Main Functions ----------------------------------------------------------
 

@@ -15,6 +15,6 @@ MonoBehaviour:
   paghihigpitType: 9
   paghihigpitName: Kapos na Titik
   paghihigpitSprite: {fileID: 0}
-  description: Mas kaunti ang mga titik na maaaring magagamit.
+  description: Dalawang titik ang ibinabawas sa bilang ng mga titik na maaaring gamitin.
   extraText: "Medyo mahirap magsulat dito\u2026 Mas kaunti ang mga titik na magamit
     ko."

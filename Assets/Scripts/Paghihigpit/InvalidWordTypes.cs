@@ -12,7 +12,8 @@ public static class InvalidWordTypes
         MaiklingSalita,
         InvalidVowelPlacement,
         SplitNgTiles,
-        NotPagiibangTitik
+        NotPagiibangTitik,
+        NotSagradongTitik,
     }
 
     [System.Serializable]
@@ -43,8 +44,10 @@ public static class InvalidWordTypes
         [SerializeField] string maiklingSalita = "Masyadong mahaba ang “{word}”. Hanggang 4 na titik lamang!";
         [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
         [SerializeField] string notPagiibangTitik = "May umulit na titik sa “{word}”. Bawal umulit ang titik!";
+        [TextArea, Tooltip("Use {word} where the submitted word should appear.")]
+        [SerializeField] string notSagradongTitik = "Sa salitang “{word}” kulang ang “{titik}”.";
 
-        public string GetInvalidWordMessage(InvalidWordType type, string word)
+        public string GetInvalidWordMessage(InvalidWordType type, string word, string sagradongTitik = "")
         {
             string template;
             switch (type)
@@ -76,11 +79,16 @@ public static class InvalidWordTypes
                 case InvalidWordType.NotPagiibangTitik:
                     template = notPagiibangTitik;
                     break;
+                case InvalidWordType.NotSagradongTitik:
+                    template = notSagradongTitik;
+                    break;
                 default:
                     return "";
             }
 
-            return (template ?? "").Replace("{word}", word ?? "");
+            return(template ?? "")
+                    .Replace("{word}", word ?? "")
+                    .Replace("{titik}", sagradongTitik ?? "");
         }
     }
 }

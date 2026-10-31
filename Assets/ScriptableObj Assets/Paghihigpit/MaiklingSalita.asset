@@ -15,6 +15,7 @@ MonoBehaviour:
   paghihigpitType: 7
   paghihigpitName: Maikling Salita
   paghihigpitSprite: {fileID: 4064080239573852051, guid: 132da495c09ad4a9c8721c1b340a4c5e, type: 3}
-  description: Words with 5 tiles or more do not receive magic score.
+  description: Walang puntos ng mahika ang salitang gumagamit ng 5 titik o higit
+    pa.
   extraText: "Dapat kong tandaan kung aling mga titik ang nagbibigay ng mas maraming
     mahika\u2026 Baka makatulong din ang mga Kudlit at Krus."
