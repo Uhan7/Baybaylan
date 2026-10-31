@@ -28,7 +28,7 @@ public class AlahasInventoryItem : MonoBehaviour,
         Image image,
         Alahas representedAlahas,
         bool isUnlocked,
-        Sprite lockedSprite,
+        float lockedIconValue,
         bool isEquipped)
     {
         controller = owner;
@@ -49,13 +49,15 @@ public class AlahasInventoryItem : MonoBehaviour,
             tooltip.enabled = unlocked;
         }
 
-        itemImage.sprite = unlocked ? alahas.alahasSprite : lockedSprite;
+        // Always show the represented Alahas. Locked entries use the same icon
+        // at a low HSV value instead of a generic placeholder sprite.
+        itemImage.sprite = alahas != null ? alahas.alahasSprite : null;
         itemImage.preserveAspect = true;
         itemImage.raycastTarget = true;
 
         normalColor = unlocked
             ? (isEquipped ? new Color(0.5f, 0.5f, 0.5f, 0.5f) : Color.white)
-            : new Color(1f, 1f, 1f, 0.7f);
+            : Color.HSVToRGB(0f, 0f, Mathf.Clamp01(lockedIconValue));
         ApplyVisualState();
     }
 

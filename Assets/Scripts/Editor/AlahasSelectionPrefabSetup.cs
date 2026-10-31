@@ -11,8 +11,6 @@ public static class AlahasSelectionPrefabSetup
         "Assets/Prefabs/Game HUD/Alahas Inventory Container.prefab";
     private const string ButtonPrefabPath =
         "Assets/Prefabs/General Reusables/Button.prefab";
-    private const string LockedSpritePath =
-        "Assets/Visuals/UI/iconsvg.png";
     private const string TooltipPrefabPath =
         "Assets/Prefabs/Game HUD/Alahas Info Popup.prefab";
     private const string AlahasSlotPrefabPath =
@@ -89,11 +87,10 @@ public static class AlahasSelectionPrefabSetup
 
             Button proceedButton = GetOrCreateProceedButton(root);
             GameObject fallbackSlotPanel = GetOrCreateFallbackSlots(root);
-            Sprite lockedSprite = AssetDatabase.LoadAssetAtPath<Sprite>(LockedSpritePath);
             Alahas[] allAlahas = AssetDatabase.FindAssets("t:Alahas", new[] { AlahasFolder })
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .Select(AssetDatabase.LoadAssetAtPath<Alahas>)
-                .Where(alahas => alahas != null)
+                .Where(alahas => alahas != null && alahas.alahasSprite != null)
                 .OrderBy(alahas => alahas.alahasName)
                 .ToArray();
 
@@ -101,7 +98,7 @@ public static class AlahasSelectionPrefabSetup
             serializedController.FindProperty("inventoryGrid").objectReferenceValue = grid;
             serializedController.FindProperty("fallbackSlotPanel").objectReferenceValue =
                 fallbackSlotPanel;
-            serializedController.FindProperty("lockedSprite").objectReferenceValue = lockedSprite;
+            serializedController.FindProperty("lockedIconValue").floatValue = 0.2f;
             serializedController.FindProperty("proceedButton").objectReferenceValue = proceedButton;
             serializedController.FindProperty("slidingRoot").objectReferenceValue =
                 root.GetComponent<RectTransform>();
@@ -217,6 +214,11 @@ public static class AlahasSelectionPrefabSetup
                 .FirstOrDefault(button => button.name == "Proceed Button");
             Canvas foregroundCanvas = root.GetComponent<Canvas>();
             GraphicRaycaster raycaster = root.GetComponent<GraphicRaycaster>();
+            SerializedObject serializedController = new SerializedObject(controller);
+            SerializedProperty catalog = serializedController.FindProperty("allAlahas");
+            float lockedIconValue = serializedController
+                .FindProperty("lockedIconValue")
+                .floatValue;
 
             if (controller == null) throw new InvalidOperationException("Selection controller is missing.");
             if (grid == null || grid.childCount == 0)
@@ -226,6 +228,18 @@ public static class AlahasSelectionPrefabSetup
                 throw new InvalidOperationException("Foreground canvas is not configured.");
             if (raycaster == null)
                 throw new InvalidOperationException("Selector GraphicRaycaster is missing.");
+            if (catalog.arraySize == 0)
+                throw new InvalidOperationException("The visible Alahas catalog is empty.");
+            for (int i = 0; i < catalog.arraySize; i++)
+            {
+                Alahas alahas = catalog.GetArrayElementAtIndex(i).objectReferenceValue as Alahas;
+                if (alahas == null || alahas.alahasSprite == null)
+                    throw new InvalidOperationException(
+                        $"Visible Alahas catalog entry {i} has no display icon.");
+            }
+            if (!Mathf.Approximately(lockedIconValue, 0.2f))
+                throw new InvalidOperationException(
+                    $"Locked icon HSV value must be 0.2, but is {lockedIconValue}.");
             if (grid.Cast<Transform>().Any(cell =>
                 cell.GetComponent<Image>() != null &&
                 (cell.GetComponent<AlahasInventoryItem>() == null ||
@@ -235,12 +249,50 @@ public static class AlahasSelectionPrefabSetup
                 throw new InvalidOperationException(
                     "An inventory cell is missing drag, animation, or tooltip support.");
 
+            ValidateProceedWarnings(catalog);
+            ValidateConfirmationPrompt();
+
             Debug.Log(
-                $"Alahas selection validation passed: {grid.childCount} cells and a Proceed button.");
+                $"Alahas selection validation passed: {grid.childCount} cells, " +
+                $"{catalog.arraySize} visible Alahas, modular warnings, and a Proceed button.");
         }
         finally
         {
             PrefabUtility.UnloadPrefabContents(root);
+        }
+    }
+
+    private static void ValidateProceedWarnings(SerializedProperty catalog)
+    {
+        Alahas testAlahas = catalog.GetArrayElementAtIndex(0).objectReferenceValue as Alahas;
+        var warnings = AlahasSelectionWarningRule.CreateDefaults();
+        var empty = new Alahas[] { null, null };
+        var partial = new Alahas[] { testAlahas, null };
+        var full = new Alahas[] { testAlahas, testAlahas };
+
+        if (!warnings[0].ShouldWarn(empty) || warnings[1].ShouldWarn(empty))
+            throw new InvalidOperationException("Empty-loadout warning rules overlap or do not fire.");
+        if (warnings[0].ShouldWarn(partial) || !warnings[1].ShouldWarn(partial))
+            throw new InvalidOperationException("Partial-loadout warning rules overlap or do not fire.");
+        if (warnings.Any(warning => warning.ShouldWarn(full)))
+            throw new InvalidOperationException("A full loadout incorrectly produces a warning.");
+    }
+
+    private static void ValidateConfirmationPrompt()
+    {
+        ConfirmationPromptUI prompt = ConfirmationPromptUI.Create();
+        try
+        {
+            prompt.Show("Validation", "Go Back", "Continue Anyway", null, null);
+            if (!prompt.gameObject.activeSelf)
+                throw new InvalidOperationException("Confirmation prompt did not open.");
+            prompt.Hide();
+            if (prompt.gameObject.activeSelf)
+                throw new InvalidOperationException("Confirmation prompt did not close.");
+        }
+        finally
+        {
+            UnityEngine.Object.DestroyImmediate(prompt.gameObject);
         }
     }
 

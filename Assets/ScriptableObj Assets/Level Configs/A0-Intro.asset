@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A0-Intro
   m_EditorClassIdentifier: 
-  levelName: Area 0 - Intro
+  levelName: 'Ang Simula: Si Tala'
   sceneName: Area 0 - Intro
   protagonistName: 
   protagonistPortrait: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A0-L1
   m_EditorClassIdentifier: 
-  levelName: Area 0 - Level 1
+  levelName: 'Ang Simula: Si Amihan'
   sceneName: Area 0 - Level 1
   protagonistName: Tala
   protagonistPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}

@@ -1872,12 +1872,13 @@ MonoBehaviour:
   allAlahas:
   - {fileID: 11400000, guid: b7aa8df7fbb034005bcfd07b9735175e, type: 2}
   - {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
+  - {fileID: 11400000, guid: 8676a782083642b4a92825b56748d5af, type: 2}
   - {fileID: 11400000, guid: 6874d0039fd35b84fbd7ffd84c6c71ce, type: 2}
   - {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
   - {fileID: 11400000, guid: 336830bb4f67d0d4badbe80ae5cfc049, type: 2}
   - {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
   - {fileID: 11400000, guid: 364ca5de1960c2f41b322ba72e3511a0, type: 2}
-  lockedSprite: {fileID: 21300000, guid: 70ca1035014de45d18abbc03191ac997, type: 3}
+  lockedIconValue: 0.2
   proceedButton: {fileID: 1981613281610135351}
   slidingRoot: {fileID: 4335671534448637184}
   foregroundSortingOrder: 1000

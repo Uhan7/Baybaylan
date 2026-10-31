@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A1-L5
   m_EditorClassIdentifier: 
-  levelName: Area 1 - Level 5
+  levelName: 'Indarapatra at Sulayman: Ang Hulling Halimaw'
   sceneName: Area 1 - Level 5
   protagonistName: Indarapatra
   protagonistPortrait: {fileID: 21300000, guid: e9da45d61d4ce4200800e9f61625396f, type: 3}

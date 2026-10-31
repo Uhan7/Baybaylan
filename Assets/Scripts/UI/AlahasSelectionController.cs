@@ -14,7 +14,8 @@ public class AlahasSelectionController : MonoBehaviour
     [SerializeField] private Transform inventoryGrid;
     [SerializeField] private GameObject fallbackSlotPanel;
     [SerializeField] private List<Alahas> allAlahas = new List<Alahas>();
-    [SerializeField] private Sprite lockedSprite;
+    [Tooltip("HSV value applied to locked Alahas icons. 0.2 equals 20% value.")]
+    [Range(0f, 1f), SerializeField] private float lockedIconValue = 0.2f;
 
     [Header("Flow")]
     [SerializeField] private Button proceedButton;
@@ -23,6 +24,11 @@ public class AlahasSelectionController : MonoBehaviour
     [Min(0f), SerializeField] private float slideDistance = 900f;
     [Min(0f), SerializeField] private float slideDuration = 0.45f;
     [SerializeField] private AnimationCurve slideCurve = null;
+
+    [Header("Proceed Warnings")]
+    [SerializeField] private bool useDefaultWarningsWhenEmpty = true;
+    [SerializeField] private List<AlahasSelectionWarningRule> proceedWarnings =
+        new List<AlahasSelectionWarningRule>();
 
     private readonly List<AlahasInventoryItem> inventoryItems = new List<AlahasInventoryItem>();
     private readonly List<AlahasSelectionSlot> selectionSlots = new List<AlahasSelectionSlot>();
@@ -37,6 +43,10 @@ public class AlahasSelectionController : MonoBehaviour
     private Vector2 shownPosition;
     private bool selectionActive;
     private bool proceedRequested;
+    private ConfirmationPromptUI confirmationPrompt;
+    private List<AlahasSelectionWarningRule> pendingWarnings =
+        new List<AlahasSelectionWarningRule>();
+    private int pendingWarningIndex;
 
     private void Awake()
     {
@@ -98,12 +108,14 @@ public class AlahasSelectionController : MonoBehaviour
         selectionActive = true;
         proceedRequested = false;
         pendingTileSet = tileSet;
+        HideConfirmationPrompt();
         CacheInventoryItems();
         CacheSelectionSlots();
         ApplyConfiguredSlotCapacity();
 
         int slotCount = Mathf.Max(1, selectionSlots.Count);
-        draftSlots = AlahasManager.Instance.GetLoadoutSnapshot(slotCount);
+        draftSlots = Enumerable.Repeat<Alahas>(null, slotCount).ToList();
+        AlahasManager.Instance.SetLoadout(draftSlots);
 
         foreach (AlahasSelectionSlot slot in selectionSlots)
         {
@@ -246,7 +258,7 @@ public class AlahasSelectionController : MonoBehaviour
                 inventoryItems[i].GetComponent<Image>(),
                 alahas,
                 unlocked,
-                lockedSprite,
+                lockedIconValue,
                 alahas != null && draftSlots.Contains(alahas));
         }
     }
@@ -255,25 +267,48 @@ public class AlahasSelectionController : MonoBehaviour
     {
         List<Alahas> displayAlahas = new List<Alahas>();
 
-        // Selection must not reorder the inventory. Keep the designer/player
-        // inventory order stable and only change the selected item's tint.
-        if (inventory != null && inventory.availableAlahas != null)
-            AddUnique(displayAlahas, inventory.availableAlahas);
+        // Use the full catalog for a stable order. Unlocking an Alahas should
+        // change only its tint/interactivity, never move it around the grid.
+        if (inventory != null && inventory.allAlahas != null)
+            AddVisibleUnique(displayAlahas, inventory.allAlahas);
 
-        AddUnique(displayAlahas, allAlahas.Where(alahas => alahas != null));
+        AddVisibleUnique(displayAlahas, allAlahas);
         return displayAlahas;
     }
 
-    private static void AddUnique(List<Alahas> destination, IEnumerable<Alahas> source)
+    private static void AddVisibleUnique(
+        List<Alahas> destination,
+        IEnumerable<Alahas> source)
     {
         foreach (Alahas alahas in source)
-            if (alahas != null && !destination.Contains(alahas))
+            if (alahas != null &&
+                alahas.alahasSprite != null &&
+                !destination.Contains(alahas))
                 destination.Add(alahas);
     }
 
     public void Proceed()
     {
         if (!selectionActive || proceedRequested) return;
+
+        EnsureDefaultWarnings();
+        pendingWarnings = proceedWarnings
+            .Where(rule => rule != null && rule.ShouldWarn(draftSlots))
+            .ToList();
+        pendingWarningIndex = 0;
+
+        if (pendingWarnings.Count > 0)
+        {
+            ShowCurrentWarning();
+            return;
+        }
+
+        CompleteProceed();
+    }
+
+    private void CompleteProceed()
+    {
+        HideConfirmationPrompt();
         proceedRequested = true;
         selectionActive = false;
 
@@ -290,6 +325,57 @@ public class AlahasSelectionController : MonoBehaviour
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
         StartSlide(hiddenPosition, true);
+    }
+
+    private void ShowCurrentWarning()
+    {
+        if (pendingWarningIndex < 0 || pendingWarningIndex >= pendingWarnings.Count)
+        {
+            CompleteProceed();
+            return;
+        }
+
+        if (confirmationPrompt == null)
+            confirmationPrompt = ConfirmationPromptUI.Create();
+
+        AlahasSelectionWarningRule warning = pendingWarnings[pendingWarningIndex];
+        confirmationPrompt.Show(
+            warning.Message,
+            warning.BackButtonLabel,
+            warning.ContinueButtonLabel,
+            CancelProceedWarning,
+            ContinuePastWarning);
+    }
+
+    private void CancelProceedWarning()
+    {
+        HideConfirmationPrompt();
+        pendingWarnings.Clear();
+        pendingWarningIndex = 0;
+    }
+
+    private void ContinuePastWarning()
+    {
+        pendingWarningIndex++;
+        if (pendingWarningIndex < pendingWarnings.Count)
+            ShowCurrentWarning();
+        else
+            CompleteProceed();
+    }
+
+    private void HideConfirmationPrompt()
+    {
+        if (confirmationPrompt != null)
+            confirmationPrompt.Hide();
+    }
+
+    private void EnsureDefaultWarnings()
+    {
+        if (!useDefaultWarningsWhenEmpty ||
+            (proceedWarnings != null && proceedWarnings.Count > 0))
+            return;
+
+        proceedWarnings = AlahasSelectionWarningRule.CreateDefaults();
     }
 
     private void FinishSelection()
@@ -475,5 +561,11 @@ public class AlahasSelectionController : MonoBehaviour
         slidingRoot.anchoredPosition = target;
         slideRoutine = null;
         if (finishWhenDone) FinishSelection();
+    }
+
+    private void OnDestroy()
+    {
+        if (confirmationPrompt != null)
+            Destroy(confirmationPrompt.gameObject);
     }
 }
