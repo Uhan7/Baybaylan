@@ -109,6 +109,13 @@ public class LevelConfig : ScriptableObject
         return null;
     }
 
+    public void replaceActivePaghihigpits(List<Paghihigpit> list)
+    {
+        activePaghihigpit.Clear();
+        foreach(Paghihigpit paghihigpit in list)
+            activePaghihigpit.Add(paghihigpit);
+    }
+
     public string GetPartikularNaSalitaForAksyon(int aksyonNumber)
     {
         if (!HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita) ||

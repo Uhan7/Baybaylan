@@ -350,6 +350,52 @@ MonoBehaviour:
   winSFX: {fileID: 8300000, guid: 55fb73d354ac043c1a840f716112bcc8, type: 3}
   loseSFX: {fileID: 8300000, guid: 8a897754e4e9749f28b39a275dcd2da5, type: 3}
   winAmbience: {fileID: 8300000, guid: 90925f9a35d064dd08938592acdcb16e, type: 3}
+--- !u!1 &1533345036750623293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4568916308435747171}
+  - component: {fileID: 5614478161443778910}
+  m_Layer: 0
+  m_Name: Nagpapalit-anyo manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4568916308435747171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533345036750623293}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1114976113468629385}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5614478161443778910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533345036750623293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a425d80b5654084082cf713840350af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyImage: {fileID: 0}
+  paghihigpitDisplay: {fileID: 0}
 --- !u!1 &1559355368060166535
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +484,7 @@ Transform:
   - {fileID: 2341818603471596442}
   - {fileID: 2763453707728083980}
   - {fileID: 5492760035369097024}
+  - {fileID: 4568916308435747171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4952216401800604410

@@ -13,9 +13,10 @@ public enum PaghihigpitTypes
     SumpaNgPitongUlo,
     KaposNaTitik,
     PagiibangTitik,
+    NagpapalitAnyo,
 }
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Paghihigpit/Default")]
 public class Paghihigpit : ScriptableObject
 {
     // Variables ---------------------------------------------------------------
