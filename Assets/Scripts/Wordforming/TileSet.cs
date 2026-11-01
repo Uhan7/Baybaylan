@@ -13,6 +13,7 @@ public class TileSet : MonoBehaviour
     [Header("Constants")]
     [HideInInspector] private const float SPAWN_TIME_BETWEEN_TILES = 0.15f;
     [HideInInspector] private const int m_hanginHabagatNumTilesChanged = 3;
+    [HideInInspector] private string[] sortOrder = {"a", "i", "u", "ba", "ka", "da", "ga", "ha", "la", "ma", "na", "nga", "pa", "ra", "sa", "ta", "wa", "ya"};
 
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
@@ -131,6 +132,20 @@ public class TileSet : MonoBehaviour
             AlahasSubManager.Instance.BeginGameplay();
 
         StartCoroutine(SpawnInitialTiles());
+    }
+
+    public void sortTiles()
+    {
+        foreach(string order in sortOrder)
+        {
+            foreach(Transform child in transform)
+            {
+                if(child.GetComponent<Tile>().latinText == order)
+                {
+                    child.SetAsLastSibling();
+                }
+            }
+        }
     }
 
     private IEnumerator SpawnInitialTiles()
