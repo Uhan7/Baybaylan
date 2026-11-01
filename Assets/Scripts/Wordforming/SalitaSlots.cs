@@ -142,6 +142,18 @@ public class SalitaSlots : MonoBehaviour
         UpdateSalitaText();
     }
 
+    public void returnAllSalita()
+    {
+        if(transform.childCount == 0)
+            return;
+
+        while(transform.childCount > 0)
+        {
+            Transform child = transform.GetChild(0);
+            child.SetParent(tileSet.transform);
+        }
+    }
+
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {
