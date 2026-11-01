@@ -11,6 +11,8 @@ using Unity.VisualScripting;
 [RequireComponent(typeof(DropZone))]
 public class SalitaSlots : MonoBehaviour
 {
+    public static SalitaSlots Instance {get; private set; }
+
     // Variables ---------------------------------------------------------------
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
@@ -75,6 +77,12 @@ public class SalitaSlots : MonoBehaviour
     [SerializeField] private bool scoringSalita;
 
     // Main Functions ----------------------------------------------------------
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
     private void Start()
     {
         config = GameManager.Instance.config;
