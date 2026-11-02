@@ -13,7 +13,7 @@ public class TileSet : MonoBehaviour
     [Header("Constants")]
     [HideInInspector] private const float SPAWN_TIME_BETWEEN_TILES = 0.15f;
     [HideInInspector] private const int m_hanginHabagatNumTilesChanged = 3;
-    [HideInInspector] private string[] sortOrder = {"a", "i", "u", "ba", "ka", "da", "ga", "ha", "la", "ma", "na", "nga", "pa", "ra", "sa", "ta", "wa", "ya"};
+    [HideInInspector] private string[] sortOrder = {"A", "I", "U", "BA", "KA", "DA", "GA", "HA", "LA", "MA", "NA", "NGA", "PA", "RA", "SA", "TA", "WA", "YA"};
 
     [Header("Configurations")]
     [HideInInspector] private LevelConfig config;
@@ -134,18 +134,45 @@ public class TileSet : MonoBehaviour
         StartCoroutine(SpawnInitialTiles());
     }
 
+    //fixed by gpt
     public void sortTiles()
     {
-        foreach(string order in sortOrder)
+        List<Transform> children = new List<Transform>();
+
+        foreach (Transform child in transform)
+            children.Add(child);
+
+        int index = 0;
+
+        foreach (string order in sortOrder)
         {
-            foreach(Transform child in transform)
+            foreach (Transform child in children)
             {
-                if(child.GetComponent<Tile>().latinText == order)
+                if (getNormalLetter(child.gameObject) == order)
                 {
-                    child.SetAsLastSibling();
+                    child.SetSiblingIndex(index);
+                    index++;
                 }
             }
         }
+    }
+
+    string getNormalLetter(GameObject tile)
+    {
+        string letter = tile.name;
+
+        if(letter.Contains("(Clone)"))
+            letter = letter.Replace("(Clone)", "");
+
+        if(letter.Contains("~"))
+            letter = letter.Replace("~", "");
+
+        if(letter.Contains("E&I"))
+            letter = letter.Replace("E&I", "I");
+        if(letter.Contains("O&U"))
+            letter = letter.Replace("O&U", "U");
+
+        return letter;
     }
 
     private IEnumerator SpawnInitialTiles()
