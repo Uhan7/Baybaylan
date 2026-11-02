@@ -135,6 +135,47 @@ MonoBehaviour:
   followMouse: 1
   ToolTipPositionOffset: {x: -285, y: 115}
   paghihigpitImage: {fileID: 804852015775195834}
+  titikIcons:
+  - letter: a
+    sprite: {fileID: 21300000, guid: 94fc7e3c75a59401c9d0d27f7bf99d4e, type: 3}
+  - letter: e
+    sprite: {fileID: 21300000, guid: 9513e62e09a1244738446e5ff36e6a1c, type: 3}
+  - letter: i
+    sprite: {fileID: 21300000, guid: 9513e62e09a1244738446e5ff36e6a1c, type: 3}
+  - letter: o
+    sprite: {fileID: 21300000, guid: b20e93e3b91ca4c60bdb81119b8853b7, type: 3}
+  - letter: u
+    sprite: {fileID: 21300000, guid: b20e93e3b91ca4c60bdb81119b8853b7, type: 3}
+  - letter: b
+    sprite: {fileID: 21300000, guid: 4e5587de9d23b4846977f118baf5165b, type: 3}
+  - letter: d
+    sprite: {fileID: 21300000, guid: aea36c419142d437aac7c63f8cc04308, type: 3}
+  - letter: g
+    sprite: {fileID: 21300000, guid: 677200e6e1fb34ad0b5ad0f38567fbfd, type: 3}
+  - letter: h
+    sprite: {fileID: 21300000, guid: f271a4779033e4396b8c784628dcbd99, type: 3}
+  - letter: k
+    sprite: {fileID: 21300000, guid: 68584915126fe45ebba223851b5306f7, type: 3}
+  - letter: l
+    sprite: {fileID: 21300000, guid: 45778d040c9024b92803d69cca16e358, type: 3}
+  - letter: m
+    sprite: {fileID: 21300000, guid: a030c01b6212946bc812ffa3e08b3509, type: 3}
+  - letter: n
+    sprite: {fileID: 21300000, guid: 104ca13bd58b54be481840b764cef2e1, type: 3}
+  - letter: ng
+    sprite: {fileID: 21300000, guid: cbd4a99f34cd44ded971a22b59cdd533, type: 3}
+  - letter: p
+    sprite: {fileID: 21300000, guid: 1972ac3dc1a124537a9b1cbca7b68194, type: 3}
+  - letter: r
+    sprite: {fileID: 21300000, guid: 09d0d5620beb44e1fbc58ceaa5a34e94, type: 3}
+  - letter: s
+    sprite: {fileID: 21300000, guid: b148ab4bd308a479681ca4ab66ae6f0a, type: 3}
+  - letter: t
+    sprite: {fileID: 21300000, guid: 53763a7a0cf414815b37bc544f2be89f, type: 3}
+  - letter: w
+    sprite: {fileID: 21300000, guid: e40128a1d834d458baa139ea04ff9630, type: 3}
+  - letter: y
+    sprite: {fileID: 21300000, guid: 19fa4c5ba89864b14937113198ec50a9, type: 3}
 --- !u!1 &6563905855212885311
 GameObject:
   m_ObjectHideFlags: 0

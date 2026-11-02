@@ -10,10 +10,23 @@ class PaghihigpitInfoPopup : ToolTipAble
     TextMeshProUGUI paghihigpitDesc;
     TextMeshProUGUI paghihigpitExtra;
 
+    // Sagradong Titik Variables
+    [System.Serializable]
+    private struct TitikIcon
+    {
+        public string letter;
+        public Sprite sprite;
+    }
+    [Header("Sagradong Titik")]
+    [SerializeField] private TitikIcon[] titikIcons;
+    private string displayedLetter;
+
     public void SetPaghihigpit(Paghihigpit paghihigpit)
     {
         currentPaghihigpit = paghihigpit;
         paghihigpitImage.sprite = paghihigpit ? paghihigpit.paghihigpitSprite : null;
+        displayedLetter = null;
+        RefreshSagradongIcon();
     }
 
     override protected void startHover()
@@ -35,6 +48,7 @@ class PaghihigpitInfoPopup : ToolTipAble
     override protected void Update()
     {
         if(!currentPaghihigpit) return;
+        RefreshSagradongIcon();
 
         if (isHovered) timer += Time.deltaTime;
         else timer = 0f;
@@ -97,8 +111,30 @@ class PaghihigpitInfoPopup : ToolTipAble
         Tile tile = SalitaSlots.Instance != null
             ? SalitaSlots.Instance.GetSagradongTitik()
             : null;
-        string sagradongTitik = tile != null ? tile.latinText : string.Empty;
+        string sagradongTitik = tile == null ? string.Empty
+            : tile.isVowel ? tile.vowel : tile.rootConsonant;
         return string.IsNullOrEmpty(sagradongTitik) ? "—" : sagradongTitik;
+    }
+
+    private void RefreshSagradongIcon()
+    {
+        if (currentPaghihigpit == null
+            || currentPaghihigpit.paghihigpitType != PaghihigpitTypes.SagradongTitik)
+            return;
+
+        string letter = GetSagradongTitik();
+        if (letter == displayedLetter) return;
+        displayedLetter = letter;
+        paghihigpitImage.sprite = currentPaghihigpit.paghihigpitSprite;
+        if (titikIcons == null) return;
+
+        foreach (TitikIcon icon in titikIcons)
+        {
+            if (!string.Equals(icon.letter, letter, System.StringComparison.OrdinalIgnoreCase)) continue;
+            paghihigpitImage.sprite = icon.sprite;
+            paghihigpitImage.preserveAspect = true;
+            break;
+        }
     }
 
     void PositionTooltip()
