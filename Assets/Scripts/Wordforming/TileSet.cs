@@ -43,6 +43,8 @@ public class TileSet : MonoBehaviour
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
+    int hanginAmihanTileDebt = 0;
+
     // Main Functions ----------------------------------------------------------
     void Awake()
     {
@@ -394,6 +396,8 @@ public class TileSet : MonoBehaviour
         // Paghihigpit: Hangin Amihan
         if (config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
         {
+            int remainingTiles = GetRemainingTiles();
+
             int finishedAksyon = AksyonCounter.Instance != null
                 ? AksyonCounter.Instance.GetCurrentAksyon()
                 : 1;
@@ -401,13 +405,24 @@ public class TileSet : MonoBehaviour
             // currentAksyon is updated before tiles are spawned...
             // so minus one to get the aksyon number the player just ended
             finishedAksyon -= 1;
-            if (finishedAksyon % 2 != 0 && finishedAksyon > 0)
+            
+            if (finishedAksyon > 0)
             {
-                yield break;
-            }
-            else if (finishedAksyon > 0)
-            {
-                tilesAmount = (config.tilesAmount - GetRemainingTiles());
+                if (finishedAksyon % 2 != 0 && remainingTiles >= 3)
+                {
+                    hanginAmihanTileDebt += tilesAmount;
+                    yield break;
+                }
+                else if (finishedAksyon % 2 != 0 && remainingTiles < 3)
+                {
+                    yield return StartCoroutine(SpawnRandomConsonants(3));
+                    yield break;
+                }
+                else
+                {
+                    tilesAmount += hanginAmihanTileDebt;
+                    hanginAmihanTileDebt = 0;
+                }
             }
         }
     
@@ -445,7 +460,6 @@ public class TileSet : MonoBehaviour
 
     private IEnumerator SpawnRandomTiles(int tilesAmount, bool isTemporary)
     {
-
         int totalChance = 0;
         foreach (GameObject obj in config.tilesSelection) totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
 
@@ -477,6 +491,48 @@ public class TileSet : MonoBehaviour
 
             yield return new WaitForSeconds(0.08f);
         }
+    }
+
+    private IEnumerator SpawnRandomConsonants(int _tilesAmount)
+    {
+        int totalChance = 0;
+        foreach (GameObject obj in config.tilesSelection)
+        {
+            if (obj.GetComponent<Tile>().isVowel) continue;
+            totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
+        }
+
+        if (totalChance <= 0)
+        {
+            Debug.LogWarning("TileSet cannot spawn random tiles because the configured total spawn chance is zero.", this);
+            yield break;
+        }
+
+        int remainingConsonantAmount = _tilesAmount;
+
+        do
+        {
+            GameObject tile = null;
+
+            int roll = Random.Range(0, totalChance);
+
+            foreach (GameObject obj in config.tilesSelection)
+            {
+                if (obj.GetComponent<Tile>().isVowel) continue;
+                roll -= GetSpawnWeight(obj.GetComponent<Tile>());
+
+                if (roll < 0)
+                {
+                    tile = obj;
+                    break;
+                }
+            }
+
+            SpawnTile(tile);
+            remainingConsonantAmount -= 1;
+            sfxSource.PlayOneShot(spawnSFX);
+            yield return new WaitForSeconds(0.08f); 
+        } while (remainingConsonantAmount > 0);
     }
 
     public IEnumerator ReplaceWithCurrentAksyonTiles()
