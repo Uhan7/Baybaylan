@@ -394,17 +394,20 @@ public class TileSet : MonoBehaviour
         // Paghihigpit: Hangin Amihan
         if (config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
         {
-            int currentAksyon = AksyonCounter.Instance != null
+            int finishedAksyon = AksyonCounter.Instance != null
                 ? AksyonCounter.Instance.GetCurrentAksyon()
                 : 1;
 
             // currentAksyon is updated before tiles are spawned...
             // so minus one to get the aksyon number the player just ended
-            currentAksyon -= 1;
-            if (currentAksyon % 2 == 0 && currentAksyon > 1)
+            finishedAksyon -= 1;
+            if (finishedAksyon % 2 != 0 && finishedAksyon > 0)
             {
-                tilesAmount = config.tilesAmount;
-                yield return StartCoroutine(RemoveAllTiles());
+                yield break;
+            }
+            else if (finishedAksyon > 0)
+            {
+                tilesAmount = (config.tilesAmount - GetRemainingTiles());
             }
         }
     
@@ -582,6 +585,10 @@ public class TileSet : MonoBehaviour
         return randomTile;
     }
 
+    /*  
+    
+        Save this for whenever you need it ;)
+
     private IEnumerator RemoveAllTiles()
     {
         int numRemainingTiles = GetRemainingTiles();
@@ -609,6 +616,7 @@ public class TileSet : MonoBehaviour
         }
         yield return new WaitForSeconds(3 * SPAWN_TIME_BETWEEN_TILES);
     }
+    */
 
     private IEnumerator RemoveRandomTiles(int _numTilesToRemove)
     {
