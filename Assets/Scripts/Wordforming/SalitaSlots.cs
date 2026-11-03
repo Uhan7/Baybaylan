@@ -290,7 +290,7 @@ public class SalitaSlots : MonoBehaviour
                     if (char1 == char2)
                     {
                         invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPagiibangTitik, latinSalita);
-                        print("Pagiibang Titik");
+                        // print("Pagiibang Titik");
                         return false;
                     }
                 }

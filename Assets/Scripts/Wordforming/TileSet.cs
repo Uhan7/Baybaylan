@@ -390,17 +390,25 @@ public class TileSet : MonoBehaviour
     public IEnumerator SpawnTiles(int _tilesAmount) // Can be called by SalitaSlots after valid word
     {
         int tilesAmount = _tilesAmount;
-        if (config.HasPaghihigpit(PaghihigpitTypes.HanginHabagat))
-        {
-            int remainingTiles = GetRemainingTiles();
-            int numTilesToRemove;
-            if (remainingTiles > 3) numTilesToRemove = 3;
-            else numTilesToRemove = remainingTiles;
-            
-            yield return StartCoroutine(RemoveRandomTiles(numTilesToRemove));
-            tilesAmount += numTilesToRemove;
-        }
 
+        // Paghihigpit: Hangin Amihan
+        if (config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
+        {
+            int currentAksyon = AksyonCounter.Instance != null
+                ? AksyonCounter.Instance.GetCurrentAksyon()
+                : 1;
+
+            // currentAksyon is updated before tiles are spawned...
+            // so minus one to get the aksyon number the player just ended
+            currentAksyon -= 1;
+            if (currentAksyon % 2 == 0 && currentAksyon > 1)
+            {
+                tilesAmount = config.tilesAmount;
+                yield return StartCoroutine(RemoveAllTiles());
+            }
+        }
+    
+        // Paghihigpit: Itinakdang Titik
         if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
             int currentAksyon = AksyonCounter.Instance != null
@@ -411,6 +419,24 @@ public class TileSet : MonoBehaviour
             yield break;
         }
 
+        // Paghihigpit: Hangin Habagat
+        if 
+        (
+            config.HasPaghihigpit(PaghihigpitTypes.HanginHabagat) &&
+            !config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan)
+        )
+        {
+            int remainingTiles = GetRemainingTiles();
+            int numTilesToRemove;
+            if (remainingTiles > 3) numTilesToRemove = 3;
+            else numTilesToRemove = remainingTiles;
+            
+            // Remove Random Tiles
+            yield return StartCoroutine(RemoveRandomTiles(numTilesToRemove));
+            tilesAmount += numTilesToRemove;
+        }
+
+        // Spawn Random Tiles
         yield return SpawnRandomTiles(tilesAmount, false);
     }
 
@@ -548,12 +574,40 @@ public class TileSet : MonoBehaviour
 
     public Tile GetRandomTile()
     {
-        Tile randomTile = null;
+        int upperBound = transform.childCount - 1;
+        if (upperBound <= 0) return null;
 
-        int randomIndex = UnityEngine.Random.Range(0, transform.childCount-1);
-        randomTile = transform.GetChild(randomIndex).GetComponent<Tile>();
-
+        int randomIndex = UnityEngine.Random.Range(0, upperBound);
+        Tile randomTile = transform.GetChild(randomIndex).GetComponent<Tile>();
         return randomTile;
+    }
+
+    private IEnumerator RemoveAllTiles()
+    {
+        int numRemainingTiles = GetRemainingTiles();
+
+        // Animate Tiles
+        for (int i = 0; i < numRemainingTiles; i++)
+        {
+            Transform tileTransform = transform.GetChild(i);
+            GameObject tile = tileTransform.gameObject;
+
+            // Play Tile Destruction Animation
+            tile.TryGetComponent<Tile>(out var tileComponent);
+            tileComponent.PlayBlowAwayAnimation();
+            yield return new WaitForSeconds(0.25f * SPAWN_TIME_BETWEEN_TILES);
+        }
+        sfxSource.PlayOneShot(despawnSFX);
+        yield return new WaitForSeconds(5 * SPAWN_TIME_BETWEEN_TILES);
+        
+        // Destroy Tiles
+        for (int i = 0; i < numRemainingTiles; i++)
+        {
+            Transform tileTransform = transform.GetChild(i);
+            GameObject tile = tileTransform.gameObject;
+            Destroy(tile);
+        }
+        yield return new WaitForSeconds(3 * SPAWN_TIME_BETWEEN_TILES);
     }
 
     private IEnumerator RemoveRandomTiles(int _numTilesToRemove)
