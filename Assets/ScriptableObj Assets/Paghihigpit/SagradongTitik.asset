@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   paghihigpitType: 12
   paghihigpitName: Sagradong Titik
-  paghihigpitSprite: {fileID: 1178199017113645661, guid: c1900f5c0e26b4a7a909c1601ff642b7, type: 3}
-  description: "Dapat kasama sa salita ang titik\n\n "
-  extraText: Kailangan kong gamitin ang sagradong titik.
+  paghihigpitSprite: {fileID: 21300000, guid: 4e5587de9d23b4846977f118baf5165b, type: 3}
+  description: "Dapat kasama sa salita ang ipinakitang titik.\r\n\r\nAng titik: \n "
+  extraText: Kahit labing-walo lamang ang mga titik, marami pa rin akong mabubuong
+    mga salita!

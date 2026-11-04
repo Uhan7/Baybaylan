@@ -43,6 +43,8 @@ public class TileSet : MonoBehaviour
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
+    int hanginAmihanTileDebt = 0;
+
     // Main Functions ----------------------------------------------------------
     void Awake()
     {
@@ -390,17 +392,41 @@ public class TileSet : MonoBehaviour
     public IEnumerator SpawnTiles(int _tilesAmount) // Can be called by SalitaSlots after valid word
     {
         int tilesAmount = _tilesAmount;
-        if (config.HasPaghihigpit(PaghihigpitTypes.HanginHabagat))
+
+        // Paghihigpit: Hangin Amihan
+        if (config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
         {
             int remainingTiles = GetRemainingTiles();
-            int numTilesToRemove;
-            if (remainingTiles > 3) numTilesToRemove = 3;
-            else numTilesToRemove = remainingTiles;
-            
-            yield return StartCoroutine(RemoveRandomTiles(numTilesToRemove));
-            tilesAmount += numTilesToRemove;
-        }
 
+            int finishedAksyon = AksyonCounter.Instance != null
+                ? AksyonCounter.Instance.GetCurrentAksyon()
+                : 1;
+
+            // currentAksyon is updated before tiles are spawned...
+            // so minus one to get the aksyon number the player just ended
+            finishedAksyon -= 1;
+            
+            if (finishedAksyon > 0)
+            {
+                if (finishedAksyon % 2 != 0 && remainingTiles >= 3)
+                {
+                    hanginAmihanTileDebt += tilesAmount;
+                    yield break;
+                }
+                else if (finishedAksyon % 2 != 0 && remainingTiles < 3)
+                {
+                    yield return StartCoroutine(SpawnRandomConsonants(3));
+                    yield break;
+                }
+                else
+                {
+                    tilesAmount += hanginAmihanTileDebt;
+                    hanginAmihanTileDebt = 0;
+                }
+            }
+        }
+    
+        // Paghihigpit: Itinakdang Titik
         if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
         {
             int currentAksyon = AksyonCounter.Instance != null
@@ -411,12 +437,29 @@ public class TileSet : MonoBehaviour
             yield break;
         }
 
+        // Paghihigpit: Hangin Habagat
+        if 
+        (
+            config.HasPaghihigpit(PaghihigpitTypes.HanginHabagat) &&
+            !config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan)
+        )
+        {
+            int remainingTiles = GetRemainingTiles();
+            int numTilesToRemove;
+            if (remainingTiles > 3) numTilesToRemove = 3;
+            else numTilesToRemove = remainingTiles;
+            
+            // Remove Random Tiles
+            yield return StartCoroutine(RemoveRandomTiles(numTilesToRemove));
+            tilesAmount += numTilesToRemove;
+        }
+
+        // Spawn Random Tiles
         yield return SpawnRandomTiles(tilesAmount, false);
     }
 
     private IEnumerator SpawnRandomTiles(int tilesAmount, bool isTemporary)
     {
-
         int totalChance = 0;
         foreach (GameObject obj in config.tilesSelection) totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
 
@@ -448,6 +491,48 @@ public class TileSet : MonoBehaviour
 
             yield return new WaitForSeconds(0.08f);
         }
+    }
+
+    private IEnumerator SpawnRandomConsonants(int _tilesAmount)
+    {
+        int totalChance = 0;
+        foreach (GameObject obj in config.tilesSelection)
+        {
+            if (obj.GetComponent<Tile>().isVowel) continue;
+            totalChance += GetSpawnWeight(obj.GetComponent<Tile>());
+        }
+
+        if (totalChance <= 0)
+        {
+            Debug.LogWarning("TileSet cannot spawn random tiles because the configured total spawn chance is zero.", this);
+            yield break;
+        }
+
+        int remainingConsonantAmount = _tilesAmount;
+
+        do
+        {
+            GameObject tile = null;
+
+            int roll = Random.Range(0, totalChance);
+
+            foreach (GameObject obj in config.tilesSelection)
+            {
+                if (obj.GetComponent<Tile>().isVowel) continue;
+                roll -= GetSpawnWeight(obj.GetComponent<Tile>());
+
+                if (roll < 0)
+                {
+                    tile = obj;
+                    break;
+                }
+            }
+
+            SpawnTile(tile);
+            remainingConsonantAmount -= 1;
+            sfxSource.PlayOneShot(spawnSFX);
+            yield return new WaitForSeconds(0.08f); 
+        } while (remainingConsonantAmount > 0);
     }
 
     public IEnumerator ReplaceWithCurrentAksyonTiles()
@@ -548,13 +633,46 @@ public class TileSet : MonoBehaviour
 
     public Tile GetRandomTile()
     {
-        Tile randomTile = null;
+        int upperBound = transform.childCount - 1;
+        if (upperBound <= 0) return null;
 
-        int randomIndex = UnityEngine.Random.Range(0, transform.childCount-1);
-        randomTile = transform.GetChild(randomIndex).GetComponent<Tile>();
-
+        int randomIndex = UnityEngine.Random.Range(0, upperBound);
+        Tile randomTile = transform.GetChild(randomIndex).GetComponent<Tile>();
         return randomTile;
     }
+
+    /*  
+    
+        Save this for whenever you need it ;)
+
+    private IEnumerator RemoveAllTiles()
+    {
+        int numRemainingTiles = GetRemainingTiles();
+
+        // Animate Tiles
+        for (int i = 0; i < numRemainingTiles; i++)
+        {
+            Transform tileTransform = transform.GetChild(i);
+            GameObject tile = tileTransform.gameObject;
+
+            // Play Tile Destruction Animation
+            tile.TryGetComponent<Tile>(out var tileComponent);
+            tileComponent.PlayBlowAwayAnimation();
+            yield return new WaitForSeconds(0.25f * SPAWN_TIME_BETWEEN_TILES);
+        }
+        sfxSource.PlayOneShot(despawnSFX);
+        yield return new WaitForSeconds(5 * SPAWN_TIME_BETWEEN_TILES);
+        
+        // Destroy Tiles
+        for (int i = 0; i < numRemainingTiles; i++)
+        {
+            Transform tileTransform = transform.GetChild(i);
+            GameObject tile = tileTransform.gameObject;
+            Destroy(tile);
+        }
+        yield return new WaitForSeconds(3 * SPAWN_TIME_BETWEEN_TILES);
+    }
+    */
 
     private IEnumerator RemoveRandomTiles(int _numTilesToRemove)
     {
