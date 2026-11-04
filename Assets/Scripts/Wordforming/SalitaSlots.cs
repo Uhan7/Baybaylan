@@ -13,7 +13,7 @@ using System;
 [RequireComponent(typeof(DropZone))]
 public class SalitaSlots : MonoBehaviour
 {
-    public static SalitaSlots Instance;
+    public static SalitaSlots Instance { get; private set; }
 
     // Variables ---------------------------------------------------------------
     [Header("Configurations")]
@@ -156,6 +156,18 @@ public class SalitaSlots : MonoBehaviour
         observedLatinSalita = latinSalita;
         revealedLatinSalita = latinSalita;
         UpdateSalitaText();
+    }
+
+    public void returnAllSalita()
+    {
+        if(transform.childCount == 0)
+            return;
+
+        while(transform.childCount > 0)
+        {
+            Transform child = transform.GetChild(0);
+            child.SetParent(tileSet.transform);
+        }
     }
 
     // Helper Functions --------------------------------------------------------
