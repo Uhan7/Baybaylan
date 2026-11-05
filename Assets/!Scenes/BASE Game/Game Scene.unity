@@ -885,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077419203245450163, guid: 67965b75998384684984de778e4148e9, type: 3}
       propertyPath: m_Name
-      value: Selection Slot 06 (3)
+      value: Selection Slot 09
       objectReference: {fileID: 0}
     - target: {fileID: 7364102850193427615, guid: 67965b75998384684984de778e4148e9, type: 3}
       propertyPath: m_AnchoredPosition.y
