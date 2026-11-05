@@ -641,6 +641,8 @@ public class SalitaSlots : MonoBehaviour
             yield return tileSet.SpawnPakpakTemporaryTiles();
         }
 
+        if (!tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
+            AlahasSubManager.Instance?.onTilesRefreshed();
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;
     }

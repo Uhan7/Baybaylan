@@ -187,6 +187,7 @@ public class TileSet : MonoBehaviour
         yield return SpawnTiles(config.tilesAmount + extraTiles - num_kaposNaTitik);
         yield return SpawnPakpakTemporaryTiles();
         if (SalitaSlots.Instance != null) SalitaSlots.Instance.RandomizeSagradongTile();
+        AlahasSubManager.Instance?.onTilesRefreshed();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -369,7 +370,6 @@ public class TileSet : MonoBehaviour
             yield return new WaitForSeconds(pakpakTemporaryTileSpawnDelay);
 
         yield return SpawnRandomTiles(AlahasSubManager.Instance.extraTilesToAdd, true);
-        AlahasSubManager.Instance.onTilesRefreshed();
     }
 
     public void DahonNgKawayanSpawn(GameObject tilePrefab)
@@ -627,6 +627,8 @@ public class TileSet : MonoBehaviour
 
         yield return SpawnItinakdangTiles(currentAksyon);
         yield return SpawnPakpakTemporaryTiles();
+
+        AlahasSubManager.Instance?.onTilesRefreshed();
 
         waitingForDialogueBeforeCurrentAksyonTiles = false;
         dialogueReleasedSpawnRoutine = null;

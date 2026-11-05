@@ -21,6 +21,10 @@ public abstract class Alahas : ScriptableObject
     public abstract void onTurnEnd();
     public abstract void onUpdate();
 
+    public virtual void onTilesRefreshed()
+    {
+    }
+
     public virtual bool TryGetExtraBadgeText(out string text)
     {
         text = string.Empty;

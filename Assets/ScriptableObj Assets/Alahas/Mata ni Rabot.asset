@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alahasName: Mata ni Rabot
   saveDataName: 24
-  alahasSprite: {fileID: 0}
+  alahasSprite: {fileID: 21300000, guid: ae8ca8681718c4d90a95dc518402bdbd, type: 3}
   description: Ang kabuuang multiplier ng mahika ay nakabatay sa kasalukuyang aksyon.
     Magsisimula ito sa x0.75 sa unang aksyon at unti-unting tataas hanggang x1.25
     na sa huling aksyon.

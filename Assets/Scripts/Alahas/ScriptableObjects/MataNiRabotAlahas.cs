@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Globalization;
 
 [CreateAssetMenu(menuName = "Alahas/Mata ni Rabot")]
 class MataNiRabot : Alahas
@@ -23,6 +24,8 @@ class MataNiRabot : Alahas
     public override void onStart()
     {
         inited = false;
+        currentMulti = minMulti;
+        multiPerTurn = 0f;
     }
     
     public override bool triggerCondition()
@@ -54,5 +57,12 @@ class MataNiRabot : Alahas
 
         if(inited)
             AlahasSubManager.Instance.scoreMultiplier += currentMulti;
+    }
+
+    public override bool TryGetExtraBadgeText(out string text)
+    {
+        float displayedMultiplier = 1f + (inited ? currentMulti : minMulti);
+        text = "x" + displayedMultiplier.ToString("0.##", CultureInfo.InvariantCulture);
+        return true;
     }
 }

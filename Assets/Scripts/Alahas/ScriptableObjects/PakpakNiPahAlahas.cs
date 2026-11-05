@@ -66,7 +66,7 @@ class PakpakNiPahAlahas : Alahas
         }
     }
 
-    public void OnTilesRefreshed()
+    public override void onTilesRefreshed()
     {
         countdownStarted = false;
         tilesAreReady = true;

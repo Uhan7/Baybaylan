@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
 using NaughtyAttributes;
@@ -122,9 +123,7 @@ class AlahasSubManager : MonoBehaviour
         {
             Alahas alahas = heldAlahas[i];
             if (!alahas || heldAlahas.IndexOf(alahas) != i) continue;
-
-            if (alahas is PakpakNiPahAlahas pakpak)
-                pakpak.OnTilesRefreshed();
+            alahas.onTilesRefreshed();
         }
     }
 
@@ -177,7 +176,15 @@ class AlahasSubManager : MonoBehaviour
 
     public void spawnTiles(int amount)
     {
-        StartCoroutine(TileSet.Instance.SpawnTiles(amount));
+        StartCoroutine(SpawnTilesAndNotify(amount));
+    }
+
+    private IEnumerator SpawnTilesAndNotify(int amount)
+    {
+        if (TileSet.Instance == null) yield break;
+
+        yield return TileSet.Instance.SpawnTiles(amount);
+        onTilesRefreshed();
     }
 
     public bool TryFormRecommendedWord(int minTiles, int maxTiles)
