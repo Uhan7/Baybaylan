@@ -86,6 +86,10 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        // Runtime systems such as Nagpapalit-anyo can safely modify this copy
+        // without changing the saved LevelConfig asset during Play Mode.
+        if (config != null) config = Instantiate(config);
+
         LoadWordlist();
     }
 

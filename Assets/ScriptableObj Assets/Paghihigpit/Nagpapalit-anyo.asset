@@ -15,9 +15,10 @@ MonoBehaviour:
   paghihigpitType: 11
   paghihigpitName: Nagpapalit-anyo
   paghihigpitSprite: {fileID: 0}
-  description: Kada sulat ni Tala ng salita, mag-iiba ng anyo si Oryol bilang isa
-    sa mga halimaw ng Ibalong. Magbabago ang mga paghihigpit ayon sa anyo na pinili
-    ni Oryol.
+  description: 'Kada sulat ni Tala ng salita, mag-iiba ng anyo si Oryol.
+
+
+    Magbabago
+    ang mga paghihigpit ayon sa anyo o halimaw na pinili ni Oryol.'
   extraText: "Si Oryol\u2013ang mapanlinlang at tusong ahas na nagpapalit ng anyo\u2026
     Mababago kaya talaga siya ni Handyong? Mukhang may ugnayan silang dalawa\u2026"
-  bosses: []

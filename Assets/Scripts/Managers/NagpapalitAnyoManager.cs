@@ -9,7 +9,8 @@ class NagpapalitAnyoManager : MonoBehaviour
     [SerializeField] Image enemyImage;
     [SerializeField] TextMeshProUGUI enemyNameText;
     [SerializeField] PaghihigpitDisplay paghihigpitDisplay;
-    NagpapalitAnyoPaghihigpit nagpapalitAnyo;
+    Paghihigpit nagpapalitAnyo;
+    LevelConfig config;
     int currentIndex;
 
     void Awake()
@@ -20,46 +21,67 @@ class NagpapalitAnyoManager : MonoBehaviour
 
     void Start()
     {
-        nagpapalitAnyo = GameManager.Instance.config.GetPaghihigpit(PaghihigpitTypes.NagpapalitAnyo) as NagpapalitAnyoPaghihigpit;
+        if (GameManager.Instance == null || GameManager.Instance.config == null) return;
+
+        config = GameManager.Instance.config;
+        nagpapalitAnyo = config.GetPaghihigpit(PaghihigpitTypes.NagpapalitAnyo);
         currentIndex = 0;
     }
 
-    //gets called from the alahas submanager cuz i got lazy 
+    // Called by the Alahas sub-manager when the active form should refresh.
     public void switchBoss(bool keepIndex)
     {
-        if(!nagpapalitAnyo)
+        if (!nagpapalitAnyo)
         {
-            Debug.Log("no nagpapalitAnyo found");
+            Debug.LogWarning("No Nagpapalit-anyo Paghihigpit is active in this level.");
             return;
         }
 
-        if(!keepIndex)
-            currentIndex = getNewIndex();
-        List<Paghihigpit> newPaghihigpit = new List<Paghihigpit>();
-        setNewPaghihigpitList(newPaghihigpit);
+        if (config.nagpapalitAnyoForms == null || config.nagpapalitAnyoForms.Count == 0)
+        {
+            Debug.LogWarning("Nagpapalit-anyo is active, but this Level Config has no forms configured.");
+            return;
+        }
 
-        enemyImage.sprite = nagpapalitAnyo.bosses[currentIndex].sprite;
-        enemyNameText.text = nagpapalitAnyo.bosses[currentIndex].name;
-        paghihigpitDisplay.setNewTiles(newPaghihigpit);
-        GameManager.Instance.config.replaceActivePaghihigpits(newPaghihigpit);
+        currentIndex = Mathf.Clamp(currentIndex, 0, config.nagpapalitAnyoForms.Count - 1);
+        if (!keepIndex)
+            currentIndex = getNewIndex();
+
+        NagpapalitAnyoForm currentForm = config.nagpapalitAnyoForms[currentIndex];
+        List<Paghihigpit> newPaghihigpit = new List<Paghihigpit>();
+        setNewPaghihigpitList(currentForm, newPaghihigpit);
+
+        if (enemyImage != null) enemyImage.sprite = currentForm.bossSprite;
+        if (enemyNameText != null) enemyNameText.text = currentForm.bossName;
+        if (paghihigpitDisplay != null) paghihigpitDisplay.setNewTiles(newPaghihigpit);
+        config.replaceActivePaghihigpits(newPaghihigpit);
     }
 
-    void setNewPaghihigpitList(List<Paghihigpit> list)
+    void setNewPaghihigpitList(NagpapalitAnyoForm form, List<Paghihigpit> list)
     {
-        foreach(Paghihigpit paghihigpit in nagpapalitAnyo.bosses[currentIndex].paghihigpit)
-            list.Add(paghihigpit);
+        if (form != null && form.paghihigpit != null)
+        {
+            foreach (Paghihigpit paghihigpit in form.paghihigpit)
+            {
+                if (paghihigpit != null && !list.Contains(paghihigpit))
+                    list.Add(paghihigpit);
+            }
+        }
 
-        if(!list.Contains(nagpapalitAnyo))
+        if (!list.Contains(nagpapalitAnyo))
             list.Insert(0, nagpapalitAnyo);
     }
 
     int getNewIndex()
     {
+        int formCount = config.nagpapalitAnyoForms.Count;
+        if (formCount <= 1) return 0;
+
         int newIndex = 0;
         do
         {
-            newIndex = UnityEngine.Random.Range(0, nagpapalitAnyo.bosses.Length);
-        } while(newIndex == currentIndex);
+            newIndex = UnityEngine.Random.Range(0, formCount);
+        } while (newIndex == currentIndex);
 
         return newIndex;
     }

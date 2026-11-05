@@ -15,6 +15,17 @@ public class ItinakdangTitikAksyon
     }
 }
 
+[System.Serializable]
+public class NagpapalitAnyoForm
+{
+    [Tooltip("Name shown for this form during the level.")]
+    public string bossName;
+    [Tooltip("Portrait shown when Nagpapalit-anyo switches to this form.")]
+    public Sprite bossSprite;
+    [Tooltip("Paghihigpit active while this form is selected.")]
+    public List<Paghihigpit> paghihigpit = new List<Paghihigpit>();
+}
+
 [CreateAssetMenu]
 public class LevelConfig : ScriptableObject
 {
@@ -73,6 +84,10 @@ public class LevelConfig : ScriptableObject
 
     [ShowIf("hasPartikularNaSalita")] [Header("Partikular na Salita")]
     [SerializeField] public string[] partikularNaSalita_wordList;
+
+    [ShowIf("hasNagpapalitAnyo"), Header("Nagpapalit-anyo Forms")]
+    [Tooltip("Configure each reusable form here. Element 0 is the initial/current boss form.")]
+    [SerializeField] public List<NagpapalitAnyoForm> nagpapalitAnyoForms = new List<NagpapalitAnyoForm>();
 
     public IReadOnlyList<GameObject> GetItinakdangTilesForAksyon(int aksyonNumber)
     {
@@ -178,6 +193,17 @@ public class LevelConfig : ScriptableObject
         if (activePaghihigpit == null)
             activePaghihigpit = new List<Paghihigpit>();
 
+        if (nagpapalitAnyoForms == null)
+            nagpapalitAnyoForms = new List<NagpapalitAnyoForm>();
+
+        for (int i = 0; i < nagpapalitAnyoForms.Count; i++)
+        {
+            if (nagpapalitAnyoForms[i] == null)
+                nagpapalitAnyoForms[i] = new NagpapalitAnyoForm();
+            else if (nagpapalitAnyoForms[i].paghihigpit == null)
+                nagpapalitAnyoForms[i].paghihigpit = new List<Paghihigpit>();
+        }
+
         if (partikularNaSalita_wordList == null)
             partikularNaSalita_wordList = new string[maxAksyon];
         else if (partikularNaSalita_wordList.Length != maxAksyon)
@@ -224,5 +250,10 @@ public class LevelConfig : ScriptableObject
     bool hasKaposNaTitik()
     {
         return HasPaghihigpit(PaghihigpitTypes.KaposNaTitik);
+    }
+
+    bool hasNagpapalitAnyo()
+    {
+        return HasPaghihigpit(PaghihigpitTypes.NagpapalitAnyo);
     }
 }
