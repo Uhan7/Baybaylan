@@ -193,6 +193,7 @@ public class Tile : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void ToggleNextModification() // Called by Button | PLEASE CHANGE NAME TO BE "DIACRITIC"
     {
+        if(PlayerInputHandler.Instance.shift) return;
         if (isVowel) return; // Skip if vowel
         if (Draggable.InteractionLocked) return;
         if (draggableScript.isBeingDragged) return;

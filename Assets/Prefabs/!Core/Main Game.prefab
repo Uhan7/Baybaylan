@@ -1603,7 +1603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408937325462492468, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value:
+      value: 
       objectReference: {fileID: 6517689846628134760}
     - target: {fileID: 408937325462492468, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: eventAfterDialogue.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1685,6 +1685,14 @@ PrefabInstance:
       propertyPath: m_mahikaScoreText
       value: 
       objectReference: {fileID: 7813329898557688720}
+    - target: {fileID: 950870026634620599, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: tileSet
+      value: 
+      objectReference: {fileID: 5841793609858951578}
+    - target: {fileID: 950870026634620599, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
+      propertyPath: salitaSlots
+      value: 
+      objectReference: {fileID: 5123290346619574969}
     - target: {fileID: 1114976113468629385, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2445,8 +2453,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21e8103505bf14381abf5161005d450a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6517689846628134760 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6042454051752460023, guid: 901232e97e54f4fa8b7c4f46023250dd, type: 3}
@@ -4141,6 +4149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc949ce2f42543d1a9660b50161b72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5123290346619574969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8013850105703100447, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+  m_PrefabInstance: {fileID: 2895673115429989030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5123425484994397517 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8013433218510106603, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
@@ -4205,7 +4218,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8122573979590520732, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
   m_PrefabInstance: {fileID: 2895673115429989030}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5123290346619574969}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a9e9a417385a4cfd8f1d733102326de, type: 3}

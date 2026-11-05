@@ -11,7 +11,8 @@ class MataNiRabot : Alahas
 
     void initValues()
     {
-        int turnCount = AksyonCounter.Instance.maxAvailableAksyon;
+        int turnCount = AksyonCounter.Instance.maxAvailableAksyon; 
+        turnCount--; //last turn doesnt count apparently 
         multiPerTurn = (maxMulti - minMulti) / turnCount;
         currentMulti = minMulti;
         inited = true;

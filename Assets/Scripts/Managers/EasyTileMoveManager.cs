@@ -7,11 +7,15 @@ class EasyTileMoveManager : MonoBehaviour
 {
     [SerializeField] GameObject tileSet;
     [SerializeField] GameObject salitaSlots;
+    PlayerInputHandler inputHandler;
+    bool rightinputLock = false;
+    bool leftinputLock = false;
 
     void Start()
     {
         // tileSet = TileSet.Instance.gameObject;
         // salitaSlots = SalitaSlots.Instance.gameObject;
+        inputHandler = PlayerInputHandler.Instance;
     }
 
     void FixedUpdate()
@@ -19,13 +23,19 @@ class EasyTileMoveManager : MonoBehaviour
         GameObject uiObj = GetUIUnderMouse();
         if(uiObj == null) return;
 
-        if (PlayerInputHandler.Instance.rightClick)
+        inputCheck(inputHandler.rightClick, ref rightinputLock, uiObj);
+        inputCheck(inputHandler.leftClick && inputHandler.shift, ref leftinputLock, uiObj);
+    }
+
+    void inputCheck(bool input, ref bool inputLock, GameObject uiObj)
+    {
+        if(!input) inputLock = false;
+        if(inputLock) return;
+
+        if(input)
         {
             swapPos(uiObj);
-        }
-        else if (PlayerInputHandler.Instance.leftClick && PlayerInputHandler.Instance.shift)
-        {
-            swapPos(uiObj);
+            inputLock = true;
         }
     }
 
@@ -40,7 +50,7 @@ class EasyTileMoveManager : MonoBehaviour
             obj.transform.SetParent(tileSet.transform, true);
         }
 
-        Debug.Log("Swapped " + obj.name + " to " + obj.transform.parent.name);
+        //Debug.Log("Swapped " + obj.name + " to " + obj.transform.parent.name);
     }
 
     //by gpt
