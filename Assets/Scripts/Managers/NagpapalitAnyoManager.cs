@@ -11,6 +11,7 @@ class NagpapalitAnyoManager : MonoBehaviour
     [SerializeField] PaghihigpitDisplay paghihigpitDisplay;
     Paghihigpit nagpapalitAnyo;
     LevelConfig config;
+    readonly List<Paghihigpit> levelPaghihigpit = new List<Paghihigpit>();
     int currentIndex;
 
     void Awake()
@@ -25,6 +26,14 @@ class NagpapalitAnyoManager : MonoBehaviour
 
         config = GameManager.Instance.config;
         nagpapalitAnyo = config.GetPaghihigpit(PaghihigpitTypes.NagpapalitAnyo);
+        if (config.activePaghihigpit != null)
+        {
+            foreach (Paghihigpit paghihigpit in config.activePaghihigpit)
+            {
+                if (paghihigpit != null && paghihigpit != nagpapalitAnyo && !levelPaghihigpit.Contains(paghihigpit))
+                    levelPaghihigpit.Add(paghihigpit);
+            }
+        }
         currentIndex = 0;
     }
 
@@ -59,6 +68,9 @@ class NagpapalitAnyoManager : MonoBehaviour
 
     void setNewPaghihigpitList(NagpapalitAnyoForm form, List<Paghihigpit> list)
     {
+        if (form != null && form.includeLevelPaghihigpit)
+            list.AddRange(levelPaghihigpit);
+
         if (form != null && form.paghihigpit != null)
         {
             foreach (Paghihigpit paghihigpit in form.paghihigpit)

@@ -22,6 +22,8 @@ public class NagpapalitAnyoForm
     public string bossName;
     [Tooltip("Portrait shown when Nagpapalit-anyo switches to this form.")]
     public Sprite bossSprite;
+    [Tooltip("Keep the level's original Paghihigpit active in addition to this form's list. Useful for visual test levels.")]
+    public bool includeLevelPaghihigpit;
     [Tooltip("Paghihigpit active while this form is selected.")]
     public List<Paghihigpit> paghihigpit = new List<Paghihigpit>();
 }

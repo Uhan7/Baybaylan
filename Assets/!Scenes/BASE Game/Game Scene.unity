@@ -1536,13 +1536,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1825879380303727515, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2022499206127247221, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 39
+      value: 38.999996
       objectReference: {fileID: 0}
     - target: {fileID: 2022499206127247221, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 22.199997
+      value: 22.191294
       objectReference: {fileID: 0}
     - target: {fileID: 2092956219964234192, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
@@ -1995,7 +1999,7 @@ PrefabInstance:
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: config
       value: 
-      objectReference: {fileID: 11400000, guid: 1dc052c60bc1d3d44a0610ee8eaf3bb3, type: 2}
+      objectReference: {fileID: 11400000, guid: 84e7a94d86cad47deaeeb02225920fb8, type: 2}
     - target: {fileID: 6560131228161492887, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Enabled
       value: 0
