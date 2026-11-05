@@ -123,6 +123,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InteractionLocked) return;
 
         StopAngleJiggleSequence();
@@ -155,6 +156,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InteractionLocked || !isBeingDragged) return;
 
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
@@ -163,6 +165,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (!isBeingDragged) return;
 
         StopAngleJiggleSequence();
@@ -206,6 +209,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InteractionLocked || anyBeingDragged) return;
 
         ScaleTo(pressedScale);
@@ -213,11 +217,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         ScaleTo(1f);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InteractionLocked || anyBeingDragged || isBeingDragged) return;
 
         PlayParticleBurst(clickParticles);

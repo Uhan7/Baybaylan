@@ -20,6 +20,7 @@ public class DropZone : MonoBehaviour, IDropHandler
     // Main Functions ----------------------------------------------------------
     public void OnDrop(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (Draggable.InteractionLocked) return;
         if (eventData.pointerDrag == null) return;
 
