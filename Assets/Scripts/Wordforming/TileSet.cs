@@ -186,6 +186,11 @@ public class TileSet : MonoBehaviour
         int num_kaposNaTitik = GetNumKaposNaTitik();
         yield return SpawnTiles(config.tilesAmount + extraTiles - num_kaposNaTitik);
         yield return SpawnPakpakTemporaryTiles();
+        FinishTurnTileRefresh();
+    }
+
+    internal void FinishTurnTileRefresh()
+    {
         if (SalitaSlots.Instance != null) SalitaSlots.Instance.RandomizeSagradongTile();
         AlahasSubManager.Instance?.onTilesRefreshed();
     }
@@ -222,15 +227,31 @@ public class TileSet : MonoBehaviour
     {
         if (pakpakDeleteRoutine != null) return;
 
+        Tile sacredTile = config.HasPaghihigpit(PaghihigpitTypes.SagradongTitik) &&
+            SalitaSlots.Instance != null
+            ? SalitaSlots.Instance.GetSagradongTitik()
+            : null;
+
         List<Tile> availableTiles = new List<Tile>();
         foreach (Transform child in transform)
         {
             Tile tile = child.GetComponent<Tile>();
-            if (tile != null) availableTiles.Add(tile);
+
+            if (tile == null) continue;
+            if (sacredTile != null && tile.isVowel == sacredTile.isVowel &&
+                string.Equals(
+                    tile.isVowel ? tile.vowel : tile.rootConsonant,
+                    sacredTile.isVowel ? sacredTile.vowel : sacredTile.rootConsonant,
+                    System.StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            availableTiles.Add(tile);
         }
 
         pakpakFadeTargets.Clear();
         int targetCount = Mathf.Min(amount, availableTiles.Count);
+        if (targetCount <= 0) return;
+
         for (int i = 0; i < targetCount; i++)
         {
             int index = Random.Range(0, availableTiles.Count);
@@ -628,7 +649,7 @@ public class TileSet : MonoBehaviour
         yield return SpawnItinakdangTiles(currentAksyon);
         yield return SpawnPakpakTemporaryTiles();
 
-        AlahasSubManager.Instance?.onTilesRefreshed();
+        FinishTurnTileRefresh();
 
         waitingForDialogueBeforeCurrentAksyonTiles = false;
         dialogueReleasedSpawnRoutine = null;
@@ -677,12 +698,14 @@ public class TileSet : MonoBehaviour
 
     public Tile GetRandomTile()
     {
-        int upperBound = transform.childCount - 1;
-        if (upperBound <= 0) return null;
+        List<Tile> tiles = new List<Tile>();
+        foreach (Transform child in transform)
+        {
+            if (child.TryGetComponent(out Tile tile))
+                tiles.Add(tile);
+        }
 
-        int randomIndex = UnityEngine.Random.Range(0, upperBound);
-        Tile randomTile = transform.GetChild(randomIndex).GetComponent<Tile>();
-        return randomTile;
+        return tiles.Count > 0 ? tiles[Random.Range(0, tiles.Count)] : null;
     }
 
     /*  

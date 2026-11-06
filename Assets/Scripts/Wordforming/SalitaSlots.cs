@@ -448,7 +448,6 @@ public class SalitaSlots : MonoBehaviour
             yield return winningAttackCharacterSwap;
 
         AksyonCounter.Instance.ConcludeAksyon();
-        RandomizeSagradongTile();
 
         if (AksyonCounter.Instance.HasRemainingAksyon() && MahikaManager.Instance.GetMahikaPercent() < 1) 
         {
@@ -642,7 +641,7 @@ public class SalitaSlots : MonoBehaviour
         }
 
         if (!tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
-            AlahasSubManager.Instance?.onTilesRefreshed();
+            tileSet.FinishTurnTileRefresh();
         salitaText.color = Color.white; // Eventually make this play animation
         replacingTiles = false;
     }
