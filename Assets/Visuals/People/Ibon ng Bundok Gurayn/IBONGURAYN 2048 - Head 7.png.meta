@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b3799278a1a72464dad5e9b895ac8359
+guid: c598cacca50ff46cfa4a7cecb1b21129
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2713426715766678824
-    second: IBONGURAYN 2048_0
+      213: 2802928973369600958
+    second: IBONGURAYN 2048 - Head 7_0
+  - first:
+      213: 844354482890523073
+    second: IBONGURAYN 2048 - Head 7_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IBONGURAYN 2048_0
+      name: IBONGURAYN 2048 - Head 7_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 2026
+        x: 429
+        y: 1353
+        width: 17
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +157,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8da1ca247c8f75ad0800000000000000
-      internalID: -2713426715766678824
+      spriteID: ebb685cfc0106e620800000000000000
+      internalID: 2802928973369600958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IBONGURAYN 2048 - Head 7_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 863
+        width: 614
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c1c239bdefb7bb00800000000000000
+      internalID: 844354482890523073
       vertices: []
       indices: 
       edges: []
@@ -173,8 +198,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      IBONGURAYN 2048_0: -2713426715766678824
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

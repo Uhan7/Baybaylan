@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 97ad444baedac4dc6b0fcb1099118ff0
+guid: 238b0b9be452942b28410164e08ec92f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6496633420529998956
-    second: IBONGURAYN_Dialogue_0
+      213: -3697713663870496876
+    second: IBONGURAYN 2048 - Head 5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IBONGURAYN_Dialogue_0
+      name: IBONGURAYN 2048 - Head 5_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 2026
+        x: 1211
+        y: 930
+        width: 306
+        height: 317
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6c1f92ecada82a50800000000000000
-      internalID: 6496633420529998956
+      spriteID: 49f04e793051facc0800000000000000
+      internalID: -3697713663870496876
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      IBONGURAYN_Dialogue_0: 6496633420529998956
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
