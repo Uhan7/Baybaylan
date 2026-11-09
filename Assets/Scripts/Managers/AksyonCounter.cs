@@ -71,18 +71,36 @@ public class AksyonCounter : MonoBehaviour
             Instantiate(availableAksyonPrefab, availableContainer.transform);
             Instantiate(kaposAksyonPrefab, activeContainer.transform);
         }
+        RefreshCurrentAksyonBlink();
     }
 
     public void ConcludeAksyon()
     {
         // Set the alpha to be visible, -1 because aksyon starts at 1
         Transform child = activeContainer.transform.GetChild(currentAksyon - 1);
+        child.GetComponent<ImageBlinker>()?.SetAllowBlink(false);
         child.GetComponent<ImageFader>().SetAlpha(1);
 
         // increment
         currentAksyon++;
+        RefreshCurrentAksyonBlink();
 
         if (currentAksyon <= maxAvailableAksyon && MahikaManager.Instance.GetMahikaPercent() < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+    }
+
+    private void RefreshCurrentAksyonBlink()
+    {
+        bool hasWon = MahikaManager.Instance != null && MahikaManager.Instance.GetMahikaPercent() >= 1f;
+        for (int i = 0; i < maxAvailableAksyon; i++)
+        {
+            GameObject fill = activeContainer.transform.GetChild(i).gameObject;
+            ImageBlinker blinker = fill.GetComponent<ImageBlinker>();
+            blinker?.SetAllowBlink(false);
+            bool isCurrent = !hasWon && i == currentAksyon - 1;
+            // Completed fills stay solid; only the current yellow fill blinks.
+            fill.GetComponent<ImageFader>().SetAlpha(i < currentAksyon - 1 || isCurrent ? 1f : 0f);
+            if (isCurrent) blinker?.SetAllowBlink(true);
+        }
     }
 
     public bool HasRemainingAksyon() // Called on Submit Word

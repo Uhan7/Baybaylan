@@ -241,6 +241,7 @@ MonoBehaviour:
       lamang!"
     notPagiibangTitik: "May umulit na titik sa \u201C{word}\u201D. Bawal umulit ang
       titik!"
+    notSagradongTitik: "Sa salitang \u201C{word}\u201D kulang ang \u201C{titik}\u201D."
 --- !u!1 &4600317184045497204
 GameObject:
   m_ObjectHideFlags: 0

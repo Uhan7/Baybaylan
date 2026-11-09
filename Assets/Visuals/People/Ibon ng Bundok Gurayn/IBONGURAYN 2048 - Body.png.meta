@@ -223,7 +223,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IBONGURAYN 2048 - Body_0: -1249428751653770983
+      IBONGURAYN 2048 - Body_1: 1100305095398943972
+      IBONGURAYN 2048 - Body_2: -5683084221726644968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

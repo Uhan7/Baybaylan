@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: c1900f5c0e26b4a7a909c1601ff642b7
+guid: 9dabbb82131504ef584b946f96edc817
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7404582236643546320
-    second: Paghihigpit_PartikularNaSalita_Old_0
-  - first:
-      213: -4768517999937583386
-    second: Paghihigpit_PartikularNaSalita_Old_1
-  - first:
-      213: -185926866610414603
-    second: Paghihigpit_PartikularNaSalita_Old_2
-  - first:
-      213: -5749268925050642209
-    second: Paghihigpit_PartikularNaSalita_Old_3
-  - first:
-      213: 1178199017113645661
-    second: Paghihigpit_PartikularNaSalita_Old_4
-  - first:
-      213: 8648882798665292867
-    second: Paghihigpit_PartikularNaSalita_Old_5
+      213: -7330743352085649123
+    second: Paghihigpit_ItinakdangTitik_New_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -154,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paghihigpit_PartikularNaSalita_Old_0
+      name: Paghihigpit_ItinakdangTitik_New_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 597
-        width: 128
-        height: 138
+        x: 58
+        y: 63
+        width: 905
+        height: 898
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,118 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d45e45205c52c660800000000000000
-      internalID: 7404582236643546320
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_PartikularNaSalita_Old_1
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 353
-        width: 286
-        height: 311
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e60aacc422d2ddb0800000000000000
-      internalID: -4768517999937583386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_PartikularNaSalita_Old_2
-      rect:
-        serializedVersion: 2
-        x: 513
-        y: 658
-        width: 58
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5fb1c79ff747b6df0800000000000000
-      internalID: -185926866610414603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_PartikularNaSalita_Old_3
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 352
-        width: 263
-        height: 315
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd02a24af5e7630b0800000000000000
-      internalID: -5749268925050642209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_PartikularNaSalita_Old_4
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 373
-        width: 326
-        height: 283
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d52f5c183cdc95010800000000000000
-      internalID: 1178199017113645661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paghihigpit_PartikularNaSalita_Old_5
-      rect:
-        serializedVersion: 2
-        x: 856
-        y: 344
-        width: 127
-        height: 136
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34c5e66e411070870800000000000000
-      internalID: 8648882798665292867
+      spriteID: d19e06fd2c7f34a90800000000000000
+      internalID: -7330743352085649123
       vertices: []
       indices: 
       edges: []
@@ -298,13 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Paghihigpit_PartikularNaSalita_Old_0: 7404582236643546320
-      Paghihigpit_PartikularNaSalita_Old_1: -4768517999937583386
-      Paghihigpit_PartikularNaSalita_Old_2: -185926866610414603
-      Paghihigpit_PartikularNaSalita_Old_3: -5749268925050642209
-      Paghihigpit_PartikularNaSalita_Old_4: 1178199017113645661
-      Paghihigpit_PartikularNaSalita_Old_5: 8648882798665292867
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

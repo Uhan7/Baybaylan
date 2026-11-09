@@ -248,7 +248,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IBONGURAYN 2048 - Head 3_0: 4429371347868591983
+      IBONGURAYN 2048 - Head 3_1: 8014021679035282009
+      IBONGURAYN 2048 - Head 3_2: -6405223739188905770
+      IBONGURAYN 2048 - Head 3_3: 3493449440915641441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

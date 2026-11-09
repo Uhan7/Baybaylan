@@ -223,7 +223,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IBONGURAYN 2048_Dialogue_0: 2150394890717809903
+      IBONGURAYN 2048_Dialogue_1: 4683014875429992022
+      IBONGURAYN 2048_Dialogue_2: 8183345791450692896
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
