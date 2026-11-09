@@ -1046,6 +1046,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_audioClip
+      value:
+      objectReference: {fileID: 8300000, guid: b71800b1a71134f30af1174478f0583b, type: 3}
+    - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_Resource
+      value:
+      objectReference: {fileID: 8300000, guid: b71800b1a71134f30af1174478f0583b, type: 3}
+    - target: {fileID: 5194705823513837559, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_audioClip
+      value:
+      objectReference: {fileID: 8300000, guid: e0828b0e97ad949a6be42399b077275a, type: 3}
+    - target: {fileID: 5194705823513837559, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_Resource
+      value:
+      objectReference: {fileID: 8300000, guid: e0828b0e97ad949a6be42399b077275a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5193676450878446729, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
@@ -1057,10 +1073,43 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 491269827255889942, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       insertIndex: -1
       addedObject: {fileID: 727971060}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1617693168217642286, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1927150348840607803}
   m_SourcePrefab: {fileID: 100100000, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1927150348840607793}
+--- !u!114 &1927150348840607801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6895901920543502783, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+  m_PrefabInstance: {fileID: 1927150348840607793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406349147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &1927150348840607803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406349147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e97e9608f25e4a13acd5a5c88ba7832, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  backgroundImage: {fileID: 1927150348840607801}
+  mountainBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
+  castleBackground: {fileID: 21300000, guid: 6eaa39efa65114f7aa8e37b8996fde35, type: 3}
+  mountainBgm: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
+  mountainAmbience: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
+  castleBgm: {fileID: 8300000, guid: b71800b1a71134f30af1174478f0583b, type: 3}
+  castleAmbience: {fileID: 8300000, guid: e0828b0e97ad949a6be42399b077275a, type: 3}

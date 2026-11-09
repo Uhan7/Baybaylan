@@ -1919,6 +1919,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5640704093728183282, guid: 0a0beea26c7f14034812d025a4245682, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640704093728183282, guid: 0a0beea26c7f14034812d025a4245682, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640704093728183282, guid: 0a0beea26c7f14034812d025a4245682, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725764633029927892, guid: 0a0beea26c7f14034812d025a4245682, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725764633029927892, guid: 0a0beea26c7f14034812d025a4245682, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5951658649093991381, guid: 0a0beea26c7f14034812d025a4245682, type: 3}
       propertyPath: dimObj
       value: 

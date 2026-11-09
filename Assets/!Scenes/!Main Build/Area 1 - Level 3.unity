@@ -1269,6 +1269,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Pah
       objectReference: {fileID: 0}
+    - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_audioClip
+      value:
+      objectReference: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
+    - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_Resource
+      value:
+      objectReference: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
+    - target: {fileID: 5194705823513837559, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_audioClip
+      value:
+      objectReference: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
+    - target: {fileID: 5194705823513837559, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_Resource
+      value:
+      objectReference: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1324,6 +1340,10 @@ MonoBehaviour:
   backgroundImage: {fileID: 1927150348840607796}
   mountainBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
   castleBackground: {fileID: 21300000, guid: 6eaa39efa65114f7aa8e37b8996fde35, type: 3}
+  mountainBgm: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
+  mountainAmbience: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
+  castleBgm: {fileID: 8300000, guid: b71800b1a71134f30af1174478f0583b, type: 3}
+  castleAmbience: {fileID: 8300000, guid: e0828b0e97ad949a6be42399b077275a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1341,5 +1361,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  hoverSFX: {fileID: 0}
+  hoverSFX: {fileID: 8300000, guid: 5dbf0a1fd60e3491ca75535cc7a54027, type: 3}
   clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}

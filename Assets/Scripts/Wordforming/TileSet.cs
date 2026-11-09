@@ -187,6 +187,7 @@ public class TileSet : MonoBehaviour
         yield return SpawnTiles(config.tilesAmount + extraTiles - num_kaposNaTitik);
         yield return SpawnPakpakTemporaryTiles();
         FinishTurnTileRefresh();
+        AudioManager.Instance?.StartGameplayBGM();
     }
 
     internal void FinishTurnTileRefresh()

@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
     [Header("Should not be here but idgaf")]
     [SerializeField] private AudioClip winSFX;
     [SerializeField] private AudioClip loseSFX;
-    [SerializeField] private AudioClip winAmbience;
 
     [Header("Paghihigpit")]
     [SerializeField, NaughtyAttributes.ReadOnly] private Tile m_sagradongTitik;
@@ -313,8 +312,7 @@ public class GameManager : MonoBehaviour
 
         if (didWin == true)
         {
-            AudioManager.Instance.bgmSource.resource = winAmbience;
-            AudioManager.Instance.bgmSource.Play();
+            AudioManager.Instance.bgmSource.Stop();
             AudioManager.Instance.sfxSource.PlayOneShot(winSFX);
 
             eventOnWin?.Invoke();

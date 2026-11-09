@@ -1165,6 +1165,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Ibon ng Bundok Gurayan
       objectReference: {fileID: 0}
+    - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_audioClip
+      value:
+      objectReference: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
+    - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_Resource
+      value:
+      objectReference: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
+    - target: {fileID: 5194705823513837559, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_audioClip
+      value:
+      objectReference: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
+    - target: {fileID: 5194705823513837559, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_Resource
+      value:
+      objectReference: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1190,5 +1206,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b6c29e4a914395bf73a921d5e37a12, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  hoverSFX: {fileID: 0}
+  hoverSFX: {fileID: 8300000, guid: 5dbf0a1fd60e3491ca75535cc7a54027, type: 3}
   clickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}

@@ -14,8 +14,8 @@ public class AlahasSelectionController : MonoBehaviour
     [SerializeField] private Transform inventoryGrid;
     [SerializeField] private GameObject fallbackSlotPanel;
     [SerializeField] private List<Alahas> allAlahas = new List<Alahas>();
-    [Tooltip("HSV value applied to locked Alahas icons. 0.2 equals 20% value.")]
-    [Range(0f, 1f), SerializeField] private float lockedIconValue = 0.2f;
+    [Tooltip("HSV value applied to locked Alahas icons. 0.1 equals Value 10 in the color picker.")]
+    [Range(0f, 1f), SerializeField] private float lockedIconValue = 0.1f;
 
     [Header("Flow")]
     [SerializeField] private Button proceedButton;
@@ -26,6 +26,8 @@ public class AlahasSelectionController : MonoBehaviour
     [SerializeField] private AnimationCurve slideCurve = null;
 
     [Header("Proceed Warnings")]
+    [Tooltip("Editable Confirmation Prompt child inside this selector prefab.")]
+    [SerializeField] private ConfirmationPromptUI confirmationPrompt;
     [SerializeField] private bool useDefaultWarningsWhenEmpty = true;
     [SerializeField] private List<AlahasSelectionWarningRule> proceedWarnings =
         new List<AlahasSelectionWarningRule>();
@@ -43,10 +45,10 @@ public class AlahasSelectionController : MonoBehaviour
     private Vector2 shownPosition;
     private bool selectionActive;
     private bool proceedRequested;
-    private ConfirmationPromptUI confirmationPrompt;
     private List<AlahasSelectionWarningRule> pendingWarnings =
         new List<AlahasSelectionWarningRule>();
     private int pendingWarningIndex;
+    private Button.ButtonClickedEvent confirmedProceedActions;
 
     private void Awake()
     {
@@ -60,10 +62,15 @@ public class AlahasSelectionController : MonoBehaviour
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        confirmationPrompt?.Hide();
 
         if (proceedButton != null)
         {
-            proceedButton.onClick.RemoveListener(Proceed);
+            // Existing prefab/scene click events reveal the gameplay HUD.
+            // Run them only after warnings are accepted, rather than alongside Proceed.
+            confirmedProceedActions = proceedButton.onClick;
+            confirmedProceedActions.RemoveListener(Proceed);
+            proceedButton.onClick = new Button.ButtonClickedEvent();
             proceedButton.onClick.AddListener(Proceed);
         }
     }
@@ -336,13 +343,16 @@ public class AlahasSelectionController : MonoBehaviour
         }
 
         if (confirmationPrompt == null)
-            confirmationPrompt = ConfirmationPromptUI.Create();
+        {
+            Debug.LogError(
+                "The Alahas selector has no prefab-authored Confirmation Prompt assigned.",
+                this);
+            return;
+        }
 
         AlahasSelectionWarningRule warning = pendingWarnings[pendingWarningIndex];
         confirmationPrompt.Show(
             warning.Message,
-            warning.BackButtonLabel,
-            warning.ContinueButtonLabel,
             CancelProceedWarning,
             ContinuePastWarning);
     }
@@ -381,6 +391,7 @@ public class AlahasSelectionController : MonoBehaviour
     private void FinishSelection()
     {
         canvasGroup.alpha = 0f;
+        confirmedProceedActions?.Invoke();
 
         if (pendingSceneController != null)
         {
@@ -563,9 +574,4 @@ public class AlahasSelectionController : MonoBehaviour
         if (finishWhenDone) FinishSelection();
     }
 
-    private void OnDestroy()
-    {
-        if (confirmationPrompt != null)
-            Destroy(confirmationPrompt.gameObject);
-    }
 }

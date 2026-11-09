@@ -6,7 +6,8 @@ public class AudioSlider : MonoBehaviour
     public enum AudioChannel
     {
         BGM,
-        SFX
+        SFX,
+        Ambience
     }
 
     [SerializeField] private AudioChannel audioChannel;
@@ -22,9 +23,19 @@ public class AudioSlider : MonoBehaviour
     {
         if (slider == null) slider = GetComponent<Slider>();
 
-        float savedVolume = audioChannel == AudioChannel.BGM
-            ? SettingsHolder.BGMVolume
-            : SettingsHolder.SFXVolume;
+        float savedVolume;
+        switch (audioChannel)
+        {
+            case AudioChannel.BGM:
+                savedVolume = SettingsHolder.BGMVolume;
+                break;
+            case AudioChannel.Ambience:
+                savedVolume = SettingsHolder.AmbienceVolume;
+                break;
+            default:
+                savedVolume = SettingsHolder.SFXVolume;
+                break;
+        }
 
         slider.SetValueWithoutNotify(savedVolume);
     }
@@ -41,5 +52,12 @@ public class AudioSlider : MonoBehaviour
         SettingsHolder.SFXVolume = volume;
         if (AudioManager.Instance != null)
             AudioManager.Instance.SetSFXVolume(volume);
+    }
+
+    public void SetAmbienceVolume(float volume)
+    {
+        SettingsHolder.AmbienceVolume = volume;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.SetAmbienceVolume(volume);
     }
 }

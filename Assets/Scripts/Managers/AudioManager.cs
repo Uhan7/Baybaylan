@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Sources")]
     [SerializeField] public AudioSource bgmSource;
+    [SerializeField] private AudioSource ambienceSource;
     [SerializeField] public AudioSource sfxSource;
     [Tooltip("Dedicated source for Attack and Heal animation audio. Its pitch can change without affecting other SFX.")]
     [SerializeField] private AudioSource resultSfxSource;
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
     private Coroutine delayedResultSfxCoroutine;
     private float resultSfxBasePitch = 1f;
     private bool resultSfxBasePitchCached;
+    private bool gameplayBgmStarted;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -35,7 +37,14 @@ public class AudioManager : MonoBehaviour
         EnsureResultSfxSource();
 
         SetBGMVolume(SettingsHolder.BGMVolume);
+        SetAmbienceVolume(SettingsHolder.AmbienceVolume);
         SetSFXVolume(SettingsHolder.SFXVolume);
+    }
+
+    private void Start()
+    {
+        if (ambienceSource != null && ambienceSource.clip != null)
+            ambienceSource.Play();
     }
 
     private void OnDestroy()
@@ -47,6 +56,35 @@ public class AudioManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         if (bgmSource != null) bgmSource.volume = Mathf.Clamp01(volume);
+    }
+
+    public void SetAmbienceVolume(float volume)
+    {
+        if (ambienceSource != null) ambienceSource.volume = Mathf.Clamp01(volume);
+    }
+
+    public void StartGameplayBGM()
+    {
+        if (gameplayBgmStarted || bgmSource == null || bgmSource.clip == null) return;
+
+        gameplayBgmStarted = true;
+        bgmSource.Play();
+    }
+
+    public void SetLevelAudio(AudioClip bgm, AudioClip ambience)
+    {
+        if (bgmSource != null && bgm != null && bgmSource.clip != bgm)
+        {
+            bgmSource.Stop();
+            bgmSource.clip = bgm;
+            if (gameplayBgmStarted) bgmSource.Play();
+        }
+
+        if (ambienceSource != null && ambience != null && ambienceSource.clip != ambience)
+        {
+            ambienceSource.clip = ambience;
+            ambienceSource.Play();
+        }
     }
 
     public void SetSFXVolume(float volume)

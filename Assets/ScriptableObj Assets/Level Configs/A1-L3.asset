@@ -50,6 +50,8 @@ MonoBehaviour:
     tiles: []
   - aksyon: 4
     tiles: []
+  - aksyon: 5
+    tiles: []
   predefinedTiles:
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
@@ -57,7 +59,7 @@ MonoBehaviour:
   hasMultipleTargetMahika: 0
   targetMahika: 600
   multipleTargetMahika: 64000000
-  maxAksyon: 4
+  maxAksyon: 5
   numKaposAksyon: 0
   alahasSlotCount: 4
   alahasAquiredAfterWin: {fileID: 11400000, guid: 364ca5de1960c2f41b322ba72e3511a0, type: 2}
@@ -69,3 +71,5 @@ MonoBehaviour:
   - 
   - 
   - 
+  - 
+  nagpapalitAnyoForms: []

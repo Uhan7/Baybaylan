@@ -15,12 +15,8 @@ public sealed class AlahasSelectionWarningRule
     [SerializeField] private bool enabled = true;
     [SerializeField] private AlahasSelectionWarningCondition condition;
     [TextArea(2, 4), SerializeField] private string message;
-    [SerializeField] private string backButtonLabel = "Go Back";
-    [SerializeField] private string continueButtonLabel = "Continue Anyway";
 
     public string Message => message;
-    public string BackButtonLabel => backButtonLabel;
-    public string ContinueButtonLabel => continueButtonLabel;
 
     public AlahasSelectionWarningRule(
         AlahasSelectionWarningCondition warningCondition,

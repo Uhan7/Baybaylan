@@ -158,15 +158,27 @@ public class SalitaSlots : MonoBehaviour
         UpdateSalitaText();
     }
 
+    // The reusable Salita prefab cannot reference a TileSet outside itself.
+    // Keep its buttons connected locally, then resolve the active tile set.
+    public void sortTiles()
+    {
+        if (scoringSalita || replacingTiles) return;
+        TileSet targetTileSet = tileSet != null ? tileSet : TileSet.Instance;
+        if (targetTileSet != null) targetTileSet.sortTiles();
+    }
+
     public void returnAllSalita()
     {
+        if (scoringSalita || replacingTiles) return;
+        TileSet targetTileSet = tileSet != null ? tileSet : TileSet.Instance;
+        if (targetTileSet == null) return;
         if(transform.childCount == 0)
             return;
 
         while(transform.childCount > 0)
         {
             Transform child = transform.GetChild(0);
-            child.SetParent(tileSet.transform);
+            child.SetParent(targetTileSet.transform);
         }
     }
 

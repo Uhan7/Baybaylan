@@ -5,23 +5,29 @@ public static class SettingsHolder
 {
     private const string BGMVolumeKey = "BGMVolume";
     private const string SFXVolumeKey = "SFXVolume";
-    private const float DefaultVolume = 0.75f;
+    private const string AmbienceVolumeKey = "AmbienceVolume";
 
     public static float BGMVolume
     {
-        get => LoadVolume(BGMVolumeKey);
+        get => LoadVolume(BGMVolumeKey, 0.4f);
         set => SaveVolume(BGMVolumeKey, value);
     }
 
     public static float SFXVolume
     {
-        get => LoadVolume(SFXVolumeKey);
+        get => LoadVolume(SFXVolumeKey, 0.8f);
         set => SaveVolume(SFXVolumeKey, value);
     }
 
-    private static float LoadVolume(string key)
+    public static float AmbienceVolume
     {
-        return Mathf.Clamp01(PlayerPrefs.GetFloat(key, DefaultVolume));
+        get => LoadVolume(AmbienceVolumeKey, 0.4f);
+        set => SaveVolume(AmbienceVolumeKey, value);
+    }
+
+    private static float LoadVolume(string key, float defaultVolume)
+    {
+        return Mathf.Clamp01(PlayerPrefs.GetFloat(key, defaultVolume));
     }
 
     private static void SaveVolume(string key, float value)

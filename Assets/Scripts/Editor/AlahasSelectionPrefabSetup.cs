@@ -87,6 +87,7 @@ public static class AlahasSelectionPrefabSetup
 
             Button proceedButton = GetOrCreateProceedButton(root);
             GameObject fallbackSlotPanel = GetOrCreateFallbackSlots(root);
+            ConfirmationPromptUI confirmationPrompt = GetOrCreateConfirmationPrompt(root);
             Alahas[] allAlahas = AssetDatabase.FindAssets("t:Alahas", new[] { AlahasFolder })
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .Select(AssetDatabase.LoadAssetAtPath<Alahas>)
@@ -98,13 +99,16 @@ public static class AlahasSelectionPrefabSetup
             serializedController.FindProperty("inventoryGrid").objectReferenceValue = grid;
             serializedController.FindProperty("fallbackSlotPanel").objectReferenceValue =
                 fallbackSlotPanel;
-            serializedController.FindProperty("lockedIconValue").floatValue = 0.2f;
+            serializedController.FindProperty("lockedIconValue").floatValue = 0.1f;
             serializedController.FindProperty("proceedButton").objectReferenceValue = proceedButton;
+            serializedController.FindProperty("confirmationPrompt").objectReferenceValue =
+                confirmationPrompt;
             serializedController.FindProperty("slidingRoot").objectReferenceValue =
                 root.GetComponent<RectTransform>();
             serializedController.FindProperty("foregroundSortingOrder").intValue = 1000;
             serializedController.FindProperty("slideDistance").floatValue = 900f;
             serializedController.FindProperty("slideDuration").floatValue = 0.45f;
+            EnsureSerializedWarningRules(serializedController);
 
             SerializedProperty alahasProperty = serializedController.FindProperty("allAlahas");
             alahasProperty.arraySize = allAlahas.Length;
@@ -120,6 +124,35 @@ public static class AlahasSelectionPrefabSetup
             Debug.Log(
                 $"Alahas selection configured with {allAlahas.Length} Alahas and " +
                 $"{grid.childCount} inventory cells.");
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(root);
+        }
+    }
+
+    [MenuItem("Baybaylan/Setup Alahas Confirmation Prompt")]
+    public static void ConfigureConfirmationPrompt()
+    {
+        GameObject root = PrefabUtility.LoadPrefabContents(InventoryPrefabPath);
+
+        try
+        {
+            AlahasSelectionController controller = root.GetComponent<AlahasSelectionController>();
+            if (controller == null)
+                throw new InvalidOperationException("The Alahas selector prefab has no controller.");
+
+            ConfirmationPromptUI confirmationPrompt = GetOrCreateConfirmationPrompt(root);
+            SerializedObject serializedController = new SerializedObject(controller);
+            serializedController.FindProperty("confirmationPrompt").objectReferenceValue =
+                confirmationPrompt;
+            EnsureSerializedWarningRules(serializedController);
+            serializedController.ApplyModifiedPropertiesWithoutUndo();
+
+            PrefabUtility.SaveAsPrefabAsset(root, InventoryPrefabPath);
+            AssetDatabase.SaveAssets();
+            Debug.Log(
+                "Alahas Confirmation Prompt is now an editable child of the selector prefab.");
         }
         finally
         {
@@ -216,6 +249,9 @@ public static class AlahasSelectionPrefabSetup
             GraphicRaycaster raycaster = root.GetComponent<GraphicRaycaster>();
             SerializedObject serializedController = new SerializedObject(controller);
             SerializedProperty catalog = serializedController.FindProperty("allAlahas");
+            ConfirmationPromptUI confirmationPrompt = serializedController
+                .FindProperty("confirmationPrompt")
+                .objectReferenceValue as ConfirmationPromptUI;
             float lockedIconValue = serializedController
                 .FindProperty("lockedIconValue")
                 .floatValue;
@@ -237,9 +273,9 @@ public static class AlahasSelectionPrefabSetup
                     throw new InvalidOperationException(
                         $"Visible Alahas catalog entry {i} has no display icon.");
             }
-            if (!Mathf.Approximately(lockedIconValue, 0.2f))
+            if (!Mathf.Approximately(lockedIconValue, 0.1f))
                 throw new InvalidOperationException(
-                    $"Locked icon HSV value must be 0.2, but is {lockedIconValue}.");
+                    $"Locked icon HSV value must be 0.1, but is {lockedIconValue}.");
             if (grid.Cast<Transform>().Any(cell =>
                 cell.GetComponent<Image>() != null &&
                 (cell.GetComponent<AlahasInventoryItem>() == null ||
@@ -250,7 +286,7 @@ public static class AlahasSelectionPrefabSetup
                     "An inventory cell is missing drag, animation, or tooltip support.");
 
             ValidateProceedWarnings(catalog);
-            ValidateConfirmationPrompt();
+            ValidateConfirmationPrompt(confirmationPrompt);
 
             Debug.Log(
                 $"Alahas selection validation passed: {grid.childCount} cells, " +
@@ -278,22 +314,197 @@ public static class AlahasSelectionPrefabSetup
             throw new InvalidOperationException("A full loadout incorrectly produces a warning.");
     }
 
-    private static void ValidateConfirmationPrompt()
+    private static void ValidateConfirmationPrompt(ConfirmationPromptUI prompt)
     {
-        ConfirmationPromptUI prompt = ConfirmationPromptUI.Create();
-        try
-        {
-            prompt.Show("Validation", "Go Back", "Continue Anyway", null, null);
-            if (!prompt.gameObject.activeSelf)
-                throw new InvalidOperationException("Confirmation prompt did not open.");
-            prompt.Hide();
-            if (prompt.gameObject.activeSelf)
-                throw new InvalidOperationException("Confirmation prompt did not close.");
-        }
-        finally
-        {
-            UnityEngine.Object.DestroyImmediate(prompt.gameObject);
-        }
+        if (prompt == null || !prompt.IsConfigured)
+            throw new InvalidOperationException(
+                "The prefab-authored Confirmation Prompt is missing or incomplete.");
+
+        prompt.Show("Validation", null, null);
+        if (!prompt.gameObject.activeSelf)
+            throw new InvalidOperationException("Confirmation prompt did not open.");
+        prompt.Hide();
+        if (prompt.gameObject.activeSelf)
+            throw new InvalidOperationException("Confirmation prompt did not close.");
+    }
+
+    private static ConfirmationPromptUI GetOrCreateConfirmationPrompt(GameObject root)
+    {
+        Transform existing = root.transform.Find("Confirmation Prompt");
+        GameObject promptObject = existing != null
+            ? existing.gameObject
+            : new GameObject(
+                "Confirmation Prompt",
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(Image),
+                typeof(Canvas),
+                typeof(GraphicRaycaster),
+                typeof(ConfirmationPromptUI));
+
+        promptObject.layer = root.layer;
+        RectTransform promptRect = promptObject.GetComponent<RectTransform>();
+        promptRect.SetParent(root.transform, false);
+        promptRect.anchorMin = Vector2.zero;
+        promptRect.anchorMax = Vector2.one;
+        promptRect.offsetMin = Vector2.zero;
+        promptRect.offsetMax = Vector2.zero;
+        promptRect.localScale = Vector3.one;
+
+        Canvas promptCanvas = promptObject.GetComponent<Canvas>();
+        promptCanvas.overrideSorting = true;
+        promptCanvas.sortingOrder = 32000;
+
+        Image dimmer = promptObject.GetComponent<Image>();
+        dimmer.color = new Color(0f, 0f, 0f, 0.72f);
+        dimmer.raycastTarget = true;
+
+        RectTransform panel = GetOrCreateImage(
+            promptObject.transform,
+            "Prompt Panel",
+            new Color(0.035f, 0.055f, 0.075f, 0.98f));
+        panel.anchorMin = panel.anchorMax = new Vector2(0.5f, 0.5f);
+        panel.anchoredPosition = Vector2.zero;
+        panel.sizeDelta = new Vector2(820f, 380f);
+
+        TextMeshProUGUI message = GetOrCreateText(panel, "Message", 38f);
+        RectTransform messageRect = message.rectTransform;
+        messageRect.anchorMin = new Vector2(0.08f, 0.38f);
+        messageRect.anchorMax = new Vector2(0.92f, 0.88f);
+        messageRect.offsetMin = messageRect.offsetMax = Vector2.zero;
+        message.text = "Warning message is configured on Alahas Selection Controller.";
+
+        Button backButton = GetOrCreatePromptButton(
+            panel,
+            "Go Back Button",
+            new Color(0.22f, 0.25f, 0.29f, 1f),
+            new Vector2(-175f, -115f),
+            "Go Back",
+            out TextMeshProUGUI backLabel);
+        Button continueButton = GetOrCreatePromptButton(
+            panel,
+            "Continue Button",
+            new Color(0.72f, 0.48f, 0.12f, 1f),
+            new Vector2(175f, -115f),
+            "Continue Anyway",
+            out TextMeshProUGUI continueLabel);
+
+        ConfirmationPromptUI prompt = promptObject.GetComponent<ConfirmationPromptUI>();
+        SerializedObject serializedPrompt = new SerializedObject(prompt);
+        serializedPrompt.FindProperty("messageText").objectReferenceValue = message;
+        serializedPrompt.FindProperty("backButton").objectReferenceValue = backButton;
+        serializedPrompt.FindProperty("backButtonText").objectReferenceValue = backLabel;
+        serializedPrompt.FindProperty("continueButton").objectReferenceValue = continueButton;
+        serializedPrompt.FindProperty("continueButtonText").objectReferenceValue = continueLabel;
+        serializedPrompt.ApplyModifiedPropertiesWithoutUndo();
+
+        promptObject.SetActive(false);
+        return prompt;
+    }
+
+    private static void EnsureSerializedWarningRules(SerializedObject serializedController)
+    {
+        SerializedProperty warnings = serializedController.FindProperty("proceedWarnings");
+        if (warnings.arraySize > 0) return;
+
+        serializedController.FindProperty("useDefaultWarningsWhenEmpty").boolValue = false;
+        warnings.arraySize = 2;
+        ConfigureWarningRule(
+            warnings.GetArrayElementAtIndex(0),
+            AlahasSelectionWarningCondition.NoAlahasSelected,
+            "You haven't selected any Alahas. Are you sure you want to proceed?");
+        ConfigureWarningRule(
+            warnings.GetArrayElementAtIndex(1),
+            AlahasSelectionWarningCondition.PartiallyFilledSlots,
+            "Some Alahas slots are still empty. Are you sure you want to proceed?");
+    }
+
+    private static void ConfigureWarningRule(
+        SerializedProperty rule,
+        AlahasSelectionWarningCondition condition,
+        string message)
+    {
+        rule.FindPropertyRelative("enabled").boolValue = true;
+        rule.FindPropertyRelative("condition").enumValueIndex = (int)condition;
+        rule.FindPropertyRelative("message").stringValue = message;
+    }
+
+    private static RectTransform GetOrCreateImage(
+        Transform parent,
+        string objectName,
+        Color color)
+    {
+        Transform existing = parent.Find(objectName);
+        GameObject imageObject = existing != null
+            ? existing.gameObject
+            : new GameObject(
+                objectName,
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(Image));
+        imageObject.layer = parent.gameObject.layer;
+
+        RectTransform rect = imageObject.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+        Image image = imageObject.GetComponent<Image>();
+        image.color = color;
+        image.raycastTarget = true;
+        return rect;
+    }
+
+    private static TextMeshProUGUI GetOrCreateText(
+        Transform parent,
+        string objectName,
+        float fontSize)
+    {
+        Transform existing = parent.Find(objectName);
+        GameObject textObject = existing != null
+            ? existing.gameObject
+            : new GameObject(
+                objectName,
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(TextMeshProUGUI));
+        textObject.layer = parent.gameObject.layer;
+
+        RectTransform rect = textObject.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+        TextMeshProUGUI text = textObject.GetComponent<TextMeshProUGUI>();
+        text.fontSize = fontSize;
+        text.enableAutoSizing = true;
+        text.fontSizeMin = 20f;
+        text.fontSizeMax = fontSize;
+        text.alignment = TextAlignmentOptions.Center;
+        text.color = Color.white;
+        text.raycastTarget = false;
+        return text;
+    }
+
+    private static Button GetOrCreatePromptButton(
+        Transform parent,
+        string objectName,
+        Color color,
+        Vector2 position,
+        string labelText,
+        out TextMeshProUGUI label)
+    {
+        RectTransform rect = GetOrCreateImage(parent, objectName, color);
+        Button button = rect.GetComponent<Button>();
+        if (button == null) button = rect.gameObject.AddComponent<Button>();
+        button.targetGraphic = rect.GetComponent<Image>();
+
+        rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = position;
+        rect.sizeDelta = new Vector2(290f, 78f);
+
+        label = GetOrCreateText(rect, "Label", 30f);
+        label.text = labelText;
+        RectTransform labelRect = label.rectTransform;
+        labelRect.anchorMin = Vector2.zero;
+        labelRect.anchorMax = Vector2.one;
+        labelRect.offsetMin = new Vector2(12f, 6f);
+        labelRect.offsetMax = new Vector2(-12f, -6f);
+        return button;
     }
 
     private static Button GetOrCreateProceedButton(GameObject root)
