@@ -353,12 +353,13 @@ public class GameManager : MonoBehaviour
         HelperUI.HideAllImmediately();
         Draggable.SetInteractionLocked(true);
 
+        AudioManager.Instance?.FadeOutBGM();
+
         if (!didWin && config != null && config.targetEnemyAttacksBeforeYouLose)
         {
             WordSubmissionAnimationPlayer animationPlayer = FindFirstObjectByType<WordSubmissionAnimationPlayer>();
             if (animationPlayer != null && animationPlayer.CanPlayTargetEnemyAttack)
             {
-                AudioManager.Instance.bgmSource.Stop();
                 Coroutine slowMotion = StartWinningAttackSlowMotion();
                 yield return animationPlayer.PlayTargetEnemyAttack();
                 if (slowMotion != null) yield return slowMotion;
@@ -369,7 +370,6 @@ public class GameManager : MonoBehaviour
 
         if (didWin == true)
         {
-            AudioManager.Instance.bgmSource.Stop();
             AudioManager.Instance.sfxSource.PlayOneShot(winSFX);
 
             eventOnWin?.Invoke();
@@ -379,7 +379,6 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            AudioManager.Instance.bgmSource.Stop();
             AudioManager.Instance.sfxSource.PlayOneShot(loseSFX);
 
             eventOnLose?.Invoke();

@@ -16,6 +16,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
 
     public bool AllowsAlahasSelection => allowAlahasSelection;
+    private bool exitingScene;
+    private static bool fallbackSceneSwapPending;
 
     // Main Functions ----------------------------------------------------------
     private void Start()
@@ -68,7 +70,10 @@ public class SceneController : MonoBehaviour
 
     private void StartSceneSwap(string sceneName)
     {
+        if (exitingScene) return;
+        exitingScene = true;
         PopupUI.HideSettingsForSceneChange();
+        Coroutine audioFade = AudioManager.Instance?.FadeOutSceneAudio();
         if (transitionOnSwap != null)
         {
             transitionOnSwap.SetActive(true);
@@ -78,7 +83,34 @@ public class SceneController : MonoBehaviour
 
         Debug.Log($"Active Self: {gameObject.activeSelf}, Active In Hierarchy: {gameObject.activeInHierarchy}");
 
-        StartCoroutine(Swap(sceneName));
+        StartCoroutine(Swap(sceneName, audioFade));
+    }
+
+    public static void LoadSceneWithAudioFade(string sceneName)
+    {
+        SceneController controller = FindFirstObjectByType<SceneController>();
+        if (controller != null)
+        {
+            controller.SwapWrapper(sceneName);
+            return;
+        }
+
+        if (AudioManager.Instance == null)
+        {
+            SceneManager.LoadScene(sceneName);
+            return;
+        }
+
+        if (fallbackSceneSwapPending) return;
+        fallbackSceneSwapPending = true;
+        AudioManager.Instance.StartCoroutine(FadeThenLoadScene(sceneName));
+    }
+
+    private static IEnumerator FadeThenLoadScene(string sceneName)
+    {
+        yield return AudioManager.Instance.FadeOutSceneAudio();
+        SceneManager.LoadScene(sceneName);
+        fallbackSceneSwapPending = false;
     }
 
     public void titleStartButton()
@@ -138,9 +170,10 @@ public class SceneController : MonoBehaviour
         SwapWrapper(sceneName);
     }
 
-    private IEnumerator Swap(string sceneName)
+    private IEnumerator Swap(string sceneName, Coroutine audioFade)
     {
         yield return new WaitForSecondsRealtime(transitionTime);
+        if (audioFade != null) yield return audioFade;
         SceneManager.LoadScene(sceneName);
     }
 
@@ -151,6 +184,9 @@ public class SceneController : MonoBehaviour
 
     public void QuitWrapper()
     {
+        if (exitingScene) return;
+        exitingScene = true;
+        Coroutine audioFade = AudioManager.Instance?.FadeOutSceneAudio();
         if (transitionOnSwap != null)
         {
             transitionOnSwap.SetActive(true);
@@ -158,12 +194,13 @@ public class SceneController : MonoBehaviour
             transitionOnSwap.GetComponent<ImageFader>().FadeTo(1, transitionTime);
         }
 
-        StartCoroutine(Quit());
+        StartCoroutine(Quit(audioFade));
     }
 
-    private IEnumerator Quit()
+    private IEnumerator Quit(Coroutine audioFade)
     {
         yield return new WaitForSecondsRealtime(transitionTime);
+        if (audioFade != null) yield return audioFade;
         Application.Quit();
         Debug.LogError("You quit the game! Paalam!");
     }

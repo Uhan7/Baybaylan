@@ -11,16 +11,19 @@ public class UIButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
     [SerializeField] private AudioClip clickSFX;
 
     private Button button;
+    private Draggable draggable;
     private bool interactableOnPress;
 
     private void Awake()
     {
         button = GetComponent<Button>();
+        draggable = GetComponent<Draggable>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CanPlay() && !HasPointerSound(EventTriggerType.PointerEnter))
+        // Tiles already play hover audio through Draggable.
+        if (draggable == null && CanPlay() && !HasPointerSound(EventTriggerType.PointerEnter))
             Play(hoverSFX);
     }
 
@@ -75,14 +78,18 @@ public class UIButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
             string method = callbacks.GetPersistentMethodName(i);
             if ((target is AudioSource && method == "PlayOneShot") ||
                 (target is AudioManager && method == "PlaySFX") ||
-                (target is UIButtonSFX && method == nameof(PlayClickSound))) return true;
+                (target is UIButtonSFX && method == nameof(PlayClickSound)) ||
+                (target is Tile tile && !tile.isVowel &&
+                    method == nameof(Tile.ToggleNextModification))) return true;
         }
         return false;
     }
 
     private bool CanPlay()
     {
-        return button != null && button.IsInteractable();
+        return button != null && button.IsInteractable() &&
+            (draggable == null || (!Draggable.InteractionLocked &&
+                !Draggable.anyBeingDragged && !draggable.isBeingDragged));
     }
 
     private static void Play(AudioClip clip)

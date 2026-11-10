@@ -21,6 +21,10 @@ public class AudioManager : MonoBehaviour
     private Coroutine delayedResultSfxCoroutine;
     private readonly Dictionary<AudioSource, float> audioBasePitches = new Dictionary<AudioSource, float>();
     private bool gameplayBgmStarted;
+    private Coroutine bgmFadeCoroutine;
+    private Coroutine sceneAudioFadeCoroutine;
+    private bool sceneAudioFading;
+    private float bgmFadeMultiplier = 1f;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -60,17 +64,19 @@ public class AudioManager : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void SetBGMVolume(float volume)
     {
-        if (bgmSource != null) bgmSource.volume = Mathf.Clamp01(volume);
+        if (!sceneAudioFading && bgmSource != null)
+            bgmSource.volume = Mathf.Clamp01(volume) * bgmFadeMultiplier;
     }
 
     public void SetAmbienceVolume(float volume)
     {
+        if (sceneAudioFading) return;
         if (ambienceSource != null) ambienceSource.volume = Mathf.Clamp01(volume);
     }
 
     public void StartGameplayBGM()
     {
-        if (gameplayBgmStarted || bgmSource == null || bgmSource.clip == null) return;
+        if (sceneAudioFading || gameplayBgmStarted || bgmSource == null || bgmSource.clip == null) return;
 
         gameplayBgmStarted = true;
         bgmSource.Play();
@@ -78,8 +84,13 @@ public class AudioManager : MonoBehaviour
 
     public void SetLevelAudio(AudioClip bgm, AudioClip ambience)
     {
+        if (sceneAudioFading) return;
         if (bgmSource != null && bgm != null && bgmSource.clip != bgm)
         {
+            if (bgmFadeCoroutine != null) StopCoroutine(bgmFadeCoroutine);
+            bgmFadeCoroutine = null;
+            bgmFadeMultiplier = 1f;
+            SetBGMVolume(SettingsHolder.BGMVolume);
             bgmSource.Stop();
             bgmSource.clip = bgm;
             if (gameplayBgmStarted) bgmSource.Play();
@@ -94,9 +105,75 @@ public class AudioManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
+        if (sceneAudioFading) return;
         float clampedVolume = Mathf.Clamp01(volume);
         if (sfxSource != null) sfxSource.volume = clampedVolume;
         if (resultSfxSource != null) resultSfxSource.volume = clampedVolume;
+    }
+
+    public Coroutine FadeOutBGM()
+    {
+        if (sceneAudioFading || bgmSource == null || !bgmSource.isPlaying) return null;
+        if (bgmFadeCoroutine == null)
+            bgmFadeCoroutine = StartCoroutine(FadeBGM());
+        return bgmFadeCoroutine;
+    }
+
+    private IEnumerator FadeBGM()
+    {
+        float elapsed = 0f;
+        while (elapsed < 1f && bgmSource != null)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            bgmFadeMultiplier = 1f - Mathf.Clamp01(elapsed);
+            SetBGMVolume(SettingsHolder.BGMVolume);
+            yield return null;
+        }
+
+        if (bgmSource != null) bgmSource.Stop();
+        bgmFadeMultiplier = 1f;
+        SetBGMVolume(SettingsHolder.BGMVolume);
+        bgmFadeCoroutine = null;
+    }
+
+    public Coroutine FadeOutSceneAudio()
+    {
+        if (sceneAudioFading) return sceneAudioFadeCoroutine;
+        sceneAudioFading = true;
+        if (bgmFadeCoroutine != null) StopCoroutine(bgmFadeCoroutine);
+        bgmFadeCoroutine = null;
+        sceneAudioFadeCoroutine = StartCoroutine(FadeSceneAudio());
+        return sceneAudioFadeCoroutine;
+    }
+
+    private IEnumerator FadeSceneAudio()
+    {
+        var initialVolumes = new Dictionary<AudioSource, float>();
+        float elapsed = 0f;
+        while (elapsed < 1f)
+        {
+            // Include independent UI/dialogue sources and sounds created during exit.
+            foreach (AudioSource source in FindObjectsByType<AudioSource>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                if (!initialVolumes.ContainsKey(source))
+                    initialVolumes.Add(source, source.volume);
+            }
+
+            elapsed += Time.unscaledDeltaTime;
+            float multiplier = 1f - Mathf.Clamp01(elapsed);
+            foreach (KeyValuePair<AudioSource, float> entry in initialVolumes)
+            {
+                if (entry.Key != null) entry.Key.volume = entry.Value * multiplier;
+            }
+            yield return null;
+        }
+
+        foreach (AudioSource source in initialVolumes.Keys)
+        {
+            if (source != null) source.Stop();
+        }
+        sceneAudioFadeCoroutine = null;
     }
 
     public void PlaySFX(AudioClip clip)

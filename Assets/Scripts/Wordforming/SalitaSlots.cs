@@ -437,6 +437,10 @@ public class SalitaSlots : MonoBehaviour
         yield return new WaitForSeconds(finalScoreDisplayDelay);
         scoreCalculationsContainer.SetActive(false);
 
+        // Fade as the winning action begins, using real time during slow motion.
+        if (MahikaManager.Instance.DidWin())
+            AudioManager.Instance?.FadeOutBGM();
+
         Coroutine winningAttackSlowMotion = null;
         Coroutine winningAttackCharacterSwap = null;
         bool isWinningAttack = MahikaManager.Instance.DidWin() &&

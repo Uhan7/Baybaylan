@@ -110,6 +110,6 @@ public class LevelSelectScreen : MonoBehaviour
     private void EnterLevel()
     {
         RefreshPresentation();
-        if (!isLocked && !string.IsNullOrWhiteSpace(SceneName)) SceneManager.LoadScene(SceneName);
+        if (!isLocked && !string.IsNullOrWhiteSpace(SceneName)) SceneController.LoadSceneWithAudioFade(SceneName);
     }
 }

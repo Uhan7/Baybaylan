@@ -82,8 +82,6 @@ public class TitleScreenMenu : MonoBehaviour
         if (AudioManager.Instance == null) return;
 
         AudioManager.Instance.PlaySFX(buttonSFX);
-        if (AudioManager.Instance.bgmSource != null)
-            AudioManager.Instance.bgmSource.Stop();
     }
 
     private void Update()

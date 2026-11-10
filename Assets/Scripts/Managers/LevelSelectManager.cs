@@ -143,5 +143,5 @@ public class LevelSelectManager : MonoBehaviour
         movement = null;
     }
 
-    public void enterScene(string sceneName) { SceneManager.LoadScene(sceneName); }
+    public void enterScene(string sceneName) { SceneController.LoadSceneWithAudioFade(sceneName); }
 }
