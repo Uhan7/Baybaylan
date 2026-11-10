@@ -553,7 +553,7 @@ MonoBehaviour:
   sfxSource: {fileID: 0}
   tileScoreSfxSource: {fileID: 7864391287550426103}
   wrongSFX: {fileID: 8300000, guid: 69e082b1d550e4d1dbd5c1a98abac22d, type: 3}
-  tileTickSFX: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
+  tileTickSFX: {fileID: 8300000, guid: a874ac9a95a1b4b45968f3cba21af9fd, type: 3}
   correctSFX: {fileID: 8300000, guid: b35c646c33445405d98fbb9f12f8dbfd, type: 3}
   replacingTiles: 0
   scoringSalita: 0
