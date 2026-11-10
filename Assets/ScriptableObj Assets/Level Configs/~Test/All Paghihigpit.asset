@@ -129,7 +129,7 @@ MonoBehaviour:
     bossSprite: {fileID: 21300000, guid: 7cd0fdbec15d34de18903dd7bef1c570, type: 3}
     includeLevelPaghihigpit: 1
     paghihigpit: []
-  - bossName: Ibon ng Bundok Gurayan
+  - bossName: Pitong-ulong Ibon
     bossSprite: {fileID: -2713426715766678824, guid: b3799278a1a72464dad5e9b895ac8359, type: 3}
     includeLevelPaghihigpit: 1
     paghihigpit: []

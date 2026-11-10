@@ -1469,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5123425484994397517, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_text
-      value: Ibon ng Bundok Gurayan
+      value: Pitong-ulong Ibon
       objectReference: {fileID: 0}
     - target: {fileID: 2328029916677129702, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_audioClip
