@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: Game Scene
   m_EditorClassIdentifier: 
+  levelName: 
+  sceneName: Title Screen
+  protagonistName: 
+  protagonistPortrait: {fileID: 0}
+  targetName: 
+  targetPortrait: {fileID: 0}
+  targetEnemyAttacksBeforeYouLose: 1
+  selectionBackground: {fileID: 0}
+  flipSelectionBackground: 0
   tilesAmount: 12
   kaposNaTitik: 2
   tilesSelection:
@@ -71,3 +80,4 @@ MonoBehaviour:
   - 
   - 
   - 
+  nagpapalitAnyoForms: []

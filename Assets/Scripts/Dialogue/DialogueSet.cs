@@ -90,6 +90,13 @@ public class DialogueSet : MonoBehaviour
         if (eventAfterDialogueDelay > 0f)
             yield return new WaitForSeconds(eventAfterDialogueDelay);
 
+        TileSet tileSet = TileSet.Instance;
+        if (tileSet == null)
+            tileSet = FindFirstObjectByType<TileSet>(FindObjectsInactive.Include);
+        if (tileSet != null &&
+            tileSet.DeferSkippedDialogueEventsUntilSelection(() => eventAfterDialogue?.Invoke()))
+            yield break;
+
         eventAfterDialogue?.Invoke();
     }
 }

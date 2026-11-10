@@ -24,6 +24,7 @@ public class LevelSelectScreen : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float lockedCharacterValue = 0.1f;
 
     private bool isLocked;
+    private bool enteringLevel;
     public LevelConfig Config => config;
     public string SceneName => config != null ? config.sceneName : sceneNameToEnter;
 
@@ -64,8 +65,8 @@ public class LevelSelectScreen : MonoBehaviour
             if (background != null) background.sprite = config.selectionBackground;
         }
 
-        if (lockVisual != null) lockVisual.SetActive(isLocked);
-        if (enterButton != null) enterButton.interactable = !isLocked && !string.IsNullOrWhiteSpace(SceneName);
+        if (lockVisual != null) lockVisual.SetActive(false);
+        if (enterButton != null) enterButton.interactable = !enteringLevel && !isLocked && !string.IsNullOrWhiteSpace(SceneName);
         if (background != null) background.color = Gray(isLocked ? lockedBackgroundValue : unlockedBackgroundValue);
         if (protagonistPortrait != null) protagonistPortrait.color = Gray(isLocked ? lockedCharacterValue : 1f);
         if (targetPortrait != null) targetPortrait.color = Gray(isLocked ? lockedCharacterValue : 1f);
@@ -110,6 +111,11 @@ public class LevelSelectScreen : MonoBehaviour
     private void EnterLevel()
     {
         RefreshPresentation();
-        if (!isLocked && !string.IsNullOrWhiteSpace(SceneName)) SceneController.LoadSceneWithAudioFade(SceneName);
+        if (enteringLevel || isLocked || string.IsNullOrWhiteSpace(SceneName)) return;
+        LevelSelectManager manager = FindFirstObjectByType<LevelSelectManager>();
+        if (manager == null) return;
+        enteringLevel = true;
+        enterButton.interactable = false;
+        manager.LoadLevel(SceneName);
     }
 }

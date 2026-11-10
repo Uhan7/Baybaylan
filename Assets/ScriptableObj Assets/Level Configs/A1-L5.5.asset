@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A1-L5.5
   m_EditorClassIdentifier: 
   levelName: 'Indarapatra at Sulayman: Wakas'
-  sceneName: Title Screen
+  sceneName: Area 1 - Level 5.5
   protagonistName: 
   protagonistPortrait: {fileID: 0}
   targetName: 

@@ -12,6 +12,10 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] private RectTransform overlayContent;
     [SerializeField] private Button previousButton;
     [SerializeField] private Button nextButton;
+    [SerializeField, Min(0f)] private float levelFadeDuration = 0.5f;
+    [SerializeField, Min(0f)] private float blackHoldDuration = 1f;
+
+    private bool loadingLevel;
 
     private readonly List<RectTransform> pages = new List<RectTransform>();
     private RectTransform holder;
@@ -107,7 +111,7 @@ public class LevelSelectManager : MonoBehaviour
 
     public void SelectionButton(int next)
     {
-        if (pages.Count == 0 || movement != null) return;
+        if (loadingLevel || pages.Count == 0 || movement != null) return;
         int nextIndex = Mathf.Clamp(index + next, 0, pages.Count - 1);
         if (nextIndex == index) return;
         index = nextIndex;
@@ -124,8 +128,8 @@ public class LevelSelectManager : MonoBehaviour
 
     private void UpdateButtons()
     {
-        if (previousButton != null) previousButton.interactable = index > 0;
-        if (nextButton != null) nextButton.interactable = index < pages.Count - 1;
+        if (previousButton != null) previousButton.interactable = !loadingLevel && index > 0;
+        if (nextButton != null) nextButton.interactable = !loadingLevel && index < pages.Count - 1;
     }
 
     private IEnumerator MoveSelection()
@@ -143,5 +147,54 @@ public class LevelSelectManager : MonoBehaviour
         movement = null;
     }
 
-    public void enterScene(string sceneName) { SceneController.LoadSceneWithAudioFade(sceneName); }
+    public void LoadLevel(string sceneName)
+    {
+        if (!Application.isPlaying || loadingLevel || string.IsNullOrWhiteSpace(sceneName)) return;
+        loadingLevel = true;
+        UpdateButtons();
+        StartCoroutine(FadeThenLoadLevel(sceneName));
+    }
+
+    private IEnumerator FadeThenLoadLevel(string sceneName)
+    {
+        // A separate overlay stays above the cards and blocks clicks during exit.
+        GameObject overlay = new GameObject("Level Transition", typeof(RectTransform),
+            typeof(Canvas), typeof(GraphicRaycaster));
+        RectTransform overlayRect = overlay.GetComponent<RectTransform>();
+        overlayRect.anchorMin = Vector2.zero;
+        overlayRect.anchorMax = Vector2.one;
+        overlayRect.offsetMin = Vector2.zero;
+        overlayRect.offsetMax = Vector2.zero;
+        Canvas canvas = overlay.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = short.MaxValue;
+
+        GameObject panel = new GameObject("Black Fade", typeof(RectTransform), typeof(Image));
+        panel.transform.SetParent(overlay.transform, false);
+        Image image = panel.GetComponent<Image>();
+        image.rectTransform.anchorMin = Vector2.zero;
+        image.rectTransform.anchorMax = Vector2.one;
+        image.rectTransform.offsetMin = Vector2.zero;
+        image.rectTransform.offsetMax = Vector2.zero;
+        image.color = new Color(0f, 0f, 0f, 0f);
+
+        Coroutine audioFade = AudioManager.Instance?.FadeOutSceneAudio();
+        float elapsed = 0f;
+        while (elapsed < levelFadeDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            image.color = new Color(0f, 0f, 0f, Mathf.Clamp01(elapsed / levelFadeDuration));
+            yield return null;
+        }
+        image.color = Color.black;
+        yield return new WaitForSecondsRealtime(blackHoldDuration);
+        if (audioFade != null) yield return audioFade;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void enterScene(string sceneName)
+    {
+        if (!loadingLevel) SceneController.LoadSceneWithAudioFade(sceneName);
+    }
 }
