@@ -1,6 +1,7 @@
 using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WordSubmissionAnimationPlayer : MonoBehaviour
 {
@@ -84,6 +85,8 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     private float animatorSpeedDuringHeal = 1f;
     private bool healTargetSequenceFinished;
 
+    public float AttackHitDelay => targetHitDelay;
+
     public SuccessfulWordAnimation AnimationAfterSuccessfulWord
     {
         get => animationAfterSuccessfulWord;
@@ -121,6 +124,92 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     public IEnumerator PlaySelectedAnimation()
     {
         yield return PlayAnimation(animationAfterSuccessfulWord);
+    }
+
+    public bool CanPlayTargetEnemyAttack => storyTarget != null &&
+        CanSamplePortrait(targetAnimator, FindClip(targetAnimator, attackStateName)) &&
+        storyTarget.CanPlayMirroredAttack;
+
+    public IEnumerator PlayTargetEnemyAttack()
+    {
+        if (!CanPlayTargetEnemyAttack) yield break;
+
+        Coroutine hit = StartCoroutine(storyTarget.PlayMirroredHitAfterDelay(
+            targetAnimator, targetHitDelay, overrideAttackParticleColor, attackParticleColor, attackParticleColorB));
+        PlayResultSfx(SuccessfulWordAnimation.Attack);
+        yield return storyTarget.PlayMirroredAttack(FindClip(targetAnimator, attackStateName));
+        yield return hit;
+    }
+
+    internal static AnimationClip FindClip(Animator animator, string stateName)
+    {
+        if (animator == null || animator.runtimeAnimatorController == null || string.IsNullOrEmpty(stateName))
+            return null;
+
+        string clipName = stateName.Substring(stateName.LastIndexOf('.') + 1);
+        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+            if (clip.name == clipName) return clip;
+
+        return null;
+    }
+
+    internal static bool CanSamplePortrait(Animator animator, AnimationClip clip)
+    {
+        return animator != null && clip != null &&
+            animator.transform.Find("Portrait Holder") is RectTransform;
+    }
+
+    // Sample the existing clip, then reflect its movement around this portrait's
+    // starting pose. This preserves the artwork's facing and the scene's layout.
+    internal static IEnumerator PlayMirroredPortraitClip(Animator animator, AnimationClip clip, float maximumWait)
+    {
+        if (!CanSamplePortrait(animator, clip)) yield break;
+
+        RectTransform portrait = (RectTransform)animator.transform.Find("Portrait Holder");
+        Graphic character = portrait.Find("Character Image")?.GetComponent<Graphic>();
+        Vector2 position = portrait.anchoredPosition;
+        Quaternion rotation = portrait.localRotation;
+        Vector3 scale = portrait.localScale;
+        Color color = character != null ? character.color : Color.white;
+        bool wasEnabled = animator.enabled;
+        animator.enabled = false;
+
+        try
+        {
+            clip.SampleAnimation(animator.gameObject, 0f);
+            Vector2 clipStartPosition = portrait.anchoredPosition;
+            float clipStartAngle = portrait.localEulerAngles.z;
+            float elapsed = 0f;
+            float deadline = Time.unscaledTime + maximumWait;
+            while (Time.unscaledTime < deadline)
+            {
+                // Attack has no color curves; reset the sample tint each frame so
+                // the original portrait color is applied once, without compounding.
+                if (character != null) character.color = Color.white;
+                clip.SampleAnimation(animator.gameObject, Mathf.Min(elapsed, clip.length));
+                Vector2 movement = portrait.anchoredPosition - clipStartPosition;
+                portrait.anchoredPosition = position + new Vector2(-movement.x, movement.y);
+                portrait.localRotation = rotation * Quaternion.Euler(0f, 0f,
+                    -Mathf.DeltaAngle(clipStartAngle, portrait.localEulerAngles.z));
+                portrait.localScale = Vector3.Scale(scale, portrait.localScale);
+                if (character != null) character.color *= color;
+
+                if (elapsed >= clip.length) break;
+                yield return null;
+                elapsed += Time.deltaTime * Mathf.Max(0f, animator.speed);
+            }
+        }
+        finally
+        {
+            if (portrait != null)
+            {
+                portrait.anchoredPosition = position;
+                portrait.localRotation = rotation;
+                portrait.localScale = scale;
+            }
+            if (character != null) character.color = color;
+            if (animator != null) animator.enabled = wasEnabled;
+        }
     }
 
     public IEnumerator PlayAnimation(SuccessfulWordAnimation animation)

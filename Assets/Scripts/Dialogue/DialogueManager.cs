@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine backgroundFadeRoutine;
     private Animator dimmerAnimator;
     private Image vignetteOverlay;
+    private DialogueSet currentDialogueSet;
 
     [Header("Dialogue Characters")]
     [Header("Left")]
@@ -69,6 +70,8 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             if (PopupUI.BlocksDialogueInput()) return;
+            if (Input.GetMouseButtonDown(0) && dialogueContainer != null &&
+                dialogueContainer.IsPointerOverSkipButton()) return;
             if (isTyping) skip = true;
             else NextSentence();
         }
@@ -77,6 +80,11 @@ public class DialogueManager : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     public void StartDialogue(Dialogue dialogue)
     {
+        StartDialogue(dialogue, null);
+    }
+
+    public void StartDialogue(Dialogue dialogue, DialogueSet dialogueSet)
+    {
         if (dialogue == null || dialogue.sentences == null || dialogue.sentences.Length == 0)
         {
             Debug.LogError("Cannot start a null or empty Dialogue.", dialogue);
@@ -84,6 +92,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         currentDialogue = dialogue;
+        currentDialogueSet = dialogueSet;
         currentSentenceIndex = 0;
 
         if (dialogueContainer)
@@ -450,16 +459,40 @@ public class DialogueManager : MonoBehaviour
         else Debug.LogError("The Animator of the RIGHT SECONDARY PROFILE was not assigned to the DialogueManager");
     }
 
+    public void SkipDialogue()
+    {
+        if (!dialoguing || currentDialogue == null || PopupUI.BlocksDialogueInput()) return;
+
+        // Finish the entire set, including its normal completion events.
+        // Opening dialogue leads to Alahas selection; ending dialogue keeps its rewards/transition.
+        SceneController sceneController = FindFirstObjectByType<SceneController>(FindObjectsInactive.Include);
+        TileSet tileSet = FindFirstObjectByType<TileSet>(FindObjectsInactive.Include);
+        if (tileSet != null && AlahasSelectionController.IsSelectionAllowedInActiveScene() &&
+            (sceneController == null || sceneController.AllowsAlahasSelection))
+            tileSet.RequireSelectionAfterDialogueSkip();
+        if (currentDialogueSet != null) currentDialogueSet.SkipRemainingDialogues();
+        EndDialogue();
+    }
+
     private void EndDialogue()
     {
+        if (currentDialogue == null) return;
+        if (startDelayRoutine != null) StopCoroutine(startDelayRoutine);
+        if (sentenceRoutine != null) StopCoroutine(sentenceRoutine);
+        startDelayRoutine = null;
+        sentenceRoutine = null;
+        isTyping = false;
+        skip = false;
+
         if (dialogueContainer) dialogueContainer.ClearText();
         AnimateEndDialogue();
 
         currentDialogue = null;
+        currentDialogueSet = null;
         dialoguing = false;
 
-        OnDialogueEnd?.Invoke();
+        if (AlahasSubManager.Instance != null) AlahasSubManager.Instance.dialogueEnded = true;
 
-        AlahasSubManager.Instance.dialogueEnded = true;
+        OnDialogueEnd?.Invoke();
     }
 }

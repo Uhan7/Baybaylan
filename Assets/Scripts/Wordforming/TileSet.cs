@@ -41,6 +41,7 @@ public class TileSet : MonoBehaviour
     private bool pakpakApplicationIsPaused;
     private bool skipNextPakpakElapsedFrame;
     private bool gameplayStarted;
+    private bool requireSelectionAfterDialogueSkip;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -80,6 +81,7 @@ public class TileSet : MonoBehaviour
     public void ShowAlahasSelection()
     {
         if (gameplayStarted) return;
+        requireSelectionAfterDialogueSkip = false;
 
         if (!AlahasSelectionController.IsSelectionAllowedInActiveScene())
         {
@@ -125,9 +127,21 @@ public class TileSet : MonoBehaviour
         BeginGameplay();
     }
 
+    public void RequireSelectionAfterDialogueSkip()
+    {
+        if (!gameplayStarted) requireSelectionAfterDialogueSkip = true;
+    }
+
     public void BeginGameplay()
     {
         if (gameplayStarted) return;
+        // Tutorial opening events normally start gameplay directly. A dialogue
+        // skip should still give the player a chance to choose their Alahas.
+        if (requireSelectionAfterDialogueSkip)
+        {
+            ShowAlahasSelection();
+            return;
+        }
         gameplayStarted = true;
 
         if (AlahasSubManager.Instance != null)

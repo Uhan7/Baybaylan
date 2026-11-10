@@ -18,6 +18,7 @@ MonoBehaviour:
   protagonistPortrait: {fileID: 0}
   targetName: 
   targetPortrait: {fileID: 0}
+  targetEnemyAttacksBeforeYouLose: 1
   selectionBackground: {fileID: 21300000, guid: 6eaa39efa65114f7aa8e37b8996fde35, type: 3}
   flipSelectionBackground: 1
   tilesAmount: 10

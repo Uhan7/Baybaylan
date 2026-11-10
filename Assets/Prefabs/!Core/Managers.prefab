@@ -393,6 +393,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   eventsOnAksyon: []
+  eventsOnRemainingAksyon: []
+  eventsOnCompletedMahikaBar: []
   winSFX: {fileID: 8300000, guid: 55fb73d354ac043c1a840f716112bcc8, type: 3}
   loseSFX: {fileID: 8300000, guid: 8a897754e4e9749f28b39a275dcd2da5, type: 3}
   m_sagradongTitik: {fileID: 0}

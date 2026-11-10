@@ -42,6 +42,8 @@ public class LevelConfig : ScriptableObject
     public string targetName;
     [Tooltip("Leave empty to hide the entire right portrait holder on the level-selection card.")]
     public Sprite targetPortrait;
+    [Tooltip("The right-side target performs a mirrored protagonist attack before the lose screen. Reuses the attack, hit effects, sound, and winning attack slow motion settings.")]
+    public bool targetEnemyAttacksBeforeYouLose = true;
     [Header("Level Selection Background")]
     public Sprite selectionBackground;
     public bool flipSelectionBackground;

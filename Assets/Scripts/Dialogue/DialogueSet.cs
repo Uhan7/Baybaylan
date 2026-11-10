@@ -58,7 +58,13 @@ public class DialogueSet : MonoBehaviour
         // Subscribe
         DialogueManager.Instance.OnDialogueEnd += HandleDialogueEnd;
 
-        DialogueManager.Instance.StartDialogue(dialogues[currentIndex]);
+        DialogueManager.Instance.StartDialogue(dialogues[currentIndex], this);
+    }
+
+    internal void SkipRemainingDialogues()
+    {
+        // HandleDialogueEnd will complete the set instead of starting another asset.
+        if (isRunning) currentIndex = dialogues.Length;
     }
 
     private void HandleDialogueEnd()

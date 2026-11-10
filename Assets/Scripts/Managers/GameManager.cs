@@ -17,6 +17,20 @@ public class GameManager : MonoBehaviour
         public UnityEvent eventOnAksyon;
     }
 
+    [System.Serializable]
+    private class RemainingAksyonEvent
+    {
+        [Min(1)] public int remainingAksyon = 1;
+        public UnityEvent eventOnRemainingAksyon;
+    }
+
+    [System.Serializable]
+    private class CompletedMahikaBarEvent
+    {
+        [Min(1)] public int completedBarCount = 1;
+        public UnityEvent eventOnCompletedBar;
+    }
+
     // Variables ---------------------------------------------------------------
     [Header("Instance")]
     [HideInInspector] public static GameManager Instance;
@@ -31,7 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<string> wordsUsed = new List<string>();
 
     [Header("Winning Attack Slow Motion")]
-    [Tooltip("Only slows time when the submitted word reaches the required Mahika and the selected result animation is Attack.")]
+    [Tooltip("Slows winning attacks and the target enemy's finishing attack before a loss, when enabled in the Level Config.")]
     [SerializeField] private bool enableWinningAttackSlowMotion = true;
     [Tooltip("Real-time duration of the effect. This is not stretched by Time.timeScale.")]
     [SerializeField, Min(0f)] private float winningAttackSlowMotionDuration = 1.8f;
@@ -59,6 +73,7 @@ public class GameManager : MonoBehaviour
     private Coroutine winningAttackSlowMotionCoroutine;
     private Coroutine winningAttackCharacterSwapCoroutine;
     private bool controlsTimeScale;
+    private bool roundEnding;
     private float timeScaleBeforeWinningAttack = 1f;
     private float fixedDeltaTimeBeforeWinningAttack = 0.02f;
 
@@ -70,6 +85,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UnityEvent eventOnWin;
     [SerializeField] private UnityEvent eventOnLose;
     [SerializeField] private List<AksyonEvent> eventsOnAksyon = new List<AksyonEvent>();
+    [Tooltip("Invoked when an Aksyon begins, counted backward from the final available Aksyon. This uses the final count after Alahas and Paghihigpit adjustments.")]
+    [SerializeField] private List<RemainingAksyonEvent> eventsOnRemainingAksyon = new List<RemainingAksyonEvent>();
+    [Tooltip("Invoked after the attack animation that completes the selected Mahika bar.")]
+    [SerializeField] private List<CompletedMahikaBarEvent> eventsOnCompletedMahikaBar = new List<CompletedMahikaBarEvent>();
 
     [Header("Should not be here but idgaf")]
     [SerializeField] private AudioClip winSFX;
@@ -122,6 +141,24 @@ public class GameManager : MonoBehaviour
         {
             if (aksyonEvent != null && aksyonEvent.aksyonNumber == aksyonNumber)
                 aksyonEvent.eventOnAksyon?.Invoke();
+        }
+    }
+
+    public void InvokeEventsOnRemainingAksyon(int remainingAksyon)
+    {
+        foreach (RemainingAksyonEvent aksyonEvent in eventsOnRemainingAksyon)
+        {
+            if (aksyonEvent != null && aksyonEvent.remainingAksyon == remainingAksyon)
+                aksyonEvent.eventOnRemainingAksyon?.Invoke();
+        }
+    }
+
+    public void InvokeEventsOnCompletedMahikaBar(int completedBarCount)
+    {
+        foreach (CompletedMahikaBarEvent mahikaBarEvent in eventsOnCompletedMahikaBar)
+        {
+            if (mahikaBarEvent != null && mahikaBarEvent.completedBarCount == completedBarCount)
+                mahikaBarEvent.eventOnCompletedBar?.Invoke();
         }
     }
 
@@ -249,7 +286,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = timeScaleBeforeWinningAttack * timeScaleMultiplier;
             Time.fixedDeltaTime = fixedDeltaTimeBeforeWinningAttack * timeScaleMultiplier;
             if (AudioManager.Instance != null)
-                AudioManager.Instance.SetResultSFXPitchMultiplier(timeScaleMultiplier);
+                AudioManager.Instance.SetAllAudioPitchMultiplier(timeScaleMultiplier);
 
             elapsed += Time.unscaledDeltaTime;
             yield return null;
@@ -266,7 +303,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = timeScaleBeforeWinningAttack;
         Time.fixedDeltaTime = fixedDeltaTimeBeforeWinningAttack;
         if (AudioManager.Instance != null)
-            AudioManager.Instance.ResetResultSFXPitch();
+            AudioManager.Instance.ResetAllAudioPitch();
         controlsTimeScale = false;
     }
 
@@ -302,11 +339,31 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
+        if (roundEnding) return;
+        roundEnding = true;
+        StartCoroutine(PlayRoundEnding());
+    }
+
+    private IEnumerator PlayRoundEnding()
+    {
         bool didWin = MahikaManager.Instance.DidWin();
 
         // Tutorial prompts are no longer relevant once the round has ended.
         // Hide them immediately so slow motion cannot leave the hint visible.
         HelperUI.HideAllImmediately();
+        Draggable.SetInteractionLocked(true);
+
+        if (!didWin && config != null && config.targetEnemyAttacksBeforeYouLose)
+        {
+            WordSubmissionAnimationPlayer animationPlayer = FindFirstObjectByType<WordSubmissionAnimationPlayer>();
+            if (animationPlayer != null && animationPlayer.CanPlayTargetEnemyAttack)
+            {
+                AudioManager.Instance.bgmSource.Stop();
+                Coroutine slowMotion = StartWinningAttackSlowMotion();
+                yield return animationPlayer.PlayTargetEnemyAttack();
+                if (slowMotion != null) yield return slowMotion;
+            }
+        }
 
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.ShowEndingBG(didWin);
 

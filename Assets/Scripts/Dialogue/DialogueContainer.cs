@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueContainer : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class DialogueContainer : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private GameObject nextIndicator;
+    [SerializeField] private Button skipButton;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        if (skipButton != null) skipButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -25,7 +28,25 @@ public class DialogueContainer : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private void UpdateAnimations()
     {
-        if (anim != null) anim.SetBool("dialogueOpen", DialogueManager.Instance.dialoguing);
+        bool dialogueOpen = DialogueManager.Instance != null && DialogueManager.Instance.dialoguing;
+        if (anim != null) anim.SetBool("dialogueOpen", dialogueOpen);
+        if (skipButton != null && skipButton.gameObject.activeSelf != dialogueOpen)
+            skipButton.gameObject.SetActive(dialogueOpen);
+    }
+
+    public void SkipDialogue()
+    {
+        if (DialogueManager.Instance != null) DialogueManager.Instance.SkipDialogue();
+    }
+
+    public bool IsPointerOverSkipButton()
+    {
+        if (skipButton == null || !skipButton.isActiveAndEnabled) return false;
+        Canvas canvas = skipButton.GetComponentInParent<Canvas>();
+        Camera camera = canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay
+            ? canvas.worldCamera : null;
+        return RectTransformUtility.RectangleContainsScreenPoint(
+            skipButton.transform as RectTransform, Input.mousePosition, camera);
     }
 
     public void ClearText()

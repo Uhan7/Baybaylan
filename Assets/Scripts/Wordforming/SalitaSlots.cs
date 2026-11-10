@@ -428,7 +428,7 @@ public class SalitaSlots : MonoBehaviour
             wordLengthMultiplier,
             mahikaScoreMultiplier,
             salitaScore);
-        MahikaManager.Instance.UpdateMahika(salitaScore);
+        int completedMahikaBarCount = MahikaManager.Instance.UpdateMahika(salitaScore);
 
         sfxSource.PlayOneShot(correctSFX);
         if (BackgroundsManager.Instance != null) BackgroundsManager.Instance.AdjustCorruptedBG();
@@ -450,6 +450,21 @@ public class SalitaSlots : MonoBehaviour
             winningAttackCharacterSwap = GameManager.Instance.StartWinningAttackCharacterSwap();
         }
 
+        Coroutine fallingHead = null;
+        if (completedMahikaBarCount > 0)
+        {
+            BirdHeadFallController birdHeads = FindFirstObjectByType<BirdHeadFallController>();
+            if (birdHeads != null)
+            {
+                float hitDelay = successfulWordAnimationPlayer != null &&
+                    successfulWordAnimationPlayer.AnimationAfterSuccessfulWord ==
+                        WordSubmissionAnimationPlayer.SuccessfulWordAnimation.Attack
+                    ? successfulWordAnimationPlayer.AttackHitDelay
+                    : 0f;
+                fallingHead = StartCoroutine(birdHeads.PlayHeadForCompletedBar(completedMahikaBarCount, hitDelay));
+            }
+        }
+
         if (successfulWordAnimationPlayer != null)
             yield return successfulWordAnimationPlayer.PlaySelectedAnimation();
 
@@ -458,6 +473,12 @@ public class SalitaSlots : MonoBehaviour
 
         if (winningAttackCharacterSwap != null)
             yield return winningAttackCharacterSwap;
+
+        if (fallingHead != null)
+            yield return fallingHead;
+
+        if (completedMahikaBarCount > 0 && GameManager.Instance != null)
+            GameManager.Instance.InvokeEventsOnCompletedMahikaBar(completedMahikaBarCount);
 
         AksyonCounter.Instance.ConcludeAksyon();
 
@@ -476,7 +497,7 @@ public class SalitaSlots : MonoBehaviour
         }
         else
         {
-            scoringSalita = false;
+            // Keep submission locked through the enemy's finishing attack and result screen.
             GameManager.Instance.EndRound();
         }
     }

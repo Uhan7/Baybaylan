@@ -54,7 +54,7 @@ public class AksyonCounter : MonoBehaviour
 
         //aksyonText.text = currentAksyon.ToString() + "/" + config.maxAksyon;
         SpawnAvailableAksyons();
-        GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        InvokeCurrentAksyonEvents();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -85,7 +85,8 @@ public class AksyonCounter : MonoBehaviour
         currentAksyon++;
         RefreshCurrentAksyonBlink();
 
-        if (currentAksyon <= maxAvailableAksyon && MahikaManager.Instance.GetMahikaPercent() < 1f) GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        if (currentAksyon <= maxAvailableAksyon && MahikaManager.Instance.GetMahikaPercent() < 1f)
+            InvokeCurrentAksyonEvents();
     }
 
     private void RefreshCurrentAksyonBlink()
@@ -111,5 +112,14 @@ public class AksyonCounter : MonoBehaviour
     public int GetCurrentAksyon()
     {
         return currentAksyon;
+    }
+
+    private void InvokeCurrentAksyonEvents()
+    {
+        if (GameManager.Instance == null) return;
+
+        GameManager.Instance.InvokeEventsOnAksyon(currentAksyon);
+        int remainingAksyon = maxAvailableAksyon - currentAksyon + 1;
+        GameManager.Instance.InvokeEventsOnRemainingAksyon(remainingAksyon);
     }
 }

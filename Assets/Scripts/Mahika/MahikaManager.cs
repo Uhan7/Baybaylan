@@ -62,16 +62,24 @@ public class MahikaManager : MonoBehaviour
 
         UpdateMahikaText();
     }
-    public void UpdateMahika(int score)
+    public int UpdateMahika(int score)
     {
         int counter = m_mahikaDataCounter;
+        bool wasComplete = m_mahikaDatas[counter].GetMahikaPercent() >= 1.0f;
 
         m_mahikaDatas[counter].AddScore(score);
         float mahikaPercent = m_mahikaDatas[counter].GetMahikaPercent();
         m_mahikaContainer.SetMahikaBarFill(mahikaPercent, counter);
 
-        if (mahikaPercent >= 1.0f) IncrementCounter();
+        int completedBarCount = 0;
+        if (!wasComplete && mahikaPercent >= 1.0f)
+        {
+            completedBarCount = counter + 1;
+            IncrementCounter();
+        }
+
         UpdateMahikaText();
+        return completedBarCount;
     }
     public float GetMahikaPercent(int _index = 0)
     {

@@ -48,6 +48,13 @@ public class UIButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
         interactableOnPress = false;
     }
 
+    // Use an onClick callback for buttons that close their own popup, so the
+    // sound plays before disabling the popup clears the pointer-press state.
+    public void PlayClickSound()
+    {
+        Play(clickSFX);
+    }
+
     // Some older buttons already play their audio through Inspector events.
     // Keep those sounds and avoid layering the default clip over them.
     private bool HasPointerSound(EventTriggerType eventType)
@@ -67,7 +74,8 @@ public class UIButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
             Object target = callbacks.GetPersistentTarget(i);
             string method = callbacks.GetPersistentMethodName(i);
             if ((target is AudioSource && method == "PlayOneShot") ||
-                (target is AudioManager && method == "PlaySFX")) return true;
+                (target is AudioManager && method == "PlaySFX") ||
+                (target is UIButtonSFX && method == nameof(PlayClickSound))) return true;
         }
         return false;
     }

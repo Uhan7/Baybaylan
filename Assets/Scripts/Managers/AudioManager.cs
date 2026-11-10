@@ -15,12 +15,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioSource bgmSource;
     [SerializeField] private AudioSource ambienceSource;
     [SerializeField] public AudioSource sfxSource;
-    [Tooltip("Dedicated source for Attack and Heal animation audio. Its pitch can change without affecting other SFX.")]
+    [Tooltip("Dedicated source for Attack and Heal animation audio.")]
     [SerializeField] private AudioSource resultSfxSource;
 
     private Coroutine delayedResultSfxCoroutine;
-    private float resultSfxBasePitch = 1f;
-    private bool resultSfxBasePitchCached;
+    private readonly Dictionary<AudioSource, float> audioBasePitches = new Dictionary<AudioSource, float>();
     private bool gameplayBgmStarted;
 
     // Main Functions ----------------------------------------------------------
@@ -49,7 +48,13 @@ public class AudioManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        ResetAllAudioPitch();
         if (Instance == this) Instance = null;
+    }
+
+    private void OnDisable()
+    {
+        ResetAllAudioPitch();
     }
 
     // Helper Functions --------------------------------------------------------
@@ -116,18 +121,36 @@ public class AudioManager : MonoBehaviour
             PlayResultSFXAfterDelay(clip, Mathf.Max(0f, delaySeconds)));
     }
 
-    public void SetResultSFXPitchMultiplier(float multiplier)
+    public void SetAllAudioPitchMultiplier(float multiplier)
     {
         EnsureResultSfxSource();
-        if (resultSfxSource == null) return;
 
-        resultSfxSource.pitch = resultSfxBasePitch * Mathf.Clamp(multiplier, 0.05f, 3f);
+        // Include independent tile, UI, and dialogue sources, as well as the
+        // manager's music, ambience, and SFX. Remember each source's original
+        // pitch once, including sources created while the effect is running.
+        foreach (AudioSource source in FindObjectsByType<AudioSource>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (!audioBasePitches.ContainsKey(source))
+                audioBasePitches.Add(source, source.pitch);
+        }
+
+        float pitchMultiplier = Mathf.Clamp(multiplier, 0.05f, 3f);
+        foreach (KeyValuePair<AudioSource, float> entry in audioBasePitches)
+        {
+            if (entry.Key != null)
+                entry.Key.pitch = entry.Value * pitchMultiplier;
+        }
     }
 
-    public void ResetResultSFXPitch()
+    public void ResetAllAudioPitch()
     {
-        if (resultSfxSource != null)
-            resultSfxSource.pitch = resultSfxBasePitch;
+        foreach (KeyValuePair<AudioSource, float> entry in audioBasePitches)
+        {
+            if (entry.Key != null)
+                entry.Key.pitch = entry.Value;
+        }
+        audioBasePitches.Clear();
     }
 
     private IEnumerator PlayResultSFXAfterDelay(AudioClip clip, float delaySeconds)
@@ -156,12 +179,6 @@ public class AudioManager : MonoBehaviour
 
             if (sfxSource != null)
                 resultSfxSource.outputAudioMixerGroup = sfxSource.outputAudioMixerGroup;
-        }
-
-        if (!resultSfxBasePitchCached)
-        {
-            resultSfxBasePitch = resultSfxSource.pitch;
-            resultSfxBasePitchCached = true;
         }
     }
 }

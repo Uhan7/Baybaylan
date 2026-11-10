@@ -18,6 +18,7 @@ MonoBehaviour:
   protagonistPortrait: {fileID: 21300000, guid: 5503716c3015549a3a8c50da9587156a, type: 3}
   targetName: Pah
   targetPortrait: {fileID: 21300000, guid: 7cd0fdbec15d34de18903dd7bef1c570, type: 3}
+  targetEnemyAttacksBeforeYouLose: 1
   selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 10

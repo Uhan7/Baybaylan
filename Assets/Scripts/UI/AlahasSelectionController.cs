@@ -104,6 +104,9 @@ public class AlahasSelectionController : MonoBehaviour
             return;
         }
 
+        // Tutorial scenes can keep this selector inactive until dialogue is skipped.
+        // Activate it first so Awake initializes its canvas and button callbacks.
+        if (!gameObject.activeSelf) gameObject.SetActive(true);
         if (selectionActive) return;
         if (AlahasManager.Instance == null)
         {

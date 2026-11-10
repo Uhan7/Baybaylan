@@ -66,8 +66,15 @@ public class PopupUI : MonoBehaviour
     {
         isOpen = anim != null && anim.GetBool("Open");
 
-        if (returnToTitleButton != null && gameObject.scene.name == "Title Screen")
-            returnToTitleButton.gameObject.SetActive(false);
+        if (returnToTitleButton != null)
+        {
+            // Bind locally instead of inheriting scene-specific Inspector targets.
+            // UIButtonSFX on the button handles its hover and click audio.
+            returnToTitleButton.onClick = new Button.ButtonClickedEvent();
+            returnToTitleButton.onClick.AddListener(ReturnToTitle);
+            if (gameObject.scene.name == "Title Screen")
+                returnToTitleButton.gameObject.SetActive(false);
+        }
 
         if (alwaysOnTop)
             BringToFront();

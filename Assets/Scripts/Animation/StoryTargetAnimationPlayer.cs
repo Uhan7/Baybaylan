@@ -200,6 +200,47 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
         yield return PlayHitInternal(false, Color.white, Color.white);
     }
 
+    public bool CanPlayMirroredAttack => WordSubmissionAnimationPlayer.CanSamplePortrait(
+        targetAnimator, WordSubmissionAnimationPlayer.FindClip(targetAnimator, hitStateName));
+
+    public IEnumerator PlayMirroredAttack(AnimationClip attackClip)
+    {
+        yield return WordSubmissionAnimationPlayer.PlayMirroredPortraitClip(targetAnimator, attackClip, maximumWaitSeconds);
+    }
+
+    public IEnumerator PlayMirroredHitAfterDelay(
+        Animator recipient, float delay, bool overrideColors, Color colorA, Color colorB)
+    {
+        if (delay > 0f) yield return new WaitForSeconds(delay);
+
+        ParticleSystem impact = null;
+        try
+        {
+            if (attackImpactParticles != null)
+            {
+                // Keep the same UI particle setup, but place the burst on the left portrait.
+                impact = Instantiate(attackImpactParticles, attackImpactParticles.transform.parent);
+                impact.transform.position = recipient.transform.Find("Portrait Holder").position;
+                if (overrideColors)
+                {
+                    ParticleSystem.MainModule main = impact.main;
+                    main.startColor = new ParticleSystem.MinMaxGradient(colorA, colorB);
+                }
+                impact.Play(true);
+            }
+
+            if (shakeScreenOnHit)
+                ScreenShake.ShakeGlobal(screenShakeDuration, screenShakeIntensity);
+
+            yield return WordSubmissionAnimationPlayer.PlayMirroredPortraitClip(
+                recipient, WordSubmissionAnimationPlayer.FindClip(targetAnimator, hitStateName), maximumWaitSeconds);
+        }
+        finally
+        {
+            if (impact != null) Destroy(impact.gameObject);
+        }
+    }
+
     private IEnumerator PlayHitInternal(bool overrideImpactColors, Color impactColorA, Color impactColorB)
     {
         if (!CanPlayState(hitStateName, out int stateHash)) yield break;
