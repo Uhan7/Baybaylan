@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
+  m_Name: WritingTest
+  m_EditorClassIdentifier: 
+  levelName: Writing Test
+  sceneName: Game Scene
+  protagonistName: Tala
+  protagonistPortrait: {fileID: 21300000, guid: 5896e747ddb90477c90fcd546b89bfad, type: 3}
+  targetName: Amihan
+  targetPortrait: {fileID: 21300000, guid: cfc3684607e4c48f683453da78f36721, type: 3}
+  targetEnemyAttacksBeforeYouLose: 0
+  selectionBackground: {fileID: 21300000, guid: e701bf43cf8bf471f8105b362d61f9bb, type: 3}
+  flipSelectionBackground: 0
+  tilesAmount: 3
+  kaposNaTitik: 2
+  tilesSelection:
+  - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
+  - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+  - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
+  itinakdangTitikPerAksyon:
+  - aksyon: 1
+    tiles:
+    - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
+    - {fileID: 6897560512971629955, guid: a125ddb5f42f6479a9ccd25d8717abbd, type: 3}
+    - {fileID: 6897560512971629955, guid: 379f8d9a9440e4b8096d5bdbbff7faa0, type: 3}
+  - aksyon: 2
+    tiles:
+    - {fileID: 6897560512971629955, guid: 379f8d9a9440e4b8096d5bdbbff7faa0, type: 3}
+    - {fileID: 6897560512971629955, guid: c3eadfde37fe14b64b5046e7d2bb58fd, type: 3}
+    - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+  - aksyon: 3
+    tiles:
+    - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+    - {fileID: 6897560512971629955, guid: a125ddb5f42f6479a9ccd25d8717abbd, type: 3}
+    - {fileID: 6897560512971629955, guid: e9ec02d21c4724e4b98f6ce1d6a5d013, type: 3}
+    - {fileID: 6897560512971629955, guid: a125ddb5f42f6479a9ccd25d8717abbd, type: 3}
+    - {fileID: 6897560512971629955, guid: e9ec02d21c4724e4b98f6ce1d6a5d013, type: 3}
+  - aksyon: 4
+    tiles:
+    - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
+    - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+    - {fileID: 6897560512971629955, guid: a125ddb5f42f6479a9ccd25d8717abbd, type: 3}
+  - aksyon: 5
+    tiles:
+    - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+    - {fileID: 6897560512971629955, guid: c3eadfde37fe14b64b5046e7d2bb58fd, type: 3}
+    - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
+  - aksyon: 6
+    tiles:
+    - {fileID: 6897560512971629955, guid: 1787ae0ccc78841e9b99cd835f75f0f0, type: 3}
+    - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
+    - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
+    - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
+  predefinedTiles:
+  - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
+  - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
+  - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
+  hasMultipleTargetMahika: 0
+  targetMahika: 700
+  multipleTargetMahika: 64000000
+  maxAksyon: 6
+  numKaposAksyon: 0
+  alahasSlotCount: 1
+  alahasAquiredAfterWin: {fileID: 0}
+  activePaghihigpit:
+  - {fileID: 11400000, guid: 9241cc720eb97a94baa27ee9e41e4f01, type: 2}
+  - {fileID: 11400000, guid: 07920ac805fc9c649b4840b0a7a4738b, type: 2}
+  partikularNaSalita_wordList:
+  - panata
+  - manila
+  - alapaap
+  - palaka
+  - simula
+  - kasubha
+  nagpapalitAnyoForms: []

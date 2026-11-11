@@ -316,6 +316,12 @@ public class AlahasSelectionController : MonoBehaviour
         CompleteProceed();
     }
 
+    // public void StartLevel()
+    // {
+    //     CompleteProceed();
+    //     print("Hello?");
+    // }
+
     private void CompleteProceed()
     {
         HideConfirmationPrompt();
