@@ -68,6 +68,7 @@ MonoBehaviour:
   maxAksyon: 6
   numKaposAksyon: 0
   alahasSlotCount: 3
+  allowIncompleteAlahasLoadout: 0
   alahasAquiredAfterWin: {fileID: 11400000, guid: bfc35ab727cca2444a3d49baafec43ba, type: 2}
   activePaghihigpit:
   - {fileID: 11400000, guid: 9241cc720eb97a94baa27ee9e41e4f01, type: 2}
@@ -79,3 +80,4 @@ MonoBehaviour:
   - salita
   - amihan
   - kawayan
+  nagpapalitAnyoForms: []

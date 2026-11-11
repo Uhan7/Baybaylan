@@ -91,8 +91,12 @@ public static class AlahasSelectionPrefabSetup
             Alahas[] allAlahas = AssetDatabase.FindAssets("t:Alahas", new[] { AlahasFolder })
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .Select(AssetDatabase.LoadAssetAtPath<Alahas>)
-                .Where(alahas => alahas != null && alahas.alahasSprite != null)
-                .OrderBy(alahas => alahas.alahasName)
+                .Where(alahas =>
+                    alahas != null &&
+                    alahas.alahasSprite != null &&
+                    !alahas.hideFromSelection)
+                .OrderBy(alahas => alahas.selectionOrder)
+                .ThenBy(alahas => alahas.alahasName)
                 .ToArray();
 
             SerializedObject serializedController = new SerializedObject(controller);

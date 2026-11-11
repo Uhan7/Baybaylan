@@ -17,6 +17,7 @@ public sealed class AlahasSelectionWarningRule
     [TextArea(2, 4), SerializeField] private string message;
 
     public string Message => message;
+    public AlahasSelectionWarningCondition Condition => condition;
 
     public AlahasSelectionWarningRule(
         AlahasSelectionWarningCondition warningCondition,

@@ -7,6 +7,10 @@ public abstract class Alahas : ScriptableObject
     [SerializeField] public string alahasName = "Pangalan ng Alahas";
     [SerializeField] public SaveManager.SaveDataNames saveDataName;
     [SerializeField] public Sprite alahasSprite;
+    [Min(0), Tooltip("Order used by the pre-level Alahas picker. Lower values appear first.")]
+    [SerializeField] public int selectionOrder;
+    [Tooltip("Hide this Alahas from the pre-level picker without deleting its asset.")]
+    [SerializeField] public bool hideFromSelection;
     [TextArea(2, 2), SerializeField] public string description = "Deskripsyon tungkol sa Alahas.";
     [TextArea(2, 2), SerializeField] public string extraText = "Extra text tungkol sa Alahas.";
     [SerializeField] public int numberOfSlotsNeeded = 1;

@@ -283,7 +283,10 @@ public class AlahasSelectionController : MonoBehaviour
             AddVisibleUnique(displayAlahas, inventory.allAlahas);
 
         AddVisibleUnique(displayAlahas, allAlahas);
-        return displayAlahas;
+        return displayAlahas
+            .OrderBy(alahas => alahas.selectionOrder)
+            .ThenBy(alahas => alahas.alahasName)
+            .ToList();
     }
 
     private static void AddVisibleUnique(
@@ -293,6 +296,7 @@ public class AlahasSelectionController : MonoBehaviour
         foreach (Alahas alahas in source)
             if (alahas != null &&
                 alahas.alahasSprite != null &&
+                !alahas.hideFromSelection &&
                 !destination.Contains(alahas))
                 destination.Add(alahas);
     }
@@ -302,8 +306,17 @@ public class AlahasSelectionController : MonoBehaviour
         if (!selectionActive || proceedRequested) return;
 
         EnsureDefaultWarnings();
+        LevelConfig levelConfig = GameManager.Instance != null
+            ? GameManager.Instance.config
+            : null;
+        bool allowIncompleteLoadout = levelConfig != null &&
+            levelConfig.allowIncompleteAlahasLoadout;
         pendingWarnings = proceedWarnings
-            .Where(rule => rule != null && rule.ShouldWarn(draftSlots))
+            .Where(rule =>
+                rule != null &&
+                (!allowIncompleteLoadout ||
+                 rule.Condition != AlahasSelectionWarningCondition.PartiallyFilledSlots) &&
+                rule.ShouldWarn(draftSlots))
             .ToList();
         pendingWarningIndex = 0;
 
