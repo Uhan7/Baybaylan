@@ -509,6 +509,7 @@ public class TileSet : MonoBehaviour
                 else if (finishedAksyon % 2 != 0 && remainingTiles < 3)
                 {
                     yield return StartCoroutine(SpawnRandomConsonants(3));
+                    hanginAmihanTileDebt += (tilesAmount - 3);
                     yield break;
                 }
                 else
