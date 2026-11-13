@@ -21,7 +21,7 @@ MonoBehaviour:
   targetEnemyAttacksBeforeYouLose: 1
   selectionBackground: {fileID: 0}
   flipSelectionBackground: 0
-  tilesAmount: 11
+  tilesAmount: 3
   kaposNaTitik: 2
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
@@ -70,7 +70,6 @@ MonoBehaviour:
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
   - {fileID: 11400000, guid: 680e14ad6df79f04484e51d787d882af, type: 2}
-  - {fileID: 11400000, guid: 4ccbb2a1285bb9c4eb2a78e8ca2eb6ec, type: 2}
   partikularNaSalita_wordList:
   - ba
   - 

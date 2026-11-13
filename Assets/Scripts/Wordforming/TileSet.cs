@@ -257,11 +257,13 @@ public class TileSet : MonoBehaviour
     {
         if (pakpakDeleteRoutine != null) return;
 
+        // Get the sacred tiles
         Tile sacredTile = config.HasPaghihigpit(PaghihigpitTypes.SagradongTitik) &&
             SalitaSlots.Instance != null
             ? SalitaSlots.Instance.GetSagradongTitik()
             : null;
 
+        // Create a list of tiles that can be deleted.
         List<Tile> availableTiles = new List<Tile>();
         foreach (Transform child in transform)
         {
@@ -279,7 +281,11 @@ public class TileSet : MonoBehaviour
         }
 
         pakpakFadeTargets.Clear();
-        int targetCount = Mathf.Min(amount, availableTiles.Count);
+
+        // Three is the minimum remaining count, not the number to delete.
+        int deletionBudget = Mathf.Max(0, CountPakpakTrayTiles() - 3);
+        int targetCount = Mathf.Min(amount, Mathf.Min(availableTiles.Count, deletionBudget));
+
         if (targetCount <= 0) return;
 
         for (int i = 0; i < targetCount; i++)
@@ -343,6 +349,14 @@ public class TileSet : MonoBehaviour
         {
             if (tile == null) continue;
 
+            // Tiles may have moved into the word slots during the countdown.
+            // Recheck the tray before each deletion to preserve its minimum.
+            if (tile.transform.parent != transform || CountPakpakTrayTiles() <= 3)
+            {
+                tile.CancelPakpakFade();
+                continue;
+            }
+
             if (tile != null && !tile.isTemp)
                 pakpakNormalTilesRemoved++;
 
@@ -356,6 +370,14 @@ public class TileSet : MonoBehaviour
 
         pakpakFadeTargets.Clear();
         pakpakDeleteRoutine = null;
+    }
+
+    private int CountPakpakTrayTiles()
+    {
+        int count = 0;
+        foreach (Transform child in transform)
+            if (child.GetComponent<Tile>() != null) count++;
+        return count;
     }
 
     private bool CanAdvancePakpakTimer()
@@ -388,6 +410,16 @@ public class TileSet : MonoBehaviour
 
     public IEnumerator RemovePakpakTemporaryTiles()
     {
+        // Submission has already advanced the counter. Amihan carries the
+        // unsubmitted pool across odd turns, including surviving Pakpak tiles.
+        int finishedAksyon = AksyonCounter.Instance != null
+            ? AksyonCounter.Instance.GetCurrentAksyon() - 1
+            : 0;
+        if (config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan) &&
+            !config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik) &&
+            finishedAksyon > 0 && finishedAksyon % 2 != 0)
+            yield break;
+
         bool removedAny = false;
 
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -420,6 +452,7 @@ public class TileSet : MonoBehaviour
         if (pakpakTemporaryTileSpawnDelay > 0f)
             yield return new WaitForSeconds(pakpakTemporaryTileSpawnDelay);
 
+        // Each turn grants the full bonus, even when Amihan retained old tiles.
         yield return SpawnRandomTiles(AlahasSubManager.Instance.extraTilesToAdd, true);
     }
 
@@ -520,7 +553,7 @@ public class TileSet : MonoBehaviour
                 else if (finishedAksyon % 2 != 0 && remainingTiles < 3)
                 {
                     yield return StartCoroutine(SpawnRandomConsonants(3));
-                    hanginAmihanTileDebt += (tilesAmount - 3);
+                    hanginAmihanTileDebt += tilesAmount - 3;
                     yield break;
                 }
                 else
