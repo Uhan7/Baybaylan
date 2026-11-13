@@ -482,12 +482,23 @@ public class TileSet : MonoBehaviour
         }
     }
 
-    public IEnumerator SpawnTiles(int _tilesAmount) // Can be called by SalitaSlots after valid word
+    public IEnumerator SpawnTiles(int _tilesAmount, bool bypassHanginAmihan = false) // Can be called by SalitaSlots after valid word
     {
         int tilesAmount = _tilesAmount;
+    
+        // Paghihigpit: Itinakdang Titik
+        if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
+        {
+            int currentAksyon = AksyonCounter.Instance != null
+                ? AksyonCounter.Instance.GetCurrentAksyon()
+                : 1;
+
+            yield return SpawnItinakdangTiles(currentAksyon);
+            yield break;
+        }
 
         // Paghihigpit: Hangin Amihan
-        if (config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
+        if(!bypassHanginAmihan && config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
         {
             int remainingTiles = GetRemainingTiles();
 
@@ -518,17 +529,6 @@ public class TileSet : MonoBehaviour
                     hanginAmihanTileDebt = 0;
                 }
             }
-        }
-    
-        // Paghihigpit: Itinakdang Titik
-        if (config.HasPaghihigpit(PaghihigpitTypes.ItinakdangTitik))
-        {
-            int currentAksyon = AksyonCounter.Instance != null
-                ? AksyonCounter.Instance.GetCurrentAksyon()
-                : 1;
-
-            yield return SpawnItinakdangTiles(currentAksyon);
-            yield break;
         }
 
         // Paghihigpit: Hangin Habagat

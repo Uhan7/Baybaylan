@@ -21,8 +21,8 @@ MonoBehaviour:
   targetEnemyAttacksBeforeYouLose: 1
   selectionBackground: {fileID: 0}
   flipSelectionBackground: 0
-  tilesAmount: 5
-  kaposNaTitik: 3
+  tilesAmount: 11
+  kaposNaTitik: 2
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
   - {fileID: 6897560512971629955, guid: 53c7d3e8f59b84def9fd14ef060166fb, type: 3}
@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 841008c8fce704f53b7495398f3fb4b9, type: 3}
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   hasMultipleTargetMahika: 0
-  targetMahika: 500
+  targetMahika: 100
   multipleTargetMahika: 0b00000016000000210000002c00000037000000420000004d000000
   maxAksyon: 7
   numKaposAksyon: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit:
   - {fileID: 11400000, guid: 680e14ad6df79f04484e51d787d882af, type: 2}
+  - {fileID: 11400000, guid: 4ccbb2a1285bb9c4eb2a78e8ca2eb6ec, type: 2}
   partikularNaSalita_wordList:
   - ba
   - 
