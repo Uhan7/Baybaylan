@@ -1144,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 6895901920543502783, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Sprite
       value:
-      objectReference: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
+      objectReference: {fileID: 21300000, guid: b0c341cd720394e4ab59aa1fc4f354df, type: 3}
     - target: {fileID: 7480141936776251777, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   backgroundImage: {fileID: 1927150348840607796}
-  mountainBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
+  mountainBackground: {fileID: 21300000, guid: b0c341cd720394e4ab59aa1fc4f354df, type: 3}
   castleBackground: {fileID: 21300000, guid: 6eaa39efa65114f7aa8e37b8996fde35, type: 3}
   mountainBgm: {fileID: 8300000, guid: 1a3d86205785b452e8312244ebcb4f7a, type: 3}
   mountainAmbience: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}

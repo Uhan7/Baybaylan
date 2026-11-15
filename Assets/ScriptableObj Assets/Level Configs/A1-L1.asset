@@ -19,7 +19,7 @@ MonoBehaviour:
   targetName: Kurita
   targetPortrait: {fileID: 21300000, guid: 84172cf523e3c44808db932a6f75ad78, type: 3}
   targetEnemyAttacksBeforeYouLose: 1
-  selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
+  selectionBackground: {fileID: 21300000, guid: 2383a22c417764d1699793f919b5486f, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 10
   kaposNaTitik: 2
