@@ -364,4 +364,17 @@ public class AlahasManager : MonoBehaviour
 
         return Mathf.Max(0, slotCapacity - occupiedSlotCount);
     }
+
+    public bool HasPangilNiOryo()
+    {
+        bool is_pangil = false;
+
+        foreach(Alahas alahas in this.heldAlahas)
+        {
+            PangilNiOryolAlahas component = alahas as PangilNiOryolAlahas;
+            if (component != null) is_pangil = true;
+        }
+
+        return is_pangil;
+    }
 }

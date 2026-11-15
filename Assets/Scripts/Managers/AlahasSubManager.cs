@@ -179,11 +179,16 @@ class AlahasSubManager : MonoBehaviour
         StartCoroutine(SpawnTilesAndNotify(amount));
     }
 
-    private IEnumerator SpawnTilesAndNotify(int amount)
+    public void SpawnPangilReplacementTiles(int amount)
+    {
+        StartCoroutine(SpawnTilesAndNotify(amount, true));
+    }
+
+    private IEnumerator SpawnTilesAndNotify(int amount, bool bypassHanginAmihan = false)
     {
         if (TileSet.Instance == null) yield break;
 
-        yield return TileSet.Instance.SpawnTiles(amount);
+        yield return TileSet.Instance.SpawnTiles(amount, bypassHanginAmihan);
         onTilesRefreshed();
     }
 

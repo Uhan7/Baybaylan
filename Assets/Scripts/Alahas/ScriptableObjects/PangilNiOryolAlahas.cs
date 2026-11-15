@@ -5,12 +5,17 @@ class PangilNiOryolAlahas : Alahas
 {
     public void refreshTiles()
     {
+        if (AlahasManager.Instance == null || TileSet.Instance == null ||
+            AlahasSubManager.Instance == null) return;
+
         if(AlahasManager.Instance.TryConsumeActivation(this))
         {
             int tileCount = TileSet.Instance.transform.childCount;
             foreach(Transform tile in TileSet.Instance.transform)
                 Destroy(tile.gameObject);
-            AlahasSubManager.Instance.spawnTiles(tileCount);
+            // This replaces existing tiles rather than refilling after a turn.
+            // Hangin Amihan must neither withhold replacements nor change its debt.
+            AlahasSubManager.Instance.SpawnPangilReplacementTiles(tileCount);
         }
     }
 
