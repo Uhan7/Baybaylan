@@ -322,7 +322,7 @@ public class SalitaSlots : MonoBehaviour
         }
 
         // Check if the candidate salita is in the wordlist
-        if (!GameManager.Instance.validWords.Contains(latinSalita))
+        if (!GameManager.Instance.validWords.Contains(BaybayinTileSequenceRules.ToTileSpelling(latinSalita)))
         {
             invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
             return false;

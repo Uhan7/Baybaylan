@@ -11,12 +11,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A2-Intro
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   levelName: 'Ibalong: Panimula'
-  sceneName: Area 2 - Intro
-  protagonistName:
+  sceneName: Title Screen
+  protagonistName: 
   protagonistPortrait: {fileID: 0}
-  targetName:
+  targetName: 
   targetPortrait: {fileID: 0}
   targetEnemyAttacksBeforeYouLose: 0
   selectionBackground: {fileID: 0}
@@ -42,7 +42,13 @@ MonoBehaviour:
   maxAksyon: 5
   numKaposAksyon: 0
   alahasSlotCount: 3
+  allowIncompleteAlahasLoadout: 0
   alahasAquiredAfterWin: {fileID: 0}
   activePaghihigpit: []
-  partikularNaSalita_wordList: []
+  partikularNaSalita_wordList:
+  - 
+  - 
+  - 
+  - 
+  - 
   nagpapalitAnyoForms: []

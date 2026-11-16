@@ -2,6 +2,11 @@ using System.Collections.Generic;
 
 public static class BaybayinTileSequenceRules
 {
+    public static string ToTileSpelling(string word)
+    {
+        return word.ToLowerInvariant().Replace('e', 'i').Replace('o', 'u');
+    }
+
     public static bool HasValidStandaloneVowelPlacement(IReadOnlyList<Tile> tiles)
     {
         if (tiles == null) return false;
