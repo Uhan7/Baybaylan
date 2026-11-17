@@ -42,7 +42,6 @@ public class TileSet : MonoBehaviour
     private bool skipNextPakpakElapsedFrame;
     private bool gameplayStarted;
     private bool requireSelectionAfterDialogueSkip;
-    private System.Action pendingGameplayReveal;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -133,16 +132,6 @@ public class TileSet : MonoBehaviour
         if (!gameplayStarted) requireSelectionAfterDialogueSkip = true;
     }
 
-    internal bool DeferSkippedDialogueEventsUntilSelection(System.Action revealGameplay)
-    {
-        if (gameplayStarted || !requireSelectionAfterDialogueSkip) return false;
-        // Opening tutorial events reveal the HUD as well as starting tiles.
-        // Gate the entire event, before any of those visuals are shown.
-        pendingGameplayReveal = revealGameplay;
-        ShowAlahasSelection();
-        return true;
-    }
-
     public void BeginGameplay()
     {
         if (gameplayStarted) return;
@@ -154,10 +143,6 @@ public class TileSet : MonoBehaviour
             return;
         }
         gameplayStarted = true;
-
-        System.Action revealGameplay = pendingGameplayReveal;
-        pendingGameplayReveal = null;
-        revealGameplay?.Invoke();
 
         if (AlahasSubManager.Instance != null)
             AlahasSubManager.Instance.BeginGameplay();

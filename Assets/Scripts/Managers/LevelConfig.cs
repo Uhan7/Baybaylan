@@ -79,6 +79,8 @@ public class LevelConfig : ScriptableObject
     [Header("Alahas")]
     [Min(1), Tooltip("Number of Alahas slots available to Tala in this level.")]
     [SerializeField] public int alahasSlotCount = 3;
+    [Tooltip("Allows Proceed without showing the partially-filled-slots warning. The no-Alahas-selected warning still appears.")]
+    [SerializeField] public bool allowIncompleteAlahasLoadout;
     [SerializeField] public Alahas alahasAquiredAfterWin;
 
     [Header("Paghihigpit")]
