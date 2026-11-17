@@ -206,7 +206,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 6cef76a48916e4781bf67ccf77335b2c, type: 2}
   saveNextLevelID: 0
   wordlists:
-  - {fileID: 4900000, guid: a5c02f657d48e454e8314a9307520c0c, type: 3}
+  - {fileID: 4900000, guid: 2f6605ea70b2c43909e618084a26d765, type: 3}
   wordsUsed: []
   enableWinningAttackSlowMotion: 1
   winningAttackSlowMotionDuration: 1.8
