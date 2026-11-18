@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Alahas/Bilaong Ratan")]
+[CreateAssetMenu(menuName = "Alahas/Bilaong Yantok")]
 class BilaongRatanAlahas : Alahas
 {
     int extraTurns = 1;

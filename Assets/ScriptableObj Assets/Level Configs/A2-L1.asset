@@ -21,7 +21,7 @@ MonoBehaviour:
   targetEnemyAttacksBeforeYouLose: 0
   selectionBackground: {fileID: 0}
   flipSelectionBackground: 0
-  tilesAmount: 11
+  tilesAmount: 12
   kaposNaTitik: 2
   tilesSelection:
   - {fileID: 6897560512971629955, guid: 25e7ecb9897524244a6ee6e94e2466a3, type: 3}
@@ -55,9 +55,9 @@ MonoBehaviour:
     tiles: []
   predefinedTiles: []
   hasMultipleTargetMahika: 0
-  targetMahika: 600
-  multipleTargetMahika: 58020000
-  maxAksyon: 5
+  targetMahika: 1100
+  multipleTargetMahika: 4c040000
+  maxAksyon: 7
   numKaposAksyon: 0
   alahasSlotCount: 4
   alahasAquiredAfterWin: {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}

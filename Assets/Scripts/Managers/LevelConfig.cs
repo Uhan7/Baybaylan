@@ -77,7 +77,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public int numKaposAksyon;
 
     [Header("Alahas")]
-    [Min(1), Tooltip("Number of Alahas slots available to Tala in this level.")]
+    [Min(0), Tooltip("Number of Alahas slots available to Tala in this level.")]
     [SerializeField] public int alahasSlotCount = 3;
     [Tooltip("Allows Proceed without showing the partially-filled-slots warning. The no-Alahas-selected warning still appears.")]
     [SerializeField] public bool allowIncompleteAlahasLoadout;
@@ -171,7 +171,7 @@ public class LevelConfig : ScriptableObject
     private void UpdateAksyonSettings()
     {
         maxAksyon = Mathf.Max(1, maxAksyon);
-        alahasSlotCount = Mathf.Max(1, alahasSlotCount);
+        alahasSlotCount = Mathf.Max(0, alahasSlotCount);
 
         // Logic for Kapos na Titik
         if (HasPaghihigpit(PaghihigpitTypes.KaposNaTitik))

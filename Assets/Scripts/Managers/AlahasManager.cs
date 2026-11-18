@@ -215,9 +215,9 @@ public class AlahasManager : MonoBehaviour
             ? GameManager.Instance.config
             : null;
         if (levelConfig != null)
-            maxAlahasSlotCount = Mathf.Max(1, levelConfig.alahasSlotCount);
+            maxAlahasSlotCount = Mathf.Max(0, levelConfig.alahasSlotCount);
 
-        if (alahasSlots == null || maxAlahasSlotCount <= 0) return;
+        if (alahasSlots == null) return;
 
         for (int i = 0; i < alahasSlots.Length; i++)
             if (alahasSlots[i] != null)
@@ -358,9 +358,7 @@ public class AlahasManager : MonoBehaviour
     public int getEmptySlotAmount()
     {
         int occupiedSlotCount = heldAlahas?.Count(alahas => alahas) ?? 0;
-        int slotCapacity = maxAlahasSlotCount > 0
-            ? maxAlahasSlotCount
-            : alahasSlots?.Length ?? 0;
+        int slotCapacity = Mathf.Max(0, maxAlahasSlotCount);
 
         return Mathf.Max(0, slotCapacity - occupiedSlotCount);
     }
