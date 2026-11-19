@@ -19,7 +19,7 @@ MonoBehaviour:
   targetName: Pitong-ulong Ibon
   targetPortrait: {fileID: 21300000, guid: a1652bb66fe2c4189b9f159fe007af24, type: 3}
   targetEnemyAttacksBeforeYouLose: 1
-  selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
+  selectionBackground: {fileID: 21300000, guid: e65c95b15ed364ff2aefb1800b4e9c9b, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 10
   kaposNaTitik: 2
@@ -58,16 +58,16 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: a9859fcddc277466f891c4ccfa6d5492, type: 3}
   - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
   hasMultipleTargetMahika: 1
-  targetMahika: 600
+  targetMahika: 111
   multipleTargetMahika: 6f0000006f0000006f0000006f0000006f0000006f0000006f000000
   maxAksyon: 5
   numKaposAksyon: 0
-  alahasSlotCount: 4
-  alahasAquiredAfterWin: {fileID: 0}
+  alahasSlotCount: 3
+  alahasAquiredAfterWin: {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
   activePaghihigpit:
-  - {fileID: 11400000, guid: 7849d4880d93e8e4dbb7eee692f052c0, type: 2}
-  - {fileID: 11400000, guid: a72c54938cccf8f4e8dc954a5a02af24, type: 2}
   - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
+  - {fileID: 11400000, guid: e04c4071c7ee97f45a3d4112e35a319c, type: 2}
+  - {fileID: 11400000, guid: 7849d4880d93e8e4dbb7eee692f052c0, type: 2}
   partikularNaSalita_wordList:
   - 
   - 

@@ -27,6 +27,10 @@ public class SaveManager : MonoBehaviour
         UnlockedArea1Level4Point5 = 31,
         UnlockedArea1Level5 = 32,
         UnlockedArea1Level5Point5 = 33,
+        UnlockedArea2Intro = 35,
+        UnlockedArea2Level1 = 36,
+        UnlockedArea2Level2 = 37,
+        UnlockedArea2Level3 = 38,
 
         //settings data
         //add ts eventually
@@ -75,7 +79,11 @@ public class SaveManager : MonoBehaviour
         (SaveDataNames.UnlockedArea1Level4, "Area 1 - Level 4"),
         (SaveDataNames.UnlockedArea1Level4Point5, "Area 1 - Level 4.5"),
         (SaveDataNames.UnlockedArea1Level5, "Area 1 - Level 5"),
-        (SaveDataNames.UnlockedArea1Level5Point5, "Area 1 - Level 5.5")
+        (SaveDataNames.UnlockedArea1Level5Point5, "Area 1 - Level 5.5"),
+        (SaveDataNames.UnlockedArea2Intro, "Area 2 - Intro"),
+        (SaveDataNames.UnlockedArea2Level1, "Area 2 - Level 1"),
+        (SaveDataNames.UnlockedArea2Level2, "Area 2 - Level 2"),
+        (SaveDataNames.UnlockedArea2Level3, "Area 2 - Level 3")
     };
 
     public bool HasPlayed => getSaveData<int>(SaveDataNames.NewSave) == 0;

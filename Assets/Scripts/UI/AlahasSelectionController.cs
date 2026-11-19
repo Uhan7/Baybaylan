@@ -123,7 +123,15 @@ public class AlahasSelectionController : MonoBehaviour
         CacheSelectionSlots();
         ApplyConfiguredSlotCapacity();
 
-        int slotCount = Mathf.Max(1, selectionSlots.Count);
+        if (selectionSlots.Count == 0)
+        {
+            AlahasManager.Instance.SetLoadout(new List<Alahas>());
+            selectionActive = false;
+            FinishSelection();
+            return;
+        }
+
+        int slotCount = selectionSlots.Count;
         draftSlots = Enumerable.Repeat<Alahas>(null, slotCount).ToList();
         AlahasManager.Instance.SetLoadout(draftSlots);
 
@@ -500,7 +508,7 @@ public class AlahasSelectionController : MonoBehaviour
             ? GameManager.Instance.config
             : null;
         int configuredCount = levelConfig != null
-            ? Mathf.Max(1, levelConfig.alahasSlotCount)
+            ? Mathf.Max(0, levelConfig.alahasSlotCount)
             : selectionSlots.Count;
         int activeCount = Mathf.Min(configuredCount, selectionSlots.Count);
 

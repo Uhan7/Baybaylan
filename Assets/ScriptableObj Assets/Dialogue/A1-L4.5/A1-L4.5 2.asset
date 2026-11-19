@@ -55,7 +55,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 6828c79c5886743c68e740e69eb7944b, type: 3}
+      sprite: {fileID: 21300000, guid: e5db539e1dea49dda55dd76db7c051fd, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
@@ -72,7 +72,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 6828c79c5886743c68e740e69eb7944b, type: 3}
+      sprite: {fileID: 21300000, guid: e5db539e1dea49dda55dd76db7c051fd, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}

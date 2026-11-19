@@ -29,13 +29,13 @@ MonoBehaviour:
     sentence: 'Narrator: The dialogue begins here'
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -43,13 +43,13 @@ MonoBehaviour:
     sentence: I am... character number 1
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -57,13 +57,13 @@ MonoBehaviour:
     sentence: Ako nga pala si karakter bilang 2
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -71,13 +71,13 @@ MonoBehaviour:
     sentence: I luuuuuuuuv men ! ! ! ! !
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -85,13 +85,13 @@ MonoBehaviour:
     sentence: Mahal ko'y eabab
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 0
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 0
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -99,13 +99,13 @@ MonoBehaviour:
     sentence: '3rd Character: What did you just say?'
   - isFourSpeakers: 0
     leftPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 1
     leftSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 1
     rightSecondaryProfile:
       sprite: {fileID: 0}
@@ -161,10 +161,10 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 7de1a81960e7c456ba9168add02642cd, type: 3}
       isTalking: 0
     rightPrimaryProfile:
-      sprite: {fileID: -5374294458032073746, guid: e45247a85368849c59c6ad39d7511326, type: 3}
+      sprite: {fileID: 21300000, guid: e45247a85368849c59c6ad39d7511326, type: 3}
       isTalking: 1
     rightSecondaryProfile:
-      sprite: {fileID: -4778637331904542834, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
+      sprite: {fileID: 21300000, guid: b42caf714e08348b19acd8b0e8cbfd43, type: 3}
       isTalking: 1
     sentence: :0
   soundToPlay: {fileID: 8300000, guid: 79833d48b707c4836a97d1681691b597, type: 3}

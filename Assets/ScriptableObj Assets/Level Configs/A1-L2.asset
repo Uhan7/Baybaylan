@@ -19,7 +19,7 @@ MonoBehaviour:
   targetName: Tarabusaw
   targetPortrait: {fileID: 21300000, guid: e33bdcd9d3216447986cc309e1165491, type: 3}
   targetEnemyAttacksBeforeYouLose: 1
-  selectionBackground: {fileID: 21300000, guid: 529c6f0f3fbea466d8598d05cf0e0db1, type: 3}
+  selectionBackground: {fileID: 21300000, guid: 09585eecba1d74d0db678b4671ad4ba4, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 10
   kaposNaTitik: 2
@@ -59,10 +59,10 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
   hasMultipleTargetMahika: 0
   targetMahika: 540
-  multipleTargetMahika: 64000000
+  multipleTargetMahika: 1c020000
   maxAksyon: 5
   numKaposAksyon: 1
-  alahasSlotCount: 4
+  alahasSlotCount: 3
   alahasAquiredAfterWin: {fileID: 11400000, guid: 22db831bacaca6441a5a4ba54648e42e, type: 2}
   activePaghihigpit:
   - {fileID: 11400000, guid: 3ecca783864192940b4ad6561e5972d2, type: 2}

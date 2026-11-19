@@ -331,7 +331,8 @@ public class GameManager : MonoBehaviour
             foreach (string rawWord in wordlist.text.Split('\n'))
             {
                 string word = rawWord.Trim();
-                if (!string.IsNullOrEmpty(word)) validWords.Add(word);
+                if (!string.IsNullOrEmpty(word))
+                    validWords.Add(BaybayinTileSequenceRules.ToTileSpelling(word));
             }
         }
         //print(validWords.Count);
