@@ -26,6 +26,7 @@ public class TileSet : MonoBehaviour
     [Header("References")]
     [SerializeField] private Canvas canvas;
     [SerializeField] private AlahasSelectionController alahasSelectionPrefab;
+    [SerializeField] private PaghihigpitRevealController paghihigpitRevealPrefab;
 
     [Header("Alahas Selection Flow")]
     [Tooltip("Wait for the first Dialogue Set to call ShowAlahasSelection before gameplay begins.")]
@@ -42,6 +43,7 @@ public class TileSet : MonoBehaviour
     private bool skipNextPakpakElapsedFrame;
     private bool gameplayStarted;
     private bool requireSelectionAfterDialogueSkip;
+    private bool paghihigpitRevealCompleted;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
 
@@ -108,7 +110,33 @@ public class TileSet : MonoBehaviour
             $"[Alahas Selection] OPEN requested by TileSet.ShowAlahasSelection. " +
             $"Expected source: the gameplay scene's first Dialogue Set -> Event After Dialogue.",
             this);
+        if (!paghihigpitRevealCompleted && TryShowPaghihigpitReveal()) return;
 
+        OpenAlahasSelection();
+    }
+
+    private bool TryShowPaghihigpitReveal()
+    {
+        if (PaghihigpitRevealController.TryBeginReveal(this)) return true;
+
+        if (paghihigpitRevealPrefab == null || canvas == null) return false;
+
+        Canvas parentCanvas = canvas.rootCanvas != null ? canvas.rootCanvas : canvas;
+        PaghihigpitRevealController reveal = Instantiate(
+            paghihigpitRevealPrefab,
+            parentCanvas.transform);
+        reveal.BeginReveal(this);
+        return true;
+    }
+
+    internal void ContinueToAlahasSelectionFromReveal()
+    {
+        paghihigpitRevealCompleted = true;
+        OpenAlahasSelection();
+    }
+
+    private void OpenAlahasSelection()
+    {
         if (AlahasSelectionController.TryBeginSelection(this)) return;
 
         if (alahasSelectionPrefab != null && canvas != null)
@@ -516,7 +544,16 @@ public class TileSet : MonoBehaviour
         }
 
         // Paghihigpit: Hangin Amihan
-        if(!bypassHanginAmihan && config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
+        // Debt belongs to the board, not the currently displayed form. If a
+        // Nagpapalit-anyo form skips a refresh and then switches out, repay
+        // that pending refresh on the following action before evaluating the
+        // incoming form's Paghihigpit.
+        if (!bypassHanginAmihan && hanginAmihanTileDebt != 0)
+        {
+            tilesAmount += hanginAmihanTileDebt;
+            hanginAmihanTileDebt = 0;
+        }
+        else if(!bypassHanginAmihan && config.HasPaghihigpit(PaghihigpitTypes.HanginAmihan))
         {
             int remainingTiles = GetRemainingTiles();
 
@@ -540,11 +577,6 @@ public class TileSet : MonoBehaviour
                     yield return StartCoroutine(SpawnRandomConsonants(3));
                     hanginAmihanTileDebt += tilesAmount - 3;
                     yield break;
-                }
-                else
-                {
-                    tilesAmount += hanginAmihanTileDebt;
-                    hanginAmihanTileDebt = 0;
                 }
             }
         }

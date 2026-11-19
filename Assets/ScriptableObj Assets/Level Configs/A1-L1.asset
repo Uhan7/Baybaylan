@@ -65,8 +65,8 @@ MonoBehaviour:
   alahasSlotCount: 3
   alahasAquiredAfterWin: {fileID: 11400000, guid: 8676a782083642b4a92825b56748d5af, type: 2}
   activePaghihigpit:
-  - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
-  - {fileID: 11400000, guid: a72c54938cccf8f4e8dc954a5a02af24, type: 2}
+  - {fileID: 11400000, guid: 4ccbb2a1285bb9c4eb2a78e8ca2eb6ec, type: 2}
+  - {fileID: 11400000, guid: 3ecca783864192940b4ad6561e5972d2, type: 2}
   partikularNaSalita_wordList:
   - 
   - 

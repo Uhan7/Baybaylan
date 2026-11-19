@@ -496,6 +496,11 @@ public class SalitaSlots : MonoBehaviour
             while (tileSet.WaitingForDialogueBeforeCurrentAksyonTiles)
                 yield return null;
 
+            // Resolve the form that was just attacked before selecting the next
+            // Nagpapalit-anyo form. Tile effects such as Hangin Habagat must use
+            // the outgoing form's Paghihigpit, not the incoming form's.
+            NagpapalitAnyoManager.Instance?.switchBoss(false);
+
             scoringSalita = false;
             Draggable.SetInteractionLocked(false);
         }
