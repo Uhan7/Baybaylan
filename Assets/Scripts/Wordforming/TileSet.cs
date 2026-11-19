@@ -243,6 +243,7 @@ public class TileSet : MonoBehaviour
     {
         GameObject tile = Instantiate(tilePrefab, transform);
         Tile tileScript = tile.GetComponent<Tile>();
+        tileScript.SetSourcePrefab(tilePrefab.GetComponent<Tile>());
         tileScript.isTemp = isTemporary;
         tile.GetComponent<Draggable>().canvas = canvas;
         tileScript.sfxSource = sfxSource;
@@ -283,11 +284,7 @@ public class TileSet : MonoBehaviour
             Tile tile = child.GetComponent<Tile>();
 
             if (tile == null) continue;
-            if (sacredTile != null && tile.isVowel == sacredTile.isVowel &&
-                string.Equals(
-                    tile.isVowel ? tile.vowel : tile.rootConsonant,
-                    sacredTile.isVowel ? sacredTile.vowel : sacredTile.rootConsonant,
-                    System.StringComparison.OrdinalIgnoreCase))
+            if (tile.HasSameTilePrefab(sacredTile))
                 continue;
 
             availableTiles.Add(tile);
@@ -472,6 +469,7 @@ public class TileSet : MonoBehaviour
     public void DahonNgKawayanSpawn(GameObject tilePrefab)
     {
         GameObject tile = Instantiate(tilePrefab, transform);
+        tile.GetComponent<Tile>().SetSourcePrefab(tilePrefab.GetComponent<Tile>());
         PrepareDahonNgKawayanTile(tile);
     }
 

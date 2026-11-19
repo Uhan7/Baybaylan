@@ -15,7 +15,7 @@ MonoBehaviour:
   levelName: 'Ibalong: Rabot'
   sceneName: Area 2 - Level 2
   protagonistName: Bantong
-  protagonistPortrait: {fileID: 0}
+  protagonistPortrait: {fileID: 21300000, guid: 78b6043b63e534b3db2b363ae525677d, type: 3}
   targetName: Rabot
   targetPortrait: {fileID: 0}
   targetEnemyAttacksBeforeYouLose: 0

@@ -234,14 +234,9 @@ public class SalitaSlots : MonoBehaviour
         if (config.HasPaghihigpit(PaghihigpitTypes.SagradongTitik))
         {
             string sagradongTitikString = m_sagradongTitik?.latinText ?? "";
-            // Match the consonant regardless of kudlit/krus: MA also accepts
-            // MI, MU, or M, including the M in TAHIMIK. Vowels match themselves.
-            string requiredLetter = m_sagradongTitik == null ? ""
-                : m_sagradongTitik.isVowel ? m_sagradongTitik.vowel
-                : m_sagradongTitik.rootConsonant;
-            bool wordContainsSagradongTitik = !string.IsNullOrEmpty(requiredLetter)
-                && !string.IsNullOrEmpty(latinSalita)
-                && latinSalita.IndexOf(requiredLetter, StringComparison.OrdinalIgnoreCase) >= 0;
+            // Match actual tile prefabs, regardless of their current kudlit/krus.
+            bool wordContainsSagradongTitik = activeTiles.Exists(
+                tile => tile != null && tile.HasSameTilePrefab(m_sagradongTitik));
 
             // If the word does not contain sagradong titik, invalid input
             if (!wordContainsSagradongTitik)

@@ -8,6 +8,7 @@ public class PaghihigpitRevealController : MonoBehaviour
 {
     [Header("Paghihigpit Card")]
     [SerializeField] private Image artwork;
+    [SerializeField] private GameObject backupBox;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI extraText;
@@ -127,6 +128,8 @@ public class PaghihigpitRevealController : MonoBehaviour
     private void ShowCurrentPaghihigpit()
     {
         Paghihigpit paghihigpit = revealQueue[revealIndex];
+        if (backupBox != null)
+            backupBox.SetActive(paghihigpit.paghihigpitType == PaghihigpitTypes.SagradongTitik);
         if (artwork != null)
         {
             artwork.sprite = paghihigpit.paghihigpitSprite;
@@ -143,9 +146,7 @@ public class PaghihigpitRevealController : MonoBehaviour
         }
         if (progressText != null) progressText.text = $"{revealIndex + 1} / {revealQueue.Count}";
         if (proceedButtonText != null)
-            proceedButtonText.text = revealIndex == revealQueue.Count - 1
-                ? "Pumili ng Alahas"
-                : "Susunod";
+            proceedButtonText.text = revealIndex == revealQueue.Count - 1 ? "Pumili ng Alahas" : "Susunod";
     }
 
     private void FinishReveal()
