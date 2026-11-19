@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 11
   paghihigpitName: Nagpapalit-anyo
-  paghihigpitSprite: {fileID: 0}
+  paghihigpitSprite: {fileID: 21300000, guid: c431b81d081ee472aa11fba591574fc4, type: 3}
   description: 'Kada sulat ni Tala ng salita, mag-iiba ng anyo si Oryol.
 
 

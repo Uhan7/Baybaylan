@@ -146,7 +146,7 @@ public class PaghihigpitRevealController : MonoBehaviour
         }
         if (progressText != null) progressText.text = $"{revealIndex + 1} / {revealQueue.Count}";
         if (proceedButtonText != null)
-            proceedButtonText.text = revealIndex == revealQueue.Count - 1 ? "Pumili ng Alahas" : "Susunod";
+            proceedButtonText.text = revealIndex == revealQueue.Count - 1 ? "Magpatuloy" : "Susunod";
     }
 
     private void FinishReveal()
