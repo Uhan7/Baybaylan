@@ -69,6 +69,7 @@ class DahonNgKawayanUI : MonoBehaviour
             if (tilePrefab == null) continue;
 
             GameObject choice = Instantiate(tilePrefab, tileLayoutGroupParent.transform);
+            choice.GetComponent<Tile>().SetSourcePrefab(tilePrefab.GetComponent<Tile>());
             choice.name = $"{tilePrefab.name} (Dahon Choice)";
             TileSet.Instance.PrepareDahonNgKawayanTile(choice);
             choice.AddComponent<DahonNgKawayanChoice>().Initialize(this);

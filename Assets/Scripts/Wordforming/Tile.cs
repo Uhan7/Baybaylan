@@ -45,6 +45,19 @@ public class Tile : MonoBehaviour
     [SerializeField] private AudioClip writeSFX;
     [SerializeField] private AudioClip dropSFX;
 
+    // Set by spawners so instances retain their authored tile identity.
+    public Tile SourcePrefab { get; private set; }
+
+    public void SetSourcePrefab(Tile prefab)
+    {
+        SourcePrefab = prefab;
+    }
+
+    public bool HasSameTilePrefab(Tile other)
+    {
+        return other != null && SourcePrefab != null && SourcePrefab == other.SourcePrefab;
+    }
+
     [Header("Tile Info")]
     [SerializeField] public bool isVowel; // Read in TileSet.cs
     [HideIf("isVowel"), SerializeField] public string rootConsonant; // Read in TileSet.cs

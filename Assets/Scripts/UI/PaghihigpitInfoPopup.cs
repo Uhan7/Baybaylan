@@ -6,6 +6,7 @@ class PaghihigpitInfoPopup : ToolTipAble
 {
     Paghihigpit currentPaghihigpit;
     [SerializeField] private Image paghihigpitImage;
+    [SerializeField] private GameObject backupBox;
     TextMeshProUGUI paghihigpitName;
     TextMeshProUGUI paghihigpitDesc;
     TextMeshProUGUI paghihigpitExtra;
@@ -24,6 +25,9 @@ class PaghihigpitInfoPopup : ToolTipAble
     public void SetPaghihigpit(Paghihigpit paghihigpit)
     {
         currentPaghihigpit = paghihigpit;
+        if (backupBox != null)
+            backupBox.SetActive(paghihigpit != null &&
+                paghihigpit.paghihigpitType == PaghihigpitTypes.SagradongTitik);
         paghihigpitImage.sprite = paghihigpit ? paghihigpit.paghihigpitSprite : null;
         displayedLetter = null;
         RefreshSagradongIcon();
@@ -79,13 +83,6 @@ class PaghihigpitInfoPopup : ToolTipAble
         {
             string displayedWord = GetPartikularNaSalita();
             return $"{description.TrimEnd()} \"<uppercase>{displayedWord}</uppercase>\"";
-        }
-
-        // Return description of Sagradong Titik
-        if (currentPaghihigpit.paghihigpitType == PaghihigpitTypes.SagradongTitik)
-        {
-            string sagradongTitik = GetSagradongTitik();
-            return $"{description.TrimEnd()} <size=80>\"<uppercase>{sagradongTitik}</uppercase>\"";
         }
 
         return description;

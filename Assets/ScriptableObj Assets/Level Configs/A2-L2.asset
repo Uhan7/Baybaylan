@@ -15,7 +15,7 @@ MonoBehaviour:
   levelName: 'Ibalong: Rabot'
   sceneName: Area 2 - Level 2
   protagonistName: Bantong
-  protagonistPortrait: {fileID: 0}
+  protagonistPortrait: {fileID: 21300000, guid: 78b6043b63e534b3db2b363ae525677d, type: 3}
   targetName: Rabot
   targetPortrait: {fileID: 0}
   targetEnemyAttacksBeforeYouLose: 0
@@ -58,12 +58,12 @@ MonoBehaviour:
   targetMahika: 1350
   multipleTargetMahika: 46050000
   maxAksyon: 7
-  numKaposAksyon: 1
+  numKaposAksyon: 0
   alahasSlotCount: 4
   alahasAquiredAfterWin: {fileID: 11400000, guid: 6d2019e2db34dea4b88b739d82ceee05, type: 2}
   activePaghihigpit:
+  - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
   - {fileID: 11400000, guid: de7de40f3748f3d4e86c8cf9a2dcb366, type: 2}
-  - {fileID: 11400000, guid: c35de9df5fb0fe44086d5f6c54709201, type: 2}
   - {fileID: 11400000, guid: e04c4071c7ee97f45a3d4112e35a319c, type: 2}
   partikularNaSalita_wordList: []
   nagpapalitAnyoForms: []

@@ -3997,6 +3997,10 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 6845038482070892079}
+    - target: {fileID: 8212876970858877797, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
+      propertyPath: paghihigpitRevealPrefab
+      value:
+      objectReference: {fileID: 6328358006096164115, guid: 7c401133ead0c4e18b6f7d218df2fba8, type: 3}
     - target: {fileID: 8504559926940234925, guid: 9f0216071d4df4e78941f8aef5de5539, type: 3}
       propertyPath: m_Alpha
       value: 0
