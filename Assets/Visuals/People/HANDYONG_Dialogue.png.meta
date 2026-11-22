@@ -198,7 +198,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HANDYONG_Dialogue_0: 8166149149094370094
+      HANDYONG_Dialogue_1: 1843645118189402867
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HANDYONG 2048_0: -3295649522772473679
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -273,7 +273,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BALTOG_Dialogue_0: 7727284658066613370
+      BALTOG_Dialogue_1: -7886035979909636911
+      BALTOG_Dialogue_2: 109982880561313757
+      BALTOG_Dialogue_3: -6447741113295060020
+      BALTOG_Dialogue_4: 6763750174988246723
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

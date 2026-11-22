@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BANTONG 2048_0: 8571824336551640013
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
