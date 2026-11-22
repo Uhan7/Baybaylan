@@ -56,6 +56,7 @@ public class AlahasManager : MonoBehaviour
         // transform.SetParent(null, true);
         // DontDestroyOnLoad(gameObject);
 
+        ClearLoadoutForNewLevel();
         ResetAllAlahas(); //does nothing rn 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -63,53 +64,19 @@ public class AlahasManager : MonoBehaviour
 
     void Start()
     {
-        getHeldAlahasFromSave();
         ResetActivationCounts();
         RefreshAlahasSlotsUI();
     }
 
-    void getHeldAlahasFromSave()
+    private void ClearLoadoutForNewLevel()
     {
-        List<Alahas> allAlahas = TalaAlahasHolder.Instance.allAlahas;
-        heldAlahas.Clear();
-        heldAlahas.AddRange(Enumerable.Repeat(default(Alahas), 6)); 
+        if (heldAlahas == null)
+            heldAlahas = new List<Alahas>();
+        else
+            heldAlahas.Clear();
 
-        for(int i = 0; i < maxAlahasSlotCount; i++)
-        {
-            switch(i)
-            {
-                case 0:
-                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot1);
-                    break;
-                case 1:
-                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot2);
-                    break;
-                case 2:
-                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot3);
-                    break;
-                case 3:
-                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot4);
-                    break;
-                case 4:
-                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot5);
-                    break;
-                case 5:
-                    heldAlahas[i] = getSpecificAlahasFromSave(allAlahas, SaveManager.SaveDataNames.AlahasSlot6);
-                    break;
-            }
-        }
-    }
-
-    Alahas getSpecificAlahasFromSave(List<Alahas> list, SaveManager.SaveDataNames slotName)
-    {
-        string data = SaveManager.Instance.getSaveData<string>(slotName);
-        foreach(Alahas alahas in list)
-        {
-            if(alahas.saveDataName.ToString() == data)
-                return alahas;
-        }
-
-        return null;
+        int slotCapacity = Mathf.Max(0, maxAlahasSlotCount);
+        heldAlahas.AddRange(Enumerable.Repeat<Alahas>(null, slotCapacity));
     }
 
     private void AbsorbSceneLoadout(AlahasManager sceneManager)

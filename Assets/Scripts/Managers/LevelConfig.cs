@@ -84,6 +84,8 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public Alahas alahasAquiredAfterWin;
 
     [Header("Paghihigpit")]
+    [Tooltip("Show the Paghihigpit introduction popups before Alahas selection. Turning this off keeps the restrictions active during gameplay.")]
+    [SerializeField] public bool showPaghihigpitReveal = true;
     [Tooltip("Drop every Paghihigpit active in this level here.")]
     [OnValueChanged("UpdateAksyonSettings")]
     [SerializeField] public List<Paghihigpit> activePaghihigpit = new List<Paghihigpit>();

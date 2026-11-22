@@ -117,6 +117,9 @@ public class TileSet : MonoBehaviour
 
     private bool TryShowPaghihigpitReveal()
     {
+        LevelConfig levelConfig = GameManager.Instance != null ? GameManager.Instance.config : null;
+        if (levelConfig != null && !levelConfig.showPaghihigpitReveal) return false;
+
         if (PaghihigpitRevealController.TryBeginReveal(this)) return true;
 
         if (paghihigpitRevealPrefab == null || canvas == null) return false;
