@@ -46,6 +46,13 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [Tooltip("Scaled seconds after the Attack animation begins. Leave at 0 when the clip already contains its own buildup.")]
     [SerializeField, Min(0f)] private float attackSfxDelay;
 
+    [Header("Enemy Finishing Melee Attack")]
+    [Tooltip("Always used for the enemy's finishing attack, independently of the protagonist's selected animation.")]
+    [SerializeField] private AnimationClip enemyMeleeAttackClip;
+    [SerializeField, Min(0f)] private float enemyMeleeHitDelay = 35f / 60f;
+    [Tooltip("Reuses Attack Sfx, with separate melee timing so a ranged attack's sound delay cannot carry over.")]
+    [SerializeField, Min(0f)] private float enemyMeleeSfxDelay = 35f / 60f - 0.225f;
+
     [ShowIf(nameof(IsHealSelected)), Header("Heal Effects")]
     [Tooltip("Particles sent from the protagonist toward the story target.")]
     [SerializeField] private ParticleSystem healMagicParticles;
@@ -127,7 +134,7 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     }
 
     public bool CanPlayTargetEnemyAttack => storyTarget != null &&
-        CanSamplePortrait(targetAnimator, FindClip(targetAnimator, attackStateName)) &&
+        CanSamplePortrait(targetAnimator, enemyMeleeAttackClip) &&
         storyTarget.CanPlayMirroredAttack;
 
     public IEnumerator PlayTargetEnemyAttack()
@@ -135,9 +142,10 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
         if (!CanPlayTargetEnemyAttack) yield break;
 
         Coroutine hit = StartCoroutine(storyTarget.PlayMirroredHitAfterDelay(
-            targetAnimator, targetHitDelay, overrideAttackParticleColor, attackParticleColor, attackParticleColorB));
-        PlayResultSfx(SuccessfulWordAnimation.Attack);
-        yield return storyTarget.PlayMirroredAttack(FindClip(targetAnimator, attackStateName));
+            targetAnimator, enemyMeleeHitDelay, overrideAttackParticleColor, attackParticleColor, attackParticleColorB));
+        if (attackSfx != null && AudioManager.Instance != null)
+            AudioManager.Instance.PlayResultSFX(attackSfx, enemyMeleeSfxDelay);
+        yield return storyTarget.PlayMirroredAttack(enemyMeleeAttackClip);
         yield return hit;
     }
 
