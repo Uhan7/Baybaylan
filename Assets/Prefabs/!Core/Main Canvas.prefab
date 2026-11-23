@@ -389,8 +389,8 @@ RectTransform:
   - {fileID: 2224362610211268692}
   - {fileID: 7973356164409550323}
   - {fileID: 7045544532037175373}
-  - {fileID: 1997480357570792485}
   - {fileID: 2095382126870680200}
+  - {fileID: 1997480357570792485}
   - {fileID: 5620125218695130762}
   - {fileID: 6286330795875553498}
   - {fileID: 1596587609674965206}
@@ -1000,6 +1000,10 @@ PrefabInstance:
     - target: {fileID: 840454398384681972, guid: f785168883c654a9d82d33f99f570031, type: 3}
       propertyPath: m_Name
       value: Mahika Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396128228017630626, guid: f785168883c654a9d82d33f99f570031, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3102124663486029895, guid: f785168883c654a9d82d33f99f570031, type: 3}
       propertyPath: m_fontSize

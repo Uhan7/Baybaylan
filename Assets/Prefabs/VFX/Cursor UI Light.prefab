@@ -210,5 +210,5 @@ MonoBehaviour:
   cursorOffset: {x: 0, y: 0}
   darknessColor: {r: 0, g: 0, b: 0, a: 1}
   darknessOpacity: 0.45
-  followSharpness: 0.1
+  followSharpness: 0.01
   clampToScreen: 1

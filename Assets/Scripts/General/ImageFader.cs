@@ -65,13 +65,13 @@ public class ImageFader : MonoBehaviour
             float t = elapsedTime / duration;
 
             float newAlpha = Mathf.Lerp(startAlpha, desiredAlpha, t);
-            targetImage.color = new Color(color.r, color.g, color.b, newAlpha);
+            SetAlpha(newAlpha);
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        targetImage.color = new Color(color.r, color.g, color.b, desiredAlpha);
+        SetAlpha(desiredAlpha);
     }
 
 }

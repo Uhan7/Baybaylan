@@ -27,7 +27,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 2
-    vignetteIntensity: 0.75
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: "..!"
   - isFourSpeakers: 1

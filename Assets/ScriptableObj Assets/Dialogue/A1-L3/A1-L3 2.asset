@@ -43,27 +43,10 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    backgroundMode: 0
-    vignetteIntensity: 0
+    backgroundMode: 2
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: ..!
-  - isFourSpeakers: 0
-    leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
-      isTalking: 1
-    leftSecondaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
-      isTalking: 0
-    rightSecondaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    backgroundMode: 0
-    vignetteIntensity: 0
-    backgroundFadeDuration: 0
-    sentence: Hnggg!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
@@ -80,13 +63,13 @@ MonoBehaviour:
     backgroundMode: 1
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "AAH\u2013!"
+    sentence: "AAAH\u2013!"
   - isFourSpeakers: 1
     leftPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 286010dcbebf541389a0e40810e58841, type: 3}
+      sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
       isTalking: 0
     leftSecondaryProfile:
-      sprite: {fileID: 21300000, guid: 9b0a40158a7ec40a0b322aba6c4e023f, type: 3}
+      sprite: {fileID: 21300000, guid: 286010dcbebf541389a0e40810e58841, type: 3}
       isTalking: 0
     rightPrimaryProfile:
       sprite: {fileID: 0}
@@ -94,7 +77,7 @@ MonoBehaviour:
     rightSecondaryProfile:
       sprite: {fileID: 0}
       isTalking: 0
-    backgroundMode: 0
+    backgroundMode: 1
     vignetteIntensity: 0
     backgroundFadeDuration: 0
     sentence: ...

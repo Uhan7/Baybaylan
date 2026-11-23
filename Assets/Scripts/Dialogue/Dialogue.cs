@@ -39,7 +39,7 @@ public struct DialogueSentence
 
 	[ShowIf("backgroundMode", DialogueBackgroundMode.Dim)]
 	[AllowNesting]
-	[Range(0f, 1f), Tooltip("How dark the vignette is. 0 is invisible and 1 is fully dark.")]
+	[ReadOnly, Range(0f, 1f), Tooltip("Dim dialogue automatically uses a vignette intensity of 0.5.")]
 	public float vignetteIntensity;
 
 	[Min(0f), Tooltip("Seconds used to fade to the selected background mode. Use 0 for the default fade duration.")]
@@ -51,8 +51,19 @@ public struct DialogueSentence
 [CreateAssetMenu]
 public class Dialogue : ScriptableObject
 {
+	public const float DimVignetteIntensity = 0.5f;
+
 	public DialogueSentence[] sentences;
 	public AudioClip soundToPlay;
 	public float textSpeed = 0.022f;
 	public float textPunctSpeed = 0.24f;
+
+	private void OnValidate()
+	{
+		if (sentences == null) return;
+
+		for (int i = 0; i < sentences.Length; i++)
+			if (sentences[i].backgroundMode == DialogueBackgroundMode.Dim)
+				sentences[i].vignetteIntensity = DimVignetteIntensity;
+	}
 }

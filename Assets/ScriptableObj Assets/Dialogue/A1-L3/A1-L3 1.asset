@@ -44,7 +44,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 2
-    vignetteIntensity: 0.75
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: Ayan! Dumilim ulit...
   - isFourSpeakers: 1
@@ -61,7 +61,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 2
-    vignetteIntensity: 0.75
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: Ahh... Tumingala ka, Tala!
   - isFourSpeakers: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 2
-    vignetteIntensity: 0.75
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: Napakalaki... Tinatakpan ng mga pakpak nito ang araw!
   - isFourSpeakers: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 2
-    vignetteIntensity: 0.75
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: Paano natin siya aabutin...
   - isFourSpeakers: 1
@@ -146,7 +146,7 @@ MonoBehaviour:
       sprite: {fileID: 0}
       isTalking: 0
     backgroundMode: 2
-    vignetteIntensity: 0.75
+    vignetteIntensity: 0.5
     backgroundFadeDuration: 0
     sentence: Babalutin ko ng liwanag ang mga Olisi mo, Sulayman! Pagkatapos, ibato
       mo sa halimaw na iyon!
