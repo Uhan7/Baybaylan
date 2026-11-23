@@ -17,7 +17,7 @@ MonoBehaviour:
   alahasSprite: {fileID: 21300000, guid: 821e58e64be994199ae7c281abb21c3e, type: 3}
   selectionOrder: 4
   hideFromSelection: 0
-  description: 'Magdagdag ng 3 na titik.
+  description: 'Nagdaragdag ng 3 titik.
 
 
     Pagkalipas ng 20 segundo mula sa paglilitaw

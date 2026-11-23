@@ -342,13 +342,33 @@ public class GameManager : MonoBehaviour
     {
         if (roundEnding) return;
         roundEnding = true;
-        StartCoroutine(PlayRoundEnding());
+        StartCoroutine(PlayRoundEnding(MahikaManager.Instance.DidWin()));
     }
 
-    private IEnumerator PlayRoundEnding()
+#if UNITY_EDITOR
+    [Button("Debug Win", EButtonEnableMode.Playmode)]
+    private void DebugWin()
     {
-        bool didWin = MahikaManager.Instance.DidWin();
+        if (!Application.isPlaying || roundEnding || config == null) return;
+        TileSet tileSet = FindFirstObjectByType<TileSet>(FindObjectsInactive.Include);
+        if (tileSet != null && !tileSet.GameplayStarted)
+        {
+            Debug.LogWarning("Finish the opening dialogue and Alahas selection before using Debug Win.", this);
+            return;
+        }
+        if (DialogueManager.Instance != null && DialogueManager.Instance.dialoguing)
+        {
+            Debug.LogWarning("Finish or skip the current dialogue before using Debug Win.", this);
+            return;
+        }
 
+        roundEnding = true;
+        StartCoroutine(PlayRoundEnding(true));
+    }
+#endif
+
+    private IEnumerator PlayRoundEnding(bool didWin)
+    {
         // Tutorial prompts are no longer relevant once the round has ended.
         // Hide them immediately so slow motion cannot leave the hint visible.
         HelperUI.HideAllImmediately();

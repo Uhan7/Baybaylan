@@ -17,11 +17,11 @@ MonoBehaviour:
   alahasSprite: {fileID: 21300000, guid: 3debfdba2240b48e99f49a8601a7e610, type: 3}
   selectionOrder: 5
   hideFromSelection: 0
-  description: '30% na pagkakataon magiging <color=yellow>ginto</color> ang mga titik.
+  description: 'May 30% na pagkakataong maging <color=yellow>ginto</color> ang bawat titik.
 
 
     Ang
-    mga <color=yellow>gintong</color> titik nagbibigay ng 2x iskor.'
+    mga <color=yellow>gintong</color> titik ay nagbibigay ng 2x iskor.'
   extraText: Ang bigat naman ng luya na binigay ni Binibining Makiling..! Ano kaya
     ang sikreto ng mga luyang ito...
   numberOfSlotsNeeded: 1

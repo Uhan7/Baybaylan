@@ -46,6 +46,7 @@ public class TileSet : MonoBehaviour
     private bool paghihigpitRevealCompleted;
 
     public bool WaitingForDialogueBeforeCurrentAksyonTiles => waitingForDialogueBeforeCurrentAksyonTiles;
+    public bool GameplayStarted => gameplayStarted;
 
     int hanginAmihanTileDebt = 0;
 
