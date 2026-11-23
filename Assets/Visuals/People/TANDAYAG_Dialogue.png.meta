@@ -223,7 +223,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TANDAYAG_Dialogue_0: 2719854952928918807
+      TANDAYAG_Dialogue_1: 4664304664781504236
+      TANDAYAG_Dialogue_2: -8521012280837087090
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

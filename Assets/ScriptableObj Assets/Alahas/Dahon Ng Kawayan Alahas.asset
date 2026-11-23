@@ -17,9 +17,9 @@ MonoBehaviour:
   alahasSprite: {fileID: 21300000, guid: 3a7dfadf846b343c59bcfbf75a800c42, type: 3}
   selectionOrder: 1
   hideFromSelection: 0
-  description: 'Pindutin ang Alahas na ito upang magamit.
+  description: 'Pindutin itong Alahas upang magamit.
 
-    Dalawang (2) gamit
+    [Dalawang (2) gamit lamang.]
 
 
     Maaaring

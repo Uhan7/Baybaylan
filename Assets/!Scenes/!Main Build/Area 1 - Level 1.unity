@@ -1160,6 +1160,26 @@ PrefabInstance:
       propertyPath: m_Resource
       value:
       objectReference: {fileID: 8300000, guid: 531effb22808e42748f4f1495d6753d5, type: 3}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackSfxDelay
+      value: 0.35833332
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: targetHitDelay
+      value: 0.5833333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackStateName
+      value: Base Layer.Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: winningAttackCharacterSwapDelay
+      value: 0.5833333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845487172059085069, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

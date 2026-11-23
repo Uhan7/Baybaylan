@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   haloImage: {fileID: 7078989932282277366}
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
   fullGlowIntensity: 2
 --- !u!114 &175398951349558172
 MonoBehaviour:

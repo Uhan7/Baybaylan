@@ -1884,6 +1884,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackSfxDelay
+      value: 0.675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: targetHitDelay
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackStateName
+      value: Base Layer.Attack_Olisi_Throw
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: winningAttackCharacterSwapDelay
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845487172059085069, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6381360207470753235, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
