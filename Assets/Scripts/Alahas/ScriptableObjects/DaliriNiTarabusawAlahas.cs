@@ -5,11 +5,9 @@ class DaliriNiTarabusawAlahas : Alahas
 {
     const int MinTilesToRecommend = 4;
     const int MaxTilesToRecommend = 6;
-    bool hasReccomended = false;
 
     public override void onStart()
     {
-        hasReccomended = false;
         AlahasSubManager.Instance.reccWordButtonActive = false;
     }
 
@@ -26,7 +24,7 @@ class DaliriNiTarabusawAlahas : Alahas
 
     public bool TryActivate()
     {
-        if (hasReccomended || AlahasSubManager.Instance == null ||
+        if (AlahasSubManager.Instance == null ||
             AlahasManager.Instance == null ||
             !AlahasManager.Instance.CanActivate(this))
             return false;
@@ -39,7 +37,6 @@ class DaliriNiTarabusawAlahas : Alahas
         if (!AlahasManager.Instance.TryConsumeActivation(this))
             return false;
 
-        hasReccomended = true;
         AlahasSubManager.Instance.reccButtonPressed = false;
         AlahasSubManager.Instance.reccWordButtonActive = false;
         return true;
@@ -47,8 +44,7 @@ class DaliriNiTarabusawAlahas : Alahas
 
     public override void onSubmit()
     {
-        if (hasReccomended)
-            AlahasSubManager.Instance.reccWordButtonActive = false;
+        AlahasSubManager.Instance.reccWordButtonActive = false;
     }
 
     public override void onTurnEnd()

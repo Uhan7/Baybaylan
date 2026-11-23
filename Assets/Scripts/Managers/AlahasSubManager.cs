@@ -211,30 +211,67 @@ class AlahasSubManager : MonoBehaviour
         List<string> candidates = BuildRecommendationCandidates(config);
         Shuffle(candidates);
 
-        foreach (string candidate in candidates)
+        // Choose a length before searching words, so common short words do not
+        // dominate. Missing lengths are removed and the remaining weights rerolled.
+        List<int> lengths = new List<int>();
+        for (int length = safeMin; length <= safeMax; length++)
+            lengths.Add(length);
+
+        while (lengths.Count > 0)
         {
-            List<Tile> selectedTiles = new List<Tile>();
-            bool requireMarkedConsonants = config != null &&
-                config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin);
+            int totalWeight = 0;
+            foreach (int length in lengths)
+                totalWeight += RecommendationLengthWeight(length);
 
-            if (!TryMatchWord(
-                    candidate,
-                    0,
-                    tiles,
-                    selectedTiles,
-                    safeMin,
-                    safeMax,
-                    requireMarkedConsonants))
-                continue;
+            int roll = Random.Range(0, totalWeight);
+            int chosenLength = lengths[0];
+            foreach (int length in lengths)
+            {
+                roll -= RecommendationLengthWeight(length);
+                if (roll < 0)
+                {
+                    chosenLength = length;
+                    break;
+                }
+            }
+            lengths.Remove(chosenLength);
 
-            FormWord(salitaSlots, selectedTiles, candidate);
-            return true;
+            foreach (string candidate in candidates)
+            {
+                List<Tile> selectedTiles = new List<Tile>();
+                bool requireMarkedConsonants = config != null &&
+                    config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin);
+
+                if (!TryMatchWord(
+                        candidate,
+                        0,
+                        tiles,
+                        selectedTiles,
+                        chosenLength,
+                        chosenLength,
+                        requireMarkedConsonants))
+                    continue;
+
+                FormWord(salitaSlots, selectedTiles, candidate);
+                return true;
+            }
         }
 
         Debug.LogWarning(
             "Daliri ni Tarabusaw could not form a valid word from the current tiles.",
             this);
         return false;
+    }
+
+    private static int RecommendationLengthWeight(int tileCount)
+    {
+        switch (tileCount)
+        {
+            case 4: return 50;
+            case 5: return 30;
+            case 6: return 20;
+            default: return 1;
+        }
     }
 
     // Kept for older UnityEvent/script callers while activation now comes from
