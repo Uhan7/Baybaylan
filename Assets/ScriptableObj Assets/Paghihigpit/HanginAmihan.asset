@@ -15,8 +15,11 @@ MonoBehaviour:
   paghihigpitType: 13
   paghihigpitName: Hangin Amihan
   paghihigpitSprite: {fileID: 21300000, guid: cfc3684607e4c48f683453da78f36721, type: 3}
-  description: Kada dalawang aksyon lamang madagdag ang mga titik. Kung mas kaunti
-    sa 3 tile ang natira pagkatapos magsumite, bibigyan ka ng 3 bagong katinig.
+  description: 'Kada dalawang aksyon lamang madagdag ang mga titik.
+
+
+    Kung mas
+    kaunti sa 3 tile ang natira pagkatapos magsumite, bibigyan ka ng 3 bagong katinig.'
   extraText: 'Napakainit na nga, mahina pa ang hangin!
 
 '

@@ -5,7 +5,7 @@ class PakpakNiPahAlahas : Alahas
 {
     bool countdownStarted = false;
     bool tilesAreReady = false;
-    float durationTillDelete = 15f;
+    float durationTillDelete = 20f;
     float tileDeleteInterval = 0.1f;
     [SerializeField] private AnimationCurve disappearanceCurve = new AnimationCurve(
         new Keyframe(0f, 0f, 0f, 0f),

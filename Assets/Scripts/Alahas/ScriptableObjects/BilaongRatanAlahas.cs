@@ -4,7 +4,7 @@ using UnityEngine;
 class BilaongRatanAlahas : Alahas
 {
     int extraTurns = 1;
-    int extraTiles = 1;
+    int extraTiles = 0;
 
     public override void onStart()
     {

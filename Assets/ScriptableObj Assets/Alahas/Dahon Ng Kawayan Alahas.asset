@@ -19,9 +19,11 @@ MonoBehaviour:
   hideFromSelection: 0
   description: 'Pindutin ang Alahas na ito upang magamit.
 
+    (2 beses)
 
-    Dalawang beses bawat
-    level, maaaring gumawa ng 1 napiling titik.'
+
+    Maaaring
+    gumawa ng 1 napiling titik.'
   extraText: "Regalo ito nina Malakas at Maganda sa akin\u2026 Ano na kaya nangyari
     sa kanila? Sana ay matapos na itong lahat\u2026"
   numberOfSlotsNeeded: 1

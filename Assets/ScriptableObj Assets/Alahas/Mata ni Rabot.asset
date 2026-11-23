@@ -17,9 +17,12 @@ MonoBehaviour:
   alahasSprite: {fileID: 21300000, guid: 4bba5c128555e42e1971993356d20c5b, type: 3}
   selectionOrder: 9
   hideFromSelection: 0
-  description: Ang kabuuang multiplier ng mahika ay nakabatay sa kasalukuyang aksyon.
-    Magsisimula ito sa x0.75 sa unang aksyon at unti-unting tataas hanggang x1.25
-    na sa huling aksyon.
+  description: 'Ang kabuuang multiplier ng mahika ay nakabatay sa kasalukuyang aksyon.
+
+
+    Magsisimula
+    ito sa x0.75 sa unang aksyon at unti-unting tataas hanggang x1.25 na sa huling
+    aksyon.'
   extraText: Kahit na wala naman si Rabot, nakakatakot pa rin tingnan ang matang
     ito.
   numberOfSlotsNeeded: 1

@@ -15,6 +15,9 @@ MonoBehaviour:
   paghihigpitType: 10
   paghihigpitName: Pag-iibang Titik
   paghihigpitSprite: {fileID: 21300000, guid: 70ca1035014de45d18abbc03191ac997, type: 3}
-  description: Hindi maaaring maulit ang parehong titik ng Baybayin sa isang salita.
-    Maaari pa ring maulit ang letra sa Latin na baybay nito.
+  description: 'Hindi maaaring maulit ang parehong titik ng Baybayin sa isang salita.
+
+
+    Maaari
+    pa ring maulit ang letra sa Latin na baybay nito.'
   extraText: Kailangan ko gamitin ang pagkamalikhain ko rito bilang isang manunulat!
