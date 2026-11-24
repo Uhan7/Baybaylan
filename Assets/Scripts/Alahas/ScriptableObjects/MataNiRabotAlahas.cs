@@ -5,7 +5,7 @@ using System.Globalization;
 class MataNiRabot : Alahas
 {
     float minMulti = -0.25f;
-    float maxMulti = 0.25f;
+    float maxMulti = 0.5f;
     float currentMulti = 0;
     float multiPerTurn = 0;
     bool inited = false;
@@ -14,7 +14,7 @@ class MataNiRabot : Alahas
     {
         int turnCount = AksyonCounter.Instance.maxAvailableAksyon; 
         turnCount--; //last turn doesnt count apparently 
-        multiPerTurn = (maxMulti - minMulti) / turnCount;
+        multiPerTurn = turnCount > 0 ? (maxMulti - minMulti) / turnCount : 0f;
         currentMulti = minMulti;
         inited = true;
 

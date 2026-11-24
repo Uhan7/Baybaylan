@@ -20,7 +20,7 @@ MonoBehaviour:
   description: 'Nagdaragdag ng 3 titik.
 
 
-    Pagkalipas ng 20 segundo mula sa paglilitaw
+    Pagkalipas ng 30 segundo mula sa paglilitaw
     ng titik, aalisin ang 5 random na titik.'
   extraText: "Galing ito kay Pah\u2026 Ang bilis naging gabi noong tinakpan niya
     ang araw\u2026"

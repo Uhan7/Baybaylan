@@ -4,7 +4,7 @@ using UnityEngine;
 class SungayNiTandayagAlahas : Alahas
 {
     float timer = 0;
-    float maxTime = 12;
+    const float maxTime = 15f;
     bool stopTimer = false;
     bool countdownActive = false;
     float scoreMulti = 0.5f;

@@ -18,7 +18,7 @@ MonoBehaviour:
   selectionOrder: 6
   hideFromSelection: 0
   description: 'Bawat salitang may 7 o higit pang letra sa Latin na baybay ay nagdaragdag
-    ng 0.2 sa multiplier ng mahika (x1, x1.2, x1.4, at higit pa).
+    ng 0.1 sa multiplier ng mahika (x1.1, x1.2, x1.3, at higit pa).
 
 
     Babalik sa

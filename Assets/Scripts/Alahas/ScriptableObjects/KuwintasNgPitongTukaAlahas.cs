@@ -6,7 +6,7 @@ using System.Globalization;
 class KuwintasNgPitongTukaAlahas : Alahas
 {
     int letterCountRequirement = 7;
-    float scoreMultiplier = 0.2f;
+    float scoreMultiplier = 0.1f;
     float totalScoreMultiplier = 0f;
 
     public override void onStart()
@@ -37,8 +37,7 @@ class KuwintasNgPitongTukaAlahas : Alahas
         int totalLetterCount = text.Length;
         if(totalLetterCount >= letterCountRequirement)
         {
-            // Each qualifying word adds 0.2 to the total multiplier:
-            // x1.2, x1.4, x1.6, and so on.
+            // Each qualifying word adds 0.1: x1.1, x1.2, x1.3, and so on.
             totalScoreMultiplier += scoreMultiplier;
             Debug.Log(
                 "Kuwintas ng Pitong Tuka: " + totalLetterCount +

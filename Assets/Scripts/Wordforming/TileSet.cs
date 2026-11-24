@@ -35,6 +35,7 @@ public class TileSet : MonoBehaviour
     private bool waitingForDialogueBeforeCurrentAksyonTiles;
     private Coroutine dialogueReleasedSpawnRoutine;
     private Coroutine pakpakDeleteRoutine;
+    public float PakpakSecondsRemaining { get; private set; }
     private readonly List<Tile> pakpakFadeTargets = new List<Tile>();
     private int pakpakNormalTilesRemoved;
     private float pakpakTemporaryTileSpawnDelay = 0.5f;
@@ -319,6 +320,7 @@ public class TileSet : MonoBehaviour
 
     public void CancelPakpakTileCountdown()
     {
+        PakpakSecondsRemaining = 0f;
         if (pakpakDeleteRoutine != null)
         {
             StopCoroutine(pakpakDeleteRoutine);
@@ -338,6 +340,7 @@ public class TileSet : MonoBehaviour
     {
         float elapsed = 0f;
         float safeDuration = Mathf.Max(0f, fadeDuration);
+        PakpakSecondsRemaining = safeDuration;
 
         while (elapsed < safeDuration)
         {
@@ -348,6 +351,7 @@ public class TileSet : MonoBehaviour
             }
 
             elapsed += Time.deltaTime;
+            PakpakSecondsRemaining = Mathf.Max(0f, safeDuration - elapsed);
             float linearProgress = safeDuration > 0f ? elapsed / safeDuration : 1f;
             float fadeProgress = fadeCurve != null
                 ? Mathf.Clamp01(fadeCurve.Evaluate(linearProgress))
@@ -363,9 +367,9 @@ public class TileSet : MonoBehaviour
         {
             if (tile == null) continue;
 
-            // Tiles may have moved into the word slots during the countdown.
-            // Recheck the tray before each deletion to preserve its minimum.
-            if (tile.transform.parent != transform || CountPakpakTrayTiles() <= 3)
+            // Moving a target into Salita does not protect it. Only tray
+            // deletions need to preserve the tray's minimum remaining count.
+            if (tile.transform.parent == transform && CountPakpakTrayTiles() <= 3)
             {
                 tile.CancelPakpakFade();
                 continue;

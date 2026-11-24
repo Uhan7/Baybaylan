@@ -21,7 +21,7 @@ MonoBehaviour:
 
 
     Magsisimula
-    ito sa x0.75 sa unang aksyon at unti-unting tataas hanggang x1.25 sa huling aksyon.'
+    ito sa x0.75 sa unang aksyon at unti-unting tataas hanggang x1.5 sa huling aksyon.'
   extraText: Kahit na wala naman si Rabot, nakakatakot pa rin tingnan ang matang
     ito.
   numberOfSlotsNeeded: 1

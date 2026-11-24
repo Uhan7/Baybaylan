@@ -5,7 +5,7 @@ class PakpakNiPahAlahas : Alahas
 {
     bool countdownStarted = false;
     bool tilesAreReady = false;
-    float durationTillDelete = 20f;
+    const float durationTillDelete = 30f;
     float tileDeleteInterval = 0.1f;
     [SerializeField] private AnimationCurve disappearanceCurve = new AnimationCurve(
         new Keyframe(0f, 0f, 0f, 0f),
@@ -70,5 +70,13 @@ class PakpakNiPahAlahas : Alahas
     {
         countdownStarted = false;
         tilesAreReady = true;
+    }
+
+    public override bool TryGetExtraBadgeText(out string text)
+    {
+        float remaining = TileSet.Instance != null
+            ? TileSet.Instance.PakpakSecondsRemaining : 0f;
+        text = Mathf.CeilToInt(remaining) + "s";
+        return true;
     }
 }
