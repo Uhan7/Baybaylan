@@ -17,9 +17,9 @@ MonoBehaviour:
   protagonistName: Handyong
   protagonistPortrait: {fileID: 21300000, guid: 29cef2249b51a4cf6bff55f3484e8cef, type: 3}
   targetName: Oryol
-  targetPortrait: {fileID: 0}
+  targetPortrait: {fileID: 21300000, guid: 1bb5d8f45765e4b4e8339c2de82fb92a, type: 3}
   targetEnemyAttacksBeforeYouLose: 0
-  selectionBackground: {fileID: 0}
+  selectionBackground: {fileID: 21300000, guid: baeb3d939a3244242a1dad707555a0bb, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 12
   kaposNaTitik: 2
@@ -74,19 +74,19 @@ MonoBehaviour:
   - 
   nagpapalitAnyoForms:
   - bossName: Oryol
-    bossSprite: {fileID: 21300000, guid: fefa436dfe9294b508bdecaf51fa6c07, type: 3}
+    bossSprite: {fileID: 21300000, guid: 1bb5d8f45765e4b4e8339c2de82fb92a, type: 3}
     includeLevelPaghihigpit: 0
     paghihigpit:
     - {fileID: 11400000, guid: 4d4071e432fe184429cd6302d70f61d7, type: 2}
     - {fileID: 11400000, guid: b52525881aafd284c83008b4ab0a282b, type: 2}
   - bossName: Tandayag
-    bossSprite: {fileID: 21300000, guid: ae8ca8681718c4d90a95dc518402bdbd, type: 3}
+    bossSprite: {fileID: 21300000, guid: 03594a3831049497eb0f003b924d4bfb, type: 3}
     includeLevelPaghihigpit: 0
     paghihigpit:
     - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
     - {fileID: 11400000, guid: a72c54938cccf8f4e8dc954a5a02af24, type: 2}
   - bossName: Rabot
-    bossSprite: {fileID: 21300000, guid: 1c3e4471ac02f459295935afc8eb9f89, type: 3}
+    bossSprite: {fileID: 21300000, guid: eb84fedc2276f42e4a66beeb6777f8b7, type: 3}
     includeLevelPaghihigpit: 0
     paghihigpit:
     - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}

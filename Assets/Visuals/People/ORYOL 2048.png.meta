@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ORYOL 2048_0: -7580503209765645045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

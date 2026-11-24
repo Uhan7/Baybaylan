@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7629626847483229229, guid: 141f841dd489d45a4929b4833e186780, type: 3}
       propertyPath: m_hanginHabagatSimulationSpeed
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9020470886520414053, guid: 141f841dd489d45a4929b4833e186780, type: 3}
       propertyPath: m_Enabled

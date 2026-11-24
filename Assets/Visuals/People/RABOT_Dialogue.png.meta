@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RABOT_Dialogue_0: 7901638961657290671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

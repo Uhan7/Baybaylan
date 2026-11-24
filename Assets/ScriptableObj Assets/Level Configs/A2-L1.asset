@@ -17,9 +17,9 @@ MonoBehaviour:
   protagonistName: Baltog
   protagonistPortrait: {fileID: 21300000, guid: 8d1b664ad585b435d9b21e59613f7af6, type: 3}
   targetName: Tandayag
-  targetPortrait: {fileID: 0}
+  targetPortrait: {fileID: 21300000, guid: 03594a3831049497eb0f003b924d4bfb, type: 3}
   targetEnemyAttacksBeforeYouLose: 0
-  selectionBackground: {fileID: 0}
+  selectionBackground: {fileID: 21300000, guid: baeb3d939a3244242a1dad707555a0bb, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 12
   kaposNaTitik: 2

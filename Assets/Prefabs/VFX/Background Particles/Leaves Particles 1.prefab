@@ -36,10 +36,6 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6413288890419459670, guid: 620cc1f4c9f9447658426d97c2ab2393, type: 3}
-      propertyPath: m_hanginHabagatSimulationSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7900760080535203447, guid: 620cc1f4c9f9447658426d97c2ab2393, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

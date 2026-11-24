@@ -223,7 +223,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ORYOL_Dialogue_0: 4714524405102863872
+      ORYOL_Dialogue_1: 8176553274219504444
+      ORYOL_Dialogue_2: -3063307238915897888
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: A2-Intro
   m_EditorClassIdentifier: 
   levelName: 'Ibalong: Panimula'
-  sceneName: Title Screen
+  sceneName: Area 2 - Intro
   protagonistName: 
   protagonistPortrait: {fileID: 0}
   targetName: 
   targetPortrait: {fileID: 0}
   targetEnemyAttacksBeforeYouLose: 0
-  selectionBackground: {fileID: 0}
+  selectionBackground: {fileID: 21300000, guid: baeb3d939a3244242a1dad707555a0bb, type: 3}
   flipSelectionBackground: 0
   tilesAmount: 0
   kaposNaTitik: 2

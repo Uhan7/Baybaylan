@@ -29,7 +29,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Magandang gabi po, Kuya! Papunta po siyang Ibalong."
+    sentence: Magandang gabi po, Kuya! Papunta po siyang Ibalong.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ahh... Sige po! Walang anuman..."
+    sentence: Ahh... Sige po! Walang anuman...
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Tala... Hindi ko maipaliwanag kung gaano ako kasaya na nakilala kita."
+    sentence: Tala... Hindi ko maipaliwanag kung gaano ako kasaya na nakilala kita.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -80,7 +80,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "...Ako rin, Sulayman."
+    sentence: ...Ako rin, Sulayman.
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -97,7 +97,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Dalawin mo kami ulit, Tala, ha?"
+    sentence: Dalawin mo kami ulit, Tala, ha?
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -114,7 +114,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Hahahah... Sige, Sulayman!"
+    sentence: Hahahah... Sige, Sulayman!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -131,7 +131,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Paalam! Mag-ingat ka!"
+    sentence: Paalam! Mag-ingat ka!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 21300000, guid: 73fe8b99696a5457094c92ae224e7529, type: 3}
@@ -148,7 +148,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Paalam na rin!"
+    sentence: Paalam na rin!
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 0}
@@ -165,24 +165,7 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Ayos na ba tayo, ate?"
-  - isFourSpeakers: 0
-    leftPrimaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    leftSecondaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    rightPrimaryProfile:
-      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
-      isTalking: 1
-    rightSecondaryProfile:
-      sprite: {fileID: 0}
-      isTalking: 0
-    backgroundMode: 0
-    vignetteIntensity: 0
-    backgroundFadeDuration: 0
-    sentence: "Ah..! Ayos na po!"
+    sentence: Ayos na ba tayo, ate?
   - isFourSpeakers: 0
     leftPrimaryProfile:
       sprite: {fileID: 0}
@@ -199,7 +182,25 @@ MonoBehaviour:
     backgroundMode: 0
     vignetteIntensity: 0
     backgroundFadeDuration: 0
-    sentence: "Matutulog muna ako habang may oras... May ibang panganib pa roon sa Ibalong..."
+    sentence: Ah..! Ayos na po!
+  - isFourSpeakers: 0
+    leftPrimaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    leftSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    rightPrimaryProfile:
+      sprite: {fileID: 21300000, guid: 769979fd4ad5d4b3296a088d4aa90d44, type: 3}
+      isTalking: 1
+    rightSecondaryProfile:
+      sprite: {fileID: 0}
+      isTalking: 0
+    backgroundMode: 0
+    vignetteIntensity: 0
+    backgroundFadeDuration: 0
+    sentence: <i>Matutulog muna ako habang may oras... May ibang panganib pa roon
+      sa Ibalong...</i>
   soundToPlay: {fileID: 0}
   textSpeed: 0.022
   textPunctSpeed: 0.24
