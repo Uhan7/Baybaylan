@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 10
   paghihigpitName: Pag-iibang Titik
-  paghihigpitSprite: {fileID: 21300000, guid: 70ca1035014de45d18abbc03191ac997, type: 3}
+  paghihigpitSprite: {fileID: 21300000, guid: 614f9e35b41e4416dae814921567c8d8, type: 3}
   description: 'Hindi maaaring maulit ang parehong titik ng Baybayin sa isang salita.
 
 

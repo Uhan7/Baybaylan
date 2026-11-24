@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paghihigpitType: 9
   paghihigpitName: Kapos na Titik
-  paghihigpitSprite: {fileID: 21300000, guid: 76d348fe4d97b4cedb1a8d3577ca3ec3, type: 3}
+  paghihigpitSprite: {fileID: 21300000, guid: efcd705e26b3a4476a78d2d561606bef, type: 3}
   description: Dalawang titik ang ibinabawas sa bilang ng mga titik na maaaring gamitin.
   extraText: "Medyo mahirap magsulat dito\u2026 Mas kaunti ang mga titik na magamit
     ko."
