@@ -185,26 +185,36 @@ public class SalitaSlots : MonoBehaviour
     // Helper Functions --------------------------------------------------------
     private bool IsSalitaValid()
     {
+        InvalidWordTypes.InvalidWordType? error = GetWordValidationError(activeTiles, latinSalita);
+        if (!error.HasValue) return true;
+
+        invalidWordPopupScript.ShowInvalidWordPopup(
+            error.Value, latinSalita, m_sagradongTitik != null ? m_sagradongTitik.latinText : "");
+        return false;
+    }
+
+    // Daliri uses the same rules without displaying an error for every candidate.
+    public bool CanSubmitWord(List<Tile> tiles, string word)
+    {
+        return !GetWordValidationError(tiles, word).HasValue;
+    }
+
+    private InvalidWordTypes.InvalidWordType? GetWordValidationError(List<Tile> tiles, string word)
+    {
         // A standalone vowel is only valid at the start of a word or after a
         // tile whose Latin text already ends in a vowel. This distinguishes
         // valid sequences such as MA-A-A-RI from shortcuts such as
         // MA-GA-N-D-A, even though both approaches can produce a valid word.
-        if (!BaybayinTileSequenceRules.HasValidStandaloneVowelPlacement(activeTiles))
+        if (!BaybayinTileSequenceRules.HasValidStandaloneVowelPlacement(tiles))
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(
-                InvalidWordTypes.InvalidWordType.InvalidVowelPlacement,
-                latinSalita);
-            return false;
+            return InvalidWordTypes.InvalidWordType.InvalidVowelPlacement;
         }
 
         // The Baybayin NG character must be used instead of separate N and G
         // tiles, regardless of the G tile's diacritic.
-        if (!BaybayinTileSequenceRules.UsesDedicatedNgTile(activeTiles))
+        if (!BaybayinTileSequenceRules.UsesDedicatedNgTile(tiles))
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(
-                InvalidWordTypes.InvalidWordType.SplitNgTiles,
-                latinSalita);
-            return false;
+            return InvalidWordTypes.InvalidWordType.SplitNgTiles;
         }
 
         // PAGHIHIGPIT: Partikular na Salita
@@ -221,10 +231,9 @@ public class SalitaSlots : MonoBehaviour
             if (!string.IsNullOrEmpty(particularWord))
             {
                 // Check if the submitted word is not the same as the particular word
-                if (!string.Equals(particularWord, latinSalita))
+                if (!string.Equals(particularWord, word))
                 {
-                    invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPartikularNaSalita, latinSalita);
-                    return false;
+                    return InvalidWordTypes.InvalidWordType.NotPartikularNaSalita;
                 }
             } 
         }
@@ -233,16 +242,14 @@ public class SalitaSlots : MonoBehaviour
         // Check if the word contains the indicated character
         if (config.HasPaghihigpit(PaghihigpitTypes.SagradongTitik))
         {
-            string sagradongTitikString = m_sagradongTitik?.latinText ?? "";
             // Match actual tile prefabs, regardless of their current kudlit/krus.
-            bool wordContainsSagradongTitik = activeTiles.Exists(
+            bool wordContainsSagradongTitik = tiles.Exists(
                 tile => tile != null && tile.HasSameTilePrefab(m_sagradongTitik));
 
             // If the word does not contain sagradong titik, invalid input
             if (!wordContainsSagradongTitik)
             {
-                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotSagradongTitik, latinSalita, sagradongTitikString);
-                return false;
+                return InvalidWordTypes.InvalidWordType.NotSagradongTitik;
             }
         }
 
@@ -251,10 +258,9 @@ public class SalitaSlots : MonoBehaviour
         // Check if the candidate salita has 3 or less tiles
         if (config.HasPaghihigpit(PaghihigpitTypes.MahabangSalita))
         {
-            if (activeTiles.Count <= 3)
+            if (tiles.Count <= 3)
             {
-                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.MahabangSalita, latinSalita);
-                return false;
+                return InvalidWordTypes.InvalidWordType.MahabangSalita;
             }
         }
 
@@ -262,10 +268,9 @@ public class SalitaSlots : MonoBehaviour
         // Check if the candidate salita has 5 or more tiles
         if (config.HasPaghihigpit(PaghihigpitTypes.MaiklingSalita))
         {
-            if (activeTiles.Count >= 5)
+            if (tiles.Count >= 5)
             {
-                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.MaiklingSalita, latinSalita);
-                return false;
+                return InvalidWordTypes.InvalidWordType.MaiklingSalita;
             }
         }
 
@@ -274,58 +279,53 @@ public class SalitaSlots : MonoBehaviour
         // because Baybayin vowels cannot receive a Kudlit or Krus.
         if (config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin))
         {
-            foreach (Tile tile in activeTiles)
+            foreach (Tile tile in tiles)
             {
                 if (tile.isVowel) continue;
                 if (tile.GetCurrentCharMod() != Tile.Diacritic.None) continue;
-                invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AbsentDiacritic, latinSalita);
-                return false;
+                return InvalidWordTypes.InvalidWordType.AbsentDiacritic;
             }
         }
 
         // PAGHIHIGPIT: Bawal Umulit
         // Check if the candidate salita was already submitted
-        if (GameManager.Instance.wordsUsed.Contains(latinSalita) &&
+        if (GameManager.Instance.wordsUsed.Contains(word) &&
             config.HasPaghihigpit(PaghihigpitTypes.BawalUmulit))
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.AlreadyUsed, latinSalita);
-            return false;
+            return InvalidWordTypes.InvalidWordType.AlreadyUsed;
         }
 
         // PAGHIHIGPIT: Pag-iibang Titik
         // Check for duplicate Baybayin tiles
         if (config.HasPaghihigpit(PaghihigpitTypes.PagiibangTitik))
         {
-            int numActiveTiles = activeTiles.Count;
+            int numActiveTiles = tiles.Count;
             for (int i = 0; i < (numActiveTiles-1); i++)
             {
                 for (int j = i+1; j < numActiveTiles; j++)
                 {
-                    string tile1 = activeTiles[i].latinText;
-                    string tile2 = activeTiles[j].latinText;
+                    string tile1 = tiles[i].latinText;
+                    string tile2 = tiles[j].latinText;
                     char char1 = tile1.ToCharArray()[0];
                     char char2 = tile2.ToCharArray()[0];
 
                     if (char1 == char2)
                     {
-                        invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotPagiibangTitik, latinSalita);
-                        // print("Pagiibang Titik");
-                        return false;
+                        return InvalidWordTypes.InvalidWordType.NotPagiibangTitik;
                     }
                 }
             }
         }
 
         // Check if the candidate salita is in the wordlist
-        if (!GameManager.Instance.validWords.Contains(BaybayinTileSequenceRules.ToTileSpelling(latinSalita)))
+        if (!GameManager.Instance.validWords.Contains(BaybayinTileSequenceRules.ToTileSpelling(word)))
         {
-            invalidWordPopupScript.ShowInvalidWordPopup(InvalidWordTypes.InvalidWordType.NotInWordlist, latinSalita);
-            return false;
+            return InvalidWordTypes.InvalidWordType.NotInWordlist;
         }
 
 
         // Candidate salita is valid
-        return true;
+        return null;
     }
 
     private void UpdateActiveTiles()

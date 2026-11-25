@@ -55,19 +55,20 @@ public class ImageFader : MonoBehaviour
 
     private IEnumerator Fade(float desiredAlpha, float duration)
     {
-        float elapsedTime = 0f;
-
-        Color color = targetImage.color;
-        float startAlpha = color.a;
-
-        while (elapsedTime <= duration)
+        float startAlpha = targetImage.color.a;
+        if (duration <= 0f)
         {
-            float t = elapsedTime / duration;
+            SetAlpha(desiredAlpha);
+            yield break;
+        }
 
-            float newAlpha = Mathf.Lerp(startAlpha, desiredAlpha, t);
-            SetAlpha(newAlpha);
-
-            elapsedTime += Time.unscaledDeltaTime;
+        // The loading frame's delta can include time before this fade started.
+        // Measure from this call so a slow scene load cannot consume the reveal.
+        float startedAt = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup - startedAt < duration)
+        {
+            float t = (Time.realtimeSinceStartup - startedAt) / duration;
+            SetAlpha(Mathf.Lerp(startAlpha, desiredAlpha, t));
             yield return null;
         }
 

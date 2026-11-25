@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class DialogueContainer : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class DialogueContainer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private GameObject nextIndicator;
     [SerializeField] private Button skipButton;
+
+    private static readonly Regex ShakeTag = new Regex("<shake>", RegexOptions.IgnoreCase);
+    private readonly List<int> shakePositions = new List<int>();
+    private int nextShakeIndex;
 
     // Main Functions ----------------------------------------------------------
     private void Awake()
@@ -51,19 +57,42 @@ public class DialogueContainer : MonoBehaviour
 
     public void ClearText()
     {
+        shakePositions.Clear();
+        nextShakeIndex = 0;
         dialogueText.text = "";
         nextIndicator.SetActive(false);
     }
 
     public int PrepareText(string text)
     {
+        shakePositions.Clear();
+        nextShakeIndex = 0;
+        int removedLength = 0;
+        string displayText = ShakeTag.Replace(text ?? "", match =>
+        {
+            shakePositions.Add(match.Index - removedLength);
+            removedLength += match.Length;
+            return "";
+        });
+
         // Lay out the complete sentence before hiding it so word wrapping stays fixed
         // while maxVisibleCharacters reveals the already-positioned glyphs.
         dialogueText.maxVisibleCharacters = int.MaxValue;
-        dialogueText.text = text;
+        dialogueText.text = displayText;
         dialogueText.ForceMeshUpdate();
 
         int characterCount = dialogueText.textInfo.characterCount;
+        // TMP indices account for rich-text tags, sprites, and Unicode characters.
+        // Convert each cue's source position into a typewriter reveal position.
+        int characterIndex = 0;
+        for (int i = 0; i < shakePositions.Count; i++)
+        {
+            while (characterIndex < characterCount &&
+                   dialogueText.textInfo.characterInfo[characterIndex].index < shakePositions[i])
+                characterIndex++;
+
+            shakePositions[i] = characterIndex;
+        }
         dialogueText.maxVisibleCharacters = 0;
         nextIndicator.SetActive(false);
 
@@ -78,11 +107,27 @@ public class DialogueContainer : MonoBehaviour
     public void SetVisibleCharacters(int count)
     {
         dialogueText.maxVisibleCharacters = count;
+        TriggerShakeCues(count);
     }
 
     public void ShowFullText()
     {
         dialogueText.maxVisibleCharacters = int.MaxValue;
+        TriggerShakeCues(int.MaxValue);
+    }
+
+    private void TriggerShakeCues(int visibleCharacters)
+    {
+        bool shouldShake = false;
+        while (nextShakeIndex < shakePositions.Count &&
+               shakePositions[nextShakeIndex] <= visibleCharacters)
+        {
+            nextShakeIndex++;
+            shouldShake = true;
+        }
+
+        // Revealing the whole sentence at once combines remaining cues into one shake.
+        if (shouldShake) ScreenShake.ShakeGlobal();
     }
 
     public void ShowNextIndicator(bool value)

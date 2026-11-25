@@ -63,11 +63,13 @@ MonoBehaviour:
   - {fileID: 6897560512971629955, guid: 151dc07dd36ea41ffa2af93f64e47685, type: 3}
   hasMultipleTargetMahika: 1
   targetMahika: 111
-  multipleTargetMahika: 6f0000006f0000006f0000006f0000006f0000006f0000006f000000
+  multipleTargetMahika: 64000000640000006400000064000000640000006400000064000000
   maxAksyon: 7
   numKaposAksyon: 0
   alahasSlotCount: 4
+  allowIncompleteAlahasLoadout: 0
   alahasAquiredAfterWin: {fileID: 11400000, guid: 336830bb4f67d0d4badbe80ae5cfc049, type: 2}
+  showPaghihigpitReveal: 1
   activePaghihigpit:
   - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
   - {fileID: 11400000, guid: e04c4071c7ee97f45a3d4112e35a319c, type: 2}

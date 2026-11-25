@@ -53,20 +53,30 @@ MonoBehaviour:
     tiles: []
   - aksyon: 5
     tiles: []
+  - aksyon: 6
+    tiles: []
+  - aksyon: 7
+    tiles: []
+  - aksyon: 8
+    tiles: []
   predefinedTiles: []
   hasMultipleTargetMahika: 0
-  targetMahika: 2000
+  targetMahika: 1250
   multipleTargetMahika: d0070000
   maxAksyon: 8
   numKaposAksyon: 0
   alahasSlotCount: 5
   allowIncompleteAlahasLoadout: 0
   alahasAquiredAfterWin: {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
+  showPaghihigpitReveal: 1
   activePaghihigpit:
   - {fileID: 11400000, guid: bd0ae599d4938bc49948b4e985a9e91f, type: 2}
   - {fileID: 11400000, guid: 4d4071e432fe184429cd6302d70f61d7, type: 2}
   - {fileID: 11400000, guid: b52525881aafd284c83008b4ab0a282b, type: 2}
   partikularNaSalita_wordList:
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -208,6 +208,17 @@ class AlahasSubManager : MonoBehaviour
         if (config != null && config.HasPaghihigpit(PaghihigpitTypes.MahabangSalita))
             safeMin = Mathf.Max(safeMin, 4);
 
+        if (config != null && config.HasPaghihigpit(PaghihigpitTypes.MaiklingSalita))
+        {
+            safeMin = 1;
+            safeMax = Mathf.Min(safeMax, 4);
+        }
+        if (config != null && config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
+        {
+            safeMin = 1;
+            safeMax = tiles.Count;
+        }
+
         List<string> candidates = BuildRecommendationCandidates(config);
         Shuffle(candidates);
 
@@ -238,21 +249,23 @@ class AlahasSubManager : MonoBehaviour
 
             foreach (string candidate in candidates)
             {
+                string tileSpelling = BaybayinTileSequenceRules.ToTileSpelling(candidate);
                 List<Tile> selectedTiles = new List<Tile>();
                 bool requireMarkedConsonants = config != null &&
                     config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin);
 
                 if (!TryMatchWord(
-                        candidate,
+                        tileSpelling,
                         0,
                         tiles,
                         selectedTiles,
                         chosenLength,
                         chosenLength,
-                        requireMarkedConsonants))
+                        requireMarkedConsonants,
+                        selected => salitaSlots.CanSubmitWord(selected, tileSpelling)))
                     continue;
 
-                FormWord(salitaSlots, selectedTiles, candidate);
+                FormWord(salitaSlots, selectedTiles, tileSpelling);
                 return true;
             }
         }
@@ -326,10 +339,12 @@ class AlahasSubManager : MonoBehaviour
         List<Tile> selectedTiles,
         int minTiles,
         int maxTiles,
-        bool requireMarkedConsonants)
+        bool requireMarkedConsonants,
+        System.Func<List<Tile>, bool> canSubmitWord)
     {
         if (characterIndex == word.Length)
-            return selectedTiles.Count >= minTiles && selectedTiles.Count <= maxTiles;
+            return selectedTiles.Count >= minTiles && selectedTiles.Count <= maxTiles &&
+                canSubmitWord(selectedTiles);
 
         if (selectedTiles.Count >= maxTiles) return false;
 
@@ -364,7 +379,8 @@ class AlahasSubManager : MonoBehaviour
                     selectedTiles,
                     minTiles,
                     maxTiles,
-                    requireMarkedConsonants))
+                    requireMarkedConsonants,
+                    canSubmitWord))
                 return true;
             selectedTiles.RemoveAt(selectedTiles.Count - 1);
         }

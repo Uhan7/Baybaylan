@@ -45,6 +45,7 @@ public struct DialogueSentence
 	[Min(0f), Tooltip("Seconds used to fade to the selected background mode. Use 0 for the default fade duration.")]
 	public float backgroundFadeDuration;
 
+	[Tooltip("Use <shake> to trigger a screen shake when the text reaches that point. Example: Teka... <shake>Ano iyon?!")]
 	[TextArea(3, 10)] public string sentence;
 }
 

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 265209f5ec4d7476a8103eba2f13efb2, type: 3}
   m_Name: A2-L1
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   levelName: 'Ibalong: Tandayag'
   sceneName: Area 2 - Level 1
   protagonistName: Baltog
@@ -53,16 +53,29 @@ MonoBehaviour:
     tiles: []
   - aksyon: 5
     tiles: []
+  - aksyon: 6
+    tiles: []
+  - aksyon: 7
+    tiles: []
   predefinedTiles: []
   hasMultipleTargetMahika: 0
-  targetMahika: 1100
+  targetMahika: 800
   multipleTargetMahika: 4c040000
   maxAksyon: 7
   numKaposAksyon: 0
   alahasSlotCount: 4
+  allowIncompleteAlahasLoadout: 0
   alahasAquiredAfterWin: {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}
+  showPaghihigpitReveal: 1
   activePaghihigpit:
   - {fileID: 11400000, guid: 06a9339882290d340b8424ee89f6a8ec, type: 2}
   - {fileID: 11400000, guid: a72c54938cccf8f4e8dc954a5a02af24, type: 2}
-  partikularNaSalita_wordList: []
+  partikularNaSalita_wordList:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   nagpapalitAnyoForms: []
