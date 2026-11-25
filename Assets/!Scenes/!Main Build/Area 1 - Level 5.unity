@@ -1896,6 +1896,10 @@ PrefabInstance:
       propertyPath: attackStateName
       value: Base Layer.Attack_Olisi_Throw
       objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackClip
+      value:
+      objectReference: {fileID: 7400000, guid: e5df670653d9847a6bee4c3acb477400, type: 2}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: winningAttackCharacterSwapDelay
       value: 0.9

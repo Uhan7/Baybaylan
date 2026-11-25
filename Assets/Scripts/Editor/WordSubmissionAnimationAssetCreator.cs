@@ -8,7 +8,8 @@ public static class WordSubmissionAnimationAssetCreator
 {
     private const string RootFolder = "Assets/Animations/Word Submission";
     private const string ControllerPath = RootFolder + "/Word Submission.controller";
-    private const string AttackClipPath = RootFolder + "/Attack.anim";
+    private const string AttackClipPath = RootFolder + "/Attack_Melee.anim";
+    private const string OlisiThrowClipPath = RootFolder + "/Attack_Olisi_Throw.anim";
     private const string HealClipPath = RootFolder + "/Heal.anim";
     private const string HitClipPath = RootFolder + "/Hit.anim";
     private const string LeftSidePrefabPath = "Assets/Prefabs/Side UI/Left Side Container Variant.prefab";
@@ -25,7 +26,7 @@ public static class WordSubmissionAnimationAssetCreator
     {
         EnsureFolderExists();
 
-        AnimationClip attackClip = GetOrCreateClip(AttackClipPath, "Attack");
+        AnimationClip attackClip = GetOrCreateClip(AttackClipPath, "Attack_Melee");
         AnimationClip healClip = GetOrCreateHealClip();
         AnimationClip hitClip = GetOrCreateHitClip();
 
@@ -38,6 +39,11 @@ public static class WordSubmissionAnimationAssetCreator
         AnimatorStateMachine stateMachine = controller.layers[0].stateMachine;
         AnimatorState idleState = EnsureState(stateMachine, "Idle", null);
         EnsureState(stateMachine, "Attack", attackClip);
+        // Keep both melee names valid for existing scene/prefab references.
+        EnsureState(stateMachine, "Attack_Melee", attackClip);
+        AnimationClip olisiThrowClip = AssetDatabase.LoadAssetAtPath<AnimationClip>(OlisiThrowClipPath);
+        if (olisiThrowClip != null)
+            EnsureState(stateMachine, "Attack_Olisi_Throw", olisiThrowClip);
         EnsureState(stateMachine, "Heal", healClip);
         EnsureState(stateMachine, "Hit", hitClip);
         if (stateMachine.defaultState == null) stateMachine.defaultState = idleState;
@@ -55,7 +61,7 @@ public static class WordSubmissionAnimationAssetCreator
         AudioClip healSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(HealSfxPath);
         AudioClip healAuraSfx = AssetDatabase.LoadAssetAtPath<AudioClip>(HealAuraSfxPath);
 
-        ConfigureLeftSidePrefab(controller, healMagicPrefab, attackSfx, healSfx);
+        ConfigureLeftSidePrefab(controller, attackClip, healMagicPrefab, attackSfx, healSfx);
         ConfigureRightSidePrefab(controller, attackImpactPrefab, healAuraPrefab, healAuraSfx);
 
         AssetDatabase.SaveAssets();
@@ -126,6 +132,7 @@ public static class WordSubmissionAnimationAssetCreator
 
     private static void ConfigureLeftSidePrefab(
         AnimatorController controller,
+        AnimationClip meleeAttackClip,
         GameObject healMagicPrefab,
         AudioClip attackSfx,
         AudioClip healSfx)
@@ -166,6 +173,10 @@ public static class WordSubmissionAnimationAssetCreator
             SerializedObject serializedPlayer = new SerializedObject(player);
             SerializedProperty animatorProperty = serializedPlayer.FindProperty("targetAnimator");
             animatorProperty.objectReferenceValue = animator;
+            if (serializedPlayer.FindProperty("attackClip").objectReferenceValue == null)
+                serializedPlayer.FindProperty("attackClip").objectReferenceValue = meleeAttackClip;
+            if (serializedPlayer.FindProperty("enemyMeleeAttackClip").objectReferenceValue == null)
+                serializedPlayer.FindProperty("enemyMeleeAttackClip").objectReferenceValue = meleeAttackClip;
             serializedPlayer.FindProperty("overrideAttackParticleColor").boolValue = false;
             serializedPlayer.FindProperty("attackParticleColor").colorValue = Color.white;
             serializedPlayer.FindProperty("attackParticleColorB").colorValue = Color.white;

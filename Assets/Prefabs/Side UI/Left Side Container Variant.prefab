@@ -475,6 +475,7 @@ MonoBehaviour:
   targetAnimator: {fileID: 5331519847657605101}
   animatorLayer: 0
   idleStateName: Base Layer.Idle
+  attackClip: {fileID: 7400000, guid: e599b1f7923ec4320803fc18873433a0, type: 2}
   attackStateName: Base Layer.Attack_Melee
   healStateName: Base Layer.Heal
   storyTarget: {fileID: 0}

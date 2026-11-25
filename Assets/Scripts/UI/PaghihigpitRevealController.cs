@@ -9,6 +9,7 @@ public class PaghihigpitRevealController : MonoBehaviour
     [Header("Paghihigpit Card")]
     [SerializeField] private Image artwork;
     [SerializeField] private GameObject backupBox;
+    [SerializeField] private GameObject markaBox;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI extraText;
@@ -128,6 +129,8 @@ public class PaghihigpitRevealController : MonoBehaviour
     private void ShowCurrentPaghihigpit()
     {
         Paghihigpit paghihigpit = revealQueue[revealIndex];
+        if (markaBox != null)
+            markaBox.SetActive(paghihigpit.paghihigpitType == PaghihigpitTypes.MarkaNgBaybayin);
         if (backupBox != null)
             backupBox.SetActive(paghihigpit.paghihigpitType == PaghihigpitTypes.SagradongTitik);
         if (artwork != null)

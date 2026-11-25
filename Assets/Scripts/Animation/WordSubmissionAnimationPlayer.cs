@@ -20,13 +20,17 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     [SerializeField] private Animator targetAnimator;
     [ShowIf(nameof(HasSelectedAnimation)), SerializeField, Min(0)] private int animatorLayer;
     [ShowIf(nameof(HasSelectedAnimation)), SerializeField] private string idleStateName = "Base Layer.Idle";
-    [ShowIf(nameof(IsAttackSelected)), SerializeField] private string attackStateName = "Base Layer.Attack";
+    [ShowIf(nameof(IsAttackSelected))]
+    [Tooltip("Drop any attack clip here. It plays through the shared Attack state; no new Animator state or state-name changes are needed.")]
+    [SerializeField] private AnimationClip attackClip;
+    // Retained only for older scenes that have not been assigned a clip yet.
+    [HideInInspector, SerializeField] private string attackStateName = "Base Layer.Attack";
     [ShowIf(nameof(IsHealSelected)), SerializeField] private string healStateName = "Base Layer.Heal";
 
     [ShowIf(nameof(HasSelectedAnimation)), Header("Story Target")]
     [SerializeField] private StoryTargetAnimationPlayer storyTarget;
     [ShowIf(nameof(IsAttackSelected))]
-    [Tooltip("The Attack clip reaches the target on frame 11 at 60 FPS.")]
+    [Tooltip("Seconds after the selected attack clip starts when the target reacts. Match this to the clip's impact frame; it follows slow motion.")]
     [SerializeField, Min(0f)] private float targetHitDelay = 11f / 60f;
     [ShowIf(nameof(IsAttackSelected))]
     [Tooltip("Uses a scene-specific color instead of the particle prefab's default color.")]
@@ -91,6 +95,8 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     private float animatorSpeedBeforeHeal = float.NaN;
     private float animatorSpeedDuringHeal = 1f;
     private bool healTargetSequenceFinished;
+    private AnimatorOverrideController attackController;
+    private RuntimeAnimatorController originalController;
 
     public float AttackHitDelay => targetHitDelay;
 
@@ -126,6 +132,32 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
     {
         StopHealParticles(true);
         RestoreAnimatorSpeed();
+    }
+
+    private void OnDestroy()
+    {
+        if (attackController == null) return;
+        if (targetAnimator != null && targetAnimator.runtimeAnimatorController == attackController)
+            targetAnimator.runtimeAnimatorController = originalController;
+        if (Application.isPlaying) Destroy(attackController);
+        else DestroyImmediate(attackController);
+    }
+
+    private void PrepareAttackClip()
+    {
+        if (attackClip == null || enemyMeleeAttackClip == null) return;
+
+        if (attackController == null)
+        {
+            originalController = targetAnimator.runtimeAnimatorController;
+            attackController = new AnimatorOverrideController(originalController);
+            attackController.name = name + " Attack Override";
+            targetAnimator.runtimeAnimatorController = attackController;
+        }
+
+        // Override only this character's attack slot. Heal, Hit, and the enemy's
+        // explicitly assigned melee clip continue to use their original clips.
+        attackController[enemyMeleeAttackClip] = attackClip;
     }
 
     public IEnumerator PlaySelectedAnimation()
@@ -236,8 +268,10 @@ public class WordSubmissionAnimationPlayer : MonoBehaviour
             yield break;
         }
 
+        if (animation == SuccessfulWordAnimation.Attack) PrepareAttackClip();
+
         string stateName = animation == SuccessfulWordAnimation.Attack
-            ? attackStateName
+            ? (attackClip != null ? "Base Layer.Attack" : attackStateName)
             : healStateName;
 
         if (string.IsNullOrWhiteSpace(stateName))

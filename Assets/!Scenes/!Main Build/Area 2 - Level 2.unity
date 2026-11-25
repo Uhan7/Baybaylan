@@ -816,6 +816,10 @@ PrefabInstance:
       value: Base Layer.Attack
       objectReference: {fileID: 0}
     - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackClip
+      value:
+      objectReference: {fileID: 7400000, guid: e599b1f7923ec4320803fc18873433a0, type: 2}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: targetHitDelay
       value: 0.5833333
       objectReference: {fileID: 0}
