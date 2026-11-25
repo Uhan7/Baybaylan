@@ -133,8 +133,8 @@ MonoBehaviour:
   ToolTipDelay: 0.2
   followMouse: 1
   ToolTipPositionOffset: {x: -285, y: 115}
-  backupBox: {fileID: 7566303628955437135}
   paghihigpitImage: {fileID: 804852015775195834}
+  backupBox: {fileID: 7566303628955437135}
   titikIcons:
   - letter: a
     sprite: {fileID: 21300000, guid: 94fc7e3c75a59401c9d0d27f7bf99d4e, type: 3}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 1918504821785503700}
   - component: {fileID: 5392226606159102881}
   m_Layer: 5
-  m_Name: Backup Box
+  m_Name: Marka Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a50bc3e63678447aa92c8ffea81cf97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28eb68a104c034e96aeedc11c2bff546, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
