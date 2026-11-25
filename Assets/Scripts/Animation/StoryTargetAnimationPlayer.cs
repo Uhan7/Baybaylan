@@ -213,32 +213,28 @@ public class StoryTargetAnimationPlayer : MonoBehaviour
     {
         if (delay > 0f) yield return new WaitForSeconds(delay);
 
-        ParticleSystem impact = null;
-        try
+        // Play the authored effect at the portrait's center. The portrait's
+        // transform origin is its top-left pivot, not the center of the image.
+        Transform portrait = recipient.transform.Find("Portrait Holder");
+        ParticleSystem impact = portrait != null
+            ? portrait.Find("Attack Impact Particles")?.GetComponent<ParticleSystem>()
+            : null;
+        if (impact != null)
         {
-            if (attackImpactParticles != null)
-            {
-                // Keep the same UI particle setup, but place the burst on the left portrait.
-                impact = Instantiate(attackImpactParticles, attackImpactParticles.transform.parent);
-                impact.transform.position = recipient.transform.Find("Portrait Holder").position;
-                if (overrideColors)
-                {
-                    ParticleSystem.MainModule main = impact.main;
-                    main.startColor = new ParticleSystem.MinMaxGradient(colorA, colorB);
-                }
-                impact.Play(true);
-            }
-
-            if (shakeScreenOnHit)
-                ScreenShake.ShakeGlobal(screenShakeDuration, screenShakeIntensity);
-
-            yield return WordSubmissionAnimationPlayer.PlayMirroredPortraitClip(
-                recipient, WordSubmissionAnimationPlayer.FindClip(targetAnimator, hitStateName), maximumWaitSeconds);
+            if (!hasDefaultAttackImpactColor) CacheDefaultAttackImpactColor();
+            ParticleSystem.MainModule main = impact.main;
+            main.startColor = overrideColors
+                ? new ParticleSystem.MinMaxGradient(colorA, colorB)
+                : defaultAttackImpactColor;
+            impact.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            impact.Play(true);
         }
-        finally
-        {
-            if (impact != null) Destroy(impact.gameObject);
-        }
+
+        if (shakeScreenOnHit)
+            ScreenShake.ShakeGlobal(screenShakeDuration, screenShakeIntensity);
+
+        yield return WordSubmissionAnimationPlayer.PlayMirroredPortraitClip(
+            recipient, WordSubmissionAnimationPlayer.FindClip(targetAnimator, hitStateName), maximumWaitSeconds);
     }
 
     private IEnumerator PlayHitInternal(bool overrideImpactColors, Color impactColorA, Color impactColorB)

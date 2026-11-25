@@ -9,6 +9,14 @@ using UnityEngine.UI;
 public class AlahasSelectionController : MonoBehaviour
 {
     private const string AreaZeroIntroScene = "Area 0 - Intro";
+    [Header("Selection Audio")]
+    [SerializeField] private AudioClip selectionClickSfx;
+
+    public void PlaySelectionClick()
+    {
+        if (selectionClickSfx != null && AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(selectionClickSfx);
+    }
 
     [Header("Inventory")]
     [SerializeField] private Transform inventoryGrid;

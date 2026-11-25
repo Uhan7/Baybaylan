@@ -15,7 +15,7 @@ MonoBehaviour:
   alahasName: Mata ni Rabot
   saveDataName: 24
   alahasSprite: {fileID: 21300000, guid: bf6b1dd0a40654e619f0a345c57d7dae, type: 3}
-  selectionOrder: 9
+  selectionOrder: 8
   hideFromSelection: 0
   description: 'Ang kabuuang multiplier ng mahika ay nakabatay sa kasalukuyang aksyon.
 

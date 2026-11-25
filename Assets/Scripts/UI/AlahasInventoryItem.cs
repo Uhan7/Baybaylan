@@ -106,7 +106,10 @@ public class AlahasInventoryItem : MonoBehaviour,
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!dragging && unlocked && controller != null)
+        {
+            controller.PlaySelectionClick();
             controller.TryAutoEquip(alahas);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -221,6 +224,13 @@ public class AlahasInventoryItem : MonoBehaviour,
     private void ApplyVisualState()
     {
         if (itemImage == null) return;
+
+        // Inventory entries share animated tile graphics. Keep their displayed
+        // sprite bound to the represented Alahas, including locked entries.
+        Sprite icon = alahas != null ? alahas.alahasSprite : null;
+        if (itemImage.sprite != icon) itemImage.sprite = icon;
+        if (itemImage.overrideSprite != icon) itemImage.overrideSprite = icon;
+        itemImage.enabled = icon != null;
 
         Color color = normalColor;
         if (dragging) color.a *= 0.35f;

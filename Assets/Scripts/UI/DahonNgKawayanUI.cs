@@ -7,8 +7,8 @@ class DahonNgKawayanUI : MonoBehaviour
 {
     private static readonly string[] LetterOrder =
     {
-        "BA", "KA", "DA", "GA", "HA", "LA", "MA", "NA", "NGA",
-        "PA", "RA", "SA", "TA", "WA", "YA", "A", "I", "U"
+        "A", "I", "U", "BA", "KA", "DA", "GA", "HA", "LA", "MA", "NA", "NGA",
+        "PA", "RA", "SA", "TA", "WA", "YA"
     };
 
     [SerializeField] GameObject tileLayoutGroupParent;

@@ -15,7 +15,7 @@ MonoBehaviour:
   alahasName: Pangil ni Oryol
   saveDataName: 25
   alahasSprite: {fileID: 21300000, guid: 0c38c247edb2f4bcca0bd4fd5673279b, type: 3}
-  selectionOrder: 8
+  selectionOrder: 9
   hideFromSelection: 0
   description: 'Pindutin itong Alahas upang magamit.
 

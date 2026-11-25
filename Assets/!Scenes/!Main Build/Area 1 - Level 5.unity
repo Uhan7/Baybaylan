@@ -1312,6 +1312,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 7400000, guid: e5df670653d9847a6bee4c3acb477400, type: 2}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackSfxDelay
+      value: 0.675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: targetHitDelay
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: attackStateName
+      value: Base Layer.Attack_Olisi_Throw
+      objectReference: {fileID: 0}
     - target: {fileID: 2890698539627863083, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Name
       value: Character Body
@@ -1669,6 +1685,10 @@ PrefabInstance:
       value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: winningAttackCharacterSwapDelay
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: enableWinningAttackCharacterSwap
       value: 0
       objectReference: {fileID: 0}
@@ -1767,6 +1787,10 @@ PrefabInstance:
     - target: {fileID: 6841537900973393715, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845487172059085069, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6895901920543502783, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_Sprite
@@ -1884,30 +1908,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
-    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: attackSfxDelay
-      value: 0.675
-      objectReference: {fileID: 0}
-    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: targetHitDelay
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: attackStateName
-      value: Base Layer.Attack_Olisi_Throw
-      objectReference: {fileID: 0}
-    - target: {fileID: 2861836853611772211, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: attackClip
-      value:
-      objectReference: {fileID: 7400000, guid: e5df670653d9847a6bee4c3acb477400, type: 2}
-    - target: {fileID: 6517689846628134760, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: winningAttackCharacterSwapDelay
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6845487172059085069, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6381360207470753235, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   headFallDelay: 0.1
   gravity: 900
   initialFallSpeed: 5
-  fadeDelay: 0
+  fadeDelay: 0.25
   fadeDuration: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

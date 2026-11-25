@@ -255,6 +255,14 @@ public class Tile : MonoBehaviour
         }
     }
 
+    // Recommendation search changes spelling without simulating clicks or SFX.
+    public void SetRecommendationDiacritic(Diacritic value)
+    {
+        if (isVowel) return;
+        currentCharmod = value;
+        ToggleCharmodObject();
+    }
+
     private void ClearAllCharmods()
     {
         topKudlit.SetActive(false);

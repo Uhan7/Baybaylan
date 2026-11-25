@@ -2132,12 +2132,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 336830bb4f67d0d4badbe80ae5cfc049, type: 2}
   - {fileID: 11400000, guid: 4493cb91ecda04bd9a02ecc7b3712a5c, type: 2}
   - {fileID: 11400000, guid: 364ca5de1960c2f41b322ba72e3511a0, type: 2}
+  - {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}
+  - {fileID: 11400000, guid: 6d2019e2db34dea4b88b739d82ceee05, type: 2}
+  - {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
   lockedIconValue: 0.1
   proceedButton: {fileID: 1981613281610135351}
   slidingRoot: {fileID: 4335671534448637184}
   foregroundSortingOrder: 1000
   slideDistance: 1000
   slideDuration: 0.45
+  selectionClickSfx: {fileID: 8300000, guid: 3fd2434c91d104486af6f7f4b2d03c7a, type: 3}
   slideCurve:
     serializedVersion: 2
     m_Curve: []

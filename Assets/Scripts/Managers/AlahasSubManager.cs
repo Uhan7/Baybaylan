@@ -220,6 +220,29 @@ class AlahasSubManager : MonoBehaviour
         }
 
         List<string> candidates = BuildRecommendationCandidates(config);
+        // Reject impossible spellings once, before retrying tile lengths.
+        Dictionary<char, int> availableLetters = new Dictionary<char, int>();
+        foreach (Tile tile in tiles)
+            foreach (char letter in BaybayinTileSequenceRules.ToTileSpelling(tile.isVowel ? tile.latinText : tile.rootConsonant + "aiu"))
+            {
+                availableLetters.TryGetValue(letter, out int count);
+                availableLetters[letter] = count + 1;
+            }
+        Dictionary<char, int> needed = new Dictionary<char, int>();
+        candidates.RemoveAll(candidate =>
+        {
+            string spelling = BaybayinTileSequenceRules.ToTileSpelling(candidate);
+            if (spelling.Length < safeMin || spelling.Length > safeMax * 3) return true;
+            needed.Clear();
+            foreach (char letter in spelling)
+            {
+                needed.TryGetValue(letter, out int count);
+                needed[letter] = count + 1;
+                if (!availableLetters.TryGetValue(letter, out int available) || count + 1 > available)
+                    return true;
+            }
+            return false;
+        });
         Shuffle(candidates);
 
         // Choose a length before searching words, so common short words do not
@@ -347,42 +370,54 @@ class AlahasSubManager : MonoBehaviour
                 canSubmitWord(selectedTiles);
 
         if (selectedTiles.Count >= maxTiles) return false;
+        int remainingCharacters = word.Length - characterIndex;
+        int remainingSlots = maxTiles - selectedTiles.Count;
+        if (remainingCharacters < minTiles - selectedTiles.Count ||
+            remainingCharacters > remainingSlots * 3)
+            return false;
 
+        // Equivalent copies lead to identical failed branches. Try one copy
+        // at this depth; deeper recursion can still use the other copies.
+        List<Tile> triedTiles = new List<Tile>();
         foreach (Tile tile in availableTiles)
         {
             if (tile == null || selectedTiles.Contains(tile)) continue;
-            if (requireMarkedConsonants && !tile.isVowel &&
-                tile.GetCurrentCharMod() == Tile.Diacritic.None)
-                continue;
-            if (!BaybayinTileSequenceRules.CanAppendTile(selectedTiles, tile))
-                continue;
-
-            string tileText = tile.latinText;
-            if (string.IsNullOrEmpty(tileText) ||
-                characterIndex + tileText.Length > word.Length)
-                continue;
-
-            if (string.Compare(
-                    word,
-                    characterIndex,
-                    tileText,
-                    0,
-                    tileText.Length,
-                    StringComparison.OrdinalIgnoreCase) != 0)
-                continue;
-
-            selectedTiles.Add(tile);
-            if (TryMatchWord(
-                    word,
-                    characterIndex + tileText.Length,
-                    availableTiles,
-                    selectedTiles,
-                    minTiles,
-                    maxTiles,
-                    requireMarkedConsonants,
-                    canSubmitWord))
-                return true;
-            selectedTiles.RemoveAt(selectedTiles.Count - 1);
+            bool duplicate = false;
+            foreach (Tile tried in triedTiles)
+                if (tile.HasSameTilePrefab(tried) && tile.isVowel == tried.isVowel &&
+                    tile.rootConsonant == tried.rootConsonant && tile.vowel == tried.vowel)
+                {
+                    duplicate = true;
+                    break;
+                }
+            if (duplicate) continue;
+            triedTiles.Add(tile);
+            Tile.Diacritic original = tile.GetCurrentCharMod();
+            int variants = tile.isVowel ? 1 : 4;
+            for (int variant = 0; variant < variants; variant++)
+            {
+                Tile.Diacritic mark = (Tile.Diacritic)variant;
+                if (requireMarkedConsonants && !tile.isVowel && mark == Tile.Diacritic.None)
+                    continue;
+                string tileText = tile.isVowel ? tile.latinText : tile.rootConsonant +
+                    (mark == Tile.Diacritic.None ? "a" : mark == Tile.Diacritic.Top ? "i" :
+                     mark == Tile.Diacritic.Bottom ? "u" : "");
+                tileText = BaybayinTileSequenceRules.ToTileSpelling(tileText);
+                if (string.IsNullOrEmpty(tileText) || characterIndex + tileText.Length > word.Length ||
+                    string.Compare(word, characterIndex, tileText, 0, tileText.Length,
+                        StringComparison.OrdinalIgnoreCase) != 0)
+                    continue;
+                tile.SetRecommendationDiacritic(mark);
+                if (BaybayinTileSequenceRules.CanAppendTile(selectedTiles, tile))
+                {
+                    selectedTiles.Add(tile);
+                    if (TryMatchWord(word, characterIndex + tileText.Length, availableTiles,
+                            selectedTiles, minTiles, maxTiles, requireMarkedConsonants, canSubmitWord))
+                        return true;
+                    selectedTiles.RemoveAt(selectedTiles.Count - 1);
+                }
+                tile.SetRecommendationDiacritic(original);
+            }
         }
 
         return false;
