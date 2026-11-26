@@ -65,7 +65,11 @@ class EasyTileMoveManager : MonoBehaviour
         EventSystem.current.RaycastAll(pointerData, results);
 
         if (results.Count > 0)
-            return results[0].gameObject;
+        {
+            // Kudlit and other tile graphics can receive the raycast first.
+            Tile tile = results[0].gameObject.GetComponentInParent<Tile>();
+            if (tile != null) return tile.gameObject;
+        }
 
         return null;
     }

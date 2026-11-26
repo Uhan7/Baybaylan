@@ -331,6 +331,7 @@ public class GameManager : MonoBehaviour
     private void LoadWordlist()
     {
         validWords = WordlistCache.GetOrLoad(wordlists);
+        DaliriWordSearch.Prepare(validWords);
     }
 
     public void EndRound()

@@ -296,7 +296,7 @@ public class SalitaSlots : MonoBehaviour
         }
 
         // PAGHIHIGPIT: Pag-iibang Titik
-        // Check for duplicate Baybayin tiles
+        // Compare the authored Baybayin tile, regardless of kudlit or krus.
         if (config.HasPaghihigpit(PaghihigpitTypes.PagiibangTitik))
         {
             int numActiveTiles = tiles.Count;
@@ -304,12 +304,7 @@ public class SalitaSlots : MonoBehaviour
             {
                 for (int j = i+1; j < numActiveTiles; j++)
                 {
-                    string tile1 = tiles[i].latinText;
-                    string tile2 = tiles[j].latinText;
-                    char char1 = tile1.ToCharArray()[0];
-                    char char2 = tile2.ToCharArray()[0];
-
-                    if (char1 == char2)
+                    if (tiles[i].HasSameTilePrefab(tiles[j]))
                     {
                         return InvalidWordTypes.InvalidWordType.NotPagiibangTitik;
                     }

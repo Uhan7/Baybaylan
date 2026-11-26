@@ -219,34 +219,18 @@ class AlahasSubManager : MonoBehaviour
             safeMax = tiles.Count;
         }
 
-        // Reject impossible spellings once, before retrying tile lengths.
-        Dictionary<char, int> availableLetters = new Dictionary<char, int>();
-        foreach (Tile tile in tiles)
-            foreach (char letter in BaybayinTileSequenceRules.ToTileSpelling(tile.isVowel ? tile.latinText : tile.rootConsonant + "aiu"))
-            {
-                availableLetters.TryGetValue(letter, out int count);
-                availableLetters[letter] = count + 1;
-            }
-        Dictionary<char, int> needed = new Dictionary<char, int>();
-        List<string> candidates = new List<string>();
-        foreach (string spelling in EnumerateRecommendationCandidates(config))
+        DaliriWordSearch.Prepare(GameManager.Instance.validWords);
+        string particularWord = null;
+        if (config != null && config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
         {
-            if (spelling.Length < safeMin || spelling.Length > safeMax * 3) continue;
-            needed.Clear();
-            bool fitsAvailableLetters = true;
-            foreach (char letter in spelling)
-            {
-                needed.TryGetValue(letter, out int count);
-                needed[letter] = count + 1;
-                if (!availableLetters.TryGetValue(letter, out int available) || count + 1 > available)
-                {
-                    fitsAvailableLetters = false;
-                    break;
-                }
-            }
-            if (fitsAvailableLetters) candidates.Add(spelling);
+            string required = config.GetPartikularNaSalitaForAksyon(
+                AksyonCounter.Instance != null ? AksyonCounter.Instance.GetCurrentAksyon() : 1);
+            if (!string.IsNullOrWhiteSpace(required))
+                particularWord = BaybayinTileSequenceRules.ToTileSpelling(required.Trim());
         }
-        Shuffle(candidates);
+        Tile sacredTile = config != null && config.HasPaghihigpit(PaghihigpitTypes.SagradongTitik)
+            ? salitaSlots.GetSagradongTitik() : null;
+        var usedWords = new HashSet<string>(GameManager.Instance.wordsUsed);
 
         // Choose a length before searching words, so common short words do not
         // dominate. Missing lengths are removed and the remaining weights rerolled.
@@ -273,25 +257,16 @@ class AlahasSubManager : MonoBehaviour
             }
             lengths.Remove(chosenLength);
 
-            foreach (string candidate in candidates)
+            if (DaliriWordSearch.Find(tiles, chosenLength, config, particularWord,
+                    sacredTile, usedWords, out var choices, out string word))
             {
-                string tileSpelling = candidate;
-                List<Tile> selectedTiles = new List<Tile>();
-                bool requireMarkedConsonants = config != null &&
-                    config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin);
-
-                if (!TryMatchWord(
-                        tileSpelling,
-                        0,
-                        tiles,
-                        selectedTiles,
-                        chosenLength,
-                        chosenLength,
-                        requireMarkedConsonants,
-                        selected => salitaSlots.CanSubmitWord(selected, tileSpelling)))
-                    continue;
-
-                FormWord(salitaSlots, selectedTiles, tileSpelling);
+                var selectedTiles = new List<Tile>();
+                foreach (var choice in choices)
+                {
+                    choice.Tile.SetRecommendationDiacritic(choice.Mark);
+                    selectedTiles.Add(choice.Tile);
+                }
+                FormWord(salitaSlots, selectedTiles, word);
                 return true;
             }
         }
@@ -330,98 +305,6 @@ class AlahasSubManager : MonoBehaviour
         }
     }
 
-    private IEnumerable<string> EnumerateRecommendationCandidates(LevelConfig config)
-    {
-        if (config != null && config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
-        {
-            int currentAksyon = AksyonCounter.Instance != null
-                ? AksyonCounter.Instance.GetCurrentAksyon()
-                : 1;
-            string particularWord = config.GetPartikularNaSalitaForAksyon(currentAksyon);
-            if (!string.IsNullOrWhiteSpace(particularWord))
-                yield return BaybayinTileSequenceRules.ToTileSpelling(particularWord.Trim());
-            yield break;
-        }
-
-        bool forbidRepeatedWords = config != null &&
-            config.HasPaghihigpit(PaghihigpitTypes.BawalUmulit);
-
-        foreach (string word in GameManager.Instance.validWords)
-        {
-            if (string.IsNullOrWhiteSpace(word)) continue;
-            if (forbidRepeatedWords && GameManager.Instance.wordsUsed.Contains(word)) continue;
-            // Cached dictionary entries are already trimmed and normalized.
-            yield return word;
-        }
-    }
-
-    private static bool TryMatchWord(
-        string word,
-        int characterIndex,
-        List<Tile> availableTiles,
-        List<Tile> selectedTiles,
-        int minTiles,
-        int maxTiles,
-        bool requireMarkedConsonants,
-        System.Func<List<Tile>, bool> canSubmitWord)
-    {
-        if (characterIndex == word.Length)
-            return selectedTiles.Count >= minTiles && selectedTiles.Count <= maxTiles &&
-                canSubmitWord(selectedTiles);
-
-        if (selectedTiles.Count >= maxTiles) return false;
-        int remainingCharacters = word.Length - characterIndex;
-        int remainingSlots = maxTiles - selectedTiles.Count;
-        if (remainingCharacters < minTiles - selectedTiles.Count ||
-            remainingCharacters > remainingSlots * 3)
-            return false;
-
-        // Equivalent copies lead to identical failed branches. Try one copy
-        // at this depth; deeper recursion can still use the other copies.
-        List<Tile> triedTiles = new List<Tile>();
-        foreach (Tile tile in availableTiles)
-        {
-            if (tile == null || selectedTiles.Contains(tile)) continue;
-            bool duplicate = false;
-            foreach (Tile tried in triedTiles)
-                if (tile.HasSameTilePrefab(tried) && tile.isVowel == tried.isVowel &&
-                    tile.rootConsonant == tried.rootConsonant && tile.vowel == tried.vowel)
-                {
-                    duplicate = true;
-                    break;
-                }
-            if (duplicate) continue;
-            triedTiles.Add(tile);
-            Tile.Diacritic original = tile.GetCurrentCharMod();
-            int variants = tile.isVowel ? 1 : 4;
-            for (int variant = 0; variant < variants; variant++)
-            {
-                Tile.Diacritic mark = (Tile.Diacritic)variant;
-                if (requireMarkedConsonants && !tile.isVowel && mark == Tile.Diacritic.None)
-                    continue;
-                string tileText = tile.isVowel ? tile.latinText : tile.rootConsonant +
-                    (mark == Tile.Diacritic.None ? "a" : mark == Tile.Diacritic.Top ? "i" :
-                     mark == Tile.Diacritic.Bottom ? "u" : "");
-                tileText = BaybayinTileSequenceRules.ToTileSpelling(tileText);
-                if (string.IsNullOrEmpty(tileText) || characterIndex + tileText.Length > word.Length ||
-                    string.Compare(word, characterIndex, tileText, 0, tileText.Length,
-                        StringComparison.OrdinalIgnoreCase) != 0)
-                    continue;
-                tile.SetRecommendationDiacritic(mark);
-                if (BaybayinTileSequenceRules.CanAppendTile(selectedTiles, tile))
-                {
-                    selectedTiles.Add(tile);
-                    if (TryMatchWord(word, characterIndex + tileText.Length, availableTiles,
-                            selectedTiles, minTiles, maxTiles, requireMarkedConsonants, canSubmitWord))
-                        return true;
-                    selectedTiles.RemoveAt(selectedTiles.Count - 1);
-                }
-                tile.SetRecommendationDiacritic(original);
-            }
-        }
-
-        return false;
-    }
 
     private static void FormWord(
         SalitaSlots salitaSlots,
@@ -453,12 +336,4 @@ class AlahasSubManager : MonoBehaviour
             LayoutRebuilder.ForceRebuildLayoutImmediate(salitaRect);
     }
 
-    private static void Shuffle<T>(List<T> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int swapIndex = Random.Range(0, i + 1);
-            (list[i], list[swapIndex]) = (list[swapIndex], list[i]);
-        }
-    }
 }
