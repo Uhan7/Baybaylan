@@ -101,8 +101,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
 
         // Runtime systems such as Nagpapalit-anyo can safely modify this copy
         // without changing the saved LevelConfig asset during Play Mode.
@@ -326,16 +330,7 @@ public class GameManager : MonoBehaviour
 
     private void LoadWordlist()
     {
-        foreach (TextAsset wordlist in wordlists)
-        {
-            foreach (string rawWord in wordlist.text.Split('\n'))
-            {
-                string word = rawWord.Trim();
-                if (!string.IsNullOrEmpty(word))
-                    validWords.Add(BaybayinTileSequenceRules.ToTileSpelling(word));
-            }
-        }
-        //print(validWords.Count);
+        validWords = WordlistCache.GetOrLoad(wordlists);
     }
 
     public void EndRound()

@@ -219,7 +219,6 @@ class AlahasSubManager : MonoBehaviour
             safeMax = tiles.Count;
         }
 
-        List<string> candidates = BuildRecommendationCandidates(config);
         // Reject impossible spellings once, before retrying tile lengths.
         Dictionary<char, int> availableLetters = new Dictionary<char, int>();
         foreach (Tile tile in tiles)
@@ -229,20 +228,24 @@ class AlahasSubManager : MonoBehaviour
                 availableLetters[letter] = count + 1;
             }
         Dictionary<char, int> needed = new Dictionary<char, int>();
-        candidates.RemoveAll(candidate =>
+        List<string> candidates = new List<string>();
+        foreach (string spelling in EnumerateRecommendationCandidates(config))
         {
-            string spelling = BaybayinTileSequenceRules.ToTileSpelling(candidate);
-            if (spelling.Length < safeMin || spelling.Length > safeMax * 3) return true;
+            if (spelling.Length < safeMin || spelling.Length > safeMax * 3) continue;
             needed.Clear();
+            bool fitsAvailableLetters = true;
             foreach (char letter in spelling)
             {
                 needed.TryGetValue(letter, out int count);
                 needed[letter] = count + 1;
                 if (!availableLetters.TryGetValue(letter, out int available) || count + 1 > available)
-                    return true;
+                {
+                    fitsAvailableLetters = false;
+                    break;
+                }
             }
-            return false;
-        });
+            if (fitsAvailableLetters) candidates.Add(spelling);
+        }
         Shuffle(candidates);
 
         // Choose a length before searching words, so common short words do not
@@ -272,7 +275,7 @@ class AlahasSubManager : MonoBehaviour
 
             foreach (string candidate in candidates)
             {
-                string tileSpelling = BaybayinTileSequenceRules.ToTileSpelling(candidate);
+                string tileSpelling = candidate;
                 List<Tile> selectedTiles = new List<Tile>();
                 bool requireMarkedConsonants = config != null &&
                     config.HasPaghihigpit(PaghihigpitTypes.MarkaNgBaybayin);
@@ -327,10 +330,8 @@ class AlahasSubManager : MonoBehaviour
         }
     }
 
-    private List<string> BuildRecommendationCandidates(LevelConfig config)
+    private IEnumerable<string> EnumerateRecommendationCandidates(LevelConfig config)
     {
-        List<string> candidates = new List<string>();
-
         if (config != null && config.HasPaghihigpit(PaghihigpitTypes.PartikularNaSalita))
         {
             int currentAksyon = AksyonCounter.Instance != null
@@ -338,8 +339,8 @@ class AlahasSubManager : MonoBehaviour
                 : 1;
             string particularWord = config.GetPartikularNaSalitaForAksyon(currentAksyon);
             if (!string.IsNullOrWhiteSpace(particularWord))
-                candidates.Add(particularWord.Trim());
-            return candidates;
+                yield return BaybayinTileSequenceRules.ToTileSpelling(particularWord.Trim());
+            yield break;
         }
 
         bool forbidRepeatedWords = config != null &&
@@ -349,10 +350,9 @@ class AlahasSubManager : MonoBehaviour
         {
             if (string.IsNullOrWhiteSpace(word)) continue;
             if (forbidRepeatedWords && GameManager.Instance.wordsUsed.Contains(word)) continue;
-            candidates.Add(word.Trim());
+            // Cached dictionary entries are already trimmed and normalized.
+            yield return word;
         }
-
-        return candidates;
     }
 
     private static bool TryMatchWord(
