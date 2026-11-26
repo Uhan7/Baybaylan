@@ -1124,22 +1124,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4470327094717909833, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: allAlahas.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4470327094717909833, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: 'allAlahas.Array.data[7]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 8676a782083642b4a92825b56748d5af, type: 2}
-    - target: {fileID: 4470327094717909833, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: 'allAlahas.Array.data[8]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}
-    - target: {fileID: 4470327094717909833, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: 'allAlahas.Array.data[9]'
-      value: 
-      objectReference: {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
     - target: {fileID: 4735010994122775520, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: m_text
       value: Handyong
@@ -1489,25 +1473,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: allAlahas.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: 'allAlahas.Array.data[8]'
-      value: 
-      objectReference: {fileID: 11400000, guid: e249c734adbce3d4e9ae18ac0dc2df55, type: 2}
-    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: 'allAlahas.Array.data[9]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 6b9e70a6f6c38244780522f4968ee729, type: 2}
-    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: useEditorAlahasOverride
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
-      propertyPath: 'allAlahas.Array.data[10]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 6d2019e2db34dea4b88b739d82ceee05, type: 2}
     - target: {fileID: 7687029928010138917, guid: 3954deecda23bf241a29e1c2b0cbfd48, type: 3}
       propertyPath: availableAlahas.Array.size
       value: 11
